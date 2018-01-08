@@ -1,0 +1,16 @@
+{% extends "header.html" %}
+{% block content %}
+    <div class="container">
+        <div class="card card-container">
+			{% load staticfiles %}
+            <img id="profile-img" class="profile-img-card" src="{% static 'img/Rama_Logo_Color.png' %}" />
+            <p id="profile-name" class="profile-name-card">SLE Flare-up Predictor</p>
+            <form class="form-signin" action="">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="inputEmail" class="form-control" placeholder="username" name="username" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="password" required>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

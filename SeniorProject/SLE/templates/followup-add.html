@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Autoimmune Flare-up Predictor - Diagnose - Follow up</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="css/bootstrap2-toggle.min.css" rel="stylesheet">
+    <link href="css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link href="css/bootstrap2-toggle.css" rel="stylesheet">
+    <link href="css/bootstrap-toggle.css" rel="stylesheet">
+    <link href="css/panel.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#AbnormalList01').change(function(){
+                if($(this).val() == '1'){
+                    $('#ShowAbnormal1').show();
+                    $('#ShowAbnormal2').show();
+                }
+                else{
+                    $('#ShowAbnormal1').hide();
+                    $('#ShowAbnormal2').hide();
+                }
+            })
+        });
+        $(document).ready(function(){
+            $('#AbnormalList02').change(function(){
+                if($(this).val() == '1'){
+                    $('#ShowAbnormal3').show();
+                    $('#ShowAbnormal4').show();
+                }
+                else{
+                    $('#ShowAbnormal3').hide();
+                    $('#ShowAbnormal4').hide();
+                }
+            })
+        });
+        $(document).ready(function(){
+            $('#AbnormalList03').change(function(){
+                if($(this).val() == '1'){
+                    $('#ShowAbnormal5').show();
+                    $('#ShowAbnormal6').show();
+                }
+                else{
+                    $('#ShowAbnormal5').hide();
+                    $('#ShowAbnormal6').hide();
+                }
+            })
+        });
+        $(document).ready(function(){
+            $('#AbnormalList04').change(function(){
+                if($(this).val() == '1'){
+                    $('#ShowAbnormal7').show();
+                    $('#ShowAbnormal8').show();
+                }
+                else{
+                    $('#ShowAbnormal7').hide();
+                    $('#ShowAbnormal8').hide();
+                }
+            })
+        });
+        $(document).ready(function(){
+            $('#ANAMother').change(function(){
+                if(this.checked){
+                    $("#ANA1").prop('disabled', false);
+                    $("#ANA2").prop('disabled', false);
+                    $("#ANA3").prop('disabled', false);
+                    $("#ANA4").prop('disabled', false);
+                }
+                else{
+                    $("#ANA1").prop('disabled', true);
+                    $("#ANA2").prop('disabled', true);
+                    $("#ANA3").prop('disabled', true);
+                    $("#ANA4").prop('disabled', true);
+                }
+            })
+        });
+        $(document).ready(function(){
+            $('#RenalShow').change(function(){
+                if(this.checked){
+                    $("#Renal01").prop('disabled', false);
+                    $("#Renal02").prop('disabled', false);
+                }
+                else{
+                    $("#Renal01").prop('disabled', true);
+                    $("#Renal02").prop('disabled', true);
+                }
+            })
+        });
+        $(document).ready(function(){
+            $('#CheckLN').change(function(){
+                if(this.checked){
+                    $("#LNShow").show();
+                }
+                else{
+                    $("#LNShow").hide();
+                }
+            })
+        });
+        $(document).ready(function(){
+            $('#MedicationCheck1').change(function(){
+                if(this.checked){
+                    $("#MedicationShow1").show();
+                }
+                else{
+                    $("#MedicationShow1").hide();
+                }
+            })
+        });
+        $(document).ready(function(){
+            $('#MedicationCheck2').change(function(){
+                if(this.checked){
+                    $("#MedicationShow2").show();
+                }
+                else{
+                    $("#MedicationShow2").hide();
+                }
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">SLE Flare-up Predictor</a>
+            </div>
+            
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <!-- For Follow up -->
+                <li style="background-color: #455379;"><a href="patient-records.html"> <i class="fa fa-file"></i> ภาพรวมคนไข้ </a></li>
+                <li style="background-color: #455379;"><a href="#"> Study number: 500 </a></li>
+                <!--Normal-->
+                <li>
+                <a href="index.html"> ภาพรวมคนไข้ทั้งหมด </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> วสุธร สนามชัย <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> ประวัติส่วนตัว</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> ตั้งค่า</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-fw fa-power-off"></i> ลงชื่อออก</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+    </nav>    
+    
+      <div id="page-wrapper">
+          <form action="">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="float: left;"> 
+                        <p style="font-size: 18px; margin: 4px; padding-right:1em"><b>Follow up</b></p>
+                    </div>
+                    <div style="float: left;"> 
+                        <p style="font-size: 14px; margin: 6px; color: #A4A4A4;"><span class="glyphicon glyphicon-paperclip"></span> ครั้งที่ 1 <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> วันที่ 1 มกราคม 2560</p>
+                    </div>
+                    <div style="float: right;"><button type="submit" class="btn btn-primary">Save</button> <button type="submit" class="btn">Cancel</button></div>
+                </div>
+            </div>
+          
+            <div class="panel with-nav-tabs panel-info ">
+                <div class="panel-heading ">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1info" data-toggle="tab">Clinical presentation</a></li>
+                        <li><a href="#tab2info" data-toggle="tab">SLEDAI</a></li>
+                        <li><a href="#tab3info" data-toggle="tab">SLICC/ACR</a></li>
+                        <li><a href="#tab4info" data-toggle="tab">Laboratory</a></li>
+                        <li><a href="#tab5info" data-toggle="tab">Medication</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1info">
+                            <div class="col-lg-12">
+                                <div class="panel">
+                                    <div class="panel-body ">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="col-lg-12"><h3 class="page-header">1. Constitutional Symptoms</h3></div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Fatigue</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Weight loss  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12"><h3 class="page-header">2. Skin & mucous membrane</h3></div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Malar rash</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Discoid rash  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Annular rash/SCLE  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-6">Other rash   </label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="text" name="quantity" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Photosensitivity   </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Oral/nasopharyngeal ulcers  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Localized scaring alopecia  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Diffuse non-scaring alopecia  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Raynaud’s phenomenon  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Digital gangrene  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12"><h3 class="page-header">3. Cardiopulmonary involvement</h3></div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Interstitial lung disease</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Lupus Pneumonitis  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Pulmonary HT  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="col-lg-12"><h3 class="page-header">4. GI & Renal involvement </h3></div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Edema</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Oliguria</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Dialysis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">GI vasculitis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Acalculous cholecystitis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12"><h3 class="page-header">5. Hematologic disorder </h3></div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">AIHA</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Petechiae/bleeding tendency</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">DVT</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12"><h3 class="page-header">6. Neurological involvement  </h3></div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Acute confusional state/delirium </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Myelopathy /Demyelinating disease</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Peripheral neuropathy</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Aseptic meningitis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                 <div class="col-lg-12"><h3 class="page-header">7. Musculoskeletal & LN involvement  </h3></div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Arthralgias</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Lymphadenopathy</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in" id="tab2info">
+                            <div class="col-lg-12">
+                                <div class="panel">
+                                    <div class="panel-body ">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-4">Physicians Global Assessment</label>
+                                                    <input id="bootstrap-slider" type="text" data-slider-min="0" data-slider-max="3" data-slider-step="0.25" data-slider-value="1"/>
+                                                    <div class="valueLabel">Level <span id="sliderValue">1</span></div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">1. CNS (8 each)</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Seizure</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Psychosis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Organic brain syndrome</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Visual disturbance</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-3">Cranial nerve</label>
+                                                    <div class="form-group col-lg-9">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Lupus headache</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">CVA</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">2. Vascular (8)</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Vasculitis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">3. Musculoskeletal (4 each)</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-6">Arthritis <small>Joint(s)</small></label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Myositis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">4. Renal (4 each)</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Casts (cell)</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Hematuria</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Proteinuria</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Pyuria</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">5. Immunology (2 each)</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Low complement</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Increased DNA binding</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">6. Skin (2 each)</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Rash </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Alopecia</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Mucous membrane</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">7. Serositis (2 each)  </h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Pleurisy </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Pericarditis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">8. Hematology (1 each) </h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Thrombocytopenia </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Leukopenia</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">9. Consitutional (1 each)</h3>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-8">Fever </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12"><br></div>
+                                                <div class="col-lg-12 alert alert-info">
+                                                    <h4>Total score = XX / XX</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in" id="tab3info">
+                            <div class="col-lg-12">
+                                <div class="panel">
+                                    <div class="panel-body ">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">1. Ocular</h3>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6">Cataract</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6"> Retinal change or optic atrophy </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">2. Neuropsychiatric</h3>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Cognitive impairment or major psychosis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Seizures requiring therapy for 6 months </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Cerebrovascular accident or  surgical resection</label>
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">LCranial or peripheral neuropathy</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Transverse myelitis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">3. Renal</h3>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6">Estimated/measured GFR<50% </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                    <div class="col-lg-12">
+                                                    <label class="col-lg-6">Proteinuria ≥3.5 g/24 hour</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6">End-stage renal failure</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">4. Cardiovascular</h3>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Angina or coronary artery bypass</label>
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-7">Myocardial infarction </label>
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Cardiomyopathy (ventricular dysfunction)</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                    <div class="col-lg-12">
+                                                    <label class="col-lg-8">Valvular disease</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                    <div class="col-lg-12">
+                                                    <label class="col-lg-8">Pericarditis for 6 months or pericardiectomy</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">5. Peripheral vascular</h3>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Claudication for 6 months </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Minor tissue loss (pulp space)</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-7">Significant tissue loss (digit or limb) </label> 
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Venous thrombosis with swelling ulceration/venous stasis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">6. Pulmonary </h3>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6">Pulmonary hypertension  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6">Pulmonaryinfarction or resection </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6">Pulmonary fibrosis  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6">Shrinking lung</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-6">Pleural fibrosis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">7. Gastrointestinal</h3>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-7">Infarction or resection of bowel </label> 
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Mesenteric insufficiency  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Chronic peritonitis </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Structure or upper gastrointestinal surgery</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Pancreatic insuff (enzyme replacement)</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">8. Musculoskeletal</h3>
+                                                </div>
+                                                 <div class="col-lg-12">
+                                                    <label class="col-lg-8">Muscle atrophy or weakness </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                 <div class="col-lg-12">
+                                                    <label class="col-lg-8">Deforming or erosive arthritis</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                 <div class="col-lg-12">
+                                                    <label class="col-lg-8">Osteoporosis with fracture /vertebral collapse </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-7">Avascular necrosis </label> 
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Osteomyelitis </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Tendon rupture </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">9. Skin</h3>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Scarring chronic alopecia  </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Extensive scarring or panniculum </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Skin ulceration for >6 months </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Premature gonadal failure (before age 40) </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-8">Diabetes mellitus </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label class="col-lg-7">Malignancy (exclude dysplasia)</label> 
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00"  class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12"><br></div>
+                                                <div class="col-lg-12 alert alert-info">
+                                                    <h4>Total score = XX / XX</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in" id="tab4info">
+                            <div class="col-lg-12">
+                                <div class="panel">
+                                    <div class="panel-body ">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">1. CBC</h3>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Hb (g/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99.9" step="0.1"   placeholder="00.0" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">WBC (uL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99999" placeholder="00,000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">N (%) </label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00"  class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">L (%)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Platelets (uL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999999" placeholder="000,000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">ESR (mm/hr)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">2. Urine Analysis</h3>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">WBC (/HPF)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6"> RBC (/HPF)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6"> WBC casts (/LPF)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6"> RBC casts (/LPF)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6"> Granular casts(/LPF)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12"></div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Glucose</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="-99" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Protein </label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="-99" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-6">TP-Spot Urine Protein (mg/dL) </label>
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-6">CRE- Spot Urine Creatinine (mg/dL)  </label>
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-6">24-hr Urine Protein (g/day) </label>
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="99.9" step="0.1" placeholder="00.0" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="col-lg-6">24-hr Urine Creatinine (g/day)</label>
+                                                    <div class="form-group col-lg-3">
+                                                        <input type="number" name="quantity" min="0" max="9.9" step="0.1" placeholder="0.0" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">3. Blood Chem </h3>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">FBS (mg/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">HbA1C (%)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">BUN (mg/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9.9" placeholder="0.0" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Cr (mg/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">ALP (units/L)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0,000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">  AST (units/L)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0,000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">  ALT (units/L)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0,000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">  GGT (units/L)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">LDH (units/L)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0,000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Albumin (g/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-4">T/D bilirubin</label>
+                                                    <div class="form-inline col-lg-8">
+                                                        <div class="form-group col-lg-6">
+                                                            <input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control">
+                                                        </div>
+                                                        <label class="col-lg-1">/</label>
+                                                        <div class="form-group col-lg-4" style="padding: 0px;">
+
+                                                            <input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-lg-4">
+                                                    <label class="col-lg-6">CRP (mg/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9.9" placeholder="0.0" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Choles (mg/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0,000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">TG (mg/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0,000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">LDL (mg/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">HDL (mg/dL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">INR</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h3 class="page-header">4. Immunology</h3>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">ANA titer</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="ANAMother"> 
+                                                </div>
+                                                <div class="col-lg-4" >
+                                                    <label class="col-lg-6">Homogeneous</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0000" class="form-control" id="ANA1" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Peripheral</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0000" class="form-control" id="ANA2" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4  col-lg-offset-4">
+                                                    <label class="col-lg-6">Speckled</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0000" class="form-control" id="ANA3" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Nucleolar</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999" placeholder="0000" class="form-control" id="ANA4" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">Anti-dsDNA (IU/mL)  </label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9999.9" placeholder="0000.0" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">Anti-Sm</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">AntiRNP (EU/mL)</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">AntiRo (EU/mL)</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">AntiLa (EU/mL)</label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6"> ACA (IU/mL)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999.9" placeholder="000.0" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">Lupus anticoagulant </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6">ß2GPI (IU/mL) </label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999.9" placeholder="000.0" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6"> C3 (g/L)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9.99" placeholder="0.00" step="0.01" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6"> C4 (g/L)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="9.99" placeholder="0.00" step="0.01" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6"> CH50 (%)</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">HBsAg </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">AntiHBs </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">AntiHBc </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">AntiHCV </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label class="col-lg-6 ">AntiHIV </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <h4 class="page-header">Drug Level</h4>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label class="col-lg-6">MPA</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99.99" placeholder="00.00" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label class="col-lg-6">FK 506</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99.99" placeholder="00.00" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label class="col-lg-6">Cyclosporin</label>
+                                                    <div class="form-group col-lg-6">
+                                                        <input type="number" name="quantity" min="0" max="99.99" placeholder="00.00" step="0.1" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label class="col-lg-6 ">Cytokine </label> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="col-lg-12">
+                                                            <h3 class="page-header">5. BMD</h3>
+                                                        </div>
+                                                        <table class="table table-hover table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th></th>
+                                                                    <th>BMD(g/cm2)</th>
+                                                                    <th>T-scores</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>L1-L4 spine</td>
+                                                                    <td><input type="number" name="quantity" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                    <td><input type="number" name="quantity" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control"</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Hip</td>
+                                                                    <td><input type="number" name="quantity" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                    <td><input type="number" name="quantity" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control"</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Radius</td>
+                                                                    <td><input type="number" name="quantity" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                    <td><input type="number" name="quantity" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control"</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="col-lg-12">
+                                                            <h3 class="page-header">6. Stool parasite</h3>
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            <div class="form-group"> 
+                                                                <select class="form-control" id="AbnormalList01"> 
+                                                                    <option selected value="0">Normal</option>
+                                                                    <option value="1">Abnormal</option>
+                                                                    <option value="2">Not done </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4" id="ShowAbnormal1" style="display:none;">
+                                                            <div class="form-group">
+                                                                <label>Abnormal detail</label> 
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4" id="ShowAbnormal2" style="display:none;">
+                                                            <div class="form-group">
+                                                                <label>Date</label>  
+                                                                 <input type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6"> 
+                                                        <div class="col-lg-12">
+                                                            <h3 class="page-header">7. CXR</h3>
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            <div class="form-group"> 
+                                                                <select class="form-control" id="AbnormalList02"> 
+                                                                    <option selected value="0">Normal</option>
+                                                                    <option value="1">Abnormal</option>
+                                                                    <option value="2">Not done </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4" id="ShowAbnormal3" style="display:none;">
+                                                            <div class="form-group">
+                                                                <label>Abnormal detail</label> 
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4" id="ShowAbnormal4" style="display:none;">
+                                                            <div class="form-group">
+                                                                <label>Date</label>  
+                                                                 <input type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <h3 class="page-header">8. EKG</h3>
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            <div class="form-group"> 
+                                                                <select class="form-control" id="AbnormalList03"> 
+                                                                    <option selected value="0">Normal</option>
+                                                                    <option value="1">Abnormal</option>
+                                                                    <option value="2">Not done </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4" id="ShowAbnormal5" style="display:none;">
+                                                            <div class="form-group">
+                                                                <label>Abnormal detail</label> 
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4" id="ShowAbnormal6" style="display:none;">
+                                                            <div class="form-group">
+                                                                <label>Date</label>  
+                                                                 <input type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <h3 class="page-header">9. Echo</h3>
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            <div class="form-group"> 
+                                                                <select class="form-control" id="AbnormalList04"> 
+                                                                    <option selected value="0">Normal</option>
+                                                                    <option value="1">Abnormal</option>
+                                                                    <option value="2">Not done </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4" id="ShowAbnormal7" style="display:none;">
+                                                            <div class="form-group">
+                                                                <label>Abnormal detail</label> 
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4" id="ShowAbnormal8" style="display:none;">
+                                                            <div class="form-group">
+                                                                <label>Date</label>  
+                                                                 <input type="date" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <h3 class="page-header">10. Lupus nephritis
+                                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="CheckLN">
+                                                            </h3>
+                                                        </div>                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="panel panel-default" style="display: none;" id="LNShow">
+                                    <div class="panel-heading"> 
+                                        <h3 class="panel-title">Laboratory Investigation at baseline/diagnosis according to the ACR renal response criteria (ACR 2006)</h3>
+                                    </div>
+                                    <div class="panel-body ">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="col-lg-6 ">Renal biopsy</label> 
+                                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="RenalShow"> 
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="form-group">
+                                                    <label>ISN/RPS Class</label>  
+                                                    <input type="text" class="form-control" disabled id="Renal01">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="form-group">
+                                                    <label>Date</label>  
+                                                    <input type="date" class="form-control" disabled id="Renal02">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="col-lg-6">Activity Index</label>
+                                                <div class="form-group col-lg-6">
+                                                    <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="col-lg-6">Chronicity Index</label>
+                                                <div class="form-group col-lg-6">
+                                                    <input type="number" name="quantity" min="0" max="99" placeholder="00" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="col-lg-6">% Crescentic glomerulonephritis             </label>
+                                                <div class="form-group col-lg-6">
+                                                    <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="col-lg-6">% Glomerulosclerosis                               </label>
+                                                <div class="form-group col-lg-6">
+                                                    <input type="number" name="quantity" min="0" max="999" placeholder="000" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="col-lg-6">Interstitial fibrosis</label>
+                                                <div class="form-group col-lg-6">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="col-lg-6">Tubular atrophy</label>
+                                                <div class="form-group col-lg-6">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="col-lg-6">Serum Creatine (mg/dL)</label>
+                                                <div class="form-group col-lg-6">
+                                                    <input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade in" id="tab5info">
+                            <div class="col-lg-12">
+                                <div class="panel">
+                                    <div class="panel-body ">
+                                        <div class="col-lg-12">
+                                            <h3 class="page-header">1. Specific treatment of SLE  
+                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck1">
+                                            </h3>
+                                        </div>
+                                        <div id="MedicationShow1" class="col-lg-10 col-lg-offset-1" style="display:none;">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Generic</th>
+                                                        <th>Dose/d</th>
+                                                        <th>Start Date</th>
+                                                        <th>Stop Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="active" >
+                                                        <td colspan="5"> 1. NSAIDs </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1.1) Traditional</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1.2) Selective COX-2 inhibitor</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1.3) Specific COX-2 inhibitor</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr class="active" >
+                                                        <td colspan="5"> 2. Anti-malarial </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2.1) Chloroquine (Aralen) </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2.2) Hydroxychloroquine (Plaquenil) </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr class="active" >
+                                                        <td colspan="5"> 3. Corticosteroids</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3.1) Prednisolone   </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3.2) Methylprednisolone (IV) </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3.3) Dexamethasone (IV)</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr class="active" >
+                                                        <td colspan="5"> 4. Cytotoxic agents </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.1) Methotrexate (MTX)</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.2) Azathioprine </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.3) Cyclophosphamide (oral)</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.4) Cyclophosphamide (IV)</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.5) Mycophenolate mofetil (MMF)</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.6) Myfortic (Mycophenolic acid)</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.7) Cyclosporin A </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.8) Tacrolimus</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.9) Danazol</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.10) Dapsone</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.11) Colchicine</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <h3 class="page-header">2. General treatments  
+                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck2">
+                                            </h3>
+                                        </div> 
+                                        <div id="MedicationShow2" class="col-lg-10 col-lg-offset-1" style="display:none;">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Generic</th>
+                                                        <th>Dose/d</th>
+                                                        <th>Start Date</th>
+                                                        <th>Stop Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="active" >
+                                                        <td colspan="5"> 1. Anti-hypertensive </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1.1) ACEI</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1.2) ARB</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1.3) Diuretics</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1.4) Beta-blockers</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1.5) Ca channel blockers</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" placeholder="Other"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr class="active" >
+                                                        <td colspan="5"> 2. Lipid-lowering </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2.1) Statins</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2.2) Fibrates(Gemfibrozil,Fenofibrate)</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2.3)  Resin(Cholestyramine,Colestipol)</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2.4) Nicotinic acid</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" placeholder="Other"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr class="active" >
+                                                        <td colspan="5"> 3. Osteoporosis Tx </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3.1) Bisphosphonates</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3.2) Ca supplement, CaCO3</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3.3) Vitamin D </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" placeholder="Other"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr class="active" >
+                                                        <td colspan="5"> 4. Others general treatments</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.1) ASA</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.2) Warfarin</td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.3) folic </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4.4) MTX </td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="text" class="form-control" placeholder="Other"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="number" name="quantity" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><input type="date" class="form-control"></td>
+                                                        <td><button class="btn">Add</button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootslider.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap2-toggle.min.js"></script>
+
+</body>
+
+</html>
