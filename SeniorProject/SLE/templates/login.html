@@ -1,11 +1,28 @@
-{% extends "header.html" %}
-{% block content %}
-    <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SLE Flare-up Predictor</title>
+	{% load staticfiles %}
+    <!-- Bootstrap Core CSS -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/login-style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div style="margin-top: 5%;" class="container">
         <div class="card card-container">
 			{% load staticfiles %}
             <img id="profile-img" class="profile-img-card" src="{% static 'img/Rama_Logo_Color.png' %}" />
             <p id="profile-name" class="profile-name-card">SLE Flare-up Predictor</p>
-            <form class="form-signin" action="">
+            <form class="form-signin" action="{% url "index" %}">
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="inputEmail" class="form-control" placeholder="username" name="username" required autofocus>
                 <input type="password" id="inputPassword" class="form-control" name="password" placeholder="password" required>
@@ -13,4 +30,6 @@
             </form>
         </div>
     </div>
-{% endblock %}
+</body>
+
+</html>
