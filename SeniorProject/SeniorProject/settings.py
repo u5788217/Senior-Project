@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'SeniorProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'TestProject',
+        'NAME': 'SLE_FLAREUP_PREDICTOR',                      
         'USER': 'postgres',
-        'PASSWORD': '059109855',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'PASSWORD': '1234',
+        'HOST': '',
+        'PORT': '5432',
     }
 }
 

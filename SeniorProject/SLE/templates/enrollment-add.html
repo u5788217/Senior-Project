@@ -90,8 +90,10 @@
             </ul>
         </nav>
         
+   <!-- เริ่มทำฟอร์ม จ้ากกกก -->
     <div id="page-wrapper">
-        <form action="">
+        <form method="post" action="{% url "EnrollPatient" %}">
+            {% csrf_token %}
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div style="float: left;"> 
@@ -115,7 +117,7 @@
                                 <div class="form-group">
                                     <label>Date of diagnosis</label>  
                                     <div class="form-group">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="dateofdiagnosis">
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +125,7 @@
                                 <div class="form-group">
                                     <label>Date of enrollment</label>  
                                     <div class="form-group">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="dateofenrollment">
                                     </div>
                                 </div>
                             </div>
@@ -132,13 +134,13 @@
                                     <label>Gender</label>  
                                     <div data-toggle="buttons">
                                         <label class="btn btn-default active">
-                                            <input type="radio" name="options" id="option1" autocomplete="off" checked>Male
+                                            <input type="radio" name="gender" id="option1" autocomplete="off" value="Male" checked>Male
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="options" id="option2" autocomplete="off">Female
+                                            <input type="radio" name="gender" id="option2" autocomplete="off" value="Female">Female
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="options" id="option3" autocomplete="off">Missing
+                                            <input type="radio" name="gender" id="option3" autocomplete="off" value="Missing" >Missing
                                         </label>
                                     </div>
                                 </div>
@@ -147,27 +149,20 @@
                                 <div class="form-group">
                                     <label>Date of birth</label>  
                                     <div class="form-group">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="dateofbirth">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Religion</label>
-                                    <select class="form-control">
-                                        <option>Religion 1</option>
-                                        <option>Religion 2</option>
-                                        <option>Religion 3</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="religion">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Education</label>
-                                    <select class="form-control">
-                                        <option>Education 1</option>
-                                        <option>Education 2</option>
-                                    </select>
+                                    <input type="text" class="form-control" name="education">
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -175,19 +170,19 @@
                                     <label>Marital Status</label>  
                                     <div data-toggle="buttons">
                                         <label class="btn btn-default active">
-                                            <input type="radio" name="options" id="option1" autocomplete="off" checked>Single
+                                            <input type="radio" name="maritalstatus" id="option1" autocomplete="off" value="Single" checked>Single
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="options" id="option2" autocomplete="off">Married
+                                            <input type="radio" name="maritalstatus" id="option2" autocomplete="off" value="Married">Married
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="options" id="option3" autocomplete="off">Divorced
+                                            <input type="radio" name="maritalstatus" id="option3" autocomplete="off" value="Divorce">Divorced
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="options" id="option4" autocomplete="off">Widowed
+                                            <input type="radio" name="maritalstatus" id="option4" autocomplete="off" value="Widowed">Widowed
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="options" id="option5" autocomplete="off">Missing
+                                            <input type="radio" name="maritalstatus" id="option5" autocomplete="off" value="Missing">Missing
                                         </label>
                                     </div>
                                 </div>
@@ -195,25 +190,41 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Region</label>
-                                    <select class="form-control">
-                                        <option>Region 1</option>
-                                        <option>Region 2</option>
-                                        <option>Region 3</option>
-                                        <option>Region 4</option>
-                                        <option>Region 5</option>
+                                    <select class="form-control" name="region">
+                                        <option>Central</option>
+                                        <option>North</option>
+                                        <option>Northeast</option>
+                                        <option>East</option>
+                                        <option>West</option>
+                                        <option>South</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Occupation</label>  
-                                    <input type="text" class="form-control">
+                                    <select class="form-control" name="occupation">
+                                        <option>Government/State enterprises office</option>
+                                        <option>Private company employee</option>
+                                        <option>Business owner/Retail</option>
+                                        <option>Farmer/Agricultural worker </option>
+                                        <option>Pensioner</option>
+                                        <option>Student</option>
+                                        <option>Housewife/Unemployed</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Income</label>
-                                    <input type="text" class="form-control">
+                                     <select class="form-control" name="income">
+                                     <option>&lt;5000</option>
+                                     <option>5001-10000</option>
+                                     <option>10001-20000</option>
+                                     <option>20001-30000</option>
+                                     <option>30001-40000</option>
+                                     <option>&gt;40000</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -226,47 +237,47 @@
                         <div class="panel-body">
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Serositis</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr1"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Malar rash</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr2"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Renal disorder</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr3"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Discoid rash</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr4"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Neurological disorder</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr5"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Photosensitivity</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr6"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Haematological disorder</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr7"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Oral ulcers	</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                            </div>
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr8"> 
+                            </div> 
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Immunological disorder</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr9"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Arthritis</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr10"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Positive ANA</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr11"> 
                             </div>
                         </div>
                     </div>
@@ -278,71 +289,71 @@
                         <div class="panel-body">
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Acute cutaneous </label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc1"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Chronic cutaneous</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc2"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Mucosal ulcer</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc3"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Non scaring alopecia</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc4"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Arthritis</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc5"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Serositis</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc6"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Renal</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc7"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Neuro</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc8"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Hemolytic anemia</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc9"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Leukopenia/lymphopenia</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc10"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Thrombocytopenia</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc11"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">ANA	</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc12"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Anti-DNA</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc13"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Anti-Sm</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc14"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Anti-phospholipid</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="slicc15"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Low complement</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc16"> 
                             </div>
                             <div class="col-lg-6">
                                 <label class="col-lg-8">Direct coomb's test</label> 
-                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc17"> 
                             </div>
                         </div>
                     </div>         
@@ -365,7 +376,7 @@
                             <div class="col-lg-8" id="ShowFormAuto" style="display:none;">
                                 <div class="form-group"> 
                                     <label class="col-lg-6">Systemic autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto"> 
+                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto" > 
                                 </div>
                                 <div id="SysAuto1" style="display:none;">
                                     <label class="col-lg-8">SLE</label> 
@@ -463,114 +474,114 @@
                         <div class="col-lg-12"><h3 class="page-header">Systemic autoimmune diseases</h3></div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Antiphospholipid Ab  Syndrome</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_2"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Rheumatoid arthritis (RA) </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_3"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Dermatomyositis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_4"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Polymyositis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_5"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Systemic sclerosis (SSc) </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_6"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Sjogren's Syndrome (SS) </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_7"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Mixed connective tissue disease  </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_8"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">LE/LP overlap syndrome </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_9"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Primary biliary cirrhosis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_10"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Primary sclerosing cholangitis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_11"> 
                         </div>
                         <div class="col-lg-12"><h3 class="page-header">Tissue-specific autoimmune diseases</h3></div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">DM type 1 </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_2"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Hashimoto's thyroiditis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_3"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Multiple sclerosis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_4"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Myasthenia gravis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_5"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Autoimmune hepatitis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_6"> 
                         </div>
                         <div class="col-lg-12"><h3 class="page-header">Metabolic & CVS co-morbidity  </h3></div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">DM type 2</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_2"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Hypertension</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_3"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Hyperlipidemia</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_4"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">CAD</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_5"> 
                         </div>
                         <div class="col-lg-12"><h3 class="page-header">Allergy</h3></div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Allergic rhinitis</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_2"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Allergic conjunctivitis</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_3"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Asthma</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_4"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Atopic dermatitis</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_5"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Allergic urticaria</label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_6"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Anaphylaxis </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_7"> 
                         </div>
                         <div class="col-lg-6">
                             <label class="col-lg-8">Hay fever </label> 
-                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_8"> 
                         </div>
                         <div class="col-lg-6">
                             <label>Food allergy </label> 
-                            <input type="text" class="form-control"> 
+                            <input type="text" class="form-control" name="mc4_9"> 
                         </div>
                         <div class="col-lg-12"><h3 class="page-header">Other Co-morbidity</h3></div>
                         <div class="col-lg-12">
