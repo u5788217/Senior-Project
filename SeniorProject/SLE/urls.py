@@ -9,4 +9,6 @@ urlpatterns = [
     path('', views.logout, name='logout'),
     path('index/', views.index, name='index'),
     path('patientrecord/', views.patientrecord, name='patientrecord'),
+    path('followupnew/', views.followupnew, name='followupnew'),
+    path('enrollmentdetail/', views.enrollmentdetail, name='enrollmentdetail'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

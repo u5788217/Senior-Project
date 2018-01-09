@@ -10,8 +10,8 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <!-- For Follow up -->
-                <li style="background-color: #455379;"><a href="#"> <i class="fa fa-file"></i> ภาพรวมคนไข้ </a></li>
-                <li style="background-color: #455379;"><a href="#"> Study number: 500 </a></li>
+                <li style="background-color: #455379;"><a href="{% url "patientrecord" %}"> <i class="fa fa-file"></i> ภาพรวมคนไข้ </a></li>
+                <li style="background-color: #455379;"><a> Study number: 500 </a></li>
                 <!--Normal-->
                 <li>
                 <a href="{% url "index" %}"> ภาพรวมคนไข้ทั้งหมด </a>
@@ -65,11 +65,12 @@
                                         <p style="font-size: 15px; margin:10px; color: #A4A4A4;">Follow up ทั้งหมด 12 ครั้ง</p>
                                     </div>
                                    <div style="float: right;">
-                                       <form style="padding-right:5px;" class="navbar-form navbar-left" action="diagnose-followup-add.html">
+                                       <form style="padding-right:5px;" class="navbar-form navbar-left" method="post" action="{% url "followupnew" %}">
+										{% csrf_token %}
                                            <div class="form-group">
                                              <input type="text" class="form-control" placeholder="Search">
                                            </div>
-                                           <button type="submit" class="btn btn-default">Search</button>
+                                           <button type="" class="btn btn-default">Search</button>
                                            <button type="submit" class="btn btn-primary">Add new</button>
                                        </form>
                                    </div>
@@ -261,7 +262,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <ul style="margin:0;" class="pager">
-                                        <li class="next"><a href="diagnose-enrollment.html">Full detail <span aria-hidden="true">&rarr;</span></a></li>
+                                        <li class="next"><a href="{% url "enrollmentdetail" %}">Full detail <span aria-hidden="true">&rarr;</span></a></li>
                                     </ul>
                                 </div>
                             </div>

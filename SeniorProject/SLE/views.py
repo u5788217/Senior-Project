@@ -13,3 +13,9 @@ def logout(request):
 
 def patientrecord(request):
     return render(request, 'patient-records.html')
+
+def followupnew(request):
+    return render(request, 'followup-add.html')
+
+def enrollmentdetail(request):
+    return render(request, 'enrollment-add.html')
