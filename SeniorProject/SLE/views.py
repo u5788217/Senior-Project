@@ -6,3 +6,10 @@ def login(request):
 
 def index(request):
     return render(request, 'index.html')
+
+def logout(request):
+    #clear session
+    return render(request, 'login.html')
+
+def patientrecord(request):
+    return render(request, 'patient-records.html')
