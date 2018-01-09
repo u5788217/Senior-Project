@@ -77,7 +77,55 @@ def enrollPatient(request):
                                         acr10 = 'True' if request.POST.get('acr10', '')== '1' else 'False',
                                         acr11 = 'True' if request.POST.get('acr11', '')== '1' else 'False')
         EnrollAcrcriteria.save()
-        #EnrollMedicalcondition = Medicalcondition()
+        EnrollMedicalcondition = Medicalcondition(studynumber = EnrollStudyidentity,
+    mc1_1 = check
+    mc1_2 = 'True' if request.POST.get('mc1_2', '')== '1' else 'False',
+    mc1_3 = 'True' if request.POST.get('mc1_3', '')== '1' else 'False',
+    mc1_4 = 'True' if request.POST.get('mc1_4', '')== '1' else 'False',
+    mc1_5 = 'True' if request.POST.get('mc1_5', '')== '1' else 'False',
+    mc1_6 = 'True' if request.POST.get('mc1_6', '')== '1' else 'False',
+    mc1_7 = 'True' if request.POST.get('mc1_7', '')== '1' else 'False',
+    mc1_8 = 'True' if request.POST.get('mc1_8', '')== '1' else 'False',
+    mc1_9 = 'True' if request.POST.get('mc1_9', '')== '1' else 'False',
+    mc1_10 = 'True' if request.POST.get('mc1_10', '')== '1' else 'False',
+    mc1_11 = 'True' if request.POST.get('mc1_11', '')== '1' else 'False',
+    mc2_1 = check
+    mc2_2 = 'True' if request.POST.get('mc2_2', '')== '1' else 'False',
+    mc2_3 = 'True' if request.POST.get('mc2_3', '')== '1' else 'False',
+    mc2_4 = 'True' if request.POST.get('mc2_4', '')== '1' else 'False',
+    mc2_5 = 'True' if request.POST.get('mc2_5', '')== '1' else 'False',
+    mc2_6 = 'True' if request.POST.get('mc2_6', '')== '1' else 'False',
+    mc3_1 = check
+    mc3_2 = 'True' if request.POST.get('mc3_2', '')== '1' else 'False',
+    mc3_3 = 'True' if request.POST.get('mc3_3', '')== '1' else 'False',
+    mc3_4 = 'True' if request.POST.get('mc3_4', '')== '1' else 'False',
+    mc3_5 = 'True' if request.POST.get('mc3_5', '')== '1' else 'False',
+    mc4_1 = check
+    mc4_2 = 'True' if request.POST.get('mc4_2', '')== '1' else 'False',
+    mc4_3 = 'True' if request.POST.get('mc4_3', '')== '1' else 'False',
+    mc4_4 = 'True' if request.POST.get('mc4_4', '')== '1' else 'False',
+    mc4_5 = 'True' if request.POST.get('mc4_5', '')== '1' else 'False',
+    mc4_6 = 'True' if request.POST.get('mc4_6', '')== '1' else 'False',
+    mc4_7 = 'True' if request.POST.get('mc4_7', '')== '1' else 'False',
+    mc4_8 = 'True' if request.POST.get('mc4_8', '')== '1' else 'False',
+    mc4_9 = ArrayField(models.CharField(max_length=20), blank=True)  # This field type is a guess. --> now it is array.
+    mc5_1 = check
+    mc5_2 = check
+    mc5_2_1 = models.CharField(max_length=200, blank=True, null=True)
+    mc5_2_2 = models.DateField(blank=True, null=True)
+    mc5_2_3 = models.DateField(blank=True, null=True)
+    mc5_3 = check
+    mc5_3_1 = models.CharField(max_length=200, blank=True, null=True)
+    mc5_3_2 = models.DateField(blank=True, null=True)
+    mc5_3_3 = models.DateField(blank=True, null=True)
+    mc5_4 = check
+    mc5_4_1 = models.DateField(blank=True, null=True)
+    mc5_4_2 = models.DateField(blank=True, null=True)
+    mc5_5 = check
+    mc5_5_1 = models.DateField(blank=True, null=True)
+    mc5_5_2 = models.DateField(blank=True, null=True)
+                                                 )
+        EnrollMedicalcondition.save()
     return render(request, 'enrollment-detail.html',{'EnrollSlicccriteria': EnrollSlicccriteria.slicc1})
 
 #def followPatient(request):

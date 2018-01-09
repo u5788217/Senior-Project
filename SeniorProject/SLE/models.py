@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.contrib.postgres.fields import ArrayField
 
 class Acrcriteria(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
@@ -310,7 +310,7 @@ class Medicalcondition(models.Model):
     mc4_6 = models.NullBooleanField()
     mc4_7 = models.NullBooleanField()
     mc4_8 = models.NullBooleanField()
-    mc4_9 = models.TextField(blank=True, null=True)  # This field type is a guess.
+    mc4_9 = ArrayField(models.CharField(max_length=20), blank=True)  # This field type is a guess. --> now it is array.
     mc5_1 = models.NullBooleanField()
     mc5_2 = models.NullBooleanField()
     mc5_2_1 = models.CharField(max_length=200, blank=True, null=True)
