@@ -7,6 +7,30 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from postgres_composite_types import CompositeType
+
+class Previoustype(CompositeType):
+    date = models.DateField(blank=True, null=True)
+    organ = models.TextField(blank=True, null=True)
+    treatment = models.TextField(blank=True, null=True)
+    result = models.TextField(blank=True, null=True)
+    class Meta:
+        db_type = 'previoustype' #Name in PostgreSQL
+        
+class Labtype(CompositeType):
+    status = models.TextField(blank=True, null=True)
+    date =  models.DateField(blank=True, null=True)
+    class Meta:
+        db_type = 'labtype'
+        
+class Medicationtype(CompositeType):
+    generic = models.TextField(blank=True, null=True)
+    doseperdate = models.FloatField(blank=True, null=True)
+    startdate = models.DateField(blank=True, null=True)
+    stopdate = models.DateField(blank=True, null=True)
+    class Meta:
+        db_type = 'medicationtype'
+
 
 class Acrcriteria(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
@@ -73,27 +97,27 @@ class Damageindex(models.Model):
     di_2 = models.NullBooleanField()
     di_3 = models.NullBooleanField()
     di_4 = models.NullBooleanField()
-    di_5 = models.FloatField(blank=True, null=True)
+    di_5 = models.IntegerField(blank=True, null=True)
     di_6 = models.NullBooleanField()
     di_7 = models.NullBooleanField()
     di_8 = models.NullBooleanField()
     di_9 = models.NullBooleanField()
     di_10 = models.NullBooleanField()
     di_11 = models.NullBooleanField()
-    di_12 = models.FloatField(blank=True, null=True)
+    di_12 = models.IntegerField(blank=True, null=True)
     di_13 = models.NullBooleanField()
     di_14 = models.NullBooleanField()
     di_15 = models.NullBooleanField()
     di_16 = models.NullBooleanField()
     di_17 = models.NullBooleanField()
-    di_18 = models.FloatField(blank=True, null=True)
+    di_18 = models.IntegerField(blank=True, null=True)
     di_19 = models.NullBooleanField()
     di_20 = models.NullBooleanField()
     di_21 = models.NullBooleanField()
     di_22 = models.NullBooleanField()
     di_23 = models.NullBooleanField()
     di_24 = models.NullBooleanField()
-    di_25 = models.FloatField(blank=True, null=True)
+    di_25 = models.IntegerField(blank=True, null=True)
     di_26 = models.NullBooleanField()
     di_27 = models.NullBooleanField()
     di_28 = models.NullBooleanField()
@@ -101,7 +125,7 @@ class Damageindex(models.Model):
     di_30 = models.NullBooleanField()
     di_31 = models.NullBooleanField()
     di_32 = models.NullBooleanField()
-    di_33 = models.FloatField(blank=True, null=True)
+    di_33 = models.IntegerField(blank=True, null=True)
     di_34 = models.NullBooleanField()
     di_35 = models.NullBooleanField()
     di_36 = models.NullBooleanField()
@@ -109,8 +133,8 @@ class Damageindex(models.Model):
     di_38 = models.NullBooleanField()
     di_39 = models.NullBooleanField()
     di_40 = models.NullBooleanField()
-    di_41 = models.FloatField(blank=True, null=True)
-    di_total = models.FloatField(blank=True, null=True)
+    di_41 = models.IntegerField(blank=True, null=True)
+    di_total = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -158,24 +182,24 @@ class Diseaseactivitysledai(models.Model):
 
 class Familyhistory(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
-    familyhistoryofautoimmunedisease = models.CharField(max_length=10)
+    familyhistoryofautoimmunedisease = models.CharField(max_length=10, blank=True, null=True)
     systemicautoimmune = models.NullBooleanField()
-    sle = models.TextField()  # This field type is a guess.
-    ra = models.TextField()  # This field type is a guess.
-    dermatomyositis = models.TextField()  # This field type is a guess.
-    systemicsclerosis = models.TextField()  # This field type is a guess.
-    sjogrensyndrome = models.TextField()  # This field type is a guess.
+    sle = models.TextField(blank=True, null=True)  # This field type is a guess.
+    ra = models.TextField(blank=True, null=True)  # This field type is a guess.
+    dermatomyositis = models.TextField(blank=True, null=True)  # This field type is a guess.
+    systemicsclerosis = models.TextField(blank=True, null=True)  # This field type is a guess.
+    sjogrensyndrome = models.TextField(blank=True, null=True)  # This field type is a guess.
     tissuespecificautoimmune = models.NullBooleanField()
-    dmtypeone = models.TextField()  # This field type is a guess.
-    hashimotosthyroiditis = models.TextField()  # This field type is a guess.
-    multiplesclerosis = models.TextField()  # This field type is a guess.
-    myastheniagravis = models.TextField()  # This field type is a guess.
-    tissuespecificother = models.TextField()  # This field type is a guess.
-    renaldiseasefamilyhistory = models.CharField(max_length=10)
-    nephroticsyndrome_glomerulardisease = models.TextField()  # This field type is a guess.
-    stone = models.TextField()  # This field type is a guess.
-    esrd = models.TextField()  # This field type is a guess.
-    renalother = models.TextField()  # This field type is a guess.
+    dmtypeone = models.TextField(blank=True, null=True)  # This field type is a guess.
+    hashimotosthyroiditis = models.TextField(blank=True, null=True)  # This field type is a guess.
+    multiplesclerosis = models.TextField(blank=True, null=True)  # This field type is a guess.
+    myastheniagravis = models.TextField(blank=True, null=True)  # This field type is a guess.
+    tissuespecificother = models.TextField(blank=True, null=True)  # This field type is a guess.
+    renaldiseasefamilyhistory = models.CharField(max_length=10, blank=True, null=True)
+    nephroticsyndrome_glomerulardisease = models.TextField(blank=True, null=True)  # This field type is a guess.
+    stone = models.TextField(blank=True, null=True)  # This field type is a guess.
+    esrd = models.TextField(blank=True, null=True)  # This field type is a guess.
+    renalother = models.TextField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         managed = False
@@ -184,7 +208,7 @@ class Familyhistory(models.Model):
 
 class Laboratoryinventoryinvestigation(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
-    lnlabid = models.ForeignKey('Lnlab', models.DO_NOTHING, db_column='lnlabid')
+    lnlabid = models.ForeignKey('Lnlab', models.DO_NOTHING, db_column='lnlabid', blank=True, null=True)
     visitdate = models.DateField()
     hb = models.FloatField(blank=True, null=True)
     wbc = models.FloatField(blank=True, null=True)
@@ -213,7 +237,7 @@ class Laboratoryinventoryinvestigation(models.Model):
     ggt = models.FloatField(blank=True, null=True)
     ldh = models.FloatField(blank=True, null=True)
     albumin = models.FloatField(blank=True, null=True)
-    tdbilirubin = models.TextField(blank=True, null=True)  # This field type is a guess.
+    tdbilirubin = ArrayField(models.FloatField(blank=True), null=True)  # FLOAT[]
     crp = models.FloatField(blank=True, null=True)
     choles = models.FloatField(blank=True, null=True)
     tg = models.FloatField(blank=True, null=True)
@@ -247,13 +271,13 @@ class Laboratoryinventoryinvestigation(models.Model):
     fk507 = models.FloatField(blank=True, null=True)
     cyclosporin = models.FloatField(blank=True, null=True)
     cytokine = models.NullBooleanField()
-    l1l4spinebmd_tscore = models.TextField(blank=True, null=True)  # This field type is a guess.
-    hipbmd_tscore = models.TextField(blank=True, null=True)  # This field type is a guess.
-    radiusbmd_tscore = models.TextField(blank=True, null=True)  # This field type is a guess.
-    stoolparasite = models.TextField(blank=True, null=True)  # This field type is a guess.
-    cxr = models.TextField(blank=True, null=True)  # This field type is a guess.
-    ekg = models.TextField(blank=True, null=True)  # This field type is a guess.
-    echo = models.TextField(blank=True, null=True)  # This field type is a guess.
+    l1l4spinebmd_tscore = ArrayField(models.FloatField(blank=True), null=True)  # FLOAT[]
+    hipbmd_tscore = ArrayField(models.FloatField(blank=True), null=True)   # FLOAT[]
+    radiusbmd_tscore = ArrayField(models.FloatField(blank=True), null=True)   # FLOAT[]
+    stoolparasite = Labtype.Field()  # LabType
+    cxr = Labtype.Field() # LabType
+    ekg = Labtype.Field()  # LabType
+    echo = Labtype.Field()  # LabType
 
     class Meta:
         managed = False
@@ -310,7 +334,7 @@ class Medicalcondition(models.Model):
     mc4_6 = models.NullBooleanField()
     mc4_7 = models.NullBooleanField()
     mc4_8 = models.NullBooleanField()
-    mc4_9 = ArrayField(models.CharField(max_length=20), blank=True)  # This field type is a guess. --> now it is array.
+    mc4_9 = ArrayField(models.TextField(blank=True), null=True)  # This field type is a guess.
     mc5_1 = models.NullBooleanField()
     mc5_2 = models.NullBooleanField()
     mc5_2_1 = models.CharField(max_length=200, blank=True, null=True)
@@ -321,10 +345,10 @@ class Medicalcondition(models.Model):
     mc5_3_2 = models.DateField(blank=True, null=True)
     mc5_3_3 = models.DateField(blank=True, null=True)
     mc5_4 = models.NullBooleanField()
-    mc5_4_1 = models.DateField(blank=True, null=True)
+    mc5_4_1 = models.CharField(max_length=200, blank=True, null=True)
     mc5_4_2 = models.DateField(blank=True, null=True)
     mc5_5 = models.NullBooleanField()
-    mc5_5_1 = models.DateField(blank=True, null=True)
+    mc5_5_1 = models.CharField(max_length=200, blank=True, null=True)
     mc5_5_2 = models.DateField(blank=True, null=True)
 
     class Meta:
@@ -335,43 +359,43 @@ class Medicalcondition(models.Model):
 class Medication(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
     visitdate = models.DateField()
-    msle_1_1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_1_2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_1_3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_2_1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_2_2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_3_1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_3_2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_3_3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_3_4 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_4 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_5 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_6 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_7 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_8 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_9 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_10 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_11 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    msle_4_12 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_1_1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_1_2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_1_3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_1_4 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_1_5 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_2_1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_2_2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_2_3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_2_4 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_3_1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_3_2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_3_3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_4_1 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_4_2 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_4_3 = models.TextField(blank=True, null=True)  # This field type is a guess.
-    mgt_other = models.TextField(blank=True, null=True)
+    msle_1_1 = Medicationtype.Field()  # Medication type
+    msle_1_2 = Medicationtype.Field()  # Medication type
+    msle_1_3 = Medicationtype.Field()  # This field type is a guess.
+    msle_2_1 = Medicationtype.Field()  # This field type is a guess.
+    msle_2_2 = Medicationtype.Field()  # This field type is a guess.
+    msle_3_1 = Medicationtype.Field()  # This field type is a guess.
+    msle_3_2 = Medicationtype.Field()  # This field type is a guess.
+    msle_3_3 = Medicationtype.Field()  # This field type is a guess.
+    msle_3_4 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_1 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_2 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_3 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_4 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_5 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_6 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_7 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_8 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_9 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_10 = Medicationtype.Field()  # This field type is a guess.
+    msle_4_11 = Medicationtype.Field()  # This field type is a guess.
+    mgt_1_1 = Medicationtype.Field()  # This field type is a guess.
+    mgt_1_2 = Medicationtype.Field()  # This field type is a guess.
+    mgt_1_3 = Medicationtype.Field()  # This field type is a guess.
+    mgt_1_4 = Medicationtype.Field()  # This field type is a guess.
+    mgt_1_5 = Medicationtype.Field()  # This field type is a guess.
+    mgt_2_1 = Medicationtype.Field()  # This field type is a guess.
+    mgt_2_2 = Medicationtype.Field()  # This field type is a guess.
+    mgt_2_3 = Medicationtype.Field()  # This field type is a guess.
+    mgt_2_4 = Medicationtype.Field()  # This field type is a guess.
+    mgt_3_1 = Medicationtype.Field()  # This field type is a guess.
+    mgt_3_2 = Medicationtype.Field()  # This field type is a guess.
+    mgt_3_3 = Medicationtype.Field()  # This field type is a guess.
+    mgt_4_1 = Medicationtype.Field()  # This field type is a guess.
+    mgt_4_2 = Medicationtype.Field()  # This field type is a guess.
+    mgt_4_3 = Medicationtype.Field()  # Medication type
+    mgt_4_4 = Medicationtype.Field()
+    mgt_other = models.TextField(blank=True, null=True) 
 
     class Meta:
         managed = False
@@ -398,10 +422,7 @@ class Obgyn(models.Model):
 class Previouscomplication(models.Model):
     pcid = models.AutoField(primary_key=True)
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
-    date = models.DateField(blank=True, null=True)
-    organ = models.TextField(blank=True, null=True)
-    treatment = models.TextField(blank=True, null=True)
-    result = models.TextField(blank=True, null=True)
+    detail = Previoustype.Field() # db_type
 
     class Meta:
         managed = False
@@ -412,10 +433,7 @@ class Previouscomplication(models.Model):
 class Previousorganinvolvement(models.Model):
     poiid = models.AutoField(primary_key=True)
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
-    date = models.DateField(blank=True, null=True)
-    organ = models.TextField(blank=True, null=True)
-    treatment = models.TextField(blank=True, null=True)
-    remission = models.TextField(blank=True, null=True)
+    detail = Previoustype.Field() # db_type
 
     class Meta:
         managed = False
@@ -467,16 +485,16 @@ class Slicccriteria(models.Model):
 
 class Studyidentity(models.Model):
     studynumber = models.CharField(primary_key=True, max_length=6)
-    dateofdiagnosis = models.DateField()
-    dateofenrollment = models.DateField()
-    gender = models.CharField(max_length=6)
-    dateofbirth = models.DateField()
-    religion = models.CharField(max_length=20)
-    education = models.CharField(max_length=30)
-    maritalstatus = models.CharField(max_length=10)
-    region = models.CharField(max_length=10)
-    occupation = models.CharField(max_length=50)
-    income = models.CharField(max_length=20)
+    dateofdiagnosis = models.DateField(blank=True, null=True)
+    dateofenrollment = models.DateField(blank=True, null=True)
+    gender = models.CharField(max_length=6, blank=True, null=True)
+    dateofbirth = models.DateField(blank=True, null=True)
+    religion = models.CharField(max_length=20, blank=True, null=True)
+    education = models.CharField(max_length=30, blank=True, null=True)
+    maritalstatus = models.CharField(max_length=10, blank=True, null=True)
+    region = models.CharField(max_length=10, blank=True, null=True)
+    occupation = models.CharField(max_length=50, blank=True, null=True)
+    income = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -485,8 +503,8 @@ class Studyidentity(models.Model):
 
 class Visiting(models.Model):
     studynumber = models.ForeignKey(Studyidentity, models.DO_NOTHING, db_column='studynumber', primary_key=True)
-    visitdate = models.DateField()
-    bp = models.FloatField(blank=True, null=True)
+    visitdate = models.DateField(blank=True, null=True)
+    bp = models.CharField(max_length=10, blank=True, null=True)
     height = models.FloatField(blank=True, null=True)
     weight = models.FloatField(blank=True, null=True)
 

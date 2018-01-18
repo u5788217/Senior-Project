@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'SLE',
+    'postgres_composite_types',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
