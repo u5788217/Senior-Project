@@ -45,15 +45,6 @@ def DateToNone(date):
     if date == '': date = None
     return date
 
-def my_view_that_updates_pieFact(request):
-    if request.method == 'POST':
-        if 'pieFact' in request.POST:
-            pieFact = request.POST['pieFact']
-            # doSomething with pieFact here...
-            return HttpResponse('success') # if everything is OK
-    # nothing went well
-    return HttpRepsonse('FAIL!!!!!')
-
 def login(request):
     return render(request, 'login.html')
 
@@ -68,10 +59,10 @@ def logout(request):
 def patientrecord(request, studynum):
     return render(request, 'patient-records.html',{'visit_list': Visiting.objects.filter(studynumber = studynum), 'patient':Studyidentity.objects.get(studynumber = studynum)})
 
-def followupnew(request):
-    return render(request, 'followup-add.html')
+def followupnew(request, studynum):
+    return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum)})
 
-def enrollmentdetail(request):
+def enrollmentdetail(request, studynum):
     return render(request, 'enrollment-detail.html')
 
 def enrollAdd(request):
