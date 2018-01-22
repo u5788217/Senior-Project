@@ -2,6 +2,23 @@
 {% block content %}
 
     <script>
+        function AddFamFeild(spanid,namefam)
+        {
+            str = '<br/><input type="text" class="form-control" name="'+namefam+'">';
+            $(spanid).append(str);
+        }
+        function AddTextFeild()
+        {
+            $('#foodallergy').append('<br/><input type="text" class="form-control" name="mc4_9[]">');
+        }
+        function AddOrganFeild()
+        {
+            $('#OrganFeild').append('<tr><td><input type="date" class="form-control" name="OrganDate[]"></td><td><input type="text" class="form-control" name="Organ[]"></td><td><input type="text" class="form-control" name="OrganTreat[]"></td><td><input type="text" class="form-control" name="OrganResult[]"></td></tr>');
+        }
+        function AddCompFeild()
+        {
+            $('#CompFeild').append('<tr><td><input type="date" class="form-control" name="CompDate[]"></td><td><input type="text" class="form-control" name="CompOrgan[]"></td><td><input type="text" class="form-control" name="CompTreat[]"></td><td><input type="text" class="form-control" name="CompRemiss[]"></td></tr>');
+        }
         function updatePieFact(){
             var data = {'pieFact': pieFact};
             $.post(URL, data, function(response){
@@ -23,7 +40,7 @@
         
         $(document).ready(function(){
             $('#FamHisAuto').change(function(){
-                if($(this).val() == '1'){
+                if($(this).val() == 'Yes'){
                     $('#ShowFormAuto').show();
                 }
                 else{
@@ -33,7 +50,7 @@
         });
         $(document).ready(function(){
             $('#FamHisRenal').change(function(){
-                if($(this).val() == '1'){
+                if($(this).val() == 'Yes'){
                     $('#ShowFormRenal').show();
                 }
                 else{
@@ -389,100 +406,100 @@
                             <div class="col-lg-12">
                                 <label class="col-lg-6">Family history of autoimmune disease </label> 
                                 <div class="form-group col-lg-4"> 
-                                    <select class="form-control" id="FamHisAuto"> 
-                                        <option selected value="0">No</option>
-                                        <option value="1">Yes</option>
-                                        <option value="2">Unknown</option>
+                                    <select class="form-control" id="FamHisAuto" name="FamAuto"> 
+                                        <option selected value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="Unknown">Unknown</option>
                                     </select>
                                 </div>
                             </div>   
                             <div class="col-lg-8" id="ShowFormAuto" style="display:none;">
                                 <div class="form-group"> 
                                     <label class="col-lg-6">Systemic autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto" > 
+                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto" name="systemicautoimmune"> 
                                 </div>
                                 <div id="SysAuto1" style="display:none;">
                                     <label class="col-lg-8">SLE</label> 
-                                    <input type="text"> 
-                                        <button>Add</button>
+                                    <span id="sle"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#sle','sle[]')" value="Add">  
                                 </div>
                                             
                                 <div id="SysAuto2" style="display:none;">
                                     <label class="col-lg-8">RA</label> 
-                                    <input type="text"> 
-                                    <button>Add</button>
+                                    <span id="ra"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#ra','ra[]')" value="Add"> 
                                 </div>
                                 <div id="SysAuto3" style="display:none;">
                                     <label class="col-lg-8">Dermatomyositis</label> 
-                                    <input type="text"> 
-                                    <button>Add</button> 
+                                    <span id="dermatomyositis"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#dermatomyositis','dermatomyositis[]')" value="Add">  
                                 </div>
                                 <div id="SysAuto4" style="display:none;">    
                                     <label class="col-lg-8">Systemic sclerosis</label> 
-                                    <input type="text"> 
-                                    <button>Add</button> 
+                                    <span id="systemicsclerosis"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#systemicsclerosis','systemicsclerosis[]')" value="Add"> 
                                 </div>
                                 <div id="SysAuto5" style="display:none;">    
                                     <label class="col-lg-8">Sjogren's Syndrome</label> 
-                                    <input type="text"> 
-                                    <button>Add</button> 
+                                    <span id="sjogrensyndrome"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#sjogrensyndrome','sjogrensyndrome[]')" value="Add"> 
                                 </div>
                                     
                                                 
                                 <div class="form-group"> 
                                     <label class="col-lg-6">Tissue-specific autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="TisAuto"> 
+                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="TisAuto" name="tissuespecificautoimmune"> 
                                 </div>
                                             
                                 <div id="TisAuto1" style="display:none;">
                                     <label class="col-lg-8">DM Type 1</label> 
-                                    <input type="text"> 
-                                    <button>Add</button>  
+                                    <span id="dmtypeone"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#dmtypeone','dmtypeone[]')" value="Add">  
                                 </div>
                                 <div id="TisAuto2" style="display:none;">
                                     <label class="col-lg-8">Hashimoto's thyroidditis</label> 
-                                    <input type="text"> 
-                                    <button>Add</button>
+                                    <span id="hashimotosthyroiditis"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#hashimotosthyroiditis','hashimotosthyroiditis[]')" value="Add"> 
                                 </div>
                                 <div id="TisAuto3" style="display:none;">
                                     <label class="col-lg-8">Multiple sclerosis</label> 
-                                    <input type="text"> 
-                                    <button>Add</button>
+                                    <span id="multiplesclerosis"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#multiplesclerosis','multiplesclerosis[]')" value="Add"> 
                                 </div>
                                 <div id="TisAuto4" style="display:none;">    
                                     <label class="col-lg-8">Myasthenia gravis</label> 
-                                    <input type="text"> 
-                                    <button>Add</button>
+                                    <span id="myastheniagravis"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#myastheniagravis','myastheniagravis[]')" value="Add"> 
                                 </div>
                                 <div id="TisAuto5" style="display:none;">    
                                     <label class="col-lg-8">Other</label> 
-                                    <input type="text"> 
-                                    <button>Add</button>
+                                    <span id="tissuespecificother"></span>
+                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#tissuespecificother','tissuespecificother[]')" value="Add"> 
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <label class="col-lg-6">Family history of renal disease/chronic glomerulonephritis</label> 
                                 <div class="form-group col-lg-4"> 
-                                    <select class="form-control" id="FamHisRenal"> 
-                                        <option selected value="0">No</option>
-                                        <option value="1">Yes</option>
-                                        <option value="2">Unknown</option>
+                                    <select class="form-control" id="FamHisRenal" name="FamRenal"> 
+                                        <option selected value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="Unknown">Unknown</option>
                                     </select>
                                 </div>
                             </div>  
                             <div class="col-lg-8" id="ShowFormRenal" style="display:none;">
                                 <label class="col-lg-10">Nephrotic syndrome /Glomerular disease</label>
-                                <input type="text"> 
-                                <button>Add</button>
+                                <span id="nephroticsyndrome_glomerulardisease"></span>
+                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#nephroticsyndrome_glomerulardisease','nephroticsyndrome_glomerulardisease[]')" value="Add"> 
                                 <label class="col-lg-8">Stone </label>
-                                <input type="text"> 
-                                <button>Add</button>
+                                <span id="stone"></span>
+                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#stone','stone[]')" value="Add"> 
                                 <label class="col-lg-8">ESRD  </label>
-                                <input type="text"> 
-                                <button>Add</button>
+                                 <span id="esrd"></span>
+                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#esrd','esrd[]')" value="Add"> 
                                 <label class="col-lg-8">Other</label>
-                                <input type="text"> 
-                                <button>Add</button>
+                                 <span id="renalother"></span>
+                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#renalother','renalother[]')" value="Add"> 
                             </div>
                         </div>
                     </div>
@@ -605,7 +622,9 @@
                         </div>
                         <div class="col-lg-6">
                             <label>Food allergy </label> 
-                            <input type="text" class="form-control" name="mc4_9"> 
+                            <input type="button" class="btn btn-default" onclick="AddTextFeild()" value="Add">
+                            <span id="foodallergy">
+                            </span>
                         </div>
                         <div class="col-lg-12"><h3 class="page-header">Other Co-morbidity</h3></div>
                         <div class="col-lg-12">
@@ -664,33 +683,6 @@
                         <h3 class="panel-title">Organ Involvement </h3>
                     </div>
                     <div class="panel-body">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Date</label>  
-                                <div class="form-group">
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Organ</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="form-group">
-                                <label>Treatment</label>  
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label>Remission</label>
-                                <input type="text" class="form-control">
-                                <input type="button" class="btn btn-default" onclick="AddOrgan()" value="Add">
-                            </div>
-                        </div>
                         <div class="col-lg-12">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover table-striped">
@@ -702,15 +694,9 @@
                                             <th>Remission</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="OrganFeild"></tbody>
                                 </table>
+                                <input type="button" class="btn btn-default" onclick="AddOrganFeild()" value="Add">       
                             </div>
                         </div>
                     </div>   
@@ -721,33 +707,6 @@
                         <h3 class="panel-title">Previous Complication  </h3>
                     </div>
                     <div class="panel-body">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Date</label>  
-                               <div class="form-group">
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Organ</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="form-group">
-                                <label>Treatment</label>  
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label>Result</label>
-                                <input type="text" class="form-control">
-                                <button type="submit" class="btn btn-default">Add</button>
-                            </div>
-                        </div>
                         <div class="col-lg-12">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover table-striped">
@@ -759,15 +718,9 @@
                                             <th>Result</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Added Date</td>
-                                            <td>Added Organ</td>
-                                            <td>Added Treatment</td>
-                                            <td>Added Result</td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="CompFeild"></tbody>
                                 </table>
+                                <input type="button" class="btn btn-default" onclick="AddCompFeild()" value="Add">   
                             </div>
                         </div>
                     </div>    

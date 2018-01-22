@@ -9,6 +9,8 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from postgres_composite_types import CompositeType
 
+
+
 class Previoustype(CompositeType):
     date = models.DateField(blank=True, null=True)
     organ = models.TextField(blank=True, null=True)
@@ -31,7 +33,6 @@ class Medicationtype(CompositeType):
     class Meta:
         db_type = 'medicationtype'
 
-
 class Acrcriteria(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
     acr1 = models.NullBooleanField()
@@ -52,7 +53,8 @@ class Acrcriteria(models.Model):
 
 
 class Clinicalpresentation(models.Model):
-    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
+    visitingid = models.ForeignKey('Visiting', models.DO_NOTHING, db_column='visitingid', primary_key=True)
+    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
     visitdate = models.DateField()
     cp_1 = models.NullBooleanField()
     cp_2 = models.NullBooleanField()
@@ -89,35 +91,35 @@ class Clinicalpresentation(models.Model):
         db_table = 'clinicalpresentation'
         unique_together = (('studynumber', 'visitdate'),)
 
-
 class Damageindex(models.Model):
-    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
+    visitingid = models.ForeignKey('Visiting', models.DO_NOTHING, db_column='visitingid', primary_key=True)
+    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
     visitdate = models.DateField()
     di_1 = models.NullBooleanField()
     di_2 = models.NullBooleanField()
     di_3 = models.NullBooleanField()
     di_4 = models.NullBooleanField()
-    di_5 = models.IntegerField(blank=True, null=True)
+    di_5 = models.FloatField(blank=True, null=True)
     di_6 = models.NullBooleanField()
     di_7 = models.NullBooleanField()
     di_8 = models.NullBooleanField()
     di_9 = models.NullBooleanField()
     di_10 = models.NullBooleanField()
     di_11 = models.NullBooleanField()
-    di_12 = models.IntegerField(blank=True, null=True)
+    di_12 = models.FloatField(blank=True, null=True)
     di_13 = models.NullBooleanField()
     di_14 = models.NullBooleanField()
     di_15 = models.NullBooleanField()
     di_16 = models.NullBooleanField()
     di_17 = models.NullBooleanField()
-    di_18 = models.IntegerField(blank=True, null=True)
+    di_18 = models.FloatField(blank=True, null=True)
     di_19 = models.NullBooleanField()
     di_20 = models.NullBooleanField()
     di_21 = models.NullBooleanField()
     di_22 = models.NullBooleanField()
     di_23 = models.NullBooleanField()
     di_24 = models.NullBooleanField()
-    di_25 = models.IntegerField(blank=True, null=True)
+    di_25 = models.FloatField(blank=True, null=True)
     di_26 = models.NullBooleanField()
     di_27 = models.NullBooleanField()
     di_28 = models.NullBooleanField()
@@ -125,7 +127,7 @@ class Damageindex(models.Model):
     di_30 = models.NullBooleanField()
     di_31 = models.NullBooleanField()
     di_32 = models.NullBooleanField()
-    di_33 = models.IntegerField(blank=True, null=True)
+    di_33 = models.FloatField(blank=True, null=True)
     di_34 = models.NullBooleanField()
     di_35 = models.NullBooleanField()
     di_36 = models.NullBooleanField()
@@ -133,17 +135,17 @@ class Damageindex(models.Model):
     di_38 = models.NullBooleanField()
     di_39 = models.NullBooleanField()
     di_40 = models.NullBooleanField()
-    di_41 = models.IntegerField(blank=True, null=True)
-    di_total = models.IntegerField(blank=True, null=True)
+    di_41 = models.FloatField(blank=True, null=True)
+    di_total = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'damageindex'
         unique_together = (('studynumber', 'visitdate'),)
 
-
 class Diseaseactivitysledai(models.Model):
-    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
+    visitingid = models.ForeignKey('Visiting', models.DO_NOTHING, db_column='visitingid', primary_key=True)
+    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
     visitdate = models.DateField()
     physiciansglobalassessment = models.IntegerField(blank=True, null=True)
     seizure = models.NullBooleanField()
@@ -184,22 +186,22 @@ class Familyhistory(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
     familyhistoryofautoimmunedisease = models.CharField(max_length=10, blank=True, null=True)
     systemicautoimmune = models.NullBooleanField()
-    sle = models.TextField(blank=True, null=True)  # This field type is a guess.
-    ra = models.TextField(blank=True, null=True)  # This field type is a guess.
-    dermatomyositis = models.TextField(blank=True, null=True)  # This field type is a guess.
-    systemicsclerosis = models.TextField(blank=True, null=True)  # This field type is a guess.
-    sjogrensyndrome = models.TextField(blank=True, null=True)  # This field type is a guess.
+    sle = ArrayField(models.TextField(blank=True), null=True)
+    ra = ArrayField(models.TextField(blank=True), null=True)
+    dermatomyositis = ArrayField(models.TextField(blank=True), null=True)
+    systemicsclerosis = ArrayField(models.TextField(blank=True), null=True)
+    sjogrensyndrome = ArrayField(models.TextField(blank=True), null=True)
     tissuespecificautoimmune = models.NullBooleanField()
-    dmtypeone = models.TextField(blank=True, null=True)  # This field type is a guess.
-    hashimotosthyroiditis = models.TextField(blank=True, null=True)  # This field type is a guess.
-    multiplesclerosis = models.TextField(blank=True, null=True)  # This field type is a guess.
-    myastheniagravis = models.TextField(blank=True, null=True)  # This field type is a guess.
-    tissuespecificother = models.TextField(blank=True, null=True)  # This field type is a guess.
+    dmtypeone = ArrayField(models.TextField(blank=True), null=True)
+    hashimotosthyroiditis = ArrayField(models.TextField(blank=True), null=True)
+    multiplesclerosis = ArrayField(models.TextField(blank=True), null=True)
+    myastheniagravis = ArrayField(models.TextField(blank=True), null=True)
+    tissuespecificother = ArrayField(models.TextField(blank=True), null=True)
     renaldiseasefamilyhistory = models.CharField(max_length=10, blank=True, null=True)
-    nephroticsyndrome_glomerulardisease = models.TextField(blank=True, null=True)  # This field type is a guess.
-    stone = models.TextField(blank=True, null=True)  # This field type is a guess.
-    esrd = models.TextField(blank=True, null=True)  # This field type is a guess.
-    renalother = models.TextField(blank=True, null=True)  # This field type is a guess.
+    nephroticsyndrome_glomerulardisease = ArrayField(models.TextField(blank=True), null=True)
+    stone = ArrayField(models.TextField(blank=True), null=True)
+    esrd = ArrayField(models.TextField(blank=True), null=True)
+    renalother = ArrayField(models.TextField(blank=True), null=True)
 
     class Meta:
         managed = False
@@ -207,7 +209,8 @@ class Familyhistory(models.Model):
 
 
 class Laboratoryinventoryinvestigation(models.Model):
-    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
+    visitingid = models.ForeignKey('Visiting', models.DO_NOTHING, db_column='visitingid', primary_key=True)
+    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
     lnlabid = models.ForeignKey('Lnlab', models.DO_NOTHING, db_column='lnlabid', blank=True, null=True)
     visitdate = models.DateField()
     hb = models.FloatField(blank=True, null=True)
@@ -284,7 +287,6 @@ class Laboratoryinventoryinvestigation(models.Model):
         db_table = 'laboratoryinventoryinvestigation'
         unique_together = (('studynumber', 'visitdate'),)
 
-
 class Lnlab(models.Model):
     lnlabid = models.AutoField(primary_key=True)
     renalbiopsyclass = models.TextField(blank=True, null=True)
@@ -334,7 +336,7 @@ class Medicalcondition(models.Model):
     mc4_6 = models.NullBooleanField()
     mc4_7 = models.NullBooleanField()
     mc4_8 = models.NullBooleanField()
-    mc4_9 = ArrayField(models.TextField(blank=True), null=True)  # This field type is a guess.
+    mc4_9 = ArrayField(models.TextField(blank=True), null=True)
     mc5_1 = models.NullBooleanField()
     mc5_2 = models.NullBooleanField()
     mc5_2_1 = models.CharField(max_length=200, blank=True, null=True)
@@ -357,7 +359,8 @@ class Medicalcondition(models.Model):
 
 
 class Medication(models.Model):
-    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
+    visitingid = models.ForeignKey('Visiting', models.DO_NOTHING, db_column='visitingid', primary_key=True)
+    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
     visitdate = models.DateField()
     msle_1_1 = Medicationtype.Field()  # Medication type
     msle_1_2 = Medicationtype.Field()  # Medication type
@@ -395,13 +398,12 @@ class Medication(models.Model):
     mgt_4_2 = Medicationtype.Field()  # This field type is a guess.
     mgt_4_3 = Medicationtype.Field()  # Medication type
     mgt_4_4 = Medicationtype.Field()
-    mgt_other = models.TextField(blank=True, null=True) 
+    mgt_other = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'medication'
         unique_together = (('studynumber', 'visitdate'),)
-
 
 class Obgyn(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
@@ -422,7 +424,7 @@ class Obgyn(models.Model):
 class Previouscomplication(models.Model):
     pcid = models.AutoField(primary_key=True)
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
-    detail = Previoustype.Field() # db_type
+    detail = Previoustype.Field()
 
     class Meta:
         managed = False
@@ -433,7 +435,7 @@ class Previouscomplication(models.Model):
 class Previousorganinvolvement(models.Model):
     poiid = models.AutoField(primary_key=True)
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
-    detail = Previoustype.Field() # db_type
+    detail = Previoustype.Field()
 
     class Meta:
         managed = False
@@ -487,7 +489,7 @@ class Studyidentity(models.Model):
     studynumber = models.CharField(primary_key=True, max_length=6)
     dateofdiagnosis = models.DateField(blank=True, null=True)
     dateofenrollment = models.DateField(blank=True, null=True)
-    gender = models.CharField(max_length=6, blank=True, null=True)
+    gender = models.CharField(max_length=7, blank=True, null=True)
     dateofbirth = models.DateField(blank=True, null=True)
     religion = models.CharField(max_length=20, blank=True, null=True)
     education = models.CharField(max_length=30, blank=True, null=True)
@@ -502,8 +504,9 @@ class Studyidentity(models.Model):
 
 
 class Visiting(models.Model):
-    studynumber = models.ForeignKey(Studyidentity, models.DO_NOTHING, db_column='studynumber', primary_key=True)
-    visitdate = models.DateField(blank=True, null=True)
+    visitingid = models.AutoField(primary_key=True)
+    studynumber = models.ForeignKey(Studyidentity, models.DO_NOTHING, db_column='studynumber')
+    visitdate = models.DateField()
     bp = models.CharField(max_length=10, blank=True, null=True)
     height = models.FloatField(blank=True, null=True)
     weight = models.FloatField(blank=True, null=True)
@@ -511,4 +514,4 @@ class Visiting(models.Model):
     class Meta:
         managed = False
         db_table = 'visiting'
-        unique_together = (('studynumber', 'visitdate'),)
+        unique_together = (('visitingid','studynumber', 'visitdate'),)

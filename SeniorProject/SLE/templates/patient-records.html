@@ -11,7 +11,7 @@
             <ul class="nav navbar-right top-nav">
                 <!-- For Follow up -->
                 <li style="background-color: #455379;"><a href="{% url "patientrecord" %}"> <i class="fa fa-file"></i> ภาพรวมคนไข้ </a></li>
-                <li style="background-color: #455379;"><a> Study number: 500 </a></li>
+                <li style="background-color: #455379;"><a> Study number: {{patient.studynumber}} </a></li>
                 <!--Normal-->
                 <li>
                 <a href="{% url "index" %}"> ภาพรวมคนไข้ทั้งหมด </a>
@@ -62,7 +62,7 @@
                            <div class="panel-body">
                                <div style="padding:0;" class="panel-body">
                                     <div style="float: left;"> 
-                                        <p style="font-size: 15px; margin:10px; color: #A4A4A4;">Follow up ทั้งหมด 12 ครั้ง</p>
+                                        <p style="font-size: 15px; margin:10px; color: #A4A4A4;">Follow up ทั้งหมด {{ visit_list.count }} ครั้ง</p>
                                     </div>
                                    <div style="float: right;">
                                        <form style="padding-right:5px;" class="navbar-form navbar-left" method="post" action="{% url "followupnew" %}">
@@ -85,57 +85,14 @@
                                            </tr>
                                        </thead>
                                        <tbody id="myTable">
+                                           {% for visit in visit_list %}
                                            <tr>
-                                               <td>1</td>
-                                               <td>2017/01/01</td>
-                                               <td><a>ดูรายละเอียด</a></td>
+                                               <td>{{ forloop.counter }}</td>
+                                               <td>{{ visit.visitdate }}</td>
+                                               <td><a href="{% url 'FollowPatient' visit.visitingid %}">ดูรายละเอียด</a></td>
                                            </tr>
-                                           <tr>
-                                                        <td>2</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>5</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>6</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>7</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>8</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>9</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>10</td>
-                                                        <td>2017/01/01</td>
-                                                        <td><a>ดูรายละเอียด</a></td>
-                                                    </tr>
-                                                </tbody>
+                                           {% endfor %}
+                                            </tbody>
                                             </table>
                                             <div class="col-md-12 text-center">
                                                 <ul class="pagination pagination-lg pager" id="myPager"></ul>

@@ -64,26 +64,22 @@
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover table-striped">
                                         <thead>
-                                            <tr>
-                                                <th>ลำดับ</th>
-                                                <th>Study Number</th>
-                                                <th>ชื่อ</th>
-                                                <th>นามสกุล</th>
+                                            <tr>                                            
+                                                <th>Study Number</th>                                               
                                                 <th>เพศ</th>
                                                 <th>ดูรายละเอียด</th>
                                                 <th>% Flare-up</th>
                                             </tr>
                                         </thead>
                                         <tbody id="myTable">
+                                        {% for patient in patients %}
                                             <tr>
-                                                <td>1</td>
-                                                <td>P00001</td>
-                                                <td>สมบูรณ์</td>
-                                                <td>พูนสุข</td>
-                                                <td>ชาย</td>
-                                                <td><a href="{% url "patientrecord" %}">ดูรายละเอียด</a></td>
+                                                <td>{{ patient.studynumber }}</td>
+                                                <td>{{ patient.gender }}</td>
+                                                <td><a href="{% url 'patientrecord' patient.studynumber %}">ดูรายละเอียด</a></td>
                                                 <td>30.50 %</td>
                                             </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                         <div class="col-md-12 text-center">
