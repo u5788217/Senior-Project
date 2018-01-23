@@ -118,7 +118,7 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <!-- For Follow up -->
-                <li style="background-color: #455379;"><a href="patient-records.html"> SN: 500 </a></li>
+                <li style="background-color: #455379;"><a href="patient-records.html"> SN: {{visiting}} </a></li>
                 <!--Normal-->
                 <li>
                 <a href="index.html"> Home </a>
@@ -184,7 +184,7 @@
                                                 <div class="col-lg-12"><h3 class="page-header">1. Constitutional Symptoms</h3></div>
                                                 <div class="col-lg-6">
                                                     <label class="col-lg-8">Fatigue</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> {{clinicalpresentation}}
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label class="col-lg-8">Weight loss  </label> 
@@ -331,7 +331,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label class="col-lg-8">Seizure</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> {{sledai}}
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label class="col-lg-8">Psychosis</label> 
@@ -476,7 +476,7 @@
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <label class="col-lg-6">Cataract</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
+                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> {{damageindex}}
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <label class="col-lg-6"> Retinal change or optic atrophy </label> 
@@ -693,7 +693,7 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="col-lg-12">
-                                                    <h3 class="page-header">1. CBC</h3>
+                                                    <h3 class="page-header">1. CBC</h3> {{lab}}
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <label class="col-lg-6">Hb (g/dL)</label>
@@ -1195,7 +1195,7 @@
                                         <div class="row">
                                             <div class="col-lg-3">
                                                 <label class="col-lg-6 ">Renal biopsy</label> 
-                                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="RenalShow"> 
+                                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="RenalShow"> {{lnlab}}
                                             </div>
                                             <div class="col-lg-2">
                                                 <div class="form-group">
@@ -1280,7 +1280,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr class="active" >
-                                                        <td colspan="5"> 1. NSAIDs </td>
+                                                        <td colspan="5"> 1. NSAIDs </td> {{med}}
                                                     </tr>
                                                     <tr>
                                                         <td>1.1) Traditional</td>

@@ -62,20 +62,10 @@ def patientrecord(request, studynum):
 def followupnew(request, studynum):
     return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum)})
 
-def enrollmentdetail(request, studynum):
-    return render(request, 'enrollment-detail.html',
-                  {'patient':Studyidentity.objects.get(studynumber = studynum),
-                   'acrcriteria':Acrcriteria.objects.get(studynumber = studynum),
-                   'slicccriteria':Slicccriteria.objects.get(studynumber = studynum),
-                    'familyhistory':Familyhistory.objects.get(studynumber = studynum),
-                    'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
-                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
-                    'previouscomplication':Previouscomplication.objects.filter(studynumber = studynum)})
-
 def enrollAdd(request):
-    return render(request, 'enrollment-add.html',{'a': ArrayField(Previoustype)})
+    return render(request, 'enrollment-add.html',)
 
-def enrollPatient(request):
+def enrollPatient(request, studynum):
     if request.method == "POST":
         #All data feilds
         #create studynumber+1
@@ -216,7 +206,24 @@ def enrollPatient(request):
             renalother = ListToArray(request.POST.getlist('renalother[]',)))
         EnrollFam.save()
     
-    return render(request, 'enrollment-detail.html',{'EnrollSlicccriteria': request.POST.getlist('mc4_9[]',)})
+        return render(request, 'enrollment-detail.html',
+                {'patient':Studyidentity.objects.filter(studynumber = stnum),
+                   'acrcriteria':Acrcriteria.objects.filter(studynumber = stnum),
+                   'slicccriteria':Slicccriteria.objects.filter(studynumber = stnum),
+                    'familyhistory':Familyhistory.objects.filter(studynumber = stnum),
+                    'medicalcondition':Medicalcondition.objects.filter(studynumber = stnum),
+                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = stnum),
+                    'previouscomplication':Previouscomplication.objects.filter(studynumber = stnum)})
+    else :
+        return render(request, 'enrollment-detail.html',
+                  {'patient':Studyidentity.objects.filter(studynumber = studynum),
+                   'acrcriteria':Acrcriteria.objects.filter(studynumber = studynum),
+                   'slicccriteria':Slicccriteria.objects.filter(studynumber = studynum),
+                    'familyhistory':Familyhistory.objects.filter(studynumber = studynum),
+                    'medicalcondition':Medicalcondition.objects.filter(studynumber = studynum),
+                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
+                    'previouscomplication':Previouscomplication.objects.filter(studynumber = studynum)})
+    
 
 def followPatient(request, visitid):
     if request.method == "POST":
@@ -479,7 +486,21 @@ def followPatient(request, visitid):
         
         #test_med_list = Medication.objects.all()
         #All data feilds
-        return render(request, 'followup-detail.html',)
+        return render(request, 'followup-detail.html',
+                      {'visiting':Visiting.objects.filter(visitingid = Followvisiting.visitingid),
+                      'med':Medication.objects.filter(visitingid = Followvisiting.visitingid),
+                      'lab':Laboratoryinventoryinvestigation.objects.filter(visitingid = Followvisiting.visitingid),
+                      'lnlab':Lnlab.objects.filter(lnlabid = Laboratoryinventoryinvestigation.objects.filter(visitingid = visitid).lnlabid),
+                      'sledai':Diseaseactivitysledai.objects.filter(visitingid = Followvisiting.visitingid),
+                      'damageindex':Damageindex.objects.filter(visitingid = Followvisiting.visitingid),
+                      'clinicalpresentation':Clinicalpresentation.objects.filter(visitingid = Followvisiting.visitingid)})
     else :
-        return render(request, 'followup-detail.html',{'med':Visiting.objects.get(visitingid = visitid)})
+        return render(request, 'followup-detail.html',
+                      {'visiting':Visiting.objects.filter(visitingid = visitid),
+                      'med':Medication.objects.filter(visitingid = visitid),
+                      'lab':Laboratoryinventoryinvestigation.objects.filter(visitingid = visitid),
+                      'lnlab':Lnlab.objects.filter(lnlabid = Laboratoryinventoryinvestigation.objects.filter(visitingid = visitid).lnlabid),
+                      'sledai':Diseaseactivitysledai.objects.filter(visitingid = visitid),
+                      'damageindex':Damageindex.objects.filter(visitingid = visitid),
+                      'clinicalpresentation':Clinicalpresentation.objects.filter(visitingid = visitid)})
     
