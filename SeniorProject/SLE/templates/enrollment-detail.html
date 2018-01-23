@@ -1,13 +1,699 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "header.html" %}
+{% block content %}
+ <script>
+        function AddFamFeild(spanid,namefam)
+        {
+            str = '<br/><input type="text" class="form-control" name="'+namefam+'">';
+            $(spanid).append(str);
+        }
+        function AddTextFeild()
+        {
+            $('#foodallergy').append('<br/><input type="text" class="form-control" name="mc4_9[]">');
+        }
+        function AddOrganFeild()
+        {
+            $('#OrganFeild').append('<tr><td><input type="date" class="form-control" name="OrganDate[]"></td><td><input type="text" class="form-control" name="Organ[]"></td><td><input type="text" class="form-control" name="OrganTreat[]"></td><td><input type="text" class="form-control" name="OrganResult[]"></td></tr>');
+        }
+        function AddCompFeild()
+        {
+            $('#CompFeild').append('<tr><td><input type="date" class="form-control" name="CompDate[]"></td><td><input type="text" class="form-control" name="CompOrgan[]"></td><td><input type="text" class="form-control" name="CompTreat[]"></td><td><input type="text" class="form-control" name="CompRemiss[]"></td></tr>');
+        }
+        function updatePieFact(){
+            var data = {'pieFact': pieFact};
+            $.post(URL, data, function(response){
+                if(response === 'success'){ alert('Yay!'); }
+                else{ alert('Error! :('); }
+            });
+        }
+        $(document).ready(function(){
+            $('#bttnMinus').click(function(){
+                pieFact *= 0.9;
+                updatePieFact();
+            });
+            $('#bttnPlus').click(function(){
+                pieFact *= 1.1;
+                updatePieFact();
+            }); 
+        });
 
-<head>
-{{ EnrollSlicccriteria }}
-This is enrollment detail.
-</head>
-
-<body>
-
-</body>
-
-</html>
+        
+        $(document).ready(function(){
+            {% if familyhistory.familyhistoryofautoimmunedisease == 'Yes' %}  $('#ShowFormAuto').show(); {% endif %}
+            {% if familyhistory.renaldiseasefamilyhistory == 'Yes' %}  $('#ShowFormRenal').show(); {% endif %}
+            {% if familyhistory.systemicautoimmune is True %} 
+                $("#SysAuto1").show();
+                $("#SysAuto2").show();
+                $("#SysAuto3").show();
+                $("#SysAuto4").show();
+                $("#SysAuto5").show();
+            {% endif %}
+            {% if familyhistory.tissuespecificautoimmune is True %} 
+                $("#TisAuto1").show();
+                $("#TisAuto2").show();
+                $("#TisAuto3").show();
+                $("#TisAuto4").show();
+                $("#TisAuto5").show();
+            {% endif %}
+        });
+    </script>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">SLE Flare-up Predictor</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                 <!-- For Follow up -->
+                <li style="background-color: #455379;"><a href="patient-records.html"> SN: {{patient.studynumber}} </a></li>
+                <!--Normal-->
+                <li>
+                <a href="index.html"> Home </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> วสุธร สนามชัย <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> ประวัติส่วนตัว</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> ตั้งค่า</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-fw fa-power-off"></i> ลงชื่อออก</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        
+    <div id="page-wrapper">
+        <form action="">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div style="float: left;"> 
+                        <p style="font-size: 18px; margin: 4px; padding-right:1em"><b>Enrollment</b></p>
+                    </div>
+                    <div style="float: left;"> 
+                        <p style="font-size: 14px; margin: 6px; color: #A4A4A4;"><span style="padding-left:1em" class="glyphicon glyphicon-time"></span> วันที่ 1 มกราคม 2560</p>
+                    </div>
+                    <div style="float: right;"><button type="submit" class="btn btn-warning">Edit</button></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                <!--Study Identity -->
+                <div class="panel panel-primary">
+                        <div class="panel-heading"> 
+                            <h3 class="panel-title">Visualization</h3>
+                        </div>
+                        <div class="panel-body">
+                            จองแปปปปปปปปปปปปปปปป
+                        </div>
+                </div>
+                </div>
+                <div class="col-lg-6">
+                <!--Study Identity -->
+                <div class="panel panel-primary">
+                        <div class="panel-heading"> 
+                            <h3 class="panel-title">Study Identity</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Date of diagnosis</label>  
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.dateofdiagnosis}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Date of enrollment</label>  
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.dateofenrollment}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Gender</label>  
+                                    <div data-toggle="buttons">
+                                        <label class="btn btn-default {% if patient.gender == 'Male' %} active {% endif %}">Male</label>
+                                        <label class="btn btn-default {% if patient.gender == 'Female' %} active {% endif %}">Female</label>
+                                        <label class="btn btn-default {% if patient.gender == 'Missing' %} active {% endif %}">Missing</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Date of birth</label>  
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.dateofbirth}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Religion</label>
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.religion}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Education</label>
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.education}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>Marital Status</label>  
+                                    <div data-toggle="buttons">
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Single' %} active {% endif %}">Single</label>
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Married' %} active {% endif %}">Married</label>
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Divorced' %} active {% endif %}">Divorced</label>
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Widowed' %} active {% endif %}">Widowed</label>
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Missing' %} active {% endif %}">Missing</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Region</label>
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.region}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Occupation</label>  
+                                   <div class="form-group">
+                                        <p class="form-control">{{patient.occupation}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Income</label>
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.income}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!--Revised ACR criteria -->
+                <div class="panel panel-primary">
+                        <div class="panel-heading"> 
+                            <h3 class="panel-title">Revised ACR criteria</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8 col-md-8 col-sm-8">Serositis</label>    
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr1 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8 col-md-8 col-sm-8">Malar rash</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr2 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Renal disorder</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr3 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Discoid rash</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr4 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Neurological disorder</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr5 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Photosensitivity</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr6 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Haematological disorder</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr7 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Oral ulcers	</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr8 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Immunological disorder</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr9 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Arthritis</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr10 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Positive ANA</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr11 is True %} checked {% endif %}> 
+                            </div>
+                        </div>
+                    </div>
+                <!--SLICC criteria -->
+                <div class="panel panel-primary">
+                        <div class="panel-heading"> 
+                            <h3 class="panel-title">SLICC criteria</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Acute cutaneous </label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc1 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Chronic cutaneous</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc2 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Mucosal ulcer</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc3 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Non scaring alopecia</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc4 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Arthritis</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc5 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Serositis</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc6 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Renal</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc7 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Neuro</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc8 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Hemolytic anemia</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc9 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Leukopenia/lymphopenia</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc10 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">Thrombocytopenia</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc11 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="col-lg-8">ANA	</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc12 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-lg-8">Anti-DNA</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc13 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-lg-8">Anti-Sm</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc14 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-lg-8">Anti-phospholipid</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc15 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-lg-8">Low complement</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc16 is True %} checked {% endif %}> 
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="col-lg-8">Direct coomb's test</label> 
+                                <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc17 is True %} checked {% endif %}> 
+                            </div>
+                        </div>
+                    </div>         
+                <!--Family history-->
+                <div class="panel panel-primary">
+                        <div class="panel-heading"> 
+                            <h3 class="panel-title">Family history</h3>
+                        </div>
+                        <div class="panel-body">                        
+                            <div class="col-lg-12">
+                                <label class="col-lg-6">Family history of autoimmune disease </label> 
+                                <div class="form-group col-lg-4"> 
+                                    <select class="form-control" id="FamHisAuto"> 
+                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'No' %} selected {% endif %} value="No">No</option>
+                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'Yes' %} selected {% endif %} value="Yes">Yes</option>
+                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'Unknown' %} selected {% endif %} value="Unknown">Unknown</option>
+                                    </select>
+                                </div>
+                            </div>   
+                            <div class="col-lg-8" id="ShowFormAuto" style="display:none;">
+                                <div class="form-group"> 
+                                    <label class="col-lg-6">Systemic autoimmune</label> 
+                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto" {% if familyhistory.systemicautoimmune is True %} checked {% endif %}> 
+                                </div>
+                                <div id="SysAuto1" style="display:none;">
+                                    <label class="col-lg-8">SLE</label> 
+                                    {% for text in familyhistory.sle %}
+                                        {{text}}
+                                    {% endfor %}
+                                </div>
+                                            
+                                <div id="SysAuto2" style="display:none;">
+                                    <label class="col-lg-8">RA</label>
+                                    {% for text in familyhistory.ra %}
+                                        {{text}}
+                                    {% endfor %}
+                                </div>
+                                <div id="SysAuto3" style="display:none;">
+                                    <label class="col-lg-8">Dermatomyositis</label> 
+                                    {% for text in familyhistory.dermatomyositis %}
+                                        {{text}}
+                                    {% endfor %} 
+                                </div>
+                                <div id="SysAuto4" style="display:none;">    
+                                    <label class="col-lg-8">Systemic sclerosis</label> 
+                                    {% for text in familyhistory.systemicsclerosis %}
+                                        {{text}}
+                                    {% endfor %} 
+                                </div>
+                                <div id="SysAuto5" style="display:none;">    
+                                    <label class="col-lg-8">Sjogren's Syndrome</label> 
+                                    {% for text in familyhistory.sjogrensyndrome %}
+                                        {{text}}
+                                    {% endfor %}
+                                </div>
+                                    
+                                                
+                                <div class="form-group"> 
+                                    <label class="col-lg-6">Tissue-specific autoimmune</label> 
+                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="TisAuto" {% if familyhistory.tissuespecificautoimmune is True %} checked {% endif %}> 
+                                </div>
+                                            
+                                <div id="TisAuto1" style="display:none;">
+                                    <label class="col-lg-8">DM Type 1</label> 
+                                    {% for text in familyhistory.dmtypeone %}
+                                        {{text}}
+                                    {% endfor %}  
+                                </div>
+                                <div id="TisAuto2" style="display:none;">
+                                    <label class="col-lg-8">Hashimoto's thyroidditis</label> 
+                                    {% for text in familyhistory.hashimotosthyroiditis %}
+                                        {{text}}
+                                    {% endfor %}
+                                </div>
+                                <div id="TisAuto3" style="display:none;">
+                                    <label class="col-lg-8">Multiple sclerosis</label> 
+                                    {% for text in familyhistory.multiplesclerosis %}
+                                        {{text}}
+                                    {% endfor %}
+                                </div>
+                                <div id="TisAuto4" style="display:none;">    
+                                    <label class="col-lg-8">Myasthenia gravis</label> 
+                                    {% for text in familyhistory.myastheniagravis %}
+                                        {{text}}
+                                    {% endfor %}
+                                </div>
+                                <div id="TisAuto5" style="display:none;">    
+                                    <label class="col-lg-8">Other</label> 
+                                    {% for text in familyhistory.tissuespecificother %}
+                                        {{text}}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="col-lg-6">Family history of renal disease/chronic glomerulonephritis</label> 
+                                <div class="form-group col-lg-4"> 
+                                    <select class="form-control" id="FamHisRenal"> 
+                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'No' %} selected {% endif %} value="No">No</option>
+                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'Yes' %} selected {% endif %} value="Yes">Yes</option>
+                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'Unknown' %} selected {% endif %} value="Unknow">Unknown</option>
+                                    </select>
+                                </div>
+                            </div>  
+                            <div class="col-lg-8" id="ShowFormRenal" style="display:none;">
+                                <label class="col-lg-10">Nephrotic syndrome /Glomerular disease</label>
+                                {% for text in familyhistory.nephroticsyndrome_glomerulardisease %}
+                                    {{text}}
+                                {% endfor %}
+                                <label class="col-lg-8">Stone </label>
+                                {% for text in familyhistory.stone %}
+                                    {{text}}
+                                {% endfor %}
+                                <label class="col-lg-8">ESRD  </label>
+                                {% for text in familyhistory.esrd %}
+                                    {{text}}
+                                {% endfor %}
+                                <label class="col-lg-8">Other</label>
+                                {% for text in familyhistory.renalother %}
+                                    {{text}}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+            </div>
+                <div class="col-lg-6">
+                <!--Medical Condition -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading"> 
+                        <h3 class="panel-title">Medical Condition</h3>
+                    </div>
+                    <div class="panel-body ">
+                        <div class="col-lg-12"><h3 class="page-header">Systemic autoimmune diseases</h3></div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Antiphospholipid Ab  Syndrome</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_2 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Rheumatoid arthritis (RA) </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_3 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Dermatomyositis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_4 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Polymyositis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_5 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Systemic sclerosis (SSc) </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_6 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Sjogren's Syndrome (SS) </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_7 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Mixed connective tissue disease  </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_8 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">LE/LP overlap syndrome </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_9 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Primary biliary cirrhosis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_10 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Primary sclerosing cholangitis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_11 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-12"><h3 class="page-header">Tissue-specific autoimmune diseases</h3></div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">DM type 1 </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_2 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Hashimoto's thyroiditis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_3 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Multiple sclerosis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_4 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Myasthenia gravis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_5 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Autoimmune hepatitis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_6 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-12"><h3 class="page-header">Metabolic & CVS co-morbidity  </h3></div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">DM type 2</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc3_2 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Hypertension</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc3_3 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Hyperlipidemia</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc3_4 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">CAD</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc3_5 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-12"><h3 class="page-header">Allergy</h3></div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Allergic rhinitis</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_2 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Allergic conjunctivitis</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_3 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Asthma</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_4 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Atopic dermatitis</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_5 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Allergic urticaria</label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_6 is True %} checked {% endif %}>  
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Anaphylaxis </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_7 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="col-lg-8">Hay fever </label> 
+                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_8 is True %} checked {% endif %}> 
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Food allergy </label> 
+                            {% for text in medicalcondition.mc4_9 %} 
+                                {{text}} 
+                            {% endfor %} 
+                        </div>
+                        <div class="col-lg-12"><h3 class="page-header">Other Co-morbidity</h3></div>
+                        <div class="col-lg-12">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                            <label>1) Infection</label>  
+                                            <div class="form-group">
+                                                {{medicalcondition.mc5_2_1}}
+                                            </div>
+                                            </div>
+                                        </td>                                        
+                                        <td>{{medicalcondition.mc5_2_2}}</td>
+                                        <td>{{medicalcondition.mc5_2_3}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                            <label>2) Major surgery</label>  
+                                            <div class="form-group">
+                                            {{medicalcondition.mc5_3_1}}
+                                            </div>
+                                            </div>
+                                        </td> 
+                                                                  
+                                        <td>{{medicalcondition.mc5_3_2}}</td>
+                                        <td>{{medicalcondition.mc5_3_3}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p>3) Osteoporosis/Fx</p></td>                                        
+                                        <td>{{medicalcondition.mc5_4_1}}</td>
+                                        <td>{{medicalcondition.mc5_4_2}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><p>4) Malignancy</p></td>                                        
+                                        <td>{{medicalcondition.mc5_5_1}}</td>
+                                        <td>{{medicalcondition.mc5_5_1}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>                                    
+                        </div>
+                    </div>
+                </div>
+                <!--Organ Involvement -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading"> 
+                        <h3 class="panel-title">Organ Involvement </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Organ</th>
+                                            <th>Treatment</th>
+                                            <th>Remission</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for record in previousorganinvolvement %} 
+                                            <tr>
+                                            <td>{{record.detail.date}}</td>
+                                            <td>{{record.detail.organ}}</td>
+                                            <td>{{record.detail.treatment}}</td>
+                                            <td>{{record.detail.result}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <!--Previous Complication  -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading"> 
+                        <h3 class="panel-title">Previous Complication  </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Organ</th>
+                                            <th>Treatment</th>
+                                            <th>Result</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for record in previouscomplication %} 
+                                            <tr>
+                                            <td>{{record.detail.date}}</td>
+                                            <td>{{record.detail.organ}}</td>
+                                            <td>{{record.detail.treatment}}</td>
+                                            <td>{{record.detail.result}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

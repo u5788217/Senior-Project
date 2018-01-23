@@ -63,7 +63,14 @@ def followupnew(request, studynum):
     return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum)})
 
 def enrollmentdetail(request, studynum):
-    return render(request, 'enrollment-detail.html')
+    return render(request, 'enrollment-detail.html',
+                  {'patient':Studyidentity.objects.get(studynumber = studynum),
+                   'acrcriteria':Acrcriteria.objects.get(studynumber = studynum),
+                   'slicccriteria':Slicccriteria.objects.get(studynumber = studynum),
+                    'familyhistory':Familyhistory.objects.get(studynumber = studynum),
+                    'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
+                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
+                    'previouscomplication':Previouscomplication.objects.filter(studynumber = studynum)})
 
 def enrollAdd(request):
     return render(request, 'enrollment-add.html',{'a': ArrayField(Previoustype)})
