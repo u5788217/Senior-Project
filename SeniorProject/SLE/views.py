@@ -23,6 +23,15 @@ def ValidateVisiting(studynum, date):
     except ObjectDoesNotExist:
         visit = None
         return True
+    
+def haslnlab(lab):
+    ln = None
+    try:
+        ln = Lnlab.objects.get(lnlabid = lab.lnlabid) 
+        return True
+    except ObjectDoesNotExist:
+        ln = None
+        return False
         
 def CheckboxToInt(string):
     if string == 'on' or string == 'Pos': string = 1
@@ -65,7 +74,7 @@ def followupnew(request, studynum):
 def enrollAdd(request):
     return render(request, 'enrollment-add.html',)
 
-def enrollPatient(request, studynum):
+def enrollPatient(request):
     if request.method == "POST":
         #All data feilds
         #create studynumber+1
@@ -207,27 +216,30 @@ def enrollPatient(request, studynum):
         EnrollFam.save()
     
         return render(request, 'enrollment-detail.html',
-                {'patient':Studyidentity.objects.filter(studynumber = stnum),
-                   'acrcriteria':Acrcriteria.objects.filter(studynumber = stnum),
-                   'slicccriteria':Slicccriteria.objects.filter(studynumber = stnum),
-                    'familyhistory':Familyhistory.objects.filter(studynumber = stnum),
-                    'medicalcondition':Medicalcondition.objects.filter(studynumber = stnum),
+                {'patient':Studyidentity.objects.get(studynumber = stnum),
+                   'acrcriteria':Acrcriteria.objects.get(studynumber = stnum),
+                   'slicccriteria':Slicccriteria.objects.get(studynumber = stnum),
+                    'familyhistory':Familyhistory.objects.get(studynumber = stnum),
+                    'medicalcondition':Medicalcondition.objects.get(studynumber = stnum),
                     'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = stnum),
                     'previouscomplication':Previouscomplication.objects.filter(studynumber = stnum)})
-    else :
-        return render(request, 'enrollment-detail.html',
-                  {'patient':Studyidentity.objects.filter(studynumber = studynum),
-                   'acrcriteria':Acrcriteria.objects.filter(studynumber = studynum),
-                   'slicccriteria':Slicccriteria.objects.filter(studynumber = studynum),
-                    'familyhistory':Familyhistory.objects.filter(studynumber = studynum),
-                    'medicalcondition':Medicalcondition.objects.filter(studynumber = studynum),
+
+    
+    
+def enrollDetail(request, studynum):
+    return render(request, 'enrollment-detail.html',
+                  {'patient':Studyidentity.objects.get(studynumber = studynum),
+                   'acrcriteria':Acrcriteria.objects.get(studynumber = studynum),
+                   'slicccriteria':Slicccriteria.objects.get(studynumber = studynum),
+                    'familyhistory':Familyhistory.objects.get(studynumber = studynum),
+                    'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
                     'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
                     'previouscomplication':Previouscomplication.objects.filter(studynumber = studynum)})
-    
 
-def followPatient(request, visitid):
+
+def followPatient(request):
     if request.method == "POST":
-        TempstudyNumber = 4
+        TempstudyNumber = 1
         if ValidateVisiting(TempstudyNumber, request.POST.get('visitdate', '')) == True :
             Followvisiting = Visiting(studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),
@@ -484,23 +496,36 @@ def followPatient(request, visitid):
                             mgt_other = CheckboxToBool(request.POST.get('mgt_other',)))
             FollowMed.save()
         
-        #test_med_list = Medication.objects.all()
-        #All data feilds
-        return render(request, 'followup-detail.html',
-                      {'visiting':Visiting.objects.filter(visitingid = Followvisiting.visitingid),
-                      'med':Medication.objects.filter(visitingid = Followvisiting.visitingid),
-                      'lab':Laboratoryinventoryinvestigation.objects.filter(visitingid = Followvisiting.visitingid),
-                      'lnlab':Lnlab.objects.filter(lnlabid = Laboratoryinventoryinvestigation.objects.filter(visitingid = visitid).lnlabid),
-                      'sledai':Diseaseactivitysledai.objects.filter(visitingid = Followvisiting.visitingid),
-                      'damageindex':Damageindex.objects.filter(visitingid = Followvisiting.visitingid),
-                      'clinicalpresentation':Clinicalpresentation.objects.filter(visitingid = Followvisiting.visitingid)})
-    else :
-        return render(request, 'followup-detail.html',
-                      {'visiting':Visiting.objects.filter(visitingid = visitid),
-                      'med':Medication.objects.filter(visitingid = visitid),
-                      'lab':Laboratoryinventoryinvestigation.objects.filter(visitingid = visitid),
-                      'lnlab':Lnlab.objects.filter(lnlabid = Laboratoryinventoryinvestigation.objects.filter(visitingid = visitid).lnlabid),
-                      'sledai':Diseaseactivitysledai.objects.filter(visitingid = visitid),
-                      'damageindex':Damageindex.objects.filter(visitingid = visitid),
-                      'clinicalpresentation':Clinicalpresentation.objects.filter(visitingid = visitid)})
+            #test_med_list = Medication.objects.all()
+            #All data feilds
+            lab = Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid)
+            if haslnlab(lab) is True:
+                lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
+            else: 
+                lnlab = None
+
+            return render(request, 'followup-detail.html',
+                          {'visiting':Visiting.objects.get(visitingid = Followvisiting.visitingid),
+                          'med':Medication.objects.get(visitingid = Followvisiting.visitingid),
+                          'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid),
+                          'lnlab':lnlab,
+                          'sledai':Diseaseactivitysledai.objects.get(visitingid = Followvisiting.visitingid),
+                          'damageindex':Damageindex.objects.get(visitingid = Followvisiting.visitingid),
+                          'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = Followvisiting.visitingid)})
+        else:
+            return render(request, 'login.html')
     
+def followDetail(request, visitid):
+    lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
+    if haslnlab(lab) is True:
+        lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
+    else: 
+        lnlab = None
+    return render(request, 'followup-detail.html',
+                      {'visiting':Visiting.objects.get(visitingid = visitid),
+                      'med':Medication.objects.filter(visitingid = visitid),
+                      'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = visitid),
+                      'lnlab':lnlab,
+                      'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
+                      'damageindex':Damageindex.objects.get(visitingid = visitid),
+                      'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = visitid)})

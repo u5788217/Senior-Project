@@ -132,7 +132,7 @@
         
    <!-- เริ่มทำฟอร์ม จ้ากกกก -->
     <div id="page-wrapper">
-        <form method="post" action="{% url "EnrollPatient" %}">
+        <form method="post" action="{% url 'EnrollPatient' %}">
             {% csrf_token %}
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -180,7 +180,7 @@
                                             <input type="radio" name="gender" id="option2" autocomplete="off" value="Female">Female
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="gender" id="option3" autocomplete="off" value="Missing" >Missing
+                                            <input type="radio" name="gender" id="option3" autocomplete="off" value="Missing">Missing
                                         </label>
                                     </div>
                                 </div>
@@ -503,7 +503,7 @@
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
                 <div class="col-lg-6">
                     
                 <!--Medical Condition -->

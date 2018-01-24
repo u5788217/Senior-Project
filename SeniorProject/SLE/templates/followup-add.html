@@ -111,16 +111,16 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url "index" %}">SLE Flare-up Predictor</a>
+                <a class="navbar-brand" href="{% url 'index' %}">SLE Flare-up Predictor</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <!-- For Follow up -->
-                <li style="background-color: #455379;"><a href="{% url "patientrecord" %}"> <i class="fa fa-file"></i> ภาพรวมคนไข้ </a></li>
-                <li style="background-color: #455379;"><a> Study number: 500 </a></li>
+                <li style="background-color: #455379;"><a href="{% url 'patientrecord' patient.studynumber %}"> <i class="fa fa-file"></i> ภาพรวมคนไข้ </a></li>
+                <li style="background-color: #455379;"><a> Study number: {{patient.studynumber}} </a></li>
                 <!--Normal-->
                 <li>
-                <a href="{% url "index" %}"> ภาพรวมคนไข้ทั้งหมด </a>
+                <a href="{% url 'index' %}"> ภาพรวมคนไข้ทั้งหมด </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> วสุธร สนามชัย <b class="caret"></b></a>
@@ -133,7 +133,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="{% url "logout" %}"><i class="fa fa-fw fa-power-off"></i> ลงชื่อออก</a>
+                            <a href="{% url 'logout' %}"><i class="fa fa-fw fa-power-off"></i> ลงชื่อออก</a>
                         </li>
                     </ul>
                 </li>
@@ -141,7 +141,7 @@
         </nav>    
     
       <div id="page-wrapper">
-          <form method="post" action="{% url "FollowPatient" %}">
+          <form method="post" action="{% url 'FollowPatient' %}">
               {% csrf_token %}
             <div class="panel panel-default">
                 <div class="panel-body">
