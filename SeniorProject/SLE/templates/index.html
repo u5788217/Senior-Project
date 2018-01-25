@@ -1,13 +1,15 @@
 {% extends "header.html" %}
 {% block content %}  
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url "index" %}">SLE Flare-up Predictor</a>
+                <a class="navbar-brand" href="{% url 'index' %}">SLE Flare-up Predictor</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+                <!--Normal-->
                 <li>
-                <a href="{% url "index" %}"> ภาพรวมคนไข้ทั้งหมด </a>
+                <a href="{% url 'index' %}"> Home </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> วสุธร สนามชัย <b class="caret"></b></a>

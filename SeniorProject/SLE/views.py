@@ -239,7 +239,7 @@ def enrollDetail(request, studynum):
 
 def followPatient(request):
     if request.method == "POST":
-        TempstudyNumber = 1
+        TempstudyNumber = request.POST.get('studynum', '')
         if ValidateVisiting(TempstudyNumber, request.POST.get('visitdate', '')) == True :
             Followvisiting = Visiting(studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),

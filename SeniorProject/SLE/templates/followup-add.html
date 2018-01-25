@@ -116,11 +116,10 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <!-- For Follow up -->
-                <li style="background-color: #455379;"><a href="{% url 'patientrecord' patient.studynumber %}"> <i class="fa fa-file"></i> ภาพรวมคนไข้ </a></li>
-                <li style="background-color: #455379;"><a> Study number: {{patient.studynumber}} </a></li>
+                <li style="background-color: #455379;"><a href="{% url 'patientrecord' patient.studynumber %}"> SN : {{patient.studynumber}} </a></li>
                 <!--Normal-->
                 <li>
-                <a href="{% url 'index' %}"> ภาพรวมคนไข้ทั้งหมด </a>
+                <a href="{% url 'index' %}"> Home </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> วสุธร สนามชัย <b class="caret"></b></a>
@@ -143,6 +142,7 @@
       <div id="page-wrapper">
           <form method="post" action="{% url 'FollowPatient' %}">
               {% csrf_token %}
+              <input type="text" name="studynum" invisibled value="{{patient.studynumber}}" style="display: none;">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div style="float: left;"> 

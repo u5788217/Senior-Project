@@ -2,126 +2,33 @@
 {% block content %}
  <script>
         $(document).ready(function(){
-            $('#AbnormalList01').change(function(){
-                if($(this).val() == '1'){
-                    $('#ShowAbnormal1').show();
-                    $('#ShowAbnormal2').show();
-                }
-                else{
-                    $('#ShowAbnormal1').hide();
-                    $('#ShowAbnormal2').hide();
-                }
-            })
-        });
-        $(document).ready(function(){
-            $('#AbnormalList02').change(function(){
-                if($(this).val() == '1'){
-                    $('#ShowAbnormal3').show();
-                    $('#ShowAbnormal4').show();
-                }
-                else{
-                    $('#ShowAbnormal3').hide();
-                    $('#ShowAbnormal4').hide();
-                }
-            })
-        });
-        $(document).ready(function(){
-            $('#AbnormalList03').change(function(){
-                if($(this).val() == '1'){
-                    $('#ShowAbnormal5').show();
-                    $('#ShowAbnormal6').show();
-                }
-                else{
-                    $('#ShowAbnormal5').hide();
-                    $('#ShowAbnormal6').hide();
-                }
-            })
-        });
-        $(document).ready(function(){
-            $('#AbnormalList04').change(function(){
-                if($(this).val() == '1'){
-                    $('#ShowAbnormal7').show();
-                    $('#ShowAbnormal8').show();
-                }
-                else{
-                    $('#ShowAbnormal7').hide();
-                    $('#ShowAbnormal8').hide();
-                }
-            })
-        });
-        $(document).ready(function(){
-            $('#ANAMother').change(function(){
-                if(this.checked){
-                    $("#ANA1").prop('disabled', false);
-                    $("#ANA2").prop('disabled', false);
-                    $("#ANA3").prop('disabled', false);
-                    $("#ANA4").prop('disabled', false);
-                }
-                else{
-                    $("#ANA1").prop('disabled', true);
-                    $("#ANA2").prop('disabled', true);
-                    $("#ANA3").prop('disabled', true);
-                    $("#ANA4").prop('disabled', true);
-                }
-            })
-        });
-        $(document).ready(function(){
-            $('#RenalShow').change(function(){
-                if(this.checked){
-                    $("#Renal01").prop('disabled', false);
-                    $("#Renal02").prop('disabled', false);
-                }
-                else{
-                    $("#Renal01").prop('disabled', true);
-                    $("#Renal02").prop('disabled', true);
-                }
-            })
-        });
-        $(document).ready(function(){
-            $('#CheckLN').change(function(){
-                if(this.checked){
-                    $("#LNShow").show();
-                }
-                else{
-                    $("#LNShow").hide();
-                }
-            })
-        });
-        $(document).ready(function(){
-            $('#MedicationCheck1').change(function(){
-                if(this.checked){
-                    $("#MedicationShow1").show();
-                }
-                else{
-                    $("#MedicationShow1").hide();
-                }
-            })
-        });
-        $(document).ready(function(){
-            $('#MedicationCheck2').change(function(){
-                if(this.checked){
-                    $("#MedicationShow2").show();
-                }
-                else{
-                    $("#MedicationShow2").hide();
-                }
-            })
+            {% if lab.stoolparasite.status != '' or lab.stoolparasite.date is not None %} $('#ShowAbnormal1').show();
+                    $('#ShowAbnormal2').show(); {% endif %}
+            {% if lab.cxr.status != '' or lab.cxr.date is not None %} $('#ShowAbnormal3').show();
+                    $('#ShowAbnormal4').show(); {% endif %}
+            {% if lab.ekg.status != '' or lab.ekg.date is not None %} $('#ShowAbnormal5').show();
+                    $('#ShowAbnormal6').show(); {% endif %}
+            {% if lab.echo.status != '' or lab.echo.date is not None %} $('#ShowAbnormal7').show();
+                    $('#ShowAbnormal8').show(); {% endif %}
+            {% if lnlab is not None %} $("#LNShow").show(); {% endif %}
+            {% if med.msle_1_1 is not None or med.msle_1_2 is not None or med.msle_1_3 is not None or med.msle_2_1 is not None or med.msle_2_2 is not None or med.msle_3_1 is not None or med.msle_3_2 is not None or med.msle_3_3 is not None or med.msle_3_4 is not None or med.msle_4_1 is not None or med.msle_4_2 is not None or med.msle_4_3 is not None or med.msle_4_4 is not None or med.msle_4_5 is not None or med.msle_4_6 is not None or med.msle_4_7 is not None or med.msle_4_8 is not None or med.msle_4_9 is not None or med.msle_4_10 is not None or med.msle_4_11 is not None %} $("#MedicationShow1").show(); {% endif %}
+            {% if med.mgt_1_1 is not None or med.mgt_1_2 is not None or med.mgt_1_3 is not None or med.mgt_1_4 is not None or med.mgt_1_5 is not None or med.mgt_2_1 is not None or med.mgt_2_2 is not None or med.mgt_2_3 is not None or med.mgt_2_4 is not None or med.mgt_3_1 is not None or med.mgt_3_2 is not None or med.mgt_3_3 is not None or med.mgt_4_1 is not None or med.mgt_4_2 is not None or med.mgt_4_3 is not None or med.mgt_4_4 is not None or med.mgt_other is True %} $("#MedicationShow2").show(); {% endif %}
         });
     </script>
 <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">SLE Flare-up Predictor</a>
+                <a class="navbar-brand" href="{% url 'index' %}">SLE Flare-up Predictor</a>
             </div>
             
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <!-- For Follow up -->
-                <li style="background-color: #455379;"><a href="patient-records.html"> SN: {{visiting.studynumber.studynumber}} </a></li>
+                <li style="background-color: #455379;"><a href="{% url 'patientrecord' visiting.studynumber.studynumber %}"> SN : {{visiting.studynumber.studynumber}} </a></li>
                 <!--Normal-->
                 <li>
-                <a href="index.html"> Home </a>
+                <a href="{% url 'index' %}"> Home </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> วสุธร สนามชัย <b class="caret"></b></a>
@@ -134,7 +41,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="login.html"><i class="fa fa-fw fa-power-off"></i> ลงชื่อออก</a>
+                            <a href="{% url 'logout' %}"><i class="fa fa-fw fa-power-off"></i> ลงชื่อออก</a>
                         </li>
                     </ul>
                 </li>
@@ -187,21 +94,21 @@
                                                     <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_1 is True %} checked {% endif %}>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Weight loss  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_2 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Weight loss  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_2 is True %} checked {% endif %}> 
                                                 </div>
-                                                <div class="col-lg-12"><h3 class="page-header">2. Skin & mucous membrane</h3></div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">2. Skin & mucous membrane</h3></div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Malar rash</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_3 is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Discoid rash  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_4 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Malar rash</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_3 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Annular rash/SCLE  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_5 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Discoid rash  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_4 is True %} checked {% endif %}> 
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Annular rash/SCLE  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_5 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-6">Other rash   </label>
@@ -210,104 +117,104 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Photosensitivity   </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_7 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Photosensitivity   </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_7 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Oral/nasopharyngeal ulcers  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_8 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Oral/nasopharyngeal ulcers  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_8 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Localized scaring alopecia  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_9 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Localized scaring alopecia  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_9 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Diffuse non-scaring alopecia  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_10 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Diffuse non-scaring alopecia  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_10 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Raynaud’s phenomenon  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_11 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Raynaud’s phenomenon  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_11 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Digital gangrene  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_12 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Digital gangrene  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_12 is True %} checked {% endif %}> 
                                                 </div>
-                                                <div class="col-lg-12"><h3 class="page-header">3. Cardiopulmonary involvement</h3></div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">3. Cardiopulmonary involvement</h3></div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Interstitial lung disease</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_13 is True %} checked {% endif %}> 
-                                                </div>col-lg-6 col-md-6 col-sm-6
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Lupus Pneumonitis  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_14 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Interstitial lung disease</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_13 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Pulmonary HT  </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_15 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Lupus Pneumonitis  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_14 is True %} checked {% endif %}> 
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Pulmonary HT  </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_15 is True %} checked {% endif %}> 
                                                 </div>
 
                                             </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <div class="col-lg-12"><h3 class="page-header">4. GI & Renal involvement </h3></div>
+                                            <div class="col-lg-6">
+                                                <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">4. GI & Renal involvement </h3></div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Edema</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_16 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Edema</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_16 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Oliguria</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_17 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Oliguria</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_17 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Dialysis</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_18 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Dialysis</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_18 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">GI vasculitis</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_19 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">GI vasculitis</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_19 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Acalculous cholecystitis</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_20 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Acalculous cholecystitis</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_20 is True %} checked {% endif %}> 
                                                 </div>
-                                                <div class="col-lg-12"><h3 class="page-header">5. Hematologic disorder </h3></div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">5. Hematologic disorder </h3></div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">AIHA</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_21 is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Petechiae/bleeding tendency</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_22 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">AIHA</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_21 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">DVT</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_23 is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-12"><h3 class="page-header">6. Neurological involvement  </h3></div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Acute confusional state/delirium </label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_24 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Petechiae/bleeding tendency</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_22 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Myelopathy /Demyelinating disease</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_25 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">DVT</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_23 is True %} checked {% endif %}> 
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">6. Neurological involvement  </h3></div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Acute confusional state/delirium </label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_24 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Peripheral neuropathy</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_26 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Myelopathy /Demyelinating disease</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_25 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Aseptic meningitis</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_27 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Peripheral neuropathy</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_26 is True %} checked {% endif %}> 
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Aseptic meningitis</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_27 is True %} checked {% endif %}> 
                                                 </div>
                                                  <div class="col-lg-12"><h3 class="page-header">7. Musculoskeletal & LN involvement  </h3></div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Arthralgias</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_28 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Arthralgias</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_28 is True %} checked {% endif %}> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <label class="col-lg-8">Lymphadenopathy</label> 
-                                                    <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_29 is True %} checked {% endif %}> 
+                                                    <label class="col-lg-8 col-md-8 col-sm-8">Lymphadenopathy</label> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if clinicalpresentation.cp_29 is True %} checked {% endif %}> 
                                                 </div>
                                             </div>
                                         </div>
@@ -1102,9 +1009,9 @@
                                                         <div class="form-group col-lg-4 col-md-4 col-sm-4">
                                                             <div class="form-group"> 
                                                                 <select class="form-control" id="AbnormalList01"> 
-                                                                    <option selected value="0">Normal</option>
-                                                                    <option value="1">Abnormal</option>
-                                                                    <option value="2">Not done </option>
+                                                                    <option value="0">Normal</option>
+                                                                    <option {% if lab.stoolparasite.status != '' or lab.stoolparasite.date is not None %} selected {% endif %} value="1">Abnormal</option>
+                                                                    <option {% if lab.stoolparasite.status == '' and lab.stoolparasite.date is None %} selected {% endif %} value="2">Not done </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1128,9 +1035,9 @@
                                                         <div class="form-group col-lg-4 col-md-4 col-sm-4">
                                                             <div class="form-group"> 
                                                                 <select class="form-control" id="AbnormalList02"> 
-                                                                    <option selected value="0">Normal</option>
-                                                                    <option value="1">Abnormal</option>
-                                                                    <option value="2">Not done </option>
+                                                                    <option value="0">Normal</option>
+                                                                    <option {% if lab.cxr.status != '' or lab.cxr.date is not None %} selected {% endif %} value="1">Abnormal</option>
+                                                                    <option {% if lab.cxr.status == '' and lab.cxr.date is None %} selected {% endif %} value="2">Not done </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1152,9 +1059,9 @@
                                                         <div class="form-group col-lg-4 col-md-4 col-sm-4">
                                                             <div class="form-group"> 
                                                                 <select class="form-control" id="AbnormalList03"> 
-                                                                    <option selected value="0">Normal</option>
-                                                                    <option value="1">Abnormal</option>
-                                                                    <option value="2">Not done </option>
+                                                                    <option value="0">Normal</option>
+                                                                    <option {% if lab.ekg.status != '' or lab.ekg.date is not None %} selected {% endif %} value="1">Abnormal</option>
+                                                                    <option {% if lab.ekg.status == '' and lab.ekg.date is None %} selected {% endif %} value="2">Not done </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1176,9 +1083,9 @@
                                                         <div class="form-group col-lg-4 col-md-4 col-sm-4">
                                                             <div class="form-group"> 
                                                                 <select class="form-control" id="AbnormalList04"> 
-                                                                    <option selected value="0">Normal</option>
-                                                                    <option value="1">Abnormal</option>
-                                                                    <option value="2">Not done </option>
+                                                                    <option value="0">Normal</option>
+                                                                    <option {% if lab.echo.status != '' or lab.echo.date is not None %} selected {% endif %} value="1">Abnormal</option>
+                                                                    <option {% if lab.echo.status == '' and lab.echo.date is None %} selected {% endif %} value="2">Not done </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1196,7 +1103,7 @@
                                                         </div>
                                                         <div class="col-lg-12  col-md-12 col-sm-12">
                                                             <h3 class="page-header">10. Lupus nephritis
-                                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="CheckLN">
+                                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="CheckLN" {% if lnlab is not None %} checked {% endif %}>
                                                             </h3>
                                                         </div>                                                    
                                                     </div>
@@ -1215,7 +1122,7 @@
                                         <div class="row">
                                             <div class="col-lg-3 col-md-12 col-sm-12">
                                                 <label class="col-lg-6 col-md-4 col-sm-4">Renal biopsy</label> 
-                                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="RenalShow">
+                                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="RenalShow" {% if lnlab.renalbiopsyclass != '' or lnlab.renalbiopsydate is not None %} checked {% endif %}>
                                             </div>
                                             <div class="col-lg-2 col-md-6 col-sm-6">
                                                 <div class="form-group">
@@ -1284,7 +1191,7 @@
                                     <div class="panel-body ">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <h3 class="page-header">1. Specific treatment of SLE  
-                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck1">
+                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck1" disabled {% if med.msle_1_1 is not None or med.msle_1_2 is not None or med.msle_1_3 is not None or med.msle_2_1 is not None or med.msle_2_2 is not None or med.msle_3_1 is not None or med.msle_3_2 is not None or med.msle_3_3 is not None or med.msle_3_4 is not None or med.msle_4_1 is not None or med.msle_4_2 is not None or med.msle_4_3 is not None or med.msle_4_4 is not None or med.msle_4_5 is not None or med.msle_4_6 is not None or med.msle_4_7 is not None or med.msle_4_8 is not None or med.msle_4_9 is not None or med.msle_4_10 is not None or med.msle_4_11 is not None %} checked {% endif %}>
                                             </h3>
                                         </div>
                                         <div id="MedicationShow1" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12" style="display:none;">
@@ -1456,7 +1363,7 @@
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <h3 class="page-header">2. General treatments  
-                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck2">
+                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck2" disabled {% if med.mgt_1_1 is not None or med.mgt_1_2 is not None or med.mgt_1_3 is not None or med.mgt_1_4 is not None or med.mgt_1_5 is not None or med.mgt_2_1 is not None or med.mgt_2_2 is not None or med.mgt_2_3 is not None or med.mgt_2_4 is not None or med.mgt_3_1 is not None or med.mgt_3_2 is not None or med.mgt_3_3 is not None or med.mgt_4_1 is not None or med.mgt_4_2 is not None or med.mgt_4_3 is not None or med.mgt_4_4 is not None or med.mgt_other is True %} checked {% endif %}>
                                             </h3>
                                         </div> 
                                         <div id="MedicationShow2" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12" style="display:none;">
@@ -1597,7 +1504,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>Others</td>
-                                                        <td><p class="form-control">{{med.mgt_other}}</p> 
+                                                        <td><input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mgt_other" {% if med.mgt_other is True %} checked {% endif %}> 
                                                         </td>
                                                     </tr>
                                                 </tbody>
