@@ -56,9 +56,8 @@
                                     <div style="float: right;">
                                         <form class="navbar-form navbar-left">
                                             <div class="form-group">
-                                              <input type="text" class="form-control" placeholder="Search">
+                                              <input type="text" class="form-control" placeholder="Search SN" id="searchinput">
                                             </div>
-                                            <button type="submit" class="btn btn-default">Search</button>
                                             <a href="{% url 'EnrollAdd' %}"><input type="button" class="btn btn-primary" value="Add new"></a>
                                         </form>
                                     </div>
@@ -95,4 +94,27 @@
                     </div>
                 </div>
         </div>
+<script>
+
+$("#searchinput").on("keyup", function() {
+    var value = $(this).val();
+
+    $("table tr").each(function(index) {
+        if (index !== 0) {
+
+            $row = $(this);
+
+            var id = $row.find("td:first").text();
+
+            if (id.indexOf(value) !== 0) {
+                $row.hide();
+            }
+            else {
+                $row.show();
+            }
+        }
+    });
+});
+
+</script>
 {% endblock %}

@@ -230,6 +230,7 @@ class Laboratoryinventoryinvestigation(models.Model):
     cre_spoturinecreatinine = models.FloatField(blank=True, null=True)
     tfhr_urineprotein = models.FloatField(blank=True, null=True)
     tfhr_urinecreatinine = models.FloatField(blank=True, null=True)
+    upci = models.FloatField(blank=True, null=True)
     fbs = models.FloatField(blank=True, null=True)
     hba1c = models.FloatField(blank=True, null=True)
     bun = models.FloatField(blank=True, null=True)

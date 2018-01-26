@@ -401,6 +401,7 @@ def followPatient(request):
                             cre_spoturinecreatinine = ToFloat(request.POST.get('cre_spoturinecreatinine', '')),
                             tfhr_urineprotein = ToFloat(request.POST.get('tfhr_urineprotein', '')),
                             tfhr_urinecreatinine = ToFloat(request.POST.get('tfhr_urinecreatinine ', '')),
+                            upci = ToFloat(request.POST.get('upci ', '')),
                             fbs = ToFloat(request.POST.get('fbs', '')),
                             hba1c = ToFloat(request.POST.get('hba1c', '')),
                             bun = ToFloat(request.POST.get('bun', '')),
