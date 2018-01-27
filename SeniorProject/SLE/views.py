@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from django.contrib.auth import authenticate
+
 #Models for enrollment
 from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory
 from .models import Labtype, Medicationtype, Previoustype
@@ -57,9 +59,21 @@ def DateToNone(date):
 def login(request):
     return render(request, 'login.html')
 
+
+
+
+    
 def index(request):
-    #if request.method == "POST": return username
-    return render(request, 'index.html',{'patients': Studyidentity.objects.all()})
+    if request.method == "POST": 
+        user_auth = request.POST.get('username',)
+        user = authenticate(username = user_auth, password = request.POST.get('password',))
+        
+        if user is not None:
+            request.session['user'] = user_auth
+        else:
+            return render(request, 'login.html')
+    
+    return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 'user': request.session['user']})
 
 def logout(request):
     #clear session
@@ -524,7 +538,7 @@ def followDetail(request, visitid):
         lnlab = None
     return render(request, 'followup-detail.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
-                      'med':Medication.objects.filter(visitingid = visitid),
+                      'med':Medication.objects.get(visitingid = visitid),
                       'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = visitid),
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
