@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
 
 #Models for enrollment
 from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory
@@ -57,37 +58,44 @@ def DateToNone(date):
     return date
 
 def login(request):
-    return render(request, 'login.html')
+    if request.user.is_authenticated is True:
+        return render(request, 'index.html',{'patients': Studyidentity.objects.all()})
+    else :
+        return render(request, 'login.html')
 
-
-
-
-    
 def index(request):
     if request.method == "POST": 
         user_auth = request.POST.get('username',)
-        user = authenticate(username = user_auth, password = request.POST.get('password',))
-        
+        user = authenticate(request, username = user_auth, password = request.POST.get('password',))
         if user is not None:
-            request.session['user'] = user_auth
+            auth_login(request, user)
+            return render(request, 'index.html',{'patients': Studyidentity.objects.all()})
         else:
             return render(request, 'login.html')
-    
-    return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 'user': request.session['user']})
+    else:
+        if request.user.is_authenticated:
+            return render(request, 'index.html',{'patients': Studyidentity.objects.all()})
+        else:
+            return render(request, 'login.html')
 
 def logout(request):
     #clear session
+    auth_logout(request)
     return render(request, 'login.html')
 
+@login_required(login_url='login')
 def patientrecord(request, studynum):
     return render(request, 'patient-records.html',{'visit_list': Visiting.objects.filter(studynumber = studynum), 'patient':Studyidentity.objects.get(studynumber = studynum)})
 
+@login_required(login_url='login')
 def followupnew(request, studynum):
     return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum)})
 
+@login_required(login_url='login')
 def enrollAdd(request):
     return render(request, 'enrollment-add.html',)
 
+@login_required(login_url='login')
 def enrollPatient(request):
     if request.method == "POST":
         #All data feilds
@@ -250,7 +258,7 @@ def enrollDetail(request, studynum):
                     'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
                     'previouscomplication':Previouscomplication.objects.filter(studynumber = studynum)})
 
-
+@login_required(login_url='login')
 def followPatient(request):
     if request.method == "POST":
         TempstudyNumber = request.POST.get('studynum', '')
@@ -529,7 +537,8 @@ def followPatient(request):
                           'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = Followvisiting.visitingid)})
         else:
             return render(request, 'login.html')
-    
+
+@login_required(login_url='login')
 def followDetail(request, visitid):
     lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
     if haslnlab(lab) is True:
