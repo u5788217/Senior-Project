@@ -64,25 +64,36 @@
                     <div style="float: right;"><button type="submit" class="btn btn-warning">Edit</button></div>
                 </div>
               </div>
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    จองแปปปปปปปปปปปปปปปป
-                </div>
-            </div>
-              
-            <div class="panel with-nav-tabs panel-info ">
-                <div class="panel-heading ">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1info" data-toggle="tab">Clinical presentation</a></li>
-                        <li><a href="#tab2info" data-toggle="tab">SLEDAI</a></li>
-                        <li><a href="#tab3info" data-toggle="tab">SLICC/ACR</a></li>
-                        <li><a href="#tab4info" data-toggle="tab">Laboratory</a></li>
-                        <li><a href="#tab5info" data-toggle="tab">Medication</a></li>
-                    </ul>
-                </div>
-                <div class="panel-body">
+		
+            <div class="x_panel">
+				<div class="x_title">
+					<h2>Bar Graph</h2>
+					<ul class="nav navbar-right panel_toolbox">
+						<li><a href="#">Refresh prediction</a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="x_content">
+					<div id="mainb" style="height:350px;"></div>
+				</div>
+			</div>
+            <div class="x_panel">  
+            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+				<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tab1info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Clinical presentation</a>
+                    </li>
+                    <li role="presentation" class=""><a href="#tab2info" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">SLEDAI</a>
+                    </li>
+                    <li role="presentation" class=""><a href="#tab3info" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">SLICC/ACR</a>
+                    </li>
+					<li role="presentation" class=""><a href="#tab4info" role="tab" id="profile-tab3" data-toggle="tab" aria-expanded="false">Laboratory</a>
+                    </li>
+					<li role="presentation" class=""><a href="#tab5info" role="tab" id="profile-tab4" data-toggle="tab" aria-expanded="false">Medication</a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="tab1info">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab1info" aria-labelledby="home-tab">
                             <div class="col-lg-12">
                                 <div class="panel">
                                     <div class="panel-body ">
@@ -222,7 +233,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade in" id="tab2info">
+                        <div role="tabpanel" class="tab-pane fade" id="tab2info" aria-labelledby="profile-tab">
                             <div class="col-lg-12">
                                 <div class="panel">
                                     <div class="panel-body ">
@@ -382,7 +393,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade in" id="tab3info">
+                        <div role="tabpanel" class="tab-pane fade" id="tab3info" aria-labelledby="profile-tab">
                             <div class="col-lg-12">
                                 <div class="panel">
                                     <div class="panel-body ">
@@ -603,7 +614,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade in" id="tab4info">
+                        <div role="tabpanel" class="tab-pane fade" id="tab4info" aria-labelledby="profile-tab">
                             <div class="col-lg-12  col-md-12 col-sm-12">
                                 <div class="panel">
                                     <div class="panel-body ">
@@ -1191,7 +1202,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade in" id="tab5info">
+                        <div role="tabpanel" class="tab-pane fade" id="tab5info" aria-labelledby="profile-tab">
                             <div class="col-lg-12">
                                 <div class="panel">
                                     <div class="panel-body ">
@@ -1523,6 +1534,7 @@
                     </div>
                 </div>
             </div>
+			</div>
             </form>
         </div>
 {% endblock %}

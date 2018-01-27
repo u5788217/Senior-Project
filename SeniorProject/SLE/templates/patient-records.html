@@ -37,45 +37,35 @@
         <div id="page-wrapper" >
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading"> 
-                                <h3 class="panel-title">อาการและการกำเริบ</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-lg-12">
-                                    <h4>ตารางแสดงอาการและการกำเริบ</h4>
-                                    <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
-                                </div>    
-                            </div>
-                        </div>
-                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+						  <div class="x_title">
+							<h2>Bar Graph</h2>
+							<ul class="nav navbar-right panel_toolbox">
+							</ul>
+							<div class="clearfix"></div>
+						  </div>
+						  <div class="x_content">
+
+							<div id="mainb" style="height:350px;"></div>
+
+						  </div>
+						</div>
+					  </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-7 col-md-7 col-sm-7">
                         <!--Follow up list -->
-                        <div class="panel panel-primary">
-                           <div class="panel-heading"> 
-                               <h3 class="panel-title">Follow up</h3>
-                           </div>
-                           <div class="panel-body">
-                               <div style="padding:0;" class="panel-body">
-                                    <div style="float: left;"> 
-                                        <p style="font-size: 15px; margin:10px; color: #A4A4A4;">Follow up ทั้งหมด {{ visit_list.count }} ครั้ง</p>
-                                    </div>
-                                   <div style="float: right;">
-                                       <form style="padding-right:5px;" class="navbar-form navbar-left" method="post" action="">
-										{% csrf_token %}
-                                           <div class="form-group">
-                                             <input type="text" class="form-control" placeholder="Search">
-                                           </div>
-                                           <button type="" class="btn btn-default">Search</button>
-                                           <a href="{% url 'followupnew' patient.studynumber %}"><input type="button" class="btn btn-primary" value="Add new"></a>
-                                       </form>
-                                   </div>
-                               </div>
-                               <div class="table-responsive">
-                                   <table class="table table-bordered table-hover table-striped">
+                        <div class="x_panel">
+                           <div class="x_title"> 
+                                <h2>SLE Patient</h2>
+								<ul class="nav navbar-right panel_toolbox">	
+									<li><a href="{% url 'followupnew' patient.studynumber %}">Add new follow up</a></li>
+								</ul>
+								<div class="clearfix"></div>
+                            </div>
+                           <div class="x_content">
+                                   <table id="datatable" class="table table-bordered table-hover table-striped" >
                                        <thead>
                                            <tr>
                                                <th>ลำดับ</th>
@@ -83,7 +73,7 @@
                                                <th>ดูรายละเอียด</th>
                                            </tr>
                                        </thead>
-                                       <tbody id="myTable">
+                                       <tbody>
                                            {% for visit in visit_list %}
                                            <tr>
                                                <td>{{ forloop.counter }}</td>
@@ -92,21 +82,20 @@
                                            </tr>
                                            {% endfor %}
                                             </tbody>
-                                            </table>
-                                            <div class="col-md-12 text-center">
-                                                <ul class="pagination pagination-lg pager" id="myPager"></ul>
-                                            </div>
-                                        </div>
+                                        </table>
                                     </div>
                                 </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-5 col-md-5 col-sm-5">
                         <!--Chart-->
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Enrollment</h3>
+                        <div class="x_panel">
+                            <div class="x_title"> 
+                                <h2>Enrollment</h2>
+								<ul class="nav navbar-right panel_toolbox">
+								</ul>
+								<div class="clearfix"></div>
                             </div>
-                            <div class="panel-body">
+                            <div class="x_content">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>Date of diagnosis</label>  
@@ -147,76 +136,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12"><h3 style="margin-top: 15px;" class="page-header">SLICC criteria</h3></div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Acute cutaneous </label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Chronic cutaneous</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Mucosal ulcer</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Non scaring alopecia</label> 
-                                    <input class="col-lg-4col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Arthritis</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Serositis</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Renal</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" checked> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Neuro</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" checked> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Hemolytic anemia</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Leukopenia/lymphopenia</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Thrombocytopenia</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">ANA	</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" checked> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Anti-DNA</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Anti-Sm</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Anti-phospholipid</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Low complement</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Direct coomb's test</label> 
-                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary"> 
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+									
+								</div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <ul style="margin:0;" class="pager">
                                         <li class="next"><a href="{% url 'enrollDetail' patient.studynumber %}">Full detail <span aria-hidden="true">&rarr;</span></a></li>
                                     </ul>

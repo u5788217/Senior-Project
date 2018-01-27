@@ -6,10 +6,10 @@
                 <a class="navbar-brand" href="{% url 'index' %}">SLE Flare-up Predictor</a>
             </div>
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
+            <ul class="nav navbar-right top-nav ">
                 <!--Normal-->
                 <li>
-                <a href="{% url 'index' %}"> Home </a>
+                <a href="{% url 'index' %}"><i class="fa fa-home"></i> Home </a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> วสุธร สนามชัย <b class="caret"></b></a>
@@ -32,39 +32,73 @@
         <div id="page-wrapper" >
             <div class="container-fluid">     
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Area Line Graph Example with Tooltips</h3>
+					<div class="col-md-8 col-sm-8 col-xs-12">
+						<div class="x_panel">
+						  <div class="x_title">
+							<h2>Bar Graph</h2>
+							<ul class="nav navbar-right panel_toolbox">
+							</ul>
+							<div class="clearfix"></div>
+						  </div>
+						  <div class="x_content">
+							<div id="test" style="height:350px;"></div>
+								<script type="text/javascript">
+									// based on prepared DOM, initialize echarts instance
+									var myChart = echarts.init(document.getElementById('test'));
+
+									// specify chart configuration item and data
+									var option = {
+										title: {
+											text: 'ECharts entry example'
+										},
+										tooltip: {},
+										legend: {
+											data:['Sales']
+										},
+										xAxis: {
+											data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+										},
+										yAxis: {},
+										series: [{
+											name: 'Sales',
+											type: 'bar',
+											data: [5, 20, 36, 10, 10, 20]
+
+										}]
+									};
+
+									// use configuration item and data specified to show chart
+									myChart.setOption(option);
+								</script>
+						  </div>
+						</div>
+					  </div>
+					  <div class="col-md-4 col-sm-4 col-xs-12">
+						    <div class="x_panel">
+							  <div class="x_title">
+								<h2>Donut Graph</h2>
+								<ul class="nav navbar-right panel_toolbox">
+								</ul>
+								<div class="clearfix"></div>
+							  </div>
+							  <div class="x_content">
+								
+
+							  </div>
+							</div>
+						</div>
+					<div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title"> 
+                                <h2>SLE Patient</h2>
+								<ul class="nav navbar-right panel_toolbox">	
+									<li><a href="{% url 'EnrollAdd' %}">Add new Patient</a></li>
+								</ul>
+								<div class="clearfix"></div>
                             </div>
-                            <div class="panel-body">
-                                <div id="morris-area-chart"></div>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading"> 
-                                <h3 class="panel-title">รายการผู้ป่วย</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="panel-body col-lg-12">
-                                    <div style="float: left;"> 
-                                        <p style="font-size: 18px; margin: 4px; padding-right:1em"><b>Follow up</b></p>
-                                    </div>
-                                    <div style="float: left;"> 
-                                        <p style="font-size: 14px; margin: 6px; color: #A4A4A4;"><span class="glyphicon glyphicon-paperclip"></span> ครั้งที่ 1 <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> วันที่ 1 มกราคม 2560</p>
-                                    </div>
-                                    <div style="float: right;">
-                                        <form class="navbar-form navbar-left">
-                                            <div class="form-group">
-                                              <input type="text" class="form-control" placeholder="Search SN" id="searchinput">
-                                            </div>
-                                            <a href="{% url 'EnrollAdd' %}"><input type="button" class="btn btn-primary" value="Add new"></a>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
+                            <div class="x_content">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <table id="datatable" class="table table-bordered table-hover table-striped jambo_table bulk_action" >
                                         <thead>
                                             <tr>                                            
                                                 <th>Study Number</th>                                               
@@ -73,7 +107,7 @@
                                                 <th>% Flare-up</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="myTable">
+                                        <tbody>
                                         {% for patient in patients %}
                                             <tr>
                                                 <td>{{ patient.studynumber }}</td>
@@ -84,18 +118,15 @@
                                         {% endfor %}
                                         </tbody>
                                     </table>
-                                        <div class="col-md-12 text-center">
-                                            <ul class="pagination pagination-lg pager" id="myPager"></ul>
-                                        </div>
-                                    </div>  
                                 </div>    
                             </div>
                         </div>
                     </div>
                 </div>
+				</div>
         </div>
 <script>
-
+/*
 $("#searchinput").on("keyup", function() {
     var value = $(this).val();
 
@@ -114,7 +145,7 @@ $("#searchinput").on("keyup", function() {
             }
         }
     });
-});
+});*/
 
 </script>
 {% endblock %}
