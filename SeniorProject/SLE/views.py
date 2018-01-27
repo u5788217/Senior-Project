@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 
+from django.utils.timezone import datetime
+
 #Models for enrollment
 from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory
 from .models import Labtype, Medicationtype, Previoustype
@@ -100,7 +102,16 @@ def enrollPatient(request):
     if request.method == "POST":
         #All data feilds
         #create studynumber+1
-        stnum = 8
+        now = str(datetime.now().year+543)
+        current_year = now[-2:]+"0000"
+        max_id_list = Studyidentity.objects.all().filter(studynumber__gte = current_year)
+        max_year = None
+        try:
+            max_year = int(max_id_list.latest('studynumber').studynumber)+1
+        except ObjectDoesNotExist:
+            max_year = current_year
+   
+        stnum = max_year
         EnrollStudyidentity = Studyidentity(studynumber = stnum,
                                 dateofdiagnosis =  DateToNone(request.POST.get('dateofdiagnosis', '')),
                                 dateofenrollment = DateToNone(request.POST.get('dateofenrollment', '')),
