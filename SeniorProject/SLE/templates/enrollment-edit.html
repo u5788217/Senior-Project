@@ -94,15 +94,34 @@
                 }
             })
         });
+        $(document).ready(function(){
+            {% if familyhistory.familyhistoryofautoimmunedisease == 'Yes' %}  $('#ShowFormAuto').show(); {% endif %}
+            {% if familyhistory.renaldiseasefamilyhistory == 'Yes' %}  $('#ShowFormRenal').show(); {% endif %}
+            {% if familyhistory.systemicautoimmune is True %} 
+                $("#SysAuto1").show();
+                $("#SysAuto2").show();
+                $("#SysAuto3").show();
+                $("#SysAuto4").show();
+                $("#SysAuto5").show();
+            {% endif %}
+            {% if familyhistory.tissuespecificautoimmune is True %} 
+                $("#TisAuto1").show();
+                $("#TisAuto2").show();
+                $("#TisAuto3").show();
+                $("#TisAuto4").show();
+                $("#TisAuto5").show();
+            {% endif %}
+        });
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'index' %}">SLE Flare-up Predictor</a>
+                <a class="navbar-brand" href="index.html">SLE Flare-up Predictor</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <!-- For Follow up -->
+                 <!-- For Follow up -->
+                <li style="background-color: #455379;"><a href="{% url 'patientrecord' patient.studynumber %}"> SN : {{patient.studynumber}} </a></li>
                 <!--Normal-->
                 <li>
                 <a href="{% url 'index' %}"> Home </a>
@@ -127,8 +146,9 @@
         
    <!-- เริ่มทำฟอร์ม จ้ากกกก -->
     <div id="page-wrapper">
-        <form method="post" action="{% url 'EnrollPatient' %}">
+        <form method="post" action="{% url 'enrollEditPost' %}">
             {% csrf_token %}
+            <input type="text" name="studynum" invisibled value="{{patient.studynumber}}" style="display: none;">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div style="float: left;"> 
@@ -155,7 +175,7 @@
                                 <div class="form-group">
                                     <label>Date of diagnosis</label>  
                                     <div class="form-group">
-                                        <input type="date" class="form-control" name="dateofdiagnosis">
+                                        <input type="date" class="form-control" name="dateofdiagnosis" value="{{patient.dateofdiagnosis|date:"Y-m-d"}}">
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +183,7 @@
                                 <div class="form-group">
                                     <label>Date of enrollment</label>  
                                     <div class="form-group">
-                                        <input type="date" class="form-control" name="dateofenrollment">
+                                        <input type="date" class="form-control" name="dateofenrollment" value="{{patient.dateofenrollment|date:"Y-m-d"}}">
                                     </div>
                                 </div>
                             </div>
@@ -172,13 +192,13 @@
                                     <label>Gender</label>  
                                     <div data-toggle="buttons">
                                         <label class="btn btn-default active">
-                                            <input type="radio" name="gender" id="option1" autocomplete="off" value="Male" checked>Male
+                                            <input type="radio" name="gender" id="option1" autocomplete="off" value="Male" {% if patient.gender == 'Male' %} checked {% endif %}>Male
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="gender" id="option2" autocomplete="off" value="Female">Female
+                                            <input type="radio" name="gender" id="option2" autocomplete="off" value="Female" {% if patient.gender == 'Female' %} checked {% endif %}>Female
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="gender" id="option3" autocomplete="off" value="Missing">Missing
+                                            <input type="radio" name="gender" id="option3" autocomplete="off" value="Missing" {% if patient.gender == 'Missing' %} checked {% endif %}>Missing
                                         </label>
                                     </div>
                                 </div>
@@ -187,20 +207,20 @@
                                 <div class="form-group">
                                     <label>Date of birth</label>  
                                     <div class="form-group">
-                                        <input type="date" class="form-control" name="dateofbirth">
+                                        <input type="date" class="form-control" name="dateofbirth" value="{{patient.dateofbirth|date:"Y-m-d"}}">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Religion</label>
-                                    <input type="text" class="form-control" name="religion">
+                                    <input type="text" class="form-control" name="religion" value="{{patient.religion}}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Education</label>
-                                    <input type="text" class="form-control" name="education">
+                                    <input type="text" class="form-control" name="education" value="{{patient.education}}">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -208,19 +228,19 @@
                                     <label>Marital Status</label>  
                                     <div data-toggle="buttons">
                                         <label class="btn btn-default active">
-                                            <input type="radio" name="maritalstatus" id="option1" autocomplete="off" value="Single" checked>Single
+                                            <input type="radio" name="maritalstatus" id="option1" autocomplete="off" value="Single" {% if patient.maritalstatus == 'Single' %} actived {% endif %}>Single
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="maritalstatus" id="option2" autocomplete="off" value="Married">Married
+                                            <input type="radio" name="maritalstatus" id="option2" autocomplete="off" value="Married" {% if patient.maritalstatus == 'Married' %} actived {% endif %}>Married
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="maritalstatus" id="option3" autocomplete="off" value="Divorce">Divorced
+                                            <input type="radio" name="maritalstatus" id="option3" autocomplete="off" value="Divorce" {% if patient.maritalstatus == 'Divorced' %} actived {% endif %}>Divorced
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="maritalstatus" id="option4" autocomplete="off" value="Widowed">Widowed
+                                            <input type="radio" name="maritalstatus" id="option4" autocomplete="off" value="Widowed" {% if patient.maritalstatus == 'Widowed' %} actived {% endif %}>Widowed
                                         </label>
                                         <label class="btn btn-default">
-                                            <input type="radio" name="maritalstatus" id="option5" autocomplete="off" value="Missing">Missing
+                                            <input type="radio" name="maritalstatus" id="option5" autocomplete="off" value="Missing" {% if patient.maritalstatus == 'Missing' %} actived {% endif %}>Missing
                                         </label>
                                     </div>
                                 </div>
@@ -229,12 +249,12 @@
                                 <div class="form-group">
                                     <label>Region</label>
                                     <select class="form-control" name="region">
-                                        <option>Central</option>
-                                        <option>North</option>
-                                        <option>Northeast</option>
-                                        <option>East</option>
-                                        <option>West</option>
-                                        <option>South</option>
+                                        <option {% if patient.region == 'Central' %} selected {% endif %}>Central</option>
+                                        <option {% if patient.region == 'North' %} selected {% endif %}>North</option>
+                                        <option {% if patient.region == 'Northeast' %} selected {% endif %}>Northeast</option>
+                                        <option {% if patient.region == 'East' %} selected {% endif %}>East</option>
+                                        <option {% if patient.region == 'West' %} selected {% endif %}>West</option>
+                                        <option {% if patient.region == 'South' %} selected {% endif %}>South</option>
                                     </select>
                                 </div>
                             </div>
@@ -242,13 +262,13 @@
                                 <div class="form-group">
                                     <label>Occupation</label>  
                                     <select class="form-control" name="occupation">
-                                        <option>Government/State enterprises office</option>
-                                        <option>Private company employee</option>
-                                        <option>Business owner/Retail</option>
-                                        <option>Farmer/Agricultural worker </option>
-                                        <option>Pensioner</option>
-                                        <option>Student</option>
-                                        <option>Housewife/Unemployed</option>
+                                        <option {% if patient.occupation == 'Government/State enterprises office' %} selected {% endif %}>Government/State enterprises office</option>
+                                        <option {% if patient.occupation == 'Private company employee' %} selected {% endif %}>Private company employee</option>
+                                        <option {% if patient.occupation == 'Business owner/Retail' %} selected {% endif %}>Business owner/Retail</option>
+                                        <option {% if patient.occupation == 'Farmer/Agricultural worker' %} selected {% endif %}>Farmer/Agricultural worker</option>
+                                        <option {% if patient.occupation == 'Pensioner' %} selected {% endif %}>Pensioner</option>
+                                        <option {% if patient.occupation == 'Student' %} selected {% endif %}>Student</option>
+                                        <option {% if patient.occupation == 'Housewife/Unemployed' %} selected {% endif %}>Housewife/Unemployed</option>
                                     </select>
                                 </div>
                             </div>
@@ -256,12 +276,12 @@
                                 <div class="form-group">
                                     <label>Income</label>
                                      <select class="form-control" name="income">
-                                     <option>&lt;5000</option>
-                                     <option>5001-10000</option>
-                                     <option>10001-20000</option>
-                                     <option>20001-30000</option>
-                                     <option>30001-40000</option>
-                                     <option>&gt;40000</option>
+                                     <option {% if patient.income == '<5000' %} selected {% endif %}>&lt;5000</option>
+                                     <option {% if patient.income == '5001-10000' %} selected {% endif %}>5001-10000</option>
+                                     <option {% if patient.income == '10001-20000' %} selected {% endif %}>10001-20000</option>
+                                     <option {% if patient.income == '20001-30000' %} selected {% endif %}>20001-30000</option>
+                                     <option {% if patient.income == '30001-40000' %} selected {% endif %}>30001-40000</option>
+                                     <option {% if patient.income == '>40000' %} selected {% endif %}>&gt;40000</option>
                                     </select>
                                 </div>
                             </div>
@@ -278,47 +298,47 @@
                         <div class="x_content">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Serositis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr1"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr1" {% if acrcriteria.acr1 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Malar rash</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr2"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr2" {% if acrcriteria.acr2 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Renal disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr3"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr3" {% if acrcriteria.acr3 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Discoid rash</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr4"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr4" {% if acrcriteria.acr4 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Neurological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr5"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr5" {% if acrcriteria.acr5 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Photosensitivity</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr6"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr6" {% if acrcriteria.acr6 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Haematological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr7"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr7" {% if acrcriteria.acr7 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Oral ulcers	</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr8"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr8" {% if acrcriteria.acr8 is True %} checked {% endif %}> 
                             </div> 
                             <div class="col-lg-6col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Immunological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr9"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr9" {% if acrcriteria.acr9 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Arthritis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr10"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr10" {% if acrcriteria.acr10 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Positive ANA</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr11"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr11" {% if acrcriteria.acr11 is True %} checked {% endif %}> 
                             </div>
                         </div>
                     </div>
@@ -333,71 +353,71 @@
                         <div class="x_content">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Acute cutaneous </label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc1"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc1" {% if slicccriteria.slicc1 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Chronic cutaneous</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc2"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc2" {% if slicccriteria.slicc2 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Mucosal ulcer</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc3"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc3" {% if slicccriteria.slicc3 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Non scaring alopecia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc4"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc4" {% if slicccriteria.slicc4 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Arthritis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc5"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc5" {% if slicccriteria.slicc5 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Serositis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc6"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc6" {% if slicccriteria.slicc6 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Renal</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc7"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc7" {% if slicccriteria.slicc7 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Neuro</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc8"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc8" {% if slicccriteria.slicc8 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Hemolytic anemia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc9"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc9" {% if slicccriteria.slicc9 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Leukopenia/lymphopenia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc10"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc10" {% if slicccriteria.slicc10 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Thrombocytopenia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc11"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc11" {% if slicccriteria.slicc11 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">ANA	</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc12"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc12" {% if slicccriteria.slicc12 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Anti-DNA</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc13"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc13" {% if slicccriteria.slicc13 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Anti-Sm</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc14"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc14" {% if slicccriteria.slicc14 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Anti-phospholipid</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="slicc15"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="slicc15" {% if slicccriteria.slicc15 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Low complement</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc16"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc16" {% if slicccriteria.slicc16 is True %} checked {% endif %}> 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label class="col-lg-8 col-md-8 col-sm-8">Direct coomb's test</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc17"> 
+                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc17" {% if slicccriteria.slicc17 is True %} checked {% endif %}> 
                             </div>
                         </div>
                     </div>         
@@ -414,72 +434,102 @@
                                 <label class="col-lg-6 col-md-6 col-sm-6">Family history of autoimmune disease </label> 
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4"> 
                                     <select class="form-control" id="FamHisAuto" name="FamAuto"> 
-                                        <option selected value="No">No</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="Unknown">Unknown</option>
+                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'No' %} selected {% endif %} value="No">No</option>
+                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'Yes' %} selected {% endif %} value="Yes">Yes</option>
+                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'Unknown' %} selected {% endif %} value="Unknown">Unknown</option>
                                     </select>
                                 </div>
                             </div>   
                             <div class="col-lg-8 col-md-8 col-sm-8" id="ShowFormAuto" style="display:none;">
                                 <div class="form-group"> 
                                     <label class="col-lg-6 col-md-6 col-sm-6">Systemic autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto" name="systemicautoimmune"> 
+                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto" name="systemicautoimmune" {% if familyhistory.systemicautoimmune is True %} checked {% endif %}> 
                                 </div>
                                 <div id="SysAuto1" style="display:none;">
                                     <label class="col-lg-8 col-md-8 col-sm-8">SLE</label> 
+                                    {% for text in familyhistory.sle %}
+                                        <input type="text" class="form-control" name="sle[]" value="{{text}}">
+                                    {% endfor %}
                                     <span id="sle"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#sle','sle[]')" value="Add">  
                                 </div>
                                             
                                 <div id="SysAuto2" style="display:none;">
                                     <label class="col-lg-8 col-md-8 col-sm-8">RA</label> 
+                                    {% for text in familyhistory.ra %}
+                                        <input type="text" class="form-control" name="ra[]" value="{{text}}">
+                                    {% endfor %}
                                     <span id="ra"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#ra','ra[]')" value="Add"> 
                                 </div>
                                 <div id="SysAuto3" style="display:none;">
                                     <label class="col-lg-8 col-md-8 col-sm-8">Dermatomyositis</label> 
+                                    {% for text in familyhistory.dermatomyositis %}
+                                        <input type="text" class="form-control" name="dermatomyositis[]" value="{{text}}">
+                                    {% endfor %} 
                                     <span id="dermatomyositis"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#dermatomyositis','dermatomyositis[]')" value="Add">  
                                 </div>
                                 <div id="SysAuto4" style="display:none;">    
                                     <label class="col-lg-8 col-md-8 col-sm-8">Systemic sclerosis</label> 
+                                    {% for text in familyhistory.systemicsclerosis %}
+                                        <input type="text" class="form-control" name="systemicsclerosis[]" value="{{text}}">
+                                    {% endfor %}
                                     <span id="systemicsclerosis"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#systemicsclerosis','systemicsclerosis[]')" value="Add"> 
                                 </div>
                                 <div id="SysAuto5" style="display:none;">    
                                     <label class="col-lg-8 col-md-8 col-sm-8">Sjogren's Syndrome</label> 
                                     <span id="sjogrensyndrome"></span>
+                                    {% for text in familyhistory.sjogrensyndrome %}
+                                        <input type="text" class="form-control" name="sjogrensyndrome[]" value="{{text}}">
+                                    {% endfor %}
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#sjogrensyndrome','sjogrensyndrome[]')" value="Add"> 
                                 </div>
                                     
                                                 
                                 <div class="form-group"> 
                                     <label class="col-lg-6 col-md-6 col-sm-6">Tissue-specific autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="TisAuto" name="tissuespecificautoimmune"> 
+                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="TisAuto" name="tissuespecificautoimmune" {% if familyhistory.tissuespecificautoimmune is True %} checked {% endif %}> 
                                 </div>
                                             
                                 <div id="TisAuto1" style="display:none;">
                                     <label class="col-lg-8 col-md-8 col-sm-8">DM Type 1</label> 
+                                    {% for text in familyhistory.dmtypeone %}
+                                        <input type="text" class="form-control" name="dmtypeone[]" value="{{text}}">
+                                    {% endfor %}  
                                     <span id="dmtypeone"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#dmtypeone','dmtypeone[]')" value="Add">  
                                 </div>
                                 <div id="TisAuto2" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Hashimoto's thyroidditis</label> 
+                                    <label class="col-lg-8 col-md-8 col-sm-8">Hashimoto's thyroidditis</label>
+                                    {% for text in familyhistory.hashimotosthyroiditis %}
+                                       <input type="text" class="form-control" name="hashimotosthyroiditis[]" value="{{text}}">
+                                    {% endfor %}
                                     <span id="hashimotosthyroiditis"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#hashimotosthyroiditis','hashimotosthyroiditis[]')" value="Add"> 
                                 </div>
                                 <div id="TisAuto3" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Multiple sclerosis</label> 
+                                    <label class="col-lg-8 col-md-8 col-sm-8">Multiple sclerosis</label>
+                                    {% for text in familyhistory.multiplesclerosis %}
+                                        <input type="text" class="form-control" name="multiplesclerosis[]" value="{{text}}">
+                                    {% endfor %}
                                     <span id="multiplesclerosis"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#multiplesclerosis','multiplesclerosis[]')" value="Add"> 
                                 </div>
                                 <div id="TisAuto4" style="display:none;">    
                                     <label class="col-lg-8 col-md-8 col-sm-8">Myasthenia gravis</label> 
+                                    {% for text in familyhistory.myastheniagravis %}
+                                        <input type="text" class="form-control" name="myastheniagravis[]" value="{{text}}">
+                                    {% endfor %}
                                     <span id="myastheniagravis"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#myastheniagravis','myastheniagravis[]')" value="Add"> 
                                 </div>
                                 <div id="TisAuto5" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Other</label> 
+                                    <label class="col-lg-8 col-md-8 col-sm-8">Other</label>
+                                    {% for text in familyhistory.tissuespecificother %}
+                                        <input type="text" class="form-control" name="tissuespecificother[]" value="{{text}}">
+                                    {% endfor %}
                                     <span id="tissuespecificother"></span>
                                     <input type="button" class="btn btn-default" onclick="AddFamFeild('#tissuespecificother','tissuespecificother[]')" value="Add"> 
                                 </div>
@@ -488,24 +538,36 @@
                                 <label class="col-lg-6 col-md-6 col-sm-6">Family history of renal disease/chronic glomerulonephritis</label> 
                                 <div class="form-group col-lg-4 col-md-4 col-sm-4"> 
                                     <select class="form-control" id="FamHisRenal" name="FamRenal"> 
-                                        <option selected value="No">No</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="Unknown">Unknown</option>
+                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'No' %} selected {% endif %} value="No">No</option>
+                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'Yes' %} selected {% endif %} value="Yes">Yes</option>
+                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'Unknown' %} selected {% endif %} value="Unknow">Unknown</option>
                                     </select>
                                 </div>
                             </div>  
                             <div class="col-lg-8 col-md-8 col-sm-8" id="ShowFormRenal" style="display:none;">
                                 <label class="col-lg-10 col-md-10 col-sm-10">Nephrotic syndrome /Glomerular disease</label>
+                                {% for text in familyhistory.nephroticsyndrome_glomerulardisease %}
+                                    <input type="text" class="form-control" name="nephroticsyndrome_glomerulardisease[]" value="{{text}}">
+                                {% endfor %}
                                 <span id="nephroticsyndrome_glomerulardisease"></span>
                                 <input type="button" class="btn btn-default" onclick="AddFamFeild('#nephroticsyndrome_glomerulardisease','nephroticsyndrome_glomerulardisease[]')" value="Add"> 
                                 <label class="col-lg-8 col-md-8 col-sm-8">Stone </label>
+                                {% for text in familyhistory.stone %}
+                                    <input type="text" class="form-control" name="stone[]" value="{{text}}">
+                                {% endfor %}
                                 <span id="stone"></span>
                                 <input type="button" class="btn btn-default" onclick="AddFamFeild('#stone','stone[]')" value="Add"> 
                                 <label class="col-lg-8 col-md-8 col-sm-8">ESRD  </label>
-                                 <span id="esrd"></span>
+                                {% for text in familyhistory.esrd %}
+                                    <input type="text" class="form-control" name="esrd[]" value="{{text}}">
+                                {% endfor %}
+                                <span id="esrd"></span>
                                 <input type="button" class="btn btn-default" onclick="AddFamFeild('#esrd','esrd[]')" value="Add"> 
                                 <label class="col-lg-8 col-md-8 col-sm-8">Other</label>
-                                 <span id="renalother"></span>
+                                {% for text in familyhistory.renalother %}
+                                    <input type="text" class="form-control" name="renalother[]" value="{{text}}">
+                                {% endfor %}
+                                <span id="renalother"></span>
                                 <input type="button" class="btn btn-default" onclick="AddFamFeild('#renalother','renalother[]')" value="Add"> 
                             </div>
                         </div>
@@ -525,114 +587,117 @@
                         <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">Systemic autoimmune diseases</h3></div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Antiphospholipid Ab  Syndrome</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_2"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_2" {% if medicalcondition.mc1_2 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Rheumatoid arthritis (RA) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_3"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_3" {% if medicalcondition.mc1_3 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Dermatomyositis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_4"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_4" {% if medicalcondition.mc1_4 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Polymyositis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_5"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_5" {% if medicalcondition.mc1_5 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Systemic sclerosis (SSc) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_6"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_6" {% if medicalcondition.mc1_6 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Sjogren's Syndrome (SS) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_7"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_7" {% if medicalcondition.mc1_7 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Mixed connective tissue disease  </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_8"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_8" {% if medicalcondition.mc1_8 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">LE/LP overlap syndrome </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_9"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_9" {% if medicalcondition.mc1_9 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Primary biliary cirrhosis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_10"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_10" {% if medicalcondition.mc1_10 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Primary sclerosing cholangitis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_11"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_11" {% if medicalcondition.mc1_11 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">Tissue-specific autoimmune diseases</h3></div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">DM type 1 </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_2"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_2" {% if medicalcondition.mc2_2 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Hashimoto's thyroiditis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_3"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_3" {% if medicalcondition.mc2_3 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Multiple sclerosis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_4"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_4" {% if medicalcondition.mc2_4 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Myasthenia gravis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_5"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_5" {% if medicalcondition.mc2_5 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Autoimmune hepatitis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_6"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_6" {% if medicalcondition.mc2_6 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">Metabolic & CVS co-morbidity  </h3></div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">DM type 2</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_2"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_2" {% if medicalcondition.mc3_2 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Hypertension</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_3"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_3" {% if medicalcondition.mc3_3 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Hyperlipidemia</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_4"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_4" {% if medicalcondition.mc3_4 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">CAD</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_5"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_5" {% if medicalcondition.mc3_5 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12"><h3 class="page-header">Allergy</h3></div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Allergic rhinitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_2"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_2" {% if medicalcondition.mc4_2 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Allergic conjunctivitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_3"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_3" {% if medicalcondition.mc4_3 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Asthma</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_4"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_4" {% if medicalcondition.mc4_4 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Atopic dermatitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_5"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_5" {% if medicalcondition.mc4_5 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Allergic urticaria</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_6"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_6" {% if medicalcondition.mc4_6 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Anaphylaxis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_7"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_7" {% if medicalcondition.mc4_7 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label class="col-lg-8 col-md-8 col-sm-8">Hay fever </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_8"> 
+                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_8" {% if medicalcondition.mc4_8 is True %} checked {% endif %}> 
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <label>Food allergy </label> 
                             <input type="button" class="btn btn-default" onclick="AddTextFeild()" value="Add">
+                            {% for text in medicalcondition.mc4_9 %} 
+                                <input type="text" class="form-control" name="mc4_9[]" value="{{text}}">
+                            {% endfor %} 
                             <span id="foodallergy">
                             </span>
                         </div>
@@ -652,35 +717,35 @@
                                             <div class="form-group">
                                             <label>1) Infection</label>  
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="details" name="mc5_2_1">
+                                                <input type="text" class="form-control" placeholder="details" name="mc5_2_1" value="{{medicalcondition.mc5_2_1}}">
                                             </div>
                                             </div>
                                         </td>                                        
-                                        <td><input type="date" class="form-control" name="mc5_2_2"></td>
-                                        <td><input type="date" class="form-control" name="mc5_2_3"></td>
+                                        <td><input type="date" class="form-control" name="mc5_2_2" value="{{medicalcondition.mc5_2_2}}"></td>
+                                        <td><input type="date" class="form-control" name="mc5_2_3" value="{{medicalcondition.mc5_2_3}}"></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="form-group">
                                             <label>2) Major surgery</label>  
                                             <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="details" name="mc5_3_1">
+                                            <input type="text" class="form-control" placeholder="details" name="mc5_3_1" value="{{medicalcondition.mc5_3_1}}">
                                             </div>
                                             </div>
                                         </td> 
                                                                   
-                                        <td><input type="date" class="form-control" name="mc5_3_2"></td>
-                                        <td><input type="date" class="form-control" name="mc5_3_3"></td>
+                                        <td><input type="date" class="form-control" name="mc5_3_2" value="{{medicalcondition.mc5_3_2}}"></td>
+                                        <td><input type="date" class="form-control" name="mc5_3_3" value="{{medicalcondition.mc5_3_3}}"></td>
                                     </tr>
                                     <tr>
                                         <td><p>3) Osteoporosis/Fx</p></td>                                        
-                                        <td><input type="text" class="form-control" placeholder="Site" name="mc5_4_1"></td>
-                                        <td><input type="date" class="form-control" name="mc5_4_2"></td>
+                                        <td><input type="text" class="form-control" name="mc5_4_1" value="{{medicalcondition.mc5_4_1}}"></td>
+                                        <td><input type="date" class="form-control" name="mc5_4_2" value="{{medicalcondition.mc5_4_2}}"></td>
                                     </tr>
                                     <tr>
                                         <td><p>4) Malignancy</p></td>                                        
-                                        <td><input type="text" class="form-control" placeholder="Specified" name="mc5_5_1"></td>
-                                        <td><input type="date" class="form-control" name="mc5_5_2"></td>
+                                        <td><input type="text" class="form-control" name="mc5_5_1" value="{{medicalcondition.mc5_5_1}}"></td>
+                                        <td><input type="date" class="form-control" name="mc5_5_2" value="{{medicalcondition.mc5_5_1}}"></td>
                                     </tr>
                                 </tbody>
                             </table>                                    
@@ -707,7 +772,16 @@
                                             <th>Remission</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="OrganFeild"></tbody>
+                                    <tbody id="OrganFeild">
+                                        {% for record in previousorganinvolvement %} 
+                                            <tr>
+                                            <td><input type="date" class="form-control" name="OrganDate[]" value="{{record.detail.date}}"></td>
+                                            <td><input type="text" class="form-control" name="Organ[]" value="{{record.detail.organ}}"></td>
+                                            <td><input type="text" class="form-control" name="OrganTreat[]" value="{{record.detail.treatment}}"></td>
+                                            <td><input type="text" class="form-control" name="OrganResult[]" value="{{record.detail.result}}"></td>
+                                            </tr>    
+                                        {% endfor %}
+                                    </tbody>
                                 </table>
                                 <input type="button" class="btn btn-default" onclick="AddOrganFeild()" value="Add">       
                             </div>
@@ -734,7 +808,16 @@
                                             <th>Result</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="CompFeild"></tbody>
+                                    <tbody id="CompFeild">
+                                        {% for record in previouscomplication %} 
+                                            <tr>
+                                            <td><input type="date" class="form-control" name="CompDate[]" value="{{record.detail.date}}"></td>
+                                            <td><input type="text" class="form-control" name="CompOrgan[]" value="{{record.detail.organ}}"></td>
+                                            <td><input type="text" class="form-control" name="CompTreat[]" value="{{record.detail.treatment}}"></td>
+                                            <td><input type="text" class="form-control" name="CompRemiss[]" value="{{record.detail.result}}"></td>
+                                            </tr>    
+                                        {% endfor %}
+                                    </tbody>
                                 </table>
                                 <input type="button" class="btn btn-default" onclick="AddCompFeild()" value="Add">   
                             </div>
