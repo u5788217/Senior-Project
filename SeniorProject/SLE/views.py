@@ -71,14 +71,203 @@ def index(request):
         user = authenticate(request, username = user_auth, password = request.POST.get('password',))
         if user is not None:
             auth_login(request, user)
-            return render(request, 'index.html',{'patients': Studyidentity.objects.all()})
+            ACRdata =[]
+            acrsum1=0
+            acrsum2=0
+            acrsum3=0
+            acrsum4=0
+            acrsum5=0
+            acrsum6=0
+            acrsum7=0
+            acrsum8=0
+            acrsum9=0
+            acrsum10=0
+            acrsum11=0
+            for d in Acrcriteria.objects.all():
+                if d.acr1 is True: acrsum1 += 1
+                if d.acr2 is True: acrsum2 += 1
+                if d.acr3 is True: acrsum3 += 1
+                if d.acr4 is True: acrsum4 += 1
+                if d.acr5 is True: acrsum5 += 1
+                if d.acr6 is True: acrsum6 += 1
+                if d.acr7 is True: acrsum7 += 1
+                if d.acr8 is True: acrsum8 += 1
+                if d.acr9 is True: acrsum9 += 1
+                if d.acr10 is True: acrsum10 += 1
+                if d.acr11 is True: acrsum11 += 1
+
+            ACRdata.append({'name':'Serositis','sum':acrsum1})    
+            ACRdata.append({'name':'Malar Rash','sum':acrsum2})
+            ACRdata.append({'name':'Renal Disorder','sum':acrsum3})
+            ACRdata.append({'name':'Discoid Rash','sum':acrsum4})
+            ACRdata.append({'name':'Neurological Disorder','sum':acrsum5})
+            ACRdata.append({'name':'Photosensitivity','sum':acrsum6})
+            ACRdata.append({'name':'Haematological Disorder','sum':acrsum7})
+            ACRdata.append({'name':'Oral Ulcers','sum':acrsum8})
+            ACRdata.append({'name':'Immunological Disorder','sum':acrsum9})
+            ACRdata.append({'name':'Arthritis','sum':acrsum10})
+            ACRdata.append({'name':'PositiveANA','sum':acrsum11})
+            SLICCdata =[]
+            slicc1=0
+            slicc2=0
+            slicc3=0
+            slicc4=0
+            slicc5=0
+            slicc6=0
+            slicc7=0
+            slicc8=0
+            slicc9=0
+            slicc10=0
+            slicc11=0
+            slicc12=0
+            slicc13=0
+            slicc14=0
+            slicc15=0
+            slicc16=0
+            slicc17=0
+            for d in Slicccriteria.objects.all():
+                if d.slicc1 is True: slicc1 += 1
+                if d.slicc2 is True: slicc2 += 1
+                if d.slicc3 is True: slicc3 += 1
+                if d.slicc4 is True: slicc4 += 1
+                if d.slicc5 is True: slicc5 += 1
+                if d.slicc6 is True: slicc6 += 1
+                if d.slicc7 is True: slicc7 += 1
+                if d.slicc8 is True: slicc8 += 1
+                if d.slicc9 is True: slicc9 += 1
+                if d.slicc10 is True: slicc10 += 1
+                if d.slicc11 is True: slicc11 += 1
+                if d.slicc12 is True: slicc12 += 1
+                if d.slicc13 is True: slicc13 += 1
+                if d.slicc14 is True: slicc14 += 1
+                if d.slicc15 is True: slicc15 += 1
+                if d.slicc16 is True: slicc16 += 1
+                if d.slicc17 is True: slicc17 += 1
+
+            SLICCdata.append({'name':'AcuteCutaneous', 'sum':slicc1})    
+            SLICCdata.append({'name':'ChronicCutaneous', 'sum':slicc2})
+            SLICCdata.append({'name':'MucosalUlcer', 'sum':slicc3})
+            SLICCdata.append({'name':'NonScaringAlopecia', 'sum':slicc4})
+            SLICCdata.append({'name':'Arthritis', 'sum':slicc5})
+            SLICCdata.append({'name':'Serositis', 'sum':slicc6})
+            SLICCdata.append({'name':'Renal', 'sum':slicc7})
+            SLICCdata.append({'name':'Neuro', 'sum':slicc8})
+            SLICCdata.append({'name':'HemolyticAnemia', 'sum':slicc9})
+            SLICCdata.append({'name':'Leukopenia', 'sum':slicc10})
+            SLICCdata.append({'name':'Thrombocytopenia', 'sum':slicc11})
+            SLICCdata.append({'name':'ANA', 'sum':slicc12})
+            SLICCdata.append({'name':'AntiDNA', 'sum':slicc13})
+            SLICCdata.append({'name':'AntiSm', 'sum':slicc14})
+            SLICCdata.append({'name':'AntiPhospholipid', 'sum':slicc15})
+            SLICCdata.append({'name':'LowComplement', 'sum':slicc16})
+            SLICCdata.append({'name':'DirectCoombsTest', 'sum':slicc17})
+
+            SLICCdata = sorted(SLICCdata, key=lambda SLICC: int(SLICC['sum']), reverse=True)
+            slicc_top5 = SLICCdata[:5] 
+    
+            return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 'ACRdata':ACRdata, 'SLICCdata':slicc_top5})
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html',{
+                'login_message' : 'Incorrect username or password.',})
     else:
         if request.user.is_authenticated:
-            return render(request, 'index.html',{'patients': Studyidentity.objects.all()})
+            ACRdata =[]
+            acrsum1=0
+            acrsum2=0
+            acrsum3=0
+            acrsum4=0
+            acrsum5=0
+            acrsum6=0
+            acrsum7=0
+            acrsum8=0
+            acrsum9=0
+            acrsum10=0
+            acrsum11=0
+            for d in Acrcriteria.objects.all():
+                if d.acr1 is True: acrsum1 += 1
+                if d.acr2 is True: acrsum2 += 1
+                if d.acr3 is True: acrsum3 += 1
+                if d.acr4 is True: acrsum4 += 1
+                if d.acr5 is True: acrsum5 += 1
+                if d.acr6 is True: acrsum6 += 1
+                if d.acr7 is True: acrsum7 += 1
+                if d.acr8 is True: acrsum8 += 1
+                if d.acr9 is True: acrsum9 += 1
+                if d.acr10 is True: acrsum10 += 1
+                if d.acr11 is True: acrsum11 += 1
+
+            ACRdata.append({'name':'Serositis','sum':acrsum1})    
+            ACRdata.append({'name':'Malar Rash','sum':acrsum2})
+            ACRdata.append({'name':'Renal Disorder','sum':acrsum3})
+            ACRdata.append({'name':'Discoid Rash','sum':acrsum4})
+            ACRdata.append({'name':'Neurological Disorder','sum':acrsum5})
+            ACRdata.append({'name':'Photosensitivity','sum':acrsum6})
+            ACRdata.append({'name':'Haematological Disorder','sum':acrsum7})
+            ACRdata.append({'name':'Oral Ulcers','sum':acrsum8})
+            ACRdata.append({'name':'Immunological Disorder','sum':acrsum9})
+            ACRdata.append({'name':'Arthritis','sum':acrsum10})
+            ACRdata.append({'name':'PositiveANA','sum':acrsum11})
+            SLICCdata =[]
+            slicc1=0
+            slicc2=0
+            slicc3=0
+            slicc4=0
+            slicc5=0
+            slicc6=0
+            slicc7=0
+            slicc8=0
+            slicc9=0
+            slicc10=0
+            slicc11=0
+            slicc12=0
+            slicc13=0
+            slicc14=0
+            slicc15=0
+            slicc16=0
+            slicc17=0
+            for d in Slicccriteria.objects.all():
+                if d.slicc1 is True: slicc1 += 1
+                if d.slicc2 is True: slicc2 += 1
+                if d.slicc3 is True: slicc3 += 1
+                if d.slicc4 is True: slicc4 += 1
+                if d.slicc5 is True: slicc5 += 1
+                if d.slicc6 is True: slicc6 += 1
+                if d.slicc7 is True: slicc7 += 1
+                if d.slicc8 is True: slicc8 += 1
+                if d.slicc9 is True: slicc9 += 1
+                if d.slicc10 is True: slicc10 += 1
+                if d.slicc11 is True: slicc11 += 1
+                if d.slicc12 is True: slicc12 += 1
+                if d.slicc13 is True: slicc13 += 1
+                if d.slicc14 is True: slicc14 += 1
+                if d.slicc15 is True: slicc15 += 1
+                if d.slicc16 is True: slicc16 += 1
+                if d.slicc17 is True: slicc17 += 1
+
+            SLICCdata.append({'name':'AcuteCutaneous', 'sum':slicc1})    
+            SLICCdata.append({'name':'ChronicCutaneous', 'sum':slicc2})
+            SLICCdata.append({'name':'MucosalUlcer', 'sum':slicc3})
+            SLICCdata.append({'name':'NonScaringAlopecia', 'sum':slicc4})
+            SLICCdata.append({'name':'Arthritis', 'sum':slicc5})
+            SLICCdata.append({'name':'Serositis', 'sum':slicc6})
+            SLICCdata.append({'name':'Renal', 'sum':slicc7})
+            SLICCdata.append({'name':'Neuro', 'sum':slicc8})
+            SLICCdata.append({'name':'HemolyticAnemia', 'sum':slicc9})
+            SLICCdata.append({'name':'Leukopenia', 'sum':slicc10})
+            SLICCdata.append({'name':'Thrombocytopenia', 'sum':slicc11})
+            SLICCdata.append({'name':'ANA', 'sum':slicc12})
+            SLICCdata.append({'name':'AntiDNA', 'sum':slicc13})
+            SLICCdata.append({'name':'AntiSm', 'sum':slicc14})
+            SLICCdata.append({'name':'AntiPhospholipid', 'sum':slicc15})
+            SLICCdata.append({'name':'LowComplement', 'sum':slicc16})
+            SLICCdata.append({'name':'DirectCoombsTest', 'sum':slicc17})
+
+            SLICCdata = sorted(SLICCdata, key=lambda SLICC: int(SLICC['sum']), reverse=True)
+            slicc_top5 = SLICCdata[:5] 
+            return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 'ACRdata':ACRdata, 'SLICCdata':slicc_top5})
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html',{
+                'login_message' : 'Incorrect username or password.',})
 
 def logout(request):
     #clear session

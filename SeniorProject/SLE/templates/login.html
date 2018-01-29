@@ -22,6 +22,9 @@
 			{% load staticfiles %}
             <img id="profile-img" class="profile-img-card" src="{% static 'img/Rama_Logo_Color.png' %}" />
             <p id="profile-name" class="profile-name-card">SLE Flare-up Predictor</p>
+
+            <p style="color: red; margin:0; text-align: center;"> {{login_message}} </p> 
+     
             <form class="form-signin" action="{% url 'index' %}" method="post">
 				{% csrf_token %}
                 <span id="reauth-email" class="reauth-email"></span>
