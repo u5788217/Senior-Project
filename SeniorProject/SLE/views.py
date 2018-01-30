@@ -39,15 +39,15 @@ def haslnlab(lab):
         return False
         
 def CheckboxToInt(string):
-    if string == 'on' or string == 'Pos': string = 1
+    if string == 'on' or string == 'Pos' or string is True: string = 1
     else : 
-        if string == 'off' or string == 'Neg' or string == '': string = 0
+        if string == 'off' or string == 'Neg' or string is False or string is None or string == '': string = 0
     return int(string)
 
 def ToFloat(string):
     if string == 'on': string = 1
     else : 
-        if string == 'off' or string == '': string = 0
+        if string == 'off' or string == '' or string is None: string = 0
     return float(string)
 
 def CheckboxToBool(string):
@@ -276,7 +276,186 @@ def logout(request):
 
 @login_required(login_url='login')
 def patientrecord(request, studynum):
-    return render(request, 'patient-records.html',{'visit_list': Visiting.objects.filter(studynumber = studynum), 'patient':Studyidentity.objects.get(studynumber = studynum)})
+    SLEDAIdata =[]   
+    sledai1 = []
+    sledai2 = []
+    sledai3 = []
+    sledai4 = []
+    sledai5 = []
+    sledai6 = []
+    sledai7 = []
+    sledai8 = []
+    sledai9 = []
+    sledai10 = []
+    sledai11 = []
+    sledai12 = []
+    sledai13 = []
+    sledai14 = []
+    sledai15 = []
+    sledai16 = []
+    sledai17 = []
+    sledai18 = []
+    sledai19 = []
+    sledai20 = []
+    sledai21 = []
+    sledai22 = []
+    sledai23 = []
+    sledai24 = []
+    sledai25 = []
+    sledai26 = []
+    sledai27 = []
+    all_sledai = Diseaseactivitysledai.objects.filter(studynumber = studynum)
+    for each_sledai in all_sledai:
+        sledai1.append(CheckboxToInt(each_sledai.seizure))
+        sledai2.append(CheckboxToInt(each_sledai.psychosis))
+        sledai3.append(CheckboxToInt(each_sledai.organicbrainsyndrome))
+        sledai4.append(CheckboxToInt(each_sledai.visualdisturbance))
+        sledai5.append(CheckboxToInt(each_sledai.cranialnerve))
+        sledai6.append(CheckboxToInt(each_sledai.cranialnervedetail))
+        sledai7.append(CheckboxToInt(each_sledai.lupusheadache))
+        sledai8.append(CheckboxToInt(each_sledai.cva))
+        sledai9.append(CheckboxToInt(each_sledai.vasculitis))
+        sledai10.append(CheckboxToInt(each_sledai.arthritis))
+        sledai11.append(CheckboxToInt(each_sledai.arthritisjointamount))
+        sledai12.append(CheckboxToInt(each_sledai.myositis))
+        sledai13.append(CheckboxToInt(each_sledai.casts))
+        sledai14.append(CheckboxToInt(each_sledai.hematuria))
+        sledai15.append(CheckboxToInt(each_sledai.proteinuria))
+        sledai16.append(CheckboxToInt(each_sledai.pyuria))
+        sledai17.append(CheckboxToInt(each_sledai.lowcomplement))
+        sledai18.append(CheckboxToInt(each_sledai.increaseddnabinding))
+        sledai19.append(CheckboxToInt(each_sledai.rash))
+        sledai20.append(CheckboxToInt(each_sledai.alopecia))
+        sledai21.append(CheckboxToInt(each_sledai.mucousmembrane))
+        sledai22.append(CheckboxToInt(each_sledai.pleurisy))
+        sledai23.append(CheckboxToInt(each_sledai.pericarditis))
+        sledai24.append(CheckboxToInt(each_sledai.thrombocytopenia))
+        sledai25.append(CheckboxToInt(each_sledai.leukopenia))
+        sledai26.append(CheckboxToInt(each_sledai.fever))
+        sledai27.append(each_sledai.sledai_total)
+    SLEDAIdata.append({'name':'Seizure', 'values':sledai1})    
+    SLEDAIdata.append({'name':'Psychosis', 'values':sledai2})
+    SLEDAIdata.append({'name':'OrganicBrainSyndrome', 'values':sledai3})
+    SLEDAIdata.append({'name':'VisualDisturbance', 'values':sledai4})
+    SLEDAIdata.append({'name':'CranialNerve', 'values':sledai5})
+    SLEDAIdata.append({'name':'CranialNerveDetail', 'values':sledai6})
+    SLEDAIdata.append({'name':'LupusHeadache', 'values':sledai7})
+    SLEDAIdata.append({'name':'CVA', 'values':sledai8})
+    SLEDAIdata.append({'name':'Vasculitis', 'values':sledai9})
+    SLEDAIdata.append({'name':'Arthritis', 'values':sledai10})
+    SLEDAIdata.append({'name':'ArthritisJointAmount', 'values':sledai11})
+    SLEDAIdata.append({'name':'Myositis', 'values':sledai12})
+    SLEDAIdata.append({'name':'Casts', 'values':sledai13})
+    SLEDAIdata.append({'name':'Hematuria', 'values':sledai14})
+    SLEDAIdata.append({'name':'Proteinuria', 'values':sledai15})
+    SLEDAIdata.append({'name':'Pyuria', 'values':sledai16})
+    SLEDAIdata.append({'name':'LowComplement', 'values':sledai17})
+    SLEDAIdata.append({'name':'IncreasedDNAbinding', 'values':sledai18})
+    SLEDAIdata.append({'name':'Rash', 'values':sledai19})
+    SLEDAIdata.append({'name':'Alopecia', 'values':sledai20})
+    SLEDAIdata.append({'name':'MucousMembrane', 'values':sledai21})
+    SLEDAIdata.append({'name':'Pleurisy', 'values':sledai22})
+    SLEDAIdata.append({'name':'Pericarditis', 'values':sledai23})
+    SLEDAIdata.append({'name':'Thrombocytopenia', 'values':sledai24})
+    SLEDAIdata.append({'name':'Leukopenia', 'values':sledai25})
+    SLEDAIdata.append({'name':'Fever', 'values':sledai26})
+    SLEDAIdata.append({'name':'Total', 'values':sledai27})
+    
+    MEDdata = []
+    med1 = []
+    med2 = []
+    med3 = []
+    med4 = []
+    med5 = []
+    med6 = []
+    med7 = []
+    med8 = []
+    med9 = []
+    med10 = []
+    med11 = []
+    med12 = []
+    all_med = Medication.objects.filter(studynumber = studynum)
+    for each_med in all_med:
+        med1.append(each_med.msle_2_1.doseperdate)
+        med2.append(each_med.msle_2_2.doseperdate)
+        med3.append(each_med.msle_3_1.doseperdate)
+        med4.append(each_med.msle_4_1.doseperdate)
+        med5.append(each_med.msle_4_2.doseperdate)
+        med6.append(each_med.msle_4_3.doseperdate)
+        med7.append(each_med.msle_4_5.doseperdate)
+        med8.append(each_med.msle_4_7.doseperdate)
+        med9.append(each_med.mgt_2_1.doseperdate)
+        med10.append(each_med.mgt_3_2.doseperdate)
+        med11.append(each_med.mgt_3_3.doseperdate)
+        med12.append(each_med.mgt_4_3.doseperdate)
+    MEDdata.append({'name':'CQ', 'values':med1})  
+    MEDdata.append({'name':'HCQ', 'values':med2})
+    MEDdata.append({'name':'Prednisolone', 'values':med3})
+    MEDdata.append({'name':'MTX', 'values':med4})
+    MEDdata.append({'name':'Azathioprine', 'values':med5})
+    MEDdata.append({'name':'Cyclophosphamide', 'values':med6})
+    MEDdata.append({'name':'MMF', 'values':med7})
+    MEDdata.append({'name':'Cyclosporin A', 'values':med8})
+    MEDdata.append({'name':'Statins', 'values':med9})
+    MEDdata.append({'name':'CaCO3', 'values':med10})
+    MEDdata.append({'name':'Vitamin D', 'values':med11})
+    MEDdata.append({'name':'Folic acid', 'values':med12})
+    
+    LABdata = []
+    lab1 = []
+    lab2 = []
+    lab3 = []
+    lab4 = []
+    lab5 = []
+    lab6 = []
+    lab7 = []
+    lab8 = []
+    lab9 = []
+    lab10 = []
+    lab11 = []
+    lab12 = []
+    lab13 = []
+    lab14 = []
+    lab15 = []
+    lab16 = []
+    all_lab = Laboratoryinventoryinvestigation.objects.filter(studynumber = studynum)
+    for each_lab in all_lab:
+        lab1.append(ToFloat(each_lab.hb))
+        lab2.append(ToFloat(each_lab.wbc)) 
+        lab3.append(ToFloat(each_lab.n)) 
+        lab4.append(ToFloat(each_lab.l)) 
+        lab5.append(ToFloat(each_lab.platelets))
+        lab6.append(ToFloat(each_lab.esr))
+        lab7.append(ToFloat(each_lab.wbc_hpf)) 
+        lab8.append(ToFloat(each_lab.rbc_hpf))
+        lab9.append(ToFloat(each_lab.protein))
+        lab10.append(ToFloat(each_lab.tp_spoturineprotein))
+        lab11.append(ToFloat(each_lab.cre_spoturinecreatinine))
+        lab12.append(ToFloat(each_lab.upci))
+        lab13.append(ToFloat(each_lab.cr))
+        lab14.append(ToFloat(each_lab.albumin))
+        lab15.append(ToFloat(each_lab.c3))
+        lab16.append(ToFloat(each_lab.c4))
+    LABdata.append({'name':'Hb', 'values':lab1})
+    LABdata.append({'name':'WBC', 'values':lab2})
+    LABdata.append({'name':'N', 'values':lab3})
+    LABdata.append({'name':'L', 'values':lab4})
+    LABdata.append({'name':'Platelets', 'values':lab5})
+    LABdata.append({'name':'ESR', 'values':lab6})
+    LABdata.append({'name':'WBC_HPF', 'values':lab7})
+    LABdata.append({'name':'RBC_HPF', 'values':lab8})
+    LABdata.append({'name':'Protein', 'values':lab9})
+    LABdata.append({'name':'TP_SpotUrineProtein', 'values':lab10})
+    LABdata.append({'name':'CRE_SpotUrineCreatinine', 'values':lab11})
+    LABdata.append({'name':'UPCI', 'values':lab12})
+    LABdata.append({'name':'Cr', 'values':lab13})
+    LABdata.append({'name':'Albumin', 'values':lab14})
+    LABdata.append({'name':'C3', 'values':lab15})
+    LABdata.append({'name':'C4', 'values':lab16})
+
+        
+    return render(request, 'patient-records.html',{'visit_list': Visiting.objects.filter(studynumber = studynum), 'patient':Studyidentity.objects.get(studynumber = studynum),
+    'SLEDAIdata':SLEDAIdata,'MEDdata':MEDdata, 'LABdata':LABdata})
 
 @login_required(login_url='login')
 def followupnew(request, studynum):
@@ -744,6 +923,9 @@ def followPatient(request):
 
 @login_required(login_url='login')
 def followDetail(request, visitid):
+    studynum = int(Visiting.objects.get(visitingid = visitid).studynumber.studynumber)
+    
+    
     lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
     if haslnlab(lab) is True:
         lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 

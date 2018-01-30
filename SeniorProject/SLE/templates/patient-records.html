@@ -47,6 +47,26 @@
 							<div id="chart_SLEDAI" style="width: 100%; min-height: 400px"></div>
 						  </div>
 						</div>
+                        
+                        <div class="x_panel">
+				            <div class="x_title">
+					               <h2>Medication</h2>
+					               <div class="clearfix"></div>
+						    </div>
+				            <div class="x_content">
+					       <div id="chart_Followup_med" style="width: 100%; min-height: 400px"></div>
+				        </div>
+			             </div>
+                        
+                        <div class="x_panel">
+				            <div class="x_title">
+					               <h2>Laboratory</h2>
+					               <div class="clearfix"></div>
+						    </div>
+				            <div class="x_content">
+					       <div id="chart_Followup_lab" style="width: 100%; min-height: 400px"></div>
+				        </div>
+			             </div>
 					  </div>
                 </div>
                 <div class="row">
@@ -331,9 +351,7 @@
                     trigger: "axis"
                 },
                 legend: {
-                    x: 220,
-                    y: 40,
-                    data: ["Intent", "Pre-order", "Deal"]
+                    data:[{% for sledai in SLEDAIdata %}"{{sledai.name}}",{% endfor %}]
                 },
                 toolbox: {
                     show: true,
@@ -352,13 +370,14 @@
                 xAxis: [{
                     type: "category",
                     boundaryGap: !1,
-                    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+                    data: [{% for visit in visit_list %}"{{visit.visitdate}}",{% endfor %}]
                 }],
                 yAxis: [{
                     type: "value"
                 }],
-                series: [{
-                    name: "Deal",
+                series: [{% for sledai in SLEDAIdata %}
+                {
+                    name: "{{sledai.name}}",
                     type: "line",
                     smooth: !0,
                     itemStyle: {
@@ -368,10 +387,50 @@
                             }
                         }
                     },
-                    data: [10, 12, 21, 54, 260, 830, 710]
-                }, {
-                    name: "Pre-order",
-                    type: "line",
+                    data: [{% for value in sledai.values %}{{value}},{% endfor %}]     
+                },
+                {% endfor %}
+                ]
+            })
+        }
+        if ($("#chart_Followup_med").length) {
+            var b = echarts.init(document.getElementById("chart_Followup_med"), a);
+            b.setOption({
+                tooltip: {
+                    trigger: "axis"
+                },
+                legend: {
+                    data: [{% for med in MEDdata %}"{{med.name}}",{% endfor %}],
+                    selected: {
+                        'MTX' : false
+                    },
+                },
+                toolbox: {
+                    show: true,
+                    feature : {
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                    }
+                },
+                calculable: true,
+                dataZoom : {
+                    show : true,
+                    realtime : true,
+                    start : 20,
+                    end : 80
+                },
+                xAxis: [{
+                    type: "category",
+                    boundaryGap : true,
+                    data : [{% for visit in visit_list %}"{{visit.visitdate}}",{% endfor %}]
+                }],
+                yAxis: [{
+                    type: "value"
+                }],
+                series: [{% for med in MEDdata %}
+                {
+                    name: "{{med.name}}",
+                    type: "bar",
                     smooth: !0,
                     itemStyle: {
                         normal: {
@@ -380,20 +439,57 @@
                             }
                         }
                     },
-                    data: [30, 182, 434, 791, 390, 30, 10]
-                }, {
-                    name: "Intent",
-                    type: "line",
-                    smooth: !0,
-                    itemStyle: {
-                        normal: {
-                            areaStyle: {
-                                type: "default"
-                            }
-                        }
+                    data: [{% for value in med.values %}{{value}},{% endfor %}] 
+                },
+                {% endfor %}
+                ]
+            })
+        }
+        if ($("#chart_Followup_lab").length) {
+            var b = echarts.init(document.getElementById("chart_Followup_lab"), a);
+            b.setOption({
+                tooltip: {
+                    trigger: "axis"
+                },
+                legend: {
+                    data: [{% for lab in LABdata %}"{{lab.name}}",{% endfor %}],
+                    selected: {
+                        {% for lab in LABdata %}
+                        '{{lab.name}}' : false,
+                        {% endfor %}
+                        'Hb' : true
                     },
-                    data: [1320, 1132, 601, 234, 120, 90, 20]
-                }]
+                },
+                toolbox: {
+                    show: true,
+                    feature : {
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                    }
+                },
+                calculable: true,
+                dataZoom : {
+                    show : true,
+                    realtime : true,
+                    start : 20,
+                    end : 80
+                },
+                xAxis: [{
+                    type: "category",
+                    boundaryGap : true,
+                    data : [{% for visit in visit_list %}"{{visit.visitdate}}",{% endfor %}]
+                }],
+                yAxis: [{
+                    type: "value"
+                }],
+                series: [{% for lab in LABdata %}
+                {
+                    name: "{{lab.name}}",
+                    type: "line",
+                    data: [{% for value in lab.values %}{{value}},{% endfor %}] 
+                },
+                {% endfor %}
+                ]
             })
         }
     }
