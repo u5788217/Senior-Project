@@ -32,40 +32,27 @@
         <div id="page-wrapper" >
             <div class="container-fluid">     
                 <div class="row">
-					<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-						<div class="x_panel">
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel col-lg-12 col-md-12 col-sm-12">
                             <div class="x_title"> 
                                 <h2>SLEDAI score of patients</h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <div id="chart_SLEDAI" style="width: 100%; min-height: 400px"></div>
+                                <div id="chart_index01" style="width: 100%; min-height: 225px"></div>
+                            </div>
+                        </div>
+                        <div class="x_panel col-lg-12 col-md-12 col-sm-12">
+                            <div class="x_title"> 
+                                <h2>SLEDAI score of patients</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="chart_index02" style="width: 100%; min-height: 225px"></div>
                             </div>
                         </div>
 					  </div>
-					  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-						    <div class="x_panel">
-                                <div class="x_title"> 
-                                    <h2>SLICC criteria</h2>
-                                    <div class="clearfix"></div>
-                                </div>
-							  <div class="x_content">
-                                  <div id="chart_SLICC" style="width: 100%; min-height: 400px"></div>
-							  </div>
-							</div>
-						</div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-						    <div class="x_panel">
-                                <div class="x_title"> 
-                                    <h2>ACR criteria</h2>
-                                    <div class="clearfix"></div>
-                                </div>
-							  <div class="x_content">
-                                  <div id="chart_ACR" style="width: 100%; min-height: 480px"></div>
-							  </div>
-							</div>
-						</div>
-					<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title"> 
                                 <h2>SLE Patient</h2>
@@ -100,6 +87,28 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+						    <div class="x_panel">
+                                <div class="x_title"> 
+                                    <h2>SLICC criteria</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+							  <div class="x_content">
+                                  <div id="chart_SLICC" style="width: 100%; min-height: 400px"></div>
+							  </div>
+							</div>
+						</div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+						    <div class="x_panel">
+                                <div class="x_title"> 
+                                    <h2>ACR criteria</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+							  <div class="x_content">
+                                  <div id="chart_ACR" style="width: 100%; min-height: 400px"></div>
+							  </div>
+							</div>
+						</div>
                 </div>
 				</div>
         </div>
@@ -142,7 +151,9 @@
                 handleColor: "#408829"
             },
             grid: {
-                borderWidth: 0
+                borderWidth: 0,
+                y: 70,
+                y2: 30
             },
             categoryAxis: {
                 axisLine: {
@@ -314,8 +325,8 @@
             }
         };
         
-        if ($("#chart_SLEDAI").length) {
-            var b = echarts.init(document.getElementById("chart_SLEDAI"), a);
+        if ($("#chart_index01").length) {
+            var b = echarts.init(document.getElementById("chart_index01"), a);
             b.setOption({
                 tooltip: {
                     trigger: "axis"
@@ -329,20 +340,23 @@
                 toolbox: {
                     show: true,
                     feature : {
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true},
+                        magicType : {
+                            show: true,
+                            title : {
+                                line : 'Line chart',
+                                bar : 'Bar chart'
+                            },
+                            type: ['line', 'bar'],
+                        },
+                        restore : {show: true,
+                            title : 'restore'
+                        },
                     }
-                },
-                calculable: true,
-                dataZoom : {
-                    show : true,
-                    realtime : true,
-                    start : 20,
-                    end : 80
                 },
                 xAxis: [{
                     type: "category",
                     boundaryGap : true,
+                    name: 'X-Axis',
                     data : function (){
                         var list = [];
                         for (var i = 1; i <= 12; i++) {
@@ -353,7 +367,98 @@
                     }()
                 }],
                 yAxis: [{
-                    type: "value"
+                    type: "value",
+                    name: 'Y-Axis'
+                }],
+                series: [{
+                    name: "sales", //medicine name
+                    type: "line",
+                    data: [2, 4.9, 7, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20, 6.4, 3.3], //doseperdate 
+                    markPoint: {
+                        data: [{
+                            type: "max",
+                            name: "???"
+                        }, {
+                            type: "min",
+                            name: "???"
+                        }]
+                    },
+                    markLine: {
+                        data: [{
+                            type: "average",
+                            name: "???"
+                        }]
+                    }
+                }, {
+                    name: "purchases",
+                    type: "bar",
+                    data: [2.6, 5.9, 9, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6, 2.3],
+                    markPoint: {
+                        data: [{
+                            name: "sales",
+                            value: 182.2,
+                            xAxis: 7,
+                            yAxis: 183
+                        }, {
+                            name: "purchases",
+                            value: 2.3,
+                            xAxis: 11,
+                            yAxis: 3
+                        }]
+                    },
+                    markLine: {
+                        data: [{
+                            type: "average",
+                            name: "???"
+                        }]
+                    }
+                }]
+            })
+        }
+        if ($("#chart_index02").length) {
+            var b = echarts.init(document.getElementById("chart_index02"), a);
+            b.setOption({
+                tooltip: {
+                    trigger: "axis"
+                },
+                legend: {
+                    data: ["sales", "purchases", "Hello"],
+                    selected: {
+                        'sales' : false
+                    },
+                },
+                toolbox: {
+                    show: true,
+                    feature : {
+                        magicType : {
+                            show: true,
+                            title : {
+                                line : 'Line chart',
+                                bar : 'Bar chart'
+                            },
+                            type: ['line', 'bar'],
+                        },
+                        restore : {show: true,
+                            title : 'restore'
+                        },
+                    }
+                },
+                xAxis: [{
+                    type: "category",
+                    boundaryGap : true,
+                    name: 'X-Axis',
+                    data : function (){
+                        var list = [];
+                        for (var i = 1; i <= 12; i++) {
+                            list.push(i); 
+                            //(visitdate)
+                        }
+                        return list;
+                    }()
+                }],
+                yAxis: [{
+                    type: "value",
+                    name: 'Y-Axis'
                 }],
                 series: [{
                     name: "sales", //medicine name
@@ -412,9 +517,6 @@
                     x: "center",
                     y: "bottom",
                     data: [{% for data in ACRdata %}"{{data.name}}",{% endfor %}]
-                },
-                toolbox: {
-                    show: false,
                 },
                 series: [{
                     name: "ACR criteria",

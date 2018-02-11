@@ -1,6 +1,6 @@
 {% extends "header.html" %}
 {% block content %}
-	
+
 <!-- Navigation -->
           <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -37,46 +37,48 @@
         <div id="page-wrapper" >
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<div class="x_panel">
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
+                        <div class="x_panel">
                             <div class="x_title"> 
-                                    <h2>SLEDAI score</h2>
-                                    <div class="clearfix"></div>
-                                </div>
-						  <div class="x_content">
-							<div id="chart_SLEDAI" style="width: 100%; min-height: 400px"></div>
-						  </div>
-						</div>
-                        
+                                <h2>SLEDAI score</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                        <div class="x_content">
+                           <div id="chart_SLEDAI" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
                         <div class="x_panel">
-				            <div class="x_title">
-					               <h2>Medication</h2>
-					               <div class="clearfix"></div>
-						    </div>
-				            <div class="x_content">
-					       <div id="chart_Followup_med" style="width: 100%; min-height: 400px"></div>
-				        </div>
-			             </div>
-                        
+                            <div class="x_title"> 
+                                <h2>Medication</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                        <div class="x_content">
+                           <div id="chart_Followup_med" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
                         <div class="x_panel">
-				            <div class="x_title">
-					               <h2>Laboratory</h2>
-					               <div class="clearfix"></div>
-						    </div>
-				            <div class="x_content">
-					       <div id="chart_Followup_lab" style="width: 100%; min-height: 400px"></div>
-				        </div>
-			             </div>
-					  </div>
+                            <div class="x_title"> 
+                                <h2>Laboratory</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                        <div class="x_content">
+                           <div id="chart_Followup_lab" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-7">
+                    <div class="col-lg-8 col-md-12 col-sm-12">
                         <!--Follow up list -->
                         <div class="x_panel">
                            <div class="x_title"> 
                                 <h2>SLE Patient</h2>
 								<ul class="nav navbar-right panel_toolbox">	
-									<li><a href="{% url 'followupnew' patient.studynumber %}">Add new follow up</a></li>
+									<li><a href="{% url 'followupnew' patient.studynumber %}"><i class="fa fa-plus"></i> Add new follow up</a></li>
 								</ul>
 								<div class="clearfix"></div>
                             </div>
@@ -96,13 +98,27 @@
                                            <tr>
                                                <td>{{ forloop.counter }}</td>
                                                <td>{{ visit.visitdate }}</td>
-                                               <td><a href="{% url 'followDetail' visit.visitingid %}">See Detail</a></td>
+                                               <td><a href="{% url 'followDetail' visit.visitingid.visitingid %}">See Detail</a></td>
                                                <td>
                                                    <div class="progress" style="margin-bottom:0;">
-                                                      <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
+                                                       {% if visit.sledai_total >= 12 %}
+                                                       <div class="progress-bar progress-bar-danger" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
+                                                       {% elif visit.sledai_total >= 5 %}
+                                                       <div class="progress-bar progress-bar-warning" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
+                                                       {% elif visit.sledai_total >= 0 %}
+                                                       <div class="progress-bar" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
+                                                       {% endif %}
                                                     </div>
                                                </td>
-                                               <td><span class="label label-info">Inactive</span></td>
+                                                {% if visit.patientstatus == 'inactive' %}
+                                                <td><span class="label label-default">Inactive</span></td>
+                                                {% elif visit.patientstatus == 'active' %}
+                                                <td><span class="label label-info">Active</span></td>
+                                                {% elif visit.patientstatus == 'flare' %}
+                                                <td><span class="label label-danger">Flare</span></td>
+                                                {% else %}
+                                                <td><span class="label label-info">Inactive</span></td>
+                                                {% endif %}        
                                            </tr>
                                            {% endfor %}
                                             </tbody>
@@ -110,20 +126,109 @@
                                     </div>
                                 </div>
                     </div>
-                    <div class="col-lg-5 col-md-5 col-sm-5">
-                        <!--Chart-->
-                        <div class="x_panel">
-                            <div class="x_title"> 
-                                <h2>Enrollment</h2>
-								<ul class="nav navbar-right panel_toolbox">
-								</ul>
-								<div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <ul style="margin:0;" class="pager">
-                                        <li class="next"><a href="{% url 'enrollDetail' patient.studynumber %}">Full detail <span aria-hidden="true">&rarr;</span></a></li>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <!--Chart-->
+                            <div class="x_panel">
+                                <div class="x_title"> 
+                                    <h2>Enrollment</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
                                     </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <table class="countries_list">
+                                            <tbody>
+                                              <tr>
+                                                  <td><i class="fa fa-calendar"></i> Date of diagnosis</td>
+                                                <td class="fs15 fw700 text-right">{{patient.dateofdiagnosis}}</td>
+                                              </tr>
+                                                <tr>
+                                                  <td><i class="fa fa-calendar"></i> Date of enrollment</td>
+                                                <td class="fs15 fw700 text-right">{{patient.dateofenrollment}}</td>
+                                              </tr>
+                                                <tr>
+                                                  <td>
+                                                    {% if patient.gender == 'Male' %}
+                                                      <i class="fa fa-male"> </i>
+                                                    {% elif patient.gender == 'Female' %}
+                                                      <i class="fa fa-female"> </i>
+                                                    {% else %}
+                                                      <i class="fa fa-user"> </i>
+                                                    {% endif %}Gender</td>
+                                                <td class="fs15 fw700 text-right">{{patient.gender}}</td>
+                                              </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-calendar"></i>  Date of birth</td>
+                                                    <td class="fs15 fw700 text-right">{{patient.dateofbirth}}</td>
+                                              </tr>
+                                                <tr>
+                                                    <td colspan="2"><i class="fa fa-stethoscope"></i> Revised ACR criteria 
+                                                        <div style="margin:0;">
+                                                            {% if ACRpatient.acr1 is True %}<span class="label label-default">Serositis</span>{% endif %}                                     {% if ACRpatient.acr2 is True %}<span class="label label-default">Malar Rash</span>{% endif %}
+                                                            {% if ACRpatient.acr3 is True %}<span class="label label-default">Renal Disorder</span>{% endif %} 
+                                                            {% if ACRpatient.acr4 is True %}<span class="label label-default">Discoid Rash</span>{% endif %} 
+                                                            {% if ACRpatient.acr5 is True %}<span class="label label-default">Neurological Disorder</span>{% endif %} 
+                                                            {% if ACRpatient.acr6 is True %}<span class="label label-default">Photosensitivity</span>{% endif %} 
+                                                            {% if ACRpatient.acr7 is True %}<span class="label label-default">Haematological Disorder</span>{% endif %} 
+                                                            {% if ACRpatient.acr8 is True %}<span class="label label-default">Oral Ulcers</span>{% endif %} 
+                                                            {% if ACRpatient.acr9 is True %}<span class="label label-default">Immunological Disorder</span>{% endif %} 
+                                                            {% if ACRpatient.acr10 is True %}<span class="label label-default">Arthritis</span>{% endif %} 
+                                                            {% if ACRpatient.acr11 is True %}<span class="label label-default">PositiveANA</span>{% endif %} 
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><i class="fa fa-stethoscope"></i> Revised SLICC criteria 
+                                                        <div style="margin:0;">
+                                                            {% if SLICCpatient.slicc1 is True %}<span class="label label-default">AcuteCutaneous</span>{% endif %}                           {% if SLICCpatient.slicc2 is True %}<span class="label label-default">Chronic Cutaneous</span>{% endif %}
+                                                            {% if SLICCpatient.slicc3 is True %}<span class="label label-default">Mucosal Ulcer</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc4 is True %}<span class="label label-default">NonScaring Alopecia</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc5 is True %}<span class="label label-default">Arthritis</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc6 is True %}<span class="label label-default">Serositis</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc7 is True %}<span class="label label-default">Renal</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc8 is True %}<span class="label label-default">Neuro</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc9 is True %}<span class="label label-default">Hemolytic Anemia</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc10 is True %}<span class="label label-default">Leukopenia</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc11 is True %}<span class="label label-default">Thrombocytopenia</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc12 is True %}<span class="label label-default">ANA</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc13 is True %}<span class="label label-default">AntiDNA</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc14 is True %}<span class="label label-default">AntiSm</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc15 is True %}<span class="label label-default">AntiPhospholipid</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc16 is True %}<span class="label label-default">Low Complement</span>{% endif %} 
+                                                            {% if SLICCpatient.slicc17 is True %}<span class="label label-default">DirectCoombs Test</span>{% endif %} 
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <ul style="margin:0;" class="pager">
+                                            <li class="next"><a href="{% url 'enrollDetail' patient.studynumber %}">Full detail <span aria-hidden="true">&rarr;</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Chart-->
+                            <div class="x_panel">
+                                <div class="x_title"> 
+                                    <h2>Prediction</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a href=""><i class="fa fa-repeat"></i> Refresh</a></li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="row">
+                                        <div style="text-align: center; height: 100px;">
+                                            <!--<div class="count" style="color: #FAAC58;">Active</div>
+                                                <div class="count" style="color: #81BEF7;">Inactive</div>-->
+                                            <div style="color: #FA5858; font-size: 50px; font-weight: 550; height: 60px;">Flare</div>
+                                            <span class="count_bottom"><i class="fa fa-calendar"></i> update from last week</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +277,333 @@
                 handleColor: "#408829"
             },
             grid: {
-                borderWidth: 0
+                borderWidth: 0,
+                y: 130
+            },
+            categoryAxis: {
+                axisLine: {
+                    lineStyle: {
+                        color: "#408829"
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ["#eee"]
+                    }
+                }
+            },
+            valueAxis: {
+                axisLine: {
+                    lineStyle: {
+                        color: "#408829"
+                    }
+                },
+                splitArea: {
+                    show: !0,
+                    areaStyle: {
+                        color: ["rgba(250,250,250,0.1)", "rgba(200,200,200,0.1)"]
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: ["#eee"]
+                    }
+                }
+            },
+            timeline: {
+                lineStyle: {
+                    color: "#408829"
+                },
+                controlStyle: {
+                    normal: {
+                        color: "#408829"
+                    },
+                    emphasis: {
+                        color: "#408829"
+                    }
+                }
+            },
+            k: {
+                itemStyle: {
+                    normal: {
+                        color: "#68a54a",
+                        color0: "#a9cba2",
+                        lineStyle: {
+                            width: 1,
+                            color: "#408829",
+                            color0: "#86b379"
+                        }
+                    }
+                }
+            },
+            map: {
+                itemStyle: {
+                    normal: {
+                        areaStyle: {
+                            color: "#ddd"
+                        },
+                        label: {
+                            textStyle: {
+                                color: "#c12e34"
+                            }
+                        }
+                    },
+                    emphasis: {
+                        areaStyle: {
+                            color: "#99d2dd"
+                        },
+                        label: {
+                            textStyle: {
+                                color: "#c12e34"
+                            }
+                        }
+                    }
+                }
+            },
+            force: {
+                itemStyle: {
+                    normal: {
+                        linkStyle: {
+                            strokeColor: "#408829"
+                        }
+                    }
+                }
+            },
+            chord: {
+                padding: 4,
+                itemStyle: {
+                    normal: {
+                        lineStyle: {
+                            width: 1,
+                            color: "rgba(128, 128, 128, 0.5)"
+                        },
+                        chordStyle: {
+                            lineStyle: {
+                                width: 1,
+                                color: "rgba(128, 128, 128, 0.5)"
+                            }
+                        }
+                    },
+                    emphasis: {
+                        lineStyle: {
+                            width: 1,
+                            color: "rgba(128, 128, 128, 0.5)"
+                        },
+                        chordStyle: {
+                            lineStyle: {
+                                width: 1,
+                                color: "rgba(128, 128, 128, 0.5)"
+                            }
+                        }
+                    }
+                }
+            },
+            gauge: {
+                startAngle: 225,
+                endAngle: -45,
+                axisLine: {
+                    show: !0,
+                    lineStyle: {
+                        color: [
+                            [.2, "#86b379"],
+                            [.8, "#68a54a"],
+                            [1, "#408829"]
+                        ],
+                        width: 8
+                    }
+                },
+                axisTick: {
+                    splitNumber: 10,
+                    length: 12,
+                    lineStyle: {
+                        color: "auto"
+                    }
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: "auto"
+                    }
+                },
+                splitLine: {
+                    length: 18,
+                    lineStyle: {
+                        color: "auto"
+                    }
+                },
+                pointer: {
+                    length: "90%",
+                    color: "auto"
+                },
+                title: {
+                    textStyle: {
+                        color: "#333"
+                    }
+                },
+                detail: {
+                    textStyle: {
+                        color: "auto"
+                    }
+                }
+            },
+            textStyle: {
+                fontFamily: "Arial, Verdana, sans-serif"
+            }
+        };
+        
+        if ($("#chart_Followup_med").length) {
+            var b = echarts.init(document.getElementById("chart_Followup_med"), a);
+            b.setOption({
+                tooltip: {
+                    trigger: "axis"
+                },
+                legend: {
+                    data: [{% for med in MEDdata %}"{{med.name}}",{% endfor %}],
+                    selected: {
+                        'MTX' : false
+                    },
+                },
+                /*toolbox: {
+                    show: true,
+                    feature : {
+                        magicType : {
+                            show: true, 
+                            title : {
+                                line : 'Line chart',
+                                bar : 'Bar chart'
+                            },type: ['line', 'bar']},
+                        restore : {show: true, title: 'restore'},
+                    },
+                },*/
+                calculable: true,
+                dataZoom : {
+                    show : true,
+                    realtime : true,
+                    start : 80,
+                    end : 100
+                },
+                xAxis: [{
+                    type: "category",
+                    boundaryGap : true,
+                    name: 'date/time',
+                    data : [{% for visit in visit_list %}"{{visit.visitdate}}",{% endfor %}]
+                }],
+                yAxis: [{
+                    type: "value",
+                    name: 'dose/date'
+                }],
+                series: [{% for med in MEDdata %}
+                {
+                    name: "{{med.name}}",
+                    type: "bar",
+                    smooth: !0,
+                    itemStyle: {
+                        normal: {
+                            areaStyle: {
+                                type: "default"
+                            }
+                        }
+                    },
+                    data: [{% for value in med.values %}{{value}},{% endfor %}] 
+                },
+                {% endfor %}
+                ]
+            })
+        }
+        if ($("#chart_Followup_lab").length) {
+            var b = echarts.init(document.getElementById("chart_Followup_lab"), a);
+            b.setOption({
+                tooltip: {
+                    trigger: "axis"
+                },
+                legend: {
+                    data: [{% for lab in LABdata %}"{{lab.name}}",{% endfor %}],
+                    selected: {
+                        {% for lab in LABdata %}
+                        '{{lab.name}}' : false,
+                        {% endfor %}
+                        'Hb' : true
+                    },
+                },
+                /*toolbox: {
+                    show: true,
+                    feature : {
+                        magicType : {
+                            show: true, 
+                            title : {
+                                line : 'Line chart',
+                                bar : 'Bar chart'
+                            },type: ['line', 'bar']},
+                        restore : {show: true, title: 'restore'},
+                    },
+                    y: "bottom"
+                },*/
+                calculable: true,
+                dataZoom : {
+                    show : true,
+                    realtime : true,
+                    start : 80,
+                    end : 100
+                },
+                xAxis: [{
+                    type: "category",
+                    boundaryGap : true,
+                    name: 'date/time',
+                    data : [{% for visit in visit_list %}"{{visit.visitdate}}",{% endfor %}]
+                }],
+                yAxis: [{
+                    type: "value",
+                    name: 'value'
+                }],
+                series: [{% for lab in LABdata %}
+                {
+                    name: "{{lab.name}}",
+                    type: "line",
+                    data: [{% for value in lab.values %}{{value}},{% endfor %}] 
+                },
+                {% endfor %}
+                ]
+            })
+        }
+    }
+    if ("undefined" != typeof echarts) {
+        var a = {
+            color: ["#26B99A", "#34495E", "#BDC3C7", "#3498DB", "#9B59B6", "#8abb6f", "#759c6a", "#bfd3b7"],
+            title: {
+                itemGap: 8,
+                textStyle: {
+                    fontWeight: "normal",
+                    color: "#408829"
+                }
+            },
+            dataRange: {
+                color: ["#1f610a", "#97b58d"]
+            },
+            toolbox: {
+                color: ["#408829", "#408829", "#408829", "#408829"]
+            },
+            tooltip: {
+                backgroundColor: "rgba(0,0,0,0.5)",
+                axisPointer: {
+                    type: "line",
+                    lineStyle: {
+                        color: "#408829",
+                        type: "dashed"
+                    },
+                    crossStyle: {
+                        color: "#408829"
+                    },
+                    shadowStyle: {
+                        color: "rgba(200,200,200,0.3)"
+                    }
+                }
+            },
+            dataZoom: {
+                dataBackgroundColor: "#eee",
+                fillerColor: "rgba(64,136,41,0.2)",
+                handleColor: "#408829"
+            },
+            grid: {
+                borderWidth: 0,
             },
             categoryAxis: {
                 axisLine: {
@@ -349,31 +780,38 @@
             f.setOption({
                 tooltip: {
                     trigger: "axis"
-                },
+                },/*
                 legend: {
                     data:[{% for sledai in SLEDAIdata %}"{{sledai.name}}",{% endfor %}]
-                },
+                },*/
                 toolbox: {
                     show: true,
                     feature : {
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true}
-                    }
+                        magicType : {
+                            show: true,  
+                            title : {
+                                line : 'Line chart',
+                                bar : 'Bar chart'
+                            },type: ['line', 'bar']},
+                        restore : {show: true, title : 'restore'}
+                    },
                 },
                 calculable: true,
                 dataZoom : {
                     show : true,
                     realtime : true,
-                    start : 20,
-                    end : 80
+                    start : 0,
+                    end : 100
                 },
                 xAxis: [{
                     type: "category",
+                    name: 'date/time',
                     boundaryGap: !1,
                     data: [{% for visit in visit_list %}"{{visit.visitdate}}",{% endfor %}]
                 }],
                 yAxis: [{
-                    type: "value"
+                    type: "value",
+                    name: 'score'
                 }],
                 series: [{% for sledai in SLEDAIdata %}
                 {
@@ -388,105 +826,6 @@
                         }
                     },
                     data: [{% for value in sledai.values %}{{value}},{% endfor %}]     
-                },
-                {% endfor %}
-                ]
-            })
-        }
-        if ($("#chart_Followup_med").length) {
-            var b = echarts.init(document.getElementById("chart_Followup_med"), a);
-            b.setOption({
-                tooltip: {
-                    trigger: "axis"
-                },
-                legend: {
-                    data: [{% for med in MEDdata %}"{{med.name}}",{% endfor %}],
-                    selected: {
-                        'MTX' : false
-                    },
-                },
-                toolbox: {
-                    show: true,
-                    feature : {
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true},
-                    }
-                },
-                calculable: true,
-                dataZoom : {
-                    show : true,
-                    realtime : true,
-                    start : 20,
-                    end : 80
-                },
-                xAxis: [{
-                    type: "category",
-                    boundaryGap : true,
-                    data : [{% for visit in visit_list %}"{{visit.visitdate}}",{% endfor %}]
-                }],
-                yAxis: [{
-                    type: "value"
-                }],
-                series: [{% for med in MEDdata %}
-                {
-                    name: "{{med.name}}",
-                    type: "bar",
-                    smooth: !0,
-                    itemStyle: {
-                        normal: {
-                            areaStyle: {
-                                type: "default"
-                            }
-                        }
-                    },
-                    data: [{% for value in med.values %}{{value}},{% endfor %}] 
-                },
-                {% endfor %}
-                ]
-            })
-        }
-        if ($("#chart_Followup_lab").length) {
-            var b = echarts.init(document.getElementById("chart_Followup_lab"), a);
-            b.setOption({
-                tooltip: {
-                    trigger: "axis"
-                },
-                legend: {
-                    data: [{% for lab in LABdata %}"{{lab.name}}",{% endfor %}],
-                    selected: {
-                        {% for lab in LABdata %}
-                        '{{lab.name}}' : false,
-                        {% endfor %}
-                        'Hb' : true
-                    },
-                },
-                toolbox: {
-                    show: true,
-                    feature : {
-                        magicType : {show: true, type: ['line', 'bar']},
-                        restore : {show: true},
-                    }
-                },
-                calculable: true,
-                dataZoom : {
-                    show : true,
-                    realtime : true,
-                    start : 20,
-                    end : 80
-                },
-                xAxis: [{
-                    type: "category",
-                    boundaryGap : true,
-                    data : [{% for visit in visit_list %}"{{visit.visitdate}}",{% endfor %}]
-                }],
-                yAxis: [{
-                    type: "value"
-                }],
-                series: [{% for lab in LABdata %}
-                {
-                    name: "{{lab.name}}",
-                    type: "line",
-                    data: [{% for value in lab.values %}{{value}},{% endfor %}] 
                 },
                 {% endfor %}
                 ]

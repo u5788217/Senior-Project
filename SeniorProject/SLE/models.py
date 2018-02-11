@@ -175,6 +175,7 @@ class Diseaseactivitysledai(models.Model):
     leukopenia = models.NullBooleanField()
     fever = models.NullBooleanField()
     sledai_total = models.IntegerField(blank=True, null=True)
+    status = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         managed = False

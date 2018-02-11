@@ -452,9 +452,12 @@ def patientrecord(request, studynum):
     LABdata.append({'name':'Albumin', 'values':lab14})
     LABdata.append({'name':'C3', 'values':lab15})
     LABdata.append({'name':'C4', 'values':lab16})
-
+    
         
-    return render(request, 'patient-records.html',{'visit_list': Visiting.objects.filter(studynumber = studynum), 'patient':Studyidentity.objects.get(studynumber = studynum),
+    return render(request, 'patient-records.html',{'visit_list': Diseaseactivitysledai.objects.filter(studynumber = studynum),
+    'patient':Studyidentity.objects.get(studynumber = studynum),
+    'ACRpatient':Acrcriteria.objects.get(studynumber = studynum),
+    'SLICCpatient':Slicccriteria.objects.get(studynumber = studynum),
     'SLEDAIdata':SLEDAIdata,'MEDdata':MEDdata, 'LABdata':LABdata})
 
 @login_required(login_url='login')
@@ -740,7 +743,7 @@ def followPatient(request):
             FollowSLEDAI = Diseaseactivitysledai(visitingid = Followvisiting,
                         studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                         visitdate =  request.POST.get('visitdate', ''),
-                        physiciansglobalassessment = CheckboxToInt(request.POST.get('physiciansglobalassessment', '')),
+                        physiciansglobalassessment = request.POST.get('physiciansglobalassessment', ''),
                         seizure = CheckboxToBool(request.POST.get('seizure', '')),
                         psychosis = CheckboxToBool(request.POST.get('psychosis', '')),
                         organicbrainsyndrome = CheckboxToBool(request.POST.get('organicbrainsyndrome', '')),
@@ -767,7 +770,7 @@ def followPatient(request):
                         thrombocytopenia = CheckboxToBool(request.POST.get('thrombocytopenia', '')),
                         leukopenia = CheckboxToBool(request.POST.get('leukopenia', '')),
                         fever = CheckboxToBool(request.POST.get('fever', '')),
-                        sledai_total = totalSLEDAI)
+                        sledai_total = totalSLEDAI, patientstatus = request.POST.get('patientstatus', ''))
             FollowSLEDAI.save()
 
 
@@ -925,7 +928,6 @@ def followPatient(request):
 def followDetail(request, visitid):
     studynum = int(Visiting.objects.get(visitingid = visitid).studynumber.studynumber)
     
-    
     lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
     if haslnlab(lab) is True:
         lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
@@ -1037,7 +1039,7 @@ def followEditPost(request):
 
         old_sledai = Diseaseactivitysledai.objects.get(visitingid = temp_visitid)
         old_sledai.visitdate =  request.POST.get('visitdate', '')
-        old_sledai.physiciansglobalassessment = CheckboxToInt(request.POST.get('physiciansglobalassessment', ''))
+        old_sledai.physiciansglobalassessment = request.POST.get('physiciansglobalassessment', '')
         old_sledai.seizure = CheckboxToBool(request.POST.get('seizure', ''))
         old_sledai.psychosis = CheckboxToBool(request.POST.get('psychosis', ''))
         old_sledai.organicbrainsyndrome = CheckboxToBool(request.POST.get('organicbrainsyndrome', ''))
@@ -1064,7 +1066,7 @@ def followEditPost(request):
         old_sledai.thrombocytopenia = CheckboxToBool(request.POST.get('thrombocytopenia', ''))
         old_sledai.leukopenia = CheckboxToBool(request.POST.get('leukopenia', ''))
         old_sledai.fever = CheckboxToBool(request.POST.get('fever', ''))
-        old_sledai.sledai_total = totalSLEDAI
+        old_sledai.sledai_total = totalSLEDAI, old_sledai.patientstatus = request.POST.get('patientstatus', '')
         old_sledai.save()
 
         old_ln = None
