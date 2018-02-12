@@ -904,14 +904,16 @@ def followPatient(request):
                             mgt_other = CheckboxToBool(request.POST.get('mgt_other',)))
             FollowMed.save()
         
-            #test_med_list = Medication.objects.all()
-            #All data feilds
             lab = Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid)
             if haslnlab(lab) is True:
                 lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
             else: 
                 lnlab = None
-
+            
+            PreviousVisit = Visiting.objects.filter(studynumber = TempstudyNumber).order_by('visitdate').filter(visitdate__lt = request.POST.get('visitdate',)).reverse()[0]
+            PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
+            PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+            
             return render(request, 'followup-detail.html',
                           {'visiting':Visiting.objects.get(visitingid = Followvisiting.visitingid),
                           'med':Medication.objects.get(visitingid = Followvisiting.visitingid),
@@ -919,7 +921,9 @@ def followPatient(request):
                           'lnlab':lnlab,
                           'sledai':Diseaseactivitysledai.objects.get(visitingid = Followvisiting.visitingid),
                           'damageindex':Damageindex.objects.get(visitingid = Followvisiting.visitingid),
-                          'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = Followvisiting.visitingid)})
+                          'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = Followvisiting.visitingid),
+                          'PreviousLab':PreviousLab,
+                          'PreviousMed':PreviousMed})
         else:
             return render(request, 'login.html')
 
@@ -933,6 +937,11 @@ def followDetail(request, visitid):
         lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
     else: 
         lnlab = None
+    this_date = Visiting.objects.get(visitingid = visitid).visitdate
+    PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+    PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
+    PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+    
     return render(request, 'followup-detail.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
                       'med':Medication.objects.get(visitingid = visitid),
@@ -940,7 +949,9 @@ def followDetail(request, visitid):
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
                       'damageindex':Damageindex.objects.get(visitingid = visitid),
-                      'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = visitid)})
+                      'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = visitid),
+                      'PreviousLab':PreviousLab,
+                      'PreviousMed':PreviousMed})
 
 
 @login_required(login_url='login')
@@ -1211,6 +1222,10 @@ def followEditPost(request):
         old_med.mgt_other = CheckboxToBool(request.POST.get('mgt_other',))
         old_med.save()
         
+        PreviousVisit = Visiting.objects.filter(studynumber = old_visiting.studynumber.studynumber).order_by('visitdate').filter(visitdate__lt = request.POST.get('visitdate',)).reverse()[0]
+        PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
+        PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+        
         return render(request, 'followup-detail.html',
                           {'visiting':old_visiting,
                           'med':old_med,
@@ -1218,7 +1233,9 @@ def followEditPost(request):
                           'lnlab':old_ln,
                           'sledai':old_sledai,
                           'damageindex':old_damage,
-                          'clinicalpresentation':old_clinic})
+                          'clinicalpresentation':old_clinic,
+                          'PreviousLab':PreviousLab,
+                          'PreviousLab':PreviousLab})
     
 
 @login_required(login_url='login')
