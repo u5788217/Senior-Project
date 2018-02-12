@@ -165,7 +165,7 @@
                     <div style="float: left;"> 
                         <div class="form-inline">
                             <p style="font-size: 14px; margin: 6px; color: #A4A4A4;"><span class="glyphicon glyphicon-paperclip"></span> Number1 
-                            <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Visiting date <input type="date" name="visitdate" class="form-control" value={{visitdate}}></p>
+                            <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Visiting date <input type="date" name="visitdate" class="form-control" value={{visiting.visitdate|date:"Y-m-d"}}></p>
                         </div>
                     </div>
                     <div style="float: right; margin: 6px;"><button type="submit" class="btn btn-primary">Save</button><input type="button" class="btn" value="Cancel" onclick="window.history.go(-1); return false;"></div>
@@ -198,19 +198,19 @@
                                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                                         <label class="col-lg-4 col-md-4 col-sm-4">BP</label> 
                                                         <div class="form-group col-lg-8 col-md-8 col-sm-8">
-                                                            <input type="text" name="bp" class="form-control" value="{{bp}}">
+                                                            <input type="text" name="bp" class="form-control" value="{{visiting.bp}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                                         <label class="col-lg-4 col-md-4 col-sm-4">Weight</label> 
                                                         <div class="form-group col-lg-8 col-md-8 col-sm-8">
-                                                            <input type="number" name="weight" class="form-control" value="{{weight}}">
+                                                            <input type="number" name="weight" class="form-control" value="{{visiting.weight}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                                         <label class="col-lg-4 col-md-4 col-sm-4">Height</label> 
                                                         <div class="form-group col-lg-8 col-md-8 col-sm-8">
-                                                            <input type="number" name="height" class="form-control" value="{{height}}">
+                                                            <input type="number" name="height" class="form-control" value="{{visiting.height}}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -378,13 +378,13 @@
                                                     <div class="row">
                                                       <div class="btn-group" data-toggle="buttons">
                                                         <label class="btn btn-default">
-                                                          <input type="radio" name="patientstatus" id="option0" value="inactive" {% if sledai.patientstatus == 'inactive' %} active {% endif %}> Inactive
+                                                          <input type="radio" name="patientstatus" id="option0" value="inactive" {% if sledai.status == 'inactive' %} active {% endif %}> Inactive
                                                         </label>
                                                         <label class="btn btn-default">
-                                                          <input type="radio" name="patientstatus" id="option1" value="active" {% if sledai.patientstatus == 'active' %} active {% endif %}> Active
+                                                          <input type="radio" name="patientstatus" id="option1" value="active" {% if sledai.status == 'active' %} active {% endif %}> Active
                                                         </label>
                                                         <label class="btn btn-default">
-                                                          <input type="radio" name="patientstatus" id="option2" value="flare" {% if sledai.patientstatus == 'flare' %} active {% endif %}> Flare
+                                                          <input type="radio" name="patientstatus" id="option2" value="flare" {% if sledai.status == 'flare' %} active {% endif %}> Flare
                                                         </label>
                                                       </div>
                                                     </div>

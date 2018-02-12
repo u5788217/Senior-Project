@@ -94,19 +94,19 @@
                                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                                         <label class="col-lg-4 col-md-4 col-sm-4">BP</label> 
                                                         <div class="form-group col-lg-8 col-md-8 col-sm-8">
-                                                            <p class="form-control">{{bp}}</p> 
+                                                            <p class="form-control">{{visiting.bp}}</p> 
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                                         <label class="col-lg-4 col-md-4 col-sm-4">Weight</label> 
                                                         <div class="form-group col-lg-8 col-md-8 col-sm-8">
-                                                            <p class="form-control">{{weight}}</p> 
+                                                            <p class="form-control">{{visiting.weight}}</p> 
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-6 col-sm-6">
                                                         <label class="col-lg-4 col-md-4 col-sm-4">Height</label> 
                                                         <div class="form-group col-lg-8 col-md-8 col-sm-8">
-                                                            <p class="form-control">{{height}}</p> 
+                                                            <p class="form-control">{{visiting.height}}</p> 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -265,9 +265,9 @@
                                                     <label class="col-lg-5 col-md-8 col-sm-8"><b>Status: </b></label>
                                                     <div class="row">
                                                       <div class="btn-group" data-toggle="buttons">
-                                                        <label class="btn btn-default {% if sledai.patientstatus == 'inactive' %} active {% endif %}">Inactive</label>
-                                                        <label class="btn btn-default {% if sledai.patientstatus == 'active' %} active {% endif %}">Active</label>
-                                                        <label class="btn btn-default {% if sledai.patientstatus == 'flare' %} active {% endif %}">Flare</label> 
+                                                        <label class="btn btn-default {% if sledai.status == 'inactive' %} active {% endif %}">Inactive</label>
+                                                        <label class="btn btn-default {% if sledai.status == 'active' %} active {% endif %}">Active</label>
+                                                        <label class="btn btn-default {% if sledai.status == 'flare' %} active {% endif %}">Flare</label> 
                                                       </div>
                                                     </div>
                                                 </div>

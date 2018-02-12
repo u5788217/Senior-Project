@@ -770,7 +770,7 @@ def followPatient(request):
                         thrombocytopenia = CheckboxToBool(request.POST.get('thrombocytopenia', '')),
                         leukopenia = CheckboxToBool(request.POST.get('leukopenia', '')),
                         fever = CheckboxToBool(request.POST.get('fever', '')),
-                        sledai_total = totalSLEDAI, patientstatus = request.POST.get('patientstatus', ''))
+                        sledai_total = totalSLEDAI, status = request.POST.get('patientstatus', ''))
             FollowSLEDAI.save()
 
 
@@ -1066,7 +1066,8 @@ def followEditPost(request):
         old_sledai.thrombocytopenia = CheckboxToBool(request.POST.get('thrombocytopenia', ''))
         old_sledai.leukopenia = CheckboxToBool(request.POST.get('leukopenia', ''))
         old_sledai.fever = CheckboxToBool(request.POST.get('fever', ''))
-        old_sledai.sledai_total = totalSLEDAI, old_sledai.patientstatus = request.POST.get('patientstatus', '')
+        old_sledai.sledai_total = totalSLEDAI, 
+        old_sledai.status = request.POST.get('patientstatus', '')
         old_sledai.save()
 
         old_ln = None
