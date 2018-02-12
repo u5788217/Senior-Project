@@ -17,9 +17,9 @@
 </head>
 
 <body>
-    <div style="margin-top: 5%;" class="container">
+    
+    <div id="responsivebg" class="container">
         <div class="card card-container">
-			{% load staticfiles %}
             <img id="profile-img" class="profile-img-card" src="{% static 'img/Rama_Logo_Color.png' %}" />
             <p id="profile-name" class="profile-name-card">SLE Flare-up Predictor</p>
 
@@ -33,6 +33,9 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
             </form>
         </div>
+    </div>
+    <div id="bg">
+        <img src="{% static 'img/bg.png' %}" alt="">
     </div>
 </body>
 

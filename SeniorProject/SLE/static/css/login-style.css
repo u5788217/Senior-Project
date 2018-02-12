@@ -4,12 +4,38 @@
 /*
  * General styles
  */
-body{
-    background-image: url('../img/bg.png');
-    background-size: cover;
+
+#responsivebg{
+    margin-top: 7%;
 }
 
-.card-container.card {
+@media only screen and (max-width: 768px) {
+    #responsivebg{
+        margin-top: 30%;
+    }
+}
+
+#bg {
+    position: fixed; 
+    top: -60%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+    z-index: -1000;
+}
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 20%;
+  min-height: 60%;
+ 
+}
+
+.card-container.card { 
     max-width: 350px;
     padding: 40px 40px;
 }
