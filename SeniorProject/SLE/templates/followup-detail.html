@@ -58,12 +58,11 @@
                     </div>
                     <div style="float: left;"> 
                         <p style="font-size: 14px; margin: 6px; color: #A4A4A4;">
-                            <span class="glyphicon glyphicon-paperclip"></span> ครั้งที่ {{visitnumber}} <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> {{visiting.visitdate}}
+                            <span class="glyphicon glyphicon-paperclip"></span> Number {{visitnumber}} <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> {{visiting.visitdate}}
                              <span style="padding-left:1em" class="glyphicon glyphicon-user"></span> โดยคุณหมอ วสุธร
                         </p>
                     </div>
                     <div style="float: right;"><a class="btn btn-warning" href="{% url 'followEdit' visiting.visitingid %}">Edit</a></div>
-                    
                 </div>
               </div>
 		
@@ -91,6 +90,26 @@
                                     <div class="panel-body ">
                                         <div class="row">
                                             <div class="col-lg-6">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                                        <label class="col-lg-4 col-md-4 col-sm-4">BP</label> 
+                                                        <div class="form-group col-lg-8 col-md-8 col-sm-8">
+                                                            <p class="form-control">{{bp}}</p> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                                        <label class="col-lg-4 col-md-4 col-sm-4">Weight</label> 
+                                                        <div class="form-group col-lg-8 col-md-8 col-sm-8">
+                                                            <p class="form-control">{{weight}}</p> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                                        <label class="col-lg-4 col-md-4 col-sm-4">Height</label> 
+                                                        <div class="form-group col-lg-8 col-md-8 col-sm-8">
+                                                            <p class="form-control">{{height}}</p> 
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">1. Constitutional Symptoms</h4></div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Fatigue</label> 
