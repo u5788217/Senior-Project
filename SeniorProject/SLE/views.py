@@ -454,7 +454,7 @@ def patientrecord(request, studynum):
     LABdata.append({'name':'C4', 'values':lab16})
     
         
-    return render(request, 'patient-records.html',{'visit_list': Diseaseactivitysledai.objects.filter(studynumber = studynum),
+    return render(request, 'patient-records.html',{'visit_list': Diseaseactivitysledai.objects.filter(studynumber = studynum).order_by('visitdate'),
     'patient':Studyidentity.objects.get(studynumber = studynum),
     'ACRpatient':Acrcriteria.objects.get(studynumber = studynum),
     'SLICCpatient':Slicccriteria.objects.get(studynumber = studynum),
