@@ -39,7 +39,7 @@ def haslnlab(lab):
         return False
         
 def CheckboxToInt(string):
-    if string == 'on' or string == 'Pos' or string is True: string = 1
+    if string == 'on' or string == 'Pos' or string is True : string = 1
     else : 
         if string == 'off' or string == 'Neg' or string is False or string is None or string == '' : string = 0
     return int(string)
@@ -1066,10 +1066,10 @@ def followEditPost(request):
         old_sledai.thrombocytopenia = CheckboxToBool(request.POST.get('thrombocytopenia', ''))
         old_sledai.leukopenia = CheckboxToBool(request.POST.get('leukopenia', ''))
         old_sledai.fever = CheckboxToBool(request.POST.get('fever', ''))
-        old_sledai.sledai_total = totalSLEDAI, 
+        old_sledai.sledai_total = totalSLEDAI
         old_sledai.status = request.POST.get('patientstatus', '')
         old_sledai.save()
-
+        
         old_ln = None
         if CheckboxToInt(request.POST.get('LN', '')) > 0:
             if Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid is not None:
