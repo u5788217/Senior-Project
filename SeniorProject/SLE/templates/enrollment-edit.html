@@ -191,13 +191,13 @@
                                 <div class="form-group">
                                     <label>Gender</label>  
                                     <div data-toggle="buttons">
-                                        <label class="btn btn-default active">
+                                        <label class="btn btn-default {% if patient.gender == 'Male' %} active {% endif %}">
                                             <input type="radio" name="gender" id="option1" autocomplete="off" value="Male" {% if patient.gender == 'Male' %} checked {% endif %}>Male
                                         </label>
-                                        <label class="btn btn-default">
+                                        <label class="btn btn-default {% if patient.gender == 'Female' %} active {% endif %}">
                                             <input type="radio" name="gender" id="option2" autocomplete="off" value="Female" {% if patient.gender == 'Female' %} checked {% endif %}>Female
                                         </label>
-                                        <label class="btn btn-default">
+                                        <label class="btn btn-default {% if patient.gender == 'Missing' %} active {% endif %}">
                                             <input type="radio" name="gender" id="option3" autocomplete="off" value="Missing" {% if patient.gender == 'Missing' %} checked {% endif %}>Missing
                                         </label>
                                     </div>

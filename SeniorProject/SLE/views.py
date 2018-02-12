@@ -41,7 +41,7 @@ def haslnlab(lab):
 def CheckboxToInt(string):
     if string == 'on' or string == 'Pos' or string is True: string = 1
     else : 
-        if string == 'off' or string == 'Neg' or string is False or string is None or string == '': string = 0
+        if string == 'off' or string == 'Neg' or string is False or string is None or string == '' : string = 0
     return int(string)
 
 def ToFloat(string):
@@ -995,27 +995,27 @@ def followEditPost(request):
         old_damage.di_2 = CheckboxToBool(request.POST.get('di_2', ''))
         old_damage.di_3 = CheckboxToBool(request.POST.get('di_3', ''))
         old_damage.di_4 = CheckboxToBool(request.POST.get('di_4', ''))
-        old_damage.di_5 = CheckboxToInt(request.POST.get('di_5', ''))
+        old_damage.di_5 = ToFloat(request.POST.get('di_5', ''))
         old_damage.di_6 = CheckboxToBool(request.POST.get('di_6', ''))
         old_damage.di_7 = CheckboxToBool(request.POST.get('di_7', ''))
         old_damage.di_8 = CheckboxToBool(request.POST.get('di_8', ''))
         old_damage.di_9 = CheckboxToBool(request.POST.get('di_9', ''))
         old_damage.di_10 = CheckboxToBool(request.POST.get('di_10', ''))
         old_damage.di_11 = CheckboxToBool(request.POST.get('di_11', ''))
-        old_damage.di_12 = CheckboxToInt(request.POST.get('di_12', ''))
+        old_damage.di_12 = ToFloat(request.POST.get('di_12', ''))
         old_damage.di_13 = CheckboxToBool(request.POST.get('di_13', ''))
         old_damage.di_14 = CheckboxToBool(request.POST.get('di_14', ''))
         old_damage.di_15 = CheckboxToBool(request.POST.get('di_15', ''))
         old_damage.di_16 = CheckboxToBool(request.POST.get('di_16', ''))
         old_damage.di_17 = CheckboxToBool(request.POST.get('di_17', ''))
-        old_damage.di_18 = CheckboxToInt(request.POST.get('di_18', ''))
+        old_damage.di_18 = ToFloat(request.POST.get('di_18', ''))
         old_damage.di_19 = CheckboxToBool(request.POST.get('di_19', ''))
         old_damage.di_20 = CheckboxToBool(request.POST.get('di_20', ''))
         old_damage.di_21 = CheckboxToBool(request.POST.get('di_21', ''))
         old_damage.di_22 = CheckboxToBool(request.POST.get('di_22', ''))
         old_damage.di_23 = CheckboxToBool(request.POST.get('di_23', ''))
         old_damage.di_24 = CheckboxToBool(request.POST.get('di_24', ''))
-        old_damage.di_25 = CheckboxToInt(request.POST.get('di_25', ''))
+        old_damage.di_25 = ToFloat(request.POST.get('di_25', ''))
         old_damage.di_26 = CheckboxToBool(request.POST.get('di_26', ''))
         old_damage.di_27 = CheckboxToBool(request.POST.get('di_27', ''))
         old_damage.di_28 = CheckboxToBool(request.POST.get('di_28', ''))
@@ -1023,7 +1023,7 @@ def followEditPost(request):
         old_damage.di_30 = CheckboxToBool(request.POST.get('di_30', ''))
         old_damage.di_31 = CheckboxToBool(request.POST.get('di_31', ''))
         old_damage.di_32 = CheckboxToBool(request.POST.get('di_32', ''))
-        old_damage.di_33 = CheckboxToInt(request.POST.get('di_33', ''))
+        old_damage.di_33 = ToFloat(request.POST.get('di_33', ''))
         old_damage.di_34 = CheckboxToBool(request.POST.get('di_34', ''))
         old_damage.di_35 = CheckboxToBool(request.POST.get('di_35', ''))
         old_damage.di_36 = CheckboxToBool(request.POST.get('di_36', ''))
@@ -1031,7 +1031,7 @@ def followEditPost(request):
         old_damage.di_38 = CheckboxToBool(request.POST.get('di_38', ''))
         old_damage.di_39 = CheckboxToBool(request.POST.get('di_39', ''))
         old_damage.di_40 = CheckboxToBool(request.POST.get('di_40', ''))
-        old_damage.di_41 = CheckboxToInt(request.POST.get('di_41', ''))
+        old_damage.di_41 = ToFloat(request.POST.get('di_41', ''))
         old_damage.di_total = Totaldamage
         old_damage.save()
 
