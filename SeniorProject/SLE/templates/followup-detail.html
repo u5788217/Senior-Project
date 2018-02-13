@@ -1,7 +1,65 @@
 {% extends "header.html" %}
 {% block content %}
  <script>
+        function CompValue(current,previous,tag)
+        {
+            if (current == '' || current == 'None'){ str = ' <i class="aero"><i class="fa fa-minus"></i></i>';}
+            else if (previous == '' || previous == 'None'){ str = ' <i class="aero"><i class="fa fa-minus"></i></i>';}
+            else if (current > previous){
+                str = ' <i class="red"><i class="fa fa-sort-asc"></i> '+(current-previous).toFixed(2)+'</i>';
+            }
+            else if (previous == current){
+                str = ' <i class="aero"><i class="fa fa-minus"></i> 0 </i>';
+            }
+            else if (previous > current){
+                str = ' <i class="green"><i class="fa fa-sort-desc"></i> '+(previous-current).toFixed(2)+'</i>';
+            }    
+            $(tag).append(str);
+        }
         $(document).ready(function(){
+            CompValue('{{lab.hb}}','{{PreviousLab.hb}}','#labHB');
+            CompValue('{{lab.wbc}}','{{PreviousLab.wbc}}','#labwbc');
+            CompValue('{{lab.n}}','{{PreviousLab.n}}','#labn');
+            CompValue('{{lab.l}}','{{PreviousLab.l}}','#labl');
+            CompValue('{{lab.platelets}}','{{PreviousLab.platelets}}','#labplatelets');
+            CompValue('{{lab.esr}}','{{PreviousLab.esr}}','#labesr');
+            CompValue('{{lab.wbc_hpf}}','{{PreviousLab.wbc_hpf}}','#labwbc_hpf');
+            CompValue('{{lab.rbc_hpf}}','{{PreviousLab.rbc_hpf}}','#labrbc_hpf');
+            CompValue('{{lab.wbccasts}}','{{PreviousLab.wbccasts}}','#labwbccasts');
+            CompValue('{{lab.rbccasts}}','{{PreviousLab.rbccasts}}','#labrbccasts');
+            CompValue('{{lab.granularcasts}}','{{PreviousLab.granularcasts}}','#labgranularcasts');
+            CompValue('{{lab.glucose}}','{{PreviousLab.glucose}}','#labglucose');
+            CompValue('{{lab.protein}}','{{PreviousLab.protein}}','#labprotein'); CompValue('{{lab.tp_spoturineprotein}}','{{PreviousLab.tp_spoturineprotein}}','#labtp_spoturineprotein');
+            CompValue('{{lab.cre_spoturinecreatinine}}','{{PreviousLab.cre_spoturinecreatinine}}','#labcre_spoturinecreatinine');
+            CompValue('{{lab.tfhr_urineprotein}}','{{PreviousLab.tfhr_urineprotein}}','#labtfhr_urineprotein'); CompValue('{{lab.tfhr_urinecreatinine}}','{{PreviousLab.tfhr_urinecreatinine}}','#labtfhr_urinecreatinine');
+            CompValue('{{lab.upci}}','{{PreviousLab.upci}}','#labupci');
+            CompValue('{{lab.fbs}}','{{PreviousLab.fbs}}','#labfbs');
+            CompValue('{{lab.hba1c}}','{{PreviousLab.hba1c}}','#labhba1c');
+            CompValue('{{lab.bun}}','{{PreviousLab.bun}}','#labbun');
+            CompValue('{{lab.cr}}','{{PreviousLab.cr}}','#labcr');
+            CompValue('{{lab.alp}}','{{PreviousLab.alp}}','#labalp');
+            CompValue('{{lab.ast}}','{{PreviousLab.ast}}','#labast');
+            CompValue('{{lab.alt}}','{{PreviousLab.alt}}','#labalt');
+            CompValue('{{lab.ggt}}','{{PreviousLab.ggt}}','#labggt');
+            CompValue('{{lab.ldh}}','{{PreviousLab.ldh}}','#labldh');
+            CompValue('{{lab.albumin}}','{{PreviousLab.albumin}}','#labalbumin');
+            CompValue('{{lab.crp}}','{{PreviousLab.crp}}','#labcrp');
+            CompValue('{{lab.choles}}','{{PreviousLab.choles}}','#labcholes');
+            CompValue('{{lab.tg}}','{{PreviousLab.tg}}','#labtg');
+            CompValue('{{lab.ldl}}','{{PreviousLab.ldl}}','#labldl');
+            CompValue('{{lab.hdl}}','{{PreviousLab.hdl}}','#labhdl');
+            CompValue('{{lab.inr}}','{{PreviousLab.inr}}','#labinr');
+            CompValue('{{lab.anatiter}}','{{PreviousLab.anatiter}}','#labanatiter');
+            CompValue('{{lab.homogeneous1}}','{{PreviousLab.homogeneous1}}','#labhomogeneous1');
+            CompValue('{{lab.peripheral1}}','{{PreviousLab.peripheral1}}','#labperipheral1');
+            CompValue('{{lab.speckled1}}','{{PreviousLab.speckled1}}','#labspeckled1');
+            CompValue('{{lab.nucleolar1}}','{{PreviousLab.nucleolar1}}','#labnucleolar1');
+            CompValue('{{lab.anti_dsdna}}','{{PreviousLab.anti_dsdna}}','#labanti_dsdna');
+            CompValue('{{lab.aca}}','{{PreviousLab.aca}}','#labaca');
+            CompValue('{{lab.c3}}','{{PreviousLab.c3}}','#labc3');
+            CompValue('{{lab.c4}}','{{PreviousLab.c4}}','#labc4');
+            CompValue('{{lab.ch50}}','{{PreviousLab.ch50}}','#labch50');
+            
             {% if lab.stoolparasite.status != '' or lab.stoolparasite.date is not None %} $('#ShowAbnormal1').show();
                     $('#ShowAbnormal2').show(); {% endif %}
             {% if lab.cxr.status != '' or lab.cxr.date is not None %} $('#ShowAbnormal3').show();
@@ -684,16 +742,9 @@
                                                     <h4 class="page-header">1. CBC</h4><!-- {{lab}}-->
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Hb (g/dL)
-                                                        {% if lab.hb > PreviousLab.hb %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.hb < PreviousLab.hb %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.hb == PreviousLab.hb %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                    <label class="col-lg-6 col-md-6 col-sm-6">Hb (g/dL)                                          
+                                                        <span class="count_bottom" id="labHB">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.hb}}</p>
@@ -701,15 +752,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">WBC (uL)
-                                                        {% if lab.wbc > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.wbc < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.wbc == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labwbc">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.wbc}}</p>
@@ -717,15 +761,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">N (%) 
-                                                        {% if lab.n > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.n < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.n == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labn">
+                                                        </span>
                                                     </label>    
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.n}}</p>
@@ -733,15 +770,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">L (%)
-                                                        {% if lab.l > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.l < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.l == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labl">
+                                                        </span>
                                                     </label>
                                                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.l}}</p>
@@ -749,15 +779,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Platelets (uL)
-                                                        {% if lab.platelets > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.platelets < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.platelets == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labplatelets">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.platelets}}</p>
@@ -765,15 +788,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">ESR (mm/hr)
-                                                        {% if lab.esr > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.esr < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.esr == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labesr">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.esr}}</p>
@@ -784,15 +800,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">WBC (/HPF)
-                                                        {% if lab.wbc_hpf > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.wbc_hpf < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.wbc_hpf == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labwbc_hpf">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.wbc_hpf}}</p>
@@ -800,15 +809,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> RBC (/HPF)
-                                                        {% if lab.rbc_hpf > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.rbc_hpf < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.rbc_hpf == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labrbc_hpf">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.rbc_hpf}}</p>
@@ -816,15 +818,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> WBC casts (/LPF)
-                                                        {% if lab.wbccasts > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.wbccasts < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.wbccasts == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labwbccasts">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.wbccasts}}</p>
@@ -832,15 +827,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> RBC casts (/LPF)
-                                                        {% if lab.rbccasts > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.rbccasts < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.rbccasts == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labrbccasts">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.rbccasts}}</p>
@@ -848,15 +836,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> Granular casts(/LPF)
-                                                        {% if lab.granularcasts > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.granularcasts < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.granularcasts == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labgranularcasts">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.granularcasts}}</p>
@@ -865,15 +846,8 @@
                                                 <div class="col-lg-12  col-md-12 col-sm-12"></div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Glucose
-                                                        {% if lab.glucose > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.glucose < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.glucose == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labglucose">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.glucose}}</p>
@@ -881,15 +855,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Protein 
-                                                        {% if lab.protein > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.protein < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.protein == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labprotein">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.protein}}</p>
@@ -897,15 +864,8 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">TP-Spot Urine Protein (mg/dL) 
-                                                        {% if lab.tp_spoturineprotein > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.tp_spoturineprotein < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.tp_spoturineprotein == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labtp_spoturineprotein">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
                                                         <p class="form-control">{{lab.tp_spoturineprotein}}</p>
@@ -913,15 +873,8 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">CRE- Spot Urine Creatinine (mg/dL)  
-                                                        {% if lab.cre_spoturinecreatinine > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.cre_spoturinecreatinine < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.cre_spoturinecreatinine == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labcre_spoturinecreatinine">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
                                                         <p class="form-control">{{lab.cre_spoturinecreatinine}}</p>
@@ -929,15 +882,8 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">24-hr Urine Protein (g/day) 
-                                                        {% if lab.tfhr_urineprotein > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.tfhr_urineprotein < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.tfhr_urineprotein == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labtfhr_urineprotein">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
                                                         <p class="form-control">{{lab.tfhr_urineprotein}}</p>
@@ -945,15 +891,8 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">24-hr Urine Creatinine (g/day)
-                                                        {% if lab.tfhr_urinecreatinine > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.tfhr_urinecreatinine < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.tfhr_urinecreatinine == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labtfhr_urinecreatinine">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
                                                         <p class="form-control">{{lab.tfhr_urinecreatinine}}</p>
@@ -961,15 +900,8 @@
                                                 </div>
 												<div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">UPCI
-                                                        {% if lab.upci > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.upci < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.upci == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labupci">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
                                                         <p class="form-control">{{lab.upci}}</p>
@@ -980,15 +912,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">FBS (mg/dL)
-                                                        {% if lab.fbs > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.fbs < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.fbs == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labfbs">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.fbs}}</p>
@@ -996,15 +921,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">HbA1C (%)
-                                                        {% if lab.hba1c > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.hba1c < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.hba1c == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labhba1c">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.hba1c}}</p>
@@ -1012,15 +930,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">BUN (mg/dL)
-                                                        {% if lab.bun > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.bun < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.bun == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labbun">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.bun}}</p>
@@ -1028,15 +939,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Cr (mg/dL)
-                                                        {% if lab.cr > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.cr < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.cr == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labcr">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.cr}}</p>
@@ -1044,15 +948,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">ALP (units/L)
-                                                        {% if lab.alp > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.alp < 0 %}
-                                                        <span class="coualpnt_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.alp == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labalp">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.alp}}</p>
@@ -1060,15 +957,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">  AST (units/L)
-                                                        {% if lab.ast > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.ast < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.ast == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labast">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.ast}}</p>
@@ -1076,15 +966,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">  ALT (units/L)
-                                                        {% if lab.alt > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.alt < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.alt == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labalt">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.alt}}</p>
@@ -1092,15 +975,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">  GGT (units/L)
-                                                        {% if lab.ggt > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.ggt < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.ggt == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labggt">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.ggt}}</p>
@@ -1108,15 +984,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">LDH (units/L)
-                                                        {% if lab.ldh > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.ldh < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.ldh == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labldh">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.ldh}}</p>
@@ -1124,15 +993,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Albumin (g/dL)
-                                                        {% if lab.albumin > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.albumin < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.albumin == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labalbumin">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.albumin}}</p>
@@ -1152,15 +1014,8 @@
                                                 </div>
                                                  <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">CRP (mg/dL)
-                                                        {% if lab.crp > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.crp < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.crp == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labcrp">
+                                                        </span>
                                                      </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.crp}}</p>
@@ -1168,15 +1023,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Choles (mg/dL)
-                                                        {% if lab.choles > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.choles < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.choles == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labcholes">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.choles}}</p>
@@ -1184,15 +1032,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">TG (mg/dL)
-                                                        {% if lab.tg > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.tg < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.tg == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labtg">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.tg}}</p>
@@ -1200,15 +1041,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">LDL (mg/dL)
-                                                        {% if lab.ldl > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.ldl < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.ldl == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labldl">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.ldl}}</p>
@@ -1216,15 +1050,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">HDL (mg/dL)
-                                                        {% if lab.hdl > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.hdl < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.hdl == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labhdl">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.hdl}}</p>
@@ -1232,15 +1059,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">INR
-                                                        {% if lab.inr > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.inr < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.inr == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labinr">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.inr}}</p>
@@ -1251,15 +1071,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-3 col-sm-3">ANA titer
-                                                        {% if lab.anatiter > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.anatiter < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.anatiter == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labanatiter">
+                                                        </span>
                                                     </label>
                                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                                     <p class="form-control">{{lab.anatiter}}</p> 
@@ -1267,15 +1080,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6" >
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Homogeneouss
-                                                        {% if lab.homogeneous1 > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.homogeneous1 < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.homogeneous1 == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labhomogeneous1">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.homogeneous1}}</p>
@@ -1283,15 +1089,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Peripheral
-                                                        {% if lab.peripheral1 > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.peripheral1 < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.peripheral1 == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labperipheral1">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.peripheral1}}</p>
@@ -1299,15 +1098,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-lg-offset-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Speckled
-                                                        {% if lab.speckled1 > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.speckled1 < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.speckled1 == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labspeckled1">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.speckled1}}</p>
@@ -1315,15 +1107,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Nucleolar
-                                                        {% if lab.nucleolar1 > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.nucleolar1 < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.nucleolar1 == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labnucleolar1">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.nucleolar1}}</p>
@@ -1331,15 +1116,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-4 col-sm-4">Anti-dsDNA (IU/mL)  
-                                                        {% if lab.anti_dsdna > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.anti_dsdna < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.anti_dsdna == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labanti_dsdna">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-4 col-sm-4">
                                                         <p class="form-control">{{lab.anti_dsdna}}</p>
@@ -1363,15 +1141,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> ACA (IU/mL)
-                                                        {% if lab.aca > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.aca < 0 %}
-                                                        <span class="count_bottacaom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.aca == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labaca">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.aca}}</p>
@@ -1389,15 +1160,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> C3 (g/L)
-                                                        {% if lab.c3 > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.c3 < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.c3 == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labc3">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group  col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.c3}}</p>
@@ -1405,15 +1169,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> C4 (g/L)
-                                                        {% if lab.c4 > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.c4 < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.c4 == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labc4">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group  col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.c4}}</p>
@@ -1421,15 +1178,8 @@
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> CH50 (%)
-                                                        {% if lab.ch50 > 0 %}
-                                                        <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                        {% elif lab.ch50 < 0 %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                        {% elif lab.ch50 == 0 %}
-                                                        <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                        {% else %}
-                                                        <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                        {% endif %}
+                                                        <span class="count_bottom" id="labch50">
+                                                        </span>
                                                     </label>
                                                     <div class="form-group  col-lg-6 col-md-6 col-sm-6">
                                                         <p class="form-control">{{lab.ch50}}</p>
