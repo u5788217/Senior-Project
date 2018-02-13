@@ -3,8 +3,7 @@
  <script>
         function CompValue(current,previous,tag)
         {
-            if (current == '' || current == 'None'){ str = ' <i class="aero"><i class="fa fa-minus"></i></i>';}
-            else if (previous == '' || previous == 'None'){ str = ' <i class="aero"><i class="fa fa-minus"></i></i>';}
+            if (current == '' || current == 'None' || previous == '' || previous == 'None'){ str = ' <i class="aero"><i class="fa fa-minus"></i></i>';}
             else if (current > previous){
                 str = ' <i class="red"><i class="fa fa-sort-asc"></i> '+(current-previous).toFixed(2)+'</i>';
             }
@@ -59,6 +58,44 @@
             CompValue('{{lab.c3}}','{{PreviousLab.c3}}','#labc3');
             CompValue('{{lab.c4}}','{{PreviousLab.c4}}','#labc4');
             CompValue('{{lab.ch50}}','{{PreviousLab.ch50}}','#labch50');
+            
+            CompValue('{{med.msle_1_1.doseperdate}}','{{PreviousMed.msle_1_1.doseperdate}}','#medmsle_1_1');
+            CompValue('{{med.msle_1_2.doseperdate}}','{{PreviousMed.msle_1_2.doseperdate}}','#medmsle_1_2');
+            CompValue('{{med.msle_1_3.doseperdate}}','{{PreviousMed.msle_1_3.doseperdate}}','#medmsle_1_3');
+            CompValue('{{med.msle_2_1.doseperdate}}','{{PreviousMed.msle_2_1.doseperdate}}','#medmsle_2_1');
+            CompValue('{{med.msle_2_2.doseperdate}}','{{PreviousMed.msle_2_2.doseperdate}}','#medmsle_2_2');
+            CompValue('{{med.msle_3_1.doseperdate}}','{{PreviousMed.msle_3_1.doseperdate}}','#medmsle_3_1');
+            CompValue('{{med.msle_3_2.doseperdate}}','{{PreviousMed.msle_3_2.doseperdate}}','#medmsle_3_2');
+            CompValue('{{med.msle_3_3.doseperdate}}','{{PreviousMed.msle_3_3.doseperdate}}','#medmsle_3_3');
+            CompValue('{{med.msle_3_4.doseperdate}}','{{PreviousMed.msle_3_4.doseperdate}}','#medmsle_3_4');
+            CompValue('{{med.msle_4_1.doseperdate}}','{{PreviousMed.msle_4_1.doseperdate}}','#medmsle_4_1');
+            CompValue('{{med.msle_4_2.doseperdate}}','{{PreviousMed.msle_4_2.doseperdate}}','#medmsle_4_2');
+            CompValue('{{med.msle_4_3.doseperdate}}','{{PreviousMed.msle_4_3.doseperdate}}','#medmsle_4_3');
+            CompValue('{{med.msle_4_4.doseperdate}}','{{PreviousMed.msle_4_4.doseperdate}}','#medmsle_4_4');
+            CompValue('{{med.msle_4_5.doseperdate}}','{{PreviousMed.msle_4_5.doseperdate}}','#medmsle_4_5');
+            CompValue('{{med.msle_4_6.doseperdate}}','{{PreviousMed.msle_4_6.doseperdate}}','#medmsle_4_6');
+            CompValue('{{med.msle_4_7.doseperdate}}','{{PreviousMed.msle_4_7.doseperdate}}','#medmsle_4_7');
+            CompValue('{{med.msle_4_8.doseperdate}}','{{PreviousMed.msle_4_8.doseperdate}}','#medmsle_4_8');
+            CompValue('{{med.msle_4_9.doseperdate}}','{{PreviousMed.msle_4_9.doseperdate}}','#medmsle_4_9');
+            CompValue('{{med.msle_4_10.doseperdate}}','{{PreviousMed.msle_4_10.doseperdate}}','#medmsle_4_10');
+            CompValue('{{med.msle_4_11.doseperdate}}','{{PreviousMed.msle_4_11.doseperdate}}','#medmsle_4_11');
+    
+            CompValue('{{med.mgt_1_1.doseperdate}}','{{PreviousMed.mgt_1_1.doseperdate}}','#medmgt_1_1');
+            CompValue('{{med.mgt_1_2.doseperdate}}','{{PreviousMed.mgt_1_2.doseperdate}}','#medmgt_1_2');
+            CompValue('{{med.mgt_1_3.doseperdate}}','{{PreviousMed.mgt_1_3.doseperdate}}','#medmgt_1_3');
+            CompValue('{{med.mgt_1_4.doseperdate}}','{{PreviousMed.mgt_1_4.doseperdate}}','#medmgt_1_4');
+            CompValue('{{med.mgt_1_5.doseperdate}}','{{PreviousMed.mgt_1_5.doseperdate}}','#medmgt_1_5');
+            CompValue('{{med.mgt_2_1.doseperdate}}','{{PreviousMed.mgt_2_1.doseperdate}}','#medmgt_2_1');
+            CompValue('{{med.mgt_2_2.doseperdate}}','{{PreviousMed.mgt_2_2.doseperdate}}','#medmgt_2_2');
+            CompValue('{{med.mgt_2_3.doseperdate}}','{{PreviousMed.mgt_2_3.doseperdate}}','#medmgt_2_3');
+            CompValue('{{med.mgt_2_4.doseperdate}}','{{PreviousMed.mgt_2_4.doseperdate}}','#medmgt_2_4');
+            CompValue('{{med.mgt_3_1.doseperdate}}','{{PreviousMed.mgt_3_1.doseperdate}}','#medmgt_3_1');
+            CompValue('{{med.mgt_3_2.doseperdate}}','{{PreviousMed.mgt_3_2.doseperdate}}','#medmgt_3_2');
+            CompValue('{{med.mgt_3_3.doseperdate}}','{{PreviousMed.mgt_3_3.doseperdate}}','#medmgt_3_3');
+            CompValue('{{med.mgt_4_1.doseperdate}}','{{PreviousMed.mgt_4_1.doseperdate}}','#medmgt_4_1');
+            CompValue('{{med.mgt_4_2.doseperdate}}','{{PreviousMed.mgt_4_2.doseperdate}}','#medmgt_4_2');
+            CompValue('{{med.mgt_4_3.doseperdate}}','{{PreviousMed.mgt_4_3.doseperdate}}','#medmgt_4_3');
+            CompValue('{{med.mgt_4_4.doseperdate}}','{{PreviousMed.mgt_4_4.doseperdate}}','#medmgt_4_4');
             
             {% if lab.stoolparasite.status != '' or lab.stoolparasite.date is not None %} $('#ShowAbnormal1').show();
                     $('#ShowAbnormal2').show(); {% endif %}
@@ -736,9 +773,7 @@
                                         <div class="row">
                                             <div class="col-lg-12  col-md-12 col-sm-12">
                                                 <div class="col-lg-12  col-md-12 col-sm-12">
-                                                    
-                                                    {{PreviousLab.visitingid.visitdate}}
-                                                 
+                                                                                             
                                                     <h4 class="page-header">1. CBC</h4><!-- {{lab}}-->
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -1477,15 +1512,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1.1) Traditional
-                                                            {% if med.msle_1_1.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_1_1.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_1_1.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_1_1.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_1_1.doseperdate}}</p></td>
@@ -1494,15 +1522,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1.2) Selective COX-2 inhibitor
-                                                            {% if med.msle_1_2.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_1_2.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_1_2.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_1_2.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_1_2.doseperdate}}</p></td>
@@ -1511,15 +1532,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1.3) Specific COX-2 inhibitor
-                                                            {% if med.msle_1_3.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_1_3.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_1_3.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_1_3.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_1_3.doseperdate}}</p></td>
@@ -1531,15 +1545,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>2.1) Chloroquine (Aralen) 
-                                                            {% if med.msle_2_1.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_2_1.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_2_1.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_2_1.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_2_1.doseperdate}}</p></td>
@@ -1548,15 +1555,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>2.2) Hydroxychloroquine (Plaquenil) 
-                                                            {% if med.msle_2_2.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_2_2.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_2_2.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_2_2.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_2_2.doseperdate}}</p></td>
@@ -1568,15 +1568,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3.1) Prednisolone   
-                                                            {% if med.msle_3_1.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_3_1.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_3_1.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_3_1.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_3_1.doseperdate}}</p></td>
@@ -1585,15 +1578,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3.2) Methylprednisolone (IV) 
-                                                            {% if med.msle_3_2.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_3_2.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_3_2.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_3_2.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_3_2.doseperdate}}</p></td>
@@ -1602,15 +1588,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3.3) Dexamethasone (IV)
-                                                            {% if med.msle_3_3.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_3_3.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_3_3.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_3_3.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_3_3.doseperdate}}</p></td>
@@ -1619,15 +1598,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3.4) Dexamethasone (Oral)
-                                                            {% if med.msle_3_4.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_3_4.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_3_4.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_3_4.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_3_4.doseperdate}}</p></td>
@@ -1639,15 +1611,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.1) Methotrexate (MTX)
-                                                            {% if med.msle_4_1.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_1.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_1.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_1.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_1.doseperdate}}</p></td>
@@ -1656,15 +1621,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.2) Azathioprine 
-                                                            {% if med.msle_4_2.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_2.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_2.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_2.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_2.doseperdate}}</p></td>
@@ -1673,15 +1631,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.3) Cyclophosphamide (oral)
-                                                            {% if med.msle_4_3.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_3.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_3.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_3.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_3.doseperdate}}</p></td>
@@ -1690,15 +1641,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.4) Cyclophosphamide (IV)
-                                                            {% if med.msle_4_4.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_4.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_4.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_4.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_4.doseperdate}}</p></td>
@@ -1707,15 +1651,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.5) Mycophenolate mofetil (MMF)
-                                                            {% if med.msle_4_5.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_5.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_5.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_5.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_5.doseperdate}}</p></td>
@@ -1724,15 +1661,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.6) Myfortic (Mycophenolic acid)
-                                                            {% if med.msle_4_6.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_6.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_6.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_6.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_6.doseperdate}}</p></td>
@@ -1741,15 +1671,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.7) Cyclosporin A 
-                                                            {% if med.msle_4_7.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_7.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_7.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_7.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_7.doseperdate}}</p></td>
@@ -1758,15 +1681,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.8) Tacrolimus
-                                                            {% if med.msle_4_8.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_8.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_8.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_8.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_8.doseperdate}}</p></td>
@@ -1775,15 +1691,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.9) Danazol
-                                                            {% if med.msle_4_9.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_9.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_9.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_9.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_9.doseperdate}}</p></td>
@@ -1792,15 +1701,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.10) Dapsone
-                                                            {% if med.msle_4_10.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_10.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_10.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_10.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_10.doseperdate}}</p></td>
@@ -1809,15 +1711,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.11) Colchicine
-                                                            {% if med.msle_4_11.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.msle_4_11.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.msle_4_11.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.msle_4_11.generic}}</p></td>
                                                         <td><p class="form-control">{{med.msle_4_11.doseperdate}}</p></td>
@@ -1849,15 +1744,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1.1) ACEI
-                                                            {% if med.mgt_1_1.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_1_1.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_1_1.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_1_1.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_1_1.doseperdate}}</p></td>
@@ -1866,15 +1754,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1.2) ARB
-                                                            {% if med.mgt_1_2.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_1_2.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_1_2.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_1_2.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_1_2.doseperdate}}</p></td>
@@ -1883,15 +1764,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1.3) Diuretics
-                                                            {% if med.mgt_1_3.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_1_3.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_1_3.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_1_3.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_1_3.doseperdate}}</p></td>
@@ -1900,15 +1774,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1.4) Beta-blockers
-                                                            {% if med.mgt_1_4.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_1_4.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_1_4.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_1_4.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_1_4.doseperdate}}</p></td>
@@ -1917,15 +1784,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1.5) Ca channel blockers
-                                                            {% if med.mgt_1_5.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_1_5.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_1_5.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_1_5.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_1_5.doseperdate}}</p></td>
@@ -1937,15 +1797,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>2.1) Statins
-                                                            {% if med.mgt_2_1.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_2_1.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_2_1.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_2_1.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_2_1.doseperdate}}</p></td>
@@ -1954,15 +1807,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>2.2) Fibrates(Gemfibrozil,Fenofibrate)
-                                                            {% if med.mgt_2_2.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_2_2.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_2_2.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_2_2.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_2_2.doseperdate}}</p></td>
@@ -1971,15 +1817,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>2.3)  Resin(Cholestyramine,Colestipol)
-                                                            {% if med.mgt_2_3.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_2_3.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_2_3.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_2_3.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_2_3.doseperdate}}</p></td>
@@ -1988,15 +1827,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>2.4) Nicotinic acid
-                                                            {% if med.mgt_2_4.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_2_4.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_2_4.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_2_4.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_2_4.doseperdate}}</p></td>
@@ -2008,15 +1840,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3.1) Bisphosphonates
-                                                            {% if med.mgt_3_1.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_3_1.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_3_1.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_3_1.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_3_1.doseperdate}}</p></td>
@@ -2025,15 +1850,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3.2) Ca supplement, CaCO3
-                                                            {% if med.mgt_3_2.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_3_2.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_3_2.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_3_2.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_3_2.doseperdate}}</p></td>
@@ -2042,15 +1860,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3.3) Vitamin D 
-                                                            {% if med.mgt_3_3.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_3_3.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_3_3.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_3_3.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_3_3.doseperdate}}</p></td>
@@ -2062,15 +1873,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.1) ASA
-                                                            {% if med.mgt_4_1.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_4_1.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_4_1.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_4_1.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_4_1.doseperdate}}</p></td>
@@ -2079,15 +1883,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.2) Warfarin
-                                                            {% if med.mgt_4_2.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_4_2.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_4_2.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_4_2.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_4_2.doseperdate}}</p></td>
@@ -2096,15 +1893,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.3) Folic 
-                                                            {% if med.mgt_4_3.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_4_3.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_4_3.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_4_3.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_4_3.doseperdate}}</p></td>
@@ -2113,15 +1903,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td>4.4) MTV 
-                                                            {% if med.mgt_4_4.doseperdate > 0 %}
-                                                            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i> 3% </i></span>
-                                                            {% elif med.mgt_4_4.doseperdate < 0 %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i> 0 </i></span>
-                                                            {% elif med.mgt_4_4.doseperdate == 0 %}
-                                                            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i> 3% </i></span>
-                                                            {% else %}
-                                                            <span class="count_bottom"><i class="aero"><i class="fa fa-minus"></i></i></span>
-                                                            {% endif %}
+                                                            <span class="count_bottom" id="med">
+                                                            </span>
                                                         </td>
                                                         <td><p class="form-control">{{med.mgt_4_4.generic}}</p></td>
                                                         <td><p class="form-control">{{med.mgt_4_4.doseperdate}}</p></td>

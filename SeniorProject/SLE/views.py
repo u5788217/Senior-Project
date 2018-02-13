@@ -910,9 +910,13 @@ def followPatient(request):
             else: 
                 lnlab = None
             
-            PreviousVisit = Visiting.objects.filter(studynumber = TempstudyNumber).order_by('visitdate').filter(visitdate__lt = request.POST.get('visitdate',)).reverse()[0]
-            PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
-            PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+            try:
+                PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+                PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
+                PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+            except IndexError:
+                PreviousLab = None
+                PreviousMed = None
             
             return render(request, 'followup-detail.html',
                           {'visiting':Visiting.objects.get(visitingid = Followvisiting.visitingid),
@@ -938,9 +942,13 @@ def followDetail(request, visitid):
     else: 
         lnlab = None
     this_date = Visiting.objects.get(visitingid = visitid).visitdate
-    PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
-    PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
-    PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+    try:
+        PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+        PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
+        PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+    except IndexError:
+        PreviousLab = None
+        PreviousMed = None
     
     return render(request, 'followup-detail.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
@@ -1222,9 +1230,13 @@ def followEditPost(request):
         old_med.mgt_other = CheckboxToBool(request.POST.get('mgt_other',))
         old_med.save()
         
-        PreviousVisit = Visiting.objects.filter(studynumber = old_visiting.studynumber.studynumber).order_by('visitdate').filter(visitdate__lt = request.POST.get('visitdate',)).reverse()[0]
-        PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
-        PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+        try:
+            PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+            PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
+            PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+        except IndexError:
+            PreviousLab = None
+            PreviousMed = None
         
         return render(request, 'followup-detail.html',
                           {'visiting':old_visiting,
@@ -1235,7 +1247,7 @@ def followEditPost(request):
                           'damageindex':old_damage,
                           'clinicalpresentation':old_clinic,
                           'PreviousLab':PreviousLab,
-                          'PreviousLab':PreviousLab})
+                          'PreviousMed':PreviousMed})
     
 
 @login_required(login_url='login')
