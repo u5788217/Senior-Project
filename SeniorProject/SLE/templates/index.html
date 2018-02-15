@@ -33,26 +33,50 @@
             <div class="container-fluid">     
                 <div class="row">
                     <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-						<div class="x_panel col-lg-12 col-md-12 col-sm-12">
+						<div class="x_panel">
                             <div class="x_title"> 
-                                <h2>SLEDAI score of patients</h2>
+                                <h2>Flare percentage</h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <div id="chart_index01" style="width: 100%; min-height: 225px"></div>
                             </div>
                         </div>
-                        <div class="x_panel col-lg-12 col-md-12 col-sm-12">
+					  </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+						<div class="x_panel">
                             <div class="x_title"> 
-                                <h2>SLEDAI score of patients</h2>
+                                <h2>Gender</h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <div id="chart_index02" style="width: 100%; min-height: 225px"></div>
+                                <div id="chart_Gender" style="width: 100%; min-height: 225px"></div>
                             </div>
                         </div>
 					  </div>
-					<div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+						<div class="x_panel">
+                            <div class="x_title"> 
+                                <h2>Age</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="chart_Age" style="width: 100%; min-height: 225px"></div>
+                            </div>
+                        </div>
+					  </div>
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+						    <div class="x_panel">
+                                <div class="x_title"> 
+                                    <h2>ACR criteria</h2>
+                                    <div class="clearfix"></div>
+                                </div>
+							  <div class="x_content">
+                                  <div id="chart_ACR" style="width: 100%; min-height: 530px"></div>
+							  </div>
+							</div>
+						</div>
+                    <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title"> 
                                 <h2>SLE Patient</h2>
@@ -87,35 +111,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-						    <div class="x_panel">
-                                <div class="x_title"> 
-                                    <h2>Gender</h2>
-                                    <div class="clearfix"></div>
-                                </div>
-							  <div class="x_content">
-                                  <div id="chart_Gender" style="width: 100%; min-height: 400px"></div>
-							  </div>
-							</div>
-						</div>
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-						    <div class="x_panel">
-                                <div class="x_title"> 
-                                    <h2>ACR criteria</h2>
-                                    <div class="clearfix"></div>
-                                </div>
-							  <div class="x_content">
-                                  <div id="chart_ACR" style="width: 100%; min-height: 400px"></div>
-							  </div>
-							</div>
-						</div>
                 </div>
             </div>
         </div>
 <script>
  if ("undefined" != typeof echarts) {
         var a = {
-            color: ["#26B99A", "#34495E", "#CEFDFF", "#3498DB", "#F49CBB", "#8abb6f", "#759c6a", "#F7D1CD", "#ECC30B", "#F37748", "#D56062"],
+            color: ["#26B99A", "#34495E", "#D56062", "#b3d9ff", "#3498DB", "#F49CBB", "#8abb6f", "#759c6a", "#F7D1CD", "#ECC30B", "#F37748"],
             title: {
                 itemGap: 8,
                 textStyle: {
@@ -152,7 +154,7 @@
             },
             grid: {
                 borderWidth: 0,
-                y: 70,
+                y: 50,
                 y2: 30
             },
             categoryAxis: {
@@ -331,12 +333,6 @@
                 tooltip: {
                     trigger: "axis"
                 },
-                legend: {
-                    data: ["sales", "purchases", "Hello"],
-                    selected: {
-                        'purchases' : false
-                    },
-                },
                 toolbox: {
                     show: true,
                     feature : {
@@ -356,7 +352,7 @@
                 xAxis: [{
                     type: "category",
                     boundaryGap : true,
-                    name: 'X-Axis',
+                    name: 'date/time',
                     data : function (){
                         var list = [];
                         for (var i = 1; i <= 12; i++) {
@@ -368,11 +364,11 @@
                 }],
                 yAxis: [{
                     type: "value",
-                    name: 'Y-Axis'
+                    name: 'Number of patient'
                 }],
                 series: [{
-                    name: "sales", //medicine name
-                    type: "line",
+                    name: "Inactive", //medicine name
+                    type: "bar",
                     data: [2, 4.9, 7, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20, 6.4, 3.3], //doseperdate 
                     markPoint: {
                         data: [{
@@ -390,7 +386,7 @@
                         }]
                     }
                 }, {
-                    name: "purchases",
+                    name: "Active",
                     type: "bar",
                     data: [2.6, 5.9, 9, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6, 2.3],
                     markPoint: {
@@ -412,75 +408,9 @@
                             name: "???"
                         }]
                     }
-                }]
-            })
-        }
-        if ($("#chart_index02").length) {
-            var b = echarts.init(document.getElementById("chart_index02"), a);
-            b.setOption({
-                tooltip: {
-                    trigger: "axis"
                 },
-                legend: {
-                    data: ["sales", "purchases", "Hello"],
-                    selected: {
-                        'sales' : false
-                    },
-                },
-                toolbox: {
-                    show: true,
-                    feature : {
-                        magicType : {
-                            show: true,
-                            title : {
-                                line : 'Line chart',
-                                bar : 'Bar chart'
-                            },
-                            type: ['line', 'bar'],
-                        },
-                        restore : {show: true,
-                            title : 'restore'
-                        },
-                    }
-                },
-                xAxis: [{
-                    type: "category",
-                    boundaryGap : true,
-                    name: 'X-Axis',
-                    data : function (){
-                        var list = [];
-                        for (var i = 1; i <= 12; i++) {
-                            list.push(i); 
-                            //(visitdate)
-                        }
-                        return list;
-                    }()
-                }],
-                yAxis: [{
-                    type: "value",
-                    name: 'Y-Axis'
-                }],
-                series: [{
-                    name: "sales", //medicine name
-                    type: "line",
-                    data: [2, 4.9, 7, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20, 6.4, 3.3], //doseperdate 
-                    markPoint: {
-                        data: [{
-                            type: "max",
-                            name: "???"
-                        }, {
-                            type: "min",
-                            name: "???"
-                        }]
-                    },
-                    markLine: {
-                        data: [{
-                            type: "average",
-                            name: "???"
-                        }]
-                    }
-                }, {
-                    name: "purchases",
+                        {
+                    name: "Flare",
                     type: "bar",
                     data: [2.6, 5.9, 9, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6, 2.3],
                     markPoint: {
@@ -515,7 +445,6 @@
                 calculable: !0,
                 legend: {
                     x: "center",
-                    y: "bottom",
                     data: [{% for data in ACRdata %}"{{data.name}}",{% endfor %}]
                 },
                 series: [{
@@ -553,21 +482,16 @@
                     trigger: "item",
                     formatter: "{a} <br/>{b} : {c} ({d}%)"
                 },
-                legend: {
-                    x: "center",
-                    y: "bottom",
-                    data: [{% for data in SLICCdata %}"{{data.name}}",{% endfor %}]
-                },
                 toolbox: {
                     show: false,
                 },
                 calculable: !0,
                 series: [{
-                    name: "SLICC criteria",
+                    name: "Gender",
                     type: "pie",
                     radius: "55%",
                     center: ["50%", "48%"],
-                    data: [ {% for data in SLICCdata %} {value: {{data.sum}}, name: "{{data.name}}" }, {% endfor %}]
+                    data: [ {value: 82, name: "Women", selected:true},{value: 18, name: "Men" }]
                 }]
             });
             var k = {
@@ -594,6 +518,38 @@
                         color: "rgba(0,0,0,0)"
                     }
                 }
+        }
+        if ($("#chart_Age").length) {
+            var j = echarts.init(document.getElementById("chart_Age"), a);
+            j.setOption({
+                xAxis : [
+                {
+                    type : 'value',
+                    boundaryGap : [0, 0.01],
+                    name: 'number of patient'
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'category',
+                    data : ['7-5-2017','7-5-2017','7-5-2017','7-5-2017','7-5-2017','7-5-2017'],
+                    name: 'date/time'
+                }
+            ],
+            grid:{y:28 },
+            series : [
+                {
+                    name:'Women',
+                    type:'bar',
+                    data:[18203, 23489, 29034, 104970, 131744, 630230]
+                },
+                {
+                    name:'Men',
+                    type:'bar',
+                    data:[19325, 23438, 31000, 121594, 134141, 681807]
+                }
+            ]
+          })
         }
     }
     
