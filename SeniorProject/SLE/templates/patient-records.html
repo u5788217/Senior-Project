@@ -37,7 +37,7 @@
         <div id="page-wrapper" >
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"> 
                         <div class="x_panel">
                             <div class="x_title"> 
                                 <h2>SLEDAI score</h2>
@@ -48,18 +48,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
-                        <div class="x_panel">
-                            <div class="x_title"> 
-                                <h2>Medication</h2>
-                                <div class="clearfix"></div>
-                            </div>
-                        <div class="x_content">
-                           <div id="chart_Followup_med" style="width: 100%; min-height: 400px"></div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"> 
                         <div class="x_panel">
                             <div class="x_title"> 
                                 <h2>Laboratory</h2>
@@ -68,6 +57,67 @@
                         <div class="x_content">
                            <div id="chart_Followup_lab" style="width: 100%; min-height: 400px"></div>
                         </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12"> 
+                        <div class="x_panel">
+                            <div class="x_title"> 
+                                <h2>Medication</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                        <div class="x_content">
+                           <div id="chart_Followup_med" style="width: 100%; min-height: 350px"></div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
+                        <div class="x_panel" style="min-height: 235px;">
+                            <div class="x_title"> 
+                                <h2>Effect</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table class="table table-bordered" >
+                                       <thead>
+                                           <tr>
+                                               <th>Datetime</th>
+                                               <th>Medication</th>
+                                               <th>Detail(effect)</th>
+                                           </tr>
+                                       </thead>
+                                       <tbody>
+                                           <tr>
+                                               <td>2/5/2017</td>
+                                               <td>Nutpapon</td>
+                                               <td>Bigger</td>
+                                           </tr>
+                                           <tr>
+                                               <td>7/6/2017</td>
+                                               <td>Wasutorn</td>
+                                               <td>Smaller</td>
+                                           </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="x_panel">
+                            <div class="x_title"> 
+                                <h2>Prediction</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a href=""><i class="fa fa-repeat"></i> Refresh</a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div style="text-align: center; height: 100px;">
+                                        <!--<div class="count" style="color: #FAAC58;">Active</div>
+                                            <div class="count" style="color: #81BEF7;">Inactive</div>-->
+                                        <div style="color: #FA5858; font-size: 50px; font-weight: 550; height: 60px;">Flare</div>
+                                        <span class="count_bottom"><i class="fa fa-calendar"></i> update from last week</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -211,26 +261,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--Chart-->
-                            <div class="x_panel">
-                                <div class="x_title"> 
-                                    <h2>Prediction</h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a href=""><i class="fa fa-repeat"></i> Refresh</a></li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                    <div class="row">
-                                        <div style="text-align: center; height: 100px;">
-                                            <!--<div class="count" style="color: #FAAC58;">Active</div>
-                                                <div class="count" style="color: #81BEF7;">Inactive</div>-->
-                                            <div style="color: #FA5858; font-size: 50px; font-weight: 550; height: 60px;">Flare</div>
-                                            <span class="count_bottom"><i class="fa fa-calendar"></i> update from last week</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div> 
@@ -278,7 +308,7 @@
             },
             grid: {
                 borderWidth: 0,
-                y: 130
+                y: 90
             },
             categoryAxis: {
                 axisLine: {
@@ -533,7 +563,7 @@
                         {% for lab in LABdata %}
                         '{{lab.name}}' : false,
                         {% endfor %}
-                        'Hb' : true
+                        'C3' : true, 'C4': true
                     },
                 },
                 /*toolbox: {
@@ -616,7 +646,7 @@
             },
             grid: {
                 borderWidth: 0,
-                y: 250
+                y: 180
             },
             categoryAxis: {
                 axisLine: {

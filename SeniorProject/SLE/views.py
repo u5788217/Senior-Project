@@ -371,9 +371,6 @@ def patientrecord(request, studynum):
     med7 = []
     med8 = []
     med9 = []
-    med10 = []
-    med11 = []
-    med12 = []
     all_med = Medication.objects.filter(studynumber = studynum)
     for each_med in all_med:
         med1.append(each_med.msle_2_1.doseperdate)
@@ -384,10 +381,7 @@ def patientrecord(request, studynum):
         med6.append(each_med.msle_4_3.doseperdate)
         med7.append(each_med.msle_4_5.doseperdate)
         med8.append(each_med.msle_4_7.doseperdate)
-        med9.append(each_med.mgt_2_1.doseperdate)
-        med10.append(each_med.mgt_3_2.doseperdate)
-        med11.append(each_med.mgt_3_3.doseperdate)
-        med12.append(each_med.mgt_4_3.doseperdate)
+        med9.append(each_med.msle_4_8.doseperdate)
     MEDdata.append({'name':'CQ', 'values':med1})  
     MEDdata.append({'name':'HCQ', 'values':med2})
     MEDdata.append({'name':'Prednisolone', 'values':med3})
@@ -396,10 +390,7 @@ def patientrecord(request, studynum):
     MEDdata.append({'name':'Cyclophosphamide', 'values':med6})
     MEDdata.append({'name':'MMF', 'values':med7})
     MEDdata.append({'name':'Cyclosporin A', 'values':med8})
-    MEDdata.append({'name':'Statins', 'values':med9})
-    MEDdata.append({'name':'CaCO3', 'values':med10})
-    MEDdata.append({'name':'Vitamin D', 'values':med11})
-    MEDdata.append({'name':'Folic acid', 'values':med12})
+    MEDdata.append({'name':'Tacrolimus', 'values':med9})    
     
     LABdata = []
     lab1 = []
@@ -429,8 +420,8 @@ def patientrecord(request, studynum):
         lab7.append(ToFloat(each_lab.wbc_hpf)) 
         lab8.append(ToFloat(each_lab.rbc_hpf))
         lab9.append(ToFloat(each_lab.protein))
-        lab10.append(ToFloat(each_lab.tp_spoturineprotein))
-        lab11.append(ToFloat(each_lab.cre_spoturinecreatinine))
+        lab10.append(ToFloat(each_lab.anticic))
+        lab11.append(ToFloat(each_lab.anti_dsdna))
         lab12.append(ToFloat(each_lab.upci))
         lab13.append(ToFloat(each_lab.cr))
         lab14.append(ToFloat(each_lab.albumin))
@@ -445,8 +436,8 @@ def patientrecord(request, studynum):
     LABdata.append({'name':'WBC_HPF', 'values':lab7})
     LABdata.append({'name':'RBC_HPF', 'values':lab8})
     LABdata.append({'name':'Protein', 'values':lab9})
-    LABdata.append({'name':'TP_SpotUrineProtein', 'values':lab10})
-    LABdata.append({'name':'CRE_SpotUrineCreatinine', 'values':lab11})
+    LABdata.append({'name':'AntiCIC', 'values':lab10})
+    LABdata.append({'name':'Anti_dsDNA', 'values':lab11})
     LABdata.append({'name':'UPCI', 'values':lab12})
     LABdata.append({'name':'Cr', 'values':lab13})
     LABdata.append({'name':'Albumin', 'values':lab14})

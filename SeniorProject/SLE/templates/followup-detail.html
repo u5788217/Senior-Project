@@ -5,13 +5,13 @@
         {
             if (current == '' || current == 'None' || previous == '' || previous == 'None'){ str = ' <i class="aero"><i class="fa fa-minus"></i></i>';}
             else if (current > previous){
-                str = ' <i class="red"><i class="fa fa-sort-asc"></i> '+(current-previous).toFixed(2)+'</i>';
+                str = ' <i class="red"><i class="fa fa-sort-asc"></i> '+Math.abs(current-previous).toFixed(2)+'</i>';
             }
             else if (previous == current){
                 str = ' <i class="aero"><i class="fa fa-minus"></i> 0 </i>';
             }
             else if (previous > current){
-                str = ' <i class="green"><i class="fa fa-sort-desc"></i> '+(previous-current).toFixed(2)+'</i>';
+                str = ' <i class="green"><i class="fa fa-sort-desc"></i> '+Math.abs(previous-current).toFixed(2)+'</i>';
             }    
             $(tag).append(str);
         }
@@ -162,7 +162,12 @@
                 </div>
               </div>
 		
-           
+           <div class="x_panel">
+                <div class="x_content">
+                    <label for="message">Note :</label>
+                      <p id="note" class="form-control" name="message"></p>
+                </div>
+            </div>
             
             <div class="x_panel">  
             <div class="" role="tabpanel" data-example-id="togglable-tabs">

@@ -90,11 +90,11 @@
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 						    <div class="x_panel">
                                 <div class="x_title"> 
-                                    <h2>SLICC criteria</h2>
+                                    <h2>Gender</h2>
                                     <div class="clearfix"></div>
                                 </div>
 							  <div class="x_content">
-                                  <div id="chart_SLICC" style="width: 100%; min-height: 400px"></div>
+                                  <div id="chart_Gender" style="width: 100%; min-height: 400px"></div>
 							  </div>
 							</div>
 						</div>
@@ -110,7 +110,7 @@
 							</div>
 						</div>
                 </div>
-				</div>
+            </div>
         </div>
 <script>
  if ("undefined" != typeof echarts) {
@@ -510,7 +510,7 @@
             i.setOption({
                 tooltip: {
                     trigger: "item",
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    formatter: "{a} <br/>{b} : {c} ({d}%)",
                 },
                 calculable: !0,
                 legend: {
@@ -546,8 +546,8 @@
                 }]
             })
         }
-        if ($("#chart_SLICC").length) {
-            var j = echarts.init(document.getElementById("chart_SLICC"), a);
+        if ($("#chart_Gender").length) {
+            var j = echarts.init(document.getElementById("chart_Gender"), a);
             j.setOption({
                 tooltip: {
                     trigger: "item",
