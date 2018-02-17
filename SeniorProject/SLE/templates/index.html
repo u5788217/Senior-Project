@@ -30,11 +30,17 @@
         </nav>
 
         <div id="page-wrapper" >
-            <div class="container-fluid">     
+            <div class="container-fluid">    
+                {% for s in Status %}
+                    {{s.Status}} -- {{s.num}}
+                {% endfor %}
+                {% for a in Ages %}
+                    {{a.studynumber}} -- {{a.age}}
+                {% endfor %}
                 <div class="row">
                     <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
-                            <div class="x_title"> 
+                            <div class="x_title">
                                 <h2>Flare percentage</h2>
                                 <div class="clearfix"></div>
                             </div>
@@ -491,7 +497,9 @@
                     type: "pie",
                     radius: "55%",
                     center: ["50%", "48%"],
-                    data: [ {value: 82, name: "Women", selected:true},{value: 18, name: "Men" }]
+                    data: [ {% for g in Gender%}
+                           {value: {{g.num}}, name: "{{g.Gender}}", selected:true},
+                           {% endfor %}]
                 }]
             });
             var k = {
