@@ -48,55 +48,122 @@ def getRowForPredict(studynumber):
         latest_sledai = None
         latest_med = None
         latest_cp = None
-    #BP1 = NullToZero(latest_visit.bp (1 first))
-    #BP2 = NullToZero(latest_visit.bp (2 second))
-    Albumin = NullToZero(latest_lab.albumin)
-    Anti_CIC = NullToZero(latest_lab.anticic)
-    Anti_dsDNA = NullToZero(latest_lab.anti_dsdna)
-    C3 = NullToZero(latest_lab.c3)
-    C4 = NullToZero(latest_lab.c4)
-    Cr = NullToZero(latest_lab.cr)
-    ESR = NullToZero(latest_lab.esr)
-    Hb = NullToZero(latest_lab.hb)
-    Platelets = NullToZero(latest_lab.platelets)
-    RBC_HPF = NullToZero(latest_lab.rbc_hpf)
-    UPCI = NullToZero(latest_lab.upci)
-    WBC = NullToZero(latest_lab.wbc)
-    WBC_HPF = NullToZero(latest_lab.wbc_hpf)
-    Fatigue = NullToZero(latest_cp.cp_1 )
-    WeightLoss = NullToZero(latest_cp.cp_2)
-    MalarRash = NullToZero(latest_cp.cp_3)
-    OtherRash = NullToZero(latest_cp.cp_6)
-    OralOrNasopharyngealUlcers = NullToZero(latest_cp.cp_8)
-    CQ = NullToZero(latest_med.msle_2_1.doseperdate)
-    HCQ = NullToZero(latest_med.msle_2_2.doseperdate)
-    Prednisolone = NullToZero(latest_med.msle_3_1.doseperdate)
-    MethylprednisoloneIV = NullToZero(latest_med.msle_3_2.doseperdate)
-    DexamethasoneIV = NullToZero(latest_med.msle_3_3.doseperdate)
-    MTX = NullToZero(latest_med.msle_4_1.doseperdate)
-    Azathioprine = NullToZero(latest_med.msle_4_2.doseperdate)
-    CyclophosphamideOral = NullToZero(latest_med.msle_4_3.doseperdate)
-    CyclophosphamideIV = NullToZero(latest_med.msle_4_4.doseperdate)
-    MMF = NullToZero(latest_med.msle_4_5.doseperdate)
-    Myfortic = NullToZero(latest_med.msle_4_6.doseperdate)
-    CyclosporinA = NullToZero(latest_med.msle_4_7.doseperdate)
-    Tacrolimus_Prograft = NullToZero(latest_med.msle_4_8.doseperdate)
-    Danazol = NullToZero(latest_med.msle_4_9.doseperdate)
-    Colchicine = NullToZero(latest_med.msle_4_11.doseperdate)
-    Statins = NullToZero(latest_med.mgt_2_1.doseperdate)
-    Bisphosphonates = NullToZero(latest_med.mgt_3_1.doseperdate)
-    CaCO3 = NullToZero(latest_med.mgt_3_2.doseperdate)
-    VitaminD = NullToZero(latest_med.mgt_3_3.doseperdate)
-    ASA = NullToZero(latest_med.mgt_4_1.doseperdate)
-    Warfarin = NullToZero(latest_med.mgt_4_2.doseperdate )
-    FolicAcid = NullToZero(latest_med.mgt_4_3.doseperdate)
-    Psychosis = NullToZero(latest_sledai.psychosis)
-    LupusHeadache = NullToZero(latest_sledai.lupusheadache)
-    Vasculitis = NullToZero(latest_sledai.vasculitis)
-    NewRash = NullToZero(latest_sledai.rash)
-    Pericarditis = NullToZero(latest_sledai.pericarditis)
     
-    Case = [[BP1,BP2,Albumin,Anti_CIC,Anti_dsDNA,C3,C4,Cr,ESR,Hb,Platelets,RBC_HPF,UPCI,WBC,WBC_HPF,Fatigue,WeightLoss,MalarRash,OtherRash,OralOrNasopharyngealUlcers,CQ,HCQ,Prednisolone,MethylprednisoloneIV,DexamethasoneIV,MTX,Azathioprine,CyclophosphamideOral,CyclophosphamideIV,MMF,Myfortic,CyclosporinA,Tacrolimus_Prograft,Danazol,Colchicine,Statins,Bisphosphonates,CaCO3,VitaminD,ASA,Warfarin,FolicAcid,Psychosis,LupusHeadache,Vasculitis,NewRash,Pericarditis]]
+    if(latest_visit is not None and latest_visit.bp is not None): 
+        BP = latest_visit.bp.split('/')
+        try:
+            BP1 = NullToZero(BP[0])
+            BP2 = NullToZero(BP[1])
+        except IndexError:
+            BP1 = 0
+            BP2 = 0
+    else:
+        BP1 = 0
+        BP2 = 0
+    
+    if(latest_lab is not None): 
+        Albumin = NullToZero(latest_lab.albumin)
+        Anti_CIC = NullToZero(latest_lab.anticic)
+        Anti_dsDNA = NullToZero(latest_lab.anti_dsdna)
+        C3 = NullToZero(latest_lab.c3)
+        C4 = NullToZero(latest_lab.c4)
+        Cr = NullToZero(latest_lab.cr)
+        ESR = NullToZero(latest_lab.esr)
+        Hb = NullToZero(latest_lab.hb)
+        Platelets = NullToZero(latest_lab.platelets)
+        RBC_HPF = NullToZero(latest_lab.rbc_hpf)
+        UPCI = NullToZero(latest_lab.upci)
+        WBC = NullToZero(latest_lab.wbc)
+        WBC_HPF = NullToZero(latest_lab.wbc_hpf)
+    else:
+        Albumin = 0
+        Anti_CIC = 0
+        Anti_dsDNA =0
+        C3 = 0
+        C4 = 0
+        Cr = 0
+        ESR = 0
+        Hb = 0
+        Platelets = 0
+        RBC_HPF = 0
+        UPCI = 0
+        WBC = 0
+        WBC_HPF =0
+    if(latest_cp is not None): 
+        Fatigue = NullToZero(latest_cp.cp_1 )
+        WeightLoss = NullToZero(latest_cp.cp_2)
+        MalarRash = NullToZero(latest_cp.cp_3)
+        if(latest_cp.cp_6 is not None): OtherRash = 1
+        else: OtherRash = 0
+        OralOrNasopharyngealUlcers = NullToZero(latest_cp.cp_8)
+    else:
+        Fatigue = 0
+        WeightLoss = 0
+        MalarRash = 0
+        OtherRash = 0
+        OralOrNasopharyngealUlcers = 0
+    if(latest_med is not None): 
+        CQ = NullToZero(latest_med.msle_2_1.doseperdate)
+        HCQ = NullToZero(latest_med.msle_2_2.doseperdate)
+        Prednisolone = NullToZero(latest_med.msle_3_1.doseperdate)
+        MethylprednisoloneIV = NullToZero(latest_med.msle_3_2.doseperdate)
+        DexamethasoneIV = NullToZero(latest_med.msle_3_3.doseperdate)
+        MTX = NullToZero(latest_med.msle_4_1.doseperdate)
+        Azathioprine = NullToZero(latest_med.msle_4_2.doseperdate)
+        CyclophosphamideOral = NullToZero(latest_med.msle_4_3.doseperdate)
+        CyclophosphamideIV = NullToZero(latest_med.msle_4_4.doseperdate)
+        MMF = NullToZero(latest_med.msle_4_5.doseperdate)
+        Myfortic = NullToZero(latest_med.msle_4_6.doseperdate)
+        CyclosporinA = NullToZero(latest_med.msle_4_7.doseperdate)
+        Tacrolimus_Prograft = NullToZero(latest_med.msle_4_8.doseperdate)
+        Danazol = NullToZero(latest_med.msle_4_9.doseperdate)
+        Colchicine = NullToZero(latest_med.msle_4_11.doseperdate)
+        Statins = NullToZero(latest_med.mgt_2_1.doseperdate)
+        Bisphosphonates = NullToZero(latest_med.mgt_3_1.doseperdate)
+        CaCO3 = NullToZero(latest_med.mgt_3_2.doseperdate)
+        VitaminD = NullToZero(latest_med.mgt_3_3.doseperdate)
+        ASA = NullToZero(latest_med.mgt_4_1.doseperdate)
+        Warfarin = NullToZero(latest_med.mgt_4_2.doseperdate )
+        FolicAcid = NullToZero(latest_med.mgt_4_3.doseperdate)
+    else:
+        CQ = 0
+        HCQ = 0
+        Prednisolone = 0
+        MethylprednisoloneIV = 0
+        DexamethasoneIV = 0
+        MTX = 0
+        Azathioprine = 0
+        CyclophosphamideOral = 0
+        CyclophosphamideIV = 0
+        MMF = 0
+        Myfortic = 0
+        CyclosporinA = 0
+        Tacrolimus_Prograft = 0
+        Danazol = 0
+        Colchicine = 0
+        Statins = 0
+        Bisphosphonates = 0
+        CaCO3 = 0
+        VitaminD = 0
+        ASA = 0
+        Warfarin = 0
+        FolicAcid = 0
+    if(latest_sledai is not None): 
+        Psychosis = NullToZero(latest_sledai.psychosis)
+        LupusHeadache = NullToZero(latest_sledai.lupusheadache)
+        Vasculitis = NullToZero(latest_sledai.vasculitis)
+        NewRash = NullToZero(latest_sledai.rash)
+        Pericarditis = NullToZero(latest_sledai.pericarditis)
+    else:
+        Psychosis = 0
+        LupusHeadache = 0
+        Vasculitis = 0
+        NewRash = 0
+        Pericarditis = 0
+    
+    Case = np.array([[BP1,BP2,Albumin,Anti_CIC,Anti_dsDNA,C3,C4,Cr,ESR,Hb,Platelets,RBC_HPF,UPCI,WBC,WBC_HPF,Fatigue,WeightLoss,MalarRash,OtherRash,OralOrNasopharyngealUlcers,CQ,HCQ,Prednisolone,MethylprednisoloneIV,DexamethasoneIV,MTX,Azathioprine,CyclophosphamideOral,CyclophosphamideIV,MMF,Myfortic,CyclosporinA,Tacrolimus_Prograft,Danazol,Colchicine,Statins,Bisphosphonates,CaCO3,VitaminD,ASA,Warfarin,FolicAcid,Psychosis,LupusHeadache,Vasculitis,NewRash,Pericarditis]], np.float64)
+    sc = StandardScaler()
+    Case = sc.fit_transform(Case)
 
     return Case
 
@@ -149,15 +216,7 @@ def login(request):
     if request.user.is_authenticated is True:
         return render(request, 'index.html',{'patients': Studyidentity.objects.all()})
     else :
-        project_path = settings.PROJECT_ROOT
-        modelFile = project_path+'/final_gbmodel_joblib.sav'
-        loaded_model = joblib.load(modelFile)
-        a = np.array([[108,72,0,0,0,0.97,0.25,0.67,45,13,270000,5.13,0,6400,5,0,0,0,0,0,0,200,10,0,0,0,100,0,0,0,0,71.42857143,0,0,0,0,0,1250,2857.142857,0,0,0,0,0,0,0,0]], np.float64)
-        sc = StandardScaler()
-        test = sc.fit_transform(a)
-        loaded_model = joblib.load(modelFile)
-        result = loaded_model.predict(test)
-        return render(request, 'login.html',{'test':result})
+        return render(request, 'login.html')
 
 def getACRdata():
     ACRdata =[]
@@ -326,12 +385,22 @@ def index(request):
             Gender = getGenderdata()
             Status = getCurrentStatus()
             Ages = getAges()
+            project_path = settings.PROJECT_ROOT
+            modelFile = project_path+'/final_gbmodel_joblib.sav'
+            loaded_model = joblib.load(modelFile)
+            Results = []
+            for j in Studyidentity.objects.all():
+                test = getRowForPredict(j)
+                result = loaded_model.predict(test)
+                Results.append({'ST':j.studynumber, 're':result})
+    
             return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 
                                                  'ACRdata':ACRdata, 
                                                  'SLICCdata':slicc_top5,
                                                  'Gender':Gender,
                                                  'Status':Status,
-                                                 'Ages':Ages})
+                                                 'Ages':Ages,
+                                                 'Results':Results})
         else:
             return render(request, 'login.html',{
                 'login_message' : 'Incorrect username or password.',})
@@ -342,12 +411,22 @@ def index(request):
             Gender = getGenderdata()
             Status = getCurrentStatus()
             Ages = getAges()
+            project_path = settings.PROJECT_ROOT
+            modelFile = project_path+'/final_gbmodel_joblib.sav'
+            loaded_model = joblib.load(modelFile)
+            Results = []
+            for j in Studyidentity.objects.all():
+                test = getRowForPredict(j)
+                result = loaded_model.predict(test)
+                Results.append({'ST':j.studynumber, 're':result})
+    
             return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 
                                                  'ACRdata':ACRdata, 
                                                  'SLICCdata':slicc_top5,
                                                  'Gender':Gender,
                                                  'Status':Status,
-                                                 'Ages':Ages})
+                                                 'Ages':Ages,
+                                                 'Results':Results})
         else:
             return render(request, 'login.html',{
                 'login_message' : 'Incorrect username or password.',})
@@ -359,6 +438,13 @@ def logout(request):
 
 @login_required(login_url='login')
 def patientrecord(request, studynum):
+    project_path = settings.PROJECT_ROOT
+    modelFile = project_path+'/final_gbmodel_joblib.sav'
+    loaded_model = joblib.load(modelFile)
+    test = getRowForPredict(studynum)
+    loaded_model = joblib.load(modelFile)
+    result = loaded_model.predict(test)
+    
     SLEDAIdata =[]   
     sledai1 = []
     sledai2 = []
@@ -532,7 +618,7 @@ def patientrecord(request, studynum):
     'patient':Studyidentity.objects.get(studynumber = studynum),
     'ACRpatient':Acrcriteria.objects.get(studynumber = studynum),
     'SLICCpatient':Slicccriteria.objects.get(studynumber = studynum),
-    'SLEDAIdata':SLEDAIdata,'MEDdata':MEDdata, 'LABdata':LABdata})
+    'SLEDAIdata':SLEDAIdata,'MEDdata':MEDdata, 'LABdata':LABdata, 'Result':result,'TestCase':test})
 
 @login_required(login_url='login')
 def followupnew(request, studynum):

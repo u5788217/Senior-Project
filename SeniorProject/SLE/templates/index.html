@@ -29,6 +29,8 @@
             </ul>
         </nav>
 
+{% for i in Results %} {{i.re}} {% endfor %}
+
         <div id="page-wrapper" >
             <div class="container-fluid"> 
                 <div class="row">
@@ -101,6 +103,7 @@
                                                 <th>Study Number</th>                                               
                                                 <th>Gender</th>
                                                 <th>Detail</th>
+                                                <th>PREDECT</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
@@ -110,6 +113,7 @@
                                                 <td>{{ patient.studynumber }}</td>
                                                 <td>{{ patient.gender }}</td>
                                                 <td><a href="{% url 'patientrecord' patient.studynumber %}">See Detail</a></td>
+                                                <td></td>
                                                 <td><span class="label label-info">Inactive</span></td>
                                             </tr>
                                         {% endfor %}
