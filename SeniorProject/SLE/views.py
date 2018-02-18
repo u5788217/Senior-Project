@@ -191,10 +191,31 @@ def getCurrentStatus():
 def getAges():
     Ages = []
     now = datetime.now().date()
+    Group1 = 0
+    Group2 = 0
+    Group3 = 0
+    Group4 = 0
+    Group5 = 0
+    Group6 = 0
+    Group7 = 0
     for patient in Studyidentity.objects.all():
         if(patient.dateofbirth is not None):
             delta = now-patient.dateofbirth
-            Ages.append({'studynumber':patient.studynumber, 'age':int(delta.total_seconds()*3.17098e-8)}) 
+            age = int(delta.total_seconds()*3.17098e-8)
+            if(age < 21): Group1 += 1
+            if(age > 20 and age < 31): Group2 += 1
+            if(age > 30 and age < 41): Group3 += 1
+            if(age > 40 and age < 51): Group4 += 1
+            if(age > 50 and age < 61): Group5 += 1
+            if(age > 60): Group6 += 1
+        else: Group7 += 1
+    Ages.append({'Group':'<20', 'Number':Group1}) 
+    Ages.append({'Group':'20-30', 'Number':Group2}) 
+    Ages.append({'Group':'30-40', 'Number':Group3}) 
+    Ages.append({'Group':'40-50', 'Number':Group4}) 
+    Ages.append({'Group':'50-60', 'Number':Group5}) 
+    Ages.append({'Group':'>60', 'Number':Group6}) 
+    Ages.append({'Group':'Missing', 'Number':Group7})
     return Ages
 
 def index(request):
@@ -902,10 +923,13 @@ def followDetail(request, visitid):
         PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
         PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
         PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+        PreviousDM = Damageindex.objects.get(visitingid = PreviousVisit).di_total
+        PreviousSLEDAI = Diseaseactivitysledai.objects.get(visitingid = PreviousVisit).sledai_total
     except IndexError:
         PreviousLab = None
         PreviousMed = None
-    
+        PreviousDM = None
+        PreviousSLEDAI = None
     return render(request, 'followup-detail.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
                       'med':Medication.objects.get(visitingid = visitid),
@@ -915,7 +939,9 @@ def followDetail(request, visitid):
                       'damageindex':Damageindex.objects.get(visitingid = visitid),
                       'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = visitid),
                       'PreviousLab':PreviousLab,
-                      'PreviousMed':PreviousMed})
+                      'PreviousMed':PreviousMed,
+                      'PreviousDM':PreviousDM,
+                      'PreviousSLEDAI':PreviousSLEDAI})
 
 
 @login_required(login_url='login')
