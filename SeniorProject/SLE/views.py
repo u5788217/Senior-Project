@@ -16,6 +16,16 @@ from .models import Visiting, Clinicalpresentation, Damageindex, Diseaseactivity
 from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ObjectDoesNotExist
 
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+from sklearn import model_selection
+from sklearn.linear_model import LogisticRegression
+from sklearn.externals import joblib
+
+import numpy as np
+import os
+from django.conf import settings
+
 def NullToZero(value):
     if value is None: value = 0
     return value
@@ -139,7 +149,15 @@ def login(request):
     if request.user.is_authenticated is True:
         return render(request, 'index.html',{'patients': Studyidentity.objects.all()})
     else :
-        return render(request, 'login.html')
+        project_path = settings.PROJECT_ROOT
+        modelFile = project_path+'/final_gbmodel_joblib.sav'
+        loaded_model = joblib.load(modelFile)
+        a = np.array([[108,72,0,0,0,0.97,0.25,0.67,45,13,270000,5.13,0,6400,5,0,0,0,0,0,0,200,10,0,0,0,100,0,0,0,0,71.42857143,0,0,0,0,0,1250,2857.142857,0,0,0,0,0,0,0,0]], np.float64)
+        sc = StandardScaler()
+        test = sc.fit_transform(a)
+        loaded_model = joblib.load(modelFile)
+        result = loaded_model.predict(test)
+        return render(request, 'login.html',{'test':result})
 
 def getACRdata():
     ACRdata =[]
