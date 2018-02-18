@@ -16,6 +16,80 @@ from .models import Visiting, Clinicalpresentation, Damageindex, Diseaseactivity
 from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ObjectDoesNotExist
 
+def NullToZero(value):
+    if value is None: value = 0
+    return value
+
+def getRowForPredict(studynumber):
+    latest_visit = None
+    latest_lab = None
+    latest_sledai = None
+    latest_med = None
+    latest_cp = None
+    try:
+        latest_visit = Visiting.objects.filter(studynumber = studynumber).latest('visitdate')
+        latest_lab = Laboratoryinventoryinvestigation.objects.get(visitingid = latest_visit)
+        latest_sledai = Diseaseactivitysledai.objects.get(visitingid = latest_visit)
+        latest_med = Medication.objects.get(visitingid = latest_visit)
+        latest_cp = Clinicalpresentation.objects.get(visitingid = latest_visit)
+    except ObjectDoesNotExist:
+        latest_visit = None
+        latest_lab = None
+        latest_sledai = None
+        latest_med = None
+        latest_cp = None
+    #BP1 = NullToZero(latest_visit.bp (1 first))
+    #BP2 = NullToZero(latest_visit.bp (2 second))
+    Albumin = NullToZero(latest_lab.albumin)
+    Anti_CIC = NullToZero(latest_lab.anticic)
+    Anti_dsDNA = NullToZero(latest_lab.anti_dsdna)
+    C3 = NullToZero(latest_lab.c3)
+    C4 = NullToZero(latest_lab.c4)
+    Cr = NullToZero(latest_lab.cr)
+    ESR = NullToZero(latest_lab.esr)
+    Hb = NullToZero(latest_lab.hb)
+    Platelets = NullToZero(latest_lab.platelets)
+    RBC_HPF = NullToZero(latest_lab.rbc_hpf)
+    UPCI = NullToZero(latest_lab.upci)
+    WBC = NullToZero(latest_lab.wbc)
+    WBC_HPF = NullToZero(latest_lab.wbc_hpf)
+    Fatigue = NullToZero(latest_cp.cp_1 )
+    WeightLoss = NullToZero(latest_cp.cp_2)
+    MalarRash = NullToZero(latest_cp.cp_3)
+    OtherRash = NullToZero(latest_cp.cp_6)
+    OralOrNasopharyngealUlcers = NullToZero(latest_cp.cp_8)
+    CQ = NullToZero(latest_med.msle_2_1.doseperdate)
+    HCQ = NullToZero(latest_med.msle_2_2.doseperdate)
+    Prednisolone = NullToZero(latest_med.msle_3_1.doseperdate)
+    MethylprednisoloneIV = NullToZero(latest_med.msle_3_2.doseperdate)
+    DexamethasoneIV = NullToZero(latest_med.msle_3_3.doseperdate)
+    MTX = NullToZero(latest_med.msle_4_1.doseperdate)
+    Azathioprine = NullToZero(latest_med.msle_4_2.doseperdate)
+    CyclophosphamideOral = NullToZero(latest_med.msle_4_3.doseperdate)
+    CyclophosphamideIV = NullToZero(latest_med.msle_4_4.doseperdate)
+    MMF = NullToZero(latest_med.msle_4_5.doseperdate)
+    Myfortic = NullToZero(latest_med.msle_4_6.doseperdate)
+    CyclosporinA = NullToZero(latest_med.msle_4_7.doseperdate)
+    Tacrolimus_Prograft = NullToZero(latest_med.msle_4_8.doseperdate)
+    Danazol = NullToZero(latest_med.msle_4_9.doseperdate)
+    Colchicine = NullToZero(latest_med.msle_4_11.doseperdate)
+    Statins = NullToZero(latest_med.mgt_2_1.doseperdate)
+    Bisphosphonates = NullToZero(latest_med.mgt_3_1.doseperdate)
+    CaCO3 = NullToZero(latest_med.mgt_3_2.doseperdate)
+    VitaminD = NullToZero(latest_med.mgt_3_3.doseperdate)
+    ASA = NullToZero(latest_med.mgt_4_1.doseperdate)
+    Warfarin = NullToZero(latest_med.mgt_4_2.doseperdate )
+    FolicAcid = NullToZero(latest_med.mgt_4_3.doseperdate)
+    Psychosis = NullToZero(latest_sledai.psychosis)
+    LupusHeadache = NullToZero(latest_sledai.lupusheadache)
+    Vasculitis = NullToZero(latest_sledai.vasculitis)
+    NewRash = NullToZero(latest_sledai.rash)
+    Pericarditis = NullToZero(latest_sledai.pericarditis)
+    
+    Case = [[BP1,BP2,Albumin,Anti_CIC,Anti_dsDNA,C3,C4,Cr,ESR,Hb,Platelets,RBC_HPF,UPCI,WBC,WBC_HPF,Fatigue,WeightLoss,MalarRash,OtherRash,OralOrNasopharyngealUlcers,CQ,HCQ,Prednisolone,MethylprednisoloneIV,DexamethasoneIV,MTX,Azathioprine,CyclophosphamideOral,CyclophosphamideIV,MMF,Myfortic,CyclosporinA,Tacrolimus_Prograft,Danazol,Colchicine,Statins,Bisphosphonates,CaCO3,VitaminD,ASA,Warfarin,FolicAcid,Psychosis,LupusHeadache,Vasculitis,NewRash,Pericarditis]]
+
+    return Case
+
 def ListToArray(List):
     Array = []
     for item in List :
