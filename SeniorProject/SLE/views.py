@@ -243,27 +243,23 @@ def getGenderdata():
     Gender.append({'Gender':'Male', 'num':Studyidentity.objects.filter(gender = 'Male').count()})
     return Gender
 
-
 def getCurrentStatus():
     Status = []
     flare = 0
     active = 0
     inactive = 0
-    total = 0
     for patient in Studyidentity.objects.all():
         latest_visit = None
         try:
             latest_visit = Diseaseactivitysledai.objects.filter(studynumber = patient).latest('visitdate')
             if(latest_visit.status == 'flare'): flare += 1
             if(latest_visit.status == 'active'): active += 1
-            if(latest_visit.status == 'inactive'): inactive += 1
-            total += 1
+            if(latest_visit.status == 'inactive'): inactive += 1 
         except ObjectDoesNotExist:
             latest_visit = None
     Status.append({'Status':'Flare', 'num':flare})    
     Status.append({'Status':'Active', 'num':active})
     Status.append({'Status':'Inactive', 'num':inactive})
-    Status.append({'Status':'Total', 'num':total})
     return Status
 
 def getAges():
@@ -287,15 +283,14 @@ def getAges():
             if(age > 50 and age < 61): Group5 += 1
             if(age > 60): Group6 += 1
         else: Group7 += 1
-    Ages.append({'Group':'less 20', 'Number':Group1}) 
+    Ages.append({'Group':'<20', 'Number':Group1}) 
     Ages.append({'Group':'20-30', 'Number':Group2}) 
     Ages.append({'Group':'30-40', 'Number':Group3}) 
     Ages.append({'Group':'40-50', 'Number':Group4}) 
     Ages.append({'Group':'50-60', 'Number':Group5}) 
-    Ages.append({'Group':'more 60', 'Number':Group6}) 
+    Ages.append({'Group':'>60', 'Number':Group6}) 
     Ages.append({'Group':'Missing', 'Number':Group7})
     return Ages
-
 
 def index(request):
     if request.method == "POST": 

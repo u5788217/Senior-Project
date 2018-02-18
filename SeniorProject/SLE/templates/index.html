@@ -30,24 +30,22 @@
         </nav>
 
         <div id="page-wrapper" >
-            <div class="container-fluid"> 
+            <div class="container-fluid">    
+                {% for s in Status %}
+                    {{s.Status}} -- {{s.num}}
+                {% endfor %}
+                {% for a in Ages %}
+                   <br> {{a.Group}} -- {{a.Number}}
+                {% endfor %}
                 <div class="row">
                     <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
                             <div class="x_title">
-                                <h2>Flare/Active/Inactive percentage</h2>
+                                <h2>Flare percentage</h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <div id="chart_Percent_Flare" style="width: 100%; min-height: 180px"></div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <div id="chart_Percent_Active" style="width: 100%; min-height: 180px"></div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <div id="chart_Percent_Inactive" style="width: 100%; min-height: 180px"></div>
-                                </div>
+                                <div id="chart_index01" style="width: 100%; min-height: 225px"></div>
                             </div>
                         </div>
 					  </div>
@@ -58,18 +56,18 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <div id="chart_Gender" style="width: 100%; min-height: 180px"></div>
+                                <div id="chart_Gender" style="width: 100%; min-height: 225px"></div>
                             </div>
                         </div>
 					  </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
 						<div class="x_panel">
                             <div class="x_title"> 
                                 <h2>Age</h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <div id="chart_Age" style="width: 100%; min-height: 180px"></div>
+                                <div id="chart_Age" style="width: 100%; min-height: 225px"></div>
                             </div>
                         </div>
 					  </div>
@@ -162,10 +160,8 @@
             },
             grid: {
                 borderWidth: 0,
-                y: 26,
-                y2: 20,
-                x: 70,
-                x2: 70
+                y: 50,
+                y2: 30
             },
             categoryAxis: {
                 axisLine: {
@@ -336,219 +332,115 @@
                 fontFamily: "Arial, Verdana, sans-serif"
             }
         };
-        var b = {
-            color: ["#74AFEA"],
-            title: {
-                itemGap: 8,
-                textStyle: {
-                    fontWeight: "normal",
-                    color: "#408829"
-                }
-            },
-            dataRange: {
-                color: ["#1f610a", "#97b58d"]
-            },
-            toolbox: {
-                color: ["#408829", "#408829", "#408829", "#408829"]
-            },
-            tooltip: {
-                backgroundColor: "rgba(0,0,0,0.5)",
-                axisPointer: {
-                    type: "line",
-                    lineStyle: {
-                        color: "#408829",
-                        type: "dashed"
-                    },
-                    crossStyle: {
-                        color: "#408829"
-                    },
-                    shadowStyle: {
-                        color: "rgba(200,200,200,0.3)"
-                    }
-                }
-            },
-            dataZoom: {
-                dataBackgroundColor: "#eee",
-                fillerColor: "rgba(64,136,41,0.2)",
-                handleColor: "#408829"
-            },
-            grid: {
-                borderWidth: 0,
-                y: 26,
-                y2: 20,
-                x: 70,
-                x2: 70
-            },
-            categoryAxis: {
-                axisLine: {
-                    lineStyle: {
-                        color: "#408829"
-                    }
+        
+        if ($("#chart_index01").length) {
+            var b = echarts.init(document.getElementById("chart_index01"), a);
+            b.setOption({
+                tooltip: {
+                    trigger: "axis"
                 },
-                splitLine: {
-                    lineStyle: {
-                        color: ["#eee"]
-                    }
-                }
-            },
-            valueAxis: {
-                axisLine: {
-                    lineStyle: {
-                        color: "#408829"
-                    }
-                },
-                splitArea: {
-                    show: !0,
-                    areaStyle: {
-                        color: ["rgba(250,250,250,0.1)", "rgba(200,200,200,0.1)"]
-                    }
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: ["#eee"]
-                    }
-                }
-            },
-            timeline: {
-                lineStyle: {
-                    color: "#408829"
-                },
-                controlStyle: {
-                    normal: {
-                        color: "#408829"
-                    },
-                    emphasis: {
-                        color: "#408829"
-                    }
-                }
-            },
-            k: {
-                itemStyle: {
-                    normal: {
-                        color: "#68a54a",
-                        color0: "#a9cba2",
-                        lineStyle: {
-                            width: 1,
-                            color: "#408829",
-                            color0: "#86b379"
-                        }
-                    }
-                }
-            },
-            map: {
-                itemStyle: {
-                    normal: {
-                        areaStyle: {
-                            color: "#ddd"
+                toolbox: {
+                    show: true,
+                    feature : {
+                        magicType : {
+                            show: true,
+                            title : {
+                                line : 'Line chart',
+                                bar : 'Bar chart'
+                            },
+                            type: ['line', 'bar'],
                         },
-                        label: {
-                            textStyle: {
-                                color: "#c12e34"
-                            }
+                        restore : {show: true,
+                            title : 'restore'
+                        },
+                    }
+                },
+                xAxis: [{
+                    type: "category",
+                    boundaryGap : true,
+                    name: 'date/time',
+                    data : function (){
+                        var list = [];
+                        for (var i = 1; i <= 12; i++) {
+                            list.push(i); 
+                            //(visitdate)
                         }
+                        return list;
+                    }()
+                }],
+                yAxis: [{
+                    type: "value",
+                    name: 'Number of patient'
+                }],
+                series: [{
+                    name: "Inactive", //medicine name
+                    type: "bar",
+                    data: [2, 4.9, 7, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20, 6.4, 3.3], //doseperdate 
+                    markPoint: {
+                        data: [{
+                            type: "max",
+                            name: "???"
+                        }, {
+                            type: "min",
+                            name: "???"
+                        }]
                     },
-                    emphasis: {
-                        areaStyle: {
-                            color: "#99d2dd"
-                        },
-                        label: {
-                            textStyle: {
-                                color: "#c12e34"
-                            }
-                        }
+                    markLine: {
+                        data: [{
+                            type: "average",
+                            name: "???"
+                        }]
                     }
-                }
-            },
-            force: {
-                itemStyle: {
-                    normal: {
-                        linkStyle: {
-                            strokeColor: "#408829"
-                        }
-                    }
-                }
-            },
-            chord: {
-                padding: 4,
-                itemStyle: {
-                    normal: {
-                        lineStyle: {
-                            width: 1,
-                            color: "rgba(128, 128, 128, 0.5)"
-                        },
-                        chordStyle: {
-                            lineStyle: {
-                                width: 1,
-                                color: "rgba(128, 128, 128, 0.5)"
-                            }
-                        }
+                }, {
+                    name: "Active",
+                    type: "bar",
+                    data: [2.6, 5.9, 9, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6, 2.3],
+                    markPoint: {
+                        data: [{
+                            name: "sales",
+                            value: 182.2,
+                            xAxis: 7,
+                            yAxis: 183
+                        }, {
+                            name: "purchases",
+                            value: 2.3,
+                            xAxis: 11,
+                            yAxis: 3
+                        }]
                     },
-                    emphasis: {
-                        lineStyle: {
-                            width: 1,
-                            color: "rgba(128, 128, 128, 0.5)"
-                        },
-                        chordStyle: {
-                            lineStyle: {
-                                width: 1,
-                                color: "rgba(128, 128, 128, 0.5)"
-                            }
-                        }
-                    }
-                }
-            },
-            gauge: {
-                startAngle: 225,
-                endAngle: -45,
-                axisLine: {
-                    show: !0,
-                    lineStyle: {
-                        color: [
-                            [.2, "#86b379"],
-                            [.8, "#68a54a"],
-                            [1, "#408829"]
-                        ],
-                        width: 8
+                    markLine: {
+                        data: [{
+                            type: "average",
+                            name: "???"
+                        }]
                     }
                 },
-                axisTick: {
-                    splitNumber: 10,
-                    length: 12,
-                    lineStyle: {
-                        color: "auto"
+                        {
+                    name: "Flare",
+                    type: "bar",
+                    data: [2.6, 5.9, 9, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6, 2.3],
+                    markPoint: {
+                        data: [{
+                            name: "sales",
+                            value: 182.2,
+                            xAxis: 7,
+                            yAxis: 183
+                        }, {
+                            name: "purchases",
+                            value: 2.3,
+                            xAxis: 11,
+                            yAxis: 3
+                        }]
+                    },
+                    markLine: {
+                        data: [{
+                            type: "average",
+                            name: "???"
+                        }]
                     }
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: "auto"
-                    }
-                },
-                splitLine: {
-                    length: 18,
-                    lineStyle: {
-                        color: "auto"
-                    }
-                },
-                pointer: {
-                    length: "90%",
-                    color: "auto"
-                },
-                title: {
-                    textStyle: {
-                        color: "#333"
-                    }
-                },
-                detail: {
-                    textStyle: {
-                        color: "auto"
-                    }
-                }
-            },
-            textStyle: {
-                fontFamily: "Arial, Verdana, sans-serif"
-            }
-        };
-    
+                }]
+            })
+        }
         if ($("#chart_ACR").length) {
             var i = echarts.init(document.getElementById("chart_ACR"), a);
             i.setOption({
@@ -635,246 +527,120 @@
                     }
                 }
         }
-          
-       if ($("#chart_Percent_Flare").length) {
-            var j = echarts.init(document.getElementById("chart_Percent_Flare"), a);
-            j.setOption({
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            series: [{
-                name: 'Flare patient',
-                type: 'pie',
-                radius: ['70%', '90%'],
-                label: {
-                    normal: {
-                        position: 'center'
+        
+        var data = [30, 20, 54, 21, 90, 30, 10];
+        var gap = 0;
+        var total = 0;
+        var maxIndex;
+        var dataArray = (function(){
+                var max = Math.max.apply(Math, data);
+                var min = Math.min.apply(Math, data);
+                gap = Math.round((max - min));
+                var nd = [{value:data[0] + gap,symbol:'none'}];
+                for (var i = 0, l = data.length; i < l; i++) {
+                    if (data[i] == max) {
+                        maxIndex = i;
                     }
-                },
-                data: [{
-                    {% for s in Status %}
-                       {% if s.Status == 'Flare' %}
-                            value: {{s.num}},
-                       {% endif %}
-                    {% endfor %}
-                    name: 'Flare',
-                    label: {
-                        normal: {
-                            formatter: '{d}%',
-                            textStyle: {
-                                fontSize: 25
-                            }
-                        }
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: '#D56062'
-                        },
-                        emphasis: {
-                            color: '#D56062'
-                        }
-                    },
-                }, {
-                    {% for s in Status %}
-                       {% if s.Status == 'Total' %}
-                            value: {{s.num}},
-                       {% endif %}
-                    {% endfor %}
-                    name: 'Not Flare',
-                    label: {
-                        normal: {
-                            formatter: '\Flare',
-                            textStyle: {
-                                color: '#555',
-                                fontSize: 15
-                            }
-                        }
-                    },
-                    tooltip: {
-                        show: false
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: '#aaa'
-                        },
-                        emphasis: {
-                            color: '#aaa'
-                        }
-                    },
-                    hoverAnimation: false
-                }]
-            }]
-            });
-        }
-     if ($("#chart_Percent_Active").length) {
-            var j = echarts.init(document.getElementById("chart_Percent_Active"), a);
-            j.setOption({
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            series: [{
-                name: 'Active patient',
-                type: 'pie',
-                radius: ['70%', '90%'],
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    {% for s in Status %}
-                       {% if s.Status == 'Active' %}
-                            value: {{s.num}},
-                       {% endif %}
-                    {% endfor %}
-                    name: 'Active',
-                    label: {
-                        normal: {
-                            formatter: '{d}%',
-                            textStyle: {
-                                fontSize: 25
-                            }
-                        }
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: '#ECC30B'
-                        },
-                        emphasis: {
-                            color: '#ECC30B'
-                        }
-                    }
-                }, {
-                    {% for s in Status %}
-                       {% if s.Status == 'Total' %}
-                            value: {{s.num}},
-                       {% endif %}
-                    {% endfor %}
-                    name: 'Not Active',
-                    label: {
-                        normal: {
-                            formatter: '\Active',
-                            textStyle: {
-                                color: '#555',
-                                fontSize: 15
-                            }
-                        }
-                    },
-                    tooltip: {
-                        show: false
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: '#aaa'
-                        },
-                        emphasis: {
-                            color: '#aaa'
-                        }
-                    },
-                    hoverAnimation: false
-                }]
-            }]
-            });
-        }
-     if ($("#chart_Percent_Inactive").length) {
-            var j = echarts.init(document.getElementById("chart_Percent_Inactive"));
-            j.setOption({
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            series: [{
-                name: 'Inactive patient',
-                type: 'pie',
-                radius: ['70%', '90%'],
-                label: {
-                    normal: {
-                        position: 'center'
-                    }
-                },
-                data: [{
-                    {% for s in Status %}
-                       {% if s.Status == 'Inactive' %}
-                            value: {{s.num}},
-                       {% endif %}
-                    {% endfor %}
-                    name: 'Inactive',
-                    label: {
-                        normal: {
-                            formatter: '{d}%',
-                            textStyle: {
-                                fontSize: 25
-                            }
-                        }
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: '#34495E'
-                        },
-                        emphasis: {
-                            color: '#34495E'
-                        }
-                    }
-                }, {
-                    {% for s in Status %}
-                       {% if s.Status == 'Total' %}
-                            value: {{s.num}},
-                       {% endif %}
-                    {% endfor %}
-                    name: 'Not Inactive',
-                    label: {
-                        normal: {
-                            formatter: '\Inactive',
-                            textStyle: {
-                                color: '#555',
-                                fontSize: 15
-                            }
-                        }
-                    },
-                    tooltip: {
-                        show: false
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: '#aaa'
-                        },
-                        emphasis: {
-                            color: '#aaa'
-                        }
-                    },
-                    hoverAnimation: false
-                }]
-            }]
-            });
-        }
+                    total += data[i];
+                    nd.push(data[i] + gap);
+                }
+                nd.push({value:data[data.length - 1] + gap,symbol:'none'});
+                return nd;
+            })();
+            
         if ($("#chart_Age").length) {
-            var j = echarts.init(document.getElementById("chart_Age"), b);
+            var j = echarts.init(document.getElementById("chart_Age"), a);
             j.setOption({
-                calculable : true,
+                backgroundColor:'#fff',
+                legend: {
+                    data:[],
+                    x: 'left',
+                    orient: 'vertical',
+                    selectedMode: false
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: function(params){
+                        if (params.seriesName == '占比') {
+                            return '总量 : ' + total + '<br/>'
+                                   + params.name + ' : ' + params.value + '<br/>'
+                                   + '占比 : ' +  params.percent + '%';
+                        }
+                        else if (params.name != '占位'){
+                            update(params);
+                            return params.seriesName + '<br/>'
+                                   + params.name + ' : ' + params.value;
+                        }
+                    },
+                    axisPointer: {
+                        type: 'none'
+                    }
+                },
+                toolbox: { },
+                grid:{
+                    backgroundColor:'#ccc',
+                    borderWidth:0
+                },
                 xAxis : [
                     {
-                        type : 'value',
-                        boundaryGap : [0, 0.01],
-                        name: '#People'
+                        type : 'category',
+                        boundaryGap : false,
+                        show : false,
+                        data : ['占位','周一','周二','周三','周四','周五','周六','周日','占位']
                     }
                 ],
                 yAxis : [
                     {
-                        type : 'category',
-                        data : [{% for a in Ages %}"{{a.Group}}",{% endfor %}],
-                        name: 'Age'
+                        type : 'value',
+                        boundaryGap:[0,0.5],
+                        show : false
                     }
                 ],
+                animation: false,
                 series : [
                     {
-                        name:'People',
-                        type:'bar',
-                        data:[{% for a in Ages %}"{{a.Number}}",{% endfor %}]
-                    }]
-            });
-        }
+                        name:'销量',
+                        type:'line',
+                        symbol: 'emptyCircle',
+                        symbolSize: 6,
+                        showAllSymbol:true,
+                        smooth:true,
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data: dataArray
+                    },
+                    {
+                        name:'遮罩',
+                        type:'pie',
+                        clickable:false,
+                        tooltip: {show:false},
+                        radius : [100, 180],
+                        itemStyle: {
+                            normal: {color: '#fff',label:{show:false},labelLine:{show:false}},
+                            emphasis: {color:'rgba(0,0,0,0)'}
+                        },
+                        data:[
+                          {value:100, name:'直接访问'}
+                        ]
+                    },
+                    {
+                        name:'占比',
+                        type:'pie',
+                        clickable: false,
+                        clockWise: true,
+                        radius : [110, 125],
+                        data:[
+                          {
+                          },
+                          {
+                              name:'其他',
+                              tooltip: {show:false},
+                              itemStyle: {normal: {color: '#fff',label:{show:false},labelLine:{show:false}}}
+                          }
+                        ]
+                    }
+                ]
+                });
+        }   
     }  
 </script>
 {% endblock %}
