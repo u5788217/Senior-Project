@@ -388,21 +388,17 @@ def index(request):
             Status = getCurrentStatus()
             Ages = getAges()
             project_path = settings.PROJECT_ROOT
-            modelFile = project_path+'/final_gbmodel_joblib.sav'
-            loaded_model = joblib.load(modelFile)
-            Results = []
-            for j in Studyidentity.objects.all():
-                test = getRowForPredict(j)
-                result = loaded_model.predict(test)
-                Results.append({'ST':j.studynumber, 're':result})
-    
+    modelFile = project_path+'/final_gbmodel_joblib.sav'
+    loaded_model = joblib.load(modelFile)
+    test = getRowForPredict(studynum)
+    result = loaded_model.predict(test) 
+            
             return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 
                                                  'ACRdata':ACRdata, 
                                                  'SLICCdata':slicc_top5,
                                                  'Gender':Gender,
                                                  'Status':Status,
-                                                 'Ages':Ages,
-                                                 'Results':Results})
+                                                 'Ages':Ages})
         else:
             return render(request, 'login.html',{
                 'login_message' : 'Incorrect username or password.',})
@@ -413,22 +409,13 @@ def index(request):
             Gender = getGenderdata()
             Status = getCurrentStatus()
             Ages = getAges()
-            project_path = settings.PROJECT_ROOT
-            modelFile = project_path+'/final_gbmodel_joblib.sav'
-            loaded_model = joblib.load(modelFile)
-            Results = []
-            for j in Studyidentity.objects.all():
-                test = getRowForPredict(j)
-                result = loaded_model.predict(test)
-                Results.append({'ST':j.studynumber, 're':result})
     
             return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 
                                                  'ACRdata':ACRdata, 
                                                  'SLICCdata':slicc_top5,
                                                  'Gender':Gender,
                                                  'Status':Status,
-                                                 'Ages':Ages,
-                                                 'Results':Results})
+                                                 'Ages':Ages})
         else:
             return render(request, 'login.html',{
                 'login_message' : 'Incorrect username or password.',})
@@ -444,7 +431,6 @@ def patientrecord(request, studynum):
     modelFile = project_path+'/final_gbmodel_joblib.sav'
     loaded_model = joblib.load(modelFile)
     test = getRowForPredict(studynum)
-    loaded_model = joblib.load(modelFile)
     result = loaded_model.predict(test)
     
     SLEDAIdata =[]   
@@ -620,7 +606,7 @@ def patientrecord(request, studynum):
     'patient':Studyidentity.objects.get(studynumber = studynum),
     'ACRpatient':Acrcriteria.objects.get(studynumber = studynum),
     'SLICCpatient':Slicccriteria.objects.get(studynumber = studynum),
-    'SLEDAIdata':SLEDAIdata,'MEDdata':MEDdata, 'LABdata':LABdata, 'Result':result,'TestCase':test})
+    'SLEDAIdata':SLEDAIdata,'MEDdata':MEDdata, 'LABdata':LABdata, 'Result':result[0]})
 
 @login_required(login_url='login')
 def followupnew(request, studynum):

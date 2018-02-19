@@ -33,8 +33,7 @@
             </ul>
         </nav>
 
-        {{Result}} <br>
-        {{TestCase}}
+     
         <div id="page-wrapper" >
             <div class="container-fluid">
                 <div class="row">
@@ -114,8 +113,16 @@
                                     <div style="text-align: center; height: 100px;">
                                         <!--<div class="count" style="color: #FAAC58;">Active</div>
                                             <div class="count" style="color: #81BEF7;">Inactive</div>-->
-                                        <div style="color: #FA5858; font-size: 50px; font-weight: 550; height: 60px;">Flare</div>
-                                        <span class="count_bottom"><i class="fa fa-calendar"></i> update from last week</span>
+                                        {% if Result == 1 %}
+                                        <div style="color: #FA5858; font-size: 50px; font-weight: 550; height: 60px;">
+                                        Flare
+                                        </div>
+                                        {% else %}
+                                        <div style="color: #81BEF7; font-size: 50px; font-weight: 550; height: 60px;">
+                                        Not Flare
+                                        </div>
+                                        {% endif %}
+                                        <span class="count_bottom"><i class="fa fa-calendar"></i> Predict from last visit</span>
                                     </div>
                                 </div>
                             </div>
