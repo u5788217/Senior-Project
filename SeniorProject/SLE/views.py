@@ -162,8 +162,10 @@ def getRowForPredict(studynumber):
         Pericarditis = 0
     
     Case = np.array([[BP1,BP2,Albumin,Anti_CIC,Anti_dsDNA,C3,C4,Cr,ESR,Hb,Platelets,RBC_HPF,UPCI,WBC,WBC_HPF,Fatigue,WeightLoss,MalarRash,OtherRash,OralOrNasopharyngealUlcers,CQ,HCQ,Prednisolone,MethylprednisoloneIV,DexamethasoneIV,MTX,Azathioprine,CyclophosphamideOral,CyclophosphamideIV,MMF,Myfortic,CyclosporinA,Tacrolimus_Prograft,Danazol,Colchicine,Statins,Bisphosphonates,CaCO3,VitaminD,ASA,Warfarin,FolicAcid,Psychosis,LupusHeadache,Vasculitis,NewRash,Pericarditis]], np.float64)
-    sc = StandardScaler()
-    Case = sc.fit_transform(Case)
+    project_path = settings.PROJECT_ROOT
+    scFile = project_path+'/sc.sav'
+    loaded_sc = joblib.load(scFile)
+    Case = loaded_sc.transform(Case)
 
     return Case
 
