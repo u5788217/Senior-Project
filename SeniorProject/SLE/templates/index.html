@@ -103,7 +103,6 @@
                                                 <th>Study Number</th>                                               
                                                 <th>Gender</th>
                                                 <th>Detail</th>
-                                                <th>PREDECT</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
@@ -113,7 +112,6 @@
                                                 <td>{{ patient.studynumber }}</td>
                                                 <td>{{ patient.gender }}</td>
                                                 <td><a href="{% url 'patientrecord' patient.studynumber %}">See Detail</a></td>
-                                                <td></td>
                                                 <td><span class="label label-info">Inactive</span></td>
                                             </tr>
                                         {% endfor %}
@@ -650,7 +648,7 @@
             series: [{
                 name: 'Flare patient',
                 type: 'pie',
-                radius: ['70%', '90%'],
+                radius: ['65%', '85%'],
                 label: {
                     normal: {
                         position: 'center'
@@ -667,7 +665,7 @@
                         normal: {
                             formatter: '{d}%',
                             textStyle: {
-                                fontSize: 25
+                                fontSize: 20
                             }
                         }
                     },
@@ -721,7 +719,7 @@
             series: [{
                 name: 'Active patient',
                 type: 'pie',
-                radius: ['70%', '90%'],
+                radius: ['65%', '85%'],
                 label: {
                     normal: {
                         position: 'center'
@@ -738,7 +736,7 @@
                         normal: {
                             formatter: '{d}%',
                             textStyle: {
-                                fontSize: 25
+                                fontSize: 20
                             }
                         }
                     },
@@ -792,7 +790,7 @@
             series: [{
                 name: 'Inactive patient',
                 type: 'pie',
-                radius: ['70%', '90%'],
+                radius: ['65%', '85%'],
                 label: {
                     normal: {
                         position: 'center'
@@ -809,7 +807,7 @@
                         normal: {
                             formatter: '{d}%',
                             textStyle: {
-                                fontSize: 25
+                                fontSize: 20
                             }
                         }
                     },
@@ -857,6 +855,9 @@
             var j = echarts.init(document.getElementById("chart_Age"), b);
             j.setOption({
                 calculable : true,
+                tooltip: {
+                    trigger: 'axis'
+                },
                 xAxis : [
                     {
                         type : 'value',
@@ -873,7 +874,7 @@
                 ],
                 series : [
                     {
-                        name:'People',
+                        name:'Patient',
                         type:'bar',
                         data:[{% for a in Ages %}"{{a.Number}}",{% endfor %}]
                     }]
