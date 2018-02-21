@@ -388,17 +388,23 @@ def index(request):
             Status = getCurrentStatus()
             Ages = getAges()
             project_path = settings.PROJECT_ROOT
-    modelFile = project_path+'/final_gbmodel_joblib.sav'
-    loaded_model = joblib.load(modelFile)
-    test = getRowForPredict(studynum)
-    result = loaded_model.predict(test) 
-            
+            modelFile = project_path+'/final_gbmodel_joblib.sav'
+            loaded_model = joblib.load(modelFile)
+            Result = []
+            for p in Studyidentity.objects.all(): 
+                test = getRowForPredict(p)
+                result = loaded_model.predict(test)
+                if result[0] == 1: 
+                    Result.append({'St':p, 'status':'Flare'})
+                else:
+                    Result.append({'St':p, 'status':'Not flare'})
             return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 
                                                  'ACRdata':ACRdata, 
                                                  'SLICCdata':slicc_top5,
                                                  'Gender':Gender,
                                                  'Status':Status,
-                                                 'Ages':Ages})
+                                                 'Ages':Ages,
+                                                 'PredictResult':Result})
         else:
             return render(request, 'login.html',{
                 'login_message' : 'Incorrect username or password.',})
@@ -409,13 +415,24 @@ def index(request):
             Gender = getGenderdata()
             Status = getCurrentStatus()
             Ages = getAges()
-    
+            project_path = settings.PROJECT_ROOT
+            modelFile = project_path+'/final_gbmodel_joblib.sav'
+            loaded_model = joblib.load(modelFile)
+            Result = []
+            for p in Studyidentity.objects.all(): 
+                test = getRowForPredict(p)
+                result = loaded_model.predict(test)
+                if result[0] == 1: 
+                    Result.append({'St':p, 'status':'Flare'})
+                else:
+                    Result.append({'St':p, 'status':'Not flare'})
             return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 
                                                  'ACRdata':ACRdata, 
                                                  'SLICCdata':slicc_top5,
                                                  'Gender':Gender,
                                                  'Status':Status,
-                                                 'Ages':Ages})
+                                                 'Ages':Ages,
+                                                 'PredictResult':Result})
         else:
             return render(request, 'login.html',{
                 'login_message' : 'Incorrect username or password.',})
