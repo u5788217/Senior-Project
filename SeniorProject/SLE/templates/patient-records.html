@@ -69,6 +69,57 @@
                            <div id="chart_Followup_med" style="width: 100%; min-height: 350px"></div>
                         </div>
                         </div>
+                        <div class="x_panel">
+                           <div class="x_title"> 
+                                <h2>SLE Patient</h2>
+								<ul class="nav navbar-right panel_toolbox">	
+									<li><a href="{% url 'followupnew' patient.studynumber %}"><i class="fa fa-plus"></i> Add new follow up</a></li>
+								</ul>
+								<div class="clearfix"></div>
+                            </div>
+                           <div class="x_content">
+                                   <table id="datatable" class="table table-bordered table-hover table-striped jambo_table bulk_action" >
+                                       <thead>
+                                           <tr>
+                                               <th>Number</th>
+                                               <th>Datetime</th>
+                                               <th>Detail</th>
+                                               <th>SLEDAI Score</th>
+                                               <th>Stauts</th>
+                                           </tr>
+                                       </thead>
+                                       <tbody>
+                                           {% for visit in visit_list %}
+                                           <tr>
+                                               <td>{{ forloop.counter }}</td>
+                                               <td>{{ visit.visitdate }}</td>
+                                               <td><a href="{% url 'followDetail' visit.visitingid.visitingid %}">See Detail</a></td>
+                                               <td>
+                                                   <div class="progress" style="margin-bottom:0;">
+                                                       {% if visit.sledai_total >= 12 %}
+                                                       <div class="progress-bar progress-bar-danger" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
+                                                       {% elif visit.sledai_total >= 5 %}
+                                                       <div class="progress-bar progress-bar-warning" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
+                                                       {% elif visit.sledai_total >= 0 %}
+                                                       <div class="progress-bar" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
+                                                       {% endif %}
+                                                    </div>
+                                               </td>
+                                                {% if visit.status == 'inactive' %}
+                                                <td><span class="label label-default">Inactive</span></td>
+                                                {% elif visit.status == 'active' %}
+                                                <td><span class="label label-info">Active</span></td>
+                                                {% elif visit.status == 'flare' %}
+                                                <td><span class="label label-danger">Flare</span></td>
+                                                {% else %}
+                                                <td><span class="label label-default">Inactive</span></td>
+                                                {% endif %}        
+                                           </tr>
+                                           {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
                         <!--<div class="x_panel" style="min-height: 235px;">
@@ -127,66 +178,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 col-md-12 col-sm-12">
-                        <!--Follow up list -->
-                        <div class="x_panel">
-                           <div class="x_title"> 
-                                <h2>SLE Patient</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-									<li><a href="{% url 'followupnew' patient.studynumber %}"><i class="fa fa-plus"></i> Add new follow up</a></li>
-								</ul>
-								<div class="clearfix"></div>
-                            </div>
-                           <div class="x_content">
-                                   <table id="datatable" class="table table-bordered table-hover table-striped jambo_table bulk_action" >
-                                       <thead>
-                                           <tr>
-                                               <th>Number</th>
-                                               <th>Datetime</th>
-                                               <th>Detail</th>
-                                               <th>SLEDAI Score</th>
-                                               <th>Stauts</th>
-                                           </tr>
-                                       </thead>
-                                       <tbody>
-                                           {% for visit in visit_list %}
-                                           <tr>
-                                               <td>{{ forloop.counter }}</td>
-                                               <td>{{ visit.visitdate }}</td>
-                                               <td><a href="{% url 'followDetail' visit.visitingid.visitingid %}">See Detail</a></td>
-                                               <td>
-                                                   <div class="progress" style="margin-bottom:0;">
-                                                       {% if visit.sledai_total >= 12 %}
-                                                       <div class="progress-bar progress-bar-danger" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
-                                                       {% elif visit.sledai_total >= 5 %}
-                                                       <div class="progress-bar progress-bar-warning" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
-                                                       {% elif visit.sledai_total >= 0 %}
-                                                       <div class="progress-bar" style="width: calc({{ visit.sledai_total }}% * 4.5);" aria-valuenow="{{ visit.sledai_total }}" aria-valuemin="0" aria-valuemax="30">{{ visit.sledai_total }}</div>
-                                                       {% endif %}
-                                                    </div>
-                                               </td>
-                                                {% if visit.status == 'inactive' %}
-                                                <td><span class="label label-default">Inactive</span></td>
-                                                {% elif visit.status == 'active' %}
-                                                <td><span class="label label-info">Active</span></td>
-                                                {% elif visit.status == 'flare' %}
-                                                <td><span class="label label-danger">Flare</span></td>
-                                                {% else %}
-                                                <td><span class="label label-default">Inactive</span></td>
-                                                {% endif %}        
-                                           </tr>
-                                           {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12 col-sm-12">
-                            <!--Chart-->
                             <div class="x_panel">
                                 <div class="x_title"> 
                                     <h2>Enrollment</h2>
@@ -269,9 +260,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
-                </div> 
+                </div>
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
