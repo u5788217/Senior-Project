@@ -227,20 +227,20 @@
                                 <div class="form-group">
                                     <label>Marital Status</label>  
                                     <div data-toggle="buttons">
-                                        <label class="btn btn-default active">
-                                            <input type="radio" name="maritalstatus" id="option1" autocomplete="off" value="Single" {% if patient.maritalstatus == 'Single' %} actived {% endif %}>Single
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Single' %} active {% endif %}"> 
+                                            <input type="radio" name="maritalstatus" id="option1" autocomplete="off" value="Single" >Single
                                         </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="maritalstatus" id="option2" autocomplete="off" value="Married" {% if patient.maritalstatus == 'Married' %} actived {% endif %}>Married
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Married' %} active {% endif %}">
+                                            <input type="radio" name="maritalstatus" id="option2" autocomplete="off" value="Married" >Married
                                         </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="maritalstatus" id="option3" autocomplete="off" value="Divorce" {% if patient.maritalstatus == 'Divorced' %} actived {% endif %}>Divorced
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Divorced' %} active {% endif %}">
+                                            <input type="radio" name="maritalstatus" id="option3" autocomplete="off" value="Divorce" >Divorced
                                         </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="maritalstatus" id="option4" autocomplete="off" value="Widowed" {% if patient.maritalstatus == 'Widowed' %} actived {% endif %}>Widowed
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Widowed' %} active {% endif %}">
+                                            <input type="radio" name="maritalstatus" id="option4" autocomplete="off" value="Widowed" >Widowed
                                         </label>
-                                        <label class="btn btn-default">
-                                            <input type="radio" name="maritalstatus" id="option5" autocomplete="off" value="Missing" {% if patient.maritalstatus == 'Missing' %} actived {% endif %}>Missing
+                                        <label class="btn btn-default {% if patient.maritalstatus == 'Missing' %} actived {% endif %}">
+                                            <input type="radio" name="maritalstatus" id="option5" autocomplete="off" value="Missing" >Missing
                                         </label>
                                     </div>
                                 </div>

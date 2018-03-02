@@ -647,7 +647,7 @@ def enrollPatient(request):
         except ObjectDoesNotExist:
             max_year = current_year
    
-        stnum = max_year+1
+        stnum = int(max_year)+1
         EnrollStudyidentity = Studyidentity(studynumber = stnum,
                                 dateofdiagnosis =  DateToNone(request.POST.get('dateofdiagnosis', '')),
                                 dateofenrollment = DateToNone(request.POST.get('dateofenrollment', '')),
