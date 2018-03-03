@@ -197,7 +197,7 @@ def haslnlab(lab):
 def CheckboxToInt(string):
     if string == 'on' or string == 'Pos' or string is True or string=='On': string = 1
     else : 
-        if string == 'off' or string == 'Neg' or string is False or string is None or string == '' : string = 0
+        if string == 'off' or string == 'Neg' or string is False or string is None or string == '' or string == 'No': string = 0
     return int(string)
 
 def ToFloat(string):
@@ -938,7 +938,8 @@ def followPatient(request):
                         thrombocytopenia = CheckboxToBool(request.POST.get('thrombocytopenia', '')),
                         leukopenia = CheckboxToBool(request.POST.get('leukopenia', '')),
                         fever = CheckboxToBool(request.POST.get('fever', '')),
-                        sledai_total = totalSLEDAI, status = request.POST.get('patientstatus', ''))
+                        sledai_total = totalSLEDAI, 
+                        status = request.POST.get('patientstatus', ''))
             FollowSLEDAI.save()
 
 
@@ -1072,6 +1073,7 @@ def followPatient(request):
                             mgt_other = CheckboxToBool(request.POST.get('mgt_other',)))
             FollowMed.save()
         
+            this_date = Followvisiting.visitdate
             lab = Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid)
             if haslnlab(lab) is True:
                 lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
@@ -1079,7 +1081,7 @@ def followPatient(request):
                 lnlab = None
             
             try:
-                PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+                PreviousVisit = Visiting.objects.filter(studynumber = TempstudyNumber).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
                 PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
                 PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
             except IndexError:
