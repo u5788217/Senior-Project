@@ -8,6 +8,7 @@ from django.utils.timezone import datetime
 from datetime import timedelta
 from datetime import datetime
 
+from .models import AuthUser
 #Models for enrollment
 from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory
 from .models import Labtype, Medicationtype, Previoustype
@@ -194,7 +195,7 @@ def haslnlab(lab):
         return False
         
 def CheckboxToInt(string):
-    if string == 'on' or string == 'Pos' or string is True : string = 1
+    if string == 'on' or string == 'Pos' or string is True or string=='On': string = 1
     else : 
         if string == 'off' or string == 'Neg' or string is False or string is None or string == '' : string = 0
     return int(string)
@@ -627,7 +628,8 @@ def patientrecord(request, studynum):
 
 @login_required(login_url='login')
 def followupnew(request, studynum):
-    return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum)})
+    return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum),
+                                                'User':request.user})
 
 @login_required(login_url='login')
 def enrollAdd(request):
@@ -817,7 +819,8 @@ def followPatient(request):
                                 visitdate =  request.POST.get('visitdate', ''),
                                 bp = request.POST.get('bp', ''),
                                 height = ToFloat(request.POST.get('height', '')),
-                                weight = ToFloat(request.POST.get('weight', '')))
+                                weight = ToFloat(request.POST.get('weight', '')),
+                                username = AuthUser.objects.get(username = request.user))
             Followvisiting.save()
 
             Followclinic = Clinicalpresentation(visitingid = Followvisiting,

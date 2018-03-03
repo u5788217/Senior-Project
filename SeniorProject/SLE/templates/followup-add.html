@@ -122,7 +122,7 @@
                 <a href="{% url 'index' %}"> Home </a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user}} <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{User}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> ประวัติส่วนตัว</a>
@@ -148,6 +148,7 @@
                     <div style="float: left;"> 
                         <p style="font-size: 18px; margin: 8px; padding-right:1em; font-weight: 600;">Follow up</p>
                     </div>
+                    
                     <div style="float: left;"> 
                         <div class="form-inline">
                             <script>
@@ -164,8 +165,9 @@
 
                                 $(function() {$("#theDate").attr("value", today);});
                             </script>
-                            <p style="font-size: 14px; margin: 6px; color: #A4A4A4;"><span class="glyphicon glyphicon-paperclip"></span> Number1 
-                            <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Visiting date <input type="date" name="visitdate" class="form-control" id="theDate"></p>
+                            <p style="font-size: 14px; margin: 6px; color: #A4A4A4;"><span class="glyphicon glyphicon-paperclip"></span> Number 1 
+                            <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Visiting date <input type="date" name="visitdate" class="form-control" id="theDate">
+                            <span style="padding-left:1em" class="glyphicon glyphicon-user"> </span> By <a class="form-control" name="username">{{User}}</a></p>
                         </div>
                     </div>
                     <div style="float: right; margin: 6px;"><button type="submit" class="btn btn-primary">Save</button><input type="button" class="btn" value="Cancel" onclick="window.history.go(-1); return false;"></div>
