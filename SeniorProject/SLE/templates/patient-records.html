@@ -160,10 +160,8 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
-                                <div class="row">
-                                    <div style="text-align: center; height: 100px;">
-                                        <!--<div class="count" style="color: #FAAC58;">Active</div>
-                                            <div class="count" style="color: #81BEF7;">Inactive</div>-->
+                                <div class="col-lg-12 col-md-8 col-sm-8" style="text-align: center; height: 100px;">
+                                    <div class="col-lg-8 col-md-8 col-sm-8">
                                         {% if Result == 1 %}
                                         <div style="color: #FA5858; font-size: 50px; font-weight: 550; height: 60px;">
                                         Flare
@@ -175,6 +173,33 @@
                                         {% endif %}
                                         <span class="count_bottom"><i class="fa fa-calendar"></i> Predict from last visit</span>
                                     </div>
+                                    <div class="col-lg-1 col-md-1 col-sm-1">
+                                        <div style="color: gray; font-size: 30px; font-weight: 550; margin-top: 20px;">
+                                        in </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <div style="color: #FA5858; font-size: 50px; font-weight: 550; height: 60px;">
+                                        50 </div>
+                                        <span class="count_bottom">Days</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-4 col-sm-4">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                          <tr>
+                                              <td><i class="fa fa-calendar"></i> Date of diagnosis</td>
+                                              <td class="fs15 fw700 text-right">{{patient.dateofdiagnosis}}</td>
+                                          </tr>
+                                            <tr>
+                                              <td><i class="fa fa-calendar"></i> Date of diagnosis</td>
+                                              <td class="fs15 fw700 text-right">{{patient.dateofdiagnosis}}</td>
+                                          </tr>
+                                            <tr>
+                                              <td><i class="fa fa-calendar"></i> Date of diagnosis</td>
+                                              <td class="fs15 fw700 text-right">{{patient.dateofdiagnosis}}</td>
+                                          </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
