@@ -616,6 +616,8 @@ class Visiting(models.Model):
     height = models.FloatField(blank=True, null=True)
     weight = models.FloatField(blank=True, null=True)
     username = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username', null=True, blank=True)
+    nextvisit = models.DateField()
+    visitnote = models.TextField(blank=True, null=True)
     
     class Meta:
         managed = False

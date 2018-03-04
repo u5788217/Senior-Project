@@ -820,7 +820,9 @@ def followPatient(request):
                                 bp = request.POST.get('bp', ''),
                                 height = ToFloat(request.POST.get('height', '')),
                                 weight = ToFloat(request.POST.get('weight', '')),
-                                username = AuthUser.objects.get(username = request.user))
+                                username = AuthUser.objects.get(username = request.user),
+                                nextvisit = DateToNone(request.POST.get('nextvisitdate', '')),
+                                visitnote = request.POST.get('addnote',''))
             Followvisiting.save()
 
             Followclinic = Clinicalpresentation(visitingid = Followvisiting,
@@ -1087,6 +1089,9 @@ def followPatient(request):
             except IndexError:
                 PreviousLab = None
                 PreviousMed = None
+            except ObjectDoesNotExist:
+                PreviousLab = None
+                PreviousMed = None
             
             return render(request, 'followup-detail.html',
                           {'visiting':Visiting.objects.get(visitingid = Followvisiting.visitingid),
@@ -1123,6 +1128,11 @@ def followDetail(request, visitid):
         PreviousMed = None
         PreviousDM = None
         PreviousSLEDAI = None
+    except ObjectDoesNotExist:
+        PreviousLab = None
+        PreviousMed = None
+        PreviousDM = None
+        PreviousSLEDAI = None
     return render(request, 'followup-detail.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
                       'med':Medication.objects.get(visitingid = visitid),
@@ -1146,6 +1156,8 @@ def followEditPost(request):
         old_visiting.bp = request.POST.get('bp',)
         old_visiting.height = ToFloat(request.POST.get('height',))
         old_visiting.weight = ToFloat(request.POST.get('weight',))
+        old_visiting.nextvisit = DateToNone(request.POST.get('nextvisitdate', ''))
+        old_visiting.visitnote = request.POST.get('addnote','')
         old_visiting.save()
 
         old_clinic = Clinicalpresentation.objects.get(visitingid = temp_visitid)
@@ -1405,11 +1417,15 @@ def followEditPost(request):
         old_med.mgt_other = CheckboxToBool(request.POST.get('mgt_other',))
         old_med.save()
         
+        this_date = old_visiting.visitdate 
         try:
-            PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+            PreviousVisit = Visiting.objects.filter(studynumber = old_visiting.studynumber).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
             PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
             PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
         except IndexError:
+            PreviousLab = None
+            PreviousMed = None
+        except ObjectDoesNotExist:
             PreviousLab = None
             PreviousMed = None
         
