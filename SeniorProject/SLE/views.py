@@ -822,7 +822,8 @@ def followPatient(request):
                                 weight = ToFloat(request.POST.get('weight', '')),
                                 username = AuthUser.objects.get(username = request.user),
                                 nextvisit = DateToNone(request.POST.get('nextvisitdate', '')),
-                                visitnote = request.POST.get('addnote',''))
+                                visitnote = request.POST.get('addnote',''),
+                                visitfile = request.POST.get('visitfile',''))
             Followvisiting.save()
 
             Followclinic = Clinicalpresentation(visitingid = Followvisiting,

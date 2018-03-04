@@ -618,6 +618,7 @@ class Visiting(models.Model):
     username = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username', null=True, blank=True)
     nextvisit = models.DateField()
     visitnote = models.TextField(blank=True, null=True)
+    visitfile = models.FileField()
     
     class Meta:
         managed = False
