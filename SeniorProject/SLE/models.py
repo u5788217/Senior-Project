@@ -618,10 +618,14 @@ class Visiting(models.Model):
     username = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username', null=True, blank=True)
     nextvisit = models.DateField()
     visitnote = models.TextField(blank=True, null=True)
-    visitfile = models.FileField()
+    visitfile = models.TextField(blank=True, null=True)
     
     class Meta:
         managed = False
         db_table = 'visiting'
         unique_together = (('visitingid','studynumber', 'visitdate'),)
-        
+
+class Mediafile(models.Model):
+    upload_file = models.FileField(upload_to='uploads/')
+    class Meta:
+        managed = False

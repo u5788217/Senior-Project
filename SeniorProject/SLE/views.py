@@ -8,6 +8,7 @@ from django.utils.timezone import datetime
 from datetime import timedelta
 from datetime import datetime
 
+from .models import Mediafile
 from .models import AuthUser
 #Models for enrollment
 from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory
@@ -815,6 +816,11 @@ def followPatient(request):
     if request.method == "POST":
         TempstudyNumber = request.POST.get('studynum', '')
         if ValidateVisiting(TempstudyNumber, request.POST.get('visitdate', '')) == True :
+            uploaded_file_name = str(TempstudyNumber)+'_'+str(request.POST.get('visitdate', ''))+'_'+str(request.FILES['visitfile'])
+            handle_uploaded_file(request.FILES['visitfile'], uploaded_file_name)
+            project_path = settings.PROJECT_ROOT
+            despath = project_path+'/media/'+uploaded_file_name
+            
             Followvisiting = Visiting(studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),
                                 bp = request.POST.get('bp', ''),
@@ -823,9 +829,9 @@ def followPatient(request):
                                 username = AuthUser.objects.get(username = request.user),
                                 nextvisit = DateToNone(request.POST.get('nextvisitdate', '')),
                                 visitnote = request.POST.get('addnote',''),
-                                visitfile = request.POST.get('visitfile',''))
+                                visitfile = despath)
             Followvisiting.save()
-
+    
             Followclinic = Clinicalpresentation(visitingid = Followvisiting,
                                 studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),
@@ -1107,7 +1113,15 @@ def followPatient(request):
         else:
             return render(request, 'login.html')
 
-
+        
+def handle_uploaded_file(file, filename):
+    if not os.path.exists('media/'):
+        os.mkdir('media/')
+ 
+    with open('media/' + filename, 'wb+') as destination:
+        for chunk in file.chunks():
+            destination.write(chunk)
+            
 @login_required(login_url='login')
 def followDetail(request, visitid):
     studynum = int(Visiting.objects.get(visitingid = visitid).studynumber.studynumber)

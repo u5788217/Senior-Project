@@ -26,4 +26,4 @@ urlpatterns = [
     path('enrollEdit/', views.enrollEdit, name='enrollEdit'),
     path('enrollEditPost/', views.enrollEditPost, name='enrollEditPost'),
     path('followEditPost/', views.followEditPost, name='followEditPost'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
