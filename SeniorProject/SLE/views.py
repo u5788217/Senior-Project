@@ -8,7 +8,6 @@ from django.utils.timezone import datetime
 from datetime import timedelta
 from datetime import datetime
 
-from .models import Mediafile
 from .models import AuthUser
 #Models for enrollment
 from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory
@@ -27,6 +26,7 @@ from sklearn.externals import joblib
 import numpy as np
 import os
 from django.conf import settings
+from django.templatetags.static import static
 
 def NullToZero(value):
     if value is None: value = 0
@@ -818,8 +818,7 @@ def followPatient(request):
         if ValidateVisiting(TempstudyNumber, request.POST.get('visitdate', '')) == True :
             uploaded_file_name = str(TempstudyNumber)+'_'+str(request.POST.get('visitdate', ''))+'_'+str(request.FILES['visitfile'])
             handle_uploaded_file(request.FILES['visitfile'], uploaded_file_name)
-            project_path = settings.PROJECT_ROOT
-            despath = project_path+'/media/'+uploaded_file_name
+            despath = '/uploads/'+uploaded_file_name
             
             Followvisiting = Visiting(studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),
@@ -1115,10 +1114,11 @@ def followPatient(request):
 
         
 def handle_uploaded_file(file, filename):
-    if not os.path.exists('media/'):
-        os.mkdir('media/')
+    path = os.path.join(settings.STATICFILES_DIRS, 'uploads/')
+    if not os.path.exists(path):
+        os.mkdir(path)
  
-    with open('media/' + filename, 'wb+') as destination:
+    with open(path + filename, 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
             
