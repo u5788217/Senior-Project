@@ -787,16 +787,7 @@ def enrollPatient(request):
             renalother = ListToArray(request.POST.getlist('renalother[]',)))
         EnrollFam.save()
     
-        return render(request, 'enrollment-detail.html',
-                {'patient':Studyidentity.objects.get(studynumber = stnum),
-                   'acrcriteria':Acrcriteria.objects.get(studynumber = stnum),
-                   'slicccriteria':Slicccriteria.objects.get(studynumber = stnum),
-                    'familyhistory':Familyhistory.objects.get(studynumber = stnum),
-                    'medicalcondition':Medicalcondition.objects.get(studynumber = stnum),
-                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = stnum),
-                    'previouscomplication':Previouscomplication.objects.filter(studynumber = stnum)})
-
-    
+        return patientrecord(request, stnum)
     
 
 @login_required(login_url='login')
@@ -1082,37 +1073,39 @@ def followPatient(request):
                             mgt_4_4 = Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloat(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',))),
                             mgt_other = CheckboxToBool(request.POST.get('mgt_other',)))
             FollowMed.save()
-        
-            this_date = Followvisiting.visitdate
-            lab = Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid)
-            if haslnlab(lab) is True:
-                lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
-            else: 
-                lnlab = None
-            
-            try:
-                PreviousVisit = Visiting.objects.filter(studynumber = TempstudyNumber).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
-                PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
-                PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
-            except IndexError:
-                PreviousLab = None
-                PreviousMed = None
-            except ObjectDoesNotExist:
-                PreviousLab = None
-                PreviousMed = None
-            
-            return render(request, 'followup-detail.html',
-                          {'visiting':Visiting.objects.get(visitingid = Followvisiting.visitingid),
-                          'med':Medication.objects.get(visitingid = Followvisiting.visitingid),
-                          'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid),
-                          'lnlab':lnlab,
-                          'sledai':Diseaseactivitysledai.objects.get(visitingid = Followvisiting.visitingid),
-                          'damageindex':Damageindex.objects.get(visitingid = Followvisiting.visitingid),
-                          'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = Followvisiting.visitingid),
-                          'PreviousLab':PreviousLab,
-                          'PreviousMed':PreviousMed})
+            return patientrecord(request, TempstudyNumber)
+#            this_date = Followvisiting.visitdate
+#            lab = Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid)
+#            if haslnlab(lab) is True:
+#                lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
+#            else: 
+#                lnlab = None
+#            
+#            try:
+#                PreviousVisit = Visiting.objects.filter(studynumber = TempstudyNumber).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+#                PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
+#                PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+#            except IndexError:
+#                PreviousLab = None
+#                PreviousMed = None
+#            except ObjectDoesNotExist:
+#                PreviousLab = None
+#                PreviousMed = None
+#            
+#            return render(request, 'followup-detail.html',
+#                          {'visiting':Visiting.objects.get(visitingid = Followvisiting.visitingid),
+#                          'med':Medication.objects.get(visitingid = Followvisiting.visitingid),
+#                          'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid),
+#                          'lnlab':lnlab,
+#                          'sledai':Diseaseactivitysledai.objects.get(visitingid = Followvisiting.visitingid),
+#                          'damageindex':Damageindex.objects.get(visitingid = Followvisiting.visitingid),
+#                          'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = Followvisiting.visitingid),
+#                          'PreviousLab':PreviousLab,
+#                          'PreviousMed':PreviousMed})
+                
         else:
-            return render(request, 'login.html')
+            return patientrecord(request, TempstudyNumber)
+            #return render(request, 'login.html')
 
         
 def handle_uploaded_file(file, filename):
@@ -1454,16 +1447,17 @@ def followEditPost(request):
             PreviousLab = None
             PreviousMed = None
         
-        return render(request, 'followup-detail.html',
-                          {'visiting':old_visiting,
-                          'med':old_med,
-                          'lab':old_lab,
-                          'lnlab':old_ln,
-                          'sledai':old_sledai,
-                          'damageindex':old_damage,
-                          'clinicalpresentation':old_clinic,
-                          'PreviousLab':PreviousLab,
-                          'PreviousMed':PreviousMed})
+#        return render(request, 'followup-detail.html',
+#                          {'visiting':old_visiting,
+#                          'med':old_med,
+#                          'lab':old_lab,
+#                          'lnlab':old_ln,
+#                          'sledai':old_sledai,
+#                          'damageindex':old_damage,
+#                          'clinicalpresentation':old_clinic,
+#                          'PreviousLab':PreviousLab,
+#                          'PreviousMed':PreviousMed})
+        return patientrecord(request, old_visiting.studynumber.studynumber)
     
 
 @login_required(login_url='login')
@@ -1637,11 +1631,12 @@ def enrollEditPost(request):
         old_fam.renalother = ListToArray(request.POST.getlist('renalother[]',))
         old_fam.save()
     
-        return render(request, 'enrollment-detail.html',
-                {'patient':Studyidentity.objects.get(studynumber = stnum),
-                   'acrcriteria':Acrcriteria.objects.get(studynumber = stnum),
-                   'slicccriteria':Slicccriteria.objects.get(studynumber = stnum),
-                    'familyhistory':Familyhistory.objects.get(studynumber = stnum),
-                    'medicalcondition':Medicalcondition.objects.get(studynumber = stnum),
-                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = stnum),
-                    'previouscomplication':Previouscomplication.objects.filter(studynumber = stnum)})
+        return patientrecord(request, stnum)
+#        return render(request, 'enrollment-detail.html',
+#                {'patient':Studyidentity.objects.get(studynumber = stnum),
+#                   'acrcriteria':Acrcriteria.objects.get(studynumber = stnum),
+#                   'slicccriteria':Slicccriteria.objects.get(studynumber = stnum),
+#                    'familyhistory':Familyhistory.objects.get(studynumber = stnum),
+#                    'medicalcondition':Medicalcondition.objects.get(studynumber = stnum),
+#                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = stnum),
+#                    'previouscomplication':Previouscomplication.objects.filter(studynumber = stnum)})
