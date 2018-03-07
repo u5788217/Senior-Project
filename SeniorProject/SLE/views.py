@@ -816,9 +816,11 @@ def followPatient(request):
     if request.method == "POST":
         TempstudyNumber = request.POST.get('studynum', '')
         if ValidateVisiting(TempstudyNumber, request.POST.get('visitdate', '')) == True :
-            uploaded_file_name = str(TempstudyNumber)+'_'+str(request.POST.get('visitdate', ''))+'_'+str(request.FILES['visitfile'])
-            handle_uploaded_file(request.FILES['visitfile'], uploaded_file_name)
-            despath = '/uploads/'+uploaded_file_name
+            if request.POST.get('visitfile',) is not "":
+                uploaded_file_name = str(TempstudyNumber)+'_'+str(request.POST.get('visitdate', ''))+'.'+str(request.FILES['visitfile'].content_type.split('/')[1])
+                handle_uploaded_file(request.FILES['visitfile'], uploaded_file_name)
+                despath = '/uploads/'+uploaded_file_name
+            else: despath = None
             
             Followvisiting = Visiting(studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),
@@ -1114,10 +1116,10 @@ def followPatient(request):
 
         
 def handle_uploaded_file(file, filename):
-    path = os.path.join(settings.STATICFILES_DIRS, 'uploads/')
+    path = os.path.join(settings.UPLOAD_ROOT)
     if not os.path.exists(path):
         os.mkdir(path)
- 
+        os.remove(path + filename)
     with open(path + filename, 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
@@ -1173,8 +1175,16 @@ def followEditPost(request):
         old_visiting.weight = ToFloat(request.POST.get('weight',))
         old_visiting.nextvisit = DateToNone(request.POST.get('nextvisitdate', ''))
         old_visiting.visitnote = request.POST.get('addnote','')
-        old_visiting.save()
-
+        
+        if request.POST.get('visitfile',) is not "":
+            uploaded_file_name = str(old_visiting.studynumber.studynumber)+'_'+str(old_visiting.visitdate)+'.'+str(request.FILES['visitfile'].content_type.split('/')[1])
+            handle_uploaded_file(request.FILES['visitfile'], uploaded_file_name)
+            despath = '/uploads/'+uploaded_file_name
+        else: despath = None
+        
+        old_visiting.visitfile = despath
+        old_visiting.save()   
+        
         old_clinic = Clinicalpresentation.objects.get(visitingid = temp_visitid)
         old_clinic.visitdate =  request.POST.get('visitdate', '')
         old_clinic.cp_1 = CheckboxToBool(request.POST.get('cp_1', ''))

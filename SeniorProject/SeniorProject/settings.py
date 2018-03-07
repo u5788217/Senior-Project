@@ -54,7 +54,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'SeniorProject.urls'
 
 PROJECT_ROOT = os.path.join(BASE_DIR)
-
+UPLOAD_ROOT = os.path.join(PROJECT_ROOT, 'SLE/static/uploads/')
 
 TEMPLATES = [
     {
@@ -128,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'C:/Users/pen_s/Desktop/Senior-Project/SeniorProject/SLE/static'),
+    os.path.join(PROJECT_ROOT, 'SLE/static'),
 )
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')

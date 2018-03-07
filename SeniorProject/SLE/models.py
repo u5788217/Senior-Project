@@ -624,8 +624,3 @@ class Visiting(models.Model):
         managed = False
         db_table = 'visiting'
         unique_together = (('visitingid','studynumber', 'visitdate'),)
-
-class Mediafile(models.Model):
-    upload_file = models.FileField(upload_to='uploads/')
-    class Meta:
-        managed = False
