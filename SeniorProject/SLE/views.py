@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 
@@ -204,8 +207,13 @@ def CheckboxToInt(string):
 def ToFloat(string):
     if string == 'on': string = 1
     else : 
-        if string == 'off' or string == '' or string is None: string = 0
+        if string == 'off' or string == '' or string is None or string == '0.0': return 0
+    
     return float(string)
+
+def ToFloatNone(string):
+    if string == '0.0' or string == '': return None
+    else: return float(string)
 
 def CheckboxToBool(string):
     if string == '1' or string == 'on': string = 'True'
@@ -549,15 +557,15 @@ def patientrecord(request, studynum):
     med9 = []
     all_med = Medication.objects.filter(studynumber = studynum)
     for each_med in all_med:
-        med1.append(each_med.msle_2_1.doseperdate)
-        med2.append(each_med.msle_2_2.doseperdate)
-        med3.append(each_med.msle_3_1.doseperdate)
-        med4.append(each_med.msle_4_1.doseperdate)
-        med5.append(each_med.msle_4_2.doseperdate)
-        med6.append(each_med.msle_4_3.doseperdate)
-        med7.append(each_med.msle_4_5.doseperdate)
-        med8.append(each_med.msle_4_7.doseperdate)
-        med9.append(each_med.msle_4_8.doseperdate)
+        med1.append(ToFloat(each_med.msle_2_1.doseperdate))
+        med2.append(ToFloat(each_med.msle_2_2.doseperdate))
+        med3.append(ToFloat(each_med.msle_3_1.doseperdate))
+        med4.append(ToFloat(each_med.msle_4_1.doseperdate))
+        med5.append(ToFloat(each_med.msle_4_2.doseperdate))
+        med6.append(ToFloat(each_med.msle_4_3.doseperdate))
+        med7.append(ToFloat(each_med.msle_4_5.doseperdate))
+        med8.append(ToFloat(each_med.msle_4_7.doseperdate))
+        med9.append(ToFloat(each_med.msle_4_8.doseperdate))
     MEDdata.append({'name':'CQ', 'values':med1})  
     MEDdata.append({'name':'HCQ', 'values':med2})
     MEDdata.append({'name':'Prednisolone', 'values':med3})
@@ -816,8 +824,8 @@ def followPatient(request):
             Followvisiting = Visiting(studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),
                                 bp = request.POST.get('bp', ''),
-                                height = ToFloat(request.POST.get('height', '')),
-                                weight = ToFloat(request.POST.get('weight', '')),
+                                height = ToFloatNone(request.POST.get('height', '')),
+                                weight = ToFloatNone(request.POST.get('weight', '')),
                                 username = AuthUser.objects.get(username = request.user),
                                 nextvisit = DateToNone(request.POST.get('nextvisitdate', '')),
                                 visitnote = request.POST.get('addnote',''),
@@ -961,71 +969,71 @@ def followPatient(request):
                             studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                             lnlabid = FollowLn,
                             visitdate =  request.POST.get('visitdate', ''),
-                            hb = ToFloat(request.POST.get('hb', '')),
-                            wbc = ToFloat(request.POST.get('wbc', '')),
-                            n = ToFloat(request.POST.get('n', '')),
-                            l = ToFloat(request.POST.get('l', '')),
-                            platelets = ToFloat(request.POST.get('platelets', '')),
-                            esr = ToFloat(request.POST.get('esr', '')),
-                            wbc_hpf = ToFloat(request.POST.get('wbc_hpf', '')),
-                            rbc_hpf = ToFloat(request.POST.get('rbc_hpf', '')),
-                            wbccasts = ToFloat(request.POST.get('wbccasts', '')),
-                            rbccasts = ToFloat(request.POST.get('rbccasts', '')),
-                            granularcasts = ToFloat(request.POST.get('granularcasts', '')),
-                            glucose = ToFloat(request.POST.get('glucose', '')),
-                            protein = ToFloat(request.POST.get('protein', '')),
-                            tp_spoturineprotein = ToFloat(request.POST.get('tp_spoturineprotein', '')),
-                            cre_spoturinecreatinine = ToFloat(request.POST.get('cre_spoturinecreatinine', '')),
-                            tfhr_urineprotein = ToFloat(request.POST.get('tfhr_urineprotein', '')),
-                            tfhr_urinecreatinine = ToFloat(request.POST.get('tfhr_urinecreatinine ', '')),
-                            upci = ToFloat(request.POST.get('upci ', '')),
-                            fbs = ToFloat(request.POST.get('fbs', '')),
-                            hba1c = ToFloat(request.POST.get('hba1c', '')),
-                            bun = ToFloat(request.POST.get('bun', '')),
-                            cr =ToFloat(request.POST.get('cr', '')),
-                            alp = ToFloat(request.POST.get('alp', '')),
-                            ast = ToFloat(request.POST.get('ast', '')),
-                            alt =ToFloat(request.POST.get('alt', '')),
-                            ggt = ToFloat(request.POST.get('ggt', '')),
-                            ldh = ToFloat(request.POST.get('ldh', '')),
-                            albumin = ToFloat(request.POST.get('albumin', '')),
-                            tdbilirubin = [ToFloat(request.POST.get('tdbilirubin1','')),ToFloat(request.POST.get('tdbilirubin2', ''))],
-                            crp = ToFloat(request.POST.get('crp', '')),
-                            choles = ToFloat(request.POST.get('choles', '')),
-                            tg = ToFloat(request.POST.get('tg', '')),
-                            ldl = ToFloat(request.POST.get('ldl', '')),
-                            hdl = ToFloat(request.POST.get('hdl', '')),
-                            inr = ToFloat(request.POST.get('inr', '')),
+                            hb = ToFloatNone(request.POST.get('hb', '')),
+                            wbc = ToFloatNone(request.POST.get('wbc', '')),
+                            n = ToFloatNone(request.POST.get('n', '')),
+                            l = ToFloatNone(request.POST.get('l', '')),
+                            platelets = ToFloatNone(request.POST.get('platelets', '')),
+                            esr = ToFloatNone(request.POST.get('esr', '')),
+                            wbc_hpf = ToFloatNone(request.POST.get('wbc_hpf', '')),
+                            rbc_hpf = ToFloatNone(request.POST.get('rbc_hpf', '')),
+                            wbccasts = ToFloatNone(request.POST.get('wbccasts', '')),
+                            rbccasts = ToFloatNone(request.POST.get('rbccasts', '')),
+                            granularcasts = ToFloatNone(request.POST.get('granularcasts', '')),
+                            glucose = ToFloatNone(request.POST.get('glucose', '')),
+                            protein = ToFloatNone(request.POST.get('protein', '')),
+                            tp_spoturineprotein = ToFloatNone(request.POST.get('tp_spoturineprotein', '')),
+                            cre_spoturinecreatinine = ToFloatNone(request.POST.get('cre_spoturinecreatinine', '')),
+                            tfhr_urineprotein = ToFloatNone(request.POST.get('tfhr_urineprotein', '')),
+                            tfhr_urinecreatinine = ToFloatNone(request.POST.get('tfhr_urinecreatinine ', '')),
+                            upci = ToFloatNone(request.POST.get('upci ', '')),
+                            fbs = ToFloatNone(request.POST.get('fbs', '')),
+                            hba1c = ToFloatNone(request.POST.get('hba1c', '')),
+                            bun = ToFloatNone(request.POST.get('bun', '')),
+                            cr =ToFloatNone(request.POST.get('cr', '')),
+                            alp = ToFloatNone(request.POST.get('alp', '')),
+                            ast = ToFloatNone(request.POST.get('ast', '')),
+                            alt =ToFloatNone(request.POST.get('alt', '')),
+                            ggt = ToFloatNone(request.POST.get('ggt', '')),
+                            ldh = ToFloatNone(request.POST.get('ldh', '')),
+                            albumin = ToFloatNone(request.POST.get('albumin', '')),
+                            tdbilirubin = [ToFloatNone(request.POST.get('tdbilirubin1','')),ToFloatNone(request.POST.get('tdbilirubin2', ''))],
+                            crp = ToFloatNone(request.POST.get('crp', '')),
+                            choles = ToFloatNone(request.POST.get('choles', '')),
+                            tg = ToFloatNone(request.POST.get('tg', '')),
+                            ldl = ToFloatNone(request.POST.get('ldl', '')),
+                            hdl = ToFloatNone(request.POST.get('hdl', '')),
+                            inr = ToFloatNone(request.POST.get('inr', '')),
                             anatiter = CheckboxToBool(request.POST.get('anatiter', '')),
-                            homogeneous1 = ToFloat(request.POST.get('homogeneous1', '')),
-                            peripheral1 =ToFloat(request.POST.get('peripheral1', '')),
-                            speckled1 = ToFloat(request.POST.get('speckled1', '')),
-                            nucleolar1 = ToFloat(request.POST.get('nucleolar1', '')),
-                            anti_dsdna = ToFloat(request.POST.get('anti_dsdna', '')),
+                            homogeneous1 = ToFloatNone(request.POST.get('homogeneous1', '')),
+                            peripheral1 =ToFloatNone(request.POST.get('peripheral1', '')),
+                            speckled1 = ToFloatNone(request.POST.get('speckled1', '')),
+                            nucleolar1 = ToFloatNone(request.POST.get('nucleolar1', '')),
+                            anti_dsdna = ToFloatNone(request.POST.get('anti_dsdna', '')),
                             antism = CheckboxToBool(request.POST.get('antism', '')),
                             antirnp = CheckboxToBool(request.POST.get('antirnp', '')),
                             antiro = CheckboxToBool(request.POST.get('antiro', '')),
                             antila = CheckboxToBool(request.POST.get('antila', '')),
-                            aca = ToFloat(request.POST.get('aca', '')),
+                            aca = ToFloatNone(request.POST.get('aca', '')),
                             lupusanticoagulant = CheckboxToBool(request.POST.get('lupusanticoagulant', '')),
-                            b2gpi = ToFloat(request.POST.get('b2gpi', '')),
-                            c3 = ToFloat(request.POST.get('c3', '')),
-                            c4 = ToFloat(request.POST.get('c4', '')),
-                            ch50 = ToFloat(request.POST.get('ch50', '')),
+                            b2gpi = ToFloatNone(request.POST.get('b2gpi', '')),
+                            c3 = ToFloatNone(request.POST.get('c3', '')),
+                            c4 = ToFloatNone(request.POST.get('c4', '')),
+                            ch50 = ToFloatNone(request.POST.get('ch50', '')),
                             hbsag = CheckboxToBool(request.POST.get('hbsag', '')),
                             antihbs = CheckboxToBool(request.POST.get('antihbs', '')),
                             antihbc = CheckboxToBool(request.POST.get('antihbc', '')),
                             antihcv = CheckboxToBool(request.POST.get('antihcv', '')),
                             antihiv = CheckboxToBool(request.POST.get('antihiv', '')),
-                            anticic = ToFloat(request.POST.get('anticic', '')),
-                            il6 = ToFloat(request.POST.get('il6', '')),
-                            mpa = ToFloat(request.POST.get('mpa', '')),
-                            fk507 = ToFloat(request.POST.get('fk507', '')),
-                            cyclosporin = ToFloat(request.POST.get('cyclosporin', '')),
+                            anticic = ToFloatNone(request.POST.get('anticic', '')),
+                            il6 = ToFloatNone(request.POST.get('il6', '')),
+                            mpa = ToFloatNone(request.POST.get('mpa', '')),
+                            fk507 = ToFloatNone(request.POST.get('fk507', '')),
+                            cyclosporin = ToFloatNone(request.POST.get('cyclosporin', '')),
                             cytokine = CheckboxToBool(request.POST.get('cytokine', '')),
-                            l1l4spinebmd_tscore = [ToFloat(request.POST.get('l1l4spinebmd_tscore1','')),ToFloat(request.POST.get('l1l4spinebmd_tscore2', ''))],
-                            hipbmd_tscore = [ToFloat(request.POST.get('hipbmd_tscore1', '')),ToFloat(request.POST.get('hipbmd_tscore2', ''))],
-                            radiusbmd_tscore = [ToFloat(request.POST.get('radiusbmd_tscore1', '')),ToFloat(request.POST.get('radiusbmd_tscore2', ''))],
+                            l1l4spinebmd_tscore = [ToFloatNone(request.POST.get('l1l4spinebmd_tscore1','')),ToFloatNone(request.POST.get('l1l4spinebmd_tscore2', ''))],
+                            hipbmd_tscore = [ToFloatNone(request.POST.get('hipbmd_tscore1', '')),ToFloatNone(request.POST.get('hipbmd_tscore2', ''))],
+                            radiusbmd_tscore = [ToFloatNone(request.POST.get('radiusbmd_tscore1', '')),ToFloatNone(request.POST.get('radiusbmd_tscore2', ''))],
                             stoolparasite = Labtype(status = request.POST.get('stool1', ''), date = DateToNone(request.POST.get('stool2', ''))),
                             cxr = Labtype(status = request.POST.get('CXR1', ''), date = DateToNone(request.POST.get('CXR2', ''))),
                             ekg = Labtype(status = request.POST.get('EKG1', ''), date = DateToNone(request.POST.get('EKG2', ''))),
@@ -1035,42 +1043,42 @@ def followPatient(request):
             FollowMed = Medication(visitingid = Followvisiting,
                             studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                             visitdate =  request.POST.get('visitdate',),
-                            msle_1_1 = Medicationtype(generic = request.POST.get('gen1',), doseperdate = ToFloat(request.POST.get('dose1',)), startdate = DateToNone(request.POST.get('start1',)), stopdate = DateToNone(request.POST.get('end1',))),
-                            msle_1_2 = Medicationtype(generic = request.POST.get('gen2',), doseperdate = ToFloat(request.POST.get('dose2',)), startdate = DateToNone(request.POST.get('start2',)), stopdate = DateToNone(request.POST.get('end2',))),
-                            msle_1_3 = Medicationtype(generic = request.POST.get('gen3',), doseperdate = ToFloat(request.POST.get('dose3',)), startdate = DateToNone(request.POST.get('start3',)), stopdate = DateToNone(request.POST.get('end3',))),
-                            msle_2_1 = Medicationtype(generic = request.POST.get('gen4',), doseperdate = ToFloat(request.POST.get('dose4',)), startdate = DateToNone(request.POST.get('start4',)), stopdate = DateToNone(request.POST.get('end4',))),
-                            msle_2_2 = Medicationtype(generic = request.POST.get('gen5',), doseperdate = ToFloat(request.POST.get('dose5',)), startdate = DateToNone(request.POST.get('start5',)), stopdate = DateToNone(request.POST.get('end5',))),
-                            msle_3_1 = Medicationtype(generic = request.POST.get('gen6',), doseperdate = ToFloat(request.POST.get('dose6',)), startdate = DateToNone(request.POST.get('start6',)), stopdate = DateToNone(request.POST.get('end6',))),
-                            msle_3_2 = Medicationtype(generic = request.POST.get('gen7',), doseperdate = ToFloat(request.POST.get('dose7',)), startdate = DateToNone(request.POST.get('start7',)), stopdate = DateToNone(request.POST.get('end7',))),
-                            msle_3_3 = Medicationtype(generic = request.POST.get('gen8',), doseperdate = ToFloat(request.POST.get('dose8',)), startdate = DateToNone(request.POST.get('start8',)), stopdate = DateToNone(request.POST.get('end8',))),
-                            msle_3_4 = Medicationtype(generic = request.POST.get('gen9',), doseperdate = ToFloat(request.POST.get('dose9',)), startdate = DateToNone(request.POST.get('start9',)), stopdate = DateToNone(request.POST.get('end9',))),
-                            msle_4_1 = Medicationtype(generic = request.POST.get('gen10',), doseperdate = ToFloat(request.POST.get('dose10',)), startdate = DateToNone(request.POST.get('start10',)), stopdate = DateToNone(request.POST.get('end10',))),
-                            msle_4_2 = Medicationtype(generic = request.POST.get('gen11',), doseperdate = ToFloat(request.POST.get('dose11',)), startdate = DateToNone(request.POST.get('start11',)), stopdate = DateToNone(request.POST.get('end11',))),
-                            msle_4_3 = Medicationtype(generic = request.POST.get('gen12',), doseperdate = ToFloat(request.POST.get('dose12',)), startdate = DateToNone(request.POST.get('start12',)), stopdate = DateToNone(request.POST.get('end12',))),
-                            msle_4_4 = Medicationtype(generic = request.POST.get('gen13',), doseperdate = ToFloat(request.POST.get('dose13',)), startdate = DateToNone(request.POST.get('start13',)), stopdate = DateToNone(request.POST.get('end13',))),
-                            msle_4_5 = Medicationtype(generic = request.POST.get('gen14',), doseperdate = ToFloat(request.POST.get('dose14',)), startdate = DateToNone(request.POST.get('start14',)), stopdate = DateToNone(request.POST.get('end14',))),
-                            msle_4_6 = Medicationtype(generic = request.POST.get('gen15',), doseperdate = ToFloat(request.POST.get('dose15',)), startdate = DateToNone(request.POST.get('start15',)), stopdate = DateToNone(request.POST.get('end15',))),
-                            msle_4_7 = Medicationtype(generic = request.POST.get('gen16',), doseperdate = ToFloat(request.POST.get('dose16',)), startdate = DateToNone(request.POST.get('start16',)), stopdate = DateToNone(request.POST.get('end16',))),
-                            msle_4_8 = Medicationtype(generic = request.POST.get('gen17',), doseperdate = ToFloat(request.POST.get('dose17',)), startdate = DateToNone(request.POST.get('start17',)), stopdate = DateToNone(request.POST.get('end17',))),
-                            msle_4_9 = Medicationtype(generic = request.POST.get('gen18',), doseperdate = ToFloat(request.POST.get('dose18',)), startdate = DateToNone(request.POST.get('start18',)), stopdate = DateToNone(request.POST.get('end18',))),
-                            msle_4_10 = Medicationtype(generic = request.POST.get('gen19',), doseperdate = ToFloat(request.POST.get('dose19',)), startdate = DateToNone(request.POST.get('start19',)), stopdate = DateToNone(request.POST.get('end19',))),
-                            msle_4_11 = Medicationtype(generic = request.POST.get('gen20',), doseperdate = ToFloat(request.POST.get('dose20',)), startdate = DateToNone(request.POST.get('start20',)), stopdate = DateToNone(request.POST.get('end20',))),
-                            mgt_1_1 = Medicationtype(generic = request.POST.get('gen21',), doseperdate = ToFloat(request.POST.get('dose21',)), startdate = DateToNone(request.POST.get('start21',)), stopdate = DateToNone(request.POST.get('end21',))),
-                            mgt_1_2 = Medicationtype(generic = request.POST.get('gen22',), doseperdate = ToFloat(request.POST.get('dose22',)), startdate = DateToNone(request.POST.get('start22',)), stopdate = DateToNone(request.POST.get('end22',))),
-                            mgt_1_3 = Medicationtype(generic = request.POST.get('gen23',), doseperdate = ToFloat(request.POST.get('dose23',)), startdate = DateToNone(request.POST.get('start23',)), stopdate = DateToNone(request.POST.get('end23',))),
-                            mgt_1_4 = Medicationtype(generic = request.POST.get('gen24',), doseperdate = ToFloat(request.POST.get('dose24',)), startdate = DateToNone(request.POST.get('start24',)), stopdate = DateToNone(request.POST.get('end24',))),
-                            mgt_1_5 = Medicationtype(generic = request.POST.get('gen25',), doseperdate = ToFloat(request.POST.get('dose25',)), startdate = DateToNone(request.POST.get('start25',)), stopdate = DateToNone(request.POST.get('end25',))),
-                            mgt_2_1 = Medicationtype(generic = request.POST.get('gen26',), doseperdate = ToFloat(request.POST.get('dose26',)), startdate = DateToNone(request.POST.get('start26',)), stopdate = DateToNone(request.POST.get('end26',))),
-                            mgt_2_2 = Medicationtype(generic = request.POST.get('gen27',), doseperdate = ToFloat(request.POST.get('dose27',)), startdate = DateToNone(request.POST.get('start27',)), stopdate = DateToNone(request.POST.get('end27',))),
-                            mgt_2_3 = Medicationtype(generic = request.POST.get('gen28',), doseperdate = ToFloat(request.POST.get('dose28',)), startdate = DateToNone(request.POST.get('start28',)), stopdate = DateToNone(request.POST.get('end28',))),
-                            mgt_2_4 = Medicationtype(generic = request.POST.get('gen29',), doseperdate = ToFloat(request.POST.get('dose29',)), startdate = DateToNone(request.POST.get('start29',)), stopdate = DateToNone(request.POST.get('end29',))),
-                            mgt_3_1 = Medicationtype(generic = request.POST.get('gen30',), doseperdate = ToFloat(request.POST.get('dose30',)), startdate = DateToNone(request.POST.get('start30',)), stopdate = DateToNone(request.POST.get('end30',))),
-                            mgt_3_2 = Medicationtype(generic = request.POST.get('gen31',), doseperdate = ToFloat(request.POST.get('dose31',)), startdate = DateToNone(request.POST.get('start31',)), stopdate = DateToNone(request.POST.get('end31',))),
-                            mgt_3_3 = Medicationtype(generic = request.POST.get('gen32',), doseperdate = ToFloat(request.POST.get('dose32',)), startdate = DateToNone(request.POST.get('start32',)), stopdate = DateToNone(request.POST.get('end32',))),
-                            mgt_4_1 = Medicationtype(generic = request.POST.get('gen33',), doseperdate = ToFloat(request.POST.get('dose33',)), startdate = DateToNone(request.POST.get('start33',)), stopdate = DateToNone(request.POST.get('end33',))),
-                            mgt_4_2 = Medicationtype(generic = request.POST.get('gen34',), doseperdate = ToFloat(request.POST.get('dose34',)), startdate = DateToNone(request.POST.get('start34',)), stopdate = DateToNone(request.POST.get('end34',))),
-                            mgt_4_3 = Medicationtype(generic = request.POST.get('gen35',), doseperdate = ToFloat(request.POST.get('dose35',)), startdate = DateToNone(request.POST.get('start35',)), stopdate = DateToNone(request.POST.get('end35',))),
-                            mgt_4_4 = Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloat(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',))),
+                            msle_1_1 = Medicationtype(generic = request.POST.get('gen1',), doseperdate = ToFloatNone(request.POST.get('dose1',)), startdate = DateToNone(request.POST.get('start1',)), stopdate = DateToNone(request.POST.get('end1',))),
+                            msle_1_2 = Medicationtype(generic = request.POST.get('gen2',), doseperdate = ToFloatNone(request.POST.get('dose2',)), startdate = DateToNone(request.POST.get('start2',)), stopdate = DateToNone(request.POST.get('end2',))),
+                            msle_1_3 = Medicationtype(generic = request.POST.get('gen3',), doseperdate = ToFloatNone(request.POST.get('dose3',)), startdate = DateToNone(request.POST.get('start3',)), stopdate = DateToNone(request.POST.get('end3',))),
+                            msle_2_1 = Medicationtype(generic = request.POST.get('gen4',), doseperdate = ToFloatNone(request.POST.get('dose4',)), startdate = DateToNone(request.POST.get('start4',)), stopdate = DateToNone(request.POST.get('end4',))),
+                            msle_2_2 = Medicationtype(generic = request.POST.get('gen5',), doseperdate = ToFloatNone(request.POST.get('dose5',)), startdate = DateToNone(request.POST.get('start5',)), stopdate = DateToNone(request.POST.get('end5',))),
+                            msle_3_1 = Medicationtype(generic = request.POST.get('gen6',), doseperdate = ToFloatNone(request.POST.get('dose6',)), startdate = DateToNone(request.POST.get('start6',)), stopdate = DateToNone(request.POST.get('end6',))),
+                            msle_3_2 = Medicationtype(generic = request.POST.get('gen7',), doseperdate = ToFloatNone(request.POST.get('dose7',)), startdate = DateToNone(request.POST.get('start7',)), stopdate = DateToNone(request.POST.get('end7',))),
+                            msle_3_3 = Medicationtype(generic = request.POST.get('gen8',), doseperdate = ToFloatNone(request.POST.get('dose8',)), startdate = DateToNone(request.POST.get('start8',)), stopdate = DateToNone(request.POST.get('end8',))),
+                            msle_3_4 = Medicationtype(generic = request.POST.get('gen9',), doseperdate = ToFloatNone(request.POST.get('dose9',)), startdate = DateToNone(request.POST.get('start9',)), stopdate = DateToNone(request.POST.get('end9',))),
+                            msle_4_1 = Medicationtype(generic = request.POST.get('gen10',), doseperdate = ToFloatNone(request.POST.get('dose10',)), startdate = DateToNone(request.POST.get('start10',)), stopdate = DateToNone(request.POST.get('end10',))),
+                            msle_4_2 = Medicationtype(generic = request.POST.get('gen11',), doseperdate = ToFloatNone(request.POST.get('dose11',)), startdate = DateToNone(request.POST.get('start11',)), stopdate = DateToNone(request.POST.get('end11',))),
+                            msle_4_3 = Medicationtype(generic = request.POST.get('gen12',), doseperdate = ToFloatNone(request.POST.get('dose12',)), startdate = DateToNone(request.POST.get('start12',)), stopdate = DateToNone(request.POST.get('end12',))),
+                            msle_4_4 = Medicationtype(generic = request.POST.get('gen13',), doseperdate = ToFloatNone(request.POST.get('dose13',)), startdate = DateToNone(request.POST.get('start13',)), stopdate = DateToNone(request.POST.get('end13',))),
+                            msle_4_5 = Medicationtype(generic = request.POST.get('gen14',), doseperdate = ToFloatNone(request.POST.get('dose14',)), startdate = DateToNone(request.POST.get('start14',)), stopdate = DateToNone(request.POST.get('end14',))),
+                            msle_4_6 = Medicationtype(generic = request.POST.get('gen15',), doseperdate = ToFloatNone(request.POST.get('dose15',)), startdate = DateToNone(request.POST.get('start15',)), stopdate = DateToNone(request.POST.get('end15',))),
+                            msle_4_7 = Medicationtype(generic = request.POST.get('gen16',), doseperdate = ToFloatNone(request.POST.get('dose16',)), startdate = DateToNone(request.POST.get('start16',)), stopdate = DateToNone(request.POST.get('end16',))),
+                            msle_4_8 = Medicationtype(generic = request.POST.get('gen17',), doseperdate = ToFloatNone(request.POST.get('dose17',)), startdate = DateToNone(request.POST.get('start17',)), stopdate = DateToNone(request.POST.get('end17',))),
+                            msle_4_9 = Medicationtype(generic = request.POST.get('gen18',), doseperdate = ToFloatNone(request.POST.get('dose18',)), startdate = DateToNone(request.POST.get('start18',)), stopdate = DateToNone(request.POST.get('end18',))),
+                            msle_4_10 = Medicationtype(generic = request.POST.get('gen19',), doseperdate = ToFloatNone(request.POST.get('dose19',)), startdate = DateToNone(request.POST.get('start19',)), stopdate = DateToNone(request.POST.get('end19',))),
+                            msle_4_11 = Medicationtype(generic = request.POST.get('gen20',), doseperdate = ToFloatNone(request.POST.get('dose20',)), startdate = DateToNone(request.POST.get('start20',)), stopdate = DateToNone(request.POST.get('end20',))),
+                            mgt_1_1 = Medicationtype(generic = request.POST.get('gen21',), doseperdate = ToFloatNone(request.POST.get('dose21',)), startdate = DateToNone(request.POST.get('start21',)), stopdate = DateToNone(request.POST.get('end21',))),
+                            mgt_1_2 = Medicationtype(generic = request.POST.get('gen22',), doseperdate = ToFloatNone(request.POST.get('dose22',)), startdate = DateToNone(request.POST.get('start22',)), stopdate = DateToNone(request.POST.get('end22',))),
+                            mgt_1_3 = Medicationtype(generic = request.POST.get('gen23',), doseperdate = ToFloatNone(request.POST.get('dose23',)), startdate = DateToNone(request.POST.get('start23',)), stopdate = DateToNone(request.POST.get('end23',))),
+                            mgt_1_4 = Medicationtype(generic = request.POST.get('gen24',), doseperdate = ToFloatNone(request.POST.get('dose24',)), startdate = DateToNone(request.POST.get('start24',)), stopdate = DateToNone(request.POST.get('end24',))),
+                            mgt_1_5 = Medicationtype(generic = request.POST.get('gen25',), doseperdate = ToFloatNone(request.POST.get('dose25',)), startdate = DateToNone(request.POST.get('start25',)), stopdate = DateToNone(request.POST.get('end25',))),
+                            mgt_2_1 = Medicationtype(generic = request.POST.get('gen26',), doseperdate = ToFloatNone(request.POST.get('dose26',)), startdate = DateToNone(request.POST.get('start26',)), stopdate = DateToNone(request.POST.get('end26',))),
+                            mgt_2_2 = Medicationtype(generic = request.POST.get('gen27',), doseperdate = ToFloatNone(request.POST.get('dose27',)), startdate = DateToNone(request.POST.get('start27',)), stopdate = DateToNone(request.POST.get('end27',))),
+                            mgt_2_3 = Medicationtype(generic = request.POST.get('gen28',), doseperdate = ToFloatNone(request.POST.get('dose28',)), startdate = DateToNone(request.POST.get('start28',)), stopdate = DateToNone(request.POST.get('end28',))),
+                            mgt_2_4 = Medicationtype(generic = request.POST.get('gen29',), doseperdate = ToFloatNone(request.POST.get('dose29',)), startdate = DateToNone(request.POST.get('start29',)), stopdate = DateToNone(request.POST.get('end29',))),
+                            mgt_3_1 = Medicationtype(generic = request.POST.get('gen30',), doseperdate = ToFloatNone(request.POST.get('dose30',)), startdate = DateToNone(request.POST.get('start30',)), stopdate = DateToNone(request.POST.get('end30',))),
+                            mgt_3_2 = Medicationtype(generic = request.POST.get('gen31',), doseperdate = ToFloatNone(request.POST.get('dose31',)), startdate = DateToNone(request.POST.get('start31',)), stopdate = DateToNone(request.POST.get('end31',))),
+                            mgt_3_3 = Medicationtype(generic = request.POST.get('gen32',), doseperdate = ToFloatNone(request.POST.get('dose32',)), startdate = DateToNone(request.POST.get('start32',)), stopdate = DateToNone(request.POST.get('end32',))),
+                            mgt_4_1 = Medicationtype(generic = request.POST.get('gen33',), doseperdate = ToFloatNone(request.POST.get('dose33',)), startdate = DateToNone(request.POST.get('start33',)), stopdate = DateToNone(request.POST.get('end33',))),
+                            mgt_4_2 = Medicationtype(generic = request.POST.get('gen34',), doseperdate = ToFloatNone(request.POST.get('dose34',)), startdate = DateToNone(request.POST.get('start34',)), stopdate = DateToNone(request.POST.get('end34',))),
+                            mgt_4_3 = Medicationtype(generic = request.POST.get('gen35',), doseperdate = ToFloatNone(request.POST.get('dose35',)), startdate = DateToNone(request.POST.get('start35',)), stopdate = DateToNone(request.POST.get('end35',))),
+                            mgt_4_4 = Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloatNone(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',))),
                             mgt_other = CheckboxToBool(request.POST.get('mgt_other',)))
             FollowMed.save()
             return patientrecord(request, TempstudyNumber)
@@ -1457,7 +1465,8 @@ def followEditPost(request):
 #                          'clinicalpresentation':old_clinic,
 #                          'PreviousLab':PreviousLab,
 #                          'PreviousMed':PreviousMed})
-        return patientrecord(request, old_visiting.studynumber.studynumber)
+        return HttpResponseRedirect(reverse('patientrecord', args=(old_visiting.studynumber.studynumber,)))
+#        return patientrecord(request, old_visiting.studynumber.studynumber)
     
 
 @login_required(login_url='login')
@@ -1631,7 +1640,8 @@ def enrollEditPost(request):
         old_fam.renalother = ListToArray(request.POST.getlist('renalother[]',))
         old_fam.save()
     
-        return patientrecord(request, stnum)
+        return HttpResponseRedirect(reverse('patientrecord', args=(stnum,)))
+#        return patientrecord(request, stnum)
 #        return render(request, 'enrollment-detail.html',
 #                {'patient':Studyidentity.objects.get(studynumber = stnum),
 #                   'acrcriteria':Acrcriteria.objects.get(studynumber = stnum),

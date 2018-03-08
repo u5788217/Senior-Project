@@ -214,13 +214,26 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Religion</label>
-                                    <input type="text" class="form-control" name="religion" value="{{patient.religion}}">
+                                    <select class="form-control" name="religion">
+                                        <option {% if patient.religion == 'Buddhist' %} selected {% endif %}>Buddhist</option>
+                                        <option {% if patient.religion == 'Muslim' %} selected {% endif %}>Muslim</option>
+                                        <option {% if patient.religion == 'Christian' %} selected {% endif %}>Christian</option>
+                                        <option {% if patient.religion == 'Hindu' %} selected {% endif %}>Hindu</option>
+                                        <option {% if patient.religion == 'Other' %} selected {% endif %}>Other</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Education</label>
-                                    <input type="text" class="form-control" name="education" value="{{patient.education}}">
+                                    <label>Education</label>                                    
+                                    <select class="form-control" name="education">
+                                        <option {% if patient.education == 'Less than high school' %} selected {% endif %}>Less than high school</option>
+                                        <option {% if patient.education == 'High school' %} selected {% endif %}>High school</option>
+                                        <option {% if patient.education == 'Bachelor' %} selected {% endif %}>Bachelor</option>
+                                        <option {% if patient.education == 'Master' %} selected {% endif %}>Master</option>
+                                        <option {% if patient.education == 'Doctoral' %} selected {% endif %}>Doctoral</option>
+                                        <option {% if patient.education == 'Other' %} selected {% endif %}>Other</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
