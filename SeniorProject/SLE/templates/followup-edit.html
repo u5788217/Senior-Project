@@ -446,7 +446,7 @@
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Arthritis on <small>Joint(s)</small></label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" min="0" max="99" placeholder="0" class="form-control" name="arthritisjointamount" value="{{sledai.arthritisjointamount}}">
+                                                        <input type="number"   placeholder="0" class="form-control" name="arthritisjointamount" value="{{sledai.arthritisjointamount}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -570,7 +570,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Cerebrovascular accident or  surgical resection</label>
                                                     <div class="form-group col-lg-3col-md-3 col-sm-3">
-                                                        <input type="number" min="0" max="99" placeholder="00" class="form-control" name="di_5" value="{{damageindex.di_5}}">
+                                                        <input type="number"   placeholder="00" class="form-control" name="di_5" value="{{damageindex.di_5}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -606,7 +606,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <label class="col-lg-7 col-md-7 col-sm-7">Myocardial infarction </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" min="0" max="99" placeholder="00" class="form-control" name="di_12" value="{{damageindex.di_12}}">
+                                                        <input type="number"   placeholder="00" class="form-control" name="di_12" value="{{damageindex.di_12}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -635,7 +635,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <label class="col-lg-7 col-md-7 col-sm-7">Significant tissue loss (digit or limb) </label> 
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" min="0" max="99" placeholder="00" class="form-control" name="di_18" value="{{damageindex.di_18}}">
+                                                        <input type="number"   placeholder="00" class="form-control" name="di_18" value="{{damageindex.di_18}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -673,7 +673,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <label class="col-lg-7 col-md-7 col-sm-7">Infarction or resection of bowel </label> 
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" min="0" max="99" placeholder="00" class="form-control" name="di_25" value="damageindex.di_25">
+                                                        <input type="number"   placeholder="00" class="form-control" name="di_25" value="damageindex.di_25">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -710,7 +710,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <label class="col-lg-7 col-md-7 col-sm-7">Avascular necrosis </label> 
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" min="0" max="99" placeholder="00" class="form-control" name="di_33" {% if damageindex.di_33 is True %} checked {% endif %}>
+                                                        <input type="number"   placeholder="00" class="form-control" name="di_33" {% if damageindex.di_33 is True %} checked {% endif %}>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -747,7 +747,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <label class="col-lg-7 col-md-7 col-sm-7">Malignancy (exclude dysplasia)</label> 
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" min="0" max="99" placeholder="00"  class="form-control" name="di_41" value="{{damageindex.di_41}}">
+                                                        <input type="number"   placeholder="00"  class="form-control" name="di_41" value="{{damageindex.di_41}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12"><br></div>
@@ -772,37 +772,37 @@
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Hb (g/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="hb" min="0" max="99.9" step="0.1"   placeholder="00.0" class="form-control" value="{{lab.hb}}">
+                                                        <input type="number" name="hb"   step="0.1"   placeholder="00.0" class="form-control" value="{{lab.hb}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">WBC (uL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="wbc" min="0" max="99999" placeholder="00,000" class="form-control" value="{{lab.wbc}}">
+                                                        <input type="number" name="wbc"   placeholder="00,000" class="form-control" value="{{lab.wbc}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">N (%) </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="n" min="0" max="99" placeholder="00"  class="form-control" value="{{lab.n}}">
+                                                        <input type="number" name="n"   placeholder="00"  class="form-control" value="{{lab.n}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">L (%)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="l" min="0" max="99" placeholder="00" class="form-control" value="{{lab.l}}">
+                                                        <input type="number" name="l"   placeholder="00" class="form-control" value="{{lab.l}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Platelets (uL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="platelets" min="0" max="999999" placeholder="000,000" class="form-control" value="{{lab.platelets}}">
+                                                        <input type="number" name="platelets"   placeholder="000,000" class="form-control" value="{{lab.platelets}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">ESR (mm/hr)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="esr" min="0" max="99" placeholder="00" class="form-control" value="{{lab.esr}}">
+                                                        <input type="number" name="esr"   placeholder="00" class="form-control" value="{{lab.esr}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -811,74 +811,74 @@
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">WBC (/HPF)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="wbc_hpf" min="0" max="999" placeholder="000" class="form-control" value="{{lab.wbc_hpf}}">
+                                                        <input type="number" name="wbc_hpf"   placeholder="000" class="form-control" value="{{lab.wbc_hpf}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> RBC (/HPF)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="rbc_hpf" min="0" max="999" placeholder="000" class="form-control" value="{{lab.rbc_hpf}}">
+                                                        <input type="number" name="rbc_hpf"   placeholder="000" class="form-control" value="{{lab.rbc_hpf}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> WBC casts (/LPF)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="wbccasts" min="0" max="999" placeholder="000" class="form-control" value="{{lab.wbccasts}}">
+                                                        <input type="number" name="wbccasts"   placeholder="000" class="form-control" value="{{lab.wbccasts}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> RBC casts (/LPF)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="rbccasts" min="0" max="999" placeholder="000" class="form-control" value="{{lab.rbccasts}}">
+                                                        <input type="number" name="rbccasts"   placeholder="000" class="form-control" value="{{lab.rbccasts}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> Granular casts(/LPF)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="granularcasts" min="0" max="999" placeholder="000" class="form-control" value="{{lab.granularcasts}}">
+                                                        <input type="number" name="granularcasts"   placeholder="000" class="form-control" value="{{lab.granularcasts}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12"></div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Glucose</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="glucose" min="-99" max="99" placeholder="00" class="form-control" value="{{lab.glucose}}">
+                                                        <input type="number" name="glucose"   placeholder="00" class="form-control" value="{{lab.glucose}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Protein </label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="protein" min="-99" max="99" placeholder="00" class="form-control" value="{{lab.protein}}">
+                                                        <input type="number" name="protein"   placeholder="00" class="form-control" value="{{lab.protein}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">TP-Spot Urine Protein (mg/dL) </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="tp_spoturineprotein" min="0" max="999" placeholder="000" class="form-control" value="{{lab.tp_spoturineprotein}}">
+                                                        <input type="number" name="tp_spoturineprotein"   placeholder="000" class="form-control" value="{{lab.tp_spoturineprotein}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">CRE- Spot Urine Creatinine (mg/dL)  </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="cre_spoturinecreatinine" min="0" max="999" placeholder="000" class="form-control" value="{{lab.cre_spoturinecreatinine}}">
+                                                        <input type="number" name="cre_spoturinecreatinine"   placeholder="000" class="form-control" value="{{lab.cre_spoturinecreatinine}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">24-hr Urine Protein (g/day) </label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="tfhr_urineprotein" min="0" max="99.9" step="0.1" placeholder="00.0" class="form-control" value="{{lab.tfhr_urineprotein}}">
+                                                        <input type="number" name="tfhr_urineprotein"   step="0.1" placeholder="00.0" class="form-control" value="{{lab.tfhr_urineprotein}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">24-hr Urine Creatinine (g/day)</label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="tfhr_urinecreatinine" min="0" max="9.9" step="0.1" placeholder="0.0" class="form-control" value="{{lab.tfhr_urinecreatinine}}">
+                                                        <input type="number" name="tfhr_urinecreatinine"   step="0.1" placeholder="0.0" class="form-control" value="{{lab.tfhr_urinecreatinine}}">
                                                     </div>
                                                 </div>
 												<div class="col-lg-6 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">UPCI</label>
                                                     <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="upci" min="0" max="9.9" step="0.1" placeholder="0.0" class="form-control" value="{{lab.upci}}">
+                                                        <input type="number" name="upci"   step="0.1" placeholder="0.0" class="form-control" value="{{lab.upci}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -887,109 +887,109 @@
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">FBS (mg/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="fbs" min="0" max="999" placeholder="000" class="form-control" value="{{lab.fbs}}">
+                                                        <input type="number" name="fbs"   placeholder="000" class="form-control" value="{{lab.fbs}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">HbA1C (%)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="hba1c" min="0" max="99" placeholder="00" class="form-control" value="{{lab.hba1c}}">
+                                                        <input type="number" name="hba1c"   placeholder="00" class="form-control" value="{{lab.hba1c}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">BUN (mg/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="bun" min="0" max="9.9" placeholder="0.0" step="0.1" class="form-control" value="{{lab.bun}}">
+                                                        <input type="number" name="bun"   placeholder="0.0" step="0.1" class="form-control" value="{{lab.bun}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Cr (mg/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="cr" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{lab.cr}}">
+                                                        <input type="number" name="cr"   placeholder="00.0" step="0.1" class="form-control" value="{{lab.cr}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">ALP (units/L)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="alp" min="0" max="9999" placeholder="0,000" class="form-control" value="{{lab.alp}}">
+                                                        <input type="number" name="alp"   placeholder="0,000" class="form-control" value="{{lab.alp}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">  AST (units/L)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ast" min="0" max="9999" placeholder="0,000" class="form-control" value="{{lab.ast}}">
+                                                        <input type="number" name="ast"   placeholder="0,000" class="form-control" value="{{lab.ast}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">  ALT (units/L)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="alt" min="0" max="9999" placeholder="0,000" class="form-control" value="{{lab.alt}}">
+                                                        <input type="number" name="alt"   placeholder="0,000" class="form-control" value="{{lab.alt}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">  GGT (units/L)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ggt" min="0" max="999" placeholder="000" class="form-control" value="{{lab.ggt}}">
+                                                        <input type="number" name="ggt"   placeholder="000" class="form-control" value="{{lab.ggt}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">LDH (units/L)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ldh" min="0" max="9999" placeholder="0,000" class="form-control" value="{{lab.ldh}}">
+                                                        <input type="number" name="ldh"   placeholder="0,000" class="form-control" value="{{lab.ldh}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Albumin (g/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="albumin" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{lab.albumin}}">
+                                                        <input type="number" name="albumin"   placeholder="00.0" step="0.1" class="form-control" value="{{lab.albumin}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">T/D bilirubin</label>
                                                     <div class="form-inline col-lg-6 col-md-6 col-sm-6">
                                                         <div class="form-group">
-                                                            <input type="number" name="tdbilirubin1" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" style="width: 70px;" value="{{lab.tdbilirubin.0}}">
+                                                            <input type="number" name="tdbilirubin1"   placeholder="00.0" step="0.1" class="form-control" style="width: 70px;" value="{{lab.tdbilirubin.0}}">
                                                         </div>
                                                         <label>/</label>
                                                         <div class="form-group" style="padding: 0px;">
-                                                            <input type="number" name="tdbilirubin2" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" style="width: 70px;" value="{{lab.tdbilirubin.1}}">
+                                                            <input type="number" name="tdbilirubin2"   placeholder="00.0" step="0.1" class="form-control" style="width: 70px;" value="{{lab.tdbilirubin.1}}">
                                                         </div>
                                                     </div>
                                                 </div>
                                                  <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">CRP (mg/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="crp" min="0" max="9.9" placeholder="0.0" step="0.1" class="form-control" value="{{lab.crp}}">
+                                                        <input type="number" name="crp"   placeholder="0.0" step="0.1" class="form-control" value="{{lab.crp}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Choles (mg/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="choles" min="0" max="9999" placeholder="0,000" class="form-control" value="{{lab.choles}}">
+                                                        <input type="number" name="choles"   placeholder="0,000" class="form-control" value="{{lab.choles}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">TG (mg/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="tg" min="0" max="9999" placeholder="0,000" class="form-control" value="{{lab.tg}}">
+                                                        <input type="number" name="tg"   placeholder="0,000" class="form-control" value="{{lab.tg}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">LDL (mg/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ldl" min="0" max="999" placeholder="000" class="form-control" value="{{lab.ldl}}">
+                                                        <input type="number" name="ldl"   placeholder="000" class="form-control" value="{{lab.ldl}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">HDL (mg/dL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="hdl" min="0" max="999" placeholder="000" class="form-control" value="{{lab.hdl}}">
+                                                        <input type="number" name="hdl"   placeholder="000" class="form-control" value="{{lab.hdl}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">INR</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="inr" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{lab.inr}}">
+                                                        <input type="number" name="inr"   placeholder="00.0" step="0.1" class="form-control" value="{{lab.inr}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -1002,31 +1002,31 @@
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Homogeneous</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="homogeneous1" min="0" max="9999" placeholder="0000" class="form-control" id="ANA1" value="{{lab.homogeneous1}}">
+                                                        <input type="number" name="homogeneous1"   placeholder="0000" class="form-control" id="ANA1" value="{{lab.homogeneous1}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Peripheral</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="peripheral1" min="0" max="9999" placeholder="0000" class="form-control" id="ANA2" value="{{lab.peripheral1}}">
+                                                        <input type="number" name="peripheral1"   placeholder="0000" class="form-control" id="ANA2" value="{{lab.peripheral1}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-lg-offset-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Speckled</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="speckled1" min="0" max="9999" placeholder="0000" class="form-control" id="ANA3" value="{{lab.speckled1}}">
+                                                        <input type="number" name="speckled1"   placeholder="0000" class="form-control" id="ANA3" value="{{lab.speckled1}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Nucleolar</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="nucleolar1" min="0" max="9999" placeholder="0000" class="form-control" id="ANA4" value="{{lab.nucleolar1}}">
+                                                        <input type="number" name="nucleolar1"   placeholder="0000" class="form-control" id="ANA4" value="{{lab.nucleolar1}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-4 col-sm-4">Anti-dsDNA (IU/mL)  </label>
                                                     <div class="form-group col-lg-6 col-md-4 col-sm-4">
-                                                        <input type="number" name="anti_dsdna" min="0" max="9999.9" placeholder="0000.0" step="0.1" class="form-control" value="{{lab.anti_dsdna}}">
+                                                        <input type="number" name="anti_dsdna"   placeholder="0000.0" step="0.1" class="form-control" value="{{lab.anti_dsdna}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -1048,7 +1048,7 @@
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> ACA (IU/mL)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="aca" min="0" max="999.9" placeholder="000.0" step="0.1" class="form-control" value="{{lab.aca}}">
+                                                        <input type="number" name="aca"   placeholder="000.0" step="0.1" class="form-control" value="{{lab.aca}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -1058,25 +1058,25 @@
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
                                                     <label class="col-lg-6 col-md-4 col-sm-4">ß2GPI (IU/mL) </label>
                                                     <div class="form-group col-lg-6 col-md-4 col-sm-4">
-                                                        <input type="number" name="b2gpi" min="0" max="999.9" placeholder="000.0" step="0.1" class="form-control" value="{{lab.b2gpi}}">
+                                                        <input type="number" name="b2gpi"   placeholder="000.0" step="0.1" class="form-control" value="{{lab.b2gpi}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> C3 (g/L)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="c3" min="0" max="9.99" placeholder="0.00" step="0.01" class="form-control" value="{{lab.c3}}">
+                                                        <input type="number" name="c3"   placeholder="0.00" step="0.01" class="form-control" value="{{lab.c3}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> C4 (g/L)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="c4" min="0" max="9.99" placeholder="0.00" step="0.01" class="form-control" value="{{lab.c4}}">
+                                                        <input type="number" name="c4"   placeholder="0.00" step="0.01" class="form-control" value="{{lab.c4}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6"> CH50 (%)</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ch50" min="0" max="999" placeholder="000" class="form-control" value="{{lab.ch50}}">
+                                                        <input type="number" name="ch50"   placeholder="000" class="form-control" value="{{lab.ch50}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -1113,19 +1113,19 @@
                                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">MPA</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="mpa" min="0" max="99.99" placeholder="00.00" step="0.1" class="form-control" value="{{lab.mpa}}">
+                                                        <input type="number" name="mpa"   placeholder="00.00" step="0.1" class="form-control" value="{{lab.mpa}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">FK 506</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="fk507" min="0" max="99.99" placeholder="00.00" step="0.1" class="form-control" value="{{lab.fk507}}">
+                                                        <input type="number" name="fk507"   placeholder="00.00" step="0.1" class="form-control" value="{{lab.fk507}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Cyclosporin</label>
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="cyclosporin" min="0" max="99.99" placeholder="00.00" step="0.1" class="form-control" value="{{lab.cyclosporin}}">
+                                                        <input type="number" name="cyclosporin"   placeholder="00.00" step="0.1" class="form-control" value="{{lab.cyclosporin}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -1148,18 +1148,18 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td>L1-L4 spine</td>
-                                                                    <td><input type="number" name="l1l4spinebmd_tscore1" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control" value="{{lab.l1l4spinebmd_tscore.0}}"></td>
-                                                                    <td><input type="number" name="l1l4spinebmd_tscore2" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control" value="{{lab.l1l4spinebmd_tscore.1}}"></td>
+                                                                    <td><input type="number" name="l1l4spinebmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" value="{{lab.l1l4spinebmd_tscore.0}}"></td>
+                                                                    <td><input type="number" name="l1l4spinebmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" value="{{lab.l1l4spinebmd_tscore.1}}"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Hip</td>
-                                                                    <td><input type="number" name="hipbmd_tscore1" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control" value="{{lab.hipbmd_tscore.0}}"></td>
-                                                                    <td><input type="number" name="hipbmd_tscore2" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control" value="{{lab.hipbmd_tscore.1}}"></td>
+                                                                    <td><input type="number" name="hipbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" value="{{lab.hipbmd_tscore.0}}"></td>
+                                                                    <td><input type="number" name="hipbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" value="{{lab.hipbmd_tscore.1}}"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Radius</td>
-                                                                    <td><input type="number" name="radiusbmd_tscore1" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control" value="{{lab.radiusbmd_tscore.0}}"></td>
-                                                                    <td><input type="number" name="radiusbmd_tscore2" min="0" max="9.999" placeholder="0.000" step="0.001" class="form-control" value="{{lab.radiusbmd_tscore.1}}"></td>
+                                                                    <td><input type="number" name="radiusbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" value="{{lab.radiusbmd_tscore.0}}"></td>
+                                                                    <td><input type="number" name="radiusbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" value="{{lab.radiusbmd_tscore.1}}"></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -1301,25 +1301,25 @@
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <label class="col-lg-6 col-md-6 col-sm-6">Activity Index</label>
                                                 <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="activityindex" min="0" max="99" placeholder="00" class="form-control" value="{{lnlab.activityindex}}">
+                                                    <input type="number" name="activityindex"   placeholder="00" class="form-control" value="{{lnlab.activityindex}}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <label class="col-lg-6 col-md-6 col-sm-6">Chronicity Index</label>
                                                 <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="chronicityindex" min="0" max="99" placeholder="00" class="form-control" value="{{lnlab.chronicityindex}}">
+                                                    <input type="number" name="chronicityindex"   placeholder="00" class="form-control" value="{{lnlab.chronicityindex}}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <label class="col-lg-6 col-md-6 col-sm-6">% Crescentic glomerulonephritis</label>
                                                 <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="ln_1" min="0" max="999" placeholder="000" class="form-control" value="{{lnlab.ln_1}}">
+                                                    <input type="number" name="ln_1"   placeholder="000" class="form-control" value="{{lnlab.ln_1}}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <label class="col-lg-6 col-md-6 col-sm-6">% Glomerulosclerosis</label>
                                                 <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="ln_2" min="0" max="999" placeholder="000" class="form-control" value="{{lnlab.ln_2}}">
+                                                    <input type="number" name="ln_2"   placeholder="000" class="form-control" value="{{lnlab.ln_2}}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -1337,7 +1337,7 @@
                                             <div class="col-lg-3 col-md-6 col-sm-6">
                                                 <label class="col-lg-6 col-md-6 col-sm-6">Serum Creatine (mg/dL)</label>
                                                 <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="ln_5" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{lnlab.ln_5}}">
+                                                    <input type="number" name="ln_5"   placeholder="00.0" step="0.1" class="form-control" value="{{lnlab.ln_5}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -1384,21 +1384,21 @@
                                                     <tr>
                                                         <td>1.1) Traditional</td>
                                                         <td><input type="text" name="gen1" placeholder="Generic" class="form-control" value="{{med.msle_1_1.generic}}"></td>
-                                                        <td><input type="number" name="dose1" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_1_1.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose1"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_1_1.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start1" value="{{med.msle_1_1.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end1" value="{{med.msle_1_1.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>1.2) Selective COX-2 inhibitor</td>
                                                         <td><input type="text" name="gen2" placeholder="Generic" class="form-control" value="{{med.msle_1_2.generic}}"></td>
-                                                        <td><input type="number" name="dose2" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_1_2.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose2"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_1_2.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start2" value="{{med.msle_1_2.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end2" value="{{med.msle_1_2.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>1.3) Specific COX-2 inhibitor</td>
                                                         <td><input type="text" name="gen3" placeholder="Generic" class="form-control" value="{{med.msle_1_3.generic}}"></td>
-                                                        <td><input type="number" name="dose3" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_1_3.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose3"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_1_3.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start3" value="{{med.msle_1_3.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end3" value="{{med.msle_1_3.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
@@ -1408,14 +1408,14 @@
                                                     <tr>
                                                         <td>2.1) Chloroquine (Aralen) </td>
                                                         <td><input type="text" name="gen4" placeholder="Generic" class="form-control" value="{{med.msle_2_1.generic}}"></td>
-                                                        <td><input type="number" name="dose4" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_2_1.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose4"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_2_1.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start4" value="{{med.msle_2_1.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end4" value="{{med.msle_2_1.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>2.2) Hydroxychloroquine (Plaquenil) </td>
                                                         <td><input type="text" name="gen5" placeholder="Generic" class="form-control" value="{{med.msle_2_2.generic}}"></td>
-                                                        <td><input type="number" name="dose5" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_2_2.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose5"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_2_2.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start5" value="{{med.msle_2_2.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end5" value="{{med.msle_2_2.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
@@ -1425,28 +1425,28 @@
                                                     <tr>
                                                         <td>3.1) Prednisolone   </td>
                                                         <td><input type="text" name="gen6" placeholder="Generic" class="form-control" value="{{med.msle_3_1.generic}}"></td>
-                                                        <td><input type="number" name="dose6" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_3_1.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose6"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_3_1.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start6" value="{{med.msle_3_1.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end6" value="{{med.msle_3_1.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>3.2) Methylprednisolone (IV) </td>
                                                         <td><input type="text" name="gen7" placeholder="Generic" class="form-control" value="{{med.msle_3_2.generic}}"></td>
-                                                        <td><input type="number" name="dose7" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_3_2.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose7"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_3_2.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start7" value="{{med.msle_3_2.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end7" value="{{med.msle_3_2.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>3.3) Dexamethasone (IV)</td>
                                                         <td><input type="text" name="gen8" placeholder="Generic" class="form-control" value="{{med.msle_3_3.generic}}"></td>
-                                                        <td><input type="number" name="dose8" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_3_3.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose8"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_3_3.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start8" value="{{med.msle_3_3.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end8" value="{{med.msle_3_3.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>3.4) Dexamethasone (Oral)</td>
                                                         <td><input type="text" name="gen9" placeholder="Generic" class="form-control" value="{{med.msle_3_4.generic}}"></td>
-                                                        <td><input type="number" name="dose9" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_3_4.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose9"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_3_4.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start9" value="{{med.msle_3_4.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end9" value="{{med.msle_3_4.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
@@ -1456,77 +1456,77 @@
                                                     <tr>
                                                         <td>4.1) Methotrexate (MTX)</td>
                                                         <td><input type="text" name="gen10" placeholder="Generic" class="form-control" value="{{med.msle_4_1.generic}}"></td>
-                                                        <td><input type="number" name="dose10" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_4_1.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose10"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_4_1.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start10" value="{{med.msle_4_1.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end10" value="{{med.msle_4_1.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.2) Azathioprine </td>
                                                         <td><input type="text" name="gen11" placeholder="Generic" class="form-control" value="{{med.msle_4_2.generic}}"></td>
-                                                        <td><input type="number" name="dose11" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_4_2.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose11"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_4_2.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start11" value="{{med.msle_4_2.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end11" value="{{med.msle_4_2.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.3) Cyclophosphamide (oral)</td>
                                                         <td><input type="text" name="gen12" placeholder="Generic" class="form-control" value="{{med.msle_4_3.generic}}"></td>
-                                                        <td><input type="number" name="dose12" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_4_3.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose12"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_4_3.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start12" value="{{med.msle_4_3.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end12" value="{{med.msle_4_3.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.4) Cyclophosphamide (IV)</td>
                                                         <td><input type="text" name="gen13" placeholder="Generic" class="form-control" value="{{med.msle_4_4.generic}}"></td>
-                                                        <td><input type="number" name="dose13" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_4_4.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose13"   placeholder="00.0" step="0.1" class="form-control" value="{{med.msle_4_4.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start13" value="{{med.msle_4_4.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end13" value="{{med.msle_4_4.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.5) Mycophenolate mofetil (MMF)</td>
                                                         <td><input type="text" name="gen14" placeholder="Generic" class="form-control" value={{med.msle_4_5.generic}}></td>
-                                                        <td><input type="number" name="dose14" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_5.doseperdate}}></td>
+                                                        <td><input type="number" name="dose14"   placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_5.doseperdate}}></td>
                                                         <td><input type="date" class="form-control" name="start14" value="{{med.msle_4_5.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end14" value="{{med.msle_4_5.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.6) Myfortic (Mycophenolic acid)</td>
                                                         <td><input type="text" name="gen15" placeholder="Generic" class="form-control" value={{med.msle_4_6.generic}}></td>
-                                                        <td><input type="number" name="dose15" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_6.doseperdate}}></td>
+                                                        <td><input type="number" name="dose15"   placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_6.doseperdate}}></td>
                                                         <td><input type="date" class="form-control" name="start15" value="{{med.msle_4_6.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end15" value="{{med.msle_4_6.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.7) Cyclosporin A </td>
                                                         <td><input type="text" name="gen16" placeholder="Generic" class="form-control" value={{med.msle_4_7.generic}}></td>
-                                                        <td><input type="number" name="dose16" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_7.doseperdate}}></td>
+                                                        <td><input type="number" name="dose16"   placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_7.doseperdate}}></td>
                                                         <td><input type="date" class="form-control" name="start16" value="{{med.msle_4_7.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end16" value="{{med.msle_4_7.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.8) Tacrolimus</td>
                                                         <td><input type="text" name="gen17" placeholder="Generic" class="form-control" value={{med.msle_4_8.generic}}></td>
-                                                        <td><input type="number" name="dose17" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_8.doseperdate}}></td>
+                                                        <td><input type="number" name="dose17"   placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_8.doseperdate}}></td>
                                                         <td><input type="date" class="form-control" name="start17" value="{{med.msle_4_8.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end17" value="{{med.msle_4_8.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.9) Danazol</td>
                                                         <td><input type="text" name="gen18" placeholder="Generic" class="form-control" value={{med.msle_4_9.generic}}></td>
-                                                        <td><input type="number" name="dose18" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_9.doseperdate}}></td>
+                                                        <td><input type="number" name="dose18"   placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_9.doseperdate}}></td>
                                                         <td><input type="date" class="form-control" name="start18" value="{{med.msle_4_9.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end18" value="{{med.msle_4_9.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.10) Dapsone</td>
                                                         <td><input type="text" name="gen19" placeholder="Generic" class="form-control" value={{med.msle_4_10.generic}}></td>
-                                                        <td><input type="number" name="dose19" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_10.doseperdate}}></td>
+                                                        <td><input type="number" name="dose19"   placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_10.doseperdate}}></td>
                                                         <td><input type="date" class="form-control" name="start19" value="{{med.msle_4_10.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end19" value="{{med.msle_4_10.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.11) Colchicine</td>
                                                         <td><input type="text" name="gen20" placeholder="Generic" class="form-control" value={{med.msle_4_11.generic}}></td>
-                                                        <td><input type="number" name="dose20" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_11.doseperdate}}></td>
+                                                        <td><input type="number" name="dose20"   placeholder="00.0" step="0.1" class="form-control" value={{med.msle_4_11.doseperdate}}></td>
                                                         <td><input type="date" class="form-control" name="start20" value="{{med.msle_4_11.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end20" value="{{med.msle_4_11.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
@@ -1556,35 +1556,35 @@
                                                     <tr>
                                                         <td>1.1) ACEI</td>
                                                         <td><input type="text" name="gen21" placeholder="Generic" class="form-control" value="{{med.mgt_1_1.generic}}"></td>
-                                                        <td><input type="number" name="dose21" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_1.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose21"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_1.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start21" value="{{med.mgt_1_1.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end21" value="{{med.mgt_1_1.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>1.2) ARB</td>
                                                         <td><input type="text" name="gen22" placeholder="Generic" class="form-control" value="{{med.mgt_1_2.generic}}"></td>
-                                                        <td><input type="number" name="dose22" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_2.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose22"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_2.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start22" value="{{med.mgt_1_2.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end22" value="{{med.mgt_1_2.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>1.3) Diuretics</td>
                                                         <td><input type="text" name="gen23" placeholder="Generic" class="form-control" value="{{med.mgt_1_3.generic}}"></td>
-                                                        <td><input type="number" name="dose23" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_3.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose23"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_3.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start23" value="{{med.mgt_1_3.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end23" value="{{med.mgt_1_3.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>1.4) Beta-blockers</td>
                                                         <td><input type="text" name="gen24" placeholder="Generic" class="form-control" value="{{med.mgt_1_4.generic}}"></td>
-                                                        <td><input type="number" name="dose24" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_4.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose24"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_4.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start24" value="{{med.mgt_1_4.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end24" value="{{med.mgt_1_4.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>1.5) Ca channel blockers</td>
                                                         <td><input type="text" name="gen25"placeholder="Generic" class="form-control" value="{{med.mgt_1_5.generic}}"></td>
-                                                        <td><input type="number" name="dose25" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_5.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose25"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_1_5.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start25" value="{{med.mgt_1_5.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end25" value="{{med.mgt_1_5.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>                                                
@@ -1594,28 +1594,28 @@
                                                     <tr>
                                                         <td>2.1) Statins</td>
                                                         <td><input type="text" name="gen26"placeholder="Generic" class="form-control" value="{{med.mgt_2_1.generic}}"></td>
-                                                        <td><input type="number" name="dose26" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_2_1.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose26"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_2_1.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start26" value="{{med.mgt_2_1.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end26" value="{{med.mgt_2_1.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>2.2) Fibrates(Gemfibrozil,Fenofibrate)</td>
                                                         <td><input type="text" name="gen27"placeholder="Generic" class="form-control" value="{{med.mgt_2_2.generic}}"></td>
-                                                        <td><input type="number" name="dose27" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_2_2.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose27"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_2_2.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start27" value="{{med.mgt_2_2.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end27" value="{{med.mgt_2_2.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>2.3)  Resin(Cholestyramine,Colestipol)</td>
                                                         <td><input type="text" name="gen28"placeholder="Generic" class="form-control" value="{{med.mgt_2_3.generic}}"></td>
-                                                        <td><input type="number" name="dose28" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_2_3.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose28"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_2_3.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start28" value="{{med.mgt_2_3.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end28" value="{{med.mgt_2_3.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>2.4) Nicotinic acid</td>
                                                         <td><input type="text" name="gen29"placeholder="Generic" class="form-control" value="{{med.mgt_2_4.generic}}"></td>
-                                                        <td><input type="number" name="dose29" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_2_4.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose29"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_2_4.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start29" value="{{med.mgt_2_4.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end29" value="{{med.mgt_2_4.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>                                                    
@@ -1625,21 +1625,21 @@
                                                     <tr>
                                                         <td>3.1) Bisphosphonates</td>
                                                         <td><input type="text" name="gen30" placeholder="Generic" class="form-control" value="{{med.mgt_3_1.generic}}"></td>
-                                                        <td><input type="number" name="dose30" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_3_1.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose30"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_3_1.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start30" value="{{med.mgt_3_1.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end30" value="{{med.mgt_3_1.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>3.2) Ca supplement, CaCO3</td>
                                                         <td><input type="text" name="gen31" placeholder="Generic" class="form-control" value="{{med.mgt_3_2.generic}}"></td>
-                                                        <td><input type="number" name="dose31" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_3_2.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose31"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_3_2.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start31" value="{{med.mgt_3_2.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end31" value="{{med.mgt_3_2.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>3.3) Vitamin D </td>
                                                         <td><input type="text" name="gen32"placeholder="Generic" class="form-control" value="{{med.mgt_3_3.generic}}"></td>
-                                                        <td><input type="number" name="dose32" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_3_3.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose32"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_3_3.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start32" value="{{med.mgt_3_3.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end32" value="{{med.mgt_3_3.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>                                                    
@@ -1649,28 +1649,28 @@
                                                     <tr>
                                                         <td>4.1) ASA</td>
                                                         <td><input type="text" name="gen33" placeholder="Generic" class="form-control" value="{{med.mgt_4_1.generic}}"></td>
-                                                        <td><input type="number" name="dose33" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_4_1.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose33"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_4_1.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start33" value="{{med.mgt_4_1.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end33" value="{{med.mgt_4_1.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.2) Warfarin</td>
                                                         <td><input type="text" name="gen34" placeholder="Generic" class="form-control" value="{{med.mgt_4_2.generic}}"></td>
-                                                        <td><input type="number" name="dose34" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_4_2.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose34"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_4_2.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start34" value="{{med.mgt_4_2.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end34" value="{{med.mgt_4_2.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.3) folic </td>
                                                         <td><input type="text" name="gen35" placeholder="Generic" class="form-control" value="{{med.mgt_4_3.generic}}"></td>
-                                                        <td><input type="number" name="dose35" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_4_3.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose35"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_4_3.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start35" value="{{med.mgt_4_3.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end35" value="{{med.mgt_4_3.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
                                                     <tr>
                                                         <td>4.4) MTV </td>
                                                         <td><input type="text" name="gen36" placeholder="Generic" class="form-control" value="{{med.mgt_4_4.generic}}"></td>
-                                                        <td><input type="number" name="dose36" min="0" max="99.9" placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_4_4.doseperdate}}"></td>
+                                                        <td><input type="number" name="dose36"   placeholder="00.0" step="0.1" class="form-control" value="{{med.mgt_4_4.doseperdate}}"></td>
                                                         <td><input type="date" class="form-control" name="start36" value="{{med.mgt_4_4.startdate|date:"Y-m-d"}}"></td>
                                                         <td><input type="date" class="form-control" name="end36" value="{{med.mgt_4_4.stopdate|date:"Y-m-d"}}"></td>
                                                     </tr>
