@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-import csv
+from django.http import StreamingHttpResponse
 
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -15,7 +14,7 @@ from datetime import datetime
 
 from .models import AuthUser
 #Models for enrollment
-from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory
+from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory, Obgyn, Riskbehavior
 from .models import Labtype, Medicationtype, Previoustype
 from .models import Visiting, Clinicalpresentation, Damageindex, Diseaseactivitysledai, Laboratoryinventoryinvestigation, Lnlab, Medication
 
@@ -1653,13 +1652,173 @@ def enrollEditPost(request):
 #                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = stnum),
 #                    'previouscomplication':Previouscomplication.objects.filter(studynumber = stnum)})
 
+from io import BytesIO as IO
+from collections import OrderedDict
 
 def download(request):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="StudyIdentity.csv"'
-    writer = csv.writer(response)
-    writer.writerow(['studynumber','dateofdiagnosis','dateofenrollment','gender','dateofbirth','religion','education','maritalstatus','region','occupation','income'])
-    for patient in Studyidentity.objects.all():
-        writer.writerow([patient.studynumber,patient.dateofdiagnosis,patient.dateofenrollment,patient.gender,patient.dateofbirth,patient.religion,patient.education,patient.maritalstatus,patient.region,patient.occupation,patient.income])
+    sio = IO()
+    PandasWriter = pd.ExcelWriter(sio, engine='xlsxwriter')
     
-    return res
+    df1 = pd.DataFrame(list(Studyidentity.objects.values_list(named=True)))
+    df1.to_excel(PandasWriter, sheet_name='Studyidentity')
+    df2 = pd.DataFrame(list(Acrcriteria.objects.values_list(named=True)))
+    df2.to_excel(PandasWriter, sheet_name='Acrcriteria')
+    df3 = pd.DataFrame(list(Slicccriteria.objects.values_list(named=True)))
+    df3.to_excel(PandasWriter, sheet_name='Slicccriteria')
+    df4 = pd.DataFrame(list(Familyhistory.objects.values_list(named=True)))
+    df4.to_excel(PandasWriter, sheet_name='Familyhistory')
+    df5 = pd.DataFrame(list(Medicalcondition.objects.values_list(named=True)))
+    df5.to_excel(PandasWriter, sheet_name='Medicalcondition')
+    df6 = pd.DataFrame(list(Obgyn.objects.values_list(named=True)))
+    df6.to_excel(PandasWriter, sheet_name='Obgyn')
+    a = []
+    for e in Previouscomplication.objects.all():a.append(OrderedDict({'studynumber':e.studynumber.studynumber,'date':e.detail.date,'organ':e.detail.organ,'treatment':e.detail.treatment,'result':e.detail.result}))
+    df7 = pd.DataFrame(a)
+    df7.to_excel(PandasWriter, sheet_name='Previouscomplication')
+    b = []
+    for e in Previousorganinvolvement.objects.all():b.append(OrderedDict({'studynumber':e.studynumber.studynumber,'date':e.detail.date,'organ':e.detail.organ,'treatment':e.detail.treatment,'result':e.detail.result}))
+    df8 = pd.DataFrame(b)
+    df8.to_excel(PandasWriter, sheet_name='Previousorganinvolvement')
+    df9 = pd.DataFrame(list(Riskbehavior.objects.values_list(named=True)))
+    df9.to_excel(PandasWriter, sheet_name='Riskbehavior')
+    
+    df10 = pd.DataFrame(list(Visiting.objects.values_list(named=True)))
+    df10.to_excel(PandasWriter, sheet_name='Visiting')
+    df11 = pd.DataFrame(list(Clinicalpresentation.objects.values_list(named=True)))
+    df11.to_excel(PandasWriter, sheet_name='Clinicalpresentation')
+    df12 = pd.DataFrame(list(Damageindex.objects.values_list(named=True)))
+    df12.to_excel(PandasWriter, sheet_name='Damageindex')
+    df13 = pd.DataFrame(list(Diseaseactivitysledai.objects.values_list(named=True)))
+    df13.to_excel(PandasWriter, sheet_name='Diseaseactivitysledai')
+    c = []
+    for m in Medication.objects.all():
+        c.append(OrderedDict({'studynumber':m.studynumber.studynumber,
+                              'visitingid':m.visitingid.visitingid,
+                              'visitdate':m.visitdate,
+                              'Traditional':m.msle_1_1.doseperdate,
+                              'Selective COX-2 inhibitor':m.msle_1_2.doseperdate,
+                              'Specific COX-2 inhibitor':m.msle_1_3.doseperdate,
+                              'Chloroquine (Aralen)':m.msle_2_1.doseperdate,
+                              'Hydroxychloroquine (Plaquenil)':m.msle_2_2.doseperdate,
+                              'Prednisolone':m.msle_3_1.doseperdate,
+                              'Methylprednisolone (IV)':m.msle_3_2.doseperdate,
+                              'Dexamethasone (IV)':m.msle_3_3.doseperdate,
+                              'Dexamethasone (Oral)':m.msle_3_4.doseperdate,
+                              'Methotrexate (MTX)':m.msle_4_1.doseperdate,
+                              'Azathioprine':m.msle_4_2.doseperdate,
+                              'Cyclophosphamide (oral)':m.msle_4_3.doseperdate,
+                              'Cyclophosphamide (IV)':m.msle_4_4.doseperdate,
+                              'Mycophenolate mofetil (MMF)':m.msle_4_5.doseperdate,
+                              'Myfortic (Mycophenolic acid)':m.msle_4_6.doseperdate,
+                              'Cyclosporin A':m.msle_4_7.doseperdate,
+                              'Tacrolimus':m.msle_4_8.doseperdate,
+                              'Danazol':m.msle_4_9.doseperdate,
+                              'Dapsone':m.msle_4_10.doseperdate,
+                              'Colchicine':m.msle_4_11.doseperdate,
+                              'ACEI':m.mgt_1_1.doseperdate,
+                              'ARB':m.mgt_1_2.doseperdate,
+                              'Diuretics':m.mgt_1_3.doseperdate,
+                              'Beta-blockers':m.mgt_1_4.doseperdate,
+                              'Ca channel blockers':m.mgt_1_5.doseperdate,
+                              'Statins':m.mgt_2_1.doseperdate,
+                              'Fibrates(Gemfibrozil,Fenofibrate)':m.mgt_2_2.doseperdate,
+                              'Resin(Cholestyramine,Colestipol)':m.mgt_2_3.doseperdate,
+                              'Nicotinic acid':m.mgt_2_4.doseperdate,
+                              'Bisphosphonates':m.mgt_3_1.doseperdate,
+                              'Ca supplement, CaCO3':m.mgt_3_2.doseperdate,
+                              'Vitamin D':m.mgt_3_3.doseperdate,
+                              'ASA':m.mgt_4_1.doseperdate,
+                              'Warfarin':m.mgt_4_2.doseperdate,
+                              'Folic acid':m.mgt_4_3.doseperdate,
+                              'MTV':m.mgt_4_4.doseperdate,
+                              'Other':m.mgt_other}))
+    df15 = pd.DataFrame(c)
+    df15.to_excel(PandasWriter, sheet_name='Medication')
+    d = []
+    for l in Laboratoryinventoryinvestigation.objects.all():
+        d.append(OrderedDict({'studynumber':l.studynumber.studynumber,
+                              'visitingid':l.visitingid.visitingid,
+                              'visitdate':l.visitdate,
+                              'hb':l.hb,
+                              'wbc':l.wbc,
+                              'n':l.n,
+                              'n':l.l,
+                              'platelets':l.platelets,
+                              'esr':l.esr,
+                              'wbc_hpf':l.wbc_hpf,
+                              'rbc_hpf':l.rbc_hpf,
+                              'wbccasts':l.wbccasts,
+                              'rbccasts':l.rbccasts,
+                              'granularcasts':l.granularcasts,
+                              'glucose':l.glucose,
+                              'protein':l.protein,
+                              'tp_spoturineprotein':l.tp_spoturineprotein,
+                              'cre_spoturinecreatinine':l.cre_spoturinecreatinine,
+                              'tfhr_urineprotein':l.tfhr_urineprotein,
+                              'tfhr_urinecreatinine':l.tfhr_urinecreatinine,
+                              'upci':l.upci,
+                              'fbs':l.fbs,
+                              'hba1c':l.hba1c,
+                              'bun':l.bun,
+                              'cr':l.cr,
+                              'alp':l.alp,
+                              'ast':l.ast,
+                              'alt':l.alt,
+                              'ggt':l.ggt,
+                              'ldh':l.ldh,
+                              'albumin':l.albumin,
+                              'tdbilirubin':l.tdbilirubin,
+                              'crp':l.crp,
+                              'choles':l.choles,
+                              'tg':l.tg,
+                              'ldl':l.ldl,
+                              'hdl':l.hdl,
+                              'inr':l.inr,
+                              'anatiter':l.anatiter,
+                              'homogeneous1':l.homogeneous1,
+                              'peripheral1':l.peripheral1,
+                              'speckled1':l.speckled1,
+                              'nucleolar1':l.nucleolar1,
+                              'anti_dsdna':l.anti_dsdna,
+                              'antism':l.antism,
+                              'antirnp':l.antirnp,
+                              'antiro':l.antiro,
+                              'antila':l.antila,
+                              'aca':l.aca,
+                              'lupusanticoagulant':l.lupusanticoagulant,
+                              'b2gpi':l.b2gpi,
+                              'c3':l.c3,
+                              'c4':l.c4,
+                              'ch50':l.ch50,
+                              'hbsag':l.hbsag,
+                              'antihbs':l.antihbs,
+                              'antihbc':l.antihbc,
+                              'antihcv':l.antihcv,
+                              'antihiv':l.antihiv,
+                              'anticic':l.anticic,
+                              'il6':l.il6,
+                              'mpa':l.mpa,
+                              'fk507':l.fk507,
+                              'cyclosporin':l.cyclosporin,
+                              'cytokine':l.cytokine,
+                              'l1l4spinebmd_tscore':l.l1l4spinebmd_tscore,
+                              'hipbmd_tscore':l.hipbmd_tscore,
+                              'radiusbmd_tscore':l.radiusbmd_tscore,
+                              'stoolparasite':l.stoolparasite.status if l.stoolparasite is not None else None,
+                              'cxr':l.cxr.status if l.cxr is not None else None,
+                              'ekg':l.ekg.status if l.ekg is not None else None,
+                              'echo':l.echo.status if l.echo is not None else None}))
+        
+    df14 = pd.DataFrame(d)
+    df14.to_excel(PandasWriter, sheet_name='Lab')
+    df16 = pd.DataFrame(list(Lnlab.objects.values_list(named=True)))
+    df16.to_excel(PandasWriter, sheet_name='Lnlab')
+    
+    PandasWriter.save()
+    PandasWriter.close()
+    
+    sio.seek(0)
+    response = HttpResponse(sio.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename=PatientData.xlsx'
+
+    return response
