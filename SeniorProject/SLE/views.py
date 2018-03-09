@@ -1650,3 +1650,14 @@ def enrollEditPost(request):
 #                    'medicalcondition':Medicalcondition.objects.get(studynumber = stnum),
 #                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = stnum),
 #                    'previouscomplication':Previouscomplication.objects.filter(studynumber = stnum)})
+
+
+def download(request):
+    path = 'HowManyTreesinaRandomForest.pdf'
+    file_path = os.path.join(settings.UPLOAD_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+    raise Http404
