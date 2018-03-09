@@ -88,9 +88,11 @@
                     <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title"> 
-                                <h2>SLE Patient</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-									<li><a href="{% url 'EnrollAdd' %}">Add new Patient</a></li>
+                                {% load staticfiles %}
+                                <h2>SLE Patients</h2>
+								<ul class="nav navbar-right panel_toolbox">
+                                    <li style="border-right: 2px solid #E6E6E6;"><a href="{% url 'download' %}" style="color: #2F7C49; margin-right: 7px;"><img style="width: 15px; margin-top: -3px;" src="{% static 'img/excelicon.png' %}" /> Export data </a></li>
+									<li><a href="{% url 'EnrollAdd' %}" style="margin-left: 7px;"><i class="fa fa-plus"></i> Add new patient</a></li>
 								</ul>
 								<div class="clearfix"></div>
                             </div>
