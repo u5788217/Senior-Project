@@ -397,23 +397,23 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Seizure</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="seizure" {% if sledai.seizure is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="seizure" {% if sledai.seizure is True %} checked {% endif %} id="seizure" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Psychosis</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="psychosis" {% if sledai.psychosis is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="psychosis" {% if sledai.psychosis is True %} checked {% endif %} id="psychosis" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Organic brain syndrome</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="organicbrainsyndrome" {% if sledai.organicbrainsyndrome is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="organicbrainsyndrome" {% if sledai.organicbrainsyndrome is True %} checked {% endif %} id="organicbrainsyndrome" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Visual disturbance</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="visualdisturbance" {% if sledai.visualdisturbance is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="visualdisturbance" {% if sledai.visualdisturbance is True %} checked {% endif %} id="visualdisturbance" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Cranial nerve</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="cranialnerve" {% if sledai.cranialnerve is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="cranialnerve" {% if sledai.cranialnerve is True %} checked {% endif %} id="cranialnerve" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <label class="col-lg-3 col-md-3 col-sm-3">Cranial nerve detail</label>
@@ -423,25 +423,25 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Lupus headache</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="lupusheadache" {% if sledai.lupusheadache is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="lupusheadache" {% if sledai.lupusheadache is True %} checked {% endif %} id="lupusheadache" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">CVA</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="cva" {% if sledai.cva is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="cva" {% if sledai.cva is True %} checked {% endif %} id="cva" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <h4 class="page-header">2. Vascular (8)</h4>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Vasculitis</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="vasculitis" {% if sledai.vasculitis is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="vasculitis" {% if sledai.vasculitis is True %} checked {% endif %} id="vasculitis" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <h4 class="page-header">3. Musculoskeletal (4 each)</h4>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Arthritis </label>
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="arthritis" {% if sledai.arthritis is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="arthritis" {% if sledai.arthritis is True %} checked {% endif %} id="arthritis" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-6 col-md-6 col-sm-6">Arthritis on <small>Joint(s)</small></label>
@@ -451,26 +451,26 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Myositis</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="myositis" {% if sledai.myositis is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="myositis" {% if sledai.myositis is True %} checked {% endif %} id="myositis" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <h4 class="page-header">4. Renal (4 each)</h4>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Casts (cell)</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="casts" {% if sledai.casts is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="casts" {% if sledai.casts is True %} checked {% endif %} id="casts" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Hematuria</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="hematuria" {% if sledai.hematuria is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="hematuria" {% if sledai.hematuria is True %} checked {% endif %} id="hematuria" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Proteinuria</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="proteinuria" {% if sledai.proteinuria is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="proteinuria" {% if sledai.proteinuria is True %} checked {% endif %} id="proteinuria" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Pyuria</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="pyuria" {% if sledai.pyuria is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="pyuria" {% if sledai.pyuria is True %} checked {% endif %} id="pyuria" onChange="SLEcal()"> 
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -479,59 +479,59 @@
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Low complement</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="lowcomplement" {% if sledai.lowcomplement is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="lowcomplement" {% if sledai.lowcomplement is True %} checked {% endif %} id="lowcomplement" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Increased DNA binding</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="increaseddnabinding" {% if sledai.increaseddnabinding is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="increaseddnabinding" {% if sledai.increaseddnabinding is True %} checked {% endif %} id="increaseddnabinding" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <h4 class="page-header">6. Skin (2 each)</h4>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Rash </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="rash" {% if sledai.rash is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="rash" {% if sledai.rash is True %} checked {% endif %} id="rash" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Alopecia</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="alopecia" {% if sledai.alopecia is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="alopecia" {% if sledai.alopecia is True %} checked {% endif %} id="alopecia" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Mucous membrane</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mucousmembrane" {% if sledai.mucousmembrane is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mucousmembrane" {% if sledai.mucousmembrane is True %} checked {% endif %} id="mucousmembrane" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <h4 class="page-header">7. Serositis (2 each)  </h4>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Pleurisy </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="pleurisy" {% if sledai.pleurisy is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="pleurisy" {% if sledai.pleurisy is True %} checked {% endif %} id="pleurisy" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Pericarditis</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="pericarditis" {% if sledai.pericarditis is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="pericarditis" {% if sledai.pericarditis is True %} checked {% endif %} id="pericarditis" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <h4 class="page-header">8. Hematology (1 each) </h4>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Thrombocytopenia </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="thrombocytopenia" {% if sledai.thrombocytopenia is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="thrombocytopenia" {% if sledai.thrombocytopenia is True %} checked {% endif %} id="thrombocytopenia" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Leukopenia</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="leukopenia" {% if sledai.leukopenia is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="leukopenia" {% if sledai.leukopenia is True %} checked {% endif %} id="leukopenia" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <h4 class="page-header">9. Consitutional (1 each)</h4>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                                     <label class="col-lg-8 col-md-8 col-sm-8">Fever </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="fever" {% if sledai.fever is True %} checked {% endif %}> 
+                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="fever" {% if sledai.fever is True %} checked {% endif %} id="fever" onChange="SLEcal()"> 
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12"><br></div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 alert alert-info">
-                                                    <h4>Total score = {{sledai.sledai_total}}</h4>
+                                                    <h4 id="SLEtotalp">Total score = {{sledai.sledai_total}}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -1727,5 +1727,88 @@
             </div>
             </form>
         </div>
+              <script>
+    function SLEcal() {
+            var SLEtotal = 0;
+            if (document.getElementById('seizure').checked){	
+                SLEtotal += 8
+            }
+            if (document.getElementById('psychosis').checked){	
+                SLEtotal += 8
+            }
+            if (document.getElementById('organicbrainsyndrome').checked){	
+                SLEtotal += 8
+            }
+            if (document.getElementById('visualdisturbance').checked){	
+                SLEtotal += 8
+            }
+            if (document.getElementById('cranialnerve').checked){	
+                SLEtotal += 8
+            }
+            if (document.getElementById('lupusheadache').checked){	
+                SLEtotal += 8
+            }
+            if (document.getElementById('cva').checked){	
+                SLEtotal += 8
+            }
+            if (document.getElementById('vasculitis').checked){	
+                SLEtotal += 8
+            }
+            if (document.getElementById('arthritis').checked){	
+                SLEtotal += 4
+            }
+            if (document.getElementById('myositis').checked){	
+                SLEtotal += 4
+            }
+            if (document.getElementById('casts').checked){	
+                SLEtotal += 4
+            }
+            if (document.getElementById('hematuria').checked){	
+                SLEtotal += 4
+            }
+            if (document.getElementById('proteinuria').checked){	
+                SLEtotal += 4
+            }
+            if (document.getElementById('pyuria').checked){	
+                SLEtotal += 4
+            }
+            if (document.getElementById('lowcomplement').checked){	
+                SLEtotal += 2
+            }
+            if (document.getElementById('increaseddnabinding').checked){	
+                SLEtotal += 2
+            }
+            if (document.getElementById('rash').checked){	
+                SLEtotal += 2
+            }
+            if (document.getElementById('alopecia').checked){	
+                SLEtotal += 2
+            }
+            if (document.getElementById('mucousmembrane').checked){	
+                SLEtotal += 2
+            }
+            if (document.getElementById('pleurisy').checked){	
+                SLEtotal += 2
+            }
+            if (document.getElementById('pericarditis').checked){	
+                SLEtotal += 2
+            }
+            if (document.getElementById('thrombocytopenia').checked){	
+                SLEtotal += 1
+            }
+            if (document.getElementById('leukopenia').checked){	
+                SLEtotal += 1
+            }
+            if (document.getElementById('fever').checked){	
+                SLEtotal += 1
+            }
+            if(SLEtotal > 0){
+                document.getElementById("SLEtotalp").innerHTML = "Total score = " + SLEtotal;
+            }
+            else{
+                document.getElementById("SLEtotalp").innerHTML = "Total score = " + 0;
+            }
+        }  
+</script>
     <!-- /#wrapper -->
 {% endblock %}
