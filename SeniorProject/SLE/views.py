@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+import csv
+
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
@@ -1653,11 +1655,11 @@ def enrollEditPost(request):
 
 
 def download(request):
-    path = 'HowManyTreesinaRandomForest.pdf'
-    file_path = os.path.join(settings.UPLOAD_ROOT, path)
-    if os.path.exists(file_path):
-        with open(file_path, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-            return response
-    raise Http404
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="StudyIdentity.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['studynumber','dateofdiagnosis','dateofenrollment','gender','dateofbirth','religion','education','maritalstatus','region','occupation','income'])
+    for patient in Studyidentity.objects.all():
+        writer.writerow([patient.studynumber,patient.dateofdiagnosis,patient.dateofenrollment,patient.gender,patient.dateofbirth,patient.religion,patient.education,patient.maritalstatus,patient.region,patient.occupation,patient.income])
+    
+    return res
