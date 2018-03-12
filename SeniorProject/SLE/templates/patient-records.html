@@ -37,38 +37,41 @@
         <div id="page-wrapper" >
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"> 
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
                         <div class="x_panel">
                             <div class="x_title"> 
                                 <h2>SLEDAI score</h2>
                                 <div class="clearfix"></div>
                             </div>
                         <div class="x_content">
-                           <div id="chart_SLEDAI" style="width: 100%; min-height: 400px"></div>
+                           <div id="chart_SLEDAI" style="width: 100%; min-height: 250px"></div>
                         </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12"> 
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
                         <div class="x_panel">
                             <div class="x_title"> 
                                 <h2>Laboratory</h2>
                                 <div class="clearfix"></div>
                             </div>
                         <div class="x_content">
-                           <div id="chart_Followup_lab" style="width: 100%; min-height: 400px"></div>
+                           <div id="chart_Followup_lab" style="width: 100%; min-height: 250px"></div>
                         </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12"> 
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
-                            <div class="x_title"> 
+                             <div class="x_title"> 
                                 <h2>Medication</h2>
                                 <div class="clearfix"></div>
                             </div>
                         <div class="x_content">
-                           <div id="chart_Followup_med" style="width: 100%; min-height: 350px"></div>
+                           <div id="chart_Followup_med" style="width: 100%; min-height: 250px"></div>
                         </div>
                         </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12"> 
+                        
                         <div class="x_panel">
                            <div class="x_title"> 
                                 <h2>SLE Patient</h2>
@@ -321,7 +324,7 @@
             },
             grid: {
                 borderWidth: 0,
-                y: 90
+                y: 110
             },
             categoryAxis: {
                 axisLine: {
@@ -656,7 +659,7 @@
             },
             grid: {
                 borderWidth: 0,
-                y: 180
+                y: 30
             },
             categoryAxis: {
                 axisLine: {
@@ -846,17 +849,17 @@
                         return 'loading';
                     }
                 },
-                legend: {
+                /*legend: {
                     data:[{% for sledai in SLEDAIdata %}"{{sledai.name}}",{% endfor %}],
                     y: 25,
-                    /*selected: {
+                    selected: {
                         {% for sledai in SLEDAIdata %}
                         '{{sledai.name}}' : false,
                         {% endfor %}
                         'Total' : true
-                    }*/
-                },
-                toolbox: {
+                    }
+                },*/
+                /*toolbox: {
                     show: true,
                     feature : {
                         magicType : {
@@ -867,7 +870,7 @@
                             },type: ['line', 'bar']},
                         restore : {show: true, title : 'restore'}
                     },
-                },
+                },*/
                 calculable: true,
                 dataZoom : {
                     show : true,
