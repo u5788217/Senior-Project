@@ -2042,10 +2042,12 @@
                                     <div class="btn-group"><p class="btn">Note: </p></div>
 
                                     <div class="btn-group">
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
                                         {% if visiting.visitfile is not None %}
-                                            <img src="{% static visiting.visitfile %}" />
+                                            <img style="min-height: 180px;" src="{% static visiting.visitfile %}" />
                                             <div id="visitfile"> </div>
                                         {% endif %}
+                                        </div>
                                     </div>
                                     <div class="col-lg-12">                                  
                                         <p name="addnote" class="form-control" style="min-height: 80px;">{{visiting.visitnote}}</p>
