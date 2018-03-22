@@ -25,7 +25,7 @@ SECRET_KEY = '#thl)s2o*nxb1tc9gt6@rky38b=adal)@6)&_4-r-wn4nu=eq!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','172.20.10.4']
 
 
 # Application definition
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'SeniorProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SLE_FLAREUP_PREDICTOR',                      
+        'NAME': 'new2',                      
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': '',

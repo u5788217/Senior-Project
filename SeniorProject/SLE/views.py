@@ -42,6 +42,7 @@ def getRowForPredict(studynumber):
     latest_sledai = None
     latest_med = None
     latest_cp = None
+    now = datetime.now().date()
     try:
         latest_visit = Visiting.objects.filter(studynumber = studynumber).latest('visitdate')
         latest_lab = Laboratoryinventoryinvestigation.objects.get(visitingid = latest_visit)
@@ -56,6 +57,19 @@ def getRowForPredict(studynumber):
         latest_cp = None
     
     if(latest_visit is not None and latest_visit.bp is not None): 
+        if(latest_visit.studynumber.gender == 'Male'):
+            Gender = 0
+        else: 
+            Gender = 1
+        if(latest_visit.studynumber.dateofbirth is not None):
+            delta = now-latest_visit.studynumber.dateofbirth
+            Age = int(delta.total_seconds()*3.17098e-8)
+        else: Age = 0
+        if(latest_visit.nextvisit is not None):
+            temp = latest_visit.nextvisit-latest_visit.visitdate
+            LastVisit = int(temp.total_seconds()*1.15741E-5)
+        else:
+            LastVisit = 62
         BP = latest_visit.bp.split('/')
         try:
             BP1 = NullToZero(BP[0])
@@ -66,6 +80,9 @@ def getRowForPredict(studynumber):
     else:
         BP1 = 0
         BP2 = 0
+        Gender = 0
+        Age = 0
+        LastVisit = 0
     
     if(latest_lab is not None): 
         Albumin = NullToZero(latest_lab.albumin)
@@ -102,12 +119,22 @@ def getRowForPredict(studynumber):
         if(latest_cp.cp_6 is not None): OtherRash = 1
         else: OtherRash = 0
         OralOrNasopharyngealUlcers = NullToZero(latest_cp.cp_8)
+        Photosensitivity = NullToZero(latest_cp.cp_7)
+        Dif_Alopecia = NullToZero(latest_cp.cp_10)
+        Edema = NullToZero(latest_cp.cp_16)
+        Oliguria = NullToZero(latest_cp.cp_17)
+        Arthralgias = NullToZero(latest_cp.cp_28)
     else:
         Fatigue = 0
         WeightLoss = 0
         MalarRash = 0
         OtherRash = 0
         OralOrNasopharyngealUlcers = 0
+        Photosensitivity = 0
+        Dif_Alopecia = 0
+        Edema = 0
+        Oliguria = 0
+        Arthralgias = 0
     if(latest_med is not None): 
         CQ = NullToZero(latest_med.msle_2_1.doseperdate)
         HCQ = NullToZero(latest_med.msle_2_2.doseperdate)
@@ -131,6 +158,7 @@ def getRowForPredict(studynumber):
         ASA = NullToZero(latest_med.mgt_4_1.doseperdate)
         Warfarin = NullToZero(latest_med.mgt_4_2.doseperdate )
         FolicAcid = NullToZero(latest_med.mgt_4_3.doseperdate)
+        Other = NullToZero(latest_med.mgt_other)
     else:
         CQ = 0
         HCQ = 0
@@ -145,7 +173,7 @@ def getRowForPredict(studynumber):
         Myfortic = 0
         CyclosporinA = 0
         Tacrolimus_Prograft = 0
-        Danazol = 0
+        #Danazol = 0
         Colchicine = 0
         Statins = 0
         Bisphosphonates = 0
@@ -154,20 +182,37 @@ def getRowForPredict(studynumber):
         ASA = 0
         Warfarin = 0
         FolicAcid = 0
+        Other = 0
     if(latest_sledai is not None): 
         Psychosis = NullToZero(latest_sledai.psychosis)
+        OrganicBrainSyndrome = NullToZero(latest_sledai.organicbrainsyndrome)
         LupusHeadache = NullToZero(latest_sledai.lupusheadache)
+        CVA = NullToZero(latest_sledai.cva)
         Vasculitis = NullToZero(latest_sledai.vasculitis)
+        Arthritis = NullToZero(latest_sledai.arthritis)
+        Casts = NullToZero(latest_sledai.casts)
+        Pyuria = NullToZero(latest_sledai.pyuria)
         NewRash = NullToZero(latest_sledai.rash)
+        Alopecia = NullToZero(latest_sledai.alopecia)
+        MucousMembrane = NullToZero(latest_sledai.mucousmembrane)
+        Pleurisy = NullToZero(latest_sledai.pleurisy)
         Pericarditis = NullToZero(latest_sledai.pericarditis)
     else:
         Psychosis = 0
+        OrganicBrainSyndrome = 0
         LupusHeadache = 0
+        CVA = 0
         Vasculitis = 0
+        Arthritis = 0
+        Casts = 0
+        Pyuria = 0
         NewRash = 0
+        Alopecia = 0
+        MucousMembrane = 0
+        Pleurisy = 0
         Pericarditis = 0
-    
-    Case = np.array([[BP1,BP2,Albumin,Anti_CIC,Anti_dsDNA,C3,C4,Cr,ESR,Hb,Platelets,RBC_HPF,UPCI,WBC,WBC_HPF,Fatigue,WeightLoss,MalarRash,OtherRash,OralOrNasopharyngealUlcers,CQ,HCQ,Prednisolone,MethylprednisoloneIV,DexamethasoneIV,MTX,Azathioprine,CyclophosphamideOral,CyclophosphamideIV,MMF,Myfortic,CyclosporinA,Tacrolimus_Prograft,Danazol,Colchicine,Statins,Bisphosphonates,CaCO3,VitaminD,ASA,Warfarin,FolicAcid,Psychosis,LupusHeadache,Vasculitis,NewRash,Pericarditis]], np.float64)
+        
+    Case = np.array([[Gender,Age,LastVisit,BP1,BP2,Albumin,Anti_CIC,Anti_dsDNA,C3,C4,Cr,ESR,Hb,Platelets,RBC_HPF,UPCI,WBC,WBC_HPF,Fatigue,WeightLoss,MalarRash,OtherRash,Photosensitivity,OralOrNasopharyngealUlcers,Dif_Alopecia,Edema,Oliguria,Arthralgias,CQ,HCQ,Prednisolone,MethylprednisoloneIV,DexamethasoneIV,MTX,Azathioprine,CyclophosphamideOral,CyclophosphamideIV,MMF,Myfortic,CyclosporinA,Tacrolimus_Prograft,Colchicine,Statins,Bisphosphonates,CaCO3,VitaminD,ASA,Warfarin,FolicAcid,Other,Psychosis,OrganicBrainSyndrome,LupusHeadache,CVA,Vasculitis,Arthritis,Casts,Pyuria,NewRash,Alopecia,MucousMembrane,Pleurisy,Pericarditis]], np.float64)
     project_path = settings.PROJECT_ROOT
     scFile = project_path+'/sc.sav'
     loaded_sc = joblib.load(scFile)
