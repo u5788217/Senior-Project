@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'SeniorProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'new2',                      
+        'NAME': 'SLE_DEMO',                      
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': '',
