@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="col-lg-5 col-md-5 col-sm-12">
                 <div class="x_panel">
                         <div class="x_title"> 
                                 <h2>Study Identity</h2>
@@ -128,11 +128,9 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Gender</label>  
-                                    <div data-toggle="buttons">
-                                        <label class="btn btn-default {% if patient.gender == 'Male' %} active {% endif %}">Male</label>
-                                        <label class="btn btn-default {% if patient.gender == 'Female' %} active {% endif %}">Female</label>
-                                        <label class="btn btn-default {% if patient.gender == 'Missing' %} active {% endif %}">Missing</label>
+                                    <label>Gender</label>
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.gender}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -154,26 +152,6 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Education</label>
-                                    <div class="form-group">
-                                        <p class="form-control">{{patient.education}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label>Marital Status</label>  
-                                    <div data-toggle="buttons">
-                                        <label class="btn btn-default {% if patient.maritalstatus == 'Single' %} active {% endif %}">Single</label>
-                                        <label class="btn btn-default {% if patient.maritalstatus == 'Married' %} active {% endif %}">Married</label>
-                                        <label class="btn btn-default {% if patient.maritalstatus == 'Divorced' %} active {% endif %}">Divorced</label>
-                                        <label class="btn btn-default {% if patient.maritalstatus == 'Widowed' %} active {% endif %}">Widowed</label>
-                                        <label class="btn btn-default {% if patient.maritalstatus == 'Missing' %} active {% endif %}">Missing</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="form-group">
                                     <label>Region</label>
                                     <div class="form-group">
                                         <p class="form-control">{{patient.region}}</p>
@@ -182,153 +160,35 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
+                                    <label>Marital Status</label> 
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.maritalstatus}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Education</label>
+                                    <div class="form-group">
+                                        <p class="form-control">{{patient.education}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-12">
+                                <div class="form-group">
                                     <label>Occupation</label>  
                                    <div class="form-group">
                                         <p class="form-control">{{patient.occupation}}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Income</label>
                                     <div class="form-group">
                                         <p class="form-control">{{patient.income}}</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                <!--Revised ACR criteria -->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Revised ACR criteria</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Serositis</label>    
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr1 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Malar rash</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr2 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Renal disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr3 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Discoid rash</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr4 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Neurological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr5 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Photosensitivity</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr6 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Haematological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr7 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Oral ulcers	</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr8 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Immunological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr9 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Arthritis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr10 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Positive ANA</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if acrcriteria.acr11 is True %} checked {% endif %}> 
-                            </div>
-                        </div>
-                    </div>
-                <!--SLICC criteria -->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>SLICC criteria</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Acute cutaneous </label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc1 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Chronic cutaneous</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc2 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Mucosal ulcer</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc3 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Non scaring alopecia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc4 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Arthritis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc5 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Serositis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc6 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Renal</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc7 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Neuro</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc8 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Hemolytic anemia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc9 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Leukopenia/lymphopenia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc10 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Thrombocytopenia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc11 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">ANA	</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc12 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Anti-DNA</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc13 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Anti-Sm</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc14 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Anti-phospholipid</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc15 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Low complement</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc16 is True %} checked {% endif %}> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Direct coomb's test</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if slicccriteria.slicc17 is True %} checked {% endif %}> 
                             </div>
                         </div>
                     </div>         
@@ -456,7 +316,133 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-7 col-md-12 col-sm-12">
+                
+                <!--Revised ACR criteria -->
+                <div class="x_panel">
+                    <div class="x_title"> 
+                                <h2>SLE criteria</h2>
+								<ul class="nav navbar-right panel_toolbox">	
+								</ul>
+								<div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px;">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center">Revised ACR criteria</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr1 is True %} checked="checked" {% endif %}> Serositis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr2 is True %} checked="checked" {% endif %}> Malar rash
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr3 is True %} checked="checked" {% endif %}> Renal disorder
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr4 is True %} checked="checked" {% endif %}> Discoid rash
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr5 is True %} checked="checked" {% endif %}> Neurological disorder
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr6 is True %} checked="checked" {% endif %}> Oral ulcers
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr7 is True %} checked="checked" {% endif %}> Photosensitivity
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr8 is True %} checked="checked" {% endif %}> Immunological disorder
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr9 is True %} checked="checked" {% endif %}> Photosensitivity
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr10 is True %} checked="checked" {% endif %}> Arthritis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if acrcriteria.acr11 is True %} checked="checked" {% endif %}> Positive ANA
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px;">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center" colspan="2">SLICC criteria</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc1 is True %} checked="checked" {% endif %}> Acute cutaneous
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc2 is True %} checked="checked" {% endif %}> Chronic cutaneous
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc3 is True %} checked="checked" {% endif %}> Mucosal ulcer
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc4 is True %} checked="checked" {% endif %}> Non scaring alopecia
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc5 is True %} checked="checked" {% endif %}> Arthritis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc6 is True %} checked="checked" {% endif %}> Serositis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc7 is True %} checked="checked" {% endif %}> Renal
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc8 is True %} checked="checked" {% endif %}> Neuro
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc9 is True %} checked="checked" {% endif %}> Hemolytic anemia
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc10 is True %} checked="checked" {% endif %}> Leukopenia/lymphopenia
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc11 is True %} checked="checked" {% endif %}> Thrombocytopenia
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc12 is True %} checked="checked" {% endif %}> ANA
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc13 is True %} checked="checked" {% endif %}> Anti-DNA
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc14 is True %} checked="checked" {% endif %}> Anti-Sm
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc15 is True %} checked="checked" {% endif %}> Anti-phospholipid
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc16 is True %} checked="checked" {% endif %}> Low complement
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if slicccriteria.slicc17 is True %} checked="checked" {% endif %}> Direct coomb's test
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>    
                 <!--Medical Condition -->
                 <div class="x_panel">
                         <div class="x_title"> 
@@ -466,120 +452,153 @@
 								<div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Systemic autoimmune diseases</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Antiphospholipid Ab  Syndrome</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_2 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Rheumatoid arthritis (RA) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_3 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Dermatomyositis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_4 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Polymyositis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_5 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Systemic sclerosis (SSc) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_6 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Sjogren's Syndrome (SS) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_7 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Mixed connective tissue disease  </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_8 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">LE/LP overlap syndrome </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_9 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Primary biliary cirrhosis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_10 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Primary sclerosing cholangitis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc1_11 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Tissue-specific autoimmune diseases</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">DM type 1 </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_2 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hashimoto's thyroiditis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_3 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Multiple sclerosis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_4 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Myasthenia gravis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_5 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Autoimmune hepatitis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc2_6 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Metabolic & CVS co-morbidity  </h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">DM type 2</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc3_2 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hypertension</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc3_3 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hyperlipidemia</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc3_4 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">CAD</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc3_5 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Allergy</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic rhinitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_2 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic conjunctivitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_3 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Asthma</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_4 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Atopic dermatitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_5 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic urticaria</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_6 is True %} checked {% endif %}>  
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Anaphylaxis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_7 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hay fever </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" disabled {% if medicalcondition.mc4_8 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label>Food allergy </label> 
-                            {% for text in medicalcondition.mc4_9 %} 
-                                {{text}} 
-                            {% endfor %} 
-                        </div>
+                            
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center">Systemic autoimmune diseases</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_2 is True %} checked="checked" {% endif %}> Antiphospholipid Ab  Syndrome
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_3 is True %} checked="checked" {% endif %}> Rheumatoid arthritis (RA)
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_4 is True %} checked="checked" {% endif %}> Dermatomyositis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_5 is True %} checked="checked" {% endif %}> Polymyositis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_6 is True %} checked="checked" {% endif %}> Systemic sclerosis (SSc)
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_7 is True %} checked="checked" {% endif %}> Sjogren's Syndrome (SS)
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_8 is True %} checked="checked" {% endif %}> Mixed connective tissue disease
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_9 is True %} checked="checked" {% endif %}> LE/LP overlap syndrome
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_10 is True %} checked="checked" {% endif %}> Primary biliary cirrhosis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc1_11 is True %} checked="checked" {% endif %}> Primary sclerosing cholangitis
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row col-md-7 col-sm-7 col-xs-12">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px;">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center" colspan="2">Tissue-specific autoimmune diseases</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc2_2 is True %} checked="checked" {% endif %}> DM type 1
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc2_3 is True %} checked="checked" {% endif %}> Hashimoto's thyroiditis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc2_4 is True %} checked="checked" {% endif %}> Multiple sclerosis
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc2_5 is True %} checked="checked" {% endif %}> Myasthenia gravis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc2_6 is True %} checked="checked" {% endif %}> Autoimmune hepatitis
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center"> Metabolic & CVS co-morbidity</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc3_2 is True %} checked="checked" {% endif %}> DM type 2
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc3_3 is True %} checked="checked" {% endif %}> Hypertension
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc3_4 is True %} checked="checked" {% endif %}> Hyperlipidemia
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc3_5 is True %} checked="checked" {% endif %}> CAD
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center" colspan="3">Allergy</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc4_2 is True %} checked="checked" {% endif %}> Allergic rhinitis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc4_3 is True %} checked="checked" {% endif %}> Allergic conjunctivitis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc4_4 is True %} checked="checked" {% endif %}> Asthma
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc4_5 is True %} checked="checked" {% endif %}> Atopic dermatitis
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc4_6 is True %} checked="checked" {% endif %}> Allergic urticaria
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc4_7 is True %} checked="checked" {% endif %}> Anaphylaxis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" {% if medicalcondition.mc4_8 is True %} checked="checked" {% endif %}> Hay fever
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="checkbox">
+                                                  <input type="checkbox" {% if medicalcondition.mc4_9 is None %} checked="checked" {% endif %}> Food allergy
+                                                </div>
+                                                <p class="form-control">
+                                                    {% for text in medicalcondition.mc4_9 %} 
+                                                        {{text}} | 
+                                                    {% endfor %} 
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Other Co-morbidity</h4></div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <table class="table table-bordered table-hover table-striped">
@@ -705,4 +724,12 @@
             </div>
         </form>
     </div>
+    <script>
+        $(document).ready(function(){
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-blue',
+            radioClass: 'iradio_flat-blue'
+          });
+        });
+    </script>
 {% endblock %}
