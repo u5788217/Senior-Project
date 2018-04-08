@@ -2,6 +2,14 @@
 {% block content %}
 
     <script>
+        
+        $(document).ready(function(){
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-blue',
+            radioClass: 'iradio_flat-blue'
+          });
+        });
+        
         function AddFamFeild(spanid,namefam)
         {
             str = '<br/><input type="text" class="form-control" name="'+namefam+'">';
@@ -26,6 +34,193 @@
                 else{ alert('Error! :('); }
             });
         }
+        function addfamdis(){
+            var fmd = document.getElementById('familydisease');
+            var fmdvalue = fmd.options[fmd.selectedIndex].value;
+            if(fmdvalue == 1){$('#familydisease01').show();}
+            if(fmdvalue == 2){$('#familydisease02').show();}
+            if(fmdvalue == 3){$('#familydisease03').show();}
+            if(fmdvalue == 4){$('#familydisease04').show();}
+            if(fmdvalue == 5){$('#familydisease05').show();}
+            if(fmdvalue == 6){$('#familydisease06').show();}
+            if(fmdvalue == 7){$('#familydisease07').show();}
+            if(fmdvalue == 8){$('#familydisease08').show();}
+            if(fmdvalue == 9){$('#familydisease09').show();}
+            
+        }
+        function removefamdis(target){
+            document.getElementById(target).style.display = 'none';
+        }
+
+        $(document).ready(function(){
+            $('#other01').on('ifChecked', function(){
+                $("#odetail01").show();
+                $("#odate01").show();
+                $("#addotherinflection").show();
+            });
+            $('#other01').on('ifUnchecked', function(){
+                $("#odetail01").hide();
+                $("#odate01").hide();
+                $("#addotherinflection").hide();
+                $("#trotherinflection").remove();
+            });
+        });
+        $(document).ready(function(){
+            $('#other02').on('ifChecked', function(){
+                $("#odetail02").show();
+                $("#odate02").show();
+            });
+            $('#other02').on('ifUnchecked', function(){
+                $("#odetail02").hide();
+                $("#odate02").hide();
+            });
+        });
+        $(document).ready(function(){
+            $('#other03').on('ifChecked', function(){
+                $("#odetail03").show();
+                $("#odate03").show();
+            });
+            $('#other03').on('ifUnchecked', function(){
+                $("#odetail03").hide();
+                $("#odate03").hide();
+            });
+        });
+        $(document).ready(function(){
+            $('#other04').on('ifChecked', function(){
+                $("#odetail04").show();
+                $("#odate04").show();
+            });
+            $('#other04').on('ifUnchecked', function(){
+                $("#odetail04").hide();
+                $("#odate04").hide();
+            });
+        });
+        
+        $(document).ready(function(){
+            $('#confirmorgan01').on('ifChecked', function(){
+                $("#organremission01").show();
+                $("#orgranprevious01").show();
+            });
+            $('#confirmorgan01').on('ifUnchecked', function(){
+                $("#organremission01").hide();
+                $("#orgranprevious01").hide();
+            });
+        });
+        $(document).ready(function(){
+            $('#confirmorgan02').on('ifChecked', function(){
+                $("#organtreatment02").show();
+                $("#organremission02").show();
+                $("#orgranprevious02").show();
+                $("#organtradd02").show();
+            });
+            $('#confirmorgan02').on('ifUnchecked', function(){
+                $("#organtreatment02").hide();
+                $("#organremission02").hide();
+                $("#orgranprevious02").hide();
+                $("#organtradd02").hide();
+                $("#traddorgan02").remove();
+            });
+        });
+        $(document).ready(function(){
+            $('#confirmorgan03').on('ifChecked', function(){
+                $("#organtreatment03").show();
+                $("#organremission03").show();
+                $("#orgranprevious03").show();
+                $("#organtradd03").show();
+            });
+            $('#confirmorgan03').on('ifUnchecked', function(){
+                $("#organtreatment03").hide();
+                $("#organremission03").hide();
+                $("#orgranprevious03").hide();
+                $("#organtradd03").hide();
+                $("#traddorgan03").remove();
+            });
+        });
+        $(document).ready(function(){
+            $('#confirmorgan04').on('ifChecked', function(){
+                $("#organtreatment04").show();
+                $("#organremission04").show();
+                $("#orgranprevious04").show();
+                $("#organtradd04").show();
+            });
+            $('#confirmorgan04').on('ifUnchecked', function(){
+                $("#organtreatment04").hide();
+                $("#organremission04").hide();
+                $("#orgranprevious04").hide();
+                $("#organtradd04").hide();
+                $("#traddorgan04").remove();
+            });
+        });
+        $(document).ready(function(){
+            $('#confirmorgan05').on('ifChecked', function(){
+                $("#organtreatment05").show();
+                $("#organremission05").show();
+                $("#orgranprevious05").show();
+                $("#organtradd05").show();
+            });
+            $('#confirmorgan05').on('ifUnchecked', function(){
+                $("#organtreatment05").hide();
+                $("#organremission05").hide();
+                $("#orgranprevious05").hide();
+                $("#organtradd05").hide();
+                $("#traddorgan05").remove();
+            });
+        });
+        $(document).ready(function(){
+            $('#confirmorgan06').on('ifChecked', function(){
+                $("#organtreatment06").show();
+                $("#organremission06").show();
+                $("#orgranprevious06").show();
+                $("#organtradd06").show();
+            });
+            $('#confirmorgan06').on('ifUnchecked', function(){
+                $("#organtreatment06").hide();
+                $("#organremission06").hide();
+                $("#orgranprevious06").hide();
+                $("#organtradd06").hide();
+                $("#traddorgan06").remove();
+            });
+        });
+        $(document).ready(function(){
+            $('#confirmorgan07').on('ifChecked', function(){
+                $("#organtreatment07").show();
+                $("#organremission07").show();
+                $("#orgranprevious07").show();
+                $("#organtradd07").show();
+            });
+            $('#confirmorgan07').on('ifUnchecked', function(){
+                $("#organtreatment07").hide();
+                $("#organremission07").hide();
+                $("#orgranprevious07").hide();
+                $("#organtradd07").hide();
+                $("#traddorgan07").remove();
+            });
+        });
+        $(document).ready(function(){
+            $('#confirmorgan08').on('ifChecked', function(){
+                $("#organtreatment08").show();
+                $("#organremission08").show();
+                $("#orgranprevious08").show();
+                $("#organtradd08").show();
+            });
+            $('#confirmorgan08').on('ifUnchecked', function(){
+                $("#organtreatment08").hide();
+                $("#organremission08").hide();
+                $("#orgranprevious08").hide();
+                $("#organtradd08").hide();
+                $("#traddorgan08").remove();
+            });
+        });
+        
+        $(document).ready(function(){
+            $('#foodcheck').on('ifChecked', function(){
+                $("#foodinput").prop('disabled', false);
+            });
+            $('#foodcheck').on('ifUnchecked', function(){
+                $("#foodinput").prop('disabled', true);
+            });
+        });
+        
         $(document).ready(function(){
             $('#bttnMinus').click(function(){
                 pieFact *= 0.9;
@@ -36,64 +231,179 @@
                 updatePieFact();
             }); 
         });
-
         
-        $(document).ready(function(){
-            $('#FamHisAuto').change(function(){
-                if($(this).val() == 'Yes'){
-                    $('#ShowFormAuto').show();
-                }
-                else{
-                    $('#ShowFormAuto').hide();
-                }
-            })
+        function rmRow(o){
+            var p=o.parentNode.parentNode;
+            p.parentNode.removeChild(p);
+        }
+        
+        $(document).on("click",".addorgan02", function () {
+            var newRow = $("<tr id='traddorgan02'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02'>";
+            cols += "<option>AIHA</option><option>ITP</option><option>Thrombosis</option><option>Site</option></select></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
+            cols += "<div class='checkbox' id='organremission02' ><input type='checkbox' class='inputaddrow'></div></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious02' >";
+            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
+            cols += "<td><a class='addorgan02'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
+            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).parents().closest('tr'));
+            
+            $('.inputaddrow').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+              });
         });
-        $(document).ready(function(){
-            $('#FamHisRenal').change(function(){
-                if($(this).val() == 'Yes'){
-                    $('#ShowFormRenal').show();
-                }
-                else{
-                    $('#ShowFormRenal').hide();
-                }
-            })
+        
+        $(document).on("click",".addorgan03", function () {
+            var newRow = $("<tr id='traddorgan03'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment03'>";
+            cols += "<option>Seizure</option><option>Psychosis</option><option>Stroke</option><option>Myelins</option><option>Neuropathy</option><option>Aseptic meningitis</option></select></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
+            cols += "<div class='checkbox' id='organremission03' ><input type='checkbox' class='inputaddrow'></div></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious03' >";
+            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
+            cols += "<td><a class='addorgan03'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
+            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).parents().closest('tr'));
+            
+            $('.inputaddrow').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+              });
         });
-        $(document).ready(function(){
-            $('#SysAuto').change(function(){
-                if(this.checked){
-                    $("#SysAuto1").show();
-                    $("#SysAuto2").show();
-                    $("#SysAuto3").show();
-                    $("#SysAuto4").show();
-                    $("#SysAuto5").show();
-                }
-                else{
-                    $("#SysAuto1").hide();
-                    $("#SysAuto2").hide();
-                    $("#SysAuto3").hide();
-                    $("#SysAuto4").hide();
-                    $("#SysAuto5").hide();
-                }
-            })
+        
+        $(document).on("click",".addorgan04", function () {
+            var newRow = $("<tr id='traddorgan04'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment04'>";
+            cols += "<option>Pleuritis</option><option>Pneumonitis</option><option>PE</option><option>PAH</option><option>ILD</option></select></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
+            cols += "<div class='checkbox' id='organremission04' ><input type='checkbox' class='inputaddrow'></div></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious04' >";
+            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
+            cols += "<td><a class='addorgan04'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
+            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).parents().closest('tr'));
+            
+            $('.inputaddrow').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+              });
         });
-        $(document).ready(function(){
-            $('#TisAuto').change(function(){
-                if(this.checked){
-                    $("#TisAuto1").show();
-                    $("#TisAuto2").show();
-                    $("#TisAuto3").show();
-                    $("#TisAuto4").show();
-                    $("#TisAuto5").show();
-                }
-                else{
-                    $("#TisAuto1").hide();
-                    $("#TisAuto2").hide();
-                    $("#TisAuto3").hide();
-                    $("#TisAuto4").hide();
-                    $("#TisAuto5").hide();
-                }
-            })
+        
+        $(document).on("click",".addorgan05", function () {
+            var newRow = $("<tr id='traddorgan05'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment05'>";
+            cols += "<option>Myocarditis</option><option>Pericardial effusion</option></select></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
+            cols += "<div class='checkbox' id='organremission05' ><input type='checkbox' class='inputaddrow'></div></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious05' >";
+            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
+            cols += "<td><a class='addorgan05'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
+            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).parents().closest('tr'));
+            
+            $('.inputaddrow').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+              });
         });
+        
+        $(document).on("click",".addorgan06", function () {
+            var newRow = $("<tr id='traddorgan06'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment06'>";
+            cols += "<option>GI vasculitis</option><option>Pancreatitis</option><option>Acalculous cholecystitis</option></select></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
+            cols += "<div class='checkbox' id='organremission06' ><input type='checkbox' class='inputaddrow'></div></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious06' >";
+            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
+            cols += "<td><a class='addorgan06'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
+            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).parents().closest('tr'));
+            
+            $('.inputaddrow').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+              });
+        });
+        
+        $(document).on("click",".addorgan07", function () {
+            var newRow = $("<tr id='traddorgan07'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment07'>";
+            cols += "<option>Arthritis</option><option>Myositis</option></select></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
+            cols += "<div class='checkbox' id='organremission07' ><input type='checkbox' class='inputaddrow'></div></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious07' >";
+            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
+            cols += "<td><a class='addorgan07'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
+            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).parents().closest('tr'));
+            
+            $('.inputaddrow').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+              });
+        });
+        
+        $(document).on("click",".addorgan08", function () {
+            var newRow = $("<tr id='traddorgan08'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment08'>";
+            cols += "<option>Acate cutaneous</option><option>Subacute cutaneous</option><option>DLE</option><option>Lupus panniculitis</option><option>Oral/nasal ulcer</option><option>Non-scarring alopecia</option><option>Localized scarring alopecia</option><option>Reynad phenomenon</option></select></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
+            cols += "<div class='checkbox' id='organremission08' ><input type='checkbox' class='inputaddrow'></div></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious08' >";
+            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
+            cols += "<td><a class='addorgan08'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
+            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).parents().closest('tr'));
+            
+            $('.inputaddrow').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+              });
+        });
+        
+        $(document).on("click",".addotherinflection", function () {
+            var newRow = $("<tr id='trotherinflection'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='odetail01'><select class='form-control' name='otherdetail'><option>detail1</option></select></div></td>";
+            cols += "<td><input type='date' id='odate01' class='form-control'></td>";
+            cols += "<td><a class='addotherinfection'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'></span></a>";
+            cols += "<a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).closest('tr'));
+        });
+
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -139,9 +449,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                <!--Study Identity -->
-                <div class="x_panel">
+                    <div class="col-lg-5 col-md-5 col-sm-12"> 
+                        <!--Study Identity -->
+                        <div class="x_panel">
                         <div class="x_title"> 
                                 <h2>Study Identity </h2>
 								<ul class="nav navbar-right panel_toolbox">	
@@ -167,7 +477,13 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Gender</label>  
+                                    <label>Gender</label>
+                                    <select class="form-control" name="gender">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Missing</option>
+                                    </select>
+        <!--** Changed
                                     <div data-toggle="buttons">
                                         <label class="btn btn-default active">
                                             <input type="radio" name="gender" id="option1" autocomplete="off" value="Male" checked>Male
@@ -179,6 +495,7 @@
                                             <input type="radio" name="gender" id="option3" autocomplete="off" value="Missing">Missing
                                         </label>
                                     </div>
+                                    -->
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -203,20 +520,28 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Education</label>                                    
-                                    <select class="form-control" name="education">
-                                        <option>Less than high school</option>
-                                        <option>High school</option>
-                                        <option>Bachelor</option>
-                                        <option>Master</option>
-                                        <option>Doctoral</option>
-                                        <option>Other</option>
+                                    <label>Region</label>
+                                    <select class="form-control" name="region">
+                                        <option>Central</option>
+                                        <option>North</option>
+                                        <option>Northeast</option>
+                                        <option>East</option>
+                                        <option>West</option>
+                                        <option>South</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Marital Status</label>  
+                                    <label>Marital Status</label>
+                                    <select class="form-control" name="maritalstatus">
+                                        <option>Single</option>
+                                        <option>Married</option>
+                                        <option>Divorced</option>
+                                        <option>Widowed</option>
+                                        <option>Missing</option>
+                                    </select>
+            <!-- *** Changed
                                     <div data-toggle="buttons">
                                         <label class="btn btn-default active">
                                             <input type="radio" name="maritalstatus" id="option1" autocomplete="off" value="Single" checked>Single
@@ -234,22 +559,23 @@
                                             <input type="radio" name="maritalstatus" id="option5" autocomplete="off" value="Missing">Missing
                                         </label>
                                     </div>
+                                    -->
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Region</label>
-                                    <select class="form-control" name="region">
-                                        <option>Central</option>
-                                        <option>North</option>
-                                        <option>Northeast</option>
-                                        <option>East</option>
-                                        <option>West</option>
-                                        <option>South</option>
+                                    <label>Education</label>                                    
+                                    <select class="form-control" name="education">
+                                        <option>Less than high school</option>
+                                        <option>High school</option>
+                                        <option>Bachelor</option>
+                                        <option>Master</option>
+                                        <option>Doctoral</option>
+                                        <option>Other</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
                                 <div class="form-group">
                                     <label>Occupation</label>  
                                     <select class="form-control" name="occupation">
@@ -263,7 +589,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="form-group">
                                     <label>Income</label>
                                      <select class="form-control" name="income">
@@ -278,254 +604,139 @@
                             </div>
                         </div>
                     </div>
-                <!--Revised ACR criteria -->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Revised ACR criteria</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Serositis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr1"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Malar rash</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr2"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Renal disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr3"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Discoid rash</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr4"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Neurological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr5"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Photosensitivity</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr6"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Haematological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr7"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Oral ulcers	</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr8"> 
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12">     
+                        <!--Revised ACR criteria -->
+                        <div class="x_panel">
+                            <div class="x_title"> 
+                                        <h2>SLE criteria</h2>
+                                        <ul class="nav navbar-right panel_toolbox">	
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                        <table class="table table-striped table-bordered" style="margin-bottom: 5px;">
+                                            <tbody>
+                                                <tr scope="row"><td class="text-center" align="center">Revised ACR criteria</td></tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr1"> Serositis
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr2"> Malar rash
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr3"> Renal disorder
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr4"> Discoid rash
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr5"> Neurological disorder
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr6"> Oral ulcers
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr7"> Photosensitivity
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr8"> Immunological disorder
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr9"> Photosensitivity
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr10"> Arthritis
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="acr11"> Positive ANA
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <table class="table table-striped table-bordered" style="margin-bottom: 5px;">
+                                            <tbody>
+                                                <tr scope="row"><td class="text-center" align="center" colspan="2">SLICC criteria</td></tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc1"> Acute cutaneous
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc2"> Chronic cutaneous
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc3"> Mucosal ulcer
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc4"> Non scaring alopecia
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc5"> Arthritis
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc6"> Serositis
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc7"> Renal
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc8"> Neuro
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc9"> Hemolytic anemia
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc10"> Leukopenia/lymphopenia
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc11"> Thrombocytopenia
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc12"> ANA
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc13"> Anti-DNA
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc14"> Anti-Sm
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc15"> Anti-phospholipid
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc16"> Low complement
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <input type="checkbox" name="slicc17"> Direct coomb's test
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div> 
-                            <div class="col-lg-6col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Immunological disorder</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr9"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Arthritis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr10"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Positive ANA</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="acr11"> 
-                            </div>
-                        </div>
+                        
                     </div>
-                <!--SLICC criteria -->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>SLICC criteria </h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Acute cutaneous </label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc1"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Chronic cutaneous</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc2"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Mucosal ulcer</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc3"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Non scaring alopecia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc4"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Arthritis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc5"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Serositis</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc6"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Renal</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc7"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Neuro</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc8"> 
-                            </div>
-                            <div class="col-lg-6col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Hemolytic anemia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc9"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Leukopenia/lymphopenia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc10"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Thrombocytopenia</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc11"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">ANA	</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc12"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Anti-DNA</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc13"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Anti-Sm</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc14"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Anti-phospholipid</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="slicc15"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Low complement</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc16"> 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <label class="col-lg-8 col-md-8 col-sm-8">Direct coomb's test</label> 
-                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" value="1" name="slicc17"> 
-                            </div>
-                        </div>
-                    </div>         
-                <!--Family history-->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Family history</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">                       
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <label class="col-lg-6 col-md-6 col-sm-6">Family history of autoimmune disease </label> 
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4"> 
-                                    <select class="form-control" id="FamHisAuto" name="FamAuto"> 
-                                        <option selected value="No">No</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="Unknown">Unknown</option>
-                                    </select>
-                                </div>
-                            </div>   
-                            <div class="col-lg-8 col-md-8 col-sm-8" id="ShowFormAuto" style="display:none;">
-                                <div class="form-group"> 
-                                    <label class="col-lg-6 col-md-6 col-sm-6">Systemic autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto" name="systemicautoimmune"> 
-                                </div>
-                                <div id="SysAuto1" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">SLE</label> 
-                                    <span id="sle"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#sle','sle[]')" value="Add">  
-                                </div>
-                                            
-                                <div id="SysAuto2" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">RA</label> 
-                                    <span id="ra"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#ra','ra[]')" value="Add"> 
-                                </div>
-                                <div id="SysAuto3" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Dermatomyositis</label> 
-                                    <span id="dermatomyositis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#dermatomyositis','dermatomyositis[]')" value="Add">  
-                                </div>
-                                <div id="SysAuto4" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Systemic sclerosis</label> 
-                                    <span id="systemicsclerosis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#systemicsclerosis','systemicsclerosis[]')" value="Add"> 
-                                </div>
-                                <div id="SysAuto5" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Sjogren's Syndrome</label> 
-                                    <span id="sjogrensyndrome"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#sjogrensyndrome','sjogrensyndrome[]')" value="Add"> 
-                                </div>
-                                    
-                                                
-                                <div class="form-group"> 
-                                    <label class="col-lg-6 col-md-6 col-sm-6">Tissue-specific autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="TisAuto" name="tissuespecificautoimmune"> 
-                                </div>
-                                            
-                                <div id="TisAuto1" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">DM Type 1</label> 
-                                    <span id="dmtypeone"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#dmtypeone','dmtypeone[]')" value="Add">  
-                                </div>
-                                <div id="TisAuto2" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Hashimoto's thyroidditis</label> 
-                                    <span id="hashimotosthyroiditis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#hashimotosthyroiditis','hashimotosthyroiditis[]')" value="Add"> 
-                                </div>
-                                <div id="TisAuto3" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Multiple sclerosis</label> 
-                                    <span id="multiplesclerosis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#multiplesclerosis','multiplesclerosis[]')" value="Add"> 
-                                </div>
-                                <div id="TisAuto4" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Myasthenia gravis</label> 
-                                    <span id="myastheniagravis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#myastheniagravis','myastheniagravis[]')" value="Add"> 
-                                </div>
-                                <div id="TisAuto5" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Other</label> 
-                                    <span id="tissuespecificother"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#tissuespecificother','tissuespecificother[]')" value="Add"> 
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <label class="col-lg-6 col-md-6 col-sm-6">Family history of renal disease/chronic glomerulonephritis</label> 
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4"> 
-                                    <select class="form-control" id="FamHisRenal" name="FamRenal"> 
-                                        <option selected value="No">No</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="Unknown">Unknown</option>
-                                    </select>
-                                </div>
-                            </div>  
-                            <div class="col-lg-8 col-md-8 col-sm-8" id="ShowFormRenal" style="display:none;">
-                                <label class="col-lg-10 col-md-10 col-sm-10">Nephrotic syndrome /Glomerular disease</label>
-                                <span id="nephroticsyndrome_glomerulardisease"></span>
-                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#nephroticsyndrome_glomerulardisease','nephroticsyndrome_glomerulardisease[]')" value="Add"> 
-                                <label class="col-lg-8 col-md-8 col-sm-8">Stone </label>
-                                <span id="stone"></span>
-                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#stone','stone[]')" value="Add"> 
-                                <label class="col-lg-8 col-md-8 col-sm-8">ESRD  </label>
-                                 <span id="esrd"></span>
-                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#esrd','esrd[]')" value="Add"> 
-                                <label class="col-lg-8 col-md-8 col-sm-8">Other</label>
-                                 <span id="renalother"></span>
-                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#renalother','renalother[]')" value="Add"> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    
-                <!--Medical Condition -->
-                <div class="x_panel">
+                
+                <div class="col-lg-6 col-md-12 col-sm-12">   
+                    <!--Medical Condition -->
+                    <div class="x_panel">
                         <div class="x_title"> 
                                 <h2>Medical condition</h2>
 								<ul class="nav navbar-right panel_toolbox">	
@@ -533,227 +744,991 @@
 								<div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Systemic autoimmune diseases</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Antiphospholipid Ab  Syndrome</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_2"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Rheumatoid arthritis (RA) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_3"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Dermatomyositis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_4"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Polymyositis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_5"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Systemic sclerosis (SSc) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_6"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Sjogren's Syndrome (SS) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_7"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Mixed connective tissue disease  </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_8"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">LE/LP overlap syndrome </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_9"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Primary biliary cirrhosis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_10"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Primary sclerosing cholangitis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_11"> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Tissue-specific autoimmune diseases</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">DM type 1 </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_2"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hashimoto's thyroiditis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_3"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Multiple sclerosis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_4"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Myasthenia gravis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_5"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Autoimmune hepatitis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_6"> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Metabolic & CVS co-morbidity  </h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">DM type 2</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_2"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hypertension</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_3"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hyperlipidemia</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_4"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">CAD</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_5"> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Allergy</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic rhinitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_2"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic conjunctivitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_3"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Asthma</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_4"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Atopic dermatitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_5"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic urticaria</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_6"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Anaphylaxis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_7"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hay fever </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_8"> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label>Food allergy </label> 
-                            <input type="button" class="btn btn-default" onclick="AddTextFeild()" value="Add">
-                            <span id="foodallergy">
-                            </span>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Other Co-morbidity</h4></div>
-                        <div class="col-lg-12  col-md-12 col-sm-12">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>From Date</th>
-                                        <th>To Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                            <label>1) Infection</label>  
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="details" name="mc5_2_1">
-                                            </div>
-                                            </div>
-                                        </td>                                        
-                                        <td><input type="date" class="form-control" name="mc5_2_2"></td>
-                                        <td><input type="date" class="form-control" name="mc5_2_3"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                            <label>2) Major surgery</label>  
-                                            <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="details" name="mc5_3_1">
-                                            </div>
-                                            </div>
-                                        </td> 
-                                                                  
-                                        <td><input type="date" class="form-control" name="mc5_3_2"></td>
-                                        <td><input type="date" class="form-control" name="mc5_3_3"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p>3) Osteoporosis/Fx</p></td>                                        
-                                        <td><input type="text" class="form-control" placeholder="Site" name="mc5_4_1"></td>
-                                        <td><input type="date" class="form-control" name="mc5_4_2"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p>4) Malignancy</p></td>                                        
-                                        <td><input type="text" class="form-control" placeholder="Specified" name="mc5_5_1"></td>
-                                        <td><input type="date" class="form-control" name="mc5_5_2"></td>
-                                    </tr>
-                                </tbody>
-                            </table>                                    
-                        </div>
+                            
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center">Systemic autoimmune diseases</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_2"> Antiphospholipid Ab  Syndrome
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_3"> Rheumatoid arthritis (RA)
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_4"> Dermatomyositis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_5"> Polymyositis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_6"> Systemic sclerosis (SSc)
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_7"> Sjogren's Syndrome (SS)
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_8"> Mixed connective tissue disease
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_9"> LE/LP overlap syndrome
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_10"> Primary biliary cirrhosis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc1_11"> Primary sclerosing cholangitis
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row col-md-7 col-sm-7 col-xs-12">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px;">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center" colspan="2">Tissue-specific autoimmune diseases</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc2_2"> DM type 1
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc2_3"> Hashimoto's thyroiditis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc2_4"> Multiple sclerosis
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc2_5"> Myasthenia gravis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc2_6"> Autoimmune hepatitis
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center"> Metabolic & CVS co-morbidity</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc3_2"> DM type 2
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc3_3"> Hypertension
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc3_4"> Hyperlipidemia
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc3_5"> CAD
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center" colspan="3">Allergy</td></tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc4_2"> Allergic rhinitis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc4_3"> Allergic conjunctivitis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc4_4"> Asthma
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc4_5"> Atopic dermatitis
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc4_6"> Allergic urticaria
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc4_7"> Anaphylaxis
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc4_8"> Hay fever
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!--Add name please-->
+                                                <div class="checkbox">
+                                                  <input type="checkbox" id="foodcheck"> Food allergy
+                                                </div>
+                                                <input type="text" class="form-control" id="foodinput" disabled>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr scope="row"><td class="text-center" align="center">Other Co-morbidity</td></tr>
+                                        <tr>
+                                            <td>
+                                                <!--Case of having-->
+                                                <table class="table table-bordered" style="margin-bottom: 10px;" id="otherdi01">
+                                                    <tbody>
+                                                        <tr scope="row">
+                                                            <td class="col-md-3" align="center">Type</td>
+                                                            <td class="col-md-5" align="center">Detail</td>
+                                                            <td class="col-md-3" align="center">Diagnose date</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox" id="other01"> Inflection</td>
+                                                            <td>
+                                                                 <div class="form-group" id="odetail01" style="display: none;">
+                                                                    <select class="form-control" name="otherdetail">
+                                                                        <option>detail1</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate01" class="form-control" style="display: none;"></td>
+                                                            <td id="addotherinflection" style="display: none;">
+                                                                <a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox" id="other02"> Major surgery</td>
+                                                            <td>
+                                                                 <div class="form-group" id="odetail02" style="display: none;">
+                                                                    <select class="form-control" name="otherdetail">
+                                                                        <option>detail1</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate02" class="form-control" style="display: none;"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox" id="other03"> Osteoporosis/Fx</td>
+                                                            <td>
+                                                                 <div class="form-group" id="odetail03" style="display: none;">
+                                                                    <select class="form-control" name="otherdetail">
+                                                                        <option>detail1</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate03" class="form-control" style="display: none;"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="checkbox" id="other04"> Malignancy</td>
+                                                            <td>
+                                                                 <div class="form-group" id="odetail04" style="display: none;">
+                                                                    <select class="form-control" name="otherdetail">
+                                                                        <option>detail1</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate04" class="form-control" style="display: none;"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                     </div>
                 </div>
-                <!--Organ Involvement -->
-                <div class="x_panel">
+                </div>
+                
+                <div class="col-lg-6 col-md-12 col-sm-12">      
+                    <!--Family history-->
+                    <div class="x_panel">
                         <div class="x_title"> 
-                                <h2>Organ involvement</h2>
+                                <h2>Family history</h2>
+								<ul class="nav navbar-right panel_toolbox">	
+								</ul>
+								<div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="col-lg-12 col-md-12 col-sm-4">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label>Disease: </label>
+                                        <select class="form-control" id="familydisease">
+                                            <optgroup label="Systemic autoimmune">
+                                                <option value="1">SLE</option>
+                                                <option value="2">RA</option>
+                                                <option value="3">Dermatomyositis</option>
+                                                <option value="4">Systemic sclerosis</option>
+                                                <option value="5">Sjogren's Syndrome</option>
+                                            </optgroup>
+                                            <optgroup label="Tissue-specific autoimmune">
+                                                <option value="6">DM Type 1</option>
+                                                <option value="7">Hashimoto's thyroidditis</option>
+                                                <option value="8">Multiple sclerosis</option>
+                                                <option value="9">Myasthenia gravis</option>
+                                                <option value="10">Other</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <a class="btn btn-default" id="addfamilydisease" onclick="addfamdis();">Add</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-8">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease01">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: SLE
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease01');" value="fam01"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease02">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: RA
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease02');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease03">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: Dermatomyositis
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease03');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease04">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: Systemic sclerosis
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease04');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease05">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: Sjogren's Syndrome
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease05');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease06">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: DM Type 1
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease06');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease07">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: Hashimoto's thyroidditis
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease07');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease08">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: Multiple sclerosis
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease08');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease09">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: Myasthenia gravis
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease09');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease10">
+                                    <tbody>
+                                        <tr scope="row">
+                                            <td class="text-center" align="center" colspan="3">Disease: Other
+                                                <div style="float: right; position: relative;">
+                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease10');"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Father
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Mother
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"> Daughter
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox"> Relative
+                                                    </div>
+                                                    <input type="text" class="form-control" name="relativename">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="x_panel">
+                        <div class="x_title"> 
+                                <h2>Organ Involvement</h2>
 								<ul class="nav navbar-right panel_toolbox">	
 								</ul>
 								<div class="clearfix"></div>
                         </div>
                         <div class="x_content">
                         <div class="col-lg-12 col-md-12 col-sm-12">
+                            <!--Case of having-->
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
+                                <table class="table table-bordered">
+                                    <tbody>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Organ</th>
-                                            <th>Treatment</th>
-                                            <th>Remission</th>
+                                            <td class="col-md-3" align="center">Organ</td>
+                                            <td class="col-md-5" align="center">Treatment</td>
+                                            <td align="center">Remission</td>
+                                            <td align="center">Previous complecation</td>
                                         </tr>
-                                    </thead>
-                                    <tbody id="OrganFeild"></tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <label><input type="checkbox" id="confirmorgan01"></label>
+                                                    <div class="form-group" id="organlist">
+                                                        Renal
+                                                    </div>                                                
+                                                </div>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="organremission01" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="orgranprevious01" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <label><input type="checkbox" id="confirmorgan02"></label>
+                                                    <div class="form-group" id="organlist">
+                                                        Hemato
+                                                    </div>                                                
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" id="organlist">
+                                                    <select class="form-control" id="organtreatment02" style="display: none;">
+                                                        <option>AIHA</option>
+                                                        <option>ITP</option>
+                                                        <option>Thrombosis</option>
+                                                        <option>Site</option>
+                                                    </select>
+                                                </div> 
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="organremission02" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="orgranprevious02" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="organtradd02" style="display: none;">
+                                                <a class="addorgan02"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <label><input type="checkbox" id="confirmorgan03"></label>
+                                                    <div class="form-group" id="organlist">
+                                                        Neuro
+                                                    </div>                                                
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" id="organlist">
+                                                    <select class="form-control" id="organtreatment03" style="display: none;">
+                                                        <option>Seizure</option>
+                                                        <option>Psychosis</option>
+                                                        <option>Stroke</option>
+                                                        <option>Myelins</option>
+                                                        <option>Neuropathy</option>
+                                                        <option>Aseptic meningitis</option>
+                                                    </select>
+                                                </div> 
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="organremission03" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="orgranprevious03" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="organtradd03" style="display: none;">
+                                                <a class="addorgan03"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <label><input type="checkbox" id="confirmorgan04"></label>
+                                                    <div class="form-group" id="organlist">
+                                                        Pulmonary
+                                                    </div>                                                
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" id="organlist">
+                                                    <select class="form-control" id="organtreatment04" style="display: none;">
+                                                        <option>Pleuritis</option>
+                                                        <option>Pneumonitis</option>
+                                                        <option>PE</option>
+                                                        <option>PAH</option>
+                                                        <option>ILD</option>
+                                                    </select>
+                                                </div> 
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="organremission04" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="orgranprevious04" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="organtradd04" style="display: none;">
+                                                <a class="addorgan04"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <label><input type="checkbox" id="confirmorgan05"></label>
+                                                    <div class="form-group" id="organlist">
+                                                        Cardio
+                                                    </div>                                                
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" id="organlist">
+                                                    <select class="form-control" id="organtreatment05" style="display: none;">
+                                                        <option>Myocarditis</option>
+                                                        <option>Pericardial effusion</option>
+                                                    </select>
+                                                </div> 
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="organremission05" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="orgranprevious05" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="organtradd05" style="display: none;">
+                                                <a class="addorgan05"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <label><input type="checkbox" id="confirmorgan06"></label>
+                                                    <div class="form-group" id="organlist">
+                                                        GI
+                                                    </div>                                                
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" id="organlist">
+                                                    <select class="form-control" id="organtreatment06" style="display: none;">
+                                                        <option>GI vasculitis</option>
+                                                        <option>Pancreatitis</option>
+                                                        <option>Acalculous cholecystitis</option>
+                                                    </select>
+                                                </div> 
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="organremission06" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="orgranprevious06" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="organtradd06" style="display: none;">
+                                                <a class="addorgan06"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <label><input type="checkbox" id="confirmorgan07"></label>
+                                                    <div class="form-group" id="organlist">
+                                                        Musculosbeletal
+                                                    </div>                                                
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" id="organlist">
+                                                    <select class="form-control" id="organtreatment07" style="display: none;">
+                                                        <option>Arthritis</option>
+                                                        <option>Myositis</option>
+                                                    </select>
+                                                </div> 
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="organremission07" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="orgranprevious07" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="organtradd07" style="display: none;">
+                                                <a class="addorgan07"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <label><input type="checkbox" id="confirmorgan08"></label>
+                                                    <div class="form-group" id="organlist">
+                                                        Mucocutancous
+                                                    </div>                                                
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" id="organlist">
+                                                    <select class="form-control" id="organtreatment08" style="display: none;">
+                                                        <option>Acate cutaneous</option>
+                                                        <option>Subacute cutaneous</option>
+                                                        <option>DLE</option>
+                                                        <option>Lupus panniculitis</option>
+                                                        <option>Oral/nasal ulcer</option>
+                                                        <option>Non-scarring alopecia</option>
+                                                        <option>Localized scarring alopecia</option>
+                                                        <option>Reynad phenomenon</option>
+                                                    </select>
+                                                </div> 
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="organremission08" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" align="center">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox" style="display: none;" id="orgranprevious08" >
+                                                        <input type="checkbox">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td id="organtradd08" style="display: none;">
+                                                <a class="addorgan08"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
-                                <input type="button" class="btn btn-default" onclick="AddOrganFeild()" value="Add">       
                             </div>
                         </div>
                     </div>   
                 </div>
-                <!--Previous Complication  -->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Previous Complication </h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Organ</th>
-                                            <th>Treatment</th>
-                                            <th>Result</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="CompFeild"></tbody>
-                                </table>
-                                <input type="button" class="btn btn-default" onclick="AddCompFeild()" value="Add">   
-                            </div>
-                        </div>
-                    </div>    
+                    
                 </div>
-            </div>
             </div>
         </form>
     </div>
+<style>
+    td>.form-group{
+        margin: 0;
+    }
+</style>
 {% endblock %}
