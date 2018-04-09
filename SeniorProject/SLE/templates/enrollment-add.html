@@ -112,13 +112,14 @@
                 $("#organremission02").show();
                 $("#orgranprevious02").show();
                 $("#organtradd02").show();
+                $("#traddorgan02").show();
             });
             $('#confirmorgan02').on('ifUnchecked', function(){
                 $("#organtreatment02").hide();
                 $("#organremission02").hide();
                 $("#orgranprevious02").hide();
                 $("#organtradd02").hide();
-                $("#traddorgan02").remove();
+                $("#traddorgan02").hide();
             });
         });
         $(document).ready(function(){
@@ -247,8 +248,7 @@
             cols += "<div class='checkbox' id='organremission02' ><input type='checkbox' class='inputaddrow'></div></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious02' >";
             cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan02'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
@@ -269,8 +269,7 @@
             cols += "<div class='checkbox' id='organremission03' ><input type='checkbox' class='inputaddrow'></div></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious03' >";
             cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan03'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
@@ -291,8 +290,7 @@
             cols += "<div class='checkbox' id='organremission04' ><input type='checkbox' class='inputaddrow'></div></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious04' >";
             cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan04'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
@@ -313,8 +311,7 @@
             cols += "<div class='checkbox' id='organremission05' ><input type='checkbox' class='inputaddrow'></div></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious05' >";
             cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan05'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
@@ -335,8 +332,7 @@
             cols += "<div class='checkbox' id='organremission06' ><input type='checkbox' class='inputaddrow'></div></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious06' >";
             cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan06'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
@@ -357,8 +353,7 @@
             cols += "<div class='checkbox' id='organremission07' ><input type='checkbox' class='inputaddrow'></div></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious07' >";
             cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan07'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
@@ -379,8 +374,7 @@
             cols += "<div class='checkbox' id='organremission08' ><input type='checkbox' class='inputaddrow'></div></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious08' >";
             cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan08'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
@@ -397,8 +391,7 @@
             
             cols += "<td><div class='form-group' id='odetail01'><select class='form-control' name='otherdetail'><option>detail1</option></select></div></td>";
             cols += "<td><input type='date' id='odate01' class='form-control'></td>";
-            cols += "<td><a class='addotherinfection'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'></span></a>";
-            cols += "<a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).closest('tr'));
