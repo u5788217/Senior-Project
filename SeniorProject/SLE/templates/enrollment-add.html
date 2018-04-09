@@ -27,13 +27,7 @@
         {
             $('#CompFeild').append('<tr><td><input type="date" class="form-control" name="CompDate[]"></td><td><input type="text" class="form-control" name="CompOrgan[]"></td><td><input type="text" class="form-control" name="CompTreat[]"></td><td><input type="text" class="form-control" name="CompRemiss[]"></td></tr>');
         }
-        function updatePieFact(){
-            var data = {'pieFact': pieFact};
-            $.post(URL, data, function(response){
-                if(response === 'success'){ alert('Yay!'); }
-                else{ alert('Error! :('); }
-            });
-        }
+        
         function addfamdis(){
             var fmd = document.getElementById('familydisease');
             var fmdvalue = fmd.options[fmd.selectedIndex].value;
@@ -48,6 +42,7 @@
             if(fmdvalue == 9){$('#familydisease09').show();}
             
         }
+        //Should remove feild or delete feild
         function removefamdis(target){
             document.getElementById(target).style.display = 'none';
         }
@@ -62,7 +57,8 @@
                 $("#odetail01").hide();
                 $("#odate01").hide();
                 $("#addotherinflection").hide();
-                $("#trotherinflection").remove();
+                $("[name=trotherinflection]").remove();
+                
             });
         });
         $(document).ready(function(){
@@ -112,14 +108,14 @@
                 $("#organremission02").show();
                 $("#orgranprevious02").show();
                 $("#organtradd02").show();
-                $("#traddorgan02").show();
+                $("[name=traddorgan02]").show();
             });
             $('#confirmorgan02').on('ifUnchecked', function(){
                 $("#organtreatment02").hide();
                 $("#organremission02").hide();
                 $("#orgranprevious02").hide();
                 $("#organtradd02").hide();
-                $("#traddorgan02").hide();
+                $("[name=traddorgan02]").remove();
             });
         });
         $(document).ready(function(){
@@ -128,13 +124,14 @@
                 $("#organremission03").show();
                 $("#orgranprevious03").show();
                 $("#organtradd03").show();
+                $("[name=traddorgan03]").show();
             });
             $('#confirmorgan03').on('ifUnchecked', function(){
                 $("#organtreatment03").hide();
                 $("#organremission03").hide();
                 $("#orgranprevious03").hide();
                 $("#organtradd03").hide();
-                $("#traddorgan03").remove();
+                $("[name=traddorgan03]").remove();
             });
         });
         $(document).ready(function(){
@@ -143,13 +140,14 @@
                 $("#organremission04").show();
                 $("#orgranprevious04").show();
                 $("#organtradd04").show();
+                $("[name=traddorgan04]").show();
             });
             $('#confirmorgan04').on('ifUnchecked', function(){
                 $("#organtreatment04").hide();
                 $("#organremission04").hide();
                 $("#orgranprevious04").hide();
                 $("#organtradd04").hide();
-                $("#traddorgan04").remove();
+                $("[name=traddorgan04]").remove();
             });
         });
         $(document).ready(function(){
@@ -158,13 +156,14 @@
                 $("#organremission05").show();
                 $("#orgranprevious05").show();
                 $("#organtradd05").show();
+                $("[name=traddorgan05]").show();
             });
             $('#confirmorgan05').on('ifUnchecked', function(){
                 $("#organtreatment05").hide();
                 $("#organremission05").hide();
                 $("#orgranprevious05").hide();
                 $("#organtradd05").hide();
-                $("#traddorgan05").remove();
+                $("[name=traddorgan05]").remove();
             });
         });
         $(document).ready(function(){
@@ -173,13 +172,14 @@
                 $("#organremission06").show();
                 $("#orgranprevious06").show();
                 $("#organtradd06").show();
+                $("[name=traddorgan06]").show();
             });
             $('#confirmorgan06').on('ifUnchecked', function(){
                 $("#organtreatment06").hide();
                 $("#organremission06").hide();
                 $("#orgranprevious06").hide();
                 $("#organtradd06").hide();
-                $("#traddorgan06").remove();
+                $("[name=traddorgan06]").remove();
             });
         });
         $(document).ready(function(){
@@ -188,13 +188,14 @@
                 $("#organremission07").show();
                 $("#orgranprevious07").show();
                 $("#organtradd07").show();
+                $("[name=traddorgan07]").show();
             });
             $('#confirmorgan07').on('ifUnchecked', function(){
                 $("#organtreatment07").hide();
                 $("#organremission07").hide();
                 $("#orgranprevious07").hide();
                 $("#organtradd07").hide();
-                $("#traddorgan07").remove();
+                $("[name=traddorgan07]").remove();
             });
         });
         $(document).ready(function(){
@@ -203,13 +204,14 @@
                 $("#organremission08").show();
                 $("#orgranprevious08").show();
                 $("#organtradd08").show();
+                $("[name=traddorgan08]").show();
             });
             $('#confirmorgan08').on('ifUnchecked', function(){
                 $("#organtreatment08").hide();
                 $("#organremission08").hide();
                 $("#orgranprevious08").hide();
                 $("#organtradd08").hide();
-                $("#traddorgan08").remove();
+                $("[name=traddorgan08]").remove();
             });
         });
         
@@ -239,7 +241,7 @@
         }
         
         $(document).on("click",".addorgan02", function () {
-            var newRow = $("<tr id='traddorgan02'>");
+            var newRow = $("<tr name='traddorgan02'>");
             var cols = "<td></td>";
             
             cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02'>";
@@ -260,7 +262,7 @@
         });
         
         $(document).on("click",".addorgan03", function () {
-            var newRow = $("<tr id='traddorgan03'>");
+            var newRow = $("<tr name='traddorgan03'>");
             var cols = "<td></td>";
             
             cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment03'>";
@@ -281,7 +283,7 @@
         });
         
         $(document).on("click",".addorgan04", function () {
-            var newRow = $("<tr id='traddorgan04'>");
+            var newRow = $("<tr name='traddorgan04'>");
             var cols = "<td></td>";
             
             cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment04'>";
@@ -302,7 +304,7 @@
         });
         
         $(document).on("click",".addorgan05", function () {
-            var newRow = $("<tr id='traddorgan05'>");
+            var newRow = $("<tr name='traddorgan05'>");
             var cols = "<td></td>";
             
             cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment05'>";
@@ -323,7 +325,7 @@
         });
         
         $(document).on("click",".addorgan06", function () {
-            var newRow = $("<tr id='traddorgan06'>");
+            var newRow = $("<tr name='traddorgan06'>");
             var cols = "<td></td>";
             
             cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment06'>";
@@ -344,7 +346,7 @@
         });
         
         $(document).on("click",".addorgan07", function () {
-            var newRow = $("<tr id='traddorgan07'>");
+            var newRow = $("<tr name='traddorgan07'>");
             var cols = "<td></td>";
             
             cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment07'>";
@@ -365,7 +367,7 @@
         });
         
         $(document).on("click",".addorgan08", function () {
-            var newRow = $("<tr id='traddorgan08'>");
+            var newRow = $("<tr name='traddorgan08'>");
             var cols = "<td></td>";
             
             cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment08'>";
@@ -386,7 +388,7 @@
         });
         
         $(document).on("click",".addotherinflection", function () {
-            var newRow = $("<tr id='trotherinflection'>");
+            var newRow = $("<tr name='trotherinflection'>");
             var cols = "<td></td>";
             
             cols += "<td><div class='form-group' id='odetail01'><select class='form-control' name='otherdetail'><option>detail1</option></select></div></td>";
@@ -895,6 +897,7 @@
                                                             <td class="col-md-5" align="center">Detail</td>
                                                             <td class="col-md-3" align="center">Diagnose date</td>
                                                         </tr>
+                                                      
                                                         <tr>
                                                             <td><input type="checkbox" id="other01"> Inflection</td>
                                                             <td>
@@ -909,6 +912,7 @@
                                                                 <a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                                             </td>
                                                         </tr>
+                                                         
                                                         <tr>
                                                             <td><input type="checkbox" id="other02"> Major surgery</td>
                                                             <td>

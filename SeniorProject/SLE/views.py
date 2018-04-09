@@ -693,8 +693,6 @@ def enrollAdd(request):
 @login_required(login_url='login')
 def enrollPatient(request):
     if request.method == "POST":
-        #All data feilds
-        #create studynumber+1
         now = str(datetime.now().year+543)
         current_year = now[-2:]+"0000"
         max_id_list = Studyidentity.objects.all().filter(studynumber__gte = current_year)
