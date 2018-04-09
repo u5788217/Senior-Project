@@ -14,7 +14,7 @@ from datetime import datetime
 
 from .models import AuthUser
 #Models for enrollment
-from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory, Obgyn, Riskbehavior
+from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory, Obgyn, Riskbehavior, Comorbidity
 from .models import Labtype, Medicationtype, Previoustype
 from .models import Visiting, Clinicalpresentation, Damageindex, Diseaseactivitysledai, Laboratoryinventoryinvestigation, Lnlab, Medication
 
@@ -714,7 +714,7 @@ def enrollPatient(request):
                                 region = request.POST.get('region', ''),
                                 occupation = request.POST.get('occupation', ''),
                                 income = request.POST.get('income', ''))
-        EnrollStudyidentity.save()
+#        EnrollStudyidentity.save()
         
         EnrollSlicccriteria = Slicccriteria(studynumber = EnrollStudyidentity,
                                             slicc1 = CheckboxToBool(request.POST.get('slicc1', '')),
@@ -734,7 +734,7 @@ def enrollPatient(request):
                                             slicc15 = CheckboxToBool(request.POST.get('slicc15', '')),
                                             slicc16 = CheckboxToBool(request.POST.get('slicc16', '')),
                                             slicc17 = CheckboxToBool(request.POST.get('slicc17', '')))
-        EnrollSlicccriteria.save()
+#        EnrollSlicccriteria.save()
         
         EnrollAcrcriteria = Acrcriteria(studynumber = EnrollStudyidentity,
                                         acr1 = CheckboxToBool(request.POST.get('acr1', '')),
@@ -748,7 +748,7 @@ def enrollPatient(request):
                                         acr9 = CheckboxToBool(request.POST.get('acr9', '')),
                                         acr10 = CheckboxToBool(request.POST.get('acr10', '')),
                                         acr11 = CheckboxToBool(request.POST.get('acr11', '')))
-        EnrollAcrcriteria.save()
+#        EnrollAcrcriteria.save()
 
  
         EnrollMedicalcondition = Medicalcondition(studynumber = EnrollStudyidentity,
@@ -782,66 +782,96 @@ def enrollPatient(request):
                 mc4_6 = CheckboxToBool(request.POST.get('mc4_6', '')),
                 mc4_7 = CheckboxToBool(request.POST.get('mc4_7', '')),
                 mc4_8 = CheckboxToBool(request.POST.get('mc4_8', '')),
-
-                mc4_9 = ListToArray(request.POST.getlist('mc4_9[]',)),
-
-                mc5_1 = 'True' if request.POST.get('mc5_2_1', '')!='' or request.POST.get('mc5_2_2', '')!='' or request.POST.get('mc5_2_3', '')!='' or request.POST.get('mc5_3_1', '')!='' or request.POST.get('mc5_3_2', '')!='' or request.POST.get('mc5_3_3', '')!='' or request.POST.get('mc5_4_1', '')!='' or request.POST.get('mc5_4_2', '')!='' or request.POST.get('mc5_5_1', '')!='' or request.POST.get('mc5_5_2', '')!='' else 'False', 
-                mc5_2 = 'True' if request.POST.get('mc5_2_1', '')!='' or request.POST.get('mc5_2_2', '')!='' or request.POST.get('mc5_2_3', '')!='' else 'False', 
-                mc5_2_1 = request.POST.get('mc5_2_1', ''),
-                mc5_2_2 = DateToNone(request.POST.get('mc5_2_2', '')),
-                mc5_2_3 = DateToNone(request.POST.get('mc5_2_3', '')),
-                mc5_3 = 'True' if request.POST.get('mc5_3_1', '')!='' or request.POST.get('mc5_3_2', '')!='' or request.POST.get('mc5_3_3', '')!='' else 'False', 
-                mc5_3_1 = request.POST.get('mc5_3_1', ''),
-                mc5_3_2 = DateToNone(request.POST.get('mc5_3_2', '')),
-                mc5_3_3 = DateToNone(request.POST.get('mc5_3_3', '')),
-                mc5_4 = 'True' if request.POST.get('mc5_4_1', '')!='' or request.POST.get('mc5_4_2', '')!='' else 'False', 
-                mc5_4_1 = request.POST.get('mc5_4_1', ''),
-                mc5_4_2 = DateToNone(request.POST.get('mc5_4_2', '')),
-                mc5_5 = 'True' if request.POST.get('mc5_5_1', '')!='' or request.POST.get('mc5_5_2', '')!='' else 'False', 
-                mc5_5_1 = request.POST.get('mc5_5_1', ''),
-                mc5_5_2 = DateToNone(request.POST.get('mc5_5_2', '')))
-        EnrollMedicalcondition.save()
+                mc4_9 = request.POST.getlist('mc4_9',))
+#        EnrollMedicalcondition.save()
         
-        OrganDate = request.POST.getlist('OrganDate[]',)
-        OrganOrgan = request.POST.getlist('Organ[]',)
-        OrganTreat = request.POST.getlist('OrganTreat[]',)
-        OrganResult = request.POST.getlist('OrganResult[]',)
-        for i in range(0, len(OrganDate)):
-            EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, detail = Previoustype(date = DateToNone(OrganDate[i]), organ = OrganOrgan[i], treatment = OrganTreat[i], result = OrganResult[i]))
-            EnrollOrgan.save()
-        
-        CompDate = request.POST.getlist('CompDate[]',)
-        CompOrgan = request.POST.getlist('CompOrgan[]',)
-        CompTreat = request.POST.getlist('CompTreat[]',)
-        CompRemiss = request.POST.getlist('CompRemiss[]',)
-        for i in range(0, len(OrganDate)):
-            EnrollComp = Previouscomplication(studynumber = EnrollStudyidentity, detail = Previoustype(date = DateToNone(CompDate[i]), organ = CompOrgan[i], treatment = CompTreat[i], result = CompRemiss[i]))
-            EnrollComp.save()
+        other01 = CheckboxToBool(request.POST.get('other01',))
+        other02 = CheckboxToBool(request.POST.get('other02',))
+        other03 = CheckboxToBool(request.POST.get('other03',))
+        other04 = CheckboxToBool(request.POST.get('other04',))        
+        othertype = request.POST.getlist('othertype[]',)
+        otherdetail = request.POST.getlist('otherdetail[]',)
+        otherdate = request.POST.getlist('otherdate[]',)
+        if other01 is not 'True':
+            while 'inflection' in othertype: 
+                index = othertype.index('inflection')
+                othertype.remove('inflection')
+                del otherdetail[index]
+                del otherdate[index]
+        if other02 is not 'True':
+            while 'majorsurgery' in othertype:
+                index = othertype.index('majorsurgery')
+                othertype.remove('majorsurgery')
+                del otherdetail[index]
+                del otherdate[index]
+        if other03 is not 'True':
+            while 'osteoporosis' in othertype:
+                index = othertype.index('osteoporosis')
+                othertype.remove('osteoporosis')
+                del otherdetail[index]
+                del otherdate[index]
+        if other04 is not 'True':
+            while 'malignancy' in othertype:
+                index = othertype.index('malignancy')
+                othertype.remove('malignancy')
+                del otherdetail[index]
+                del otherdate[index]
+        a = []
+        for obj in othertype:
+            index = othertype.index(obj)
+            EnrollComorbidity = Comorbidity(studynumber = EnrollStudyidentity,
+                                        comorbiditytype = othertype[index],
+                                        detail = otherdetail[index],
+                                        diagnosedate = DateToNone(otherdate[index]))
+#            EnrollComorbidity.save()
+
+        SLEdd = request.POST.getlist('father[]',)
             
-        EnrollFam = Familyhistory(studynumber = EnrollStudyidentity,
-            familyhistoryofautoimmunedisease = request.POST.get('FamAuto',), 
-            systemicautoimmune = CheckboxToBool(request.POST.get('systemicautoimmune',)), 
-            sle = ListToArray(request.POST.getlist('sle[]',)),
-            ra = ListToArray(request.POST.getlist('ra[]',)),
-            dermatomyositis = ListToArray(request.POST.getlist('dermatomyositis[]',)),
-            systemicsclerosis = ListToArray(request.POST.getlist('systemicsclerosis[]',)),
-            sjogrensyndrome = ListToArray(request.POST.getlist('sjogrensyndrome[]',)),
-            tissuespecificautoimmune = CheckboxToBool(request.POST.get('tissuespecificautoimmune',)), 
-            dmtypeone = ListToArray(request.POST.getlist('dmtypeone[]',)),
-            hashimotosthyroiditis = ListToArray(request.POST.getlist('hashimotosthyroiditis[]',)),
-            multiplesclerosis = ListToArray(request.POST.getlist('multiplesclerosis[]',)),
-            myastheniagravis = ListToArray(request.POST.getlist('myastheniagravis[]',)),
-            tissuespecificother = ListToArray(request.POST.getlist('tissuespecificother[]',)),
-            renaldiseasefamilyhistory = request.POST.get('FamRenal',),
-            nephroticsyndrome_glomerulardisease = ListToArray(request.POST.getlist('nephroticsyndrome_glomerulardisease[]',)),
-            stone = ListToArray(request.POST.getlist('stone[]',)),
-            esrd = ListToArray(request.POST.getlist('esrd[]',)),
-            renalother = ListToArray(request.POST.getlist('renalother[]',)))
-        EnrollFam.save()
-    
-        return patientrecord(request, stnum)
-    
+        
+#        OrganDate = request.POST.getlist('OrganDate[]',)
+#        OrganOrgan = request.POST.getlist('Organ[]',)
+#        OrganTreat = request.POST.getlist('OrganTreat[]',)
+#        OrganResult = request.POST.getlist('OrganResult[]',)
+#        for i in range(0, len(OrganDate)):
+#            EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, detail = Previoustype(date = DateToNone(OrganDate[i]), organ = OrganOrgan[i], treatment = OrganTreat[i], result = OrganResult[i]))
+#            EnrollOrgan.save()
+#        
+#        CompDate = request.POST.getlist('CompDate[]',)
+#        CompOrgan = request.POST.getlist('CompOrgan[]',)
+#        CompTreat = request.POST.getlist('CompTreat[]',)
+#        CompRemiss = request.POST.getlist('CompRemiss[]',)
+#        for i in range(0, len(OrganDate)):
+#            EnrollComp = Previouscomplication(studynumber = EnrollStudyidentity, detail = Previoustype(date = DateToNone(CompDate[i]), organ = CompOrgan[i], treatment = CompTreat[i], result = CompRemiss[i]))
+#            EnrollComp.save()
+            
+        
+#        EnrollFam = Familyhistorywee(studynumber = EnrollStudyidentity,
+#            familyhistoryofautoimmunedisease = request.POST.get('FamAuto',), 
+#            systemicautoimmune = CheckboxToBool(request.POST.get('systemicautoimmune',)), 
+#            sle = ListToArray(request.POST.getlist('sle[]',)),
+#            ra = ListToArray(request.POST.getlist('ra[]',)),
+#            dermatomyositis = ListToArray(request.POST.getlist('dermatomyositis[]',)),
+#            systemicsclerosis = ListToArray(request.POST.getlist('systemicsclerosis[]',)),
+#            sjogrensyndrome = ListToArray(request.POST.getlist('sjogrensyndrome[]',)),
+#            tissuespecificautoimmune = CheckboxToBool(request.POST.get('tissuespecificautoimmune',)), 
+#            dmtypeone = ListToArray(request.POST.getlist('dmtypeone[]',)),
+#            hashimotosthyroiditis = ListToArray(request.POST.getlist('hashimotosthyroiditis[]',)),
+#            multiplesclerosis = ListToArray(request.POST.getlist('multiplesclerosis[]',)),
+#            myastheniagravis = ListToArray(request.POST.getlist('myastheniagravis[]',)),
+#            tissuespecificother = ListToArray(request.POST.getlist('tissuespecificother[]',)),
+#            renaldiseasefamilyhistory = request.POST.get('FamRenal',),
+#            nephroticsyndrome_glomerulardisease = ListToArray(request.POST.getlist('nephroticsyndrome_glomerulardisease[]',)),
+#            stone = ListToArray(request.POST.getlist('stone[]',)),
+#            esrd = ListToArray(request.POST.getlist('esrd[]',)),
+#            renalother = ListToArray(request.POST.getlist('renalother[]',)))
+#        EnrollFam.save()
+        
+#        return patientrecord(request, stnum)
+        return render(request, 'debug.html',
+                  {'a':SLEdd})
 
+def debug(request):
+    return render(request, 'debug.html')
 @login_required(login_url='login')
 def enrollDetail(request, studynum):
     return render(request, 'enrollment-detail.html',

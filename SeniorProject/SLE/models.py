@@ -184,26 +184,16 @@ class Diseaseactivitysledai(models.Model):
 
 
 class Familyhistory(models.Model):
-    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
-    familyhistoryofautoimmunedisease = models.CharField(max_length=10, blank=True, null=True)
-    systemicautoimmune = models.NullBooleanField()
-    sle = ArrayField(models.TextField(blank=True), null=True)
-    ra = ArrayField(models.TextField(blank=True), null=True)
-    dermatomyositis = ArrayField(models.TextField(blank=True), null=True)
-    systemicsclerosis = ArrayField(models.TextField(blank=True), null=True)
-    sjogrensyndrome = ArrayField(models.TextField(blank=True), null=True)
-    tissuespecificautoimmune = models.NullBooleanField()
-    dmtypeone = ArrayField(models.TextField(blank=True), null=True)
-    hashimotosthyroiditis = ArrayField(models.TextField(blank=True), null=True)
-    multiplesclerosis = ArrayField(models.TextField(blank=True), null=True)
-    myastheniagravis = ArrayField(models.TextField(blank=True), null=True)
-    tissuespecificother = ArrayField(models.TextField(blank=True), null=True)
-    renaldiseasefamilyhistory = models.CharField(max_length=10, blank=True, null=True)
-    nephroticsyndrome_glomerulardisease = ArrayField(models.TextField(blank=True), null=True)
-    stone = ArrayField(models.TextField(blank=True), null=True)
-    esrd = ArrayField(models.TextField(blank=True), null=True)
-    renalother = ArrayField(models.TextField(blank=True), null=True)
-
+    famid = models.AutoField(primary_key=True)
+    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
+    disease = models.TextField(blank=True, null=True)
+    father = models.NullBooleanField()
+    mother = models.NullBooleanField()
+    sibling = models.NullBooleanField()
+    daughter = models.NullBooleanField()
+    son = models.NullBooleanField()
+    relative = models.TextField(blank=True, null=True)
+    
     class Meta:
         managed = False
         db_table = 'familyhistory'
@@ -339,26 +329,21 @@ class Medicalcondition(models.Model):
     mc4_7 = models.NullBooleanField()
     mc4_8 = models.NullBooleanField()
     mc4_9 = ArrayField(models.TextField(blank=True), null=True)
-    mc5_1 = models.NullBooleanField()
-    mc5_2 = models.NullBooleanField()
-    mc5_2_1 = models.CharField(max_length=200, blank=True, null=True)
-    mc5_2_2 = models.DateField(blank=True, null=True)
-    mc5_2_3 = models.DateField(blank=True, null=True)
-    mc5_3 = models.NullBooleanField()
-    mc5_3_1 = models.CharField(max_length=200, blank=True, null=True)
-    mc5_3_2 = models.DateField(blank=True, null=True)
-    mc5_3_3 = models.DateField(blank=True, null=True)
-    mc5_4 = models.NullBooleanField()
-    mc5_4_1 = models.CharField(max_length=200, blank=True, null=True)
-    mc5_4_2 = models.DateField(blank=True, null=True)
-    mc5_5 = models.NullBooleanField()
-    mc5_5_1 = models.CharField(max_length=200, blank=True, null=True)
-    mc5_5_2 = models.DateField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'medicalcondition'
+        
+class Comorbidity(models.Model):
+    comorbidityid = models.AutoField(primary_key=True)
+    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
+    comorbiditytype = models.TextField(blank=True, null=True)
+    detail = models.TextField(blank=True, null=True)
+    diagnosedate = models.DateField(blank=True, null=True)
 
+    class Meta:
+        managed = False
+        db_table = 'comorbidity'
 
 class Medication(models.Model):
     visitingid = models.ForeignKey('Visiting', models.DO_NOTHING, db_column='visitingid', primary_key=True)

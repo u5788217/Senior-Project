@@ -391,8 +391,8 @@
             var newRow = $("<tr name='trotherinflection'>");
             var cols = "<td></td>";
             
-            cols += "<td><div class='form-group' id='odetail01'><select class='form-control' name='otherdetail'><option>detail1</option></select></div></td>";
-            cols += "<td><input type='date' id='odate01' class='form-control'></td>";
+            cols += "<td><div class='form-group' id='odetail01'><input type='text' name='othertype[]' value='inflection' style='display: none;'><select class='form-control' name='otherdetail[]'><option>detail1</option><option>detail2</option></select></div></td>";
+            cols += "<td><input type='date' id='odate01' class='form-control' name='otherdate[]'></td>";
             cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
@@ -899,52 +899,57 @@
                                                         </tr>
                                                       
                                                         <tr>
-                                                            <td><input type="checkbox" id="other01"> Inflection</td>
+                                                            <td><input type="checkbox" id="other01" name="other01"> Inflection</td>
                                                             <td>
+                                                                <input type="text" name="othertype[]" value="inflection" style="display: none;">
                                                                  <div class="form-group" id="odetail01" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail">
+                                                                    <select class="form-control" name="otherdetail[]">
                                                                         <option>detail1</option>
+                                                                        <option>detail2</option>
                                                                     </select>
                                                                 </div>
                                                             </td>
-                                                            <td><input type="date" id="odate01" class="form-control" style="display: none;"></td>
+                                                            <td><input type="date" id="odate01" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                             <td id="addotherinflection" style="display: none;">
                                                                 <a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                                             </td>
                                                         </tr>
                                                          
                                                         <tr>
-                                                            <td><input type="checkbox" id="other02"> Major surgery</td>
+                                                            <td><input type="checkbox" id="other02" name="other02"> Major surgery</td>
                                                             <td>
+                                                                <input type="text" name="othertype[]" value="majorsurgery" style="display: none;">
                                                                  <div class="form-group" id="odetail02" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail">
-                                                                        <option>detail1</option>
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>majorsurgery detail1</option>
                                                                     </select>
                                                                 </div>
                                                             </td>
-                                                            <td><input type="date" id="odate02" class="form-control" style="display: none;"></td>
+                                                            <td><input type="date" id="odate02" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="checkbox" id="other03"> Osteoporosis/Fx</td>
+                                                            <td><input type="checkbox" id="other03" name="other03"> Osteoporosis/Fx</td>
                                                             <td>
+                                                                <input type="text" name="othertype[]" value="osteoporosis" style="display: none;">
                                                                  <div class="form-group" id="odetail03" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail">
-                                                                        <option>detail1</option>
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>osteoporosis detail1</option>
                                                                     </select>
                                                                 </div>
                                                             </td>
-                                                            <td><input type="date" id="odate03" class="form-control" style="display: none;"></td>
+                                                            <td><input type="date" id="odate03" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="checkbox" id="other04"> Malignancy</td>
+                                                            <td><input type="checkbox" id="other04" name="other04"> Malignancy</td>
                                                             <td>
                                                                  <div class="form-group" id="odetail04" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail">
-                                                                        <option>detail1</option>
+                                                                    <input type="text" name="othertype[]" value="malignancy" style="display: none;">
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>malignancy detail1</option>
                                                                     </select>
                                                                 </div>
                                                             </td>
-                                                            <td><input type="date" id="odate04" class="form-control" style="display: none;"></td>
+                                                            <td><input type="date" id="odate04" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -1005,20 +1010,20 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="sibling[]"> Sibling
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
@@ -1046,7 +1051,7 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]"> Father
                                                     </div>
                                                     <div class="checkbox">
                                                         <input type="checkbox"> Mother
