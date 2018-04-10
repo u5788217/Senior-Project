@@ -1,5 +1,11 @@
 {% extends "header.html" %}
 {% block content %}
+    <style>
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+    </style>
 	<script>
         $(document).ready(function(){
           $('input').iCheck({
@@ -9,20 +15,20 @@
         });
         //Hide-show clinical presentation
         $(document).ready(function(){
-            $('#cpcheck01').on('ifChecked', function(){$("#cptr01").show();});
-            $('#cpcheck01').on('ifUnchecked', function(){$("#cptr01").hide();});
-             $('#cpcheck02').on('ifChecked', function(){$("#cptr02").show();});
-            $('#cpcheck02').on('ifUnchecked', function(){$("#cptr02").hide();});
-             $('#cpcheck03').on('ifChecked', function(){$("#cptr03").show();});
-            $('#cpcheck03').on('ifUnchecked', function(){$("#cptr03").hide();});
-             $('#cpcheck04').on('ifChecked', function(){$("#cptr04").show();});
-            $('#cpcheck04').on('ifUnchecked', function(){$("#cptr04").hide();});
-             $('#cpcheck05').on('ifChecked', function(){$("#cptr05").show();});
-            $('#cpcheck05').on('ifUnchecked', function(){$("#cptr05").hide();});
-             $('#cpcheck06').on('ifChecked', function(){$("#cptr06").show();});
-            $('#cpcheck06').on('ifUnchecked', function(){$("#cptr06").hide();});
-             $('#cpcheck07').on('ifChecked', function(){$("#cptr07").show();});
-            $('#cpcheck07').on('ifUnchecked', function(){$("#cptr07").hide();});
+            $('#cpcheck01').on('ifChecked', function(){$("#cptr01").removeAttr('class');});
+            $('#cpcheck01').on('ifUnchecked', function(){$("#cptr01").addClass("disabledbutton");});
+            $('#cpcheck02').on('ifChecked', function(){$("#cptr02").removeAttr('class');});
+            $('#cpcheck02').on('ifUnchecked', function(){$("#cptr02").addClass("disabledbutton");});
+            $('#cpcheck03').on('ifChecked', function(){$("#cptr03").removeAttr('class');});
+            $('#cpcheck03').on('ifUnchecked', function(){$("#cptr03").addClass("disabledbutton");});
+            $('#cpcheck04').on('ifChecked', function(){$("#cptr04").removeAttr('class');});
+            $('#cpcheck04').on('ifUnchecked', function(){$("#cptr04").addClass("disabledbutton");});
+            $('#cpcheck05').on('ifChecked', function(){$("#cptr05").removeAttr('class');});
+            $('#cpcheck05').on('ifUnchecked', function(){$("#cptr05").addClass("disabledbutton");});
+            $('#cpcheck06').on('ifChecked', function(){$("#cptr06").removeAttr('class');});
+            $('#cpcheck06').on('ifUnchecked', function(){$("#cptr06").addClass("disabledbutton");});
+            $('#cpcheck07').on('ifChecked', function(){$("#cptr07").removeAttr('class');});
+            $('#cpcheck07').on('ifUnchecked', function(){$("#cptr07").addClass("disabledbutton");});
         });
         //Calculate SLEDAI score
         $(document).ready(function(){
@@ -367,7 +373,7 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck01"> 1. Constitutional Symptoms</td></tr>
-                                                            <tr id="cptr01" style="display: none;">
+                                                            <tr id="cptr01" class="disabledbutton">
                                                                 <td>
                                                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                                                         <div class="checkbox">
@@ -386,7 +392,7 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck02"> 2. Skin & mucous membrane</td></tr>
-                                                            <tr id="cptr02" style="display: none;">
+                                                            <tr id="cptr02" class="disabledbutton">
                                                                 <td>
                                                                         <div class="checkbox">
                                                                             <input type="checkbox" name="cp_3"> Malar rash
@@ -434,7 +440,7 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck03"> 3. Cardiopulmonary involvement</td></tr>
-                                                            <tr id="cptr03" style="display: none;">
+                                                            <tr id="cptr03" class="disabledbutton">
                                                                 <td>
                                                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                                                         <div class="checkbox">
@@ -458,7 +464,7 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck04"> 4. GI & Renal involvement</td></tr>
-                                                            <tr id="cptr04" style="display: none;">
+                                                            <tr id="cptr04" class="disabledbutton">
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
                                                                         <input type="checkbox" name="cp_16"> Edema
@@ -486,7 +492,7 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck05"> 5. Hematologic disorder</td></tr>
-                                                            <tr id="cptr05" style="display: none;">
+                                                            <tr id="cptr05" class="disabledbutton">
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
                                                                         <input type="checkbox" name="cp_21"> AIHA
@@ -506,7 +512,7 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck06"> 6. Neurological involvement</td></tr>
-                                                            <tr id="cptr06" style="display: none;">
+                                                            <tr id="cptr06" class="disabledbutton">
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
                                                                         <input type="checkbox" name="cp_24"> Acute confusional state/delirium
@@ -531,7 +537,7 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck07"> 7. Musculoskeletal & LN involvement</td></tr>
-                                                            <tr id="cptr07" style="display: none;">
+                                                            <tr id="cptr07" class="disabledbutton">
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
                                                                         <input type="checkbox" name="cp_28"> Arthralgias
@@ -1098,6 +1104,123 @@
                                 <div class="panel">
                                     <div class="panel-body ">
                                         <div class="row">
+                                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01"> 1. CBC</td>
+                                                            </tr>
+                                                            <tr id="labtr01+0" class="disabledbutton">
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Hb (g/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="hb"   step="0.1"   placeholder="00.0" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>WBC (uL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="wbc"   placeholder="00,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>N (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="n"   placeholder="00"  class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>L (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="l"   placeholder="00" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label> Platelets (uL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="platelets"   placeholder="000,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ESR (mm/hr)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="esr"   placeholder="00" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01"> 2. Urine Analysis</td>
+                                                            </tr>
+                                                            <tr id="labtr01+0" class="disabledbutton">
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Hb (g/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="hb"   step="0.1"   placeholder="00.0" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>WBC (uL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="wbc"   placeholder="00,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>N (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="n"   placeholder="00"  class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>L (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="l"   placeholder="00" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label> Platelets (uL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="platelets"   placeholder="000,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ESR (mm/hr)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="esr"   placeholder="00" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <h4 class="page-header">1. CBC</h4>
@@ -1508,13 +1631,13 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal1" style="display:none;">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal1">
                                                             <div class="form-group">
                                                                 <label>Abnormal detail</label> 
                                                                 <input type="text" class="form-control" name="Stool1">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal2" style="display:none;">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal2">
                                                             <div class="form-group">
                                                                 <label>Date</label>  
                                                                  <input type="date" class="form-control" name="Stool2">
@@ -1534,13 +1657,13 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal3" style="display:none;">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal3">
                                                             <div class="form-group">
                                                                 <label>Abnormal detail</label> 
                                                                 <input type="text" class="form-control" name="CXR1">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal4" style="display:none;">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal4">
                                                             <div class="form-group">
                                                                 <label>Date</label>  
                                                                  <input type="date" class="form-control" name="CXR2">
@@ -1558,13 +1681,13 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal5" style="display:none;">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal5">
                                                             <div class="form-group">
                                                                 <label>Abnormal detail</label> 
                                                                 <input type="text" class="form-control" name="EKG1">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal6" style="display:none;">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal6">
                                                             <div class="form-group">
                                                                 <label>Date</label>  
                                                                  <input type="date" class="form-control" name="EKG2">
@@ -1582,13 +1705,13 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal7" style="display:none;">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal7">
                                                             <div class="form-group">
                                                                 <label>Abnormal detail</label> 
                                                                 <input type="text" class="form-control" name="Echo1">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal8" style="display:none;">
+                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal8">
                                                             <div class="form-group">
                                                                 <label>Date</label>  
                                                                  <input type="date" class="form-control" name="Echo2">
@@ -1607,7 +1730,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="panel panel-default" style="display: none;" id="LNShow">
+                                <div class="panel panel-default" id="LNShow">
                                     <div class="panel-heading"> 
                                         <h4 class="panel-title">Laboratory Investigation at baseline/diagnosis according to the ACR renal response criteria (ACR 2006)</h4>
                                     </div>
@@ -1688,7 +1811,7 @@
                                                 <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck1">1. Specific treatment of SLE  </h4>
                                             </div>
                                         </div>
-                                        <div id="MedicationShow1" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12" style="display:none;">
+                                        <div id="MedicationShow1" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -1860,7 +1983,7 @@
                                             <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck2"></h4>
                                             </div>
                                         </div> 
-                                        <div id="MedicationShow2" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12" style="display:none;">
+                                        <div id="MedicationShow2" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
                                             <table class="table">
                                                 <thead>
                                                     <tr>
