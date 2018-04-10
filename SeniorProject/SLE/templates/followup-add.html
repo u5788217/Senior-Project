@@ -249,6 +249,73 @@
                 }
             }  
         });
+        //Calculate UPCI
+        $(document).ready(function(){
+            $("#tfhr_urinecreatinine").keyup(function(){
+                var total=isNaN(parseInt($("#tfhr_urineprotein").val()/ $("#tfhr_urinecreatinine").val())) ? 0 :($("#tfhr_urineprotein").val()/ $("#tfhr_urinecreatinine").val())
+                $("#upci").val(total);
+            });
+        });
+        //Hide-show Lab
+        $(document).ready(function(){
+            $('#labcheck01').on('ifChecked', function(){$("#labtr01").removeAttr('class');});
+            $('#labcheck01').on('ifUnchecked', function(){$("#labtr01").addClass("disabledbutton");});
+            $('#labcheck02').on('ifChecked', function(){$("#labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").removeAttr('class');});
+            $('#labcheck02').on('ifUnchecked', function(){$("#labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").addClass("disabledbutton");});
+            $('#labcheck03').on('ifChecked', function(){$("#labtr03").removeAttr('class');});
+            $('#labcheck03').on('ifUnchecked', function(){$("#labtr03").addClass("disabledbutton");});
+            $('#labcheck04').on('ifChecked', function(){$("#labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").removeAttr('class');});
+            $('#labcheck04').on('ifUnchecked', function(){$("#labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").addClass("disabledbutton");});
+            $('#labcheck05').on('ifChecked', function(){$("#labtd05").removeAttr('class');});
+            $('#labcheck05').on('ifUnchecked', function(){$("#labtd05").addClass("disabledbutton");});
+            $('#labcheck05extra').on('ifChecked', function(){$("#labtr05extra").removeAttr('class');});
+            $('#labcheck05extra').on('ifUnchecked', function(){$("#labtr05extra").addClass("disabledbutton");});
+            $('#labcheck06').on('ifChecked', function(){$("#labtr06").removeAttr('class');});
+            $('#labcheck06').on('ifUnchecked', function(){$("#labtr06").addClass("disabledbutton");});
+            $('#labcheck07').on('ifChecked', function(){$("#labtd07").removeAttr('class');});
+            $('#labcheck07').on('ifUnchecked', function(){$("#labtd07").addClass("disabledbutton");});
+            $('#labcheck08').on('ifChecked', function(){$("#labtd08").removeAttr('class');});
+            $('#labcheck08').on('ifUnchecked', function(){$("#labtd08").addClass("disabledbutton");});
+            $('#labcheck09').on('ifChecked', function(){$("#labtd09").removeAttr('class');});
+            $('#labcheck09').on('ifUnchecked', function(){$("#labtd09").addClass("disabledbutton");});
+            $('#labcheck10').on('ifChecked', function(){$("#labtd10").removeAttr('class');});
+            $('#labcheck10').on('ifUnchecked', function(){$("#labtd10").addClass("disabledbutton");});
+            $('#labcheck11').on('ifChecked', function(){$("#labtr11").removeAttr('class');});
+            $('#labcheck11').on('ifUnchecked', function(){$("#labtr11").addClass("disabledbutton");});
+        });
+        //Check lab
+        $(document).ready(function(){
+            $('#ckglucose').on('ifChecked', function(){$("#glucose").prop('disabled', false);});
+            $('#ckglucose').on('ifUnchecked', function(){$("#glucose").prop('disabled', true);});
+            $('#ckprotein').on('ifChecked', function(){$("#protein").prop('disabled', false);});
+            $('#ckprotein').on('ifUnchecked', function(){$("#protein").prop('disabled', true);});
+            $('#ckantism').on('ifChecked', function(){$("#antism").prop('disabled', false);});
+            $('#ckantism').on('ifUnchecked', function(){$("#antism").prop('disabled', true);});
+            $('#ckantirnp').on('ifChecked', function(){$("#antirnp").prop('disabled', false);});
+            $('#ckantirnp').on('ifUnchecked', function(){$("#antirnp").prop('disabled', true);});
+            $('#ckantiro').on('ifChecked', function(){$("#antiro").prop('disabled', false);});
+            $('#ckantiro').on('ifUnchecked', function(){$("#antiro").prop('disabled', true);});
+            $('#ckantila').on('ifChecked', function(){$("#antila").prop('disabled', false);});
+            $('#ckantila').on('ifUnchecked', function(){$("#antila").prop('disabled', true);});
+            $('#cklupusanticoagulant').on('ifChecked', function(){$("#lupusanticoagulant").prop('disabled', false);});
+            $('#cklupusanticoagulant').on('ifUnchecked', function(){$("#lupusanticoagulant").prop('disabled', true);});
+            $('#ckanticic').on('ifChecked', function(){$("#anticic").prop('disabled', false);});
+            $('#ckanticic').on('ifUnchecked', function(){$("#anticic").prop('disabled', true);});
+            $('#ckil6').on('ifChecked', function(){$("#il6").prop('disabled', false);});
+            $('#ckil6').on('ifUnchecked', function(){$("#il6").prop('disabled', true);});
+            $('#ckhbsag').on('ifChecked', function(){$("#hbsag").prop('disabled', false);});
+            $('#ckhbsag').on('ifUnchecked', function(){$("#hbsag").prop('disabled', true);});
+            $('#ckantihbs').on('ifChecked', function(){$("#antihbs").prop('disabled', false);});
+            $('#ckantihbs').on('ifUnchecked', function(){$("#antihbs").prop('disabled', true);});
+            $('#ckantihbc').on('ifChecked', function(){$("#antihbc").prop('disabled', false);});
+            $('#ckantihbc').on('ifUnchecked', function(){$("#antihbc").prop('disabled', true);});
+            $('#ckantihcv').on('ifChecked', function(){$("#antihcv").prop('disabled', false);});
+            $('#ckantihcv').on('ifUnchecked', function(){$("#antihcv").prop('disabled', true);});
+            $('#ckantihiv').on('ifChecked', function(){$("#antihiv").prop('disabled', false);});
+            $('#ckantihiv').on('ifUnchecked', function(){$("#antihiv").prop('disabled', true);});
+            $('#ckcytokine').on('ifChecked', function(){$("#cytokine").prop('disabled', false);});
+            $('#ckcytokine').on('ifUnchecked', function(){$("#cytokine").prop('disabled', true);});
+        });
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -1104,14 +1171,14 @@
                                 <div class="panel">
                                     <div class="panel-body ">
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                            <div class="col-lg-5 col-md-5 col-sm-12">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01"> 1. CBC</td>
                                                             </tr>
-                                                            <tr id="labtr01+0" class="disabledbutton">
+                                                            <tr id="labtr01" class="disabledbutton">
                                                                 <td>
                                                                     <div class="form-group">
                                                                         <label>Hb (g/dL)</label>  
@@ -1162,48 +1229,142 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01"> 2. Urine Analysis</td>
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck02"> 2. Urine Analysis</td>
                                                             </tr>
-                                                            <tr id="labtr01+0" class="disabledbutton">
-                                                                <td>
+                                                            <tr id="labtr02_0" class="disabledbutton">
+                                                                <td colspan="3" align="center" style="background-color: #FDFCEE;">
+                                                                    2.1
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="labtr02_1" class="disabledbutton"> 
+                                                                <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>Hb (g/dL)</label>  
-                                                                        <div class="form-group">
-                                                                            <input type="number" name="hb"   step="0.1"   placeholder="00.0" class="form-control">
+                                                                        <label>WBC (/HPF)</label> 
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="wbc_hpf1"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="wbc_hpf2"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>WBC (uL)</label>  
-                                                                        <div class="form-group">
-                                                                            <input type="number" name="wbc"   placeholder="00,000" class="form-control">
+                                                                        <label>RBC (/HPF)</label>  
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="rbc_hpf1"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="rbc_hpf2"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>N (%)</label>  
-                                                                        <div class="form-group">
-                                                                            <input type="number" name="n"   placeholder="00"  class="form-control">
+                                                                        <label>WBC casts (/LPF)</label>  
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="wbccasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="wbccasts2"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>L (%)</label>  
-                                                                        <div class="form-group">
-                                                                            <input type="number" name="l"   placeholder="00" class="form-control">
+                                                                        <label>RBC casts (/LPF)</label>  
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="rbccasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="rbccasts2"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Granular casts(/LPF)</label>  
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="granularcasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="granularcasts2"   placeholder="00" step="10" class="form-control" style="width: 65px;">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td>
+                                                                <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label> Platelets (uL)</label>  
+                                                                        <label><input type="checkbox" id="ckglucose"> Glucose</label>  
+                                                                        <select class="form-control" name="glucose" id="glucose" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Trace">Trace</option>
+                                                                            <option value="1+">1+</option>
+                                                                            <option value="2+">2+</option>
+                                                                            <option value="3+">3+</option>
+                                                                            <option value="4+">4+</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label> <input type="checkbox" id="ckprotein"> Protein</label>
+                                                                        <select class="form-control" name="protein" id="protein" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Trace">Trace</option>
+                                                                            <option value="1+">1+</option>
+                                                                            <option value="2+">2+</option>
+                                                                            <option value="3+">3+</option>
+                                                                            <option value="4+">4+</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="labtr02_3" class="disabledbutton">
+                                                                <td colspan="3" align="center" style="background-color: #FDFCEE;">
+                                                                    2.2
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="labtr02_4" class="disabledbutton"> 
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>TP-Spot Urine Protein (mg/dL)</label>  
                                                                         <div class="form-group">
-                                                                            <input type="number" name="platelets"   placeholder="000,000" class="form-control">
+                                                                            <input type="number" name="tp_spoturineprotein"   placeholder="000" class="form-control">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>ESR (mm/hr)</label>  
+                                                                        <label>CRE- Spot Urine Creatinine (mg/dL)</label>  
                                                                         <div class="form-group">
-                                                                            <input type="number" name="esr"   placeholder="00" class="form-control">
+                                                                            <input type="number" name="cre_spoturinecreatinine"   placeholder="000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>24-hr Urine Protein (g/day)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tfhr_urineprotein" id="tfhr_urineprotein" step="0.1" placeholder="00.0" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>24-hr Urine Creatinine (g/day)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tfhr_urinecreatinine" id="tfhr_urinecreatinine" step="0.1" placeholder="00.0" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>UPCI</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="upci" id="upci" step="0.1" placeholder="0.0" class="form-control">
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -1211,589 +1372,541 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                
-                                                
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck03"> 3. Blood Chem</td>
+                                                            </tr>
+                                                            <tr id="labtr03" class="disabledbutton">
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>FBS (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="fbs"   placeholder="000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Cr (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="cr"   placeholder="00.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ALT (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="alt"   placeholder="0,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Albumin (g/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="albumin"   placeholder="00.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Choles (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="choles"   placeholder="0,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>HDL (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="hdl"   placeholder="000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>HbA1C (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="hba1c"   placeholder="00" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ALP (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="alp"   placeholder="0,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>GGT (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ggt"   placeholder="000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>TD</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tdbilirubin1"   placeholder="00.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>DB</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tdbilirubin2"   placeholder="00.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>TG (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tg"   placeholder="0,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>BUN (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="bun"   placeholder="0.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>AST (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ast"   placeholder="0,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>LDH (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ldh"   placeholder="0,000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>CRP (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="crp"   placeholder="0.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>LDL (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ldl"   placeholder="000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>INR</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="inr"   placeholder="00.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="col-lg-7 col-md-7 col-sm-12">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <h4 class="page-header">1. CBC</h4>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Hb (g/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="hb"   step="0.1"   placeholder="00.0" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">WBC (uL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="wbc"   placeholder="00,000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">N (%) </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="n"   placeholder="00"  class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">L (%)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="l"   placeholder="00" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Platelets (uL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="platelets"   placeholder="000,000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">ESR (mm/hr)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="esr"   placeholder="00" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <h4 class="page-header">2. Urine Analysis</h4>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">WBC (/HPF)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="wbc_hpf"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> RBC (/HPF)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="rbc_hpf"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> WBC casts (/LPF)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="wbccasts"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> RBC casts (/LPF)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="rbccasts"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> Granular casts(/LPF)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="granularcasts"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12"></div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Glucose</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="glucose"   placeholder="00" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Protein </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="protein"   placeholder="00" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">TP-Spot Urine Protein (mg/dL) </label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="tp_spoturineprotein"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">CRE- Spot Urine Creatinine (mg/dL)  </label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="cre_spoturinecreatinine"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">24-hr Urine Protein (g/day) </label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="tfhr_urineprotein"   step="0.1" placeholder="00.0" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">24-hr Urine Creatinine (g/day)</label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="tfhr_urinecreatinine"   step="0.1" placeholder="0.0" class="form-control">
-                                                    </div>
-                                                </div>
-												<div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">UPCI</label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <input type="number" name="upci"   step="0.1" placeholder="0.0" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <h4 class="page-header">3. Blood Chem </h4>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">FBS (mg/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="fbs"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">HbA1C (%)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="hba1c"   placeholder="00" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">BUN (mg/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="bun"   placeholder="0.0" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Cr (mg/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="cr"   placeholder="00.0" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">ALP (units/L)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="alp"   placeholder="0,000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">  AST (units/L)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ast"   placeholder="0,000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">  ALT (units/L)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="alt"   placeholder="0,000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">  GGT (units/L)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ggt"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">LDH (units/L)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ldh"   placeholder="0,000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Albumin (g/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="albumin"   placeholder="00.0" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">T/D bilirubin</label>
-                                                    <div class="form-inline col-lg-6 col-md-6 col-sm-6">
-                                                        <div class="form-group">
-                                                            <input type="number" name="tdbilirubin1"   placeholder="00.0" step="0.1" class="form-control" style="width: 70px;">
-                                                        </div>
-                                                        <label>/</label>
-                                                        <div class="form-group" style="padding: 0px;">
-                                                            <input type="number" name="tdbilirubin2"   placeholder="00.0" step="0.1" class="form-control" style="width: 70px;">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                 <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">CRP (mg/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="crp"   placeholder="0.0" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Choles (mg/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="choles"   placeholder="0,000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">TG (mg/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="tg"   placeholder="0,000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">LDL (mg/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ldl"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">HDL (mg/dL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="hdl"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">INR</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="inr"   placeholder="00.0" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <h4 class="page-header">4. Immunology</h4>
-                                                </div>
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-3 col-sm-3">ANA titer</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="ANAMother" name="anatiter"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Homogeneous</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="homogeneous1"   placeholder="0000" class="form-control" id="ANA1" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Peripheral</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="peripheral1"   placeholder="0000" class="form-control" id="ANA2" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-lg-offset-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Speckled</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="speckled1"   placeholder="0000" class="form-control" id="ANA3" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Nucleolar</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="nucleolar1"   placeholder="0000" class="form-control" id="ANA4" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-4 col-sm-4">Anti-dsDNA (IU/mL)  </label>
-                                                    <div class="form-group col-lg-6 col-md-4 col-sm-4">
-                                                        <input type="number" name="anti_dsdna"   placeholder="0000.0" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Anti-Sm</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="antism"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiRNP (EU/mL)</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="antirnp"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiRo (EU/mL)</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="antiro"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiLa (EU/mL)</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="antila"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> ACA (IU/mL)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="aca"   placeholder="000.0" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Lupus anticoagulant </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="lupusanticoagulant"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-4 col-sm-4">ß2GPI (IU/mL) </label>
-                                                    <div class="form-group col-lg-6 col-md-4 col-sm-4">
-                                                        <input type="number" name="b2gpi"   placeholder="000.0" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> C3 (g/L)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="c3"   placeholder="0.00" step="0.01" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> C4 (g/L)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="c4"   placeholder="0.00" step="0.01" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> CH50 (%)</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="ch50"   placeholder="000" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">HBsAg </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="hbsag"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiHBs </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="antihbs"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiHBc </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="antihbc"> 
-                                                </div>
-                                                <div class="col-lg-4col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiHCV </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="antihcv"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiHIV </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="antihiv"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiCIC </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="anticic"> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">IL-6 </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="il6"> 
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04"> 4. Immunology</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05"> 5. Viral Serology</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td id="labtd04_0" class="disabledbutton">
+                                                                    <div class="form-group">
+                                                                        <label>Anti-dsDNA (IU/mL) </label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="anti_dsdna"   placeholder="0000.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantism"> Anti-Sm</label>  
+                                                                        <select class="form-control" name="antism" id="antism" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantirnp"> AntiRNP (EU/mL)</label>  
+                                                                        <select class="form-control" name="antirnp" id="antirnp" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantiro"> AntiRo (EU/mL)</label>  
+                                                                        <select class="form-control" name="antiro" id="antiro" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantila"> AntiLa (EU/mL)</label>  
+                                                                        <select class="form-control" name="antila" id="antila" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd04_1" class="disabledbutton">
+                                                                    <div class="form-group">
+                                                                        <label>ACA (IU/mL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="aca"   placeholder="000.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="cklupusanticoagulant"> Lupus anticoagulant</label>  
+                                                                        <select class="form-control" name="lupusanticoagulant" id="lupusanticoagulant" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ß2GPI (IU/mL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="b2gpi"   placeholder="000.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label> C3 (g/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="c3"   placeholder="0.00" step="0.01" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label> C4 (g/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="c3"   placeholder="0.00" step="0.01" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd04_2" class="disabledbutton">
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckanticic"> AntiCIC (RU/ml)</label>  
+                                                                        <select class="form-control" name="anticic" id="anticic" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckil6"> IL-6 (PG/ml)</label>  
+                                                                        <select class="form-control" name="il6" id="il6" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>CH50 (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ch50"   placeholder="000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd05" class="disabledbutton">
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckhbsag"> HBsAg</label>  
+                                                                        <select class="form-control" name="hbsag" id="hbsag" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantihbs"> AntiHBs</label>  
+                                                                        <select class="form-control" name="antihbs" id="antihbs" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantihbc"> AntiHBc</label>  
+                                                                        <select class="form-control" name="antihbc" id="antihbc" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantihcv"> AntiHCV</label>  
+                                                                        <select class="form-control" name="antihcv" id="antihcv" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantihiv"> AntiHIV</label>  
+                                                                        <select class="form-control" name="antihiv" id="antihiv" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="4" align="center" style="background-color: #FDFCEE;">
+                                                                    <input type="checkbox" id="labcheck05extra"> Drug level
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="labtr05extra" class="disabledbutton">
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>MPA (UG/ml)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="mpa"   placeholder="00.00" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>FK 506 (NG/ml)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="fk507"   placeholder="00.00" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Cyclosporin</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="cyclosporin"   placeholder="00.00" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" name="ckcytokine"> Cytokine</label>  
+                                                                        <select class="form-control" name="cytokine" id="cytokine" disabled>
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <h4 class="page-header">Drug Level</h4>
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06"> 6. BMD</td>
+                                                            </tr>
+                                                            <tr id="labtr06" class="disabledbutton">
+                                                                <td>
+                                                                    <table class="table table-hover table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="col-md-3"></th>
+                                                                                <th>BMD (g/cm2)</th>
+                                                                                <th>T-scores</th>
+                                                                                <th>Diagnose date</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>L1-L4 spine</td>
+                                                                                <td><input type="number" name="l1l4spinebmd_tscore1"   placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                                <td><input type="number" name="l1l4spinebmd_tscore2"   placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                                <td><input type="date" name="l1l4spinebmd_tscore3" class="form-control"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Hip</td>
+                                                                                <td><input type="number" name="hipbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                                <td><input type="number" name="hipbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                                <td><input type="date" name="hipbmd_tscore3" class="form-control"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Radius</td>
+                                                                                <td><input type="number" name="radiusbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                                <td><input type="number" name="radiusbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control"></td>
+                                                                                <td><input type="date" name="radiusbmd_tscore3" class="form-control"></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">MPA</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="mpa"   placeholder="00.00" step="0.1" class="form-control">
-                                                    </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07"> 7. Stool parasite</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08"> 8. CXR</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09"> 9. EKG</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10"> 10. Echo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td id="labtd07" class="disabledbutton">
+                                                                    <div class="form-group">  
+                                                                        <select class="form-control" name="stoolparasite">
+                                                                            <option selected value="0">Normal</option>
+                                                                            <option value="1">Abnormal</option>
+                                                                            <option value="2">Not done </option>
+                                                                            <option value="3">Not found </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Abnormal detail</label>  
+                                                                        <select class="form-control" name="Stool1">
+                                                                            <option value="Negative">detail1</option>
+                                                                            <option value="Positive">detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" name="Stool2" style="width: 159px;">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd08" class="disabledbutton">
+                                                                    <div class="form-group">  
+                                                                        <select class="form-control" name="stoolparasite">
+                                                                            <option selected value="0">Normal</option>
+                                                                            <option value="1">Abnormal</option>
+                                                                            <option value="2">Not done </option>
+                                                                            <option value="3">Not found </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Abnormal detail</label>  
+                                                                        <select class="form-control" name="Stool1">
+                                                                            <option value="Negative">detail1</option>
+                                                                            <option value="Positive">detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" name="Stool2" style="width: 159px;">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd09" class="disabledbutton">
+                                                                    <div class="form-group">  
+                                                                        <select class="form-control" name="stoolparasite">
+                                                                            <option selected value="0">Normal</option>
+                                                                            <option value="1">Abnormal</option>
+                                                                            <option value="2">Not done </option>
+                                                                            <option value="3">Not found </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Abnormal detail</label>  
+                                                                        <select class="form-control" name="Stool1">
+                                                                            <option value="Negative">detail1</option>
+                                                                            <option value="Positive">detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" name="Stool2" style="width: 159px;">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd10" class="disabledbutton">
+                                                                    <div class="form-group">  
+                                                                        <select class="form-control" name="stoolparasite">
+                                                                            <option selected value="0">Normal</option>
+                                                                            <option value="1">Abnormal</option>
+                                                                            <option value="2">Not done </option>
+                                                                            <option value="3">Not found </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Abnormal detail</label>  
+                                                                        <select class="form-control" name="Stool1">
+                                                                            <option value="Negative">detail1</option>
+                                                                            <option value="Positive">detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" name="Stool2" style="width: 159px;">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">FK 506</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="fk507"   placeholder="00.00" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Cyclosporin</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <input type="number" name="cyclosporin"   placeholder="00.00" step="0.1" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Cytokine </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" name="cytokine" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary"> 
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-12 col-sm-12">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h4 class="page-header">5. BMD</h4>
-                                                        </div>
-                                                        <table class="table table-hover table-striped">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th></th>
-                                                                    <th>BMD(g/cm2)</th>
-                                                                    <th>T-scores</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>L1-L4 spine</td>
-                                                                    <td><input type="number" name="l1l4spinebmd_tscore1"   placeholder="0.000" step="0.001" class="form-control"></td>
-                                                                    <td><input type="number" name="l1l4spinebmd_tscore2"   placeholder="0.000" step="0.001" class="form-control"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Hip</td>
-                                                                    <td><input type="number" name="hipbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control"></td>
-                                                                    <td><input type="number" name="hipbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Radius</td>
-                                                                    <td><input type="number" name="radiusbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control"></td>
-                                                                    <td><input type="number" name="radiusbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h4 class="page-header">6. Stool parasite</h4>
-                                                        </div>
-                                                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
-                                                            <div class="form-group"> 
-                                                                <select class="form-control" id="AbnormalList01" name="stoolparasite"> 
-                                                                    <option selected value="0">Normal</option>
-                                                                    <option value="1">Abnormal</option>
-                                                                    <option value="2">Not done </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal1">
-                                                            <div class="form-group">
-                                                                <label>Abnormal detail</label> 
-                                                                <input type="text" class="form-control" name="Stool1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal2">
-                                                            <div class="form-group">
-                                                                <label>Date</label>  
-                                                                 <input type="date" class="form-control" name="Stool2">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12 col-sm-12"> 
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h4 class="page-header">7. CXR</h4>
-                                                        </div>
-                                                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
-                                                            <div class="form-group"> 
-                                                                <select class="form-control" id="AbnormalList02"> 
-                                                                    <option selected value="0">Normal</option>
-                                                                    <option value="1">Abnormal</option>
-                                                                    <option value="2">Not done </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal3">
-                                                            <div class="form-group">
-                                                                <label>Abnormal detail</label> 
-                                                                <input type="text" class="form-control" name="CXR1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal4">
-                                                            <div class="form-group">
-                                                                <label>Date</label>  
-                                                                 <input type="date" class="form-control" name="CXR2">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h4 class="page-header">8. EKG</h4>
-                                                        </div>
-                                                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
-                                                            <div class="form-group"> 
-                                                                <select class="form-control" id="AbnormalList03"> 
-                                                                    <option selected value="0">Normal</option>
-                                                                    <option value="1">Abnormal</option>
-                                                                    <option value="2">Not done </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal5">
-                                                            <div class="form-group">
-                                                                <label>Abnormal detail</label> 
-                                                                <input type="text" class="form-control" name="EKG1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal6">
-                                                            <div class="form-group">
-                                                                <label>Date</label>  
-                                                                 <input type="date" class="form-control" name="EKG2">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h4 class="page-header">9. Echo</h4>
-                                                        </div>
-                                                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
-                                                            <div class="form-group"> 
-                                                                <select class="form-control" id="AbnormalList04"> 
-                                                                    <option selected value="0">Normal</option>
-                                                                    <option value="1">Abnormal</option>
-                                                                    <option value="2">Not done </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal7">
-                                                            <div class="form-group">
-                                                                <label>Abnormal detail</label> 
-                                                                <input type="text" class="form-control" name="Echo1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal8">
-                                                            <div class="form-group">
-                                                                <label>Date</label>  
-                                                                 <input type="date" class="form-control" name="Echo2">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h4 class="page-header">10. Lupus nephritis
-                                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="CheckLN" name="LN">
-                                                            </h4>
-                                                        </div>                                                    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="panel panel-default" id="LNShow">
-                                    <div class="panel-heading"> 
-                                        <h4 class="panel-title">Laboratory Investigation at baseline/diagnosis according to the ACR renal response criteria (ACR 2006)</h4>
-                                    </div>
-                                    <div class="panel-body ">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                                <label class="col-lg-6 col-md-4 col-sm-4">Renal biopsy</label> 
-                                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="RenalShow"> 
-                                            </div>
-                                            <div class="col-lg-2 col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>ISN/RPS Class</label>  
-                                                    <input type="text" class="form-control" disabled id="Renal01" name="renalbiopsyclass">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Date</label>  
-                                                    <input type="date" class="form-control" disabled id="Renal02" name="renalbiopsydate">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Activity Index</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="activityindex"   placeholder="00" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Chronicity Index</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="chronicityindex"   placeholder="00" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">% Crescentic glomerulonephritis</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="ln_1"   placeholder="000" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">% Glomerulosclerosis</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="ln_2"   placeholder="000" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Interstitial fibrosis</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="text" class="form-control" name="ln_3">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Tubular atrophy</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="text" class="form-control" name="ln_4">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Serum Creatine (mg/dL)</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <input type="number" name="ln_5"   placeholder="00.0" step="0.1" class="form-control">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11"> 11. Lupus nephritis</td>
+                                                            </tr>
+                                                            <tr id="labtr11" class="disabledbutton">
+                                                                <td>
+                                                                    <div class="form-group">  
+                                                                        <label><input type="checkbox" name="ckRenalShow"> Renal biopsy</label>  
+                                                                        <select class="form-control" name="RenalShow">
+                                                                            <option value="Negative">Negative</option>
+                                                                            <option value="Positive">Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ISN/RPS Class</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" id="Renal01" name="renalbiopsyclass">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" id="Renal02" name="renalbiopsydate" style="width: 159px;">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Activity Index</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="activityindex"   placeholder="00" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Chronicity Index</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="chronicityindex"   placeholder="00" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>% Crescentic glomerulonephritis</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ln_1"   placeholder="000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>% Glomerulosclerosis</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ln_2"   placeholder="000" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Interstitial fibrosis</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="ln_3">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Tubular atrophy</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="ln_4">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Serum Creatine (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ln_5"   placeholder="00.0" step="0.1" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -1804,329 +1917,247 @@
                         <div role="tabpanel" class="tab-pane fade" id="tab5info" aria-labelledby="profile-tab">
                             <div class="col-lg-12">
                                 <div class="panel">
-                                    <div class="panel-body ">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="page-header">
-                                                <h4>
-                                                <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck1">1. Specific treatment of SLE  </h4>
-                                            </div>
-                                        </div>
-                                        <div id="MedicationShow1" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Generic</th>
-                                                        <th>Dose/d</th>
-                                                        <th>Start Date</th>
-                                                        <th>Stop Date</th>
-                                                    </tr>
-                                                </thead>
+                                    <div class="panel-body">
+                                        <div class="col-lg-6 col-md-12 col-sm-12">
+                                            <table class="table table-bordered">
                                                 <tbody>
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 1. NSAIDs </td>
+                                                    <tr scope="row">
+                                                        <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi1"> Specific treatment of SLE</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>1.1) Traditional</td>
-                                                        <td><input type="text" name="gen1" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose1"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start1"></td>
-                                                        <td><input type="date" class="form-control" name="end1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1.2) Selective COX-2 inhibitor</td>
-                                                        <td><input type="text" name="gen2" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose2"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start2"></td>
-                                                        <td><input type="date" class="form-control" name="end2"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1.3) Specific COX-2 inhibitor</td>
-                                                        <td><input type="text" name="gen3" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose3"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start3"></td>
-                                                        <td><input type="date" class="form-control" name="end3"></td>
-                                                    </tr>
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 2. Anti-malarial </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2.1) Chloroquine (Aralen) </td>
-                                                        <td><input type="text" name="gen4" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose4"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start4"></td>
-                                                        <td><input type="date" class="form-control" name="end4"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2.2) Hydroxychloroquine (Plaquenil) </td>
-                                                        <td><input type="text" name="gen5" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose5"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start5"></td>
-                                                        <td><input type="date" class="form-control" name="end5"></td>
-                                                    </tr>
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 3. Corticosteroids</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3.1) Prednisolone   </td>
-                                                        <td><input type="text" name="gen6" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose6"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start6"></td>
-                                                        <td><input type="date" class="form-control" name="end6"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3.2) Methylprednisolone (IV) </td>
-                                                        <td><input type="text" name="gen7" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose7"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start7"></td>
-                                                        <td><input type="date" class="form-control" name="end7"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3.3) Dexamethasone (IV)</td>
-                                                        <td><input type="text" name="gen8" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose8"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start8"></td>
-                                                        <td><input type="date" class="form-control" name="end8"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3.4) Dexamethasone (Oral)</td>
-                                                        <td><input type="text" name="gen9" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose9"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start9"></td>
-                                                        <td><input type="date" class="form-control" name="end9"></td>
-                                                    </tr>
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 4. Cytotoxic agents </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.1) Methotrexate (MTX)</td>
-                                                        <td><input type="text" name="gen10" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose10"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start10"></td>
-                                                        <td><input type="date" class="form-control" name="end10"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.2) Azathioprine </td>
-                                                        <td><input type="text" name="gen11" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose11"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start11"></td>
-                                                        <td><input type="date" class="form-control" name="end11"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.3) Cyclophosphamide (oral)</td>
-                                                        <td><input type="text" name="gen12" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose12"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start12"></td>
-                                                        <td><input type="date" class="form-control" name="end12"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.4) Cyclophosphamide (IV)</td>
-                                                        <td><input type="text" name="gen13" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose13"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start13"></td>
-                                                        <td><input type="date" class="form-control" name="end13"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.5) Mycophenolate mofetil (MMF)</td>
-                                                        <td><input type="text" name="gen14" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose14"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start14"></td>
-                                                        <td><input type="date" class="form-control" name="end14"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.6) Myfortic (Mycophenolic acid)</td>
-                                                        <td><input type="text" name="gen15" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose15"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start15"></td>
-                                                        <td><input type="date" class="form-control" name="end15"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.7) Cyclosporin A </td>
-                                                        <td><input type="text" name="gen16" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose16"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start16"></td>
-                                                        <td><input type="date" class="form-control" name="end16"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.8) Tacrolimus</td>
-                                                        <td><input type="text" name="gen17" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose17"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start17"></td>
-                                                        <td><input type="date" class="form-control" name="end17"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.9) Danazol</td>
-                                                        <td><input type="text" name="gen18" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose18"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start18"></td>
-                                                        <td><input type="date" class="form-control" name="end18"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.10) Dapsone</td>
-                                                        <td><input type="text" name="gen19" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose19"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start19"></td>
-                                                        <td><input type="date" class="form-control" name="end19"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.11) Colchicine</td>
-                                                        <td><input type="text" name="gen20" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose20"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start20"></td>
-                                                        <td><input type="date" class="form-control" name="end20"></td>
+                                                    <tr id="medi1" class="disabledbutton">
+                                                        <td>
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>Generic</th>
+                                                                        <th>Dose/d</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="active" >
+                                                                        <td colspan="3">1. NSAIDs </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><input type="checkbox" id="cknsaid"> NSAIDs</td>
+                                                                        <td><input type="number" name="dose4"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr class="active" >
+                                                                        <td colspan="3"> 2. Anti-malarial </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2.1) Chloroquine (Aralen) </td>
+                                                                        <td><input type="text" name="gen4" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose4"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2.2) Hydroxychloroquine (Plaquenil) </td>
+                                                                        <td><input type="text" name="gen5" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose5"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr class="active" >
+                                                                        <td colspan="3"> 3. Corticosteroids</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3.1) Prednisolone   </td>
+                                                                        <td><input type="text" name="gen6" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose6"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3.2) Methylprednisolone (IV) </td>
+                                                                        <td><input type="text" name="gen7" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose7"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3.3) Dexamethasone (IV)</td>
+                                                                        <td><input type="text" name="gen8" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose8"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3.4) Dexamethasone (Oral)</td>
+                                                                        <td><input type="text" name="gen9" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose9"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr class="active" >
+                                                                        <td colspan="3"> 4. Cytotoxic agents </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.1) Methotrexate (MTX)</td>
+                                                                        <td><input type="text" name="gen10" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose10"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.2) Azathioprine </td>
+                                                                        <td><input type="text" name="gen11" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose11"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.3) Cyclophosphamide (oral)</td>
+                                                                        <td><input type="text" name="gen12" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose12"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.4) Cyclophosphamide (IV)</td>
+                                                                        <td><input type="text" name="gen13" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose13"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.5) Mycophenolate mofetil (MMF)</td>
+                                                                        <td><input type="text" name="gen14" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose14"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.6) Myfortic (Mycophenolic acid)</td>
+                                                                        <td><input type="text" name="gen15" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose15"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.7) Cyclosporin A </td>
+                                                                        <td><input type="text" name="gen16" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose16"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.8) Tacrolimus</td>
+                                                                        <td><input type="text" name="gen17" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose17"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    <tr>
+                                                                        <td>4.9) Danazol</td>
+                                                                        <td><input type="text" name="gen18" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose18"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.10) Dapsone</td>
+                                                                        <td><input type="text" name="gen19" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose19"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.11) Colchicine</td>
+                                                                        <td><input type="text" name="gen20" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose20"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="page-header"><h4>2. General treatments  
-                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck2"></h4>
-                                            </div>
-                                        </div> 
-                                        <div id="MedicationShow2" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Generic</th>
-                                                        <th>Dose/d</th>
-                                                        <th>Start Date</th>
-                                                        <th>Stop Date</th>
-                                                    </tr>
-                                                </thead>
+                                        <div class="col-lg-6 col-md-12 col-sm-12">
+                                            <table class="table table-bordered">
                                                 <tbody>
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 1. Anti-hypertensive </td>
+                                                    <tr scope="row">
+                                                        <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi2"> General treatments</td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>1.1) ACEI</td>
-                                                        <td><input type="text" name="gen21" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose21"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start21"></td>
-                                                        <td><input type="date" class="form-control" name="end21"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1.2) ARB</td>
-                                                        <td><input type="text" name="gen22" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose22"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start22"></td>
-                                                        <td><input type="date" class="form-control" name="end22"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1.3) Diuretics</td>
-                                                        <td><input type="text" name="gen23" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose23"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start23"></td>
-                                                        <td><input type="date" class="form-control" name="end23"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1.4) Beta-blockers</td>
-                                                        <td><input type="text" name="gen24" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose24"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start24"></td>
-                                                        <td><input type="date" class="form-control" name="end24"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1.5) Ca channel blockers</td>
-                                                        <td><input type="text" name="gen25"placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose25"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start25"></td>
-                                                        <td><input type="date" class="form-control" name="end25"></td>
-                                                    </tr>                                                
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 2. Lipid-lowering </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2.1) Statins</td>
-                                                        <td><input type="text" name="gen26"placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose26"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start26"></td>
-                                                        <td><input type="date" class="form-control" name="end26"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2.2) Fibrates(Gemfibrozil,Fenofibrate)</td>
-                                                        <td><input type="text" name="gen27"placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose27"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start27"></td>
-                                                        <td><input type="date" class="form-control" name="end27"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2.3)  Resin(Cholestyramine,Colestipol)</td>
-                                                        <td><input type="text" name="gen28"placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose28"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start28"></td>
-                                                        <td><input type="date" class="form-control" name="end28"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2.4) Nicotinic acid</td>
-                                                        <td><input type="text" name="gen29"placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose29"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start29"></td>
-                                                        <td><input type="date" class="form-control" name="end29"></td>
-                                                    </tr>                                                    
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 3. Osteoporosis Tx </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3.1) Bisphosphonates</td>
-                                                        <td><input type="text" name="gen30" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose30"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start30"></td>
-                                                        <td><input type="date" class="form-control" name="end30"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3.2) Ca supplement, CaCO3</td>
-                                                        <td><input type="text" name="gen31" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose31"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start31"></td>
-                                                        <td><input type="date" class="form-control" name="end31"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3.3) Vitamin D </td>
-                                                        <td><input type="text" name="gen32"placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose32"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start32"></td>
-                                                        <td><input type="date" class="form-control" name="end32"></td>
-                                                    </tr>                                                    
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 4. Others general treatments</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.1) ASA</td>
-                                                        <td><input type="text" name="gen33" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose33"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start33"></td>
-                                                        <td><input type="date" class="form-control" name="end33"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.2) Warfarin</td>
-                                                        <td><input type="text" name="gen34" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose34"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start34"></td>
-                                                        <td><input type="date" class="form-control" name="end34"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.3) folic </td>
-                                                        <td><input type="text" name="gen35" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose35"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start35"></td>
-                                                        <td><input type="date" class="form-control" name="end35"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4.4) MTV </td>
-                                                        <td><input type="text" name="gen36" placeholder="Generic" class="form-control"></td>
-                                                        <td><input type="number" name="dose36"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control" name="start36"></td>
-                                                        <td><input type="date" class="form-control" name="end36"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Others</td>
-                                                        <td><input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mgt_other"> 
+                                                    <tr id="medi2" class="disabledbutton">
+                                                        <td>
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                        <th>Generic</th>
+                                                                        <th>Dose/d</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr class="active" >
+                                                                        <td colspan="3"> 1. Anti-hypertensive </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1.1) ACEI</td>
+                                                                        <td><input type="text" name="gen21" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose21"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1.2) ARB</td>
+                                                                        <td><input type="text" name="gen22" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose22"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1.3) Diuretics</td>
+                                                                        <td><input type="text" name="gen23" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose23"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    <tr>
+                                                                        <td>1.4) Beta-blockers</td>
+                                                                        <td><input type="text" name="gen24" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose24"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1.5) Ca channel blockers</td>
+                                                                        <td><input type="text" name="gen25"placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose25"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>                                                
+                                                                    <tr class="active" >
+                                                                        <td colspan="3"> 2. Lipid-lowering </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2.1) Statins</td>
+                                                                        <td><input type="text" name="gen26"placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose26"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2.2) Fibrates(Gemfibrozil,Fenofibrate)</td>
+                                                                        <td><input type="text" name="gen27"placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose27"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2.3)  Resin(Cholestyramine,Colestipol)</td>
+                                                                        <td><input type="text" name="gen28"placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose28"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2.4) Nicotinic acid</td>
+                                                                        <td><input type="text" name="gen29"placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose29"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>                                                    
+                                                                    <tr class="active" >
+                                                                        <td colspan="3"> 3. Osteoporosis Tx </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3.1) Bisphosphonates</td>
+                                                                        <td><input type="text" name="gen30" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose30"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3.2) Ca supplement, CaCO3</td>
+                                                                        <td><input type="text" name="gen31" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose31"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3.3) Vitamin D </td>
+                                                                        <td><input type="text" name="gen32"placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose32"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>                                                    
+                                                                    <tr class="active" >
+                                                                        <td colspan="3"> 4. Others general treatments</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.1) ASA</td>
+                                                                        <td><input type="text" name="gen33" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose33"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.2) Warfarin</td>
+                                                                        <td><input type="text" name="gen34" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose34"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.3) folic </td>
+                                                                        <td><input type="text" name="gen35" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose35"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4.4) MTV </td>
+                                                                        <td><input type="text" name="gen36" placeholder="Generic" class="form-control"></td>
+                                                                        <td><input type="number" name="dose36"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Others</td>
+                                                                        <td><input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mgt_other"> 
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
                                                         </td>
-                                                        <!--<td><input type="number" name="quantity"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                        <td><input type="date" class="form-control"></td>
-                                                        <td><input type="date" class="form-control"></td>
-                                                        <td><button class="btn">Add</button></td>-->
                                                     </tr>
                                                 </tbody>
                                             </table>
