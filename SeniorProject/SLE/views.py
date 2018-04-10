@@ -14,8 +14,8 @@ from datetime import datetime
 
 from .models import AuthUser
 #Models for enrollment
-from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Previouscomplication, Familyhistory, Obgyn, Riskbehavior, Comorbidity
-from .models import Labtype, Medicationtype, Previoustype
+from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Familyhistory, Obgyn, Riskbehavior, Comorbidity
+from .models import Labtype, Medicationtype
 from .models import Visiting, Clinicalpresentation, Damageindex, Diseaseactivitysledai, Laboratoryinventoryinvestigation, Lnlab, Medication
 
 from django.contrib.postgres.fields import ArrayField
@@ -854,7 +854,16 @@ def enrollPatient(request):
                     son = iscontains(son,eachdisease),
                     relative = request.POST.get(eachdisease,))
 #                EnrollFam.save()
-                
+               
+        organlist = []
+        organlist.append(request.POST.get('organ1',))
+        organlist.append(request.POST.get('organ2',))
+        organlist.append(request.POST.get('organ3',))
+        organlist.append(request.POST.get('organ4',))
+        organlist.append(request.POST.get('organ5',))
+        organlist.append(request.POST.get('organ6',))
+        organlist.append(request.POST.get('organ7',))
+        organlist.append(request.POST.get('organ8',))
 #        OrganDate = request.POST.getlist('OrganDate[]',)
 #        OrganOrgan = request.POST.getlist('Organ[]',)
 #        OrganTreat = request.POST.getlist('OrganTreat[]',)
@@ -873,7 +882,7 @@ def enrollPatient(request):
 
 #        return patientrecord(request, stnum)
         return render(request, 'debug.html',
-        {'EnrollFam':EnrollFam})
+        {'EnrollFam':organlist})
 
 def debug(request):
     return render(request, 'debug.html')
@@ -1678,46 +1687,46 @@ def enrollEditPost(request):
         old_condition.mc5_5_1 = request.POST.get('mc5_5_1', '')
         old_condition.mc5_5_2 = DateToNone(request.POST.get('mc5_5_2', ''))
         old_condition.save()
-        
-        Previousorganinvolvement.objects.filter(studynumber = stnum).delete()
-        Previouscomplication.objects.filter(studynumber = stnum).delete()
-
-        OrganDate = request.POST.getlist('OrganDate[]',)
-        OrganOrgan = request.POST.getlist('Organ[]',)
-        OrganTreat = request.POST.getlist('OrganTreat[]',)
-        OrganResult = request.POST.getlist('OrganResult[]',)
-        for i in range(0, len(OrganDate)):
-            EnrollOrgan = Previousorganinvolvement(studynumber = old_studyidentity, detail = Previoustype(date = DateToNone(OrganDate[i]), organ = OrganOrgan[i], treatment = OrganTreat[i], result = OrganResult[i]))
-            EnrollOrgan.save()
-        
-        CompDate = request.POST.getlist('CompDate[]',)
-        CompOrgan = request.POST.getlist('CompOrgan[]',)
-        CompTreat = request.POST.getlist('CompTreat[]',)
-        CompRemiss = request.POST.getlist('CompRemiss[]',)
-        for i in range(0, len(OrganDate)):
-            EnrollComp = Previouscomplication(studynumber = old_studyidentity, detail = Previoustype(date = DateToNone(CompDate[i]), organ = CompOrgan[i], treatment = CompTreat[i], result = CompRemiss[i]))
-            EnrollComp.save()
-            
-        old_fam = Familyhistory.objects.get(studynumber = stnum)
-        old_fam.familyhistoryofautoimmunedisease = request.POST.get('FamAuto',) 
-        old_fam.systemicautoimmune = CheckboxToBool(request.POST.get('systemicautoimmune',)) 
-        old_fam.sle = ListToArray(request.POST.getlist('sle[]',))
-        old_fam.ra = ListToArray(request.POST.getlist('ra[]',))
-        old_fam.dermatomyositis = ListToArray(request.POST.getlist('dermatomyositis[]',))
-        old_fam.systemicsclerosis = ListToArray(request.POST.getlist('systemicsclerosis[]',))
-        old_fam.sjogrensyndrome = ListToArray(request.POST.getlist('sjogrensyndrome[]',))
-        old_fam.tissuespecificautoimmune = CheckboxToBool(request.POST.get('tissuespecificautoimmune',)) 
-        old_fam.dmtypeone = ListToArray(request.POST.getlist('dmtypeone[]',))
-        old_fam.hashimotosthyroiditis = ListToArray(request.POST.getlist('hashimotosthyroiditis[]',))
-        old_fam.multiplesclerosis = ListToArray(request.POST.getlist('multiplesclerosis[]',))
-        old_fam.myastheniagravis = ListToArray(request.POST.getlist('myastheniagravis[]',))
-        old_fam.tissuespecificother = ListToArray(request.POST.getlist('tissuespecificother[]',))
-        old_fam.renaldiseasefamilyhistory = request.POST.get('FamRenal',)
-        old_fam.nephroticsyndrome_glomerulardisease = ListToArray(request.POST.getlist('nephroticsyndrome_glomerulardisease[]',))
-        old_fam.stone = ListToArray(request.POST.getlist('stone[]',))
-        old_fam.esrd = ListToArray(request.POST.getlist('esrd[]',))
-        old_fam.renalother = ListToArray(request.POST.getlist('renalother[]',))
-        old_fam.save()
+#        
+#        Previousorganinvolvement.objects.filter(studynumber = stnum).delete()
+#        Previouscomplication.objects.filter(studynumber = stnum).delete()
+#
+#        OrganDate = request.POST.getlist('OrganDate[]',)
+#        OrganOrgan = request.POST.getlist('Organ[]',)
+#        OrganTreat = request.POST.getlist('OrganTreat[]',)
+#        OrganResult = request.POST.getlist('OrganResult[]',)
+#        for i in range(0, len(OrganDate)):
+#            EnrollOrgan = Previousorganinvolvement(studynumber = old_studyidentity, detail = Previoustype(date = DateToNone(OrganDate[i]), organ = OrganOrgan[i], treatment = OrganTreat[i], result = OrganResult[i]))
+#            EnrollOrgan.save()
+#        
+#        CompDate = request.POST.getlist('CompDate[]',)
+#        CompOrgan = request.POST.getlist('CompOrgan[]',)
+#        CompTreat = request.POST.getlist('CompTreat[]',)
+#        CompRemiss = request.POST.getlist('CompRemiss[]',)
+#        for i in range(0, len(OrganDate)):
+#            EnrollComp = Previouscomplication(studynumber = old_studyidentity, detail = Previoustype(date = DateToNone(CompDate[i]), organ = CompOrgan[i], treatment = CompTreat[i], result = CompRemiss[i]))
+#            EnrollComp.save()
+#            
+#        old_fam = Familyhistory.objects.get(studynumber = stnum)
+#        old_fam.familyhistoryofautoimmunedisease = request.POST.get('FamAuto',) 
+#        old_fam.systemicautoimmune = CheckboxToBool(request.POST.get('systemicautoimmune',)) 
+#        old_fam.sle = ListToArray(request.POST.getlist('sle[]',))
+#        old_fam.ra = ListToArray(request.POST.getlist('ra[]',))
+#        old_fam.dermatomyositis = ListToArray(request.POST.getlist('dermatomyositis[]',))
+#        old_fam.systemicsclerosis = ListToArray(request.POST.getlist('systemicsclerosis[]',))
+#        old_fam.sjogrensyndrome = ListToArray(request.POST.getlist('sjogrensyndrome[]',))
+#        old_fam.tissuespecificautoimmune = CheckboxToBool(request.POST.get('tissuespecificautoimmune',)) 
+#        old_fam.dmtypeone = ListToArray(request.POST.getlist('dmtypeone[]',))
+#        old_fam.hashimotosthyroiditis = ListToArray(request.POST.getlist('hashimotosthyroiditis[]',))
+#        old_fam.multiplesclerosis = ListToArray(request.POST.getlist('multiplesclerosis[]',))
+#        old_fam.myastheniagravis = ListToArray(request.POST.getlist('myastheniagravis[]',))
+#        old_fam.tissuespecificother = ListToArray(request.POST.getlist('tissuespecificother[]',))
+#        old_fam.renaldiseasefamilyhistory = request.POST.get('FamRenal',)
+#        old_fam.nephroticsyndrome_glomerulardisease = ListToArray(request.POST.getlist('nephroticsyndrome_glomerulardisease[]',))
+#        old_fam.stone = ListToArray(request.POST.getlist('stone[]',))
+#        old_fam.esrd = ListToArray(request.POST.getlist('esrd[]',))
+#        old_fam.renalother = ListToArray(request.POST.getlist('renalother[]',))
+#        old_fam.save()
     
         return HttpResponseRedirect(reverse('patientrecord', args=(stnum,)))
 #        return patientrecord(request, stnum)

@@ -1,6 +1,11 @@
 {% extends "header.html" %}
 {% block content %}
-
+    <style>
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+    </style>
     <script>
         
         $(document).ready(function(){
@@ -117,6 +122,10 @@
                 $("#orgranprevious02").hide();
                 $("#organtradd02").hide();
                 $("[name=traddorgan02]").remove();
+            });
+            $("#organtreatment02").change(function(){
+                $("#remis02").removeAttr('class');
+                $("#previ02").removeAttr('class');
             });
         });
         $(document).ready(function(){
@@ -241,17 +250,37 @@
             p.parentNode.removeChild(p);
         }
         
+        function addorgandetail(inputid,outputid1,outputid2){
+            var newRow = $("<td class='text-center' align='center' id='"+outputid1+"'>");
+            var tagvalue = document.getElementById(inputid).value;
+            var treatmentdetail = "<div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='organremission02'><input class='input_0' type='checkbox' value='"+tagvalue+"' name='organremission2[]'></div></div></td>";
+            newRow.append(treatmentdetail);
+            $('#'+outputid1+'').closest('td').replaceWith(newRow);
+            
+            var newRow2 = $("<td class='text-center' align='center' id='"+outputid2+"'>");
+            treatmentdetail2 = "<div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious02' ><input class='input_0' type='checkbox' value='"+tagvalue+"' name='orgranprevious2[]'></div></div></td>";
+            newRow2.append(treatmentdetail2);
+            $('#'+outputid2+'').closest('td').replaceWith(newRow2);
+            
+            console.log((tagvalue));
+            
+            $(document).ready(function(){
+              $('.input_0').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat-blue'
+              });
+            });
+        }
+
         $(document).on("click",".addorgan02", function () {
             var newRow = $("<tr name='traddorgan02'>");
             var cols = "<td></td>";
             
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02' name='organtreatment2[]'>";
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02' name='organtreatment2[]' onchange='addorgandetail('organtreatment02','remis02','comp02');' >";
             cols += "<option>AIHA</option><option>ITP</option><option>Thrombosis</option><option>Site</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission02' ><input type='checkbox' class='inputaddrow' name='organremission2[]' value='1' ></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious02' >";
-            cols += "<input class='inputaddrow' type='checkbox' name='orgranprevious2[]' value='1'></div></div></td>";
+            cols += "<td id='remis02'></td><td id='comp02'></td>";
             cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
@@ -1473,7 +1502,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan01" name="organ1"></label>
+                                                    <label><input type="checkbox" id="confirmorgan01" name="organ1" value="renal"></label>
                                                     <div class="form-group" id="organlist">
                                                         Renal
                                                     </div>                                                
@@ -1484,14 +1513,14 @@
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="organremission01" >
-                                                        <input type="checkbox" value="1" name="organremission1[]">
+                                                        <input type="checkbox" value="renal" name="organremission1[]">
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="orgranprevious01" >
-                                                        <input type="checkbox" value="1" name="orgranprevious1[]">
+                                                        <input type="checkbox" value="renal" name="orgranprevious1[]">
                                                     </div>
                                                 </div>
                                             </td>
@@ -1499,7 +1528,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan02" name="organ2"></label>
+                                                    <label><input type="checkbox" id="confirmorgan02" name="organ2" value="hemato"></label>
                                                     <div class="form-group" id="organlist">
                                                         Hemato
                                                     </div>                                                
@@ -1507,7 +1536,8 @@
                                             </td>
                                             <td>
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment02" style="display: none;" name="organtreatment2[]">
+                                                    <select class="form-control" id="organtreatment02" style="display: none;" name="organtreatment2[]" onchange="addorgandetail('organtreatment02','remis02','comp02');">
+                                                        <option disabled selected value> -Unknown- </option>
                                                         <option>AIHA</option>
                                                         <option>ITP</option>
                                                         <option>Thrombosis</option>
@@ -1515,20 +1545,9 @@
                                                     </select>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission02" >
-                                                        <input type="checkbox" value="1" name=organremission2[]>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious02" >
-                                                        <input type="checkbox" value="1" name=orgranprevious2[]>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td id="remis02"></td>
+                                            <td id="comp02"></td>
+                                            
                                             <td id="organtradd02" style="display: none;">
                                                 <a class="addorgan02"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                             </td>
@@ -1536,7 +1555,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan03"></label>
+                                                    <label><input type="checkbox" id="confirmorgan03" name="organ3" value="neuro"></label>
                                                     <div class="form-group" id="organlist">
                                                         Neuro
                                                     </div>                                                
@@ -1544,7 +1563,8 @@
                                             </td>
                                             <td>
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment03" style="display: none;">
+                                                    <select class="form-control" id="organtreatment03" name ="organtreatment3[]" style="display: none;" onchange="addorgandetail('organtreatment03','remis03','comp03');">
+                                                        <option disabled selected value> -Unknown- </option>
                                                         <option>Seizure</option>
                                                         <option>Psychosis</option>
                                                         <option>Stroke</option>
@@ -1554,20 +1574,8 @@
                                                     </select>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission03" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious03" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td id="remis03"></td>
+                                            <td id="comp03"></td>
                                             <td id="organtradd03" style="display: none;">
                                                 <a class="addorgan03"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                             </td>
@@ -1575,7 +1583,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan04"></label>
+                                                    <label><input type="checkbox" id="confirmorgan04" name="organ4" value="pulmonary"></label>
                                                     <div class="form-group" id="organlist">
                                                         Pulmonary
                                                     </div>                                                
@@ -1583,7 +1591,8 @@
                                             </td>
                                             <td>
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment04" style="display: none;">
+                                                    <select class="form-control" id="organtreatment04" name ="organtreatment4[]" style="display: none;" onchange="addorgandetail('organtreatment04','remis04','comp04');">
+                                                        <option disabled selected value> -Unknown- </option>
                                                         <option>Pleuritis</option>
                                                         <option>Pneumonitis</option>
                                                         <option>PE</option>
@@ -1592,20 +1601,8 @@
                                                     </select>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission04" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious04" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td id="remis04"></td>
+                                            <td id="comp04"></td>
                                             <td id="organtradd04" style="display: none;">
                                                 <a class="addorgan04"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                             </td>
@@ -1613,7 +1610,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan05"></label>
+                                                    <label><input type="checkbox" id="confirmorgan05" name="organ5" value="cardio"></label>
                                                     <div class="form-group" id="organlist">
                                                         Cardio
                                                     </div>                                                
@@ -1621,26 +1618,15 @@
                                             </td>
                                             <td>
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment05" style="display: none;">
+                                                    <select class="form-control" id="organtreatment05" name ="organtreatment5[]" style="display: none;" onchange="addorgandetail('organtreatment05','remis05','comp05');">
+                                                        <option disabled selected value> -Unknown- </option>
                                                         <option>Myocarditis</option>
                                                         <option>Pericardial effusion</option>
                                                     </select>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission05" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious05" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td id="remis05"></td>
+                                            <td id="comp05"></td>
                                             <td id="organtradd05" style="display: none;">
                                                 <a class="addorgan05"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                             </td>
@@ -1648,7 +1634,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan06"></label>
+                                                    <label><input type="checkbox" id="confirmorgan06" name="organ6" value="gi"></label>
                                                     <div class="form-group" id="organlist">
                                                         GI
                                                     </div>                                                
@@ -1656,27 +1642,16 @@
                                             </td>
                                             <td>
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment06" style="display: none;">
+                                                    <select class="form-control" id="organtreatment06" name ="organtreatment6[]" style="display: none;" onchange="addorgandetail('organtreatment06','remis06','comp06');">
+                                                        <option disabled selected value> -Unknown- </option>
                                                         <option>GI vasculitis</option>
                                                         <option>Pancreatitis</option>
                                                         <option>Acalculous cholecystitis</option>
                                                     </select>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission06" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious06" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td id="remis06"></td>
+                                            <td id="comp06"></td>
                                             <td id="organtradd06" style="display: none;">
                                                 <a class="addorgan06"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                             </td>
@@ -1684,7 +1659,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan07"></label>
+                                                    <label><input type="checkbox" id="confirmorgan07" name="organ7" value="musculosbeletal"></label>
                                                     <div class="form-group" id="organlist">
                                                         Musculosbeletal
                                                     </div>                                                
@@ -1692,26 +1667,15 @@
                                             </td>
                                             <td>
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment07" style="display: none;">
+                                                    <select class="form-control" id="organtreatment07" name ="organtreatment7[]" style="display: none;" onchange="addorgandetail('organtreatment07','remis07','comp07');">
+                                                        <option disabled selected value> -Unknown- </option>
                                                         <option>Arthritis</option>
                                                         <option>Myositis</option>
                                                     </select>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission07" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious07" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td id="remis07"></td>
+                                            <td id="comp07"></td>
                                             <td id="organtradd07" style="display: none;">
                                                 <a class="addorgan07"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                             </td>
@@ -1719,7 +1683,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan08"></label>
+                                                    <label><input type="checkbox" id="confirmorgan08" name="organ8" value="mucocutancous"></label>
                                                     <div class="form-group" id="organlist">
                                                         Mucocutancous
                                                     </div>                                                
@@ -1727,7 +1691,8 @@
                                             </td>
                                             <td>
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment08" style="display: none;">
+                                                    <select class="form-control" id="organtreatment08" name ="organtreatment8[]" style="display: none;" onchange="addorgandetail('organtreatment08','remis08','comp08');">
+                                                        <option disabled selected value> -Unknown- </option>
                                                         <option>Acate cutaneous</option>
                                                         <option>Subacute cutaneous</option>
                                                         <option>DLE</option>
@@ -1739,20 +1704,8 @@
                                                     </select>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission08" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious08" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            <td id="remis08"></td>
+                                            <td id="comp08"></td>
                                             <td id="organtradd08" style="display: none;">
                                                 <a class="addorgan08"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                             </td>

@@ -160,7 +160,7 @@ class Migration(migrations.Migration):
             name='Previouscomplication',
             fields=[
                 ('pcid', models.AutoField(primary_key=True, serialize=False)),
-                ('detail', SLE.models.PrevioustypeField()),
+   
             ],
             options={
                 'db_table': 'previouscomplication',
@@ -171,7 +171,7 @@ class Migration(migrations.Migration):
             name='Previousorganinvolvement',
             fields=[
                 ('poiid', models.AutoField(primary_key=True, serialize=False)),
-                ('detail', SLE.models.PrevioustypeField()),
+            
             ],
             options={
                 'db_table': 'previousorganinvolvement',
