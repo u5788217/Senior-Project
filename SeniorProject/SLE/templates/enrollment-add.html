@@ -1,6 +1,11 @@
 {% extends "header.html" %}
 {% block content %}
-
+    <style>
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+    </style>
     <script>
         
         $(document).ready(function(){
@@ -106,113 +111,117 @@
         $(document).ready(function(){
             $('#confirmorgan02').on('ifChecked', function(){
                 $("#organtreatment02").show();
-                $("#organremission02").show();
-                $("#orgranprevious02").show();
-                $("#organtradd02").show();
-                $("[name=traddorgan02]").show();
             });
             $('#confirmorgan02').on('ifUnchecked', function(){
                 $("#organtreatment02").hide();
-                $("#organremission02").hide();
-                $("#orgranprevious02").hide();
-                $("#organtradd02").hide();
-                $("[name=traddorgan02]").remove();
+                $("#organremiss21").css('visibility','hidden');
+                $("#organcomp21").css('visibility','hidden');
+                $("#organremiss22").css('visibility','hidden');
+                $("#organcomp22").css('visibility','hidden');
+                $("#organremiss23").css('visibility','hidden');
+                $("#organcomp23").css('visibility','hidden');
+                $("#organremiss24").css('visibility','hidden');
+                $("#organcomp24").css('visibility','hidden');
             });
         });
         $(document).ready(function(){
             $('#confirmorgan03').on('ifChecked', function(){
                 $("#organtreatment03").show();
-                $("#organremission03").show();
-                $("#orgranprevious03").show();
-                $("#organtradd03").show();
-                $("[name=traddorgan03]").show();
             });
             $('#confirmorgan03').on('ifUnchecked', function(){
                 $("#organtreatment03").hide();
-                $("#organremission03").hide();
-                $("#orgranprevious03").hide();
-                $("#organtradd03").hide();
-                $("[name=traddorgan03]").remove();
+                $("#organremiss31").css('visibility','hidden');
+                $("#organcomp31").css('visibility','hidden');
+                $("#organremiss32").css('visibility','hidden');
+                $("#organcomp32").css('visibility','hidden');
+                $("#organremiss33").css('visibility','hidden');
+                $("#organcomp33").css('visibility','hidden');
+                $("#organremiss34").css('visibility','hidden');
+                $("#organcomp34").css('visibility','hidden');
+                $("#organremiss35").css('visibility','hidden');
+                $("#organcomp35").css('visibility','hidden');
+                $("#organremiss36").css('visibility','hidden');
+                $("#organcomp36").css('visibility','hidden');
             });
         });
         $(document).ready(function(){
             $('#confirmorgan04').on('ifChecked', function(){
                 $("#organtreatment04").show();
-                $("#organremission04").show();
-                $("#orgranprevious04").show();
-                $("#organtradd04").show();
-                $("[name=traddorgan04]").show();
             });
             $('#confirmorgan04').on('ifUnchecked', function(){
                 $("#organtreatment04").hide();
-                $("#organremission04").hide();
-                $("#orgranprevious04").hide();
-                $("#organtradd04").hide();
-                $("[name=traddorgan04]").remove();
+                $("#organremiss41").css('visibility','hidden');
+                $("#organcomp41").css('visibility','hidden');
+                $("#organremiss42").css('visibility','hidden');
+                $("#organcomp42").css('visibility','hidden');
+                $("#organremiss43").css('visibility','hidden');
+                $("#organcomp43").css('visibility','hidden');
+                $("#organremiss44").css('visibility','hidden');
+                $("#organcomp44").css('visibility','hidden');
+                $("#organremiss45").css('visibility','hidden');
+                $("#organcomp45").css('visibility','hidden');
             });
         });
         $(document).ready(function(){
             $('#confirmorgan05').on('ifChecked', function(){
                 $("#organtreatment05").show();
-                $("#organremission05").show();
-                $("#orgranprevious05").show();
-                $("#organtradd05").show();
-                $("[name=traddorgan05]").show();
             });
             $('#confirmorgan05').on('ifUnchecked', function(){
                 $("#organtreatment05").hide();
-                $("#organremission05").hide();
-                $("#orgranprevious05").hide();
-                $("#organtradd05").hide();
-                $("[name=traddorgan05]").remove();
+                $("#organremiss51").css('visibility','hidden');
+                $("#organcomp51").css('visibility','hidden');
+                $("#organremiss52").css('visibility','hidden');
+                $("#organcomp52").css('visibility','hidden');
             });
         });
         $(document).ready(function(){
             $('#confirmorgan06').on('ifChecked', function(){
                 $("#organtreatment06").show();
-                $("#organremission06").show();
-                $("#orgranprevious06").show();
-                $("#organtradd06").show();
-                $("[name=traddorgan06]").show();
             });
             $('#confirmorgan06').on('ifUnchecked', function(){
                 $("#organtreatment06").hide();
-                $("#organremission06").hide();
-                $("#orgranprevious06").hide();
-                $("#organtradd06").hide();
-                $("[name=traddorgan06]").remove();
+                $("#organremiss61").css('visibility','hidden');
+                $("#organcomp61").css('visibility','hidden');
+                $("#organremiss62").css('visibility','hidden');
+                $("#organcomp62").css('visibility','hidden');
+                $("#organremiss63").css('visibility','hidden');
+                $("#organcomp63").css('visibility','hidden');
             });
         });
         $(document).ready(function(){
             $('#confirmorgan07').on('ifChecked', function(){
                 $("#organtreatment07").show();
-                $("#organremission07").show();
-                $("#orgranprevious07").show();
-                $("#organtradd07").show();
-                $("[name=traddorgan07]").show();
             });
             $('#confirmorgan07').on('ifUnchecked', function(){
                 $("#organtreatment07").hide();
-                $("#organremission07").hide();
-                $("#orgranprevious07").hide();
-                $("#organtradd07").hide();
-                $("[name=traddorgan07]").remove();
+                $("#organremiss71").css('visibility','hidden');
+                $("#organcomp71").css('visibility','hidden');
+                $("#organremiss72").css('visibility','hidden');
+                $("#organcomp72").css('visibility','hidden');
             });
         });
         $(document).ready(function(){
             $('#confirmorgan08').on('ifChecked', function(){
                 $("#organtreatment08").show();
-                $("#organremission08").show();
-                $("#orgranprevious08").show();
-                $("#organtradd08").show();
-                $("[name=traddorgan08]").show();
             });
             $('#confirmorgan08').on('ifUnchecked', function(){
                 $("#organtreatment08").hide();
-                $("#organremission08").hide();
-                $("#orgranprevious08").hide();
-                $("#organtradd08").hide();
-                $("[name=traddorgan08]").remove();
+                $("#organremiss81").css('visibility','hidden');
+                $("#organcomp81").css('visibility','hidden');
+                $("#organremiss82").css('visibility','hidden');
+                $("#organcomp82").css('visibility','hidden');
+                $("#organremiss83").css('visibility','hidden');
+                $("#organcomp83").css('visibility','hidden');
+                $("#organremiss84").css('visibility','hidden');
+                $("#organcomp84").css('visibility','hidden');
+                $("#organremiss85").css('visibility','hidden');
+                $("#organcomp85").css('visibility','hidden');
+                $("#organremiss86").css('visibility','hidden');
+                $("#organcomp86").css('visibility','hidden');
+                $("#organremiss87").css('visibility','hidden');
+                $("#organcomp87").css('visibility','hidden');
+                $("#organremiss88").css('visibility','hidden');
+                $("#organcomp88").css('visibility','hidden');
             });
         });
         
@@ -241,151 +250,247 @@
             p.parentNode.removeChild(p);
         }
         
-        $(document).on("click",".addorgan02", function () {
-            var newRow = $("<tr name='traddorgan02'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02' name='organtreatment2[]'>";
-            cols += "<option>AIHA</option><option>ITP</option><option>Thrombosis</option><option>Site</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission02' ><input type='checkbox' class='inputaddrow' name='organremission2[]' value='1' ></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious02' >";
-            cols += "<input class='inputaddrow' type='checkbox' name='orgranprevious2[]' value='1'></div></div></td>";
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan03", function () {
-            var newRow = $("<tr name='traddorgan03'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment03'>";
-            cols += "<option>Seizure</option><option>Psychosis</option><option>Stroke</option><option>Myelins</option><option>Neuropathy</option><option>Aseptic meningitis</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission03' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious03' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan04", function () {
-            var newRow = $("<tr name='traddorgan04'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment04'>";
-            cols += "<option>Pleuritis</option><option>Pneumonitis</option><option>PE</option><option>PAH</option><option>ILD</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission04' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious04' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan05", function () {
-            var newRow = $("<tr name='traddorgan05'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment05'>";
-            cols += "<option>Myocarditis</option><option>Pericardial effusion</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission05' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious05' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan06", function () {
-            var newRow = $("<tr name='traddorgan06'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment06'>";
-            cols += "<option>GI vasculitis</option><option>Pancreatitis</option><option>Acalculous cholecystitis</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission06' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious06' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan07", function () {
-            var newRow = $("<tr name='traddorgan07'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment07'>";
-            cols += "<option>Arthritis</option><option>Myositis</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission07' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious07' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan08", function () {
-            var newRow = $("<tr name='traddorgan08'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment08'>";
-            cols += "<option>Acate cutaneous</option><option>Subacute cutaneous</option><option>DLE</option><option>Lupus panniculitis</option><option>Oral/nasal ulcer</option><option>Non-scarring alopecia</option><option>Localized scarring alopecia</option><option>Reynad phenomenon</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission08' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious08' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
+        $(document).ready(function(){
+            $('#organtreatment21').on('ifChecked', function(){
+                $("#organremiss21").css('visibility','visible');
+                $("#organcomp21").css('visibility','visible');
+            });
+            $('#organtreatment21').on('ifUnchecked', function(){
+                $("#organremiss21").css('visibility','hidden');
+                $("#organcomp21").css('visibility','hidden');
+            });
+            $('#organtreatment22').on('ifChecked', function(){
+                $("#organremiss22").css('visibility','visible');
+                $("#organcomp22").css('visibility','visible');
+            });
+            $('#organtreatment22').on('ifUnchecked', function(){
+                $("#organremiss22").css('visibility','hidden');
+                $("#organcomp22").css('visibility','hidden');
+            });
+            $('#organtreatment23').on('ifChecked', function(){
+                $("#organremiss23").css('visibility','visible');
+                $("#organcomp23").css('visibility','visible');
+            });
+            $('#organtreatment23').on('ifUnchecked', function(){
+                $("#organremiss23").css('visibility','hidden');
+                $("#organcomp23").css('visibility','hidden');
+            });
+            $('#organtreatment24').on('ifChecked', function(){
+                $("#organremiss24").css('visibility','visible');
+                $("#organcomp24").css('visibility','visible');
+            });
+            $('#organtreatment24').on('ifUnchecked', function(){
+                $("#organremiss24").css('visibility','hidden');
+                $("#organcomp24").css('visibility','hidden');
+            });
+            $('#organtreatment31').on('ifChecked', function(){
+                $("#organremiss31").css('visibility','visible');
+                $("#organcomp31").css('visibility','visible');
+            });
+            $('#organtreatment31').on('ifUnchecked', function(){
+                $("#organremiss31").css('visibility','hidden');
+                $("#organcomp31").css('visibility','hidden');
+            });
+            $('#organtreatment32').on('ifChecked', function(){
+                $("#organremiss32").css('visibility','visible');
+                $("#organcomp32").css('visibility','visible');
+            });
+            $('#organtreatment32').on('ifUnchecked', function(){
+                $("#organremiss32").css('visibility','hidden');
+                $("#organcomp32").css('visibility','hidden');
+            });
+            $('#organtreatment33').on('ifChecked', function(){
+                $("#organremiss33").css('visibility','visible');
+                $("#organcomp33").css('visibility','visible');
+            });
+            $('#organtreatment33').on('ifUnchecked', function(){
+                $("#organremiss33").css('visibility','hidden');
+                $("#organcomp33").css('visibility','hidden');
+            });
+            $('#organtreatment34').on('ifChecked', function(){
+                $("#organremiss34").css('visibility','visible');
+                $("#organcomp34").css('visibility','visible');
+            });
+            $('#organtreatment34').on('ifUnchecked', function(){
+                $("#organremiss34").css('visibility','hidden');
+                $("#organcomp34").css('visibility','hidden');
+            });
+            $('#organtreatment35').on('ifChecked', function(){
+                $("#organremiss35").css('visibility','visible');
+                $("#organcomp35").css('visibility','visible');
+            });
+            $('#organtreatment35').on('ifUnchecked', function(){
+                $("#organremiss35").css('visibility','hidden');
+                $("#organcomp35").css('visibility','hidden');
+            });
+            $('#organtreatment36').on('ifChecked', function(){
+                $("#organremiss36").css('visibility','visible');
+                $("#organcomp36").css('visibility','visible');
+            });
+            $('#organtreatment36').on('ifUnchecked', function(){
+                $("#organremiss36").css('visibility','hidden');
+                $("#organcomp36").css('visibility','hidden');
+            });
+            $('#organtreatment41').on('ifChecked', function(){
+                $("#organremiss41").css('visibility','visible');
+                $("#organcomp41").css('visibility','visible');
+            });
+            $('#organtreatment41').on('ifUnchecked', function(){
+                $("#organremiss41").css('visibility','hidden');
+                $("#organcomp41").css('visibility','hidden');
+            });
+            $('#organtreatment42').on('ifChecked', function(){
+                $("#organremiss42").css('visibility','visible');
+                $("#organcomp42").css('visibility','visible');
+            });
+            $('#organtreatment42').on('ifUnchecked', function(){
+                $("#organremiss42").css('visibility','hidden');
+                $("#organcomp42").css('visibility','hidden');
+            });
+            $('#organtreatment43').on('ifChecked', function(){
+                $("#organremiss43").css('visibility','visible');
+                $("#organcomp43").css('visibility','visible');
+            });
+            $('#organtreatment43').on('ifUnchecked', function(){
+                $("#organremiss43").css('visibility','hidden');
+                $("#organcomp43").css('visibility','hidden');
+            });
+            $('#organtreatment44').on('ifChecked', function(){
+                $("#organremiss44").css('visibility','visible');
+                $("#organcomp44").css('visibility','visible');
+            });
+            $('#organtreatment44').on('ifUnchecked', function(){
+                $("#organremiss44").css('visibility','hidden');
+                $("#organcomp44").css('visibility','hidden');
+            });
+            $('#organtreatment45').on('ifChecked', function(){
+                $("#organremiss45").css('visibility','visible');
+                $("#organcomp45").css('visibility','visible');
+            });
+            $('#organtreatment45').on('ifUnchecked', function(){
+                $("#organremiss45").css('visibility','hidden');
+                $("#organcomp45").css('visibility','hidden');
+            });
+            $('#organtreatment51').on('ifChecked', function(){
+                $("#organremiss51").css('visibility','visible');
+                $("#organcomp51").css('visibility','visible');
+            });
+            $('#organtreatment51').on('ifUnchecked', function(){
+                $("#organremiss51").css('visibility','hidden');
+                $("#organcomp51").css('visibility','hidden');
+            });
+            $('#organtreatment52').on('ifChecked', function(){
+                $("#organremiss52").css('visibility','visible');
+                $("#organcomp52").css('visibility','visible');
+            });
+            $('#organtreatment52').on('ifUnchecked', function(){
+                $("#organremiss52").css('visibility','hidden');
+                $("#organcomp52").css('visibility','hidden');
+            });
+            $('#organtreatment61').on('ifChecked', function(){
+                $("#organremiss61").css('visibility','visible');
+                $("#organcomp61").css('visibility','visible');
+            });
+            $('#organtreatment61').on('ifUnchecked', function(){
+                $("#organremiss61").css('visibility','hidden');
+                $("#organcomp61").css('visibility','hidden');
+            });
+            $('#organtreatment62').on('ifChecked', function(){
+                $("#organremiss62").css('visibility','visible');
+                $("#organcomp62").css('visibility','visible');
+            });
+            $('#organtreatment62').on('ifUnchecked', function(){
+                $("#organremiss62").css('visibility','hidden');
+                $("#organcomp62").css('visibility','hidden');
+            });
+            $('#organtreatment63').on('ifChecked', function(){
+                $("#organremiss63").css('visibility','visible');
+                $("#organcomp63").css('visibility','visible');
+            });
+            $('#organtreatment63').on('ifUnchecked', function(){
+                $("#organremiss63").css('visibility','hidden');
+                $("#organcomp63").css('visibility','hidden');
+            });
+            $('#organtreatment71').on('ifChecked', function(){
+                $("#organremiss71").css('visibility','visible');
+                $("#organcomp71").css('visibility','visible');
+            });
+            $('#organtreatment71').on('ifUnchecked', function(){
+                $("#organremiss71").css('visibility','hidden');
+                $("#organcomp71").css('visibility','hidden');
+            });
+            $('#organtreatment72').on('ifChecked', function(){
+                $("#organremiss72").css('visibility','visible');
+                $("#organcomp72").css('visibility','visible');
+            });
+            $('#organtreatment72').on('ifUnchecked', function(){
+                $("#organremiss72").css('visibility','hidden');
+                $("#organcomp72").css('visibility','hidden');
+            });
+            $('#organtreatment81').on('ifChecked', function(){
+                $("#organremiss81").css('visibility','visible');
+                $("#organcomp81").css('visibility','visible');
+            });
+            $('#organtreatment81').on('ifUnchecked', function(){
+                $("#organremiss81").css('visibility','hidden');
+                $("#organcomp81").css('visibility','hidden');
+            });
+            $('#organtreatment82').on('ifChecked', function(){
+                $("#organremiss82").css('visibility','visible');
+                $("#organcomp82").css('visibility','visible');
+            });
+            $('#organtreatment82').on('ifUnchecked', function(){
+                $("#organremiss82").css('visibility','hidden');
+                $("#organcomp82").css('visibility','hidden');
+            });
+            $('#organtreatment83').on('ifChecked', function(){
+                $("#organremiss83").css('visibility','visible');
+                $("#organcomp83").css('visibility','visible');
+            });
+            $('#organtreatment83').on('ifUnchecked', function(){
+                $("#organremiss83").css('visibility','hidden');
+                $("#organcomp83").css('visibility','hidden');
+            });
+            $('#organtreatment84').on('ifChecked', function(){
+                $("#organremiss84").css('visibility','visible');
+                $("#organcomp84").css('visibility','visible');
+            });
+            $('#organtreatment84').on('ifUnchecked', function(){
+                $("#organremiss84").css('visibility','hidden');
+                $("#organcomp84").css('visibility','hidden');
+            });
+            $('#organtreatment85').on('ifChecked', function(){
+                $("#organremiss85").css('visibility','visible');
+                $("#organcomp85").css('visibility','visible');
+            });
+            $('#organtreatment85').on('ifUnchecked', function(){
+                $("#organremiss85").css('visibility','hidden');
+                $("#organcomp85").css('visibility','hidden');
+            });
+            $('#organtreatment86').on('ifChecked', function(){
+                $("#organremiss86").css('visibility','visible');
+                $("#organcomp86").css('visibility','visible');
+            });
+            $('#organtreatment86').on('ifUnchecked', function(){
+                $("#organremiss86").css('visibility','hidden');
+                $("#organcomp86").css('visibility','hidden');
+            });
+            $('#organtreatment87').on('ifChecked', function(){
+                $("#organremiss87").css('visibility','visible');
+                $("#organcomp87").css('visibility','visible');
+            });
+            $('#organtreatment87').on('ifUnchecked', function(){
+                $("#organremiss87").css('visibility','hidden');
+                $("#organcomp87").css('visibility','hidden');
+            });
+            $('#organtreatment88').on('ifChecked', function(){
+                $("#organremiss88").css('visibility','visible');
+                $("#organcomp88").css('visibility','visible');
+            });
+            $('#organtreatment88').on('ifUnchecked', function(){
+                $("#organremiss88").css('visibility','hidden');
+                $("#organcomp88").css('visibility','hidden');
+            });
         });
         
         $(document).on("click",".addotherinflection", function () {
@@ -1473,7 +1578,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan01" name="organ1"></label>
+                                                    <label><input type="checkbox" id="confirmorgan01" name="organ1" value="renal"></label>
                                                     <div class="form-group" id="organlist">
                                                         Renal
                                                     </div>                                                
@@ -1484,14 +1589,14 @@
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="organremission01" >
-                                                        <input type="checkbox" value="1" name="organremission1[]">
+                                                        <input type="checkbox" value="renal" name="renalremiss">
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="orgranprevious01" >
-                                                        <input type="checkbox" value="1" name="orgranprevious1[]">
+                                                        <input type="checkbox" value="renal" name="renalcomp">
                                                     </div>
                                                 </div>
                                             </td>
@@ -1499,74 +1604,71 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan02" name="organ2"></label>
+                                                    <label><input type="checkbox" id="confirmorgan02" name="organ2" value="hemato"></label>
                                                     <div class="form-group" id="organlist">
                                                         Hemato
                                                     </div>                                                
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment02" style="display: none;" name="organtreatment2[]">
-                                                        <option>AIHA</option>
-                                                        <option>ITP</option>
-                                                        <option>Thrombosis</option>
-                                                        <option>Site</option>
-                                                    </select>
+                                                    <div id="organtreatment02" style="display: none;">
+                                                        <div class="checkbox"><input type="checkbox" name="hemato[]" value="AIHA" id="organtreatment21"> AIHA</div>
+                                                        <div class="checkbox"><input type="checkbox" name="hemato[]" value="ITP" id="organtreatment22"> ITP</div>
+                                                        <div class="checkbox"><input type="checkbox" name="hemato[]" value="Thrombosis" id="organtreatment23"> Thrombosis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="hemato[]" value="Site"  id="organtreatment24"> Site</div>
+                                                    </div>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission02" >
-                                                        <input type="checkbox" value="1" name=organremission2[]>
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="remis02">
+                                                <div class="checkbox" align="center" id="organremiss21" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="AIHA"> </div>
+                                                <div class="checkbox" align="center" id="organremiss22" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="ITP"> </div>
+                                                <div class="checkbox" align="center" id="organremiss23" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Thrombosis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss24" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Site"></div>
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious02" >
-                                                        <input type="checkbox" value="1" name=orgranprevious2[]>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td id="organtradd02" style="display: none;">
-                                                <a class="addorgan02"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            <td style="padding-bottom:0;padding-top:0;" id="comp02" >
+                                                <div class="checkbox" align="center" id="organcomp21" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="AIHA"> </div>
+                                                <div class="checkbox" align="center" id="organcomp22" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="ITP"> </div>
+                                                <div class="checkbox" align="center" id="organcomp23" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Thrombosis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp24" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Site"></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan03"></label>
+                                                    <label><input type="checkbox" id="confirmorgan03" name="organ3" value="neuro"></label>
                                                     <div class="form-group" id="organlist">
                                                         Neuro
                                                     </div>                                                
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment03" style="display: none;">
-                                                        <option>Seizure</option>
-                                                        <option>Psychosis</option>
-                                                        <option>Stroke</option>
-                                                        <option>Myelins</option>
-                                                        <option>Neuropathy</option>
-                                                        <option>Aseptic meningitis</option>
-                                                    </select>
+                                                    <div id="organtreatment03" style="display: none;">
+                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Seizure" id="organtreatment31"> Seizure</div>
+                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Psychosis" id="organtreatment32"> Psychosis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Stroke" id="organtreatment33"> Stroke</div>
+                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Myelins"  id="organtreatment34"> Myelins</div>
+                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Neuropathy" id="organtreatment35"> Neuropathy</div>
+                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Aseptic meningitis"  id="organtreatment36"> Aseptic meningitis</div>
+                                                    </div>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission03" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="remis03">
+                                                <div class="checkbox" align="center" id="organremiss31" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Seizure"> </div>
+                                                <div class="checkbox" align="center" id="organremiss32" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Psychosis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss33" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Stroke"> </div>
+                                                <div class="checkbox" align="center" id="organremiss34" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Myelins"></div>
+                                                <div class="checkbox" align="center" id="organremiss35" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Neuropathy"> </div>
+                                                <div class="checkbox" align="center" id="organremiss36" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Aseptic meningitis"></div>
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious03" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="comp03" >
+                                                <div class="checkbox" align="center" id="organcomp31" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Seizure"> </div>
+                                                <div class="checkbox" align="center" id="organcomp32" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Psychosis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp33" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Stroke"> </div>
+                                                <div class="checkbox" align="center" id="organcomp34" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Myelins"></div>
+                                                <div class="checkbox" align="center" id="organcomp35" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Neuropathy"> </div>
+                                                <div class="checkbox" align="center" id="organcomp36" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Aseptic meningitis"></div>
                                             </td>
                                             <td id="organtradd03" style="display: none;">
                                                 <a class="addorgan03"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
@@ -1575,36 +1677,36 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan04"></label>
+                                                    <label><input type="checkbox" id="confirmorgan04" name="organ4" value="pulmonary"></label>
                                                     <div class="form-group" id="organlist">
                                                         Pulmonary
                                                     </div>                                                
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment04" style="display: none;">
-                                                        <option>Pleuritis</option>
-                                                        <option>Pneumonitis</option>
-                                                        <option>PE</option>
-                                                        <option>PAH</option>
-                                                        <option>ILD</option>
-                                                    </select>
+                                                    <div id="organtreatment04" style="display: none;">
+                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="Pleuritis" id="organtreatment41"> Pleuritis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="Pneumonitis" id="organtreatment42"> Pneumonitis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="PE" id="organtreatment43"> PE</div>
+                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="PAH" id="organtreatment44"> PAH</div>
+                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="ILD" id="organtreatment45"> ILD</div>
+                                                    </div>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission04" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="remis04">
+                                                <div class="checkbox" align="center" id="organremiss41" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Pleuritis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss42" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Pneumonitis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss43" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="PE"> </div>
+                                                <div class="checkbox" align="center" id="organremiss44" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="PAH"></div>
+                                                <div class="checkbox" align="center" id="organremiss45" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="ILD"> </div>
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious04" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="comp04" >
+                                                <div class="checkbox" align="center" id="organcomp41" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Pleuritis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp42" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Pneumonitis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp43" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="PE"> </div>
+                                                <div class="checkbox" align="center" id="organcomp44" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="PAH"></div>
+                                                <div class="checkbox" align="center" id="organcomp45" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="ILD"> </div>
                                             </td>
                                             <td id="organtradd04" style="display: none;">
                                                 <a class="addorgan04"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
@@ -1613,33 +1715,27 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan05"></label>
+                                                    <label><input type="checkbox" id="confirmorgan05" name="organ5" value="cardio"></label>
                                                     <div class="form-group" id="organlist">
                                                         Cardio
                                                     </div>                                                
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment05" style="display: none;">
-                                                        <option>Myocarditis</option>
-                                                        <option>Pericardial effusion</option>
-                                                    </select>
+                                                    <div id="organtreatment05" style="display: none;">
+                                                        <div class="checkbox"><input type="checkbox" name="cardio[]" value="Myocarditis" id="organtreatment51"> Myocarditis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="cardio[]" value="Pericardial effusion" id="organtreatment52"> Pericardial effusion</div>
+                                                    </div>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission05" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="remis05">
+                                                <div class="checkbox" align="center" id="organremiss51" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Myocarditis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss52" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Pericardial effusion"> </div>
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious05" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="comp05" >
+                                                <div class="checkbox" align="center" id="organcomp51" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Myocarditis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp52" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Pericardial effusion"> </div>
                                             </td>
                                             <td id="organtradd05" style="display: none;">
                                                 <a class="addorgan05"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
@@ -1648,34 +1744,30 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan06"></label>
+                                                    <label><input type="checkbox" id="confirmorgan06" name="organ6" value="gi"></label>
                                                     <div class="form-group" id="organlist">
                                                         GI
                                                     </div>                                                
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment06" style="display: none;">
-                                                        <option>GI vasculitis</option>
-                                                        <option>Pancreatitis</option>
-                                                        <option>Acalculous cholecystitis</option>
-                                                    </select>
+                                                    <div id="organtreatment06" style="display: none;">
+                                                        <div class="checkbox"><input type="checkbox" name="gi[]" value="GI vasculitis" id="organtreatment61"> GI vasculitis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="gi[]" value="Pancreatitis" id="organtreatment62"> Pancreatitis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="gi[]" value="Acalculous cholecystitis" id="organtreatment63"> Acalculous cholecystitis</div>
+                                                    </div>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission06" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="remis06">
+                                                <div class="checkbox" align="center" id="organremiss61" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="GI vasculitis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss62" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Pancreatitis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss63" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Acalculous cholecystitis"> </div>
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious06" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="comp06" >
+                                                <div class="checkbox" align="center" id="organcomp61" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="GI vasculitis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp62" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Pancreatitis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp63" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Acalculous cholecystitis"> </div>
                                             </td>
                                             <td id="organtradd06" style="display: none;">
                                                 <a class="addorgan06"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
@@ -1684,33 +1776,27 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan07"></label>
+                                                    <label><input type="checkbox" id="confirmorgan07" name="organ7" value="musculosbeletal"></label>
                                                     <div class="form-group" id="organlist">
                                                         Musculosbeletal
                                                     </div>                                                
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment07" style="display: none;">
-                                                        <option>Arthritis</option>
-                                                        <option>Myositis</option>
-                                                    </select>
+                                                    <div id="organtreatment07" style="display: none;">
+                                                        <div class="checkbox"><input type="checkbox" name="musculosbeletal[]" value="Arthritis" id="organtreatment71"> Arthritis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="musculosbeletal[]" value="Myositis" id="organtreatment72"> Myositis</div>
+                                                    </div>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission07" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="remis07">
+                                                <div class="checkbox" align="center" id="organremiss71" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Arthritis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss72" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Myositis"> </div>
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious07" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="comp07" >
+                                                <div class="checkbox" align="center" id="organcomp71" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Arthritis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp72" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Myositis"> </div>
                                             </td>
                                             <td id="organtradd07" style="display: none;">
                                                 <a class="addorgan07"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
@@ -1719,39 +1805,45 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan08"></label>
+                                                    <label><input type="checkbox" id="confirmorgan08" name="organ8" value="mucocutancous"></label>
                                                     <div class="form-group" id="organlist">
                                                         Mucocutancous
                                                     </div>                                                
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment08" style="display: none;">
-                                                        <option>Acate cutaneous</option>
-                                                        <option>Subacute cutaneous</option>
-                                                        <option>DLE</option>
-                                                        <option>Lupus panniculitis</option>
-                                                        <option>Oral/nasal ulcer</option>
-                                                        <option>Non-scarring alopecia</option>
-                                                        <option>Localized scarring alopecia</option>
-                                                        <option>Reynad phenomenon</option>
-                                                    </select>
+                                                    <div id="organtreatment08" style="display: none;">
+                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Acate cutaneou" id="organtreatment81"> Acate cutaneou</div>
+                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Subacute cutaneous" id="organtreatment82"> Subacute cutaneous</div>
+                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="DLE" id="organtreatment83"> DLE</div>
+                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Lupus panniculitis" id="organtreatment84"> Lupus panniculitis</div>
+                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Oral/nasal ulcer" id="organtreatment85"> Oral/nasal ulcer</div>
+                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Non-scarring alopecia" id="organtreatment86"> Non-scarring alopecia</div>
+                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Localized scarring alopecia" id="organtreatment87"> Localized scarring alopecia</div>
+                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Reynad phenomenon" id="organtreatment88"> Reynad phenomenon</div>
+                                                    </div>
                                                 </div> 
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="organremission08" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="remis08">
+                                                <div class="checkbox" align="center" id="organremiss81" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Acate cutaneou"> </div>
+                                                <div class="checkbox" align="center" id="organremiss82" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Subacute cutaneous"> </div>
+                                                <div class="checkbox" align="center" id="organremiss83" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="DLE"> </div>
+                                                <div class="checkbox" align="center" id="organremiss84" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Lupus panniculitis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss85" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Oral/nasal ulcer"> </div>
+                                                <div class="checkbox" align="center" id="organremiss86" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Acalculous cholecystitis"> </div>
+                                                <div class="checkbox" align="center" id="organremiss87" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Localized scarring alopecia"> </div>
+                                                <div class="checkbox" align="center" id="organremiss88" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Reynad phenomenon"> </div>
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox" style="display: none;" id="orgranprevious08" >
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </div>
+                                            <td style="padding-bottom:0;padding-top:0;" id="comp08" >
+                                                <div class="checkbox" align="center" id="organcomp81" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Acate cutaneou"> </div>
+                                                <div class="checkbox" align="center" id="organcomp82" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Subacute cutaneous"> </div>
+                                                <div class="checkbox" align="center" id="organcomp83" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="DLE"> </div>
+                                                <div class="checkbox" align="center" id="organcomp84" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Lupus panniculitis"> </div>
+                                                <div class="checkbox" align="center" id="organcomp85" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Oral/nasal ulcer"> </div>
+                                                <div class="checkbox" align="center" id="organcomp86" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Non-scarring alopecia"> </div>
+                                                <div class="checkbox" align="center" id="organcomp87" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Localized scarring alopecia"> </div>
+                                                <div class="checkbox" align="center" id="organcomp88" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Reynad phenomenon"> </div>
                                             </td>
                                             <td id="organtradd08" style="display: none;">
                                                 <a class="addorgan08"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>

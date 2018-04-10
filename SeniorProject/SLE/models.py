@@ -9,16 +9,6 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from postgres_composite_types import CompositeType
 
-
-
-class Previoustype(CompositeType):
-    date = models.DateField(blank=True, null=True)
-    organ = models.TextField(blank=True, null=True)
-    treatment = models.TextField(blank=True, null=True)
-    result = models.TextField(blank=True, null=True)
-    class Meta:
-        db_type = 'previoustype' #Name in PostgreSQL
-        
 class Labtype(CompositeType):
     status = models.TextField(blank=True, null=True)
     date =  models.DateField(blank=True, null=True)
@@ -407,27 +397,17 @@ class Obgyn(models.Model):
         db_table = 'obgyn'
         unique_together = (('studynumber', 'recorddate'),)
 
-
-class Previouscomplication(models.Model):
-    pcid = models.AutoField(primary_key=True)
-    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
-    detail = Previoustype.Field()
-
-    class Meta:
-        managed = False
-        db_table = 'previouscomplication'
-        unique_together = (('pcid', 'studynumber'),)
-
-
 class Previousorganinvolvement(models.Model):
     poiid = models.AutoField(primary_key=True)
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
-    detail = Previoustype.Field()
+    organ =  models.TextField(blank=True, null=True)
+    treatment =  models.TextField(blank=True, null=True)
+    remission = models.NullBooleanField()
+    complecation = models.NullBooleanField()
 
     class Meta:
         managed = False
         db_table = 'previousorganinvolvement'
-        unique_together = (('poiid', 'studynumber'),)
 
 
 class Riskbehavior(models.Model):
