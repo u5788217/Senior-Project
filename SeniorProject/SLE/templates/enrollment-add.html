@@ -276,11 +276,13 @@
             var newRow = $("<tr name='traddorgan02'>");
             var cols = "<td></td>";
             
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02' name='organtreatment2[]' onchange='addorgandetail('organtreatment02','remis02','comp02');' >";
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02' name='organtreatment2[]'>";
             cols += "<option>AIHA</option><option>ITP</option><option>Thrombosis</option><option>Site</option></select></div></td>";
-            cols += "<td id='remis02'></td><td id='comp02'></td>";
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
+            cols += "<div class='checkbox' id='organremission02' ><input type='checkbox' class='inputaddrow' name='organremission2[]' value='1' ></div></div></td>";
+            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious02' >";
+            cols += "<input class='inputaddrow' type='checkbox' name='orgranprevious2[]' value='1'></div></div></td>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";            
             
             newRow.append(cols);
             newRow.insertAfter($(this).parents().closest('tr'));
