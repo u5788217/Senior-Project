@@ -31,20 +31,21 @@
         function addfamdis(){
             var fmd = document.getElementById('familydisease');
             var fmdvalue = fmd.options[fmd.selectedIndex].value;
-            if(fmdvalue == 1){$('#familydisease01').show();}
-            if(fmdvalue == 2){$('#familydisease02').show();}
-            if(fmdvalue == 3){$('#familydisease03').show();}
-            if(fmdvalue == 4){$('#familydisease04').show();}
-            if(fmdvalue == 5){$('#familydisease05').show();}
-            if(fmdvalue == 6){$('#familydisease06').show();}
-            if(fmdvalue == 7){$('#familydisease07').show();}
-            if(fmdvalue == 8){$('#familydisease08').show();}
-            if(fmdvalue == 9){$('#familydisease09').show();}
+            if(fmdvalue == 1){$('#familydisease01').show(); $("[name=familydisease01]").val("sle");}
+            if(fmdvalue == 2){$('#familydisease02').show(); $("[name=familydisease02]").val("ra");}
+            if(fmdvalue == 3){$('#familydisease03').show(); $("[name=familydisease03]").val("dermatomyositis");}
+            if(fmdvalue == 4){$('#familydisease04').show(); $("[name=familydisease04]").val("systemicsclerosis");}
+            if(fmdvalue == 5){$('#familydisease05').show(); $("[name=familydisease05]").val("sjogren");}
+            if(fmdvalue == 6){$('#familydisease06').show(); $("[name=familydisease06]").val("dmtype1");}
+            if(fmdvalue == 7){$('#familydisease07').show(); $("[name=familydisease07]").val("hashimoto");}
+            if(fmdvalue == 8){$('#familydisease08').show(); $("[name=familydisease08]").val("multiplesclerosis");}
+            if(fmdvalue == 9){$('#familydisease09').show(); $("[name=familydisease09]").val("myastheniagravis");}
             
         }
         //Should remove feild or delete feild
         function removefamdis(target){
             document.getElementById(target).style.display = 'none';
+            $("[name="+target+"]").val("0");
         }
 
         $(document).ready(function(){
@@ -244,12 +245,12 @@
             var newRow = $("<tr name='traddorgan02'>");
             var cols = "<td></td>";
             
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02'>";
+            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02' name='organtreatment2[]'>";
             cols += "<option>AIHA</option><option>ITP</option><option>Thrombosis</option><option>Site</option></select></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission02' ><input type='checkbox' class='inputaddrow'></div></div></td>";
+            cols += "<div class='checkbox' id='organremission02' ><input type='checkbox' class='inputaddrow' name='organremission2[]' value='1' ></div></div></td>";
             cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious02' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
+            cols += "<input class='inputaddrow' type='checkbox' name='orgranprevious2[]' value='1'></div></div></td>";
             cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
@@ -1001,6 +1002,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: SLE
+                                                <input type="hidden" name="familydisease01" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease01');" value="fam01"></span>
                                                 </div>
@@ -1010,29 +1012,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox" name="father[]"> Father
+                                                        <input type="checkbox" name="father[]" value="sle"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]"> Mother
+                                                        <input type="checkbox" name="mother[]" value="sle"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]"> Sibling
+                                                        <input type="checkbox" name="son[]" value="sle"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="sle"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="sle"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="sle">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1042,6 +1047,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: RA
+                                                <input type="hidden" name="familydisease02" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease02');"></span>
                                                 </div>
@@ -1051,29 +1057,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox" name="father[]"> Father
+                                                        <input type="checkbox" name="father[]" value="ra"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]" value="ra"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]" value="ra"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="ra"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="ra"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="ra">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1083,6 +1092,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: Dermatomyositis
+                                                <input type="hidden" name="familydisease03" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease03');"></span>
                                                 </div>
@@ -1092,29 +1102,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]" value="dermatomyositis"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]" value="dermatomyositis"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]" value="dermatomyositis"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="dermatomyositis"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="dermatomyositis"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="dermatomyositis">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1124,6 +1137,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: Systemic sclerosis
+                                                <input type="hidden" name="familydisease04" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease04');"></span>
                                                 </div>
@@ -1133,29 +1147,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]" value="systemicsclerosis"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]" value="systemicsclerosis"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]" value="systemicsclerosis"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="systemicsclerosis"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="systemicsclerosis"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="systemicsclerosis">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1165,6 +1182,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: Sjogren's Syndrome
+                                                <input type="hidden" name="familydisease05" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease05');"></span>
                                                 </div>
@@ -1174,29 +1192,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]" value="sjogren"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]" value="sjogren"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]" value="sjogren"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="sjogren"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="sjogren"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="sjogren">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1206,6 +1227,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: DM Type 1
+                                                <input type="hidden" name="familydisease06" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease06');"></span>
                                                 </div>
@@ -1215,29 +1237,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]" value="dmtype1"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]" value="dmtype1"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]" value="dmtype1"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="dmtype1"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="dmtype1"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="dmtype1">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1247,6 +1272,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: Hashimoto's thyroidditis
+                                                <input type="hidden" name="familydisease07" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease07');"></span>
                                                 </div>
@@ -1256,29 +1282,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]" value="hashimoto"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]" value="hashimoto"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]" value="hashimoto"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="hashimoto"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="hashimoto"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="hashimoto">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1288,6 +1317,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: Multiple sclerosis
+                                                <input type="hidden" name="familydisease08" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease08');"></span>
                                                 </div>
@@ -1297,29 +1327,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]" value="multiplesclerosis"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]" value="multiplesclerosis"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]" value="multiplesclerosis"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="multiplesclerosis"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="multiplesclerosis"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="multiplesclerosis">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1329,6 +1362,7 @@
                                     <tbody>
                                         <tr scope="row">
                                             <td class="text-center" align="center" colspan="3">Disease: Myasthenia gravis
+                                                <input type="hidden" name="familydisease09" value="0">
                                                 <div style="float: right; position: relative;">
                                                     <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease09');"></span>
                                                 </div>
@@ -1338,29 +1372,32 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" name="father[]" value="myastheniagravis"> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" name="mother[]" value="myastheniagravis"> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]" value="myastheniagravis"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]" value="myastheniagravis"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]" value="myastheniagravis"> Sibling
+                                                    </div>
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="myastheniagravis">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1389,19 +1426,22 @@
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" name="son[]"> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" name="daughter[]"> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
+                                                        <input type="checkbox" name="sibling[]"> Sibling
+                                                    </div>
+                                                    <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <input type="text" class="form-control" name="relativename[]">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1433,7 +1473,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan01"></label>
+                                                    <label><input type="checkbox" id="confirmorgan01" name="organ1"></label>
                                                     <div class="form-group" id="organlist">
                                                         Renal
                                                     </div>                                                
@@ -1444,14 +1484,14 @@
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="organremission01" >
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" value="1" name="organremission1[]">
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="orgranprevious01" >
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" value="1" name="orgranprevious1[]">
                                                     </div>
                                                 </div>
                                             </td>
@@ -1459,7 +1499,7 @@
                                         <tr>
                                             <td>
                                                 <div class="form-inline">
-                                                    <label><input type="checkbox" id="confirmorgan02"></label>
+                                                    <label><input type="checkbox" id="confirmorgan02" name="organ2"></label>
                                                     <div class="form-group" id="organlist">
                                                         Hemato
                                                     </div>                                                
@@ -1467,7 +1507,7 @@
                                             </td>
                                             <td>
                                                 <div class="form-group" id="organlist">
-                                                    <select class="form-control" id="organtreatment02" style="display: none;">
+                                                    <select class="form-control" id="organtreatment02" style="display: none;" name="organtreatment2[]">
                                                         <option>AIHA</option>
                                                         <option>ITP</option>
                                                         <option>Thrombosis</option>
@@ -1478,14 +1518,14 @@
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="organremission02" >
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" value="1" name=organremission2[]>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="orgranprevious02" >
-                                                        <input type="checkbox">
+                                                        <input type="checkbox" value="1" name=orgranprevious2[]>
                                                     </div>
                                                 </div>
                                             </td>

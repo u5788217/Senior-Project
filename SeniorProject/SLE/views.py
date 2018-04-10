@@ -32,6 +32,9 @@ import os
 from django.conf import settings
 from django.templatetags.static import static
 
+def iscontains(alist,item):
+    if item in alist: return True
+    else: return False
 def NullToZero(value):
     if value is None: value = 0
     return value
@@ -825,9 +828,33 @@ def enrollPatient(request):
                                         diagnosedate = DateToNone(otherdate[index]))
 #            EnrollComorbidity.save()
 
-        SLEdd = request.POST.getlist('father[]',)
-            
-        
+        famlist = []
+        famlist.append(request.POST.get('familydisease01',))
+        famlist.append(request.POST.get('familydisease02',))
+        famlist.append(request.POST.get('familydisease03',))
+        famlist.append(request.POST.get('familydisease04',))
+        famlist.append(request.POST.get('familydisease05',))
+        famlist.append(request.POST.get('familydisease06',))
+        famlist.append(request.POST.get('familydisease07',))
+        famlist.append(request.POST.get('familydisease08',))
+        famlist.append(request.POST.get('familydisease09',))
+        father = request.POST.getlist('father[]',)
+        mother = request.POST.getlist('mother[]',)
+        son = request.POST.getlist('son[]',)
+        daughter = request.POST.getlist('daughter[]',)
+        sibling = request.POST.getlist('sibling[]',)
+        for eachdisease in famlist:
+            if eachdisease is not "0":
+                EnrollFam = Familyhistory(studynumber = EnrollStudyidentity,
+                    disease = eachdisease,
+                    father = iscontains(father,eachdisease),
+                    mother = iscontains(mother,eachdisease),
+                    sibling = iscontains(sibling,eachdisease),
+                    daughter = iscontains(daughter,eachdisease),
+                    son = iscontains(son,eachdisease),
+                    relative = request.POST.get(eachdisease,))
+#                EnrollFam.save()
+                
 #        OrganDate = request.POST.getlist('OrganDate[]',)
 #        OrganOrgan = request.POST.getlist('Organ[]',)
 #        OrganTreat = request.POST.getlist('OrganTreat[]',)
@@ -843,32 +870,10 @@ def enrollPatient(request):
 #        for i in range(0, len(OrganDate)):
 #            EnrollComp = Previouscomplication(studynumber = EnrollStudyidentity, detail = Previoustype(date = DateToNone(CompDate[i]), organ = CompOrgan[i], treatment = CompTreat[i], result = CompRemiss[i]))
 #            EnrollComp.save()
-            
-        
-#        EnrollFam = Familyhistorywee(studynumber = EnrollStudyidentity,
-#            familyhistoryofautoimmunedisease = request.POST.get('FamAuto',), 
-#            systemicautoimmune = CheckboxToBool(request.POST.get('systemicautoimmune',)), 
-#            sle = ListToArray(request.POST.getlist('sle[]',)),
-#            ra = ListToArray(request.POST.getlist('ra[]',)),
-#            dermatomyositis = ListToArray(request.POST.getlist('dermatomyositis[]',)),
-#            systemicsclerosis = ListToArray(request.POST.getlist('systemicsclerosis[]',)),
-#            sjogrensyndrome = ListToArray(request.POST.getlist('sjogrensyndrome[]',)),
-#            tissuespecificautoimmune = CheckboxToBool(request.POST.get('tissuespecificautoimmune',)), 
-#            dmtypeone = ListToArray(request.POST.getlist('dmtypeone[]',)),
-#            hashimotosthyroiditis = ListToArray(request.POST.getlist('hashimotosthyroiditis[]',)),
-#            multiplesclerosis = ListToArray(request.POST.getlist('multiplesclerosis[]',)),
-#            myastheniagravis = ListToArray(request.POST.getlist('myastheniagravis[]',)),
-#            tissuespecificother = ListToArray(request.POST.getlist('tissuespecificother[]',)),
-#            renaldiseasefamilyhistory = request.POST.get('FamRenal',),
-#            nephroticsyndrome_glomerulardisease = ListToArray(request.POST.getlist('nephroticsyndrome_glomerulardisease[]',)),
-#            stone = ListToArray(request.POST.getlist('stone[]',)),
-#            esrd = ListToArray(request.POST.getlist('esrd[]',)),
-#            renalother = ListToArray(request.POST.getlist('renalother[]',)))
-#        EnrollFam.save()
-        
+
 #        return patientrecord(request, stnum)
         return render(request, 'debug.html',
-                  {'a':SLEdd})
+        {'EnrollFam':EnrollFam})
 
 def debug(request):
     return render(request, 'debug.html')
