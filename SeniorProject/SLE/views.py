@@ -717,7 +717,7 @@ def enrollPatient(request):
                                 region = request.POST.get('region', ''),
                                 occupation = request.POST.get('occupation', ''),
                                 income = request.POST.get('income', ''))
-#        EnrollStudyidentity.save()
+        EnrollStudyidentity.save()
         
         EnrollSlicccriteria = Slicccriteria(studynumber = EnrollStudyidentity,
                                             slicc1 = CheckboxToBool(request.POST.get('slicc1', '')),
@@ -737,7 +737,7 @@ def enrollPatient(request):
                                             slicc15 = CheckboxToBool(request.POST.get('slicc15', '')),
                                             slicc16 = CheckboxToBool(request.POST.get('slicc16', '')),
                                             slicc17 = CheckboxToBool(request.POST.get('slicc17', '')))
-#        EnrollSlicccriteria.save()
+        EnrollSlicccriteria.save()
         
         EnrollAcrcriteria = Acrcriteria(studynumber = EnrollStudyidentity,
                                         acr1 = CheckboxToBool(request.POST.get('acr1', '')),
@@ -751,8 +751,7 @@ def enrollPatient(request):
                                         acr9 = CheckboxToBool(request.POST.get('acr9', '')),
                                         acr10 = CheckboxToBool(request.POST.get('acr10', '')),
                                         acr11 = CheckboxToBool(request.POST.get('acr11', '')))
-#        EnrollAcrcriteria.save()
-
+        EnrollAcrcriteria.save()
  
         EnrollMedicalcondition = Medicalcondition(studynumber = EnrollStudyidentity,
                 mc1_1 = 'True' if request.POST.get('mc1_2', '')== '1' or request.POST.get('mc1_3', '')== '1' or request.POST.get('mc1_4', '')== '1' or request.POST.get('mc1_5', '')== '1' or request.POST.get('mc1_6', '')== '1' or request.POST.get('mc1_7', '')== '1' or request.POST.get('mc1_8', '')== '1' or request.POST.get('mc1_9', '')== '1' or request.POST.get('mc1_10', '')== '1' or request.POST.get('mc1_11', '')== '1' else 'False',
@@ -786,7 +785,7 @@ def enrollPatient(request):
                 mc4_7 = CheckboxToBool(request.POST.get('mc4_7', '')),
                 mc4_8 = CheckboxToBool(request.POST.get('mc4_8', '')),
                 mc4_9 = request.POST.getlist('mc4_9',))
-#        EnrollMedicalcondition.save()
+        EnrollMedicalcondition.save()
         
         other01 = CheckboxToBool(request.POST.get('other01',))
         other02 = CheckboxToBool(request.POST.get('other02',))
@@ -826,7 +825,7 @@ def enrollPatient(request):
                                         comorbiditytype = othertype[index],
                                         detail = otherdetail[index],
                                         diagnosedate = DateToNone(otherdate[index]))
-#            EnrollComorbidity.save()
+            EnrollComorbidity.save()
 
         famlist = []
         famlist.append(request.POST.get('familydisease01',))
@@ -853,7 +852,7 @@ def enrollPatient(request):
                     daughter = iscontains(daughter,eachdisease),
                     son = iscontains(son,eachdisease),
                     relative = request.POST.get(eachdisease,))
-#                EnrollFam.save()
+                EnrollFam.save()
 
         renal = request.POST.get('organ1',)
         if renal is "renal":
@@ -863,7 +862,7 @@ def enrollPatient(request):
             if request.POST.get('renalcomp',) == renal: comp = True
             EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
                     organ = renal, treatment = None, remission = remiss, complecation = comp)
-#            EnrollOrgan.save()
+            EnrollOrgan.save()
         
         organlist = []
         organlist.append(request.POST.get('organ2',))
@@ -886,10 +885,10 @@ def enrollPatient(request):
                     if each_treatment in organcomp: comp = True
                     EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
                         organ = each_organ, treatment = each_treatment, remission = remiss, complecation = comp)
-#                    EnrollOrgan.save()    
-#        return patientrecord(request, stnum)
-        return render(request, 'debug.html',
-        {'EnrollFam':organlist})
+                    EnrollOrgan.save()    
+        return patientrecord(request, stnum)
+#        return render(request, 'debug.html',
+#        {'EnrollFam':organlist})
 
 def debug(request):
     return render(request, 'debug.html')
