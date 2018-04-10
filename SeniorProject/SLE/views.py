@@ -854,9 +854,18 @@ def enrollPatient(request):
                     son = iscontains(son,eachdisease),
                     relative = request.POST.get(eachdisease,))
 #                EnrollFam.save()
-               
+
+        renal = request.POST.get('organ1',)
+        if renal is "renal":
+            remiss = False
+            comp = False
+            if request.POST.get('renalremiss',) == renal: remiss = True
+            if request.POST.get('renalcomp',) == renal: comp = True
+            EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
+                    organ = renal, treatment = None, remission = remiss, complecation = comp)
+#            EnrollOrgan.save()
+        
         organlist = []
-        organlist.append(request.POST.get('organ1',))
         organlist.append(request.POST.get('organ2',))
         organlist.append(request.POST.get('organ3',))
         organlist.append(request.POST.get('organ4',))
@@ -864,22 +873,20 @@ def enrollPatient(request):
         organlist.append(request.POST.get('organ6',))
         organlist.append(request.POST.get('organ7',))
         organlist.append(request.POST.get('organ8',))
-#        OrganDate = request.POST.getlist('OrganDate[]',)
-#        OrganOrgan = request.POST.getlist('Organ[]',)
-#        OrganTreat = request.POST.getlist('OrganTreat[]',)
-#        OrganResult = request.POST.getlist('OrganResult[]',)
-#        for i in range(0, len(OrganDate)):
-#            EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, detail = Previoustype(date = DateToNone(OrganDate[i]), organ = OrganOrgan[i], treatment = OrganTreat[i], result = OrganResult[i]))
-#            EnrollOrgan.save()
-#        
-#        CompDate = request.POST.getlist('CompDate[]',)
-#        CompOrgan = request.POST.getlist('CompOrgan[]',)
-#        CompTreat = request.POST.getlist('CompTreat[]',)
-#        CompRemiss = request.POST.getlist('CompRemiss[]',)
-#        for i in range(0, len(OrganDate)):
-#            EnrollComp = Previouscomplication(studynumber = EnrollStudyidentity, detail = Previoustype(date = DateToNone(CompDate[i]), organ = CompOrgan[i], treatment = CompTreat[i], result = CompRemiss[i]))
-#            EnrollComp.save()
-
+        
+        organremiss = request.POST.getlist('organremiss[]',)
+        organcomp = request.POST.getlist('organcomp[]',)
+        
+        for each_organ in organlist:
+            if each_organ is not None:
+                for each_treatment in request.POST.getlist(str(each_organ)+'[]',):
+                    remiss = False
+                    comp = False
+                    if each_treatment in organremiss: remiss = True
+                    if each_treatment in organcomp: comp = True
+                    EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
+                        organ = each_organ, treatment = each_treatment, remission = remiss, complecation = comp)
+#                    EnrollOrgan.save()    
 #        return patientrecord(request, stnum)
         return render(request, 'debug.html',
         {'EnrollFam':organlist})
