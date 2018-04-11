@@ -316,6 +316,93 @@
             $('#ckcytokine').on('ifChecked', function(){$("#cytokine").prop('disabled', false);});
             $('#ckcytokine').on('ifUnchecked', function(){$("#cytokine").prop('disabled', true);});
         });
+        //Hide-show Med
+        $(document).ready(function(){
+            $('#ckmedi1').on('ifChecked', function(){$("#medi1").removeAttr('class');});
+            $('#ckmedi1').on('ifUnchecked', function(){$("#medi1").addClass("disabledbutton");});
+            $('#ckmedi2').on('ifChecked', function(){$("#medi2").removeAttr('class');});
+            $('#ckmedi2').on('ifUnchecked', function(){$("#medi2").addClass("disabledbutton");});
+            
+            $('#ckmed1').on('ifChecked', function(){$("#dose1").prop('disabled', false);});
+            $('#ckmed1').on('ifUnchecked', function(){$("#dose1").prop('disabled', true);});
+            $('#ckmed2').on('ifChecked', function(){$("#ckmeddetail,#dose4").prop('disabled', false);});
+            $('#ckmed2').on('ifUnchecked', function(){$("#ckmeddetail,#dose4").prop('disabled', true);});
+            
+            $('#ckmeddetail[name=ckmed2]').change(function(){
+                if($(this).val() == 'cq'){$("#dose4").show();$("#dose5").hide();}
+                else{$("#dose4").hide();$("#dose5").show();}
+            });
+            
+            $('#ckmed3').on('ifChecked', function(){$("#dose3").prop('disabled', false);});
+            $('#ckmed3').on('ifUnchecked', function(){$("#dose3").prop('disabled', true);});
+            $('#ckmed4').on('ifChecked', function(){$("#dose4").prop('disabled', false);});
+            $('#ckmed4').on('ifUnchecked', function(){$("#dose4").prop('disabled', true);});
+            $('#ckmed5').on('ifChecked', function(){$("#dose5").prop('disabled', false);});
+            $('#ckmed5').on('ifUnchecked', function(){$("#dose5").prop('disabled', true);});
+            $('#ckmed6').on('ifChecked', function(){$("#dose6").prop('disabled', false);});
+            $('#ckmed6').on('ifUnchecked', function(){$("#dose6").prop('disabled', true);});
+            $('#ckmed7').on('ifChecked', function(){$("#dose7").prop('disabled', false);});
+            $('#ckmed7').on('ifUnchecked', function(){$("#dose7").prop('disabled', true);});
+            $('#ckmed8').on('ifChecked', function(){$("#dose8").prop('disabled', false);});
+            $('#ckmed8').on('ifUnchecked', function(){$("#dose8").prop('disabled', true);});
+            $('#ckmed9').on('ifChecked', function(){$("#dose9").prop('disabled', false);});
+            $('#ckmed9').on('ifUnchecked', function(){$("#dose9").prop('disabled', true);});
+            $('#ckmed10').on('ifChecked', function(){$("#dose10").prop('disabled', false);});
+            $('#ckmed10').on('ifUnchecked', function(){$("#dose10").prop('disabled', true);});
+            $('#ckmed11').on('ifChecked', function(){$("#dose11").prop('disabled', false);});
+            $('#ckmed11').on('ifUnchecked', function(){$("#dose11").prop('disabled', true);});
+            $('#ckmed12').on('ifChecked', function(){$("#dose12").prop('disabled', false);});
+            $('#ckmed12').on('ifUnchecked', function(){$("#dose12").prop('disabled', true);});
+            $('#ckmed13').on('ifChecked', function(){$("#dose13").prop('disabled', false);});
+            $('#ckmed13').on('ifUnchecked', function(){$("#dose13").prop('disabled', true);});
+            $('#ckmed14').on('ifChecked', function(){$("#dose14").prop('disabled', false);});
+            $('#ckmed14').on('ifUnchecked', function(){$("#dose14").prop('disabled', true);});
+            $('#ckmed15').on('ifChecked', function(){$("#dose15").prop('disabled', false);});
+            $('#ckmed15').on('ifUnchecked', function(){$("#dose15").prop('disabled', true);});
+            $('#ckmed16').on('ifChecked', function(){$("#dose16").prop('disabled', false);});
+            $('#ckmed16').on('ifUnchecked', function(){$("#dose16").prop('disabled', true);});
+            $('#ckmed17').on('ifChecked', function(){$("#dose17").prop('disabled', false);});
+            $('#ckmed17').on('ifUnchecked', function(){$("#dose17").prop('disabled', true);});
+            $('#ckmed18').on('ifChecked', function(){$("#dose18").prop('disabled', false);});
+            $('#ckmed18').on('ifUnchecked', function(){$("#dose18").prop('disabled', true);});
+            $('#ckmed19').on('ifChecked', function(){$("#dose19").prop('disabled', false);});
+            $('#ckmed19').on('ifUnchecked', function(){$("#dose19").prop('disabled', true);});
+            $('#ckmed20').on('ifChecked', function(){$("#dose20").prop('disabled', false);});
+            $('#ckmed20').on('ifUnchecked', function(){$("#dose20").prop('disabled', true);});
+            $('#ckmed21').on('ifChecked', function(){$("#dose21").prop('disabled', false);});
+            $('#ckmed21').on('ifUnchecked', function(){$("#dose21").prop('disabled', true);});
+            $('#ckmed22').on('ifChecked', function(){$("#dose22").prop('disabled', false);});
+            $('#ckmed22').on('ifUnchecked', function(){$("#dose22").prop('disabled', true);});
+            $('#ckmed23').on('ifChecked', function(){$("#dose23").prop('disabled', false);});
+            $('#ckmed23').on('ifUnchecked', function(){$("#dose23").prop('disabled', true);});
+            $('#ckmed24').on('ifChecked', function(){$("#dose24").prop('disabled', false);});
+            $('#ckmed24').on('ifUnchecked', function(){$("#dose24").prop('disabled', true);});
+            $('#ckmed25').on('ifChecked', function(){$("#dose25").prop('disabled', false);});
+            $('#ckmed25').on('ifUnchecked', function(){$("#dose25").prop('disabled', true);});
+            $('#ckmed26').on('ifChecked', function(){$("#dose26").prop('disabled', false);});
+            $('#ckmed26').on('ifUnchecked', function(){$("#dose26").prop('disabled', true);});
+            $('#ckmed27').on('ifChecked', function(){$("#dose27").prop('disabled', false);});
+            $('#ckmed27').on('ifUnchecked', function(){$("#dose27").prop('disabled', true);});
+            $('#ckmed28').on('ifChecked', function(){$("#dose28").prop('disabled', false);});
+            $('#ckmed28').on('ifUnchecked', function(){$("#dose28").prop('disabled', true);});
+            $('#ckmed29').on('ifChecked', function(){$("#dose29").prop('disabled', false);});
+            $('#ckmed29').on('ifUnchecked', function(){$("#dose29").prop('disabled', true);});
+            $('#ckmed30').on('ifChecked', function(){$("#dose30").prop('disabled', false);});
+            $('#ckmed30').on('ifUnchecked', function(){$("#dose30").prop('disabled', true);});
+            $('#ckmed31').on('ifChecked', function(){$("#dose31").prop('disabled', false);});
+            $('#ckmed31').on('ifUnchecked', function(){$("#dose31").prop('disabled', true);});
+            $('#ckmed32').on('ifChecked', function(){$("#dose32").prop('disabled', false);});
+            $('#ckmed32').on('ifUnchecked', function(){$("#dose32").prop('disabled', true);});
+            $('#ckmed33').on('ifChecked', function(){$("#dose33").prop('disabled', false);});
+            $('#ckmed33').on('ifUnchecked', function(){$("#dose33").prop('disabled', true);});
+            $('#ckmed34').on('ifChecked', function(){$("#dose34").prop('disabled', false);});
+            $('#ckmed34').on('ifUnchecked', function(){$("#dose34").prop('disabled', true);});
+            $('#ckmed35').on('ifChecked', function(){$("#dose35").prop('disabled', false);});
+            $('#ckmed35').on('ifUnchecked', function(){$("#dose35").prop('disabled', true);});
+            $('#ckmed36').on('ifChecked', function(){$("#dose36").prop('disabled', false);});
+            $('#ckmed36').on('ifUnchecked', function(){$("#dose36").prop('disabled', true);});
+        });
+
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -1726,10 +1813,10 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07"> 7. Stool parasite</td>
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08"> 8. CXR</td>
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09"> 9. EKG</td>
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10"> 10. Echo</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07"> 7. Stool parasite</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08"> 8. CXR</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09"> 9. EKG</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10"> 10. Echo</td>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd07" class="disabledbutton">
@@ -1918,7 +2005,7 @@
                             <div class="col-lg-12">
                                 <div class="panel">
                                     <div class="panel-body">
-                                        <div class="col-lg-6 col-md-12 col-sm-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <table class="table table-bordered">
                                                 <tbody>
                                                     <tr scope="row">
@@ -1929,111 +2016,100 @@
                                                             <table class="table">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th></th>
-                                                                        <th>Generic</th>
-                                                                        <th>Dose/d</th>
+                                                                        <th class="col-md-6"></th>
+                                                                        <th class="col-md-3">Dose/d</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr class="active" >
-                                                                        <td colspan="3">1. NSAIDs </td>
+                                                                        <td colspan="2">1. NSAIDs </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="cknsaid"> NSAIDs</td>
-                                                                        <td><input type="number" name="dose4"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed1"> NSAIDs</td>
+                                                                        <td><input type="number" name="dose1" id="dose1" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr class="active" >
-                                                                        <td colspan="3"> 2. Anti-malarial </td>
+                                                                        <td colspan="2"> 2. Anti-malarial </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>2.1) Chloroquine (Aralen) </td>
-                                                                        <td><input type="text" name="gen4" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose4"   placeholder="00.0" step="0.1" class="form-control"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>2.2) Hydroxychloroquine (Plaquenil) </td>
-                                                                        <td><input type="text" name="gen5" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose5"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td>
+                                                                            <div class="form-inline">  
+                                                                                <label><input type="checkbox" id="ckmed2"> </label>  
+                                                                                <select class="form-control" name="ckmed2" id="ckmeddetail" disabled>
+                                                                                    <option value="cq">Chloroquine (Aralen)</option>
+                                                                                    <option value="hcq">Hydroxychloroquine (Plaquenil)</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input type="number" name="dose4" id="dose4" placeholder="00.0" step="0.1" class="form-control" disabled>
+                                                                            <input type="number" name="dose5" id="dose5" placeholder="00.0" step="0.1" class="form-control" style="display: none;">
+                                                                        </td>
                                                                     </tr>
                                                                     <tr class="active" >
-                                                                        <td colspan="3"> 3. Corticosteroids</td>
+                                                                        <td colspan="2"> 3. Corticosteroids</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>3.1) Prednisolone   </td>
-                                                                        <td><input type="text" name="gen6" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose6"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed6"> Prednisolone   </td>
+                                                                        <td><input type="number" name="dose6" id="dose6" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>3.2) Methylprednisolone (IV) </td>
-                                                                        <td><input type="text" name="gen7" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose7"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed7"> Methylprednisolone (IV) </td>
+                                                                        <td><input type="number" name="dose7" id="dose7" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>3.3) Dexamethasone (IV)</td>
-                                                                        <td><input type="text" name="gen8" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose8"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed8"> Dexamethasone (IV)</td>
+                                                                        <td><input type="number" name="dose8" id="dose8" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>3.4) Dexamethasone (Oral)</td>
-                                                                        <td><input type="text" name="gen9" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose9"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed9"> Dexamethasone (Oral)</td>
+                                                                        <td><input type="number" name="dose9" id="dose9" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr class="active" >
-                                                                        <td colspan="3"> 4. Cytotoxic agents </td>
+                                                                        <td colspan="2"> 4. Cytotoxic agents </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.1) Methotrexate (MTX)</td>
-                                                                        <td><input type="text" name="gen10" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose10"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed10"> Methotrexate (MTX)</td>
+                                                                        <td><input type="number" name="dose10" id="dose10" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.2) Azathioprine </td>
-                                                                        <td><input type="text" name="gen11" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose11"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed11"> Azathioprine </td>
+                                                                        <td><input type="number" name="dose11" id="dose11" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.3) Cyclophosphamide (oral)</td>
-                                                                        <td><input type="text" name="gen12" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose12"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed12"> Cyclophosphamide (oral)</td>
+                                                                        <td><input type="number" name="dose12" id="dose12" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.4) Cyclophosphamide (IV)</td>
-                                                                        <td><input type="text" name="gen13" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose13"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed13"> Cyclophosphamide (IV)</td>
+                                                                        <td><input type="number" name="dose13" id="dose13" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.5) Mycophenolate mofetil (MMF)</td>
-                                                                        <td><input type="text" name="gen14" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose14"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed14"> Mycophenolate mofetil (MMF)</td>
+                                                                        <td><input type="number" name="dose14" id="dose14" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.6) Myfortic (Mycophenolic acid)</td>
-                                                                        <td><input type="text" name="gen15" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose15"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed15"> Myfortic (Mycophenolic acid)</td>
+                                                                        <td><input type="number" name="dose15" id="dose15" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.7) Cyclosporin A </td>
-                                                                        <td><input type="text" name="gen16" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose16"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed16"> Cyclosporin A </td>
+                                                                        <td><input type="number" name="dose16" id="dose16" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.8) Tacrolimus</td>
-                                                                        <td><input type="text" name="gen17" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose17"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed17"> Tacrolimus</td>
+                                                                        <td><input type="number" name="dose17" id="dose17" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     <tr>
-                                                                        <td>4.9) Danazol</td>
-                                                                        <td><input type="text" name="gen18" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose18"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed18"> Danazol</td>
+                                                                        <td><input type="number" name="dose18" id="dose18" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.10) Dapsone</td>
-                                                                        <td><input type="text" name="gen19" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose19"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed19"> Dapsone</td>
+                                                                        <td><input type="number" name="dose19" id="dose19" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.11) Colchicine</td>
-                                                                        <td><input type="text" name="gen20" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose20"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed20"> Colchicine</td>
+                                                                        <td><input type="number" name="dose20" id="dose20" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -2042,7 +2118,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="col-lg-6 col-md-12 col-sm-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <table class="table table-bordered">
                                                 <tbody>
                                                     <tr scope="row">
@@ -2053,107 +2129,88 @@
                                                             <table class="table">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th></th>
-                                                                        <th>Generic</th>
-                                                                        <th>Dose/d</th>
+                                                                        <th class="col-md-6"></th>
+                                                                        <th class="col-md-3">Dose/d</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr class="active" >
-                                                                        <td colspan="3"> 1. Anti-hypertensive </td>
+                                                                        <td colspan="2"> 1. Anti-hypertensive </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>1.1) ACEI</td>
-                                                                        <td><input type="text" name="gen21" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose21"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed21"> ACEI</td>
+                                                                        <td><input type="number" name="dose21" id="dose21" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>1.2) ARB</td>
-                                                                        <td><input type="text" name="gen22" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose22"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed22"> ARB</td>
+                                                                        <td><input type="number" name="dose22" id="dose22" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>1.3) Diuretics</td>
-                                                                        <td><input type="text" name="gen23" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose23"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed23"> Diuretics</td>
+                                                                        <td><input type="number" name="dose23" id="dose23" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     <tr>
-                                                                        <td>1.4) Beta-blockers</td>
-                                                                        <td><input type="text" name="gen24" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose24"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed24"> Beta-blockers</td>
+                                                                        <td><input type="number" name="dose24" id="dose24" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>1.5) Ca channel blockers</td>
-                                                                        <td><input type="text" name="gen25"placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose25"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed25"> Ca channel blockers</td>
+                                                                       <td><input type="number" name="dose25" id="dose25" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>                                                
                                                                     <tr class="active" >
-                                                                        <td colspan="3"> 2. Lipid-lowering </td>
+                                                                        <td colspan="2"> 2. Lipid-lowering </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>2.1) Statins</td>
-                                                                        <td><input type="text" name="gen26"placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose26"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed26"> Statins</td>
+                                                                        <td><input type="number" name="dose26" id="dose26" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>2.2) Fibrates(Gemfibrozil,Fenofibrate)</td>
-                                                                        <td><input type="text" name="gen27"placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose27"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed27"> Fibrates(Gemfibrozil,Fenofibrate)</td>
+                                                                        <td><input type="number" name="dose27" id="dose27" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>2.3)  Resin(Cholestyramine,Colestipol)</td>
-                                                                        <td><input type="text" name="gen28"placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose28"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed28"> Resin(Cholestyramine,Colestipol)</td>
+                                                                        <td><input type="number" name="dose28" id="dose28" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>2.4) Nicotinic acid</td>
-                                                                        <td><input type="text" name="gen29"placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose29"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed29"> Nicotinic acid</td>
+                                                                        <td><input type="number" name="dose29" id="dose29" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>                                                    
                                                                     <tr class="active" >
-                                                                        <td colspan="3"> 3. Osteoporosis Tx </td>
+                                                                        <td colspan="2"> 3. Osteoporosis Tx </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>3.1) Bisphosphonates</td>
-                                                                        <td><input type="text" name="gen30" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose30"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed30"> Bisphosphonates</td>
+                                                                        <td><input type="number" name="dose30" id="dose30" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>3.2) Ca supplement, CaCO3</td>
-                                                                        <td><input type="text" name="gen31" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose31"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed31"> Ca supplement, CaCO3</td>
+                                                                        <td><input type="number" name="dose31" id="dose31" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>3.3) Vitamin D </td>
-                                                                        <td><input type="text" name="gen32"placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose32"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed32"> Vitamin D </td>
+                                                                        <td><input type="number" name="dose32" id="dose32" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>                                                    
                                                                     <tr class="active" >
-                                                                        <td colspan="3"> 4. Others general treatments</td>
+                                                                        <td colspan="2"> 4. Others general treatments</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.1) ASA</td>
-                                                                        <td><input type="text" name="gen33" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose33"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed33"> ASA</td>
+                                                                        <td><input type="number" name="dose33" id="dose33" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.2) Warfarin</td>
-                                                                        <td><input type="text" name="gen34" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose34"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed34"> Warfarin</td>
+                                                                        <td><input type="number" name="dose34" id="dose34" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.3) folic </td>
-                                                                        <td><input type="text" name="gen35" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose35"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckmed35"> folic </td>
+                                                                        <td><input type="number" name="dose35" id="dose35" placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>4.4) MTV </td>
-                                                                        <td><input type="text" name="gen36" placeholder="Generic" class="form-control"></td>
-                                                                        <td><input type="number" name="dose36"   placeholder="00.0" step="0.1" class="form-control"></td>
+                                                                        <td><input type="checkbox" id="ckme36"> MTV </td>
+                                                                        <td><input type="number" name="dose36"id="dose36"  placeholder="00.0" step="0.1" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>Others</td>
-                                                                        <td><input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mgt_other"> 
-                                                                        </td>
+                                                                        <td colspan="2"><input type="checkbox" id="mgt_other"> Others</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
