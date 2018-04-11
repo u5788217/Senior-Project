@@ -459,9 +459,6 @@
                                                     <div class="checkbox">
                                                         <input type="checkbox" {% if medicalcondition.mc4_7 is True %} checked="checked" {% endif %}> Anaphylaxis
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" {% if medicalcondition.mc4_8 is True %} checked="checked" {% endif %}> Hay fever
-                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
@@ -469,9 +466,7 @@
                                                   <input type="checkbox" {% if medicalcondition.mc4_9 is None %} checked="checked" {% endif %}> Food allergy
                                                 </div>
                                                 <p class="form-control">
-                                                    {% for text in medicalcondition.mc4_9 %} 
-                                                        {{text}} | 
-                                                    {% endfor %} 
+                                                    {{medicalcondition.mc4_9}}
                                                 </p>
                                             </td>
                                         </tr>

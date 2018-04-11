@@ -1,7 +1,13 @@
 {% extends "header.html" %}
 {% block content %}
-
+<style>
+    .disabledbutton {
+        pointer-events: none;
+        opacity: 0.4;
+    }
+    </style>
     <script>
+        
         $(document).ready(function(){
           $('input').iCheck({
             checkboxClass: 'icheckbox_flat-blue',
@@ -9,11 +15,36 @@
           });
         });
         
-        function AddFamFeild(spanid,namefam)
-        {
-            str = '<br/><input type="text" class="form-control" name="'+namefam+'">';
-            $(spanid).append(str);
-        }
+        {% for fam in familyhistory %}
+            {% if fam.disease is 'sle' %} 
+                $('#familydisease01').show(); $("[name=familydisease01]").val("sle"); 
+            {% endif %}
+            {% if fam.disease is 'ra' %} 
+                $('#familydisease02').show(); $("[name=familydisease02]").val("ra");
+            {% endif %}
+            {% if fam.disease is 'dermatomyositis' %} 
+                $('#familydisease03').show(); $("[name=familydisease03]").val("dermatomyositis");
+            {% endif %}
+            {% if fam.disease is 'systemicsclerosis' %} 
+                $('#familydisease04').show(); $("[name=familydisease04]").val("systemicsclerosis");
+            {% endif %}
+            {% if fam.disease is 'sjogren' %} 
+                $('#familydisease05').show(); $("[name=familydisease05]").val("sjogren");
+            {% endif %}
+            {% if fam.disease is 'dmtype1' %} 
+                $('#familydisease06').show(); $("[name=familydisease06]").val("dmtype1");
+            {% endif %}
+            {% if fam.disease is 'hashimoto' %} 
+                $('#familydisease07').show(); $("[name=familydisease07]").val("hashimoto");
+            {% endif %}
+            {% if fam.disease is 'multiplesclerosis' %} 
+                $('#familydisease08').show(); $("[name=familydisease08]").val("multiplesclerosis");
+            {% endif %}
+            {% if fam.disease is 'myastheniagravis' %} 
+                $('#familydisease09').show(); $("[name=familydisease09]").val("myastheniagravis");
+            {% endif %}
+            
+        {% endfor %}
         function AddTextFeild()
         {
             $('#foodallergy').append('<br/><input type="text" class="form-control" name="mc4_9[]">');
@@ -26,40 +57,25 @@
         {
             $('#CompFeild').append('<tr><td><input type="date" class="form-control" name="CompDate[]"></td><td><input type="text" class="form-control" name="CompOrgan[]"></td><td><input type="text" class="form-control" name="CompTreat[]"></td><td><input type="text" class="form-control" name="CompRemiss[]"></td></tr>');
         }
-        function updatePieFact(){
-            var data = {'pieFact': pieFact};
-            $.post(URL, data, function(response){
-                if(response === 'success'){ alert('Yay!'); }
-                else{ alert('Error! :('); }
-            });
-        }
-        $(document).ready(function(){
-            $('#bttnMinus').click(function(){
-                pieFact *= 0.9;
-                updatePieFact();
-            });
-            $('#bttnPlus').click(function(){
-                pieFact *= 1.1;
-                updatePieFact();
-            }); 
-        });
         
         function addfamdis(){
             var fmd = document.getElementById('familydisease');
             var fmdvalue = fmd.options[fmd.selectedIndex].value;
-            if(fmdvalue == 1){$('#familydisease01').show();}
-            if(fmdvalue == 2){$('#familydisease02').show();}
-            if(fmdvalue == 3){$('#familydisease03').show();}
-            if(fmdvalue == 4){$('#familydisease04').show();}
-            if(fmdvalue == 5){$('#familydisease05').show();}
-            if(fmdvalue == 6){$('#familydisease06').show();}
-            if(fmdvalue == 7){$('#familydisease07').show();}
-            if(fmdvalue == 8){$('#familydisease08').show();}
-            if(fmdvalue == 9){$('#familydisease09').show();}
+            if(fmdvalue == 1){$('#familydisease01').show(); $("[name=familydisease01]").val("sle");}
+            if(fmdvalue == 2){$('#familydisease02').show(); $("[name=familydisease02]").val("ra");}
+            if(fmdvalue == 3){$('#familydisease03').show(); $("[name=familydisease03]").val("dermatomyositis");}
+            if(fmdvalue == 4){$('#familydisease04').show(); $("[name=familydisease04]").val("systemicsclerosis");}
+            if(fmdvalue == 5){$('#familydisease05').show(); $("[name=familydisease05]").val("sjogren");}
+            if(fmdvalue == 6){$('#familydisease06').show(); $("[name=familydisease06]").val("dmtype1");}
+            if(fmdvalue == 7){$('#familydisease07').show(); $("[name=familydisease07]").val("hashimoto");}
+            if(fmdvalue == 8){$('#familydisease08').show(); $("[name=familydisease08]").val("multiplesclerosis");}
+            if(fmdvalue == 9){$('#familydisease09').show(); $("[name=familydisease09]").val("myastheniagravis");}
             
         }
+        //Should remove feild or delete feild
         function removefamdis(target){
             document.getElementById(target).style.display = 'none';
+            $("[name="+target+"]").val("0");
         }
 
         $(document).ready(function(){
@@ -72,154 +88,105 @@
                 $("#odetail01").hide();
                 $("#odate01").hide();
                 $("#addotherinflection").hide();
-                $("#trotherinflection").remove();
+                $("[name=trotherinflection]").remove();
+                
             });
         });
         $(document).ready(function(){
-            $('#other02').on('ifChecked', function(){
-                $("#odetail02").show();
-                $("#odate02").show();
-            });
-            $('#other02').on('ifUnchecked', function(){
-                $("#odetail02").hide();
-                $("#odate02").hide();
-            });
-        });
-        $(document).ready(function(){
-            $('#other03').on('ifChecked', function(){
-                $("#odetail03").show();
-                $("#odate03").show();
-            });
-            $('#other03').on('ifUnchecked', function(){
-                $("#odetail03").hide();
-                $("#odate03").hide();
-            });
-        });
-        $(document).ready(function(){
-            $('#other04').on('ifChecked', function(){
-                $("#odetail04").show();
-                $("#odate04").show();
-            });
-            $('#other04').on('ifUnchecked', function(){
-                $("#odetail04").hide();
-                $("#odate04").hide();
-            });
+            $('#other02').on('ifChecked', function(){$("#odetail02,#odate02").show();});
+            $('#other02').on('ifUnchecked', function(){$("#odetail02,#odate02").hide();});
+            $('#other03').on('ifChecked', function(){$("#odetail03,#odate03").show();});
+            $('#other03').on('ifUnchecked', function(){$("#odetail03,#odate03").hide();});
+            $('#other04').on('ifChecked', function(){$("#odetail04,#odate04").show();});
+            $('#other04').on('ifUnchecked', function(){$("#odetail04,#odate04").hide();});
         });
         
         $(document).ready(function(){
-            $('#confirmorgan01').on('ifChecked', function(){
-                $("#organremission01").show();
-                $("#orgranprevious01").show();
-            });
-            $('#confirmorgan01').on('ifUnchecked', function(){
-                $("#organremission01").hide();
-                $("#orgranprevious01").hide();
-            });
+            $('#confirmorgan01').on('ifChecked', function(){$("#organstrremis01,#organendremis01").show();});
+            $('#confirmorgan01').on('ifUnchecked', function(){$("#organstrremis01,#organendremis01").hide();});
         });
+        //Organ
         $(document).ready(function(){
-            $('#confirmorgan02').on('ifChecked', function(){
-                $("#organtreatment02").show();
-                $("#organremission02").show();
-                $("#orgranprevious02").show();
-                $("#organtradd02").show();
-            });
-            $('#confirmorgan02').on('ifUnchecked', function(){
-                $("#organtreatment02").hide();
-                $("#organremission02").hide();
-                $("#orgranprevious02").hide();
-                $("#organtradd02").hide();
-                $("#traddorgan02").remove();
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan03').on('ifChecked', function(){
-                $("#organtreatment03").show();
-                $("#organremission03").show();
-                $("#orgranprevious03").show();
-                $("#organtradd03").show();
-            });
-            $('#confirmorgan03').on('ifUnchecked', function(){
-                $("#organtreatment03").hide();
-                $("#organremission03").hide();
-                $("#orgranprevious03").hide();
-                $("#organtradd03").hide();
-                $("#traddorgan03").remove();
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan04').on('ifChecked', function(){
-                $("#organtreatment04").show();
-                $("#organremission04").show();
-                $("#orgranprevious04").show();
-                $("#organtradd04").show();
-            });
-            $('#confirmorgan04').on('ifUnchecked', function(){
-                $("#organtreatment04").hide();
-                $("#organremission04").hide();
-                $("#orgranprevious04").hide();
-                $("#organtradd04").hide();
-                $("#traddorgan04").remove();
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan05').on('ifChecked', function(){
-                $("#organtreatment05").show();
-                $("#organremission05").show();
-                $("#orgranprevious05").show();
-                $("#organtradd05").show();
-            });
-            $('#confirmorgan05').on('ifUnchecked', function(){
-                $("#organtreatment05").hide();
-                $("#organremission05").hide();
-                $("#orgranprevious05").hide();
-                $("#organtradd05").hide();
-                $("#traddorgan05").remove();
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan06').on('ifChecked', function(){
-                $("#organtreatment06").show();
-                $("#organremission06").show();
-                $("#orgranprevious06").show();
-                $("#organtradd06").show();
-            });
-            $('#confirmorgan06').on('ifUnchecked', function(){
-                $("#organtreatment06").hide();
-                $("#organremission06").hide();
-                $("#orgranprevious06").hide();
-                $("#organtradd06").hide();
-                $("#traddorgan06").remove();
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan07').on('ifChecked', function(){
-                $("#organtreatment07").show();
-                $("#organremission07").show();
-                $("#orgranprevious07").show();
-                $("#organtradd07").show();
-            });
-            $('#confirmorgan07').on('ifUnchecked', function(){
-                $("#organtreatment07").hide();
-                $("#organremission07").hide();
-                $("#orgranprevious07").hide();
-                $("#organtradd07").hide();
-                $("#traddorgan07").remove();
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan08').on('ifChecked', function(){
-                $("#organtreatment08").show();
-                $("#organremission08").show();
-                $("#orgranprevious08").show();
-                $("#organtradd08").show();
-            });
-            $('#confirmorgan08').on('ifUnchecked', function(){
-                $("#organtreatment08").hide();
-                $("#organremission08").hide();
-                $("#orgranprevious08").hide();
-                $("#organtradd08").hide();
-                $("#traddorgan08").remove();
-            });
+            $('#confirmorgan02').on('ifChecked', function(){$("#organtreatment02,#organdate21,#organdate22").show();});
+            $('#confirmorgan02').on('ifUnchecked', function(){$("#organtreatment02,#organdate21,#organdate22").hide();});
+            $('#organtreatment21').on('ifChecked', function(){$("#organstrremis21,#organendremis21").css('visibility','visible');});
+            $('#organtreatment21').on('ifUnchecked', function(){$("#organstrremis21,#organendremis21").css('visibility','hidden');});
+            $('#organtreatment22').on('ifChecked', function(){$("#organstrremis22,#organendremis22").css('visibility','visible');});
+            $('#organtreatment22').on('ifUnchecked', function(){$("#organstrremis22,#organendremis22").css('visibility','hidden');});
+            $('#organtreatment23').on('ifChecked', function(){$("#organstrremis23,#organendremis23").css('visibility','visible');});
+            $('#organtreatment23').on('ifUnchecked', function(){$("#organstrremis23,#organendremis23").css('visibility','hidden');});
+            $('#organtreatment24').on('ifChecked', function(){$("#organstrremis24,#organendremis24").css('visibility','visible');});
+            $('#organtreatment24').on('ifUnchecked', function(){$("#organstrremis24,#organendremis24").css('visibility','hidden');});
+            
+            $('#confirmorgan03').on('ifChecked', function(){$("#organtreatment03,#organdate31,#organdate32").show();});
+            $('#confirmorgan03').on('ifUnchecked', function(){$("#organtreatment03,#organdate31,#organdate32").hide();});
+            $('#organtreatment31').on('ifChecked', function(){$("#organstrremis31,#organendremis31").css('visibility','visible');});
+            $('#organtreatment31').on('ifUnchecked', function(){$("#organstrremis31,#organendremis31").css('visibility','hidden');});
+            $('#organtreatment32').on('ifChecked', function(){$("#organstrremis32,#organendremis32").css('visibility','visible');});
+            $('#organtreatment32').on('ifUnchecked', function(){$("#organstrremis32,#organendremis32").css('visibility','hidden');});
+            $('#organtreatment33').on('ifChecked', function(){$("#organstrremis33,#organendremis33").css('visibility','visible');});
+            $('#organtreatment33').on('ifUnchecked', function(){$("#organstrremis33,#organendremis33").css('visibility','hidden');});
+            $('#organtreatment34').on('ifChecked', function(){$("#organstrremis34,#organendremis34").css('visibility','visible');});
+            $('#organtreatment34').on('ifUnchecked', function(){$("#organstrremis34,#organendremis34").css('visibility','hidden');});
+            $('#organtreatment35').on('ifChecked', function(){$("#organstrremis35,#organendremis35").css('visibility','visible');});
+            $('#organtreatment35').on('ifUnchecked', function(){$("#organstrremis35,#organendremis35").css('visibility','hidden');});
+            $('#organtreatment36').on('ifChecked', function(){$("#organstrremis36,#organendremis36").css('visibility','visible');});
+            $('#organtreatment36').on('ifUnchecked', function(){$("#organstrremis36,#organendremis36").css('visibility','hidden');});
+            
+            $('#confirmorgan04').on('ifChecked', function(){$("#organtreatment04,#organdate41,#organdate42").show();});
+            $('#confirmorgan04').on('ifUnchecked', function(){$("#organtreatment04,#organdate41,#organdate42").hide();});
+            $('#organtreatment41').on('ifChecked', function(){$("#organstrremis41,#organendremis41").css('visibility','visible');});
+            $('#organtreatment41').on('ifUnchecked', function(){$("#organstrremis41,#organendremis41").css('visibility','hidden');});
+            $('#organtreatment42').on('ifChecked', function(){$("#organstrremis42,#organendremis42").css('visibility','visible');});
+            $('#organtreatment42').on('ifUnchecked', function(){$("#organstrremis42,#organendremis42").css('visibility','hidden');});
+            $('#organtreatment43').on('ifChecked', function(){$("#organstrremis43,#organendremis43").css('visibility','visible');});
+            $('#organtreatment43').on('ifUnchecked', function(){$("#organstrremis43,#organendremis43").css('visibility','hidden');});
+            $('#organtreatment44').on('ifChecked', function(){$("#organstrremis44,#organendremis44").css('visibility','visible');});
+            $('#organtreatment44').on('ifUnchecked', function(){$("#organstrremis44,#organendremis44").css('visibility','hidden');});
+            $('#organtreatment45').on('ifChecked', function(){$("#organstrremis45,#organendremis45").css('visibility','visible');});
+            $('#organtreatment45').on('ifUnchecked', function(){$("#organstrremis45,#organendremis45").css('visibility','hidden');});
+            
+            $('#confirmorgan05').on('ifChecked', function(){$("#organtreatment05,#organdate51,#organdate52").show();});
+            $('#confirmorgan05').on('ifUnchecked', function(){$("#organtreatment05,#organdate51,#organdate52").hide();});
+            $('#organtreatment51').on('ifChecked', function(){$("#organstrremis51,#organendremis51").css('visibility','visible');});
+            $('#organtreatment51').on('ifUnchecked', function(){$("#organstrremis51,#organendremis51").css('visibility','hidden');});
+            $('#organtreatment52').on('ifChecked', function(){$("#organstrremis52,#organendremis52").css('visibility','visible');});
+            $('#organtreatment52').on('ifUnchecked', function(){$("#organstrremis52,#organendremis52").css('visibility','hidden');});
+            
+            $('#confirmorgan06').on('ifChecked', function(){$("#organtreatment06,#organdate61,#organdate62").show();});
+            $('#confirmorgan06').on('ifUnchecked', function(){$("#organtreatment06,#organdate61,#organdate62").hide();});
+            $('#organtreatment61').on('ifChecked', function(){$("#organstrremis61,#organendremis61").css('visibility','visible');});
+            $('#organtreatment61').on('ifUnchecked', function(){$("#organstrremis61,#organendremis61").css('visibility','hidden');});
+            $('#organtreatment62').on('ifChecked', function(){$("#organstrremis62,#organendremis62").css('visibility','visible');});
+            $('#organtreatment62').on('ifUnchecked', function(){$("#organstrremis62,#organendremis62").css('visibility','hidden');});
+            $('#organtreatment63').on('ifChecked', function(){$("#organstrremis63,#organendremis63").css('visibility','visible');});
+            $('#organtreatment63').on('ifUnchecked', function(){$("#organstrremis63,#organendremis63").css('visibility','hidden');});
+            
+            $('#confirmorgan07').on('ifChecked', function(){$("#organtreatment07,#organdate71,#organdate72").show();});
+            $('#confirmorgan07').on('ifUnchecked', function(){$("#organtreatment07,#organdate71,#organdate72").hide();});
+            $('#organtreatment71').on('ifChecked', function(){$("#organstrremis71,#organendremis71").css('visibility','visible');});
+            $('#organtreatment71').on('ifUnchecked', function(){$("#organstrremis71,#organendremis71").css('visibility','hidden');});
+            $('#organtreatment72').on('ifChecked', function(){$("#organstrremis72,#organendremis72").css('visibility','visible');});
+            $('#organtreatment72').on('ifUnchecked', function(){$("#organstrremis72,#organendremis72").css('visibility','hidden');});
+            
+             $('#confirmorgan08').on('ifChecked', function(){$("#organtreatment08,#organdate81,#organdate82").show();});
+            $('#confirmorgan08').on('ifUnchecked', function(){$("#organtreatment08,#organdate81,#organdate82").hide();});
+            $('#organtreatment81').on('ifChecked', function(){$("#organstrremis81,#organendremis81").css('visibility','visible');});
+            $('#organtreatment81').on('ifUnchecked', function(){$("#organstrremis81,#organendremis81").css('visibility','hidden');});
+            $('#organtreatment82').on('ifChecked', function(){$("#organstrremis82,#organendremis82").css('visibility','visible');});
+            $('#organtreatment82').on('ifUnchecked', function(){$("#organstrremis82,#organendremis82").css('visibility','hidden');});
+            $('#organtreatment83').on('ifChecked', function(){$("#organstrremis83,#organendremis83").css('visibility','visible');});
+            $('#organtreatment83').on('ifUnchecked', function(){$("#organstrremis83,#organendremis83").css('visibility','hidden');});
+            $('#organtreatment84').on('ifChecked', function(){$("#organstrremis84,#organendremis84").css('visibility','visible');});
+            $('#organtreatment84').on('ifUnchecked', function(){$("#organstrremis84,#organendremis84").css('visibility','hidden');});
+            $('#organtreatment85').on('ifChecked', function(){$("#organstrremis85,#organendremis85").css('visibility','visible');});
+            $('#organtreatment85').on('ifUnchecked', function(){$("#organstrremis85,#organendremis85").css('visibility','hidden');});
+            $('#organtreatment86').on('ifChecked', function(){$("#organstrremis86,#organendremis86").css('visibility','visible');});
+            $('#organtreatment86').on('ifUnchecked', function(){$("#organstrremis86,#organendremis86").css('visibility','hidden');});
+            $('#organtreatment87').on('ifChecked', function(){$("#organstrremis87,#organendremis87").css('visibility','visible');});
+            $('#organtreatment87').on('ifUnchecked', function(){$("#organstrremis87,#organendremis87").css('visibility','hidden');});
+            $('#organtreatment88').on('ifChecked', function(){$("#organstrremis88,#organendremis88").css('visibility','visible');});
+            $('#organtreatment88').on('ifUnchecked', function(){$("#organstrremis88,#organendremis88").css('visibility','hidden');});
         });
         
         $(document).ready(function(){
@@ -247,172 +214,261 @@
             p.parentNode.removeChild(p);
         }
         
-        $(document).on("click",".addorgan02", function () {
-            var newRow = $("<tr id='traddorgan02'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment02'>";
-            cols += "<option>AIHA</option><option>ITP</option><option>Thrombosis</option><option>Site</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission02' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious02' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan02'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan03", function () {
-            var newRow = $("<tr id='traddorgan03'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment03'>";
-            cols += "<option>Seizure</option><option>Psychosis</option><option>Stroke</option><option>Myelins</option><option>Neuropathy</option><option>Aseptic meningitis</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission03' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious03' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan03'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan04", function () {
-            var newRow = $("<tr id='traddorgan04'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment04'>";
-            cols += "<option>Pleuritis</option><option>Pneumonitis</option><option>PE</option><option>PAH</option><option>ILD</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission04' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious04' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan04'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan05", function () {
-            var newRow = $("<tr id='traddorgan05'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment05'>";
-            cols += "<option>Myocarditis</option><option>Pericardial effusion</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission05' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious05' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan05'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan06", function () {
-            var newRow = $("<tr id='traddorgan06'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment06'>";
-            cols += "<option>GI vasculitis</option><option>Pancreatitis</option><option>Acalculous cholecystitis</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission06' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious06' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan06'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan07", function () {
-            var newRow = $("<tr id='traddorgan07'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment07'>";
-            cols += "<option>Arthritis</option><option>Myositis</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission07' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious07' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan07'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
-        });
-        
-        $(document).on("click",".addorgan08", function () {
-            var newRow = $("<tr id='traddorgan08'>");
-            var cols = "<td></td>";
-            
-            cols += "<td><div class='form-group' id='organlist'><select class='form-control' id='organtreatment08'>";
-            cols += "<option>Acate cutaneous</option><option>Subacute cutaneous</option><option>DLE</option><option>Lupus panniculitis</option><option>Oral/nasal ulcer</option><option>Non-scarring alopecia</option><option>Localized scarring alopecia</option><option>Reynad phenomenon</option></select></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'>";
-            cols += "<div class='checkbox' id='organremission08' ><input type='checkbox' class='inputaddrow'></div></div></td>";
-            cols += "<td class='text-center' align='center'><div class='col-md-12 col-sm-12 col-xs-12'><div class='checkbox' id='orgranprevious08' >";
-            cols += "<input class='inputaddrow' type='checkbox'></div></div></td>";
-            cols += "<td><a class='addorgan08'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'>";
-            cols += "</span></a><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
-            
-            newRow.append(cols);
-            newRow.insertAfter($(this).parents().closest('tr'));
-            
-            $('.inputaddrow').iCheck({
-                checkboxClass: 'icheckbox_flat-blue',
-                radioClass: 'iradio_flat-blue'
-              });
+        $(document).ready(function(){
+            $('#organtreatment21').on('ifChecked', function(){
+                $("#organremiss21").css('visibility','visible');
+                $("#organcomp21").css('visibility','visible');
+            });
+            $('#organtreatment21').on('ifUnchecked', function(){
+                $("#organremiss21").css('visibility','hidden');
+                $("#organcomp21").css('visibility','hidden');
+            });
+            $('#organtreatment22').on('ifChecked', function(){
+                $("#organremiss22").css('visibility','visible');
+                $("#organcomp22").css('visibility','visible');
+            });
+            $('#organtreatment22').on('ifUnchecked', function(){
+                $("#organremiss22").css('visibility','hidden');
+                $("#organcomp22").css('visibility','hidden');
+            });
+            $('#organtreatment23').on('ifChecked', function(){
+                $("#organremiss23").css('visibility','visible');
+                $("#organcomp23").css('visibility','visible');
+            });
+            $('#organtreatment23').on('ifUnchecked', function(){
+                $("#organremiss23").css('visibility','hidden');
+                $("#organcomp23").css('visibility','hidden');
+            });
+            $('#organtreatment24').on('ifChecked', function(){
+                $("#organremiss24").css('visibility','visible');
+                $("#organcomp24").css('visibility','visible');
+            });
+            $('#organtreatment24').on('ifUnchecked', function(){
+                $("#organremiss24").css('visibility','hidden');
+                $("#organcomp24").css('visibility','hidden');
+            });
+            $('#organtreatment31').on('ifChecked', function(){
+                $("#organremiss31").css('visibility','visible');
+                $("#organcomp31").css('visibility','visible');
+            });
+            $('#organtreatment31').on('ifUnchecked', function(){
+                $("#organremiss31").css('visibility','hidden');
+                $("#organcomp31").css('visibility','hidden');
+            });
+            $('#organtreatment32').on('ifChecked', function(){
+                $("#organremiss32").css('visibility','visible');
+                $("#organcomp32").css('visibility','visible');
+            });
+            $('#organtreatment32').on('ifUnchecked', function(){
+                $("#organremiss32").css('visibility','hidden');
+                $("#organcomp32").css('visibility','hidden');
+            });
+            $('#organtreatment33').on('ifChecked', function(){
+                $("#organremiss33").css('visibility','visible');
+                $("#organcomp33").css('visibility','visible');
+            });
+            $('#organtreatment33').on('ifUnchecked', function(){
+                $("#organremiss33").css('visibility','hidden');
+                $("#organcomp33").css('visibility','hidden');
+            });
+            $('#organtreatment34').on('ifChecked', function(){
+                $("#organremiss34").css('visibility','visible');
+                $("#organcomp34").css('visibility','visible');
+            });
+            $('#organtreatment34').on('ifUnchecked', function(){
+                $("#organremiss34").css('visibility','hidden');
+                $("#organcomp34").css('visibility','hidden');
+            });
+            $('#organtreatment35').on('ifChecked', function(){
+                $("#organremiss35").css('visibility','visible');
+                $("#organcomp35").css('visibility','visible');
+            });
+            $('#organtreatment35').on('ifUnchecked', function(){
+                $("#organremiss35").css('visibility','hidden');
+                $("#organcomp35").css('visibility','hidden');
+            });
+            $('#organtreatment36').on('ifChecked', function(){
+                $("#organremiss36").css('visibility','visible');
+                $("#organcomp36").css('visibility','visible');
+            });
+            $('#organtreatment36').on('ifUnchecked', function(){
+                $("#organremiss36").css('visibility','hidden');
+                $("#organcomp36").css('visibility','hidden');
+            });
+            $('#organtreatment41').on('ifChecked', function(){
+                $("#organremiss41").css('visibility','visible');
+                $("#organcomp41").css('visibility','visible');
+            });
+            $('#organtreatment41').on('ifUnchecked', function(){
+                $("#organremiss41").css('visibility','hidden');
+                $("#organcomp41").css('visibility','hidden');
+            });
+            $('#organtreatment42').on('ifChecked', function(){
+                $("#organremiss42").css('visibility','visible');
+                $("#organcomp42").css('visibility','visible');
+            });
+            $('#organtreatment42').on('ifUnchecked', function(){
+                $("#organremiss42").css('visibility','hidden');
+                $("#organcomp42").css('visibility','hidden');
+            });
+            $('#organtreatment43').on('ifChecked', function(){
+                $("#organremiss43").css('visibility','visible');
+                $("#organcomp43").css('visibility','visible');
+            });
+            $('#organtreatment43').on('ifUnchecked', function(){
+                $("#organremiss43").css('visibility','hidden');
+                $("#organcomp43").css('visibility','hidden');
+            });
+            $('#organtreatment44').on('ifChecked', function(){
+                $("#organremiss44").css('visibility','visible');
+                $("#organcomp44").css('visibility','visible');
+            });
+            $('#organtreatment44').on('ifUnchecked', function(){
+                $("#organremiss44").css('visibility','hidden');
+                $("#organcomp44").css('visibility','hidden');
+            });
+            $('#organtreatment45').on('ifChecked', function(){
+                $("#organremiss45").css('visibility','visible');
+                $("#organcomp45").css('visibility','visible');
+            });
+            $('#organtreatment45').on('ifUnchecked', function(){
+                $("#organremiss45").css('visibility','hidden');
+                $("#organcomp45").css('visibility','hidden');
+            });
+            $('#organtreatment51').on('ifChecked', function(){
+                $("#organremiss51").css('visibility','visible');
+                $("#organcomp51").css('visibility','visible');
+            });
+            $('#organtreatment51').on('ifUnchecked', function(){
+                $("#organremiss51").css('visibility','hidden');
+                $("#organcomp51").css('visibility','hidden');
+            });
+            $('#organtreatment52').on('ifChecked', function(){
+                $("#organremiss52").css('visibility','visible');
+                $("#organcomp52").css('visibility','visible');
+            });
+            $('#organtreatment52').on('ifUnchecked', function(){
+                $("#organremiss52").css('visibility','hidden');
+                $("#organcomp52").css('visibility','hidden');
+            });
+            $('#organtreatment61').on('ifChecked', function(){
+                $("#organremiss61").css('visibility','visible');
+                $("#organcomp61").css('visibility','visible');
+            });
+            $('#organtreatment61').on('ifUnchecked', function(){
+                $("#organremiss61").css('visibility','hidden');
+                $("#organcomp61").css('visibility','hidden');
+            });
+            $('#organtreatment62').on('ifChecked', function(){
+                $("#organremiss62").css('visibility','visible');
+                $("#organcomp62").css('visibility','visible');
+            });
+            $('#organtreatment62').on('ifUnchecked', function(){
+                $("#organremiss62").css('visibility','hidden');
+                $("#organcomp62").css('visibility','hidden');
+            });
+            $('#organtreatment63').on('ifChecked', function(){
+                $("#organremiss63").css('visibility','visible');
+                $("#organcomp63").css('visibility','visible');
+            });
+            $('#organtreatment63').on('ifUnchecked', function(){
+                $("#organremiss63").css('visibility','hidden');
+                $("#organcomp63").css('visibility','hidden');
+            });
+            $('#organtreatment71').on('ifChecked', function(){
+                $("#organremiss71").css('visibility','visible');
+                $("#organcomp71").css('visibility','visible');
+            });
+            $('#organtreatment71').on('ifUnchecked', function(){
+                $("#organremiss71").css('visibility','hidden');
+                $("#organcomp71").css('visibility','hidden');
+            });
+            $('#organtreatment72').on('ifChecked', function(){
+                $("#organremiss72").css('visibility','visible');
+                $("#organcomp72").css('visibility','visible');
+            });
+            $('#organtreatment72').on('ifUnchecked', function(){
+                $("#organremiss72").css('visibility','hidden');
+                $("#organcomp72").css('visibility','hidden');
+            });
+            $('#organtreatment81').on('ifChecked', function(){
+                $("#organremiss81").css('visibility','visible');
+                $("#organcomp81").css('visibility','visible');
+            });
+            $('#organtreatment81').on('ifUnchecked', function(){
+                $("#organremiss81").css('visibility','hidden');
+                $("#organcomp81").css('visibility','hidden');
+            });
+            $('#organtreatment82').on('ifChecked', function(){
+                $("#organremiss82").css('visibility','visible');
+                $("#organcomp82").css('visibility','visible');
+            });
+            $('#organtreatment82').on('ifUnchecked', function(){
+                $("#organremiss82").css('visibility','hidden');
+                $("#organcomp82").css('visibility','hidden');
+            });
+            $('#organtreatment83').on('ifChecked', function(){
+                $("#organremiss83").css('visibility','visible');
+                $("#organcomp83").css('visibility','visible');
+            });
+            $('#organtreatment83').on('ifUnchecked', function(){
+                $("#organremiss83").css('visibility','hidden');
+                $("#organcomp83").css('visibility','hidden');
+            });
+            $('#organtreatment84').on('ifChecked', function(){
+                $("#organremiss84").css('visibility','visible');
+                $("#organcomp84").css('visibility','visible');
+            });
+            $('#organtreatment84').on('ifUnchecked', function(){
+                $("#organremiss84").css('visibility','hidden');
+                $("#organcomp84").css('visibility','hidden');
+            });
+            $('#organtreatment85').on('ifChecked', function(){
+                $("#organremiss85").css('visibility','visible');
+                $("#organcomp85").css('visibility','visible');
+            });
+            $('#organtreatment85').on('ifUnchecked', function(){
+                $("#organremiss85").css('visibility','hidden');
+                $("#organcomp85").css('visibility','hidden');
+            });
+            $('#organtreatment86').on('ifChecked', function(){
+                $("#organremiss86").css('visibility','visible');
+                $("#organcomp86").css('visibility','visible');
+            });
+            $('#organtreatment86').on('ifUnchecked', function(){
+                $("#organremiss86").css('visibility','hidden');
+                $("#organcomp86").css('visibility','hidden');
+            });
+            $('#organtreatment87').on('ifChecked', function(){
+                $("#organremiss87").css('visibility','visible');
+                $("#organcomp87").css('visibility','visible');
+            });
+            $('#organtreatment87').on('ifUnchecked', function(){
+                $("#organremiss87").css('visibility','hidden');
+                $("#organcomp87").css('visibility','hidden');
+            });
+            $('#organtreatment88').on('ifChecked', function(){
+                $("#organremiss88").css('visibility','visible');
+                $("#organcomp88").css('visibility','visible');
+            });
+            $('#organtreatment88').on('ifUnchecked', function(){
+                $("#organremiss88").css('visibility','hidden');
+                $("#organcomp88").css('visibility','hidden');
+            });
         });
         
         $(document).on("click",".addotherinflection", function () {
-            var newRow = $("<tr id='trotherinflection'>");
+            var newRow = $("<tr name='trotherinflection'>");
             var cols = "<td></td>";
             
-            cols += "<td><div class='form-group' id='odetail01'><select class='form-control' name='otherdetail'><option>detail1</option></select></div></td>";
-            cols += "<td><input type='date' id='odate01' class='form-control'></td>";
-            cols += "<td><a class='addotherinfection'><span class='glyphicon glyphicon-plus' style='color: #2BA060;' aria-hidden='true'></span></a>";
-            cols += "<a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
+            cols += "<td><div class='form-group' id='odetail01'><input type='text' name='othertype[]' value='inflection' style='display: none;'><select class='form-control' name='otherdetail[]'><option>detail1</option><option>detail2</option></select></div></td>";
+            cols += "<td><input type='date' id='odate01' class='form-control' name='otherdate[]'></td>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).closest('tr'));
         });
+
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -852,17 +908,14 @@
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="mc4_7" {% if medicalcondition.mc4_7 is True %} checked {% endif %}> Anaphylaxis
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mc4_8" {% if medicalcondition.mc4_8 is True %} checked {% endif %}> Hay fever
-                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <!--Add name please-->
                                                 <div class="checkbox">
-                                                  <input type="checkbox" id="foodcheck"> Food allergy
+                                                  <input type="checkbox" {% if medicalcondition.mc4_9.size > 0 %} checked="checked" {% endif %}> Food allergy
                                                 </div>
-                                                <input type="text" class="form-control" id="foodinput" disabled>
+                                                <input type="text" class="form-control" id="foodinput" {% if medicalcondition.mc4_9.size > 0 %} value="{{medicalcondition.mc4_9}}" {% endif %} >
                                             </td>
                                         </tr>
                                     </tbody>
@@ -877,57 +930,65 @@
                                                 <!--Case of having-->
                                                 <table class="table table-bordered" style="margin-bottom: 10px;" id="otherdi01">
                                                     <tbody>
+                                                        
                                                         <tr scope="row">
                                                             <td class="col-md-3" align="center">Type</td>
                                                             <td class="col-md-5" align="center">Detail</td>
                                                             <td class="col-md-3" align="center">Diagnose date</td>
                                                         </tr>
+                                                        
                                                         <tr>
-                                                            <td><input type="checkbox" id="other01"> Inflection</td>
+                                                            <td><input type="checkbox" id="other01" name="other01"> Inflection</td>
                                                             <td>
+                                                                <input type="text" name="othertype[]" value="inflection" style="display: none;">
                                                                  <div class="form-group" id="odetail01" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail">
+                                                                    <select class="form-control" name="otherdetail[]">
                                                                         <option>detail1</option>
+                                                                        <option>detail2</option>
                                                                     </select>
                                                                 </div>
                                                             </td>
-                                                            <td><input type="date" id="odate01" class="form-control" style="display: none;"></td>
+                                                            <td><input type="date" id="odate01" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                             <td id="addotherinflection" style="display: none;">
                                                                 <a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                                             </td>
                                                         </tr>
+                                                         
                                                         <tr>
-                                                            <td><input type="checkbox" id="other02"> Major surgery</td>
+                                                            <td><input type="checkbox" id="other02" name="other02"> Major surgery</td>
                                                             <td>
+                                                                <input type="text" name="othertype[]" value="majorsurgery" style="display: none;">
                                                                  <div class="form-group" id="odetail02" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail">
-                                                                        <option>detail1</option>
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>majorsurgery detail1</option>
                                                                     </select>
                                                                 </div>
                                                             </td>
-                                                            <td><input type="date" id="odate02" class="form-control" style="display: none;"></td>
+                                                            <td><input type="date" id="odate02" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="checkbox" id="other03"> Osteoporosis/Fx</td>
+                                                            <td><input type="checkbox" id="other03" name="other03"> Osteoporosis/Fx</td>
                                                             <td>
+                                                                <input type="text" name="othertype[]" value="osteoporosis" style="display: none;">
                                                                  <div class="form-group" id="odetail03" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail">
-                                                                        <option>detail1</option>
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>osteoporosis detail1</option>
                                                                     </select>
                                                                 </div>
                                                             </td>
-                                                            <td><input type="date" id="odate03" class="form-control" style="display: none;"></td>
+                                                            <td><input type="date" id="odate03" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="checkbox" id="other04"> Malignancy</td>
+                                                            <td><input type="checkbox" id="other04" name="other04"> Malignancy</td>
                                                             <td>
                                                                  <div class="form-group" id="odetail04" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail">
-                                                                        <option>detail1</option>
+                                                                    <input type="text" name="othertype[]" value="malignancy" style="display: none;">
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>malignancy detail1</option>
                                                                     </select>
                                                                 </div>
                                                             </td>
-                                                            <td><input type="date" id="odate04" class="form-control" style="display: none;"></td>
+                                                            <td><input type="date" id="odate04" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -949,6 +1010,8 @@
 								<div class="clearfix"></div>
                         </div>
                         <div class="x_content">
+                            
+                            
                             <div class="col-lg-12 col-md-12 col-sm-4">
                                 <div class="form-inline">
                                     <div class="form-group">
@@ -1706,426 +1769,6 @@
                 
                 
                 
-            </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <div class="row">
-                <div class="col-lg-6">
-                <!--Family history-->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Family history</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">                       
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <label class="col-lg-6 col-md-6 col-sm-6">Family history of autoimmune disease </label> 
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4"> 
-                                    <select class="form-control" id="FamHisAuto" name="FamAuto"> 
-                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'No' %} selected {% endif %} value="No">No</option>
-                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'Yes' %} selected {% endif %} value="Yes">Yes</option>
-                                        <option {% if familyhistory.familyhistoryofautoimmunedisease == 'Unknown' %} selected {% endif %} value="Unknown">Unknown</option>
-                                    </select>
-                                </div>
-                            </div>   
-                            <div class="col-lg-8 col-md-8 col-sm-8" id="ShowFormAuto" style="display:none;">
-                                <div class="form-group"> 
-                                    <label class="col-lg-6 col-md-6 col-sm-6">Systemic autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="SysAuto" name="systemicautoimmune" {% if familyhistory.systemicautoimmune is True %} checked {% endif %}> 
-                                </div>
-                                <div id="SysAuto1" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">SLE</label> 
-                                    {% for text in familyhistory.sle %}
-                                        <input type="text" class="form-control" name="sle[]" value="{{text}}">
-                                    {% endfor %}
-                                    <span id="sle"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#sle','sle[]')" value="Add">  
-                                </div>
-                                            
-                                <div id="SysAuto2" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">RA</label> 
-                                    {% for text in familyhistory.ra %}
-                                        <input type="text" class="form-control" name="ra[]" value="{{text}}">
-                                    {% endfor %}
-                                    <span id="ra"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#ra','ra[]')" value="Add"> 
-                                </div>
-                                <div id="SysAuto3" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Dermatomyositis</label> 
-                                    {% for text in familyhistory.dermatomyositis %}
-                                        <input type="text" class="form-control" name="dermatomyositis[]" value="{{text}}">
-                                    {% endfor %} 
-                                    <span id="dermatomyositis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#dermatomyositis','dermatomyositis[]')" value="Add">  
-                                </div>
-                                <div id="SysAuto4" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Systemic sclerosis</label> 
-                                    {% for text in familyhistory.systemicsclerosis %}
-                                        <input type="text" class="form-control" name="systemicsclerosis[]" value="{{text}}">
-                                    {% endfor %}
-                                    <span id="systemicsclerosis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#systemicsclerosis','systemicsclerosis[]')" value="Add"> 
-                                </div>
-                                <div id="SysAuto5" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Sjogren's Syndrome</label> 
-                                    <span id="sjogrensyndrome"></span>
-                                    {% for text in familyhistory.sjogrensyndrome %}
-                                        <input type="text" class="form-control" name="sjogrensyndrome[]" value="{{text}}">
-                                    {% endfor %}
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#sjogrensyndrome','sjogrensyndrome[]')" value="Add"> 
-                                </div>
-                                    
-                                                
-                                <div class="form-group"> 
-                                    <label class="col-lg-6 col-md-6 col-sm-6">Tissue-specific autoimmune</label> 
-                                    <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="TisAuto" name="tissuespecificautoimmune" {% if familyhistory.tissuespecificautoimmune is True %} checked {% endif %}> 
-                                </div>
-                                            
-                                <div id="TisAuto1" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">DM Type 1</label> 
-                                    {% for text in familyhistory.dmtypeone %}
-                                        <input type="text" class="form-control" name="dmtypeone[]" value="{{text}}">
-                                    {% endfor %}  
-                                    <span id="dmtypeone"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#dmtypeone','dmtypeone[]')" value="Add">  
-                                </div>
-                                <div id="TisAuto2" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Hashimoto's thyroidditis</label>
-                                    {% for text in familyhistory.hashimotosthyroiditis %}
-                                       <input type="text" class="form-control" name="hashimotosthyroiditis[]" value="{{text}}">
-                                    {% endfor %}
-                                    <span id="hashimotosthyroiditis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#hashimotosthyroiditis','hashimotosthyroiditis[]')" value="Add"> 
-                                </div>
-                                <div id="TisAuto3" style="display:none;">
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Multiple sclerosis</label>
-                                    {% for text in familyhistory.multiplesclerosis %}
-                                        <input type="text" class="form-control" name="multiplesclerosis[]" value="{{text}}">
-                                    {% endfor %}
-                                    <span id="multiplesclerosis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#multiplesclerosis','multiplesclerosis[]')" value="Add"> 
-                                </div>
-                                <div id="TisAuto4" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Myasthenia gravis</label> 
-                                    {% for text in familyhistory.myastheniagravis %}
-                                        <input type="text" class="form-control" name="myastheniagravis[]" value="{{text}}">
-                                    {% endfor %}
-                                    <span id="myastheniagravis"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#myastheniagravis','myastheniagravis[]')" value="Add"> 
-                                </div>
-                                <div id="TisAuto5" style="display:none;">    
-                                    <label class="col-lg-8 col-md-8 col-sm-8">Other</label>
-                                    {% for text in familyhistory.tissuespecificother %}
-                                        <input type="text" class="form-control" name="tissuespecificother[]" value="{{text}}">
-                                    {% endfor %}
-                                    <span id="tissuespecificother"></span>
-                                    <input type="button" class="btn btn-default" onclick="AddFamFeild('#tissuespecificother','tissuespecificother[]')" value="Add"> 
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <label class="col-lg-6 col-md-6 col-sm-6">Family history of renal disease/chronic glomerulonephritis</label> 
-                                <div class="form-group col-lg-4 col-md-4 col-sm-4"> 
-                                    <select class="form-control" id="FamHisRenal" name="FamRenal"> 
-                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'No' %} selected {% endif %} value="No">No</option>
-                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'Yes' %} selected {% endif %} value="Yes">Yes</option>
-                                        <option {% if familyhistory.renaldiseasefamilyhistory == 'Unknown' %} selected {% endif %} value="Unknow">Unknown</option>
-                                    </select>
-                                </div>
-                            </div>  
-                            <div class="col-lg-8 col-md-8 col-sm-8" id="ShowFormRenal" style="display:none;">
-                                <label class="col-lg-10 col-md-10 col-sm-10">Nephrotic syndrome /Glomerular disease</label>
-                                {% for text in familyhistory.nephroticsyndrome_glomerulardisease %}
-                                    <input type="text" class="form-control" name="nephroticsyndrome_glomerulardisease[]" value="{{text}}">
-                                {% endfor %}
-                                <span id="nephroticsyndrome_glomerulardisease"></span>
-                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#nephroticsyndrome_glomerulardisease','nephroticsyndrome_glomerulardisease[]')" value="Add"> 
-                                <label class="col-lg-8 col-md-8 col-sm-8">Stone </label>
-                                {% for text in familyhistory.stone %}
-                                    <input type="text" class="form-control" name="stone[]" value="{{text}}">
-                                {% endfor %}
-                                <span id="stone"></span>
-                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#stone','stone[]')" value="Add"> 
-                                <label class="col-lg-8 col-md-8 col-sm-8">ESRD  </label>
-                                {% for text in familyhistory.esrd %}
-                                    <input type="text" class="form-control" name="esrd[]" value="{{text}}">
-                                {% endfor %}
-                                <span id="esrd"></span>
-                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#esrd','esrd[]')" value="Add"> 
-                                <label class="col-lg-8 col-md-8 col-sm-8">Other</label>
-                                {% for text in familyhistory.renalother %}
-                                    <input type="text" class="form-control" name="renalother[]" value="{{text}}">
-                                {% endfor %}
-                                <span id="renalother"></span>
-                                <input type="button" class="btn btn-default" onclick="AddFamFeild('#renalother','renalother[]')" value="Add"> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    
-                <!--Medical Condition -->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Medical condition</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Systemic autoimmune diseases</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Antiphospholipid Ab  Syndrome</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_2" {% if medicalcondition.mc1_2 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Rheumatoid arthritis (RA) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_3" {% if medicalcondition.mc1_3 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Dermatomyositis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_4" {% if medicalcondition.mc1_4 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Polymyositis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_5" {% if medicalcondition.mc1_5 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Systemic sclerosis (SSc) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_6" {% if medicalcondition.mc1_6 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Sjogren's Syndrome (SS) </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_7" {% if medicalcondition.mc1_7 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Mixed connective tissue disease  </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_8" {% if medicalcondition.mc1_8 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">LE/LP overlap syndrome </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_9" {% if medicalcondition.mc1_9 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Primary biliary cirrhosis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_10" {% if medicalcondition.mc1_10 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Primary sclerosing cholangitis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc1_11" {% if medicalcondition.mc1_11 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Tissue-specific autoimmune diseases</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">DM type 1 </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_2" {% if medicalcondition.mc2_2 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hashimoto's thyroiditis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_3" {% if medicalcondition.mc2_3 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Multiple sclerosis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_4" {% if medicalcondition.mc2_4 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Myasthenia gravis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_5" {% if medicalcondition.mc2_5 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Autoimmune hepatitis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc2_6" {% if medicalcondition.mc2_6 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Metabolic & CVS co-morbidity  </h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">DM type 2</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_2" {% if medicalcondition.mc3_2 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hypertension</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_3" {% if medicalcondition.mc3_3 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hyperlipidemia</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_4" {% if medicalcondition.mc3_4 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">CAD</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc3_5" {% if medicalcondition.mc3_5 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Allergy</h4></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic rhinitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_2" {% if medicalcondition.mc4_2 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic conjunctivitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_3" {% if medicalcondition.mc4_3 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Asthma</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_4" {% if medicalcondition.mc4_4 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Atopic dermatitis</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_5" {% if medicalcondition.mc4_5 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Allergic urticaria</label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_6" {% if medicalcondition.mc4_6 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Anaphylaxis </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_7" {% if medicalcondition.mc4_7 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label class="col-lg-8 col-md-8 col-sm-8">Hay fever </label> 
-                            <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mc4_8" {% if medicalcondition.mc4_8 is True %} checked {% endif %}> 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label>Food allergy </label> 
-                            <input type="button" class="btn btn-default" onclick="AddTextFeild()" value="Add">
-                            {% for text in medicalcondition.mc4_9 %} 
-                                <input type="text" class="form-control" name="mc4_9[]" value="{{text}}">
-                            {% endfor %} 
-                            <span id="foodallergy">
-                            </span>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12"><h4 class="page-header">Other Co-morbidity</h4></div>
-                        <div class="col-lg-12  col-md-12 col-sm-12">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>From Date</th>
-                                        <th>To Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                            <label>1) Infection</label>  
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="details" name="mc5_2_1" value="{{medicalcondition.mc5_2_1}}">
-                                            </div>
-                                            </div>
-                                        </td>                                        
-                                        <td><input type="date" class="form-control" name="mc5_2_2" value="{{medicalcondition.mc5_2_2}}"></td>
-                                        <td><input type="date" class="form-control" name="mc5_2_3" value="{{medicalcondition.mc5_2_3}}"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-group">
-                                            <label>2) Major surgery</label>  
-                                            <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="details" name="mc5_3_1" value="{{medicalcondition.mc5_3_1}}">
-                                            </div>
-                                            </div>
-                                        </td> 
-                                                                  
-                                        <td><input type="date" class="form-control" name="mc5_3_2" value="{{medicalcondition.mc5_3_2}}"></td>
-                                        <td><input type="date" class="form-control" name="mc5_3_3" value="{{medicalcondition.mc5_3_3}}"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p>3) Osteoporosis/Fx</p></td>                                        
-                                        <td><input type="text" class="form-control" name="mc5_4_1" value="{{medicalcondition.mc5_4_1}}"></td>
-                                        <td><input type="date" class="form-control" name="mc5_4_2" value="{{medicalcondition.mc5_4_2}}"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><p>4) Malignancy</p></td>                                        
-                                        <td><input type="text" class="form-control" name="mc5_5_1" value="{{medicalcondition.mc5_5_1}}"></td>
-                                        <td><input type="date" class="form-control" name="mc5_5_2" value="{{medicalcondition.mc5_5_1}}"></td>
-                                    </tr>
-                                </tbody>
-                            </table>                                    
-                        </div>
-                    </div>
-                </div>
-                <!--Organ Involvement -->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Organ involvement</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Organ</th>
-                                            <th>Treatment</th>
-                                            <th>Remission</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="OrganFeild">
-                                        {% for record in previousorganinvolvement %} 
-                                            <tr>
-                                            <td><input type="date" class="form-control" name="OrganDate[]" value="{{record.detail.date}}"></td>
-                                            <td><input type="text" class="form-control" name="Organ[]" value="{{record.detail.organ}}"></td>
-                                            <td><input type="text" class="form-control" name="OrganTreat[]" value="{{record.detail.treatment}}"></td>
-                                            <td><input type="text" class="form-control" name="OrganResult[]" value="{{record.detail.result}}"></td>
-                                            </tr>    
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                <input type="button" class="btn btn-default" onclick="AddOrganFeild()" value="Add">       
-                            </div>
-                        </div>
-                    </div>   
-                </div>
-                <!--Previous Complication  -->
-                <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Previous Complication </h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Organ</th>
-                                            <th>Treatment</th>
-                                            <th>Result</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="CompFeild">
-                                        {% for record in previouscomplication %} 
-                                            <tr>
-                                            <td><input type="date" class="form-control" name="CompDate[]" value="{{record.detail.date}}"></td>
-                                            <td><input type="text" class="form-control" name="CompOrgan[]" value="{{record.detail.organ}}"></td>
-                                            <td><input type="text" class="form-control" name="CompTreat[]" value="{{record.detail.treatment}}"></td>
-                                            <td><input type="text" class="form-control" name="CompRemiss[]" value="{{record.detail.result}}"></td>
-                                            </tr>    
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                                <input type="button" class="btn btn-default" onclick="AddCompFeild()" value="Add">   
-                            </div>
-                        </div>
-                    </div>    
-                </div>
-            </div>
             </div>
         </form>
     </div>
