@@ -97,10 +97,10 @@ def getRowForPredict(studynumber):
         ESR = NullToZero(latest_lab.esr)
         Hb = NullToZero(latest_lab.hb)
         Platelets = NullToZero(latest_lab.platelets)
-        RBC_HPF = NullToZero(latest_lab.rbc_hpf)
+        RBC_HPF = NullToZero(latest_lab.rbc_hpf1)
         UPCI = NullToZero(latest_lab.upci)
         WBC = NullToZero(latest_lab.wbc)
-        WBC_HPF = NullToZero(latest_lab.wbc_hpf)
+        WBC_HPF = NullToZero(latest_lab.wbc_hpf1)
     else:
         Albumin = 0
         Anti_CIC = 0
