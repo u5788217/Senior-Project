@@ -401,10 +401,10 @@ class Previousorganinvolvement(models.Model):
     poiid = models.AutoField(primary_key=True)
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
     organ =  models.TextField(blank=True, null=True)
-    treatment =  models.TextField(blank=True, null=True)
-    remission = models.NullBooleanField()
-    complecation = models.NullBooleanField()
-
+    detail =  models.TextField(blank=True, null=True)
+    startdate = models.DateField()
+    remissiondate = models.DateField()
+    
     class Meta:
         managed = False
         db_table = 'previousorganinvolvement'

@@ -856,12 +856,10 @@ def enrollPatient(request):
 
         renal = request.POST.get('organ1',)
         if renal is "renal":
-            remiss = False
-            comp = False
-            if request.POST.get('renalremiss',) == renal: remiss = True
-            if request.POST.get('renalcomp',) == renal: comp = True
+            start = DateToNone(request.POST.get('startrenal',))
+            remis = DateToNone(request.POST.get('remisrenal',))
             EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
-                    organ = renal, treatment = None, remission = remiss, complecation = comp)
+                    organ = renal, detail = None, startdate = start, remissiondate = remis)
             EnrollOrgan.save()
         
         organlist = []
@@ -873,18 +871,13 @@ def enrollPatient(request):
         organlist.append(request.POST.get('organ7',))
         organlist.append(request.POST.get('organ8',))
         
-        organremiss = request.POST.getlist('organremiss[]',)
-        organcomp = request.POST.getlist('organcomp[]',)
-        
         for each_organ in organlist:
             if each_organ is not None:
-                for each_treatment in request.POST.getlist(str(each_organ)+'[]',):
-                    remiss = False
-                    comp = False
-                    if each_treatment in organremiss: remiss = True
-                    if each_treatment in organcomp: comp = True
+                for each_detail in request.POST.getlist(str(each_organ)+'[]',):
+                    remiss = DateToNone(request.POST.get('remis'+str(each_detail),))
+                    start = DateToNone(request.POST.get('start'+str(each_detail),))
                     EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
-                        organ = each_organ, treatment = each_treatment, remission = remiss, complecation = comp)
+                        organ = each_organ, detail = each_detail, startdate = start, remissiondate = remiss)
                     EnrollOrgan.save()    
         return patientrecord(request, stnum)
 
@@ -896,10 +889,10 @@ def enrollDetail(request, studynum):
                   {'patient':Studyidentity.objects.get(studynumber = studynum),
                    'acrcriteria':Acrcriteria.objects.get(studynumber = studynum),
                    'slicccriteria':Slicccriteria.objects.get(studynumber = studynum),
-                    'familyhistory':Familyhistory.objects.get(studynumber = studynum),
+                    'familyhistory':Familyhistory.objects.filter(studynumber = studynum),
+                    'comorbidity':Comorbidity.objects.filter(studynumber = studynum),
                     'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
-                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
-                    'previouscomplication':Previouscomplication.objects.filter(studynumber = studynum)})
+                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum)})
 
 
 @login_required(login_url='login')
@@ -1587,10 +1580,10 @@ def enrollEdit(request, studynum):
                   {'patient':Studyidentity.objects.get(studynumber = studynum),
                    'acrcriteria':Acrcriteria.objects.get(studynumber = studynum),
                    'slicccriteria':Slicccriteria.objects.get(studynumber = studynum),
-                    'familyhistory':Familyhistory.objects.get(studynumber = studynum),
+                    'familyhistory':Familyhistory.objects.filter(studynumber = studynum),
+                    'comorbidity':Comorbidity.objects.filter(studynumber = studynum),
                     'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
-                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
-                    'previouscomplication':Previouscomplication.objects.filter(studynumber = studynum)})
+                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum)})
 
 
 @login_required(login_url='login')

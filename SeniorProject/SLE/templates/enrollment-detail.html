@@ -484,11 +484,8 @@
                                         <tr scope="row"><td class="text-center" align="center">Other Co-morbidity</td></tr>
                                         <tr>
                                             <td>
-                                                <!--Case of None-->
-                                                <div style="height: 40px; text-align: center;">
-                                                    No one is sick.
-                                                </div>
-                                                <!--Case of having-->
+                                                {% if comorbidity.count > 0 %}
+                                                 <!--Case of having-->
                                                 <table class="table table-striped table-bordered">
                                                     <tbody>
                                                         <tr scope="row">
@@ -496,13 +493,21 @@
                                                             <td>Detail</td>
                                                             <td>Diagnose date</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>Inflection</td>
-                                                            <td>Detail</td>
-                                                            <td>Diagnose date</td>
-                                                        </tr>
+                                                            {% for como in comorbidity %}
+                                                            <tr>
+                                                                <td>{{como.comorbiditytype}}</td>
+                                                                <td>{{como.detail}}</td>
+                                                                <td>{{como.diagnosedate}}</td>
+                                                            </tr>
+                                                            {% endfor %}
                                                     </tbody>
                                                 </table>
+                                                {% else %}
+                                                <!--Case of None-->
+                                                <div style="height: 40px; text-align: center;">
+                                                    No one is sick.
+                                                </div>                                                
+                                                {% endif %}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -522,46 +527,54 @@
 								<div class="clearfix"></div>
                         </div>
                         <div class="x_content">
+                            {% if familyhistory.count < 1 %}
                             <!--Case of None-->
                             <div style="height: 40px; text-align: center;">
                                 No one is sick.
                             </div>
+                            {% else %}
                             <!--Case of having-->
                             <table class="table table-striped table-bordered" style="margin-bottom: 5px;">
                                     <tbody>
-                                        <tr scope="row"><td class="text-center" align="center" colspan="3">Disease: Example</td></tr>
+                                        {% for fam in familyhistory %}
+                                        <tr scope="row"><td class="text-center" align="center" colspan="3">Disease: {{fam.disease}}</td></tr>
                                         <tr>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Father
+                                                        <input type="checkbox" {% if fam.father is True %} checked="checked" {% endif %}> Father
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Mother
+                                                        <input type="checkbox" {% if fam.mother is True %} checked="checked" {% endif %}> Mother
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Sibling
+                                                        <input type="checkbox" {% if fam.son is True %} checked="checked" {% endif %}> Son
                                                     </div>
                                                     <div class="checkbox">
-                                                        <input type="checkbox"> Daughter
+                                                        <input type="checkbox" {% if fam.daughter is True %} checked="checked" {% endif %}> Daughter
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                        <input type="checkbox" {% if fam.sibling is True %} checked="checked" {% endif %}> Sibling
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename">
+                                                    <div class="checkbox">
+                                                      <input type="checkbox" {% if fam.relative is not None %} checked="checked" {% endif %}> Relative
+                                                    </div>
+                                                    <p>{{fam.relative}}</p>
                                                 </div>
                                             </td>
                                         </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
+                                {% endif %}
                         </div>
                     </div>
                     
@@ -574,41 +587,46 @@
                         </div>
                         <div class="x_content">
                         <div class="col-lg-12 col-md-12 col-sm-12">
+                            {% if previousorganinvolvement.count < 1 %}
                             <!--Case of None-->
                             <div style="height: 40px; text-align: center;">
                                 No one is sick.
                             </div>
+                            {% else %}
                             <!--Case of having-->
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered">
                                     <tbody>
                                         <tr>
-                                            <td>Organ</td>
-                                            <td>Treatment</td>
-                                            <td>Remission</td>
-                                            <td>Previous complecation</td>
+                                            <td class="col-md-4" align="center">Organ</td>
+                                            <td class="col-md-4" align="center">Detail</td>
+                                            <td class="col-md-2" align="center">Start date</td>
+                                            <td class="col-md-2" align="center">Remission date</td>
                                         </tr>
+                                        {% for organs in previousorganinvolvement%}
                                         <tr>
-                                            <td>Organ</td>
-                                            <td>Treatment</td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" {% if acrcriteria.acr1 is True %} checked="checked" {% endif %}>
-                                                    </div>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <div class="form-group" id="organlist">
+                                                        {{organs.organ}}
+                                                    </div>                                                
                                                 </div>
                                             </td>
-                                            <td class="text-center" align="center">
-                                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" {% if acrcriteria.acr1 is True %} checked="checked" {% endif %}>
+                                            <td>
+                                                <div class="form-inline">
+                                                    <div class="form-group" id="organlist">
+                                                        {{organs.detail}}
                                                     </div>
-                                                </div>
+                                                </div> 
                                             </td>
+                                            <td><input type="date" class="form-control" id="organstrremis01" name="startrenal" value="{{organs.startdate|date:"Y-m-d"}}">
+                                            <td><input type="date" class="form-control" id="organendremis01" name="remisrenal" value="{{organs.remissiondate|date:"Y-m-d"}}"></td>
                                         </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
+                            {% endif %}
                         </div>
                     </div>   
                 </div>
