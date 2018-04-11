@@ -650,8 +650,8 @@ def patientrecord(request, studynum):
         lab4.append(ToFloat(each_lab.l)) 
         lab5.append(ToFloat(each_lab.platelets))
         lab6.append(ToFloat(each_lab.esr))
-        lab7.append(ToFloat(each_lab.wbc_hpf)) 
-        lab8.append(ToFloat(each_lab.rbc_hpf))
+        lab7.append(ToFloat(each_lab.wbc_hpf1)) 
+        lab8.append(ToFloat(each_lab.rbc_hpf1))
         lab9.append(ToFloat(each_lab.protein))
         lab10.append(ToFloat(each_lab.anticic))
         lab11.append(ToFloat(each_lab.anti_dsdna))
@@ -887,8 +887,6 @@ def enrollPatient(request):
                         organ = each_organ, treatment = each_treatment, remission = remiss, complecation = comp)
                     EnrollOrgan.save()    
         return patientrecord(request, stnum)
-#        return render(request, 'debug.html',
-#        {'EnrollFam':organlist})
 
 def debug(request):
     return render(request, 'debug.html')
@@ -1069,11 +1067,16 @@ def followPatient(request):
                             l = ToFloatNone(request.POST.get('l', '')),
                             platelets = ToFloatNone(request.POST.get('platelets', '')),
                             esr = ToFloatNone(request.POST.get('esr', '')),
-                            wbc_hpf = ToFloatNone(request.POST.get('wbc_hpf', '')),
-                            rbc_hpf = ToFloatNone(request.POST.get('rbc_hpf', '')),
-                            wbccasts = ToFloatNone(request.POST.get('wbccasts', '')),
-                            rbccasts = ToFloatNone(request.POST.get('rbccasts', '')),
-                            granularcasts = ToFloatNone(request.POST.get('granularcasts', '')),
+                            wbc_hpf1 = ToFloatNone(request.POST.get('wbc_hpf', '')),
+                            rbc_hpf1 = ToFloatNone(request.POST.get('rbc_hpf', '')),
+                            wbccasts1 = ToFloatNone(request.POST.get('wbccasts', '')),
+                            rbccasts1 = ToFloatNone(request.POST.get('rbccasts', '')),
+                            granularcasts1 = ToFloatNone(request.POST.get('granularcasts', '')),
+                            wbc_hpf2 = ToFloatNone(request.POST.get('wbc_hpf', '')),
+                            rbc_hpf2 = ToFloatNone(request.POST.get('rbc_hpf', '')),
+                            wbccasts2 = ToFloatNone(request.POST.get('wbccasts', '')),
+                            rbccasts2 = ToFloatNone(request.POST.get('rbccasts', '')),
+                            granularcasts2 = ToFloatNone(request.POST.get('granularcasts', '')),
                             glucose = ToFloatNone(request.POST.get('glucose', '')),
                             protein = ToFloatNone(request.POST.get('protein', '')),
                             tp_spoturineprotein = ToFloatNone(request.POST.get('tp_spoturineprotein', '')),
@@ -1098,11 +1101,6 @@ def followPatient(request):
                             ldl = ToFloatNone(request.POST.get('ldl', '')),
                             hdl = ToFloatNone(request.POST.get('hdl', '')),
                             inr = ToFloatNone(request.POST.get('inr', '')),
-                            anatiter = CheckboxToBool(request.POST.get('anatiter', '')),
-                            homogeneous1 = ToFloatNone(request.POST.get('homogeneous1', '')),
-                            peripheral1 =ToFloatNone(request.POST.get('peripheral1', '')),
-                            speckled1 = ToFloatNone(request.POST.get('speckled1', '')),
-                            nucleolar1 = ToFloatNone(request.POST.get('nucleolar1', '')),
                             anti_dsdna = ToFloatNone(request.POST.get('anti_dsdna', '')),
                             antism = CheckboxToBool(request.POST.get('antism', '')),
                             antirnp = CheckboxToBool(request.POST.get('antirnp', '')),
@@ -1176,6 +1174,7 @@ def followPatient(request):
                             mgt_other = CheckboxToBool(request.POST.get('mgt_other',)))
             FollowMed.save()
             return patientrecord(request, TempstudyNumber)
+#            return render(request, 'debug.html',{'EnrollFam':organlist})
 #            this_date = Followvisiting.visitdate
 #            lab = Laboratoryinventoryinvestigation.objects.get(visitingid = Followvisiting.visitingid)
 #            if haslnlab(lab) is True:
