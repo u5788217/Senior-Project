@@ -68,161 +68,100 @@
             });
         });
         $(document).ready(function(){
-            $('#other02').on('ifChecked', function(){
-                $("#odetail02").show();
-                $("#odate02").show();
-            });
-            $('#other02').on('ifUnchecked', function(){
-                $("#odetail02").hide();
-                $("#odate02").hide();
-            });
-        });
-        $(document).ready(function(){
-            $('#other03').on('ifChecked', function(){
-                $("#odetail03").show();
-                $("#odate03").show();
-            });
-            $('#other03').on('ifUnchecked', function(){
-                $("#odetail03").hide();
-                $("#odate03").hide();
-            });
-        });
-        $(document).ready(function(){
-            $('#other04').on('ifChecked', function(){
-                $("#odetail04").show();
-                $("#odate04").show();
-            });
-            $('#other04').on('ifUnchecked', function(){
-                $("#odetail04").hide();
-                $("#odate04").hide();
-            });
+            $('#other02').on('ifChecked', function(){$("#odetail02,#odate02").show();});
+            $('#other02').on('ifUnchecked', function(){$("#odetail02,#odate02").hide();});
+            $('#other03').on('ifChecked', function(){$("#odetail03,#odate03").show();});
+            $('#other03').on('ifUnchecked', function(){$("#odetail03,#odate03").hide();});
+            $('#other04').on('ifChecked', function(){$("#odetail04,#odate04").show();});
+            $('#other04').on('ifUnchecked', function(){$("#odetail04,#odate04").hide();});
         });
         
         $(document).ready(function(){
-            $('#confirmorgan01').on('ifChecked', function(){
-                $("#organremission01").show();
-                $("#orgranprevious01").show();
-            });
-            $('#confirmorgan01').on('ifUnchecked', function(){
-                $("#organremission01").hide();
-                $("#orgranprevious01").hide();
-            });
+            $('#confirmorgan01').on('ifChecked', function(){$("#organstrremis01,#organendremis01").show();});
+            $('#confirmorgan01').on('ifUnchecked', function(){$("#organstrremis01,#organendremis01").hide();});
         });
+        //Organ
         $(document).ready(function(){
-            $('#confirmorgan02').on('ifChecked', function(){
-                $("#organtreatment02").show();
-            });
-            $('#confirmorgan02').on('ifUnchecked', function(){
-                $("#organtreatment02").hide();
-                $("#organremiss21").css('visibility','hidden');
-                $("#organcomp21").css('visibility','hidden');
-                $("#organremiss22").css('visibility','hidden');
-                $("#organcomp22").css('visibility','hidden');
-                $("#organremiss23").css('visibility','hidden');
-                $("#organcomp23").css('visibility','hidden');
-                $("#organremiss24").css('visibility','hidden');
-                $("#organcomp24").css('visibility','hidden');
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan03').on('ifChecked', function(){
-                $("#organtreatment03").show();
-            });
-            $('#confirmorgan03').on('ifUnchecked', function(){
-                $("#organtreatment03").hide();
-                $("#organremiss31").css('visibility','hidden');
-                $("#organcomp31").css('visibility','hidden');
-                $("#organremiss32").css('visibility','hidden');
-                $("#organcomp32").css('visibility','hidden');
-                $("#organremiss33").css('visibility','hidden');
-                $("#organcomp33").css('visibility','hidden');
-                $("#organremiss34").css('visibility','hidden');
-                $("#organcomp34").css('visibility','hidden');
-                $("#organremiss35").css('visibility','hidden');
-                $("#organcomp35").css('visibility','hidden');
-                $("#organremiss36").css('visibility','hidden');
-                $("#organcomp36").css('visibility','hidden');
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan04').on('ifChecked', function(){
-                $("#organtreatment04").show();
-            });
-            $('#confirmorgan04').on('ifUnchecked', function(){
-                $("#organtreatment04").hide();
-                $("#organremiss41").css('visibility','hidden');
-                $("#organcomp41").css('visibility','hidden');
-                $("#organremiss42").css('visibility','hidden');
-                $("#organcomp42").css('visibility','hidden');
-                $("#organremiss43").css('visibility','hidden');
-                $("#organcomp43").css('visibility','hidden');
-                $("#organremiss44").css('visibility','hidden');
-                $("#organcomp44").css('visibility','hidden');
-                $("#organremiss45").css('visibility','hidden');
-                $("#organcomp45").css('visibility','hidden');
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan05').on('ifChecked', function(){
-                $("#organtreatment05").show();
-            });
-            $('#confirmorgan05').on('ifUnchecked', function(){
-                $("#organtreatment05").hide();
-                $("#organremiss51").css('visibility','hidden');
-                $("#organcomp51").css('visibility','hidden');
-                $("#organremiss52").css('visibility','hidden');
-                $("#organcomp52").css('visibility','hidden');
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan06').on('ifChecked', function(){
-                $("#organtreatment06").show();
-            });
-            $('#confirmorgan06').on('ifUnchecked', function(){
-                $("#organtreatment06").hide();
-                $("#organremiss61").css('visibility','hidden');
-                $("#organcomp61").css('visibility','hidden');
-                $("#organremiss62").css('visibility','hidden');
-                $("#organcomp62").css('visibility','hidden');
-                $("#organremiss63").css('visibility','hidden');
-                $("#organcomp63").css('visibility','hidden');
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan07').on('ifChecked', function(){
-                $("#organtreatment07").show();
-            });
-            $('#confirmorgan07').on('ifUnchecked', function(){
-                $("#organtreatment07").hide();
-                $("#organremiss71").css('visibility','hidden');
-                $("#organcomp71").css('visibility','hidden');
-                $("#organremiss72").css('visibility','hidden');
-                $("#organcomp72").css('visibility','hidden');
-            });
-        });
-        $(document).ready(function(){
-            $('#confirmorgan08').on('ifChecked', function(){
-                $("#organtreatment08").show();
-            });
-            $('#confirmorgan08').on('ifUnchecked', function(){
-                $("#organtreatment08").hide();
-                $("#organremiss81").css('visibility','hidden');
-                $("#organcomp81").css('visibility','hidden');
-                $("#organremiss82").css('visibility','hidden');
-                $("#organcomp82").css('visibility','hidden');
-                $("#organremiss83").css('visibility','hidden');
-                $("#organcomp83").css('visibility','hidden');
-                $("#organremiss84").css('visibility','hidden');
-                $("#organcomp84").css('visibility','hidden');
-                $("#organremiss85").css('visibility','hidden');
-                $("#organcomp85").css('visibility','hidden');
-                $("#organremiss86").css('visibility','hidden');
-                $("#organcomp86").css('visibility','hidden');
-                $("#organremiss87").css('visibility','hidden');
-                $("#organcomp87").css('visibility','hidden');
-                $("#organremiss88").css('visibility','hidden');
-                $("#organcomp88").css('visibility','hidden');
-            });
+            $('#confirmorgan02').on('ifChecked', function(){$("#organtreatment02,#organdate21,#organdate22").show();});
+            $('#confirmorgan02').on('ifUnchecked', function(){$("#organtreatment02,#organdate21,#organdate22").hide();});
+            $('#organtreatment21').on('ifChecked', function(){$("#organstrremis21,#organendremis21").css('visibility','visible');});
+            $('#organtreatment21').on('ifUnchecked', function(){$("#organstrremis21,#organendremis21").css('visibility','hidden');});
+            $('#organtreatment22').on('ifChecked', function(){$("#organstrremis22,#organendremis22").css('visibility','visible');});
+            $('#organtreatment22').on('ifUnchecked', function(){$("#organstrremis22,#organendremis22").css('visibility','hidden');});
+            $('#organtreatment23').on('ifChecked', function(){$("#organstrremis23,#organendremis23").css('visibility','visible');});
+            $('#organtreatment23').on('ifUnchecked', function(){$("#organstrremis23,#organendremis23").css('visibility','hidden');});
+            $('#organtreatment24').on('ifChecked', function(){$("#organstrremis24,#organendremis24").css('visibility','visible');});
+            $('#organtreatment24').on('ifUnchecked', function(){$("#organstrremis24,#organendremis24").css('visibility','hidden');});
+            
+            $('#confirmorgan03').on('ifChecked', function(){$("#organtreatment03,#organdate31,#organdate32").show();});
+            $('#confirmorgan03').on('ifUnchecked', function(){$("#organtreatment03,#organdate31,#organdate32").hide();});
+            $('#organtreatment31').on('ifChecked', function(){$("#organstrremis31,#organendremis31").css('visibility','visible');});
+            $('#organtreatment31').on('ifUnchecked', function(){$("#organstrremis31,#organendremis31").css('visibility','hidden');});
+            $('#organtreatment32').on('ifChecked', function(){$("#organstrremis32,#organendremis32").css('visibility','visible');});
+            $('#organtreatment32').on('ifUnchecked', function(){$("#organstrremis32,#organendremis32").css('visibility','hidden');});
+            $('#organtreatment33').on('ifChecked', function(){$("#organstrremis33,#organendremis33").css('visibility','visible');});
+            $('#organtreatment33').on('ifUnchecked', function(){$("#organstrremis33,#organendremis33").css('visibility','hidden');});
+            $('#organtreatment34').on('ifChecked', function(){$("#organstrremis34,#organendremis34").css('visibility','visible');});
+            $('#organtreatment34').on('ifUnchecked', function(){$("#organstrremis34,#organendremis34").css('visibility','hidden');});
+            $('#organtreatment35').on('ifChecked', function(){$("#organstrremis35,#organendremis35").css('visibility','visible');});
+            $('#organtreatment35').on('ifUnchecked', function(){$("#organstrremis35,#organendremis35").css('visibility','hidden');});
+            $('#organtreatment36').on('ifChecked', function(){$("#organstrremis36,#organendremis36").css('visibility','visible');});
+            $('#organtreatment36').on('ifUnchecked', function(){$("#organstrremis36,#organendremis36").css('visibility','hidden');});
+            
+            $('#confirmorgan04').on('ifChecked', function(){$("#organtreatment04,#organdate41,#organdate42").show();});
+            $('#confirmorgan04').on('ifUnchecked', function(){$("#organtreatment04,#organdate41,#organdate42").hide();});
+            $('#organtreatment41').on('ifChecked', function(){$("#organstrremis41,#organendremis41").css('visibility','visible');});
+            $('#organtreatment41').on('ifUnchecked', function(){$("#organstrremis41,#organendremis41").css('visibility','hidden');});
+            $('#organtreatment42').on('ifChecked', function(){$("#organstrremis42,#organendremis42").css('visibility','visible');});
+            $('#organtreatment42').on('ifUnchecked', function(){$("#organstrremis42,#organendremis42").css('visibility','hidden');});
+            $('#organtreatment43').on('ifChecked', function(){$("#organstrremis43,#organendremis43").css('visibility','visible');});
+            $('#organtreatment43').on('ifUnchecked', function(){$("#organstrremis43,#organendremis43").css('visibility','hidden');});
+            $('#organtreatment44').on('ifChecked', function(){$("#organstrremis44,#organendremis44").css('visibility','visible');});
+            $('#organtreatment44').on('ifUnchecked', function(){$("#organstrremis44,#organendremis44").css('visibility','hidden');});
+            $('#organtreatment45').on('ifChecked', function(){$("#organstrremis45,#organendremis45").css('visibility','visible');});
+            $('#organtreatment45').on('ifUnchecked', function(){$("#organstrremis45,#organendremis45").css('visibility','hidden');});
+            
+            $('#confirmorgan05').on('ifChecked', function(){$("#organtreatment05,#organdate51,#organdate52").show();});
+            $('#confirmorgan05').on('ifUnchecked', function(){$("#organtreatment05,#organdate51,#organdate52").hide();});
+            $('#organtreatment51').on('ifChecked', function(){$("#organstrremis51,#organendremis51").css('visibility','visible');});
+            $('#organtreatment51').on('ifUnchecked', function(){$("#organstrremis51,#organendremis51").css('visibility','hidden');});
+            $('#organtreatment52').on('ifChecked', function(){$("#organstrremis52,#organendremis52").css('visibility','visible');});
+            $('#organtreatment52').on('ifUnchecked', function(){$("#organstrremis52,#organendremis52").css('visibility','hidden');});
+            
+            $('#confirmorgan06').on('ifChecked', function(){$("#organtreatment06,#organdate61,#organdate62").show();});
+            $('#confirmorgan06').on('ifUnchecked', function(){$("#organtreatment06,#organdate61,#organdate62").hide();});
+            $('#organtreatment61').on('ifChecked', function(){$("#organstrremis61,#organendremis61").css('visibility','visible');});
+            $('#organtreatment61').on('ifUnchecked', function(){$("#organstrremis61,#organendremis61").css('visibility','hidden');});
+            $('#organtreatment62').on('ifChecked', function(){$("#organstrremis62,#organendremis62").css('visibility','visible');});
+            $('#organtreatment62').on('ifUnchecked', function(){$("#organstrremis62,#organendremis62").css('visibility','hidden');});
+            $('#organtreatment63').on('ifChecked', function(){$("#organstrremis63,#organendremis63").css('visibility','visible');});
+            $('#organtreatment63').on('ifUnchecked', function(){$("#organstrremis63,#organendremis63").css('visibility','hidden');});
+            
+            $('#confirmorgan07').on('ifChecked', function(){$("#organtreatment07,#organdate71,#organdate72").show();});
+            $('#confirmorgan07').on('ifUnchecked', function(){$("#organtreatment07,#organdate71,#organdate72").hide();});
+            $('#organtreatment71').on('ifChecked', function(){$("#organstrremis71,#organendremis71").css('visibility','visible');});
+            $('#organtreatment71').on('ifUnchecked', function(){$("#organstrremis71,#organendremis71").css('visibility','hidden');});
+            $('#organtreatment72').on('ifChecked', function(){$("#organstrremis72,#organendremis72").css('visibility','visible');});
+            $('#organtreatment72').on('ifUnchecked', function(){$("#organstrremis72,#organendremis72").css('visibility','hidden');});
+            
+             $('#confirmorgan08').on('ifChecked', function(){$("#organtreatment08,#organdate81,#organdate82").show();});
+            $('#confirmorgan08').on('ifUnchecked', function(){$("#organtreatment08,#organdate81,#organdate82").hide();});
+            $('#organtreatment81').on('ifChecked', function(){$("#organstrremis81,#organendremis81").css('visibility','visible');});
+            $('#organtreatment81').on('ifUnchecked', function(){$("#organstrremis81,#organendremis81").css('visibility','hidden');});
+            $('#organtreatment82').on('ifChecked', function(){$("#organstrremis82,#organendremis82").css('visibility','visible');});
+            $('#organtreatment82').on('ifUnchecked', function(){$("#organstrremis82,#organendremis82").css('visibility','hidden');});
+            $('#organtreatment83').on('ifChecked', function(){$("#organstrremis83,#organendremis83").css('visibility','visible');});
+            $('#organtreatment83').on('ifUnchecked', function(){$("#organstrremis83,#organendremis83").css('visibility','hidden');});
+            $('#organtreatment84').on('ifChecked', function(){$("#organstrremis84,#organendremis84").css('visibility','visible');});
+            $('#organtreatment84').on('ifUnchecked', function(){$("#organstrremis84,#organendremis84").css('visibility','hidden');});
+            $('#organtreatment85').on('ifChecked', function(){$("#organstrremis85,#organendremis85").css('visibility','visible');});
+            $('#organtreatment85').on('ifUnchecked', function(){$("#organstrremis85,#organendremis85").css('visibility','hidden');});
+            $('#organtreatment86').on('ifChecked', function(){$("#organstrremis86,#organendremis86").css('visibility','visible');});
+            $('#organtreatment86').on('ifUnchecked', function(){$("#organstrremis86,#organendremis86").css('visibility','hidden');});
+            $('#organtreatment87').on('ifChecked', function(){$("#organstrremis87,#organendremis87").css('visibility','visible');});
+            $('#organtreatment87').on('ifUnchecked', function(){$("#organstrremis87,#organendremis87").css('visibility','hidden');});
+            $('#organtreatment88').on('ifChecked', function(){$("#organstrremis88,#organendremis88").css('visibility','visible');});
+            $('#organtreatment88').on('ifUnchecked', function(){$("#organstrremis88,#organendremis88").css('visibility','hidden');});
         });
         
         $(document).ready(function(){
@@ -835,7 +774,7 @@
                         
                     </div>
                 
-                <div class="col-lg-6 col-md-12 col-sm-12">   
+                <div class="col-lg-12 col-md-12 col-sm-12">   
                     <!--Medical Condition -->
                     <div class="x_panel">
                         <div class="x_title"> 
@@ -846,7 +785,7 @@
                         </div>
                         <div class="x_content">
                             
-                            <div class="col-md-5 col-sm-5 col-xs-12">
+                            <div class="col-md-3 col-sm-6 col-xs-6">
                                 <table class="table table-striped table-bordered">
                                     <tbody>
                                         <tr scope="row"><td class="text-center" align="center">Systemic autoimmune diseases</td></tr>
@@ -889,8 +828,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row col-md-7 col-sm-7 col-xs-12">
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px;">
+                            <div class="row col-md-3 col-sm-6 col-xs-6">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 10px;">
                                     <tbody>
                                         <tr scope="row"><td class="text-center" align="center" colspan="2">Tissue-specific autoimmune diseases</td></tr>
                                         <tr>
@@ -944,8 +883,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <table class="table table-striped table-bordered">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <table class="table table-striped table-bordered" style="margin-bottom: 10px;">
                                     <tbody>
                                         <tr scope="row"><td class="text-center" align="center" colspan="3">Allergy</td></tr>
                                         <tr>
@@ -960,22 +899,23 @@
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="mc4_4"> Asthma
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mc4_5"> Atopic dermatitis
-                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" name="mc4_5"> Atopic dermatitis
+                                                    </div>
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="mc4_6"> Allergic urticaria
                                                     </div>
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="mc4_7"> Anaphylaxis
                                                     </div>
+                                                    <!--Remove 
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="mc4_8"> Hay fever
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                             </td>
                                             <td>
@@ -989,7 +929,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <table class="table table-striped table-bordered">
                                     <tbody>
                                         <tr scope="row"><td class="text-center" align="center">Other Co-morbidity</td></tr>
@@ -1068,7 +1008,7 @@
                 </div>
                 </div>
                 
-                <div class="col-lg-6 col-md-12 col-sm-12">      
+                <div class="col-lg-4 col-md-4 col-sm-12">      
                     <!--Family history-->
                     <div class="x_panel">
                         <div class="x_title"> 
@@ -1114,7 +1054,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="father[]" value="sle"> Father
@@ -1124,7 +1064,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="son[]" value="sle"> Son
@@ -1134,15 +1074,17 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="sle"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="sle" style="width: 100px;">
                                                     </div>
-                                                    <input type="text" class="form-control" name="sle">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1159,7 +1101,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="father[]" value="ra"> Father
@@ -1169,7 +1111,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="son[]" value="ra"> Son
@@ -1179,15 +1121,17 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="ra"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="ra" style="width: 100px;">
                                                     </div>
-                                                    <input type="text" class="form-control" name="ra">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1204,7 +1148,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="father[]" value="dermatomyositis"> Father
@@ -1214,7 +1158,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="son[]" value="dermatomyositis"> Son
@@ -1224,15 +1168,17 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="dermatomyositis"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="dermatomyositis" style="width:100px;">
                                                     </div>
-                                                    <input type="text" class="form-control" name="dermatomyositis">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1249,7 +1195,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="father[]" value="systemicsclerosis"> Father
@@ -1259,7 +1205,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="son[]" value="systemicsclerosis"> Son
@@ -1269,16 +1215,18 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="systemicsclerosis"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="systemicsclerosis" style="width: 100px;">
                                                     </div>
-                                                    <input type="text" class="form-control" name="systemicsclerosis">
-                                                </div>
+                                                </div>  
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1294,7 +1242,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="father[]" value="sjogren"> Father
@@ -1304,7 +1252,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="son[]" value="sjogren"> Son
@@ -1314,15 +1262,17 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="sjogren"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="sjogren" style="width: 100px;">
                                                     </div>
-                                                    <input type="text" class="form-control" name="sjogren">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1339,7 +1289,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="father[]" value="dmtype1"> Father
@@ -1349,7 +1299,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="son[]" value="dmtype1"> Son
@@ -1359,7 +1309,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="dmtype1"> Sibling
@@ -1367,7 +1317,7 @@
                                                     <div class="checkbox">
                                                       <input type="checkbox"> Relative
                                                     </div>
-                                                    <input type="text" class="form-control" name="dmtype1">
+                                                    <input type="text" class="form-control" name="dmtype1" style="width: 100px;">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1384,7 +1334,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="father[]" value="hashimoto"> Father
@@ -1394,7 +1344,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="son[]" value="hashimoto"> Son
@@ -1404,15 +1354,17 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="hashimoto"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="hashimoto" style="width: 100px;">
                                                     </div>
-                                                    <input type="text" class="form-control" name="hashimoto">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1429,7 +1381,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="father[]" value="multiplesclerosis"> Father
@@ -1439,7 +1391,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td  class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="son[]" value="multiplesclerosis"> Son
@@ -1449,15 +1401,17 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td  class="col-md-4">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="multiplesclerosis"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="multiplesclerosis" style="width: 100px;">
                                                     </div>
-                                                    <input type="text" class="form-control" name="multiplesclerosis">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1499,10 +1453,12 @@
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]" value="myastheniagravis"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="myastheniagravis">
                                                     </div>
-                                                    <input type="text" class="form-control" name="myastheniagravis">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1543,10 +1499,12 @@
                                                     <div class="checkbox">
                                                         <input type="checkbox" name="sibling[]"> Sibling
                                                     </div>
-                                                    <div class="checkbox">
-                                                      <input type="checkbox"> Relative
+                                                    <div class="form-inline">
+                                                        <label>
+                                                          <input type="checkbox"> Relative
+                                                        </label>
+                                                        <input type="text" class="form-control" name="myastheniagravis">
                                                     </div>
-                                                    <input type="text" class="form-control" name="relativename[]">
                                                 </div>
                                             </td>
                                         </tr>
@@ -1555,7 +1513,8 @@
                             </div>
                         </div>
                     </div>
-                    
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12">   
                     <div class="x_panel">
                         <div class="x_title"> 
                                 <h2>Organ Involvement</h2>
@@ -1570,10 +1529,10 @@
                                 <table class="table table-bordered">
                                     <tbody>
                                         <tr>
-                                            <td class="col-md-3" align="center">Organ</td>
-                                            <td class="col-md-5" align="center">Treatment</td>
-                                            <td align="center">Remission</td>
-                                            <td align="center">Previous complecation</td>
+                                            <td class="col-md-4" align="center">Organ</td>
+                                            <td class="col-md-4" align="center">Detail</td>
+                                            <td class="col-md-2" align="center">Start date</td>
+                                            <td class="col-md-2" align="center">Remission date</td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -1586,6 +1545,9 @@
                                             </td>
                                             <td>
                                             </td>
+                                            <td><input type="date" class="form-control" style="display: none;" id="organstrremis01"></td>
+                                            <td><input type="date" class="form-control" style="display: none;" id="organendremis01"></td>
+                                            <!--
                                             <td class="text-center" align="center">
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <div class="checkbox" style="display: none;" id="organremission01" >
@@ -1599,7 +1561,7 @@
                                                         <input type="checkbox" value="renal" name="renalcomp">
                                                     </div>
                                                 </div>
-                                            </td>
+                                            </td>-->
                                         </tr>
                                         <tr>
                                             <td>
@@ -1613,24 +1575,28 @@
                                             <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
                                                     <div id="organtreatment02" style="display: none;">
-                                                        <div class="checkbox"><input type="checkbox" name="hemato[]" value="AIHA" id="organtreatment21"> AIHA</div>
-                                                        <div class="checkbox"><input type="checkbox" name="hemato[]" value="ITP" id="organtreatment22"> ITP</div>
-                                                        <div class="checkbox"><input type="checkbox" name="hemato[]" value="Thrombosis" id="organtreatment23"> Thrombosis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="hemato[]" value="Site"  id="organtreatment24"> Site</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="hemato[]" value="AIHA" id="organtreatment21"> AIHA</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="hemato[]" value="ITP" id="organtreatment22"> ITP</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="hemato[]" value="Thrombosis" id="organtreatment23"> Thrombosis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="hemato[]" value="Site"  id="organtreatment24"> Site</div>
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="remis02">
-                                                <div class="checkbox" align="center" id="organremiss21" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="AIHA"> </div>
-                                                <div class="checkbox" align="center" id="organremiss22" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="ITP"> </div>
-                                                <div class="checkbox" align="center" id="organremiss23" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Thrombosis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss24" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Site"></div>
+                                            <td>
+                                                <div id="organdate21" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis21">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis22">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis23">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis24">
+                                                </div>
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="comp02" >
-                                                <div class="checkbox" align="center" id="organcomp21" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="AIHA"> </div>
-                                                <div class="checkbox" align="center" id="organcomp22" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="ITP"> </div>
-                                                <div class="checkbox" align="center" id="organcomp23" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Thrombosis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp24" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Site"></div>
+                                            <td>
+                                                <div id="organdate22" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis21">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis22">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis23">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis24">
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1645,30 +1611,34 @@
                                             <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
                                                     <div id="organtreatment03" style="display: none;">
-                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Seizure" id="organtreatment31"> Seizure</div>
-                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Psychosis" id="organtreatment32"> Psychosis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Stroke" id="organtreatment33"> Stroke</div>
-                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Myelins"  id="organtreatment34"> Myelins</div>
-                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Neuropathy" id="organtreatment35"> Neuropathy</div>
-                                                        <div class="checkbox"><input type="checkbox" name="neuro[]" value="Aseptic meningitis"  id="organtreatment36"> Aseptic meningitis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="neuro[]" value="Seizure" id="organtreatment31"> Seizure</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="neuro[]" value="Psychosis" id="organtreatment32"> Psychosis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="neuro[]" value="Stroke" id="organtreatment33"> Stroke</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="neuro[]" value="Myelins"  id="organtreatment34"> Myelins</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="neuro[]" value="Neuropathy" id="organtreatment35"> Neuropathy</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="neuro[]" value="Aseptic meningitis"  id="organtreatment36"> Aseptic meningitis</div>
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="remis03">
-                                                <div class="checkbox" align="center" id="organremiss31" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Seizure"> </div>
-                                                <div class="checkbox" align="center" id="organremiss32" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Psychosis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss33" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Stroke"> </div>
-                                                <div class="checkbox" align="center" id="organremiss34" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Myelins"></div>
-                                                <div class="checkbox" align="center" id="organremiss35" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Neuropathy"> </div>
-                                                <div class="checkbox" align="center" id="organremiss36" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Aseptic meningitis"></div>
+                                            <td>
+                                                <div id="organdate31" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis31">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis32">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis33">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis34">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis35">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis36">
+                                                </div>
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="comp03" >
-                                                <div class="checkbox" align="center" id="organcomp31" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Seizure"> </div>
-                                                <div class="checkbox" align="center" id="organcomp32" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Psychosis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp33" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Stroke"> </div>
-                                                <div class="checkbox" align="center" id="organcomp34" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Myelins"></div>
-                                                <div class="checkbox" align="center" id="organcomp35" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Neuropathy"> </div>
-                                                <div class="checkbox" align="center" id="organcomp36" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Aseptic meningitis"></div>
+                                            <td>
+                                                <div id="organdate32" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis31">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis32">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis33">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis34">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis35">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis36">
+                                                </div>
                                             </td>
                                             <td id="organtradd03" style="display: none;">
                                                 <a class="addorgan03"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
@@ -1686,30 +1656,31 @@
                                             <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
                                                     <div id="organtreatment04" style="display: none;">
-                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="Pleuritis" id="organtreatment41"> Pleuritis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="Pneumonitis" id="organtreatment42"> Pneumonitis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="PE" id="organtreatment43"> PE</div>
-                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="PAH" id="organtreatment44"> PAH</div>
-                                                        <div class="checkbox"><input type="checkbox" name="pulmonary[]" value="ILD" id="organtreatment45"> ILD</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="pulmonary[]" value="Pleuritis" id="organtreatment41"> Pleuritis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="pulmonary[]" value="Pneumonitis" id="organtreatment42"> Pneumonitis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="pulmonary[]" value="PE" id="organtreatment43"> PE</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="pulmonary[]" value="PAH" id="organtreatment44"> PAH</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="pulmonary[]" value="ILD" id="organtreatment45"> ILD</div>
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="remis04">
-                                                <div class="checkbox" align="center" id="organremiss41" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Pleuritis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss42" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Pneumonitis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss43" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="PE"> </div>
-                                                <div class="checkbox" align="center" id="organremiss44" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="PAH"></div>
-                                                <div class="checkbox" align="center" id="organremiss45" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="ILD"> </div>
+                                            <td>
+                                                <div id="organdate41" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis41">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis42">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis43">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis44">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis45">
+                                                </div>
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="comp04" >
-                                                <div class="checkbox" align="center" id="organcomp41" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Pleuritis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp42" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Pneumonitis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp43" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="PE"> </div>
-                                                <div class="checkbox" align="center" id="organcomp44" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="PAH"></div>
-                                                <div class="checkbox" align="center" id="organcomp45" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="ILD"> </div>
-                                            </td>
-                                            <td id="organtradd04" style="display: none;">
-                                                <a class="addorgan04"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            <td>
+                                                <div id="organdate42" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis41">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis42">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis43">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis44">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis45">
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1724,21 +1695,22 @@
                                             <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
                                                     <div id="organtreatment05" style="display: none;">
-                                                        <div class="checkbox"><input type="checkbox" name="cardio[]" value="Myocarditis" id="organtreatment51"> Myocarditis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="cardio[]" value="Pericardial effusion" id="organtreatment52"> Pericardial effusion</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="cardio[]" value="Myocarditis" id="organtreatment51"> Myocarditis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="cardio[]" value="Pericardial effusion" id="organtreatment52"> Pericardial effusion</div>
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="remis05">
-                                                <div class="checkbox" align="center" id="organremiss51" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Myocarditis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss52" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Pericardial effusion"> </div>
+                                            <td>
+                                                <div id="organdate51" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis51">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis52">
+                                                </div>
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="comp05" >
-                                                <div class="checkbox" align="center" id="organcomp51" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Myocarditis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp52" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Pericardial effusion"> </div>
-                                            </td>
-                                            <td id="organtradd05" style="display: none;">
-                                                <a class="addorgan05"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            <td>
+                                                <div id="organdate52" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis51">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis52">
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1753,24 +1725,25 @@
                                             <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
                                                     <div id="organtreatment06" style="display: none;">
-                                                        <div class="checkbox"><input type="checkbox" name="gi[]" value="GI vasculitis" id="organtreatment61"> GI vasculitis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="gi[]" value="Pancreatitis" id="organtreatment62"> Pancreatitis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="gi[]" value="Acalculous cholecystitis" id="organtreatment63"> Acalculous cholecystitis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="gi[]" value="GI vasculitis" id="organtreatment61"> GI vasculitis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="gi[]" value="Pancreatitis" id="organtreatment62"> Pancreatitis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="gi[]" value="Acalculous cholecystitis" id="organtreatment63"> Acalculous cholecystitis</div>
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="remis06">
-                                                <div class="checkbox" align="center" id="organremiss61" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="GI vasculitis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss62" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Pancreatitis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss63" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Acalculous cholecystitis"> </div>
+                                            <td>
+                                                <div id="organdate61" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis61">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis62">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis63">
+                                                </div>
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="comp06" >
-                                                <div class="checkbox" align="center" id="organcomp61" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="GI vasculitis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp62" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Pancreatitis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp63" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Acalculous cholecystitis"> </div>
-                                            </td>
-                                            <td id="organtradd06" style="display: none;">
-                                                <a class="addorgan06"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            <td>
+                                                <div id="organdate62" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis61">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis62">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis63">
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1782,24 +1755,25 @@
                                                     </div>                                                
                                                 </div>
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;">
+                                             <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
                                                     <div id="organtreatment07" style="display: none;">
-                                                        <div class="checkbox"><input type="checkbox" name="musculosbeletal[]" value="Arthritis" id="organtreatment71"> Arthritis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="musculosbeletal[]" value="Myositis" id="organtreatment72"> Myositis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="musculosbeletal[]" value="Arthritis" id="organtreatment71"> Arthritis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="musculosbeletal[]" value="Myositis" id="organtreatment72"> Myositis</div>
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="remis07">
-                                                <div class="checkbox" align="center" id="organremiss71" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Arthritis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss72" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Myositis"> </div>
+                                            <td>
+                                                <div id="organdate71" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis71">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis72">
+                                                </div>
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="comp07" >
-                                                <div class="checkbox" align="center" id="organcomp71" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Arthritis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp72" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Myositis"> </div>
-                                            </td>
-                                            <td id="organtradd07" style="display: none;">
-                                                <a class="addorgan07"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            <td>
+                                                <div id="organdate72" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis71">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis72">
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1814,39 +1788,40 @@
                                             <td style="padding-bottom:0;padding-top:0;">
                                                 <div class="form-group" id="organlist">
                                                     <div id="organtreatment08" style="display: none;">
-                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Acate cutaneou" id="organtreatment81"> Acate cutaneou</div>
-                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Subacute cutaneous" id="organtreatment82"> Subacute cutaneous</div>
-                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="DLE" id="organtreatment83"> DLE</div>
-                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Lupus panniculitis" id="organtreatment84"> Lupus panniculitis</div>
-                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Oral/nasal ulcer" id="organtreatment85"> Oral/nasal ulcer</div>
-                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Non-scarring alopecia" id="organtreatment86"> Non-scarring alopecia</div>
-                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Localized scarring alopecia" id="organtreatment87"> Localized scarring alopecia</div>
-                                                        <div class="checkbox"><input type="checkbox" name="mucocutancous[]" value="Reynad phenomenon" id="organtreatment88"> Reynad phenomenon</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="mucocutancous[]" value="Acate cutaneou" id="organtreatment81"> Acate cutaneou</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="mucocutancous[]" value="Subacute cutaneous" id="organtreatment82"> Subacute cutaneous</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="mucocutancous[]" value="DLE" id="organtreatment83"> DLE</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="mucocutancous[]" value="Lupus panniculitis" id="organtreatment84"> Lupus panniculitis</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="mucocutancous[]" value="Oral/nasal ulcer" id="organtreatment85"> Oral/nasal ulcer</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="mucocutancous[]" value="Non-scarring alopecia" id="organtreatment86"> Non-scarring alopecia</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="mucocutancous[]" value="Localized scarring alopecia" id="organtreatment87"> Localized scarring alopecia</div>
+                                                        <div class="checkbox" style="margin: 13px 0 13px 0;"><input type="checkbox" name="mucocutancous[]" value="Reynad phenomenon" id="organtreatment88"> Reynad phenomenon</div>
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="remis08">
-                                                <div class="checkbox" align="center" id="organremiss81" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Acate cutaneou"> </div>
-                                                <div class="checkbox" align="center" id="organremiss82" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Subacute cutaneous"> </div>
-                                                <div class="checkbox" align="center" id="organremiss83" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="DLE"> </div>
-                                                <div class="checkbox" align="center" id="organremiss84" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Lupus panniculitis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss85" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Oral/nasal ulcer"> </div>
-                                                <div class="checkbox" align="center" id="organremiss86" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Acalculous cholecystitis"> </div>
-                                                <div class="checkbox" align="center" id="organremiss87" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Localized scarring alopecia"> </div>
-                                                <div class="checkbox" align="center" id="organremiss88" style="visibility: hidden;"><input type="checkbox" name="organremiss[]" value="Reynad phenomenon"> </div>
+                                            <td>
+                                                <div id="organdate81" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis81">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis82">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis83">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis84">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis85">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis86">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis87">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis88">
+                                                </div>
                                             </td>
-                                            <td style="padding-bottom:0;padding-top:0;" id="comp08" >
-                                                <div class="checkbox" align="center" id="organcomp81" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Acate cutaneou"> </div>
-                                                <div class="checkbox" align="center" id="organcomp82" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Subacute cutaneous"> </div>
-                                                <div class="checkbox" align="center" id="organcomp83" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="DLE"> </div>
-                                                <div class="checkbox" align="center" id="organcomp84" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Lupus panniculitis"> </div>
-                                                <div class="checkbox" align="center" id="organcomp85" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Oral/nasal ulcer"> </div>
-                                                <div class="checkbox" align="center" id="organcomp86" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Non-scarring alopecia"> </div>
-                                                <div class="checkbox" align="center" id="organcomp87" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Localized scarring alopecia"> </div>
-                                                <div class="checkbox" align="center" id="organcomp88" style="visibility: hidden;"><input type="checkbox" name="organcomp[]" value="Reynad phenomenon"> </div>
-                                            </td>
-                                            <td id="organtradd08" style="display: none;">
-                                                <a class="addorgan08"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                            <td>
+                                                <div id="organdate82" style="display: none;">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis81">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organendremis82">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis83">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis84">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis85">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis86">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis87">
+                                                    <input type="date" class="form-control" style="visibility: hidden;" id="organstrremis88">
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
