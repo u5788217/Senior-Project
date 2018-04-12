@@ -462,12 +462,11 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                <!--Add name please-->
                                                 <div class="checkbox">
-                                                  <input type="checkbox" {% if medicalcondition.mc4_9 is None %} checked="checked" {% endif %}> Food allergy
+                                                  <input type="checkbox" {% if medicalcondition.mc4_9.size > 0 %} checked="checked" {% endif %}> Food allergy
                                                 </div>
-                                                <p class="form-control">
-                                                    {{medicalcondition.mc4_9}}
-                                                </p>
+                                                <input type="text" class="form-control" name="mc4_9" id="foodinput" {% if medicalcondition.mc4_9.size > 0 %} value="{{medicalcondition.mc4_9}}" {% endif %} >
                                             </td>
                                         </tr>
                                     </tbody>
