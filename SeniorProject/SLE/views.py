@@ -261,7 +261,7 @@ def ToFloat(string):
     return float(string)
 
 def ToFloatNone(string):
-    if string == '0.0' or string == '': return None
+    if string == '0.0' or string == '' or string is None: return None
     else: return float(string)
 
 def CheckboxToBool(string):
@@ -1428,8 +1428,8 @@ def followEditPost(request):
         old_lab.wbccasts = ToFloat(request.POST.get('wbccasts', ''))
         old_lab.rbccasts = ToFloat(request.POST.get('rbccasts', ''))
         old_lab.granularcasts = ToFloat(request.POST.get('granularcasts', ''))
-        old_lab.glucose = ToFloat(request.POST.get('glucose', ''))
-        old_lab.protein = ToFloat(request.POST.get('protein', ''))
+        old_lab.glucose = request.POST.get('glucose', '')
+        old_lab.protein = request.POST.get('protein', '')
         old_lab.tp_spoturineprotein = ToFloat(request.POST.get('tp_spoturineprotein', ''))
         old_lab.cre_spoturinecreatinine = ToFloat(request.POST.get('cre_spoturinecreatinine', ''))
         old_lab.tfhr_urineprotein = ToFloat(request.POST.get('tfhr_urineprotein', ''))
@@ -1473,7 +1473,7 @@ def followEditPost(request):
         old_lab.antihbc = CheckboxToBool(request.POST.get('antihbc', ''))
         old_lab.antihcv = CheckboxToBool(request.POST.get('antihcv', ''))
         old_lab.antihiv = CheckboxToBool(request.POST.get('antihiv', ''))
-        old_lab.anticic = ToFloat(request.POST.get('anticic', ''))
+        old_lab.anticic = request.POST.get('anticic', '')
         old_lab.il6 = ToFloat(request.POST.get('il6', ''))
         old_lab.mpa = ToFloat(request.POST.get('mpa', ''))
         old_lab.fk507 = ToFloat(request.POST.get('fk507', ''))
@@ -1685,57 +1685,104 @@ def enrollEditPost(request):
         old_condition.mc5_5_1 = request.POST.get('mc5_5_1', '')
         old_condition.mc5_5_2 = DateToNone(request.POST.get('mc5_5_2', ''))
         old_condition.save()
-#        
-#        Previousorganinvolvement.objects.filter(studynumber = stnum).delete()
-#        Previouscomplication.objects.filter(studynumber = stnum).delete()
-#
-#        OrganDate = request.POST.getlist('OrganDate[]',)
-#        OrganOrgan = request.POST.getlist('Organ[]',)
-#        OrganTreat = request.POST.getlist('OrganTreat[]',)
-#        OrganResult = request.POST.getlist('OrganResult[]',)
-#        for i in range(0, len(OrganDate)):
-#            EnrollOrgan = Previousorganinvolvement(studynumber = old_studyidentity, detail = Previoustype(date = DateToNone(OrganDate[i]), organ = OrganOrgan[i], treatment = OrganTreat[i], result = OrganResult[i]))
-#            EnrollOrgan.save()
-#        
-#        CompDate = request.POST.getlist('CompDate[]',)
-#        CompOrgan = request.POST.getlist('CompOrgan[]',)
-#        CompTreat = request.POST.getlist('CompTreat[]',)
-#        CompRemiss = request.POST.getlist('CompRemiss[]',)
-#        for i in range(0, len(OrganDate)):
-#            EnrollComp = Previouscomplication(studynumber = old_studyidentity, detail = Previoustype(date = DateToNone(CompDate[i]), organ = CompOrgan[i], treatment = CompTreat[i], result = CompRemiss[i]))
-#            EnrollComp.save()
-#            
-#        old_fam = Familyhistory.objects.get(studynumber = stnum)
-#        old_fam.familyhistoryofautoimmunedisease = request.POST.get('FamAuto',) 
-#        old_fam.systemicautoimmune = CheckboxToBool(request.POST.get('systemicautoimmune',)) 
-#        old_fam.sle = ListToArray(request.POST.getlist('sle[]',))
-#        old_fam.ra = ListToArray(request.POST.getlist('ra[]',))
-#        old_fam.dermatomyositis = ListToArray(request.POST.getlist('dermatomyositis[]',))
-#        old_fam.systemicsclerosis = ListToArray(request.POST.getlist('systemicsclerosis[]',))
-#        old_fam.sjogrensyndrome = ListToArray(request.POST.getlist('sjogrensyndrome[]',))
-#        old_fam.tissuespecificautoimmune = CheckboxToBool(request.POST.get('tissuespecificautoimmune',)) 
-#        old_fam.dmtypeone = ListToArray(request.POST.getlist('dmtypeone[]',))
-#        old_fam.hashimotosthyroiditis = ListToArray(request.POST.getlist('hashimotosthyroiditis[]',))
-#        old_fam.multiplesclerosis = ListToArray(request.POST.getlist('multiplesclerosis[]',))
-#        old_fam.myastheniagravis = ListToArray(request.POST.getlist('myastheniagravis[]',))
-#        old_fam.tissuespecificother = ListToArray(request.POST.getlist('tissuespecificother[]',))
-#        old_fam.renaldiseasefamilyhistory = request.POST.get('FamRenal',)
-#        old_fam.nephroticsyndrome_glomerulardisease = ListToArray(request.POST.getlist('nephroticsyndrome_glomerulardisease[]',))
-#        old_fam.stone = ListToArray(request.POST.getlist('stone[]',))
-#        old_fam.esrd = ListToArray(request.POST.getlist('esrd[]',))
-#        old_fam.renalother = ListToArray(request.POST.getlist('renalother[]',))
-#        old_fam.save()
-    
+        
+        Familyhistory.objects.filter(studynumber = stnum).delete()
+        Comorbidity.objects.filter(studynumber = stnum).delete()
+        Previousorganinvolvement.objects.filter(studynumber = stnum).delete()
+
+        other01 = CheckboxToBool(request.POST.get('other01',))
+        other02 = CheckboxToBool(request.POST.get('other02',))
+        other03 = CheckboxToBool(request.POST.get('other03',))
+        other04 = CheckboxToBool(request.POST.get('other04',))        
+        othertype = request.POST.getlist('othertype[]',)
+        otherdetail = request.POST.getlist('otherdetail[]',)
+        otherdate = request.POST.getlist('otherdate[]',)
+        if other01 is not 'True':
+            while 'inflection' in othertype: 
+                index = othertype.index('inflection')
+                othertype.remove('inflection')
+                del otherdetail[index]
+                del otherdate[index]
+        if other02 is not 'True':
+            while 'majorsurgery' in othertype:
+                index = othertype.index('majorsurgery')
+                othertype.remove('majorsurgery')
+                del otherdetail[index]
+                del otherdate[index]
+        if other03 is not 'True':
+            while 'osteoporosis' in othertype:
+                index = othertype.index('osteoporosis')
+                othertype.remove('osteoporosis')
+                del otherdetail[index]
+                del otherdate[index]
+        if other04 is not 'True':
+            while 'malignancy' in othertype:
+                index = othertype.index('malignancy')
+                othertype.remove('malignancy')
+                del otherdetail[index]
+                del otherdate[index]
+        for obj in othertype:
+            index = othertype.index(obj)
+            EnrollComorbidity = Comorbidity(studynumber = old_studyidentity,
+                                        comorbiditytype = othertype[index],
+                                        detail = otherdetail[index],
+                                        diagnosedate = DateToNone(otherdate[index]))
+            EnrollComorbidity.save()
+
+        famlist = []
+        famlist.append(request.POST.get('familydisease01',))
+        famlist.append(request.POST.get('familydisease02',))
+        famlist.append(request.POST.get('familydisease03',))
+        famlist.append(request.POST.get('familydisease04',))
+        famlist.append(request.POST.get('familydisease05',))
+        famlist.append(request.POST.get('familydisease06',))
+        famlist.append(request.POST.get('familydisease07',))
+        famlist.append(request.POST.get('familydisease08',))
+        famlist.append(request.POST.get('familydisease09',))
+        father = request.POST.getlist('father[]',)
+        mother = request.POST.getlist('mother[]',)
+        son = request.POST.getlist('son[]',)
+        daughter = request.POST.getlist('daughter[]',)
+        sibling = request.POST.getlist('sibling[]',)
+        for eachdisease in famlist:
+            if eachdisease is not "0":
+                EnrollFam = Familyhistory(studynumber = old_studyidentity,
+                    disease = eachdisease,
+                    father = iscontains(father,eachdisease),
+                    mother = iscontains(mother,eachdisease),
+                    sibling = iscontains(sibling,eachdisease),
+                    daughter = iscontains(daughter,eachdisease),
+                    son = iscontains(son,eachdisease),
+                    relative = request.POST.get(eachdisease,))
+                EnrollFam.save()
+
+        renal = request.POST.get('organ1',)
+        if renal == "renal":
+            start = DateToNone(request.POST.get('startrenal',))
+            remis = DateToNone(request.POST.get('remisrenal',))
+            EnrollOrgan = Previousorganinvolvement(studynumber = old_studyidentity, 
+                    organ = renal, detail = None, startdate = start, remissiondate = remis)
+            EnrollOrgan.save()
+        
+        organlist = []
+        organlist.append(request.POST.get('organ2',))
+        organlist.append(request.POST.get('organ3',))
+        organlist.append(request.POST.get('organ4',))
+        organlist.append(request.POST.get('organ5',))
+        organlist.append(request.POST.get('organ6',))
+        organlist.append(request.POST.get('organ7',))
+        organlist.append(request.POST.get('organ8',))
+        
+        for each_organ in organlist:
+            if each_organ is not None:
+                for each_detail in request.POST.getlist(str(each_organ)+'[]',):
+                    remiss = DateToNone(request.POST.get('remis'+str(each_detail),))
+                    start = DateToNone(request.POST.get('start'+str(each_detail),))
+                    EnrollOrgan = Previousorganinvolvement(studynumber = old_studyidentity, 
+                        organ = each_organ, detail = each_detail, startdate = start, remissiondate = remiss)
+                    EnrollOrgan.save()
+
         return HttpResponseRedirect(reverse('patientrecord', args=(stnum,)))
-#        return patientrecord(request, stnum)
-#        return render(request, 'enrollment-detail.html',
-#                {'patient':Studyidentity.objects.get(studynumber = stnum),
-#                   'acrcriteria':Acrcriteria.objects.get(studynumber = stnum),
-#                   'slicccriteria':Slicccriteria.objects.get(studynumber = stnum),
-#                    'familyhistory':Familyhistory.objects.get(studynumber = stnum),
-#                    'medicalcondition':Medicalcondition.objects.get(studynumber = stnum),
-#                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = stnum),
-#                    'previouscomplication':Previouscomplication.objects.filter(studynumber = stnum)})
 
 from io import BytesIO as IO
 from collections import OrderedDict
