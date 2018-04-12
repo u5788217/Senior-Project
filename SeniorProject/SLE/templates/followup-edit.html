@@ -8,19 +8,6 @@
     }
     </style>
 	<script>
-        $(document).ready(function(){
-            {% if lab.stoolparasite.status != '' or lab.stoolparasite.date is not None %} $('#ShowAbnormal1').show();
-                    $('#ShowAbnormal2').show(); {% endif %}
-            {% if lab.cxr.status != '' or lab.cxr.date is not None %} $('#ShowAbnormal3').show();
-                    $('#ShowAbnormal4').show(); {% endif %}
-            {% if lab.ekg.status != '' or lab.ekg.date is not None %} $('#ShowAbnormal5').show();
-                    $('#ShowAbnormal6').show(); {% endif %}
-            {% if lab.echo.status != '' or lab.echo.date is not None %} $('#ShowAbnormal7').show();
-                    $('#ShowAbnormal8').show(); {% endif %}
-            {% if lnlab is not None %} $("#LNShow").show(); {% endif %}
-            {% if med.msle_1_1 is not None or med.msle_1_2 is not None or med.msle_1_3 is not None or med.msle_2_1 is not None or med.msle_2_2 is not None or med.msle_3_1 is not None or med.msle_3_2 is not None or med.msle_3_3 is not None or med.msle_3_4 is not None or med.msle_4_1 is not None or med.msle_4_2 is not None or med.msle_4_3 is not None or med.msle_4_4 is not None or med.msle_4_5 is not None or med.msle_4_6 is not None or med.msle_4_7 is not None or med.msle_4_8 is not None or med.msle_4_9 is not None or med.msle_4_10 is not None or med.msle_4_11 is not None %} $("#MedicationShow1").show(); {% endif %}
-            {% if med.mgt_1_1 is not None or med.mgt_1_2 is not None or med.mgt_1_3 is not None or med.mgt_1_4 is not None or med.mgt_1_5 is not None or med.mgt_2_1 is not None or med.mgt_2_2 is not None or med.mgt_2_3 is not None or med.mgt_2_4 is not None or med.mgt_3_1 is not None or med.mgt_3_2 is not None or med.mgt_3_3 is not None or med.mgt_4_1 is not None or med.mgt_4_2 is not None or med.mgt_4_3 is not None or med.mgt_4_4 is not None or med.mgt_other is True %} $("#MedicationShow2").show(); {% endif %}
-        });
         //Checkbox style
         $(document).ready(function(){
           $('input').iCheck({
