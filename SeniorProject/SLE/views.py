@@ -855,7 +855,7 @@ def enrollPatient(request):
                 EnrollFam.save()
 
         renal = request.POST.get('organ1',)
-        if renal is "renal":
+        if renal == "renal":
             start = DateToNone(request.POST.get('startrenal',))
             remis = DateToNone(request.POST.get('remisrenal',))
             EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
