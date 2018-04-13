@@ -1035,10 +1035,9 @@ def followPatient(request):
                         sledai_total = totalSLEDAI, 
                         status = request.POST.get('patientstatus', ''))
             FollowSLEDAI.save()
-
-
-            if CheckboxToInt(request.POST.get('LN', '')) > 0:
-                FollowLn = Lnlab(renalbiopsyclass = CheckboxToBool(request.POST.get('renalbiopsyclass', '')),
+            
+            if CheckboxToBool(request.POST.get('labcheck11', '')) == '1':
+                FollowLn = Lnlab(renalbiopsyclass = request.POST.get('renalbiopsyclass', ''),
                 renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', '')),
                 activityindex = ToFloat(request.POST.get('activityindex', '')),
                 chronicityindex = ToFloat(request.POST.get('chronicityindex', '')),
@@ -1046,9 +1045,10 @@ def followPatient(request):
                 ln_2 = ToFloat(request.POST.get('ln_2', '')),
                 ln_3 = request.POST.get('ln_3', ''),
                 ln_4 = request.POST.get('ln_4', ''),
-                ln_5 = ToFloat(request.POST.get('ln_5', '')))
-                FollowLn.save()
-            else : FollowLn = None
+                ln_5 = ToFloat(request.POST.get('ln_5', '')),
+                renalbiopsystatus = request.POST.get('RenalShow', ''))
+                FollowLn.save()  
+            else: FollowLn = None
 
             Followlab = Laboratoryinventoryinvestigation(visitingid = Followvisiting,
                             studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
@@ -1060,18 +1060,18 @@ def followPatient(request):
                             l = ToFloatNone(request.POST.get('l', '')),
                             platelets = ToFloatNone(request.POST.get('platelets', '')),
                             esr = ToFloatNone(request.POST.get('esr', '')),
-                            wbc_hpf1 = ToFloatNone(request.POST.get('wbc_hpf', '')),
-                            rbc_hpf1 = ToFloatNone(request.POST.get('rbc_hpf', '')),
-                            wbccasts1 = ToFloatNone(request.POST.get('wbccasts', '')),
-                            rbccasts1 = ToFloatNone(request.POST.get('rbccasts', '')),
-                            granularcasts1 = ToFloatNone(request.POST.get('granularcasts', '')),
-                            wbc_hpf2 = ToFloatNone(request.POST.get('wbc_hpf', '')),
-                            rbc_hpf2 = ToFloatNone(request.POST.get('rbc_hpf', '')),
-                            wbccasts2 = ToFloatNone(request.POST.get('wbccasts', '')),
-                            rbccasts2 = ToFloatNone(request.POST.get('rbccasts', '')),
-                            granularcasts2 = ToFloatNone(request.POST.get('granularcasts', '')),
-                            glucose = ToFloatNone(request.POST.get('glucose', '')),
-                            protein = ToFloatNone(request.POST.get('protein', '')),
+                            wbc_hpf1 = ToFloatNone(request.POST.get('wbc_hpf1', '')),
+                            rbc_hpf1 = ToFloatNone(request.POST.get('rbc_hpf1', '')),
+                            wbccasts1 = ToFloatNone(request.POST.get('wbccasts1', '')),
+                            rbccasts1 = ToFloatNone(request.POST.get('rbccasts1', '')),
+                            granularcasts1 = ToFloatNone(request.POST.get('granularcasts1', '')),
+                            wbc_hpf2 = ToFloatNone(request.POST.get('wbc_hpf2', '')),
+                            rbc_hpf2 = ToFloatNone(request.POST.get('rbc_hpf2', '')),
+                            wbccasts2 = ToFloatNone(request.POST.get('wbccasts2', '')),
+                            rbccasts2 = ToFloatNone(request.POST.get('rbccasts2', '')),
+                            granularcasts2 = ToFloatNone(request.POST.get('granularcasts2', '')),
+                            glucose = request.POST.get('glucose', ''),
+                            protein = request.POST.get('protein', ''),
                             tp_spoturineprotein = ToFloatNone(request.POST.get('tp_spoturineprotein', '')),
                             cre_spoturinecreatinine = ToFloatNone(request.POST.get('cre_spoturinecreatinine', '')),
                             tfhr_urineprotein = ToFloatNone(request.POST.get('tfhr_urineprotein', '')),
@@ -1115,14 +1115,28 @@ def followPatient(request):
                             mpa = ToFloatNone(request.POST.get('mpa', '')),
                             fk507 = ToFloatNone(request.POST.get('fk507', '')),
                             cyclosporin = ToFloatNone(request.POST.get('cyclosporin', '')),
-                            cytokine = CheckboxToBool(request.POST.get('cytokine', '')),
-                            l1l4spinebmd_tscore = [ToFloatNone(request.POST.get('l1l4spinebmd_tscore1','')),ToFloatNone(request.POST.get('l1l4spinebmd_tscore2', ''))],
-                            hipbmd_tscore = [ToFloatNone(request.POST.get('hipbmd_tscore1', '')),ToFloatNone(request.POST.get('hipbmd_tscore2', ''))],
-                            radiusbmd_tscore = [ToFloatNone(request.POST.get('radiusbmd_tscore1', '')),ToFloatNone(request.POST.get('radiusbmd_tscore2', ''))],
-                            stoolparasite = Labtype(status = request.POST.get('stool1', ''), date = DateToNone(request.POST.get('stool2', ''))),
-                            cxr = Labtype(status = request.POST.get('CXR1', ''), date = DateToNone(request.POST.get('CXR2', ''))),
-                            ekg = Labtype(status = request.POST.get('EKG1', ''), date = DateToNone(request.POST.get('EKG2', ''))),
-                            echo = Labtype(status = request.POST.get('Echo1', ''), date = DateToNone(request.POST.get('Echo2', ''))))
+                            cytokine = request.POST.get('cytokine', ''),
+                            l1l4spine_bmd = ToFloatNone(request.POST.get('l1l4spine_bmd','')),
+                            l1l4spine_tscore = ToFloatNone(request.POST.get('l1l4spine_tscore','')),
+                            l1l4spine_date = DateToNone(request.POST.get('l1l4spine_date','')),
+                            hip_bmd = ToFloatNone(request.POST.get('hip_bmd','')),
+                            hip_tscore = ToFloatNone(request.POST.get('hip_tscore','')),
+                            hip_date = DateToNone(request.POST.get('hip_date','')),
+                            radius_bmd = ToFloatNone(request.POST.get('radius_bmd','')),
+                            radius_tscore = ToFloatNone(request.POST.get('radius_tscore','')),
+                            radius_date = DateToNone(request.POST.get('radius_date','')),
+                            stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
+                                                    date = DateToNone(request.POST.get('stoolparasite2', '')),
+                                                    detail = request.POST.get('stoolparasite1', '')),
+                            cxr = Labtype(status = request.POST.get('cxr', ''), 
+                                          date = DateToNone(request.POST.get('cxr2', '')),
+                                          detail = request.POST.get('cxr1', '')),
+                            ekg = Labtype(status = request.POST.get('ekg', ''), 
+                                          date = DateToNone(request.POST.get('ekg2', '')),
+                                          detail = request.POST.get('ekg1', '')),
+                            echo = Labtype(status = request.POST.get('echo', ''), 
+                                           date = DateToNone(request.POST.get('echo2', '')),
+                                           detail = request.POST.get('echo1', '')))
             Followlab.save()
 
             FollowMed = Medication(visitingid = Followvisiting,

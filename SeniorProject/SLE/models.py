@@ -287,6 +287,7 @@ class Lnlab(models.Model):
     ln_3 = models.TextField(blank=True, null=True)
     ln_4 = models.TextField(blank=True, null=True)
     ln_5 = models.FloatField(blank=True, null=True)
+    renalbiopsystatus = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
