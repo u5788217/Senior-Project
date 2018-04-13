@@ -32,6 +32,10 @@ import os
 from django.conf import settings
 from django.templatetags.static import static
 
+def StringToNone(checkbox,string):
+    if checkbox == '0' or checkbox == '' or checkbox == 'off': string = None
+    return string
+
 def iscontains(alist,item):
     if item in alist: return True
     else: return False
@@ -1049,7 +1053,31 @@ def followPatient(request):
                 renalbiopsystatus = request.POST.get('RenalShow', ''))
                 FollowLn.save()  
             else: FollowLn = None
-
+                
+            labcheck07 = CheckboxToBool(request.POST.get('labcheck07', ''))
+            labcheck08 = CheckboxToBool(request.POST.get('labcheck08', ''))
+            labcheck09 = CheckboxToBool(request.POST.get('labcheck09', ''))
+            labcheck10 = CheckboxToBool(request.POST.get('labcheck10', ''))
+            stoolparasite = None
+            cxr=None
+            ekg=None
+            echo=None
+            if labcheck07 is 'True':
+                stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
+                                date = DateToNone(request.POST.get('stoolparasite2', '')),
+                                detail = request.POST.get('stoolparasite1', ''))
+            if labcheck08 is 'True':
+                cxr = Labtype(status = request.POST.get('cxr', ''), 
+                                date = DateToNone(request.POST.get('cxr2', '')),                                 detail = request.POST.get('cxr1', ''))
+            if labcheck09 is 'True':
+                ekg = Labtype(status = request.POST.get('ekg', ''), 
+                                date = DateToNone(request.POST.get('ekg2', '')),
+                                detail = request.POST.get('ekg1', ''))
+            if labcheck10 is 'True':
+                echo = Labtype(status = request.POST.get('echo', ''), 
+                                date = DateToNone(request.POST.get('echo2', '')),
+                                detail = request.POST.get('echo1', ''))
+            
             Followlab = Laboratoryinventoryinvestigation(visitingid = Followvisiting,
                             studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                             lnlabid = FollowLn,
@@ -1070,8 +1098,8 @@ def followPatient(request):
                             wbccasts2 = ToFloatNone(request.POST.get('wbccasts2', '')),
                             rbccasts2 = ToFloatNone(request.POST.get('rbccasts2', '')),
                             granularcasts2 = ToFloatNone(request.POST.get('granularcasts2', '')),
-                            glucose = request.POST.get('glucose', ''),
-                            protein = request.POST.get('protein', ''),
+                            glucose = StringToNone(request.POST.get('ckprotein', ''),request.POST.get('glucose', '')),
+                            protein = StringToNone(request.POST.get('ckprotein', ''),request.POST.get('protein', '')),
                             tp_spoturineprotein = ToFloatNone(request.POST.get('tp_spoturineprotein', '')),
                             cre_spoturinecreatinine = ToFloatNone(request.POST.get('cre_spoturinecreatinine', '')),
                             tfhr_urineprotein = ToFloatNone(request.POST.get('tfhr_urineprotein', '')),
@@ -1095,27 +1123,27 @@ def followPatient(request):
                             hdl = ToFloatNone(request.POST.get('hdl', '')),
                             inr = ToFloatNone(request.POST.get('inr', '')),
                             anti_dsdna = ToFloatNone(request.POST.get('anti_dsdna', '')),
-                            antism = CheckboxToBool(request.POST.get('antism', '')),
-                            antirnp = CheckboxToBool(request.POST.get('antirnp', '')),
-                            antiro = CheckboxToBool(request.POST.get('antiro', '')),
-                            antila = CheckboxToBool(request.POST.get('antila', '')),
+                            antism = StringToNone(request.POST.get('ckantism', ''),request.POST.get('antism', '')),
+                            antirnp = StringToNone(request.POST.get('ckantirnp', ''),request.POST.get('antirnp', '')),
+                            antiro = StringToNone(request.POST.get('ckantiro', ''),request.POST.get('antiro', '')),
+                            antila = StringToNone(request.POST.get('ckantila', ''),request.POST.get('antila', '')),
                             aca = ToFloatNone(request.POST.get('aca', '')),
-                            lupusanticoagulant = CheckboxToBool(request.POST.get('lupusanticoagulant', '')),
+                            lupusanticoagulant = StringToNone(request.POST.get('cklupusanticoagulant', ''),request.POST.get('lupusanticoagulant', '')),
                             b2gpi = ToFloatNone(request.POST.get('b2gpi', '')),
                             c3 = ToFloatNone(request.POST.get('c3', '')),
                             c4 = ToFloatNone(request.POST.get('c4', '')),
                             ch50 = ToFloatNone(request.POST.get('ch50', '')),
-                            hbsag = CheckboxToBool(request.POST.get('hbsag', '')),
-                            antihbs = CheckboxToBool(request.POST.get('antihbs', '')),
-                            antihbc = CheckboxToBool(request.POST.get('antihbc', '')),
-                            antihcv = CheckboxToBool(request.POST.get('antihcv', '')),
-                            antihiv = CheckboxToBool(request.POST.get('antihiv', '')),
-                            anticic = ToFloatNone(request.POST.get('anticic', '')),
-                            il6 = ToFloatNone(request.POST.get('il6', '')),
+                            hbsag = StringToNone(request.POST.get('ckhbsag', ''),request.POST.get('hbsag', '')),
+                            antihbs = StringToNone(request.POST.get('ckantihbs', ''),request.POST.get('antihbs', '')),
+                            antihbc = StringToNone(request.POST.get('ckantihbc', ''),request.POST.get('antihbc', '')),
+                            antihcv = StringToNone(request.POST.get('ckantihcv', ''),request.POST.get('antihcv', '')),
+                            antihiv = StringToNone(request.POST.get('ckantihiv', ''),request.POST.get('antihiv', '')),
+                            anticic = StringToNone(request.POST.get('ckanticic', ''),request.POST.get('anticic', '')),
+                            il6 = StringToNone(request.POST.get('ckil6', ''),request.POST.get('il6', '')),
                             mpa = ToFloatNone(request.POST.get('mpa', '')),
                             fk507 = ToFloatNone(request.POST.get('fk507', '')),
                             cyclosporin = ToFloatNone(request.POST.get('cyclosporin', '')),
-                            cytokine = request.POST.get('cytokine', ''),
+                            cytokine = StringToNone(request.POST.get('ckcytokine', ''),request.POST.get('cytokine', '')),
                             l1l4spine_bmd = ToFloatNone(request.POST.get('l1l4spine_bmd','')),
                             l1l4spine_tscore = ToFloatNone(request.POST.get('l1l4spine_tscore','')),
                             l1l4spine_date = DateToNone(request.POST.get('l1l4spine_date','')),
@@ -1125,18 +1153,10 @@ def followPatient(request):
                             radius_bmd = ToFloatNone(request.POST.get('radius_bmd','')),
                             radius_tscore = ToFloatNone(request.POST.get('radius_tscore','')),
                             radius_date = DateToNone(request.POST.get('radius_date','')),
-                            stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
-                                                    date = DateToNone(request.POST.get('stoolparasite2', '')),
-                                                    detail = request.POST.get('stoolparasite1', '')),
-                            cxr = Labtype(status = request.POST.get('cxr', ''), 
-                                          date = DateToNone(request.POST.get('cxr2', '')),
-                                          detail = request.POST.get('cxr1', '')),
-                            ekg = Labtype(status = request.POST.get('ekg', ''), 
-                                          date = DateToNone(request.POST.get('ekg2', '')),
-                                          detail = request.POST.get('ekg1', '')),
-                            echo = Labtype(status = request.POST.get('echo', ''), 
-                                           date = DateToNone(request.POST.get('echo2', '')),
-                                           detail = request.POST.get('echo1', '')))
+                            stoolparasite = stoolparasite,
+                            cxr = cxr,
+                            ekg = ekg,
+                            echo = echo)
             Followlab.save()
 
             FollowMed = Medication(visitingid = Followvisiting,
@@ -1327,27 +1347,27 @@ def followEditPost(request):
         old_damage.di_2 = CheckboxToBool(request.POST.get('di_2', ''))
         old_damage.di_3 = CheckboxToBool(request.POST.get('di_3', ''))
         old_damage.di_4 = CheckboxToBool(request.POST.get('di_4', ''))
-        old_damage.di_5 = ToFloat(request.POST.get('di_5', ''))
+        old_damage.di_5 = request.POST.get('di_5', '')
         old_damage.di_6 = CheckboxToBool(request.POST.get('di_6', ''))
         old_damage.di_7 = CheckboxToBool(request.POST.get('di_7', ''))
         old_damage.di_8 = CheckboxToBool(request.POST.get('di_8', ''))
         old_damage.di_9 = CheckboxToBool(request.POST.get('di_9', ''))
         old_damage.di_10 = CheckboxToBool(request.POST.get('di_10', ''))
         old_damage.di_11 = CheckboxToBool(request.POST.get('di_11', ''))
-        old_damage.di_12 = ToFloat(request.POST.get('di_12', ''))
+        old_damage.di_12 = request.POST.get('di_12', '')
         old_damage.di_13 = CheckboxToBool(request.POST.get('di_13', ''))
         old_damage.di_14 = CheckboxToBool(request.POST.get('di_14', ''))
         old_damage.di_15 = CheckboxToBool(request.POST.get('di_15', ''))
         old_damage.di_16 = CheckboxToBool(request.POST.get('di_16', ''))
         old_damage.di_17 = CheckboxToBool(request.POST.get('di_17', ''))
-        old_damage.di_18 = ToFloat(request.POST.get('di_18', ''))
+        old_damage.di_18 = request.POST.get('di_18', '')
         old_damage.di_19 = CheckboxToBool(request.POST.get('di_19', ''))
         old_damage.di_20 = CheckboxToBool(request.POST.get('di_20', ''))
         old_damage.di_21 = CheckboxToBool(request.POST.get('di_21', ''))
         old_damage.di_22 = CheckboxToBool(request.POST.get('di_22', ''))
         old_damage.di_23 = CheckboxToBool(request.POST.get('di_23', ''))
         old_damage.di_24 = CheckboxToBool(request.POST.get('di_24', ''))
-        old_damage.di_25 = ToFloat(request.POST.get('di_25', ''))
+        old_damage.di_25 = request.POST.get('di_25', '')
         old_damage.di_26 = CheckboxToBool(request.POST.get('di_26', ''))
         old_damage.di_27 = CheckboxToBool(request.POST.get('di_27', ''))
         old_damage.di_28 = CheckboxToBool(request.POST.get('di_28', ''))
@@ -1355,7 +1375,7 @@ def followEditPost(request):
         old_damage.di_30 = CheckboxToBool(request.POST.get('di_30', ''))
         old_damage.di_31 = CheckboxToBool(request.POST.get('di_31', ''))
         old_damage.di_32 = CheckboxToBool(request.POST.get('di_32', ''))
-        old_damage.di_33 = ToFloat(request.POST.get('di_33', ''))
+        old_damage.di_33 = request.POST.get('di_33', '')
         old_damage.di_34 = CheckboxToBool(request.POST.get('di_34', ''))
         old_damage.di_35 = CheckboxToBool(request.POST.get('di_35', ''))
         old_damage.di_36 = CheckboxToBool(request.POST.get('di_36', ''))
@@ -1363,7 +1383,7 @@ def followEditPost(request):
         old_damage.di_38 = CheckboxToBool(request.POST.get('di_38', ''))
         old_damage.di_39 = CheckboxToBool(request.POST.get('di_39', ''))
         old_damage.di_40 = CheckboxToBool(request.POST.get('di_40', ''))
-        old_damage.di_41 = ToFloat(request.POST.get('di_41', ''))
+        old_damage.di_41 = request.POST.get('di_41', '')
         old_damage.di_total = Totaldamage
         old_damage.save()
 
@@ -1403,10 +1423,10 @@ def followEditPost(request):
         old_sledai.save()
         
         old_ln = None
-        if CheckboxToInt(request.POST.get('LN', '')) > 0:
+        if CheckboxToBool(request.POST.get('labcheck11', '')) == '1':
             if Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid is not None:
                 old_ln = Lnlab.objects.get(lnlabid = Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid)
-                old_ln.renalbiopsyclass = CheckboxToBool(request.POST.get('renalbiopsyclass', ''))
+                old_ln.renalbiopsyclass = request.POST.get('renalbiopsyclass', '')
                 old_ln.renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', ''))
                 old_ln.activityindex = ToFloat(request.POST.get('activityindex', ''))
                 old_ln.chronicityindex = ToFloat(request.POST.get('chronicityindex', ''))
@@ -1415,9 +1435,10 @@ def followEditPost(request):
                 old_ln.ln_3 = request.POST.get('ln_3', '')
                 old_ln.ln_4 = request.POST.get('ln_4', '')
                 old_ln.ln_5 = ToFloat(request.POST.get('ln_5', ''))
+                old_ln.renalbiopsystatus = request.POST.get('RenalShow', '') 
                 old_ln.save()
             else : 
-                old_ln = Lnlab(renalbiopsyclass = CheckboxToBool(request.POST.get('renalbiopsyclass', '')),
+                old_ln = Lnlab(renalbiopsyclass = request.POST.get('renalbiopsyclass', ''),
                 renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', '')),
                 activityindex = ToFloat(request.POST.get('activityindex', '')),
                 chronicityindex = ToFloat(request.POST.get('chronicityindex', '')),
@@ -1425,7 +1446,8 @@ def followEditPost(request):
                 ln_2 = ToFloat(request.POST.get('ln_2', '')),
                 ln_3 = request.POST.get('ln_3', ''),
                 ln_4 = request.POST.get('ln_4', ''),
-                ln_5 = ToFloat(request.POST.get('ln_5', '')))
+                ln_5 = ToFloat(request.POST.get('ln_5', '')),
+                renalbiopsystatus = request.POST.get('RenalShow', ''))
                 old_ln.save()
 
         old_lab = Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid)
@@ -1437,13 +1459,18 @@ def followEditPost(request):
         old_lab.l = ToFloat(request.POST.get('l', ''))
         old_lab.platelets = ToFloat(request.POST.get('platelets', ''))
         old_lab.esr = ToFloat(request.POST.get('esr', ''))
-        old_lab.wbc_hpf = ToFloat(request.POST.get('wbc_hpf', ''))
-        old_lab.rbc_hpf = ToFloat(request.POST.get('rbc_hpf', ''))
-        old_lab.wbccasts = ToFloat(request.POST.get('wbccasts', ''))
-        old_lab.rbccasts = ToFloat(request.POST.get('rbccasts', ''))
-        old_lab.granularcasts = ToFloat(request.POST.get('granularcasts', ''))
-        old_lab.glucose = request.POST.get('glucose', '')
-        old_lab.protein = request.POST.get('protein', '')
+        old_lab.wbc_hpf1 = ToFloat(request.POST.get('wbc_hpf1', ''))
+        old_lab.rbc_hpf1 = ToFloat(request.POST.get('rbc_hpf1', ''))
+        old_lab.wbccasts1 = ToFloat(request.POST.get('wbccasts1', ''))
+        old_lab.rbccasts1 = ToFloat(request.POST.get('rbccasts1', ''))
+        old_lab.granularcasts1 = ToFloat(request.POST.get('granularcasts1', ''))
+        old_lab.wbc_hpf2 = ToFloat(request.POST.get('wbc_hpf2', ''))
+        old_lab.rbc_hpf2 = ToFloat(request.POST.get('rbc_hpf', ''))
+        old_lab.wbccasts2 = ToFloat(request.POST.get('wbccasts2', ''))
+        old_lab.rbccasts2 = ToFloat(request.POST.get('rbccasts2', ''))
+        old_lab.granularcasts2 = ToFloat(request.POST.get('granularcasts2', ''))
+        old_lab.glucose = StringToNone(request.POST.get('ckprotein', ''),request.POST.get('glucose', ''))
+        old_lab.protein = StringToNone(request.POST.get('ckprotein', ''),request.POST.get('protein', ''))
         old_lab.tp_spoturineprotein = ToFloat(request.POST.get('tp_spoturineprotein', ''))
         old_lab.cre_spoturinecreatinine = ToFloat(request.POST.get('cre_spoturinecreatinine', ''))
         old_lab.tfhr_urineprotein = ToFloat(request.POST.get('tfhr_urineprotein', ''))
@@ -1472,34 +1499,48 @@ def followEditPost(request):
         old_lab.speckled1 = ToFloat(request.POST.get('speckled1', ''))
         old_lab.nucleolar1 = ToFloat(request.POST.get('nucleolar1', ''))
         old_lab.anti_dsdna = ToFloat(request.POST.get('anti_dsdna', ''))
-        old_lab.antism = CheckboxToBool(request.POST.get('antism', ''))
-        old_lab.antirnp = CheckboxToBool(request.POST.get('antirnp', ''))
-        old_lab.antiro = CheckboxToBool(request.POST.get('antiro', ''))
-        old_lab.antila = CheckboxToBool(request.POST.get('antila', ''))
+        old_lab.antism = StringToNone(request.POST.get('ckantism', ''),request.POST.get('antism', ''))
+        old_lab.antirnp = StringToNone(request.POST.get('ckantirnp', ''),request.POST.get('antirnp', ''))
+        old_lab.antiro = StringToNone(request.POST.get('ckantiro', ''),request.POST.get('antiro', ''))
+        old_lab.antila = StringToNone(request.POST.get('ckantila', ''),request.POST.get('antila', ''))
         old_lab.aca = ToFloat(request.POST.get('aca', ''))
-        old_lab.lupusanticoagulant = CheckboxToBool(request.POST.get('lupusanticoagulant', ''))
+        old_lab.lupusanticoagulant = StringToNone(request.POST.get('cklupusanticoagulant', ''),request.POST.get('lupusanticoagulant', ''))
         old_lab.b2gpi = ToFloat(request.POST.get('b2gpi', ''))
         old_lab.c3 = ToFloat(request.POST.get('c3', ''))
         old_lab.c4 = ToFloat(request.POST.get('c4', ''))
         old_lab.ch50 = ToFloat(request.POST.get('ch50', ''))
-        old_lab.hbsag = CheckboxToBool(request.POST.get('hbsag', ''))
-        old_lab.antihbs = CheckboxToBool(request.POST.get('antihbs', ''))
-        old_lab.antihbc = CheckboxToBool(request.POST.get('antihbc', ''))
-        old_lab.antihcv = CheckboxToBool(request.POST.get('antihcv', ''))
-        old_lab.antihiv = CheckboxToBool(request.POST.get('antihiv', ''))
-        old_lab.anticic = request.POST.get('anticic', '')
-        old_lab.il6 = ToFloat(request.POST.get('il6', ''))
+        old_lab.hbsag = StringToNone(request.POST.get('ckhbsag', ''),request.POST.get('hbsag', ''))
+        old_lab.antihbs = StringToNone(request.POST.get('ckantihbs', ''),request.POST.get('antihbs', ''))
+        old_lab.antihbc = StringToNone(request.POST.get('ckantihbc', ''),request.POST.get('antihbc', ''))
+        old_lab.antihcv = StringToNone(request.POST.get('ckantihcv', ''),request.POST.get('antihcv', ''))
+        old_lab.antihiv = StringToNone(request.POST.get('ckantihiv', ''),request.POST.get('antihiv', ''))
+        old_lab.anticic = StringToNone(request.POST.get('ckanticic', ''),request.POST.get('anticic', ''))
+        old_lab.il6 = StringToNone(request.POST.get('ckil6', ''),request.POST.get('il6', ''))
         old_lab.mpa = ToFloat(request.POST.get('mpa', ''))
         old_lab.fk507 = ToFloat(request.POST.get('fk507', ''))
         old_lab.cyclosporin = ToFloat(request.POST.get('cyclosporin', ''))
-        old_lab.cytokine = CheckboxToBool(request.POST.get('cytokine', ''))
-        old_lab.l1l4spinebmd_tscore = [ToFloat(request.POST.get('l1l4spinebmd_tscore1',)),ToFloat(request.POST.get('l1l4spinebmd_tscore2',))]
-        old_lab.hipbmd_tscore = [ToFloat(request.POST.get('hipbmd_tscore1',)),ToFloat(request.POST.get('hipbmd_tscore2',))]
-        old_lab.radiusbmd_tscore = [ToFloat(request.POST.get('radiusbmd_tscore1',)),ToFloat(request.POST.get('radiusbmd_tscore2',))]
-        old_lab.stoolparasite = Labtype(status = request.POST.get('stool1',), date = DateToNone(request.POST.get('stool2',)))
-        old_lab.cxr = Labtype(status = request.POST.get('CXR1',), date = DateToNone(request.POST.get('CXR2',)))
-        old_lab.ekg = Labtype(status = request.POST.get('EKG1',), date = DateToNone(request.POST.get('EKG2',)))
-        old_lab.echo = Labtype(status = request.POST.get('Echo1',), date = DateToNone(request.POST.get('Echo2',)))
+        old_lab.cytokine = StringToNone(request.POST.get('ckcytokine', ''),request.POST.get('cytokine', ''))
+        old_lab.l1l4spine_bmd = ToFloatNone(request.POST.get('l1l4spine_bmd',''))
+        old_lab.l1l4spine_tscore = ToFloatNone(request.POST.get('l1l4spine_tscore',''))
+        old_lab.l1l4spine_date = DateToNone(request.POST.get('l1l4spine_date',''))
+        old_lab.hip_bmd = ToFloatNone(request.POST.get('hip_bmd',''))
+        old_lab.hip_tscore = ToFloatNone(request.POST.get('hip_tscore',''))
+        old_lab.hip_date = DateToNone(request.POST.get('hip_date',''))
+        old_lab.radius_bmd = ToFloatNone(request.POST.get('radius_bmd',''))
+        old_lab.radius_tscore = ToFloatNone(request.POST.get('radius_tscore',''))
+        old_lab.radius_date = DateToNone(request.POST.get('radius_date',''))
+        old_lab.stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
+                                    date = DateToNone(request.POST.get('stoolparasite2', '')),
+                                    detail = request.POST.get('stoolparasite1', ''))
+        old_lab.cxr = Labtype(status = request.POST.get('cxr', ''), 
+                                    date = DateToNone(request.POST.get('cxr2', '')),
+                                    detail = request.POST.get('cxr1', ''))
+        old_lab.ekg = Labtype(status = request.POST.get('ekg', ''), 
+                                    date = DateToNone(request.POST.get('ekg2', '')),
+                                    detail = request.POST.get('ekg1', ''))
+        old_lab.echo = Labtype(status = request.POST.get('echo', ''), 
+                                    date = DateToNone(request.POST.get('echo2', '')),
+                                    detail = request.POST.get('echo1', ''))
         old_lab.save()
         
         old_med = Medication.objects.get(visitingid = temp_visitid)

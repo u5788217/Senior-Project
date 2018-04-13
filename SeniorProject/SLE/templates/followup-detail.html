@@ -1862,9 +1862,9 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06" {% if lab.l1l4spinebmd_tscore.0 is not None or lab.l1l4spinebmd_tscore.1 is not None or lab.l1l4spinebmd_tscore.2 is not None or lab.hipbmd_tscore.0 is not None or lab.hipbmd_tscore.1 is not None or lab.hipbmd_tscore.2 is not None or lab.radiusbmd_tscore.0 is not None or lab.radiusbmd_tscore.1 is not None or lab.radiusbmd_tscore.2 is not None %} checked {% endif %}> 6. BMD</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06" {% if lab.l1l4spine_bmd is not None or lab.l1l4spine_tscore is not None or lab.l1l4spine_date is not None or lab.hip_bmd is not None or lab.hip_tscore is not None or lab.hip_date is not None or lab.radius_bmd is not None or lab.radius_tscore is not None or lab.radius_date is not None %} checked {% endif %}> 6. BMD</td>
                                                             </tr>
-                                                            <tr id="labtr06" {% if lab.l1l4spinebmd_tscore.0 is None and lab.l1l4spinebmd_tscore.1 is None and lab.l1l4spinebmd_tscore.2 is None and lab.hipbmd_tscore.0 is None and lab.hipbmd_tscore.1 is None and lab.hipbmd_tscore.2 is None and lab.radiusbmd_tscore.0 is None and lab.radiusbmd_tscore.1 is none and lab.radiusbmd_tscore.2 is None %} class="disabledbutton" {% endif %}>
+                                                            <tr id="labtr06" {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <table class="table table-hover table-striped">
                                                                         <thead>
@@ -1878,29 +1878,29 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td>L1-L4 spine</td>
-                                                                                <td><input type="number" name="l1l4spinebmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.l1l4spinebmd_tscore.0 is not None %} value="{{lab.l1l4spinebmd_tscore.0}}" {% endif %}
+                                                                                <td><input type="number" name="l1l4spinebmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.l1l4spine_bmd is not None %} value="{{lab.l1l4spine_bmd}}" {% endif %}
 ></td>
-                                                                                <td><input type="number" name="l1l4spinebmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.l1l4spinebmd_tscore.1 is not None %} value="{{lab.l1l4spinebmd_tscore.1}}" {% endif %}
+                                                                                <td><input type="number" name="l1l4spinebmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.l1l4spine_tscore is not None %} value="{{lab.l1l4spine_tscore}}" {% endif %}
 ></td>
-                                                                                <td><input type="date" name="l1l4spinebmd_tscore3" class="form-control" {% if lab.l1l4spinebmd_tscore.2 is not None %} value="{{lab.l1l4spinebmd_tscore.2}}" {% endif %}
+                                                                                <td><input type="date" name="l1l4spinebmd_tscore3" class="form-control" {% if lab.l1l4spine_date is not None %} value="{{lab.l1l4spine_date}}" {% endif %}
 ></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>Hip</td>
-                                                                                <td><input type="number" name="hipbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.hipbmd_tscore.0 is not None %} value="{{lab.hipbmd_tscore.0}}" {% endif %}
+                                                                                <td><input type="number" name="hipbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.hip_bmd is not None %} value="{{lab.hip_bmd}}" {% endif %}
 ></td>
-                                                                                <td><input type="number" name="hipbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.hipbmd_tscore.1 is not None %} value="{{lab.hipbmd_tscore.1}}" {% endif %}
+                                                                                <td><input type="number" name="hipbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.hip_tscore is not None %} value="{{lab.hip_tscore}}" {% endif %}
 ></td>
-                                                                                <td><input type="date" name="hipbmd_tscore3" class="form-control" {% if lab.hipbmd_tscore.2 is not None %} value="{{lab.hipbmd_tscore.2}}" {% endif %}
+                                                                                <td><input type="date" name="hipbmd_tscore3" class="form-control" {% if lab.hip_date is not None %} value="{{lab.hip_date}}" {% endif %}
 ></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td>Radius</td>
-                                                                                <td><input type="number" name="radiusbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.radiusbmd_tscore.0 is not None %} value="{{lab.radiusbmd_tscore.0}}" {% endif %}
+                                                                                <td><input type="number" name="radiusbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.radius_bmd is not None %} value="{{lab.radius_bmd}}" {% endif %}
 ></td>
-                                                                                <td><input type="number" name="radiusbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.radiusbmd_tscore.1 is not None %} value="{{lab.radiusbmd_tscore.1}}" {% endif %}
+                                                                                <td><input type="number" name="radiusbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.radius_tscore is not None %} value="{{lab.radius_tscore}}" {% endif %}
 ></td>
-                                                                                <td><input type="date" name="radiusbmd_tscore3" class="form-control" {% if lab.radiusbmd_tscore.2 is not None %} value="{{lab.radiusbmd_tscore.2}}" {% endif %}
+                                                                                <td><input type="date" name="radiusbmd_tscore3" class="form-control" {% if lab.radius_date is not None %} value="{{lab.radius_date}}" {% endif %}
 ></td>
                                                                             </tr>
                                                                         </tbody>
@@ -1914,26 +1914,26 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.ck is not None %} checked {% endif %}> 7. Stool parasite</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.ck is not None %} checked {% endif %}> 8. CXR</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.ck is not None %} checked {% endif %}> 9. EKG</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.ck is not None %} checked {% endif %}> 10. Echo</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.status is not None %} checked {% endif %}> 7. Stool parasite</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.status is not None %} checked {% endif %}> 8. CXR</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.status is not None %} checked {% endif %}> 9. EKG</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.status is not None %} checked {% endif %}> 10. Echo</td>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd07" class="disabledbutton">
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="stoolparasite">
-                                                                            <option selected value="0" {% if lab.stoolparasite.ck == 'Normal' %} checked {% endif %}>Normal</option>
-                                                                            <option value="1" {% if lab.stoolparasite.ck == 'Abnormal' %} checked {% endif %}>Abnormal</option>
-                                                                            <option value="2" {% if lab.stoolparasite.ck == 'Not done' %} checked {% endif %}>Not done </option>
-                                                                            <option value="3" {% if lab.stoolparasite.ck == 'Not found' %} checked {% endif %}>Not found </option>
+                                                                            <option selected value="0" {% if lab.stoolparasite.status == 'Normal' %} checked {% endif %}>Normal</option>
+                                                                            <option value="1" {% if lab.stoolparasite.status == 'Abnormal' %} checked {% endif %}>Abnormal</option>
+                                                                            <option value="2" {% if lab.stoolparasite.status == 'Not done' %} checked {% endif %}>Not done </option>
+                                                                            <option value="3" {% if lab.stoolparasite.status == 'Not found' %} checked {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
                                                                         <select class="form-control" name="stoolparasite1">
-                                                                            <option value="Negative" {% if lab.stoolparasite.status == 'detail1' %} checked {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.stoolparasite.status == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                            <option value="Negative" {% if lab.stoolparasite.detail == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.stoolparasite.detail == 'detail2' %} checked {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -1946,17 +1946,17 @@
                                                                 <td id="labtd08" class="disabledbutton">
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="cxr">
-                                                                            <option selected value="0" {% if lab.cxr.ck == 'Normal' %} checked {% endif %}>Normal</option>
-                                                                            <option value="1" {% if lab.cxr.ck == 'Abnormal' %} checked {% endif %}>Abnormal</option>
-                                                                            <option value="2" {% if lab.cxr.ck == 'Not done' %} checked {% endif %}>Not done </option>
-                                                                            <option value="3" {% if lab.cxr.ck == 'Not found' %} checked {% endif %}>Not found </option>
+                                                                            <option selected value="0" {% if lab.cxr.status == 'Normal' %} checked {% endif %}>Normal</option>
+                                                                            <option value="1" {% if lab.cxr.status == 'Abnormal' %} checked {% endif %}>Abnormal</option>
+                                                                            <option value="2" {% if lab.cxr.status == 'Not done' %} checked {% endif %}>Not done </option>
+                                                                            <option value="3" {% if lab.cxr.status == 'Not found' %} checked {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
                                                                         <select class="form-control" name="cxr1">
-                                                                            <option value="Negative" {% if lab.cxr.status == 'detail1' %} checked {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.cxr.status == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                            <option value="Negative" {% if lab.cxr.detail == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.cxr.detail == 'detail2' %} checked {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -1969,17 +1969,17 @@
                                                                 <td id="labtd09" class="disabledbutton">
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="ekg">
-                                                                            <option selected value="0" {% if lab.ekg.ck == 'Normal' %} checked {% endif %}>Normal</option>
-                                                                            <option value="1" {% if lab.ekg.ck == 'Abnormal' %} checked {% endif %}>Abnormal</option>
-                                                                            <option value="2" {% if lab.ekg.ck == 'Not done' %} checked {% endif %}>Not done </option>
-                                                                            <option value="3" {% if lab.ekg.ck == 'Not found' %} checked {% endif %}>Not found </option>
+                                                                            <option selected value="0" {% if lab.ekg.status == 'Normal' %} checked {% endif %}>Normal</option>
+                                                                            <option value="1" {% if lab.ekg.status == 'Abnormal' %} checked {% endif %}>Abnormal</option>
+                                                                            <option value="2" {% if lab.ekg.status == 'Not done' %} checked {% endif %}>Not done </option>
+                                                                            <option value="3" {% if lab.ekg.status == 'Not found' %} checked {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
                                                                         <select class="form-control" name="ekg1">
-                                                                            <option value="Negative" {% if lab.ekg.status == 'detail1' %} checked {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.ekg.status == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                            <option value="Negative" {% if lab.ekg.detail == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.ekg.detail == 'detail2' %} checked {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -1992,17 +1992,17 @@
                                                                 <td id="labtd10" class="disabledbutton">
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="echo">
-                                                                            <option selected value="0" {% if lab.echo.ck == 'Normal' %} checked {% endif %}>Normal</option>
-                                                                            <option value="1" {% if lab.echo.ck == 'Abnormal' %} checked {% endif %}>Abnormal</option>
-                                                                            <option value="2" {% if lab.echo.ck == 'Not done' %} checked {% endif %}>Not done </option>
-                                                                            <option value="3" {% if lab.echo.ck == 'Not found' %} checked {% endif %}>Not found </option>
+                                                                            <option selected value="0" {% if lab.echo.status == 'Normal' %} checked {% endif %}>Normal</option>
+                                                                            <option value="1" {% if lab.echo.status == 'Abnormal' %} checked {% endif %}>Abnormal</option>
+                                                                            <option value="2" {% if lab.echo.status == 'Not done' %} checked {% endif %}>Not done </option>
+                                                                            <option value="3" {% if lab.echo.status == 'Not found' %} checked {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
                                                                         <select class="form-control" name="echo1">
-                                                                            <option value="Negative" {% if lab.echo.status == 'detail1' %} checked {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.echo.status == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                            <option value="Negative" {% if lab.echo.detail == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.echo.detail == 'detail2' %} checked {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -2027,8 +2027,8 @@
                                                                     <div class="form-group">  
                                                                         <label>Renal biopsy</label>  
                                                                         <select class="form-control" name="renalbiopsyclass">
-                                                                            <option value="Negative" {% if lab.renalbiopsyclassck == 'detail1' %} checked {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.renalbiopsyclassck == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                            <option value="Negative" {% if lab.renalbiopsystatus == 'Negative' %} selected {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.renalbiopsystatus == 'Positive' %} selected {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -2105,724 +2105,7 @@
                             
                             
                             
-                            <div class="col-lg-12  col-md-12 col-sm-12">
-                                <div class="panel">
-                                    <div class="panel-body ">
-                                        <div class="row">
-                                            <div class="col-lg-12  col-md-12 col-sm-12">
-                                                <div class="col-lg-12  col-md-12 col-sm-12">
-                                                                                             
-                                                    <h4 class="page-header">1. CBC</h4><!-- {{lab}}-->
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Hb (g/dL)                                          
-                                                        <span class="count_bottom" id="labHB">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.hb}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">WBC (uL)
-                                                        <span class="count_bottom" id="labwbc">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.wbc}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">N (%) 
-                                                        <span class="count_bottom" id="labn">
-                                                        </span>
-                                                    </label>    
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.n}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">L (%)
-                                                        <span class="count_bottom" id="labl">
-                                                        </span>
-                                                    </label>
-                                                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.l}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Platelets (uL)
-                                                        <span class="count_bottom" id="labplatelets">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.platelets}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">ESR (mm/hr)
-                                                        <span class="count_bottom" id="labesr">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.esr}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12  col-md-12 col-sm-12">
-                                                    <h4 class="page-header">2. Urine Analysis</h4>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">WBC (/HPF)
-                                                        <span class="count_bottom" id="labwbc_hpf">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.wbc_hpf}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> RBC (/HPF)
-                                                        <span class="count_bottom" id="labrbc_hpf">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.rbc_hpf}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> WBC casts (/LPF)
-                                                        <span class="count_bottom" id="labwbccasts">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.wbccasts}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> RBC casts (/LPF)
-                                                        <span class="count_bottom" id="labrbccasts">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.rbccasts}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> Granular casts(/LPF)
-                                                        <span class="count_bottom" id="labgranularcasts">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.granularcasts}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12  col-md-12 col-sm-12"></div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Glucose
-                                                        <span class="count_bottom" id="labglucose">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.glucose}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Protein 
-                                                        <span class="count_bottom" id="labprotein">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.protein}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">TP-Spot Urine Protein (mg/dL) 
-                                                        <span class="count_bottom" id="labtp_spoturineprotein">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <p class="form-control">{{lab.tp_spoturineprotein}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">CRE- Spot Urine Creatinine (mg/dL)  
-                                                        <span class="count_bottom" id="labcre_spoturinecreatinine">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <p class="form-control">{{lab.cre_spoturinecreatinine}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">24-hr Urine Protein (g/day) 
-                                                        <span class="count_bottom" id="labtfhr_urineprotein">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <p class="form-control">{{lab.tfhr_urineprotein}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">24-hr Urine Creatinine (g/day)
-                                                        <span class="count_bottom" id="labtfhr_urinecreatinine">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <p class="form-control">{{lab.tfhr_urinecreatinine}}</p>
-                                                    </div>
-                                                </div>
-												<div class="col-lg-6 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">UPCI
-                                                        <span class="count_bottom" id="labupci">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-3 col-md-3 col-sm-3">
-                                                        <p class="form-control">{{lab.upci}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12  col-md-12 col-sm-12">
-                                                    <h4 class="page-header">3. Blood Chem </h4>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">FBS (mg/dL)
-                                                        <span class="count_bottom" id="labfbs">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.fbs}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">HbA1C (%)
-                                                        <span class="count_bottom" id="labhba1c">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.hba1c}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">BUN (mg/dL)
-                                                        <span class="count_bottom" id="labbun">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.bun}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Cr (mg/dL)
-                                                        <span class="count_bottom" id="labcr">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.cr}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">ALP (units/L)
-                                                        <span class="count_bottom" id="labalp">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.alp}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">  AST (units/L)
-                                                        <span class="count_bottom" id="labast">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.ast}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">  ALT (units/L)
-                                                        <span class="count_bottom" id="labalt">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.alt}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">  GGT (units/L)
-                                                        <span class="count_bottom" id="labggt">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.ggt}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">LDH (units/L)
-                                                        <span class="count_bottom" id="labldh">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.ldh}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Albumin (g/dL)
-                                                        <span class="count_bottom" id="labalbumin">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.albumin}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">T/D bilirubin</label>
-                                                    <div class="form-inline col-lg-6 col-md-6 col-sm-6">
-                                                        <div class="form-group" style="padding: 0px;">
-                                                            <p class="form-control" style="width: 70px;">{{lab.tdbilirubin.0}}</p>
-                                                        </div>
-                                                        <label>/</label>
-                                                        <div class="form-group" style="padding: 0px;">
-                                                            <p class="form-control" style="width: 70px;">{{lab.tdbilirubin.1}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                 <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">CRP (mg/dL)
-                                                        <span class="count_bottom" id="labcrp">
-                                                        </span>
-                                                     </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.crp}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Choles (mg/dL)
-                                                        <span class="count_bottom" id="labcholes">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.choles}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">TG (mg/dL)
-                                                        <span class="count_bottom" id="labtg">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.tg}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">LDL (mg/dL)
-                                                        <span class="count_bottom" id="labldl">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.ldl}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">HDL (mg/dL)
-                                                        <span class="count_bottom" id="labhdl">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.hdl}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">INR
-                                                        <span class="count_bottom" id="labinr">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.inr}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12  col-md-12 col-sm-12">
-                                                    <h4 class="page-header">4. Immunology</h4>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-3 col-sm-3">ANA titer
-                                                        <span class="count_bottom" id="labanatiter">
-                                                        </span>
-                                                    </label>
-                                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                                    <p class="form-control">{{lab.anatiter}}</p> 
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6" >
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Homogeneouss
-                                                        <span class="count_bottom" id="labhomogeneous1">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.homogeneous1}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Peripheral
-                                                        <span class="count_bottom" id="labperipheral1">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.peripheral1}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-lg-offset-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Speckled
-                                                        <span class="count_bottom" id="labspeckled1">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.speckled1}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Nucleolar
-                                                        <span class="count_bottom" id="labnucleolar1">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.nucleolar1}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-4 col-sm-4">Anti-dsDNA (IU/mL)  
-                                                        <span class="count_bottom" id="labanti_dsdna">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-4 col-sm-4">
-                                                        <p class="form-control">{{lab.anti_dsdna}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Anti-Sm</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.antism is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiRNP (EU/mL)</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.antirnp is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiRo (EU/mL)</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.antiro is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiLa (EU/mL)</label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.antila is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> ACA (IU/mL)
-                                                        <span class="count_bottom" id="labaca">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.aca}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Lupus anticoagulant </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.lupusanticoagulant is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <label class="col-lg-6 col-md-4 col-sm-4">ß2GPI (IU/mL) </label>
-                                                    <div class="form-group col-lg-6 col-md-4 col-sm-4">
-                                                        <p class="form-control">{{lab.b2gpi}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> C3 (g/L)
-                                                        <span class="count_bottom" id="labc3">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group  col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.c3}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> C4 (g/L)
-                                                        <span class="count_bottom" id="labc4">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group  col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.c4}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6"> CH50 (%)
-                                                        <span class="count_bottom" id="labch50">
-                                                        </span>
-                                                    </label>
-                                                    <div class="form-group  col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.ch50}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">HBsAg </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.hbsag is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiHBs </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.antihbs is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiHBc </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.antihbc is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6  col-md-6 col-sm-6">AntiHCV </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.antihcv is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6  col-md-6 col-sm-6">AntiHIV </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.antihiv is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">AntiCIC </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="anticic" disabled {% if lab.anticic is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">IL-6 </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" name="il6" disabled {% if lab.il6 is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="col-lg-12  col-md-12 col-sm-12">
-                                                    <h4 class="page-header">Drug Level</h4>
-                                                </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">MPA</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.mpa}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">FK 506</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.fk507}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Cyclosporin</label>
-                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                        <p class="form-control">{{lab.cyclosporin}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                                    <label class="col-lg-6 col-md-6 col-sm-6">Cytokine </label> 
-                                                    <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" disabled {% if lab.cytokine is True %} checked {% endif %}> 
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-12 col-sm-12">
-                                                        <div class="col-lg-12  col-md-12 col-sm-12">
-                                                            <h4 class="page-header">5. BMD</h4>
-                                                        </div>
-                                                        <table class="table table-hover table-striped">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th></th>
-                                                                    <th>BMD(g/cm2)</th>
-                                                                    <th>T-scores</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>L1-L4 spine</td>
-                                                                    <td><p class="form-control">{{lab.l1l4spinebmd_tscore.0}}</p></td>
-                                                                    <td><p class="form-control">{{lab.l1l4spinebmd_tscore.1}}</p></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Hip</td>
-                                                                    <td><p class="form-control">{{lab.hipbmd_tscore.0}}</p></td>
-                                                                    <td><p class="form-control">{{lab.hipbmd_tscore.1}}</p></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Radius</td>
-                                                                    <td><p class="form-control">{{lab.radiusbmd_tscore.0}}</p></td>
-                                                                    <td><p class="form-control">{{lab.radiusbmd_tscore.1}}</p></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="col-lg-12  col-md-12 col-sm-12">
-                                                            <h4 class="page-header">6. Stool parasite</h4>
-                                                        </div>
-                                                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
-                                                            <div class="form-group"> 
-                                                                <select class="form-control" id="AbnormalList01" disabled> 
-                                                                    <option value="0">Normal</option>
-                                                                    <option {% if lab.stoolparasite.status != '' or lab.stoolparasite.date is not None %} selected {% endif %} value="1">Abnormal</option>
-                                                                    <option {% if lab.stoolparasite.status == '' and lab.stoolparasite.date is None %} selected {% endif %} value="2">Not done </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal1" style="display:none;">
-                                                            <div class="form-group">
-                                                                <label>Abnormal detail</label> 
-                                                                <p class="form-control">{{lab.stoolparasite.status}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal2" style="display:none;">
-                                                            <div class="form-group">
-                                                                <label>Date</label>  
-                                                                 <p class="form-control">{{lab.stoolparasite.date}}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12 col-sm-12"> 
-                                                        <div class="col-lg-12  col-md-12 col-sm-12">
-                                                            <h4 class="page-header">7. CXR</h4>
-                                                        </div>
-                                                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
-                                                            <div class="form-group"> 
-                                                                <select class="form-control" id="AbnormalList02" disabled> 
-                                                                    <option value="0">Normal</option>
-                                                                    <option {% if lab.cxr.status != '' or lab.cxr.date is not None %} selected {% endif %} value="1">Abnormal</option>
-                                                                    <option {% if lab.cxr.status == '' and lab.cxr.date is None %} selected {% endif %} value="2">Not done </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal3" style="display:none;">
-                                                            <div class="form-group">
-                                                                <label>Abnormal detail</label> 
-                                                                <p class="form-control">{{lab.cxr.status}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal4" style="display:none;">
-                                                            <div class="form-group">
-                                                                <label>Date</label>  
-                                                                 <p class="form-control">{{lab.cxr.date}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            <h4 class="page-header">8. EKG</h4>
-                                                        </div>
-                                                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
-                                                            <div class="form-group"> 
-                                                                <select class="form-control" id="AbnormalList03" disabled> 
-                                                                    <option value="0">Normal</option>
-                                                                    <option {% if lab.ekg.status != '' or lab.ekg.date is not None %} selected {% endif %} value="1">Abnormal</option>
-                                                                    <option {% if lab.ekg.status == '' and lab.ekg.date is None %} selected {% endif %} value="2">Not done </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal5" style="display:none;">
-                                                            <div class="form-group">
-                                                                <label>Abnormal detail</label> 
-                                                                <p class="form-control">{{lab.ekg.status}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal6" style="display:none;">
-                                                            <div class="form-group">
-                                                                <label>Date</label>  
-                                                                 <p class="form-control">{{lab.ekg.date}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12  col-md-12 col-sm-12">
-                                                            <h4 class="page-header">9. Echo</h4>
-                                                        </div>
-                                                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
-                                                            <div class="form-group"> 
-                                                                <select class="form-control" id="AbnormalList04" disabled> 
-                                                                    <option value="0">Normal</option>
-                                                                    <option {% if lab.echo.status != '' or lab.echo.date is not None %} selected {% endif %} value="1">Abnormal</option>
-                                                                    <option {% if lab.echo.status == '' and lab.echo.date is None %} selected {% endif %} value="2">Not done </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal7" style="display:none;">
-                                                            <div class="form-group">
-                                                                <label>Abnormal detail</label> 
-                                                                <p class="form-control">{{lab.echo.status}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-4 col-sm-4" id="ShowAbnormal8" style="display:none;">
-                                                            <div class="form-group">
-                                                                <label>Date</label>  
-                                                                 <p class="form-control">{{lab.echo.date}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12  col-md-12 col-sm-12">
-                                                            <h4 class="page-header">10. Lupus nephritis
-                                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="CheckLN" {% if lnlab is not None %} checked {% endif %} disabled>
-                                                            </h4>
-                                                        </div>                                                    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12  col-md-12 col-sm-12">
-                                <div class="panel panel-default" style="display: none;" id="LNShow">
-                                    <div class="panel-heading"> 
-                                        <h4 class="panel-title">Laboratory Investigation at baseline/diagnosis according to the ACR renal response criteria (ACR 2006)</h4>
-                                    </div>
-                                    <div class="panel-body ">
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                                <label class="col-lg-6 col-md-4 col-sm-4">Renal biopsy</label> 
-                                                <input class="col-lg-4 col-md-4 col-sm-4" type="checkbox" data-toggle="toggle" data-on="Pos" data-off="Neg" data-onstyle="primary" id="RenalShow" {% if lnlab.renalbiopsyclass != '' or lnlab.renalbiopsydate is not None %} checked {% endif %}>
-                                            </div>
-                                            <div class="col-lg-2 col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>ISN/RPS Class</label>  
-                                                    <p class="form-control" id="Renal01">{{lnlab.renalbiopsyclass}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Date</label>  
-                                                    <p class="form-control" id="Renal02">{{lnlab.renalbiopsydate}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Activity Index</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <p name="activityindex" class="form-control">{{lnlab.activityindex}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Chronicity Index</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <p name="activityindex" class="form-control">{{lnlab.chronicityindex}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">% Crescentic glomerulonephritis</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <p name="activityindex" class="form-control">{{lnlab.ln_1}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">% Glomerulosclerosis</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <p name="activityindex" class="form-control">{{lnlab.ln_2}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Interstitial fibrosis</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <p name="activityindex" class="form-control">{{lnlab.ln_3}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Tubular atrophy</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <p name="activityindex" class="form-control">{{lnlab.ln_4}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                                <label class="col-lg-6 col-md-6 col-sm-6">Serum Creatine (mg/dL)</label>
-                                                <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                                                    <p name="activityindex" class="form-control">{{lnlab.ln_5}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab5info" aria-labelledby="profile-tab">
                             <div class="col-lg-12">
