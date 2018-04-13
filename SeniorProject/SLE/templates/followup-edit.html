@@ -539,7 +539,7 @@
                                                                         <div class="checkbox">
                                                                             <div class="form-inline">
                                                                                 <div class="form-group">
-                                                                                    <input type="checkbox" name="cp_6" {% if clinicalpresentation.cp_6 is not None %} checked {% endif %}> Other rash
+                                                                                    <input type="checkbox" name="ckcp_6" {% if clinicalpresentation.cp_6 is not None %} checked {% endif %}> Other rash
                                                                                     <input type="text" class="form-control" name="cp_6" {% if clinicalpresentation.cp_6 is not None %} value="{{clinicalpresentation.cp_6}}" {% endif %} >
                                                                                 </div>
                                                                             </div>
@@ -1581,28 +1581,28 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckantism" {% if lab.antism is not None %} checked {% endif %}> Anti-Sm</label>  
+                                                                        <label><input type="checkbox" id="ckantism" name="ckantism" {% if lab.antism is not None %} checked {% endif %}> Anti-Sm</label>  
                                                                         <select class="form-control" name="antism" id="antism" {% if lab.antism is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.antism == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.antism == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckantirnp" {% if lab.antirnp is not None %} checked {% endif %}> AntiRNP (EU/mL)</label>  
+                                                                        <label><input type="checkbox" id="ckantirnp" name="ckantirnp" {% if lab.antirnp is not None %} checked {% endif %}> AntiRNP (EU/mL)</label>  
                                                                         <select class="form-control" name="antirnp" id="antirnp" {% if lab.antirnp is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.antirnp == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.antirnp == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckantiro" {% if lab.antiro is not None %} checked {% endif %}> AntiRo (EU/mL)</label>  
+                                                                        <label><input type="checkbox" id="ckantiro" name="ckantiro" {% if lab.antiro is not None %} checked {% endif %}> AntiRo (EU/mL)</label>  
                                                                         <select class="form-control" name="antiro" id="antiro" {% if lab.antiro is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.antiro == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.antiro == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckantila" {% if lab.antila is not None %} checked {% endif %}> AntiLa (EU/mL)</label>  
+                                                                        <label><input type="checkbox" id="ckantila" name="ckantila" {% if lab.antila is not None %} checked {% endif %}> AntiLa (EU/mL)</label>  
                                                                         <select class="form-control" name="antila" id="antila" {% if lab.antila is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.antila == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.antila == 'Positive' %} selected {% endif %}>Positive</option>
@@ -1617,7 +1617,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="cklupusanticoagulant" {% if lab.lupusanticoagulant is not None %} checked {% endif %}> Lupus anticoagulant</label>  
+                                                                        <label><input type="checkbox" id="cklupusanticoagulant" name="cklupusanticoagulant" {% if lab.lupusanticoagulant is not None %} checked {% endif %}> Lupus anticoagulant</label>  
                                                                         <select class="form-control" name="lupusanticoagulant" id="lupusanticoagulant" {% if lab.lupusanticoagulant is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.lupusanticoagulant == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.lupusanticoagulant == 'Positive' %} selected {% endif %}>Positive</option>
@@ -1644,14 +1644,14 @@
                                                                 </td>
                                                                 <td id="labtd04_2"  {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckanticic" {% if lab.anticic is not None %} checked {% endif %}> AntiCIC (RU/ml)</label>  
+                                                                        <label><input type="checkbox" id="ckanticic" name="ckanticic" {% if lab.anticic is not None %} checked {% endif %}> AntiCIC (RU/ml)</label>  
                                                                         <select class="form-control" name="anticic" id="anticic" {% if lab.anticic is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.anticic == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.anticic == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckil6" {% if lab.il6 is not None %} checked {% endif %}> IL-6 (PG/ml)</label>  
+                                                                        <label><input type="checkbox" id="ckil6" name="ckil6" {% if lab.il6 is not None %} checked {% endif %}> IL-6 (PG/ml)</label>  
                                                                         <select class="form-control" name="il6" id="il6" {% if lab.il6 is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.il6 == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.il6 == 'Positive' %} selected {% endif %}>Positive</option>
@@ -1666,35 +1666,35 @@
                                                                 </td>
                                                                 <td id="labtd05" {% if lab.hbsag is None and lab.antihbs is None and lab.antihbc is None and lab.antihcv is None and lab.antihiv is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckhbsag" {% if lab.hbsag is not None %} checked {% endif %}> HBsAg</label>  
+                                                                        <label><input type="checkbox" id="ckhbsag" name="ckhbsag" {% if lab.hbsag is not None %} checked {% endif %}> HBsAg</label>  
                                                                         <select class="form-control" name="hbsag" id="hbsag" {% if lab.hbsag is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.hbsag == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.hbsag == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckantihbs" {% if lab.antihbs is not None %} checked {% endif %}> AntiHBs</label>  
+                                                                        <label><input type="checkbox" id="ckantihbs" name="ckantihbs" {% if lab.antihbs is not None %} checked {% endif %}> AntiHBs</label>  
                                                                         <select class="form-control" name="antihbs" id="antihbs" {% if lab.antihbs is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.antihbs == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.antihbs == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckantihbc" {% if lab.antihbc is not None %} checked {% endif %}> AntiHBc</label>  
+                                                                        <label><input type="checkbox" id="ckantihbc" name="ckantihbc" {% if lab.antihbc is not None %} checked {% endif %}> AntiHBc</label>  
                                                                         <select class="form-control" name="antihbc" id="antihbc" {% if lab.antihbc is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.antihbc == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.antihbc == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckantihcv" {% if lab.antihcv is not None %} checked {% endif %}> AntiHCV</label>  
+                                                                        <label><input type="checkbox" id="ckantihcv" name="ckantihcv" {% if lab.antihcv is not None %} checked {% endif %}> AntiHCV</label>  
                                                                         <select class="form-control" name="antihcv" id="antihcv" {% if lab.antihcv is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.antihcv == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.antihcv == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckantihiv" {% if lab.antihiv is not None %} checked {% endif %}> AntiHIV</label>  
+                                                                        <label><input type="checkbox" id="ckantihiv" name="ckantihiv" {% if lab.antihiv is not None %} checked {% endif %}> AntiHIV</label>  
                                                                         <select class="form-control" name="antihiv" id="antihiv" {% if lab.antihiv is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.antihiv == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.antihiv == 'Positive' %} selected {% endif %}>Positive</option>
@@ -1749,9 +1749,9 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06" {% if lab.l1l4spinebmd_tscore.0 is not None or lab.l1l4spinebmd_tscore.1 is not None or lab.l1l4spinebmd_tscore.2 is not None or lab.hipbmd_tscore.0 is not None or lab.hipbmd_tscore.1 is not None or lab.hipbmd_tscore.2 is not None or lab.radiusbmd_tscore.0 is not None or lab.radiusbmd_tscore.1 is not None or lab.radiusbmd_tscore.2 is not None %} checked {% endif %}> 6. BMD</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06"  {% if lab.l1l4spine_bmd is not None or lab.l1l4spine_tscore is not None or lab.l1l4spine_date is not None or lab.hip_bmd is not None or lab.hip_tscore is not None or lab.hip_date is not None or lab.radius_bmd is not None or lab.radius_tscore is not None or lab.radius_date is not None %} checked {% endif %}> 6. BMD</td>
                                                             </tr>
-                                                            <tr id="labtr06" {% if lab.l1l4spinebmd_tscore.0 is None and lab.l1l4spinebmd_tscore.1 is None and lab.l1l4spinebmd_tscore.2 is None and lab.hipbmd_tscore.0 is None and lab.hipbmd_tscore.1 is None and lab.hipbmd_tscore.2 is None and lab.radiusbmd_tscore.0 is None and lab.radiusbmd_tscore.1 is none and lab.radiusbmd_tscore.2 is None %} class="disabledbutton" {% endif %}>
+                                                            <tr id="labtr06" {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <table class="table table-hover table-striped">
                                                                         <thead>
@@ -1769,7 +1769,7 @@
 ></td>
                                                                                 <td><input type="number" name="l1l4spine_tscore"   placeholder="0.000" step="0.001" class="form-control" {% if lab.l1l4spine_tscore is not None %} value="{{lab.l1l4spine_tscore}}" {% endif %}
 ></td>
-                                                                                <td><input type="date" name="l1l4spine_date" class="form-control" {% if lab.l1l4spine_date is not None %} value="{{lab.l1l4spine_date}}" {% endif %}
+                                                                                <td><input type="date" name="l1l4spine_date" class="form-control" {% if lab.l1l4spine_date is not None %} value="{{lab.l1l4spine_date|date:"Y-m-d"}}" {% endif %}
 ></td>
                                                                             </tr>
                                                                             <tr>
@@ -1778,7 +1778,7 @@
 ></td>
                                                                                 <td><input type="number" name="hip_tscore"   placeholder="0.000" step="0.001" class="form-control" {% if lab.hip_tscore is not None %} value="{{lab.hip_tscore}}" {% endif %}
 ></td>
-                                                                                <td><input type="date" name="hip_date" class="form-control" {% if lab.hip_date is not None %} value="{{lab.hip_date}}" {% endif %}
+                                                                                <td><input type="date" name="hip_date" class="form-control" {% if lab.hip_date is not None %} value="{{lab.hip_date|date:"Y-m-d"}}" {% endif %}
 ></td>
                                                                             </tr>
                                                                             <tr>
@@ -1787,7 +1787,7 @@
 ></td>
                                                                                 <td><input type="number" name="radius_tscore"   placeholder="0.000" step="0.001" class="form-control" {% if lab.radius_tscore is not None %} value="{{lab.radius_tscore}}" {% endif %}
 ></td>
-                                                                                <td><input type="date" name="radius_date" class="form-control" {% if lab.radius_date is not None %} value="{{lab.radius_date}}" {% endif %}
+                                                                                <td><input type="date" name="radius_date" class="form-control" {% if lab.radius_date is not None %} value="{{lab.radius_date|date:"Y-m-d"}}" {% endif %}
 ></td>
                                                                             </tr>
                                                                         </tbody>
@@ -1801,26 +1801,26 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.status is not None %} checked {% endif %}> 7. Stool parasite</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.status is not None %} checked {% endif %}> 8. CXR</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.status is not None %} checked {% endif %}> 9. EKG</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.status is not None %} checked {% endif %}> 10. Echo</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.status is not None %} checked {% endif %} name="labcheck07" value="1"> 7. Stool parasite</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.status is not None %} checked {% endif %} name="labcheck08" value="1"> 8. CXR</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.status is not None %} checked {% endif %} name="labcheck09" value="1"> 9. EKG</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.status is not None %} checked {% endif %} name="labcheck10" value="1"> 10. Echo</td>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd07" class="disabledbutton">
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="stoolparasite">
-                                                                            <option selected value="0" {% if lab.stoolparasite.status == 'Normal' %} selected {% endif %}>Normal</option>
-                                                                            <option value="1" {% if lab.stoolparasite.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
-                                                                            <option value="2" {% if lab.stoolparasite.status == 'Not done' %} selected {% endif %}>Not done </option>
-                                                                            <option value="3" {% if lab.stoolparasite.status == 'Not found' %} selected {% endif %}>Not found </option>
+                                                                            <option selected value="Normal" {% if lab.stoolparasite.status == 'Normal' %} selected {% endif %}>Normal</option>
+                                                                            <option value="Abnormal" {% if lab.stoolparasite.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
+                                                                            <option value="Not done" {% if lab.stoolparasite.status == 'Not done' %} selected {% endif %}>Not done </option>
+                                                                            <option value="Not found" {% if lab.stoolparasite.status == 'Not found' %} selected {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
                                                                         <select class="form-control" name="stoolparasite1">
-                                                                            <option value="Negative" {% if lab.stoolparasite.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.stoolparasite.detail == 'detail2' %} selected {% endif %}>detail2</option>
+                                                                            <option value="detail1" {% if lab.stoolparasite.detail == 'detail1' %} selected {% endif %}>detail1</option>
+                                                                            <option value="detail2" {% if lab.stoolparasite.detail == 'detail2' %} selected {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -1833,17 +1833,17 @@
                                                                 <td id="labtd08" class="disabledbutton">
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="cxr">
-                                                                            <option selected value="0" {% if lab.cxr.status == 'Normal' %} selected {% endif %}>Normal</option>
-                                                                            <option value="1" {% if lab.cxr.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
-                                                                            <option value="2" {% if lab.cxr.status == 'Not done' %} selected {% endif %}>Not done </option>
-                                                                            <option value="3" {% if lab.cxr.status == 'Not found' %} selected {% endif %}>Not found </option>
+                                                                            <option selected value="Normal" {% if lab.cxr.status == 'Normal' %} selected {% endif %}>Normal</option>
+                                                                            <option value="Abnormal" {% if lab.cxr.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
+                                                                            <option value="Not done" {% if lab.cxr.status == 'Not done' %} selected {% endif %}>Not done </option>
+                                                                            <option value="Not found" {% if lab.cxr.status == 'Not found' %} selected {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
                                                                         <select class="form-control" name="cxr1">
-                                                                            <option value="Negative" {% if lab.cxr.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.cxr.detail == 'detail2' %} selected {% endif %}>detail2</option>
+                                                                            <option value="detail1" {% if lab.cxr.detail == 'detail1' %} selected {% endif %}>detail1</option>
+                                                                            <option value="detail2" {% if lab.cxr.detail == 'detail2' %} selected {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -1856,17 +1856,17 @@
                                                                 <td id="labtd09" class="disabledbutton">
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="ekg">
-                                                                            <option selected value="0" {% if lab.ekg.status == 'Normal' %} selected {% endif %}>Normal</option>
-                                                                            <option value="1" {% if lab.ekg.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
-                                                                            <option value="2" {% if lab.ekg.status == 'Not done' %} selected {% endif %}>Not done </option>
-                                                                            <option value="3" {% if lab.ekg.status == 'Not found' %} selected {% endif %}>Not found </option>
+                                                                            <option selected value="Normal" {% if lab.ekg.status == 'Normal' %} selected {% endif %}>Normal</option>
+                                                                            <option value="Abnormal" {% if lab.ekg.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
+                                                                            <option value="Not done" {% if lab.ekg.status == 'Not done' %} selected {% endif %}>Not done </option>
+                                                                            <option value="Not found" {% if lab.ekg.status == 'Not found' %} selected {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
                                                                         <select class="form-control" name="ekg1">
-                                                                            <option value="Negative" {% if lab.ekg.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.ekg.detail == 'detail2' %} selected {% endif %}>detail2</option>
+                                                                            <option value="detail1" {% if lab.ekg.detail == 'detail1' %} selected {% endif %}>detail1</option>
+                                                                            <option value="detail2" {% if lab.ekg.detail == 'detail2' %} selected {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -1879,17 +1879,17 @@
                                                                 <td id="labtd10" class="disabledbutton">
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="echo">
-                                                                            <option selected value="0" {% if lab.echo.status == 'Normal' %} selected {% endif %}>Normal</option>
-                                                                            <option value="1" {% if lab.echo.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
-                                                                            <option value="2" {% if lab.echo.status == 'Not done' %} selected {% endif %}>Not done </option>
-                                                                            <option value="3" {% if lab.echo.status == 'Not found' %} selected {% endif %}>Not found </option>
+                                                                            <option selected value="Normal" {% if lab.echo.status == 'Normal' %} selected {% endif %}>Normal</option>
+                                                                            <option value="Abnormal" {% if lab.echo.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
+                                                                            <option value="Not done" {% if lab.echo.status == 'Not done' %} selected {% endif %}>Not done </option>
+                                                                            <option value="Not found" {% if lab.echo.status == 'Not found' %} selected {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
                                                                         <select class="form-control" name="echo1">
-                                                                            <option value="Negative" {% if lab.echo.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.echo.detail == 'detail2' %} selected {% endif %}>detail2</option>
+                                                                            <option value="detail1" {% if lab.echo.detail == 'detail1' %} selected {% endif %}>detail1</option>
+                                                                            <option value="detail2" {% if lab.echo.detail == 'detail2' %} selected {% endif %}>detail2</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
@@ -1907,27 +1907,27 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" {% if lab.renalbiopsyclassck is not None or lab.renalbiopsyclass is not None or lab.renalbiopsydate is not None or lab.activityindex is not None or lab.chronicityindex is not None or lab.ln_1 is not None or lab.ln_2 is not None or lab.ln_3 is not None or lab.ln_4 is not None or lab.ln_5 is not None %} checked {% endif %}> 11. Lupus nephritis</td>
+                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" name="labcheck11" {% if lnlab.renalbiopsyclassck is not None or lnlab.renalbiopsyclass is not None or lnlab.renalbiopsydate is not None or lnlab.activityindex is not None or lnlab.chronicityindex is not None or lnlab.ln_1 is not None or lnlab.ln_2 is not None or lnlab.ln_3 is not None or lnlab.ln_4 is not None or lnlab.ln_5 is not None %} checked {% endif %}> 11. Lupus nephritis</td>
                                                             </tr>
-                                                            <tr id="labtr11" {% if lab.renalbiopsyclassck is None and lab.renalbiopsyclass is None and lab.renalbiopsydate is None and lab.activityindex is None and lab.chronicityindex is None and lab.ln_1 is None and lab.ln_2 is None and lab.ln_3 is None and lab.ln_4 is None and lab.ln_5 is None %} class="disabledbutton" {% endif %}>
+                                                            <tr id="labtr11" {% if lnlab.renalbiopsyclassck is None and lnlab.renalbiopsyclass is None and lnlab.renalbiopsydate is None and lnlab.activityindex is None and lnlab.chronicityindex is None and lnlab.ln_1 is None and lnlab.ln_2 is None and lnlab.ln_3 is None and lnlab.ln_4 is None and lnlab.ln_5 is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <div class="form-group">  
                                                                         <label>Renal biopsy</label>  
-                                                                        <select class="form-control" name="renalbiopsyclass">
-                                                                            <option value="Negative" {% if lab.renalbiopsyclassck == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="Positive" {% if lab.renalbiopsyclassck == 'detail2' %} selected {% endif %}>detail2</option>
+                                                                        <select class="form-control" name="RenalShow">
+                                                                            <option value="Negative" {% if lnlab.renalbiopsystatus == 'Negative' %} selected {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lnlab.renalbiopsystatus == 'Positive' %} selected {% endif %}>Positive</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>ISN/RPS Class</label>  
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control" id="Renal01" name="renalbiopsyclass" {% if lab.renalbiopsyclass is not None %} value="{{lab.renalbiopsyclass}}" {% endif %}>
+                                                                            <input type="text" class="form-control" id="Renal01" name="renalbiopsyclass" {% if lnlab.renalbiopsyclass is not None %} value="{{lnlab.renalbiopsyclass}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Date</label>  
                                                                         <div class="form-group">
-                                                                            <input type="date" class="form-control" id="Renal02" name="renalbiopsydate" style="width: 159px;" {% if renalbiopsydate is not None %} value="{{lab.renalbiopsydate|date:'Y-m-d'}}" {% endif %}>
+                                                                            <input type="date" class="form-control" id="Renal02" name="renalbiopsydate" style="width: 159px;" {% if lnlab.renalbiopsydate is not None %} value="{{lnlab.renalbiopsydate|date:'Y-m-d'}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -1935,19 +1935,19 @@
                                                                     <div class="form-group">
                                                                         <label>Activity Index</label>  
                                                                         <div class="form-group">
-                                                                            <input type="number" name="activityindex"   placeholder="00" class="form-control" {% if lab.activityindex is not None %} value="{{lab.activityindex}}" {% endif %}>
+                                                                            <input type="number" name="activityindex"   placeholder="00" class="form-control" {% if lnlab.activityindex is not None %} value="{{lnlab.activityindex}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Chronicity Index</label>  
                                                                         <div class="form-group">
-                                                                            <input type="number" name="chronicityindex"   placeholder="00" class="form-control" {% if lab.chronicityindex is not None %} value="{{lab.chronicityindex}}" {% endif %}>
+                                                                            <input type="number" name="chronicityindex"   placeholder="00" class="form-control" {% if lnlab.chronicityindex is not None %} value="{{lnlab.chronicityindex}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>% Crescentic glomerulonephritis</label>  
                                                                         <div class="form-group">
-                                                                            <input type="number" name="ln_1"   placeholder="000" class="form-control" {% if lab.ln_1 is not None %} value="{{lab.ln_1}}" {% endif %}>
+                                                                            <input type="number" name="ln_1"   placeholder="000" class="form-control" {% if lnlab.ln_1 is not None %} value="{{lnlab.ln_1}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -1955,19 +1955,19 @@
                                                                     <div class="form-group">
                                                                         <label>% Glomerulosclerosis</label>  
                                                                         <div class="form-group">
-                                                                            <input type="number" name="ln_2"   placeholder="000" class="form-control" {% if lab.ln_2 is not None %} value="{{lab.ln_2}}" {% endif %}>
+                                                                            <input type="number" name="ln_2"   placeholder="000" class="form-control" {% if lnlab.ln_2 is not None %} value="{{lnlab.ln_2}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Interstitial fibrosis</label>  
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control" name="ln_3" {% if lab.ln_3 is not None %} value="{{lab.ln_3}}" {% endif %}>
+                                                                            <input type="text" class="form-control" name="ln_3" {% if lnlab.ln_3 is not None %} value="{{lnlab.ln_3}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Tubular atrophy</label>  
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control" name="ln_4" {% if lab.ln_4 is not None %} value="{{lab.ln_4}}" {% endif %}>
+                                                                            <input type="text" class="form-control" name="ln_4" {% if lnlab.ln_4 is not None %} value="{{lnlab.ln_4}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -1975,7 +1975,7 @@
                                                                     <div class="form-group">
                                                                         <label>Serum Creatine (mg/dL)</label>  
                                                                         <div class="form-group">
-                                                                            <input type="number" name="ln_5"   placeholder="00.0" step="0.1" class="form-control" {% if lab.ln_5 is not None %} value="{{lab.ln_5}}" {% endif %}>
+                                                                            <input type="number" name="ln_5"   placeholder="00.0" step="0.1" class="form-control" {% if lnlab.ln_5 is not None %} value="{{lnlab.ln_5}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                 </td>

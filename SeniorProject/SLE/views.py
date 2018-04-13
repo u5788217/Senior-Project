@@ -245,7 +245,7 @@ def ValidateVisiting(studynum, date):
 def haslnlab(lab):
     ln = None
     try:
-        ln = Lnlab.objects.get(lnlabid = lab.lnlabid) 
+        ln = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
         return True
     except ObjectDoesNotExist:
         ln = None
@@ -920,7 +920,10 @@ def followPatient(request):
                                 visitnote = request.POST.get('addnote',''),
                                 visitfile = despath)
             Followvisiting.save()
-    
+        
+            cp_6 = None
+            if CheckboxToBool(request.POST.get('ckcp_6', '')) is 'True':
+                cp_6 = request.POST.get('cp_6', '')
             Followclinic = Clinicalpresentation(visitingid = Followvisiting,
                                 studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),
@@ -929,7 +932,7 @@ def followPatient(request):
                                 cp_3 = CheckboxToBool(request.POST.get('cp_3', '')),
                                 cp_4 = CheckboxToBool(request.POST.get('cp_4', '')),
                                 cp_5 = CheckboxToBool(request.POST.get('cp_5', '')),
-                                cp_6 = request.POST.get('cp_6', ''),
+                                cp_6 = cp_6,
                                 cp_7 = CheckboxToBool(request.POST.get('cp_7', '')),
                                 cp_8 = CheckboxToBool(request.POST.get('cp_8', '')),
                                 cp_9 = CheckboxToBool(request.POST.get('cp_9', '')),
@@ -1040,7 +1043,7 @@ def followPatient(request):
                         status = request.POST.get('patientstatus', ''))
             FollowSLEDAI.save()
             
-            if CheckboxToBool(request.POST.get('labcheck11', '')) == '1':
+            if CheckboxToBool(request.POST.get('labcheck11', '')) is 'True':
                 FollowLn = Lnlab(renalbiopsyclass = request.POST.get('renalbiopsyclass', ''),
                 renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', '')),
                 activityindex = ToFloat(request.POST.get('activityindex', '')),
@@ -1251,7 +1254,7 @@ def followDetail(request, visitid):
     
     lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
     if haslnlab(lab) is True:
-        lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
+        lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
     else: 
         lnlab = None
     this_date = Visiting.objects.get(visitingid = visitid).visitdate
@@ -1306,6 +1309,10 @@ def followEditPost(request):
         old_visiting.visitfile = despath
         old_visiting.save()   
         
+        cp_6 = None
+        if CheckboxToBool(request.POST.get('ckcp_6', '')) is 'True':
+            cp_6 = request.POST.get('cp_6', '')
+        
         old_clinic = Clinicalpresentation.objects.get(visitingid = temp_visitid)
         old_clinic.visitdate =  request.POST.get('visitdate', '')
         old_clinic.cp_1 = CheckboxToBool(request.POST.get('cp_1', ''))
@@ -1313,7 +1320,7 @@ def followEditPost(request):
         old_clinic.cp_3 = CheckboxToBool(request.POST.get('cp_3', ''))
         old_clinic.cp_4 = CheckboxToBool(request.POST.get('cp_4', ''))
         old_clinic.cp_5 = CheckboxToBool(request.POST.get('cp_5', ''))
-        old_clinic.cp_6 = request.POST.get('cp_6', '')
+        old_clinic.cp_6 = cp_6
         old_clinic.cp_7 = CheckboxToBool(request.POST.get('cp_7', ''))
         old_clinic.cp_8 = CheckboxToBool(request.POST.get('cp_8', ''))
         old_clinic.cp_9 = CheckboxToBool(request.POST.get('cp_9', ''))
@@ -1423,7 +1430,7 @@ def followEditPost(request):
         old_sledai.save()
         
         old_ln = None
-        if CheckboxToBool(request.POST.get('labcheck11', '')) == '1':
+        if CheckboxToBool(request.POST.get('labcheck11', '')) is 'True':
             if Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid is not None:
                 old_ln = Lnlab.objects.get(lnlabid = Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid)
                 old_ln.renalbiopsyclass = request.POST.get('renalbiopsyclass', '')
@@ -1449,7 +1456,34 @@ def followEditPost(request):
                 ln_5 = ToFloat(request.POST.get('ln_5', '')),
                 renalbiopsystatus = request.POST.get('RenalShow', ''))
                 old_ln.save()
-
+                
+        labcheck07 = CheckboxToBool(request.POST.get('labcheck07', ''))
+        labcheck08 = CheckboxToBool(request.POST.get('labcheck08', ''))
+        labcheck09 = CheckboxToBool(request.POST.get('labcheck09', ''))
+        labcheck10 = CheckboxToBool(request.POST.get('labcheck10', ''))
+        stoolparasite = None
+        cxr=None
+        ekg=None
+        echo=None
+        if labcheck07 is 'True':
+            stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
+                                date = DateToNone(request.POST.get('stoolparasite2', '')),
+                                detail = request.POST.get('stoolparasite1', ''))
+        if labcheck08 is 'True':
+            cxr = Labtype(status = request.POST.get('cxr', ''), 
+                                date = DateToNone(request.POST.get('cxr2', '')),                                 detail = request.POST.get('cxr1', ''))
+        if labcheck09 is 'True':
+            ekg = Labtype(status = request.POST.get('ekg', ''), 
+                                date = DateToNone(request.POST.get('ekg2', '')),
+                                detail = request.POST.get('ekg1', ''))
+        if labcheck10 is 'True':
+            echo = Labtype(status = request.POST.get('echo', ''), 
+                                date = DateToNone(request.POST.get('echo2', '')),
+                                detail = request.POST.get('echo1', ''))
+            
+            
+                            
+           
         old_lab = Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid)
         old_lab.lnlabid = old_ln
         old_lab.visitdate =  request.POST.get('visitdate', '')
@@ -1529,18 +1563,10 @@ def followEditPost(request):
         old_lab.radius_bmd = ToFloatNone(request.POST.get('radius_bmd',''))
         old_lab.radius_tscore = ToFloatNone(request.POST.get('radius_tscore',''))
         old_lab.radius_date = DateToNone(request.POST.get('radius_date',''))
-        old_lab.stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
-                                    date = DateToNone(request.POST.get('stoolparasite2', '')),
-                                    detail = request.POST.get('stoolparasite1', ''))
-        old_lab.cxr = Labtype(status = request.POST.get('cxr', ''), 
-                                    date = DateToNone(request.POST.get('cxr2', '')),
-                                    detail = request.POST.get('cxr1', ''))
-        old_lab.ekg = Labtype(status = request.POST.get('ekg', ''), 
-                                    date = DateToNone(request.POST.get('ekg2', '')),
-                                    detail = request.POST.get('ekg1', ''))
-        old_lab.echo = Labtype(status = request.POST.get('echo', ''), 
-                                    date = DateToNone(request.POST.get('echo2', '')),
-                                    detail = request.POST.get('echo1', ''))
+        old_lab.stoolparasite = stoolparasite
+        old_lab.cxr = cxr
+        old_lab.ekg = ekg
+        old_lab.echo = echo
         old_lab.save()
         
         old_med = Medication.objects.get(visitingid = temp_visitid)
@@ -1614,7 +1640,7 @@ def followEditPost(request):
 def followEdit(request, visitid):
     lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
     if haslnlab(lab) is True:
-        lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid) 
+        lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
     else: 
         lnlab = None
     return render(request, 'followup-edit.html',
