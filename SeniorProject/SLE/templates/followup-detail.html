@@ -1355,9 +1355,9 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01" {% if lab.hb is not None or lab.wbc is not None or lab.n is not None or lab.l is not None or lab.platelets is not None or lab.esr is not None %} checked {% endif %}> 1. CBC</td>
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"> 1. CBC</td>
                                                             </tr>
-                                                            <tr id="labtr01" {% if lab.hb is None and lab.wbc is None and lab.n is None and lab.l is None and lab.platelets is None and lab.esr is None %} class="disabledbutton" {% endif %}>
+                                                            <tr class="disabledbutton">
                                                                 <td>
                                                                     <div class="form-group">
                                                                         <label>Hb (g/dL) <span class="count_bottom" id="labHB"></span></label>  
@@ -1366,7 +1366,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>WBC (uL)</label>  
+                                                                        <label>WBC (uL) <span class="count_bottom" id="labwbc"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="wbc"   placeholder="00,000" class="form-control" {% if lab.wbc is not None %} value="{{lab.wbc}}" {% endif %}>
                                                                         </div>
@@ -1374,13 +1374,13 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <label>N (%)</label>  
+                                                                        <label>N (%) <span class="count_bottom" id="labn"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="n"   placeholder="00"  class="form-control" {% if lab.n is not None %} value="{{lab.n}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>L (%)</label>  
+                                                                        <label>L (%) <span class="count_bottom" id="labl"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="l"   placeholder="00" class="form-control" {% if lab.l is not None %} value="{{lab.l}}" {% endif %}>
                                                                         </div>
@@ -1388,13 +1388,13 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <label> Platelets (uL)</label>  
+                                                                        <label> Platelets (uL) <span class="count_bottom" id="labplatelets"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="platelets"   placeholder="000,000" class="form-control" {% if lab.platelets is not None %} value="{{lab.platelets}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>ESR (mm/hr)</label>  
+                                                                        <label>ESR (mm/hr) <span class="count_bottom" id="labesr"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="esr"   placeholder="00" class="form-control" {% if lab.esr is not None %} value="{{lab.esr}}" {% endif %}>
                                                                         </div>
@@ -1408,17 +1408,17 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck02" {% if lab.wbc_hpf1 is not None or lab.wbc_hpf2 is not None or lab.wbc_hpf1 is not None or lab.wbc_hpf2 is not None or lab.wbccasts1 is not None or lab.wbccasts2 is not None or lab.rbccasts1 is not None or lab.rbccasts2 is not None or lab.granularcasts1 is not None or lab.granularcasts2 is not None or lab.glucose is not None or lab.protein is not None or lab.tp_spoturineprotein is not None or lab.cre_spoturinecreatinine is not None or lab.tfhr_urineprotein is not None or lab.tfhr_urinecreatinine is not None or lab.upci is not None %} checked {% endif %}> 2. Urine Analysis</td>
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"> 2. Urine Analysis</td>
                                                             </tr>
-                                                            <tr id="labtr02_0" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}>
+                                                            <tr class="disabledbutton">
                                                                 <td colspan="3" align="center" style="background-color: #FDFCEE;">
                                                                     2.1
                                                                 </td>
                                                             </tr>
-                                                            <tr id="labtr02_1" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}> 
+                                                            <tr class="disabledbutton"> 
                                                                 <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>WBC (/HPF)</label> 
+                                                                        <label>WBC (/HPF) <span class="count_bottom" id="labwbc_hpf"></span></label> 
                                                                         <div class="form-inline">
                                                                             <div class="form-group">
                                                                                 <input type="number" name="wbc_hpf1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.wbc_hpf1 is not None %} value="{{lab.wbc_hpf1}}" {% endif %}>
@@ -1430,7 +1430,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>RBC (/HPF)</label>  
+                                                                        <label>RBC (/HPF) <span class="count_bottom" id="labrbc_hpf"></span></label>  
                                                                         <div class="form-inline">
                                                                             <div class="form-group">
                                                                                 <input type="number" name="rbc_hpf1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.rbc_hpf1 is not None %} value="{{lab.rbc_hpf1}}" {% endif %}>
@@ -1444,7 +1444,7 @@
                                                                 </td>
                                                                 <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>WBC casts (/LPF)</label>  
+                                                                        <label>WBC casts (/LPF) <span class="count_bottom" id="labwbccasts"></span></label>  
                                                                         <div class="form-inline">
                                                                             <div class="form-group">
                                                                                 <input type="number" name="wbccasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.wbccasts1 is not None %} value="{{lab.wbccasts1}}" {% endif %}>
@@ -1456,7 +1456,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>RBC casts (/LPF)</label>  
+                                                                        <label>RBC casts (/LPF) <span class="count_bottom" id="labrbccasts"></span></label>  
                                                                         <div class="form-inline">
                                                                             <div class="form-group">
                                                                                 <input type="number" name="rbccasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.rbccasts1 is not None %} value="{{lab.rbccasts1}}" {% endif %}>
@@ -1468,7 +1468,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Granular casts(/LPF)</label>  
+                                                                        <label>Granular casts(/LPF) <span class="count_bottom" id="labgranularcasts"></span></label>  
                                                                         <div class="form-inline">
                                                                             <div class="form-group">
                                                                                 <input type="number" name="granularcasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.granularcasts1 is not None %} value="{{lab.granularcasts1}}" {% endif %}>
@@ -1505,21 +1505,21 @@
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            <tr id="labtr02_3" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}>
+                                                            <tr class="disabledbutton">
                                                                 <td colspan="3" align="center" style="background-color: #FDFCEE;">
                                                                     2.2
                                                                 </td>
                                                             </tr>
-                                                            <tr id="labtr02_4" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}> 
+                                                            <tr class="disabledbutton"> 
                                                                 <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>TP-Spot Urine Protein (mg/dL)</label>  
+                                                                        <label>TP-Spot Urine Protein (mg/dL) <span class="count_bottom" id="labtp_spoturineprotein"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="tp_spoturineprotein"   placeholder="000" class="form-control" {% if lab.tp_spoturineprotein is not None %} value="{{lab.tp_spoturineprotein}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>CRE- Spot Urine Creatinine (mg/dL)</label>  
+                                                                        <label>CRE- Spot Urine Creatinine (mg/dL) <span class="count_bottom" id="labcre_spoturinecreatinine"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="cre_spoturinecreatinine"   placeholder="000" class="form-control" {% if lab.cre_spoturinecreatinine is not None %} value="{{lab.cre_spoturinecreatinine}}" {% endif %}>
                                                                         </div>
@@ -1527,13 +1527,13 @@
                                                                 </td>
                                                                 <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>24-hr Urine Protein (g/day)</label>  
+                                                                        <label>24-hr Urine Protein (g/day) <span class="count_bottom" id="labtfhr_urineprotein"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="tfhr_urineprotein" id="tfhr_urineprotein" step="0.1" placeholder="00.0" class="form-control" {% if lab.tfhr_urineprotein is not None %} value="{{lab.tfhr_urineprotein}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>24-hr Urine Creatinine (g/day)</label>  
+                                                                        <label>24-hr Urine Creatinine (g/day) <span class="count_bottom" id="labtfhr_urinecreatinine"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="tfhr_urinecreatinine" id="tfhr_urinecreatinine" step="0.1" placeholder="00.0" class="form-control" {% if lab.tfhr_urinecreatinine is not None %} value="{{lab.tfhr_urinecreatinine}}" {% endif %}>
                                                                         </div>
@@ -1541,7 +1541,7 @@
                                                                 </td>
                                                                 <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>UPCI</label>  
+                                                                        <label>UPCI <span class="count_bottom" id="labupci"></span>   </label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="upci" id="upci" step="0.1" placeholder="0.0" class="form-control" {% if lab.upci is not None %} value="{{lab.upci}}" {% endif %}>
                                                                         </div>
@@ -1555,42 +1555,42 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck03" {% if lab.fbs is not None or lab.cr is not None or lab.alt is not None or lab.albumin is not None or lab.choles is not None or lab.hdl is not None or lab.hba1c is not None or lab.alp is not None or lab.ggt is not None or lab.tdbilirubin1 is not None or lab.tdbilirubin2 is not None or lab.tg is not None or lab.bun is not None or lab.ast is not None or lab.ldh is not None or lab.crp is not None or lab.ldl is not None or lab.inr is not None %} checked {% endif %}> 3. Blood Chem</td>
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"> 3. Blood Chem</td>
                                                             </tr>
-                                                            <tr id="labtr03" {% if lab.fbs is None and lab.cr is None and lab.alt is None and lab.albumin is None and lab.choles is None and lab.hdl is None and lab.hba1c is None and lab.alp is None and lab.ggt is None and lab.tdbilirubin1 is None and lab.tdbilirubin2 is None and lab.tg is None and lab.bun is None and lab.ast is None and lab.ldh is None and lab.crp is None and lab.ldl is None and lab.inr is None %} class="disabledbutton" {% endif %}>
+                                                            <tr id="labtr03" class="disabledbutton">
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <label>FBS (mg/dL)</label>  
+                                                                        <label>FBS (mg/dL) <span class="count_bottom" id="labfbs"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="fbs"   placeholder="000" class="form-control" {% if lab.fbs is not None %} value="{{lab.fbs}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Cr (mg/dL)</label>  
+                                                                        <label>Cr (mg/dL) <span class="count_bottom" id="labcr"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="cr"   placeholder="00.0" step="0.1" class="form-control" {% if lab.cr is not None %} value="{{lab.cr}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>ALT (units/L)</label>  
+                                                                        <label>ALT (units/L) <span class="count_bottom" id="labalt"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="alt"   placeholder="0,000" class="form-control" {% if lab.alt is not None %} value="{{lab.alt}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Albumin (g/dL)</label>  
+                                                                        <label>Albumin (g/dL) <span class="count_bottom" id="labalbumin"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="albumin"   placeholder="00.0" step="0.1" class="form-control" {% if lab.albumin is not None %} value="{{lab.albumin}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Choles (mg/dL)</label>  
+                                                                        <label>Choles (mg/dL) <span class="count_bottom" id="labcholes"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="choles"   placeholder="0,000" class="form-control" {% if lab.choles is not None %} value="{{lab.choles}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>HDL (mg/dL)</label>  
+                                                                        <label>HDL (mg/dL) <span class="count_bottom" id="labhdl"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="hdl"   placeholder="000" class="form-control" {% if lab.hdl is not None %} value="{{lab.hdl}}" {% endif %}>
                                                                         </div>
@@ -1598,19 +1598,19 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <label>HbA1C (%)</label>  
+                                                                        <label>HbA1C (%) <span class="count_bottom" id="labhba1c"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="hba1c"   placeholder="00" class="form-control" {% if lab.hba1c is not None %} value="{{lab.hba1c}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>ALP (units/L)</label>  
+                                                                        <label>ALP (units/L) <span class="count_bottom" id="labalp"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="alp"   placeholder="0,000" class="form-control" {% if lab.alp is not None %} value="{{lab.alp}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>GGT (units/L)</label>  
+                                                                        <label>GGT (units/L) <span class="count_bottom" id="labggt"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="ggt"   placeholder="000" class="form-control" {% if lab.ggt is not None %} value="{{lab.ggt}}" {% endif %}>
                                                                         </div>
@@ -1628,7 +1628,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>TG (mg/dL)</label>  
+                                                                        <label>TG (mg/dL) <span class="count_bottom" id="labtg"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="tg"   placeholder="0,000" class="form-control" {% if lab.tg is not None %} value="{{lab.tg}}" {% endif %}>
                                                                         </div>
@@ -1636,37 +1636,37 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <label>BUN (mg/dL)</label>  
+                                                                        <label>BUN (mg/dL) <span class="count_bottom" id="labbun"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="bun"   placeholder="0.0" step="0.1" class="form-control" {% if lab.bun is not None %} value="{{lab.bun}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>AST (units/L)</label>  
+                                                                        <label>AST (units/L) <span class="count_bottom" id="labast"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="ast"   placeholder="0,000" class="form-control" {% if lab.ast is not None %} value="{{lab.ast}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>LDH (units/L)</label>  
+                                                                        <label>LDH (units/L) <span class="count_bottom" id="labldh"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="ldh"   placeholder="0,000" class="form-control" {% if lab.ldh is not None %} value="{{lab.ldh}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>CRP (mg/dL)</label>  
+                                                                        <label>CRP (mg/dL) <span class="count_bottom" id="labcrp"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="crp"   placeholder="0.0" step="0.1" class="form-control" {% if lab.crp is not None %} value="{{lab.crp}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>LDL (mg/dL)</label>  
+                                                                        <label>LDL (mg/dL) <span class="count_bottom" id="labldl"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="ldl"   placeholder="000" class="form-control" {% if lab.ldl is not None %} value="{{lab.ldl}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>INR</label>  
+                                                                        <label>INR <span class="count_bottom" id="labinr"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="inr"   placeholder="00.0" step="0.1" class="form-control" {% if lab.inr is not None %} value="{{lab.inr}}" {% endif %}>
                                                                         </div>
@@ -1682,13 +1682,13 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04" {% if lab.anti_dsdna is not None or lab.antism is not None or lab.antirnp is not None or lab.antiro is not None or lab.antila is not None or lab.aca is not None or lab.lupusanticoagulant is not None or lab.b2gpi is not None or lab.c3 is not None or lab.c4 is not None or lab.anticic is not None or lab.il6 is not None or lab.ch50 is not None %} checked {% endif %}> 4. Immunology</td>
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05" {% if lab.hbsag is not None or lab.antihbs is not None or lab.antihbc is not None or lab.antihcv is not None or lab.antihiv is not None %} checked {% endif %}> 5. Viral Serology</td>
+                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"> 4. Immunology</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"> 5. Viral Serology</td>
                                                             </tr>
                                                             <tr>
-                                                                <td id="labtd04_0" {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
+                                                                <td class="disabledbutton">
                                                                     <div class="form-group">
-                                                                        <label>Anti-dsDNA (IU/mL) </label>  
+                                                                        <label>Anti-dsDNA (IU/mL) <span class="count_bottom" id="labanti_dsdna"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="anti_dsdna" placeholder="0000.0" step="0.1" class="form-control" {% if lab.anti_dsdna is not None %} value="{{lab.anti_dsdna}}" {% endif %}>
                                                                         </div>
@@ -1722,9 +1722,9 @@
                                                                         </select>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd04_1"  {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
+                                                                <td class="disabledbutton">
                                                                     <div class="form-group">
-                                                                        <label>ACA (IU/mL)</label>  
+                                                                        <label>ACA (IU/mL) <span class="count_bottom" id="labaca"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="aca"   placeholder="000.0" step="0.1" class="form-control" {% if lab.aca is not None %} value="{{lab.aca}}" {% endif %}>
                                                                         </div>
@@ -1743,19 +1743,19 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label> C3 (g/L)</label>  
+                                                                        <label> C3 (g/L) <span class="count_bottom" id="labc3"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="c3"   placeholder="0.00" step="0.01" class="form-control" {% if lab.c3 is not None %} value="{{lab.c3}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label> C4 (g/L)</label>  
+                                                                        <label> C4 (g/L) <span class="count_bottom" id="labc4"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="c4"   placeholder="0.00" step="0.01" class="form-control" {% if lab.c4 is not None %} value="{{lab.c4}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd04_2"  {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
+                                                                <td class="disabledbutton">
                                                                     <div class="form-group">
                                                                         <label><input type="checkbox" id="ckanticic" {% if lab.anticic is not None %} checked {% endif %}> AntiCIC (RU/ml)</label>  
                                                                         <select class="form-control" name="anticic" id="anticic" {% if lab.anticic is None %} disabled {% endif %}>
@@ -1771,13 +1771,13 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>CH50 (%)</label>  
+                                                                        <label>CH50 (%) <span class="count_bottom" id="labch50"></span></label>  
                                                                         <div class="form-group">
                                                                             <input type="number" name="ch50"   placeholder="000" class="form-control" {% if lab.ch50 is not None %} value="{{lab.ch50}}" {% endif %}>
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd05" {% if lab.hbsag is None and lab.antihbs is None and lab.antihbc is None and lab.antihcv is None and lab.antihiv is None %} class="disabledbutton" {% endif %}>
+                                                                <td class="disabledbutton">
                                                                     <div class="form-group">
                                                                         <label><input type="checkbox" id="ckhbsag" {% if lab.hbsag is not None %} checked {% endif %}> HBsAg</label>  
                                                                         <select class="form-control" name="hbsag" id="hbsag" {% if lab.hbsag is None %} disabled {% endif %}>
@@ -1820,7 +1820,7 @@
                                                                     <input type="checkbox" id="labcheck05extra" {% if lab.mpa is not None or lab.fk507 is not None or lab.cyclosporin is not None or lab.cytokine is not None %} checked {% endif %}> Drug level
                                                                 </td>
                                                             </tr>
-                                                            <tr id="labtr05extra" {% if lab.mpa is None and lab.fk507 is None and lab.cyclosporin is None and lab.cytokine is None %} class="disabledbutton" {% endif %}>
+                                                            <tr class="disabledbutton">
                                                                 <td>
                                                                     <div class="form-group">
                                                                         <label>MPA (UG/ml)</label>  
@@ -1862,9 +1862,9 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06" {% if lab.l1l4spine_bmd is not None or lab.l1l4spine_tscore is not None or lab.l1l4spine_date is not None or lab.hip_bmd is not None or lab.hip_tscore is not None or lab.hip_date is not None or lab.radius_bmd is not None or lab.radius_tscore is not None or lab.radius_date is not None %} checked {% endif %}> 6. BMD</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"> 6. BMD</td>
                                                             </tr>
-                                                            <tr id="labtr06" {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %} class="disabledbutton" {% endif %}>
+                                                            <tr class="disabledbutton">
                                                                 <td>
                                                                     <table class="table table-hover table-striped">
                                                                         <thead>
@@ -1914,10 +1914,10 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite is not None %} checked {% endif %}> 7. Stool parasite</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr is not None %} checked {% endif %}> 8. CXR</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg is not None %} checked {% endif %}> 9. EKG</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo is not None %} checked {% endif %}> 10. Echo</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"> 7. Stool parasite</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"> 8. CXR</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"> 9. EKG</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"> 10. Echo</td>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd07" class="disabledbutton">
@@ -2020,10 +2020,10 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" {% if lab.renalbiopsyclassck is not None or lnlab.renalbiopsyclass is not None or lnlab.renalbiopsydate is not None or lnlab.activityindex is not None or lnlab.chronicityindex is not None or lnlab.ln_1 is not None or lnlab.ln_2 is not None or lnlab.ln_3 is not None or lnlab.ln_4 is not None or lnlab.ln_5 is not None %} checked {% endif %}> 11. Lupus nephritis</td>
+                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"> 11. Lupus nephritis</td>
                                                                 
                                                             </tr>
-                                                            <tr id="labtr11" {% if lnlab.renalbiopsyclassck is None and lnlab.renalbiopsyclass is None and lnlab.renalbiopsydate is None and lnlab.activityindex is None and lnlab.chronicityindex is None and lnlab.ln_1 is None and lnlab.ln_2 is None and lnlab.ln_3 is None and lnlab.ln_4 is None and lnlab.ln_5 is None %} class="disabledbutton" {% endif %}>
+                                                            <tr class="disabledbutton">
                                                                 <td>
                                                                     <div class="form-group">  
                                                                         <label>Renal biopsy</label>  

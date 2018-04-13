@@ -1807,7 +1807,7 @@
                                                                 <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.status is not None %} checked {% endif %} name="labcheck10" value="1"> 10. Echo</td>
                                                             </tr>
                                                             <tr>
-                                                                <td id="labtd07" class="disabledbutton">
+                                                                <td id="labtd07" {% if lab.stoolparasite.status is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="stoolparasite">
                                                                             <option selected value="Normal" {% if lab.stoolparasite.status == 'Normal' %} selected {% endif %}>Normal</option>
@@ -1830,7 +1830,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd08" class="disabledbutton">
+                                                                <td id="labtd08" {% if lab.cxr.status is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="cxr">
                                                                             <option selected value="Normal" {% if lab.cxr.status == 'Normal' %} selected {% endif %}>Normal</option>
@@ -1853,7 +1853,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd09" class="disabledbutton">
+                                                                <td id="labtd09" {% if lab.ekg.status is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="ekg">
                                                                             <option selected value="Normal" {% if lab.ekg.status == 'Normal' %} selected {% endif %}>Normal</option>
@@ -1876,7 +1876,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd10" class="disabledbutton">
+                                                                <td id="labtd10"{% if lab.echo.status is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="echo">
                                                                             <option selected value="Normal" {% if lab.echo.status == 'Normal' %} selected {% endif %}>Normal</option>
@@ -2030,8 +2030,8 @@
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <input type="number" name="dose4" id="dose4" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_2_1.doseperdate > 0 %} value="med.msle_2_1.doseperdate" {% else %} disabled {% endif %} >
-                                                                            <input type="number" name="dose5" id="dose5" placeholder="0.0" step="0.1" class="form-control" style="display: none;" {% if med.msle_2_2.doseperdate > 0 %} value="med.msle_2_2.doseperdate" {% endif %}>
+                                                                            <input type="number" name="dose4" id="dose4" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_2_1.doseperdate > 0 %} value="{{med.msle_2_1.doseperdate}}" {% else %} disabled style="display: none;"{% endif %} >
+                                                                            <input type="number" name="dose5" id="dose5" placeholder="0.0" step="0.1" class="form-control"  {% if med.msle_2_2.doseperdate > 0 %} value="{{med.msle_2_2.doseperdate}}" {% else %} style="display: none;" {% endif %}>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="active" >
