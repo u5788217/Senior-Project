@@ -330,8 +330,8 @@
             $('#ckmed2').on('ifUnchecked', function(){$("#ckmeddetail,#dose4").prop('disabled', true);});
             
             $('#ckmeddetail[name=ckmed2]').change(function(){
-                if($(this).val() == 'cq'){$("#dose4").show();$("#dose5").hide();}
-                else{$("#dose4").hide();$("#dose5").show();}
+                if($(this).val() == 'cq'){$("#dose4,#medmsle_2_1").show();$("#dose5,#medmsle_2_2").hide();}
+                else{$("#dose4,#medmsle_2_1").hide();$("#dose5,#medmsle_2_2").show();}
             });
             
             $('#ckmed3').on('ifChecked', function(){$("#dose3").prop('disabled', false);});
@@ -1350,6 +1350,765 @@
                                 <div class="panel">
                                     <div class="panel-body ">
                                         <div class="row">
+                                            <div class="col-lg-5 col-md-5 col-sm-12">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01" {% if lab.hb is not None or lab.wbc is not None or lab.n is not None or lab.l is not None or lab.platelets is not None or lab.esr is not None %} checked {% endif %}> 1. CBC</td>
+                                                            </tr>
+                                                            <tr id="labtr01" {% if lab.hb is None and lab.wbc is None and lab.n is None and lab.l is None and lab.platelets is None and lab.esr is None %} class="disabledbutton" {% endif %}>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Hb (g/dL) <span class="count_bottom" id="labHB"></span></label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="hb"   step="0.1"   placeholder="00.0" class="form-control" {% if lab.hb is not None %} value="{{lab.hb}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>WBC (uL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="wbc"   placeholder="00,000" class="form-control" {% if lab.wbc is not None %} value="{{lab.wbc}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>N (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="n"   placeholder="00"  class="form-control" {% if lab.n is not None %} value="{{lab.n}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>L (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="l"   placeholder="00" class="form-control" {% if lab.l is not None %} value="{{lab.l}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label> Platelets (uL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="platelets"   placeholder="000,000" class="form-control" {% if lab.platelets is not None %} value="{{lab.platelets}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ESR (mm/hr)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="esr"   placeholder="00" class="form-control" {% if lab.esr is not None %} value="{{lab.esr}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck02" {% if lab.wbc_hpf1 is not None or lab.wbc_hpf2 is not None or lab.wbc_hpf1 is not None or lab.wbc_hpf2 is not None or lab.wbccasts1 is not None or lab.wbccasts2 is not None or lab.rbccasts1 is not None or lab.rbccasts2 is not None or lab.granularcasts1 is not None or lab.granularcasts2 is not None or lab.glucose is not None or lab.protein is not None or lab.tp_spoturineprotein is not None or lab.cre_spoturinecreatinine is not None or lab.tfhr_urineprotein is not None or lab.tfhr_urinecreatinine is not None or lab.upci is not None %} checked {% endif %}> 2. Urine Analysis</td>
+                                                            </tr>
+                                                            <tr id="labtr02_0" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}>
+                                                                <td colspan="3" align="center" style="background-color: #FDFCEE;">
+                                                                    2.1
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="labtr02_1" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}> 
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>WBC (/HPF)</label> 
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="wbc_hpf1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.wbc_hpf1 is not None %} value="{{lab.wbc_hpf1}}" {% endif %}>
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="wbc_hpf2"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.wbc_hpf2 is not None %} value="{{lab.wbc_hpf2}}" {% endif %}>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>RBC (/HPF)</label>  
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="rbc_hpf1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.rbc_hpf1 is not None %} value="{{lab.rbc_hpf1}}" {% endif %}>
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="rbc_hpf2"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.rbc_hpf2 is not None %} value="{{lab.rbc_hpf2}}" {% endif %}>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>WBC casts (/LPF)</label>  
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="wbccasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.wbccasts1 is not None %} value="{{lab.wbccasts1}}" {% endif %}>
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="wbccasts2"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.wbccasts2 is not None %} value="{{lab.wbccasts2}}" {% endif %}>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>RBC casts (/LPF)</label>  
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="rbccasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.rbccasts1 is not None %} value="{{lab.rbccasts1}}" {% endif %}>
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="rbccasts2"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.rbccasts2 is not None %} value="{{lab.rbccasts2}}" {% endif %}>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Granular casts(/LPF)</label>  
+                                                                        <div class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <input type="number" name="granularcasts1"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.granularcasts1 is not None %} value="{{lab.granularcasts1}}" {% endif %}>
+                                                                            </div>
+                                                                            <label>-</label>
+                                                                            <div class="form-group" style="padding: 0px;">
+                                                                                <input type="number" name="granularcasts2"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.granularcasts2v is not None %} value="{{lab.granularcasts2}}" {% endif %}>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckglucose" {% if lab.glucose is not None %} checked {% endif %}> Glucose</label>  
+                                                                        <select class="form-control" name="glucose" id="glucose" {% if lab.glucose is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.glucose == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Trace" {% if lab.glucose == 'Trace' %} checked {% endif %}>Trace</option>
+                                                                            <option value="1+" {% if lab.glucose == '1+' %} checked {% endif %}>1+</option>
+                                                                            <option value="2+" {% if lab.glucose == '2+' %} checked {% endif %}>2+</option>
+                                                                            <option value="3+" {% if lab.glucose == '3+' %} checked {% endif %}>3+</option>
+                                                                            <option value="4+" {% if lab.glucose == '4+' %} checked {% endif %}>4+</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label> <input type="checkbox" id="ckprotein" {% if lab.protein is not None %} checked {% endif %}> Protein</label>
+                                                                        <select class="form-control" name="protein" id="protein" {% if lab.protein is None %} disabled {% endif %} >
+                                                                            <option value="Negative" {% if lab.protein == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Trace" {% if lab.protein == 'Trace' %} checked {% endif %}>Trace</option>
+                                                                            <option value="1+" {% if lab.protein == '1+' %} checked {% endif %}>1+</option>
+                                                                            <option value="2+" {% if lab.protein == '2+' %} checked {% endif %}>2+</option>
+                                                                            <option value="3+" {% if lab.protein == '3+' %} checked {% endif %}>3+</option>
+                                                                            <option value="4+" {% if lab.protein == '4+' %} checked {% endif %}>4+</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="labtr02_3" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}>
+                                                                <td colspan="3" align="center" style="background-color: #FDFCEE;">
+                                                                    2.2
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="labtr02_4" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}> 
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>TP-Spot Urine Protein (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tp_spoturineprotein"   placeholder="000" class="form-control" {% if lab.tp_spoturineprotein is not None %} value="{{lab.tp_spoturineprotein}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>CRE- Spot Urine Creatinine (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="cre_spoturinecreatinine"   placeholder="000" class="form-control" {% if lab.cre_spoturinecreatinine is not None %} value="{{lab.cre_spoturinecreatinine}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>24-hr Urine Protein (g/day)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tfhr_urineprotein" id="tfhr_urineprotein" step="0.1" placeholder="00.0" class="form-control" {% if lab.tfhr_urineprotein is not None %} value="{{lab.tfhr_urineprotein}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>24-hr Urine Creatinine (g/day)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tfhr_urinecreatinine" id="tfhr_urinecreatinine" step="0.1" placeholder="00.0" class="form-control" {% if lab.tfhr_urinecreatinine is not None %} value="{{lab.tfhr_urinecreatinine}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>UPCI</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="upci" id="upci" step="0.1" placeholder="0.0" class="form-control" {% if lab.upci is not None %} value="{{lab.upci}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck03" {% if lab.fbs is not None or lab.cr is not None or lab.alt is not None or lab.albumin is not None or lab.choles is not None or lab.hdl is not None or lab.hba1c is not None or lab.alp is not None or lab.ggt is not None or lab.tdbilirubin1 is not None or lab.tdbilirubin2 is not None or lab.tg is not None or lab.bun is not None or lab.ast is not None or lab.ldh is not None or lab.crp is not None or lab.ldl is not None or lab.inr is not None %} checked {% endif %}> 3. Blood Chem</td>
+                                                            </tr>
+                                                            <tr id="labtr03" {% if lab.fbs is None and lab.cr is None and lab.alt is None and lab.albumin is None and lab.choles is None and lab.hdl is None and lab.hba1c is None and lab.alp is None and lab.ggt is None and lab.tdbilirubin1 is None and lab.tdbilirubin2 is None and lab.tg is None and lab.bun is None and lab.ast is None and lab.ldh is None and lab.crp is None and lab.ldl is None and lab.inr is None %} class="disabledbutton" {% endif %}>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>FBS (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="fbs"   placeholder="000" class="form-control" {% if lab.fbs is not None %} value="{{lab.fbs}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Cr (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="cr"   placeholder="00.0" step="0.1" class="form-control" {% if lab.cr is not None %} value="{{lab.cr}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ALT (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="alt"   placeholder="0,000" class="form-control" {% if lab.alt is not None %} value="{{lab.alt}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Albumin (g/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="albumin"   placeholder="00.0" step="0.1" class="form-control" {% if lab.albumin is not None %} value="{{lab.albumin}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Choles (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="choles"   placeholder="0,000" class="form-control" {% if lab.choles is not None %} value="{{lab.choles}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>HDL (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="hdl"   placeholder="000" class="form-control" {% if lab.hdl is not None %} value="{{lab.hdl}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>HbA1C (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="hba1c"   placeholder="00" class="form-control" {% if lab.hba1c is not None %} value="{{lab.hba1c}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ALP (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="alp"   placeholder="0,000" class="form-control" {% if lab.alp is not None %} value="{{lab.alp}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>GGT (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ggt"   placeholder="000" class="form-control" {% if lab.ggt is not None %} value="{{lab.ggt}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>TD</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tdbilirubin1"   placeholder="00.0" step="0.1" class="form-control" {% if lab.tdbilirubin1 is not None %} value="{{lab.tdbilirubin1}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>DB</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tdbilirubin2"   placeholder="00.0" step="0.1" class="form-control" {% if lab.tdbilirubin2 is not None %} value="{{lab.tdbilirubin2}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>TG (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="tg"   placeholder="0,000" class="form-control" {% if lab.tg is not None %} value="{{lab.tg}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>BUN (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="bun"   placeholder="0.0" step="0.1" class="form-control" {% if lab.bun is not None %} value="{{lab.bun}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>AST (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ast"   placeholder="0,000" class="form-control" {% if lab.ast is not None %} value="{{lab.ast}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>LDH (units/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ldh"   placeholder="0,000" class="form-control" {% if lab.ldh is not None %} value="{{lab.ldh}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>CRP (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="crp"   placeholder="0.0" step="0.1" class="form-control" {% if lab.crp is not None %} value="{{lab.crp}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>LDL (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ldl"   placeholder="000" class="form-control" {% if lab.ldl is not None %} value="{{lab.ldl}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>INR</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="inr"   placeholder="00.0" step="0.1" class="form-control" {% if lab.inr is not None %} value="{{lab.inr}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7 col-md-7 col-sm-12">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04" {% if lab.anti_dsdna is not None or lab.antism is not None or lab.antirnp is not None or lab.antiro is not None or lab.antila is not None or lab.aca is not None or lab.lupusanticoagulant is not None or lab.b2gpi is not None or lab.c3 is not None or lab.c4 is not None or lab.anticic is not None or lab.il6 is not None or lab.ch50 is not None %} checked {% endif %}> 4. Immunology</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05" {% if lab.hbsag is not None or lab.antihbs is not None or lab.antihbc is not None or lab.antihcv is not None or lab.antihiv is not None %} checked {% endif %}> 5. Viral Serology</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td id="labtd04_0" {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
+                                                                    <div class="form-group">
+                                                                        <label>Anti-dsDNA (IU/mL) </label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="anti_dsdna" placeholder="0000.0" step="0.1" class="form-control" {% if lab.anti_dsdna is not None %} value="{{lab.anti_dsdna}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantism" {% if lab.antism is not None %} checked {% endif %}> Anti-Sm</label>  
+                                                                        <select class="form-control" name="antism" id="antism" {% if lab.antism is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.antism == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.antism == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantirnp" {% if lab.antirnp is not None %} checked {% endif %}> AntiRNP (EU/mL)</label>  
+                                                                        <select class="form-control" name="antirnp" id="antirnp" {% if lab.antirnp is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.antirnp == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.antirnp == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantiro" {% if lab.antiro is not None %} checked {% endif %}> AntiRo (EU/mL)</label>  
+                                                                        <select class="form-control" name="antiro" id="antiro" {% if lab.antiro is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.antiro == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.antiro == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantila" {% if lab.antila is not None %} checked {% endif %}> AntiLa (EU/mL)</label>  
+                                                                        <select class="form-control" name="antila" id="antila" {% if lab.antila is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.antila == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.antila == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd04_1"  {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
+                                                                    <div class="form-group">
+                                                                        <label>ACA (IU/mL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="aca"   placeholder="000.0" step="0.1" class="form-control" {% if lab.aca is not None %} value="{{lab.aca}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="cklupusanticoagulant" {% if lab.lupusanticoagulant is not None %} checked {% endif %}> Lupus anticoagulant</label>  
+                                                                        <select class="form-control" name="lupusanticoagulant" id="lupusanticoagulant" {% if lab.lupusanticoagulant is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.lupusanticoagulant == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.lupusanticoagulant == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ß2GPI (IU/mL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="b2gpi"   placeholder="000.0" step="0.1" class="form-control" {% if lab.b2gpi is not None %} value="{{lab.b2gpi}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label> C3 (g/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="c3"   placeholder="0.00" step="0.01" class="form-control" {% if lab.c3 is not None %} value="{{lab.c3}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label> C4 (g/L)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="c4"   placeholder="0.00" step="0.01" class="form-control" {% if lab.c4 is not None %} value="{{lab.c4}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd04_2"  {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckanticic" {% if lab.anticic is not None %} checked {% endif %}> AntiCIC (RU/ml)</label>  
+                                                                        <select class="form-control" name="anticic" id="anticic" {% if lab.anticic is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.anticic == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.anticic == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckil6" {% if lab.il6 is not None %} checked {% endif %}> IL-6 (PG/ml)</label>  
+                                                                        <select class="form-control" name="il6" id="il6" {% if lab.il6 is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.il6 == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.il6 == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>CH50 (%)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ch50"   placeholder="000" class="form-control" {% if lab.ch50 is not None %} value="{{lab.ch50}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd05" {% if lab.hbsag is None and lab.antihbs is None and lab.antihbc is None and lab.antihcv is None and lab.antihiv is None %} class="disabledbutton" {% endif %}>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckhbsag" {% if lab.hbsag is not None %} checked {% endif %}> HBsAg</label>  
+                                                                        <select class="form-control" name="hbsag" id="hbsag" {% if lab.hbsag is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.hbsag == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.hbsag == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantihbs" {% if lab.antihbs is not None %} checked {% endif %}> AntiHBs</label>  
+                                                                        <select class="form-control" name="antihbs" id="antihbs" {% if lab.antihbs is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.antihbs == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.antihbs == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantihbc" {% if lab.antihbc is not None %} checked {% endif %}> AntiHBc</label>  
+                                                                        <select class="form-control" name="antihbc" id="antihbc" {% if lab.antihbc is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.antihbc == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.antihbc == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantihcv" {% if lab.antihcv is not None %} checked {% endif %}> AntiHCV</label>  
+                                                                        <select class="form-control" name="antihcv" id="antihcv" {% if lab.antihcv is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.antihcv == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.antihcv == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" id="ckantihiv" {% if lab.antihiv is not None %} checked {% endif %}> AntiHIV</label>  
+                                                                        <select class="form-control" name="antihiv" id="antihiv" {% if lab.antihiv is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.antihiv == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.antihiv == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="4" align="center" style="background-color: #FDFCEE;">
+                                                                    <input type="checkbox" id="labcheck05extra" {% if lab.mpa is not None or lab.fk507 is not None or lab.cyclosporin is not None or lab.cytokine is not None %} checked {% endif %}> Drug level
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="labtr05extra" {% if lab.mpa is None and lab.fk507 is None and lab.cyclosporin is None and lab.cytokine is None %} class="disabledbutton" {% endif %}>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>MPA (UG/ml)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="mpa"   placeholder="00.00" step="0.1" class="form-control" {% if lab.mpa is not None %} value="{{lab.mpa}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>FK 506 (NG/ml)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="fk507"   placeholder="00.00" step="0.1" class="form-control" {% if lab.fk507 is not None %} value="{{lab.fk507}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Cyclosporin</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="cyclosporin"   placeholder="00.00" step="0.1" class="form-control" {% if lab.cyclosporin is not None %} value="{{lab.cyclosporin}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label><input type="checkbox" name="ckcytokine" {% if lab.cytokine is not None %} checked {% endif %}> Cytokine</label>  
+                                                                        <select class="form-control" name="cytokine" id="cytokine" {% if lab.cytokine is None %} disabled {% endif %}>
+                                                                            <option value="Negative" {% if lab.cytokine == 'Negative' %} checked {% endif %}>Negative</option>
+                                                                            <option value="Positive" {% if lab.cytokine == 'Positive' %} checked {% endif %}>Positive</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06" {% if lab.l1l4spinebmd_tscore.0 is not None or lab.l1l4spinebmd_tscore.1 is not None or lab.l1l4spinebmd_tscore.2 is not None or lab.hipbmd_tscore.0 is not None or lab.hipbmd_tscore.1 is not None or lab.hipbmd_tscore.2 is not None or lab.radiusbmd_tscore.0 is not None or lab.radiusbmd_tscore.1 is not None or lab.radiusbmd_tscore.2 is not None %} checked {% endif %}> 6. BMD</td>
+                                                            </tr>
+                                                            <tr id="labtr06" {% if lab.l1l4spinebmd_tscore.0 is None and lab.l1l4spinebmd_tscore.1 is None and lab.l1l4spinebmd_tscore.2 is None and lab.hipbmd_tscore.0 is None and lab.hipbmd_tscore.1 is None and lab.hipbmd_tscore.2 is None and lab.radiusbmd_tscore.0 is None and lab.radiusbmd_tscore.1 is none and lab.radiusbmd_tscore.2 is None %} class="disabledbutton" {% endif %}>
+                                                                <td>
+                                                                    <table class="table table-hover table-striped">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="col-md-3"></th>
+                                                                                <th>BMD (g/cm2)</th>
+                                                                                <th>T-scores</th>
+                                                                                <th>Diagnose date</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>L1-L4 spine</td>
+                                                                                <td><input type="number" name="l1l4spinebmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.l1l4spinebmd_tscore.0 is not None %} value="{{lab.l1l4spinebmd_tscore.0}}" {% endif %}
+></td>
+                                                                                <td><input type="number" name="l1l4spinebmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.l1l4spinebmd_tscore.1 is not None %} value="{{lab.l1l4spinebmd_tscore.1}}" {% endif %}
+></td>
+                                                                                <td><input type="date" name="l1l4spinebmd_tscore3" class="form-control" {% if lab.l1l4spinebmd_tscore.2 is not None %} value="{{lab.l1l4spinebmd_tscore.2}}" {% endif %}
+></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Hip</td>
+                                                                                <td><input type="number" name="hipbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.hipbmd_tscore.0 is not None %} value="{{lab.hipbmd_tscore.0}}" {% endif %}
+></td>
+                                                                                <td><input type="number" name="hipbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.hipbmd_tscore.1 is not None %} value="{{lab.hipbmd_tscore.1}}" {% endif %}
+></td>
+                                                                                <td><input type="date" name="hipbmd_tscore3" class="form-control" {% if lab.hipbmd_tscore.2 is not None %} value="{{lab.hipbmd_tscore.2}}" {% endif %}
+></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Radius</td>
+                                                                                <td><input type="number" name="radiusbmd_tscore1"   placeholder="0.000" step="0.001" class="form-control" {% if lab.radiusbmd_tscore.0 is not None %} value="{{lab.radiusbmd_tscore.0}}" {% endif %}
+></td>
+                                                                                <td><input type="number" name="radiusbmd_tscore2"   placeholder="0.000" step="0.001" class="form-control" {% if lab.radiusbmd_tscore.1 is not None %} value="{{lab.radiusbmd_tscore.1}}" {% endif %}
+></td>
+                                                                                <td><input type="date" name="radiusbmd_tscore3" class="form-control" {% if lab.radiusbmd_tscore.2 is not None %} value="{{lab.radiusbmd_tscore.2}}" {% endif %}
+></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.ck is not None %} checked {% endif %}> 7. Stool parasite</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.ck is not None %} checked {% endif %}> 8. CXR</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.ck is not None %} checked {% endif %}> 9. EKG</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.ck is not None %} checked {% endif %}> 10. Echo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td id="labtd07" class="disabledbutton">
+                                                                    <div class="form-group">  
+                                                                        <select class="form-control" name="stoolparasite">
+                                                                            <option selected value="0" {% if lab.stoolparasite.ck == 'Normal' %} checked {% endif %}>Normal</option>
+                                                                            <option value="1" {% if lab.stoolparasite.ck == 'Abnormal' %} checked {% endif %}>Abnormal</option>
+                                                                            <option value="2" {% if lab.stoolparasite.ck == 'Not done' %} checked {% endif %}>Not done </option>
+                                                                            <option value="3" {% if lab.stoolparasite.ck == 'Not found' %} checked {% endif %}>Not found </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Abnormal detail</label>  
+                                                                        <select class="form-control" name="stoolparasite1">
+                                                                            <option value="Negative" {% if lab.stoolparasite.status == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.stoolparasite.status == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" name="stoolparasite2" style="width: 159px;" {% if lab.stoolparasite.date is not None %} value="{{lab.stoolparasite.date|date:'Y-m-d'}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd08" class="disabledbutton">
+                                                                    <div class="form-group">  
+                                                                        <select class="form-control" name="cxr">
+                                                                            <option selected value="0" {% if lab.cxr.ck == 'Normal' %} checked {% endif %}>Normal</option>
+                                                                            <option value="1" {% if lab.cxr.ck == 'Abnormal' %} checked {% endif %}>Abnormal</option>
+                                                                            <option value="2" {% if lab.cxr.ck == 'Not done' %} checked {% endif %}>Not done </option>
+                                                                            <option value="3" {% if lab.cxr.ck == 'Not found' %} checked {% endif %}>Not found </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Abnormal detail</label>  
+                                                                        <select class="form-control" name="cxr1">
+                                                                            <option value="Negative" {% if lab.cxr.status == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.cxr.status == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" name="cxr2" style="width: 159px;" {% if lab.cxr.date is not None %} value="{{lab.cxr.date|date:'Y-m-d'}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd09" class="disabledbutton">
+                                                                    <div class="form-group">  
+                                                                        <select class="form-control" name="ekg">
+                                                                            <option selected value="0" {% if lab.ekg.ck == 'Normal' %} checked {% endif %}>Normal</option>
+                                                                            <option value="1" {% if lab.ekg.ck == 'Abnormal' %} checked {% endif %}>Abnormal</option>
+                                                                            <option value="2" {% if lab.ekg.ck == 'Not done' %} checked {% endif %}>Not done </option>
+                                                                            <option value="3" {% if lab.ekg.ck == 'Not found' %} checked {% endif %}>Not found </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Abnormal detail</label>  
+                                                                        <select class="form-control" name="ekg1">
+                                                                            <option value="Negative" {% if lab.ekg.status == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.ekg.status == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" name="ekg2" style="width: 159px;" {% if lab.ekg.date is not None %} value="{{lab.ekg.date|date:'Y-m-d'}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td id="labtd10" class="disabledbutton">
+                                                                    <div class="form-group">  
+                                                                        <select class="form-control" name="echo">
+                                                                            <option selected value="0" {% if lab.echo.ck == 'Normal' %} checked {% endif %}>Normal</option>
+                                                                            <option value="1" {% if lab.echo.ck == 'Abnormal' %} checked {% endif %}>Abnormal</option>
+                                                                            <option value="2" {% if lab.echo.ck == 'Not done' %} checked {% endif %}>Not done </option>
+                                                                            <option value="3" {% if lab.echo.ck == 'Not found' %} checked {% endif %}>Not found </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Abnormal detail</label>  
+                                                                        <select class="form-control" name="echo1">
+                                                                            <option value="Negative" {% if lab.echo.status == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.echo.status == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" name="echo2" style="width: 159px;" {% if lab.echo.date is not None %} value="{{lab.echo.date|date:'Y-m-d'}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr scope="row">
+                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" {% if lab.renalbiopsyclassck is not None or lab.renalbiopsyclass is not None or lab.renalbiopsydate is not None or lab.activityindex is not None or lab.chronicityindex is not None or lab.ln_1 is not None or lab.ln_2 is not None or lab.ln_3 is not None or lab.ln_4 is not None or lab.ln_5 is not None %} checked {% endif %}> 11. Lupus nephritis</td>
+                                                            </tr>
+                                                            <tr id="labtr11" {% if lab.renalbiopsyclassck is None and lab.renalbiopsyclass is None and lab.renalbiopsydate is None and lab.activityindex is None and lab.chronicityindex is None and lab.ln_1 is None and lab.ln_2 is None and lab.ln_3 is None and lab.ln_4 is None and lab.ln_5 is None %} class="disabledbutton" {% endif %}>
+                                                                <td>
+                                                                    <div class="form-group">  
+                                                                        <label>Renal biopsy</label>  
+                                                                        <select class="form-control" name="renalbiopsyclass">
+                                                                            <option value="Negative" {% if lab.renalbiopsyclassck == 'detail1' %} checked {% endif %}>detail1</option>
+                                                                            <option value="Positive" {% if lab.renalbiopsyclassck == 'detail2' %} checked {% endif %}>detail2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>ISN/RPS Class</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" id="Renal01" name="renalbiopsyclass" {% if lab.renalbiopsyclass is not None %} value="{{lab.renalbiopsyclass}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Date</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="date" class="form-control" id="Renal02" name="renalbiopsydate" style="width: 159px;" {% if renalbiopsydate is not None %} value="{{lab.renalbiopsydate|date:'Y-m-d'}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Activity Index</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="activityindex"   placeholder="00" class="form-control" {% if lab.activityindex is not None %} value="{{lab.activityindex}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Chronicity Index</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="chronicityindex"   placeholder="00" class="form-control" {% if lab.chronicityindex is not None %} value="{{lab.chronicityindex}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>% Crescentic glomerulonephritis</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ln_1"   placeholder="000" class="form-control" {% if lab.ln_1 is not None %} value="{{lab.ln_1}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>% Glomerulosclerosis</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ln_2"   placeholder="000" class="form-control" {% if lab.ln_2 is not None %} value="{{lab.ln_2}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Interstitial fibrosis</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="ln_3" {% if lab.ln_3 is not None %} value="{{lab.ln_3}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Tubular atrophy</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="ln_4" {% if lab.ln_4 is not None %} value="{{lab.ln_4}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <label>Serum Creatine (mg/dL)</label>  
+                                                                        <div class="form-group">
+                                                                            <input type="number" name="ln_5"   placeholder="00.0" step="0.1" class="form-control" {% if lab.ln_5 is not None %} value="{{lab.ln_5}}" {% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            
+                            <div class="col-lg-12  col-md-12 col-sm-12">
+                                <div class="panel">
+                                    <div class="panel-body ">
+                                        <div class="row">
                                             <div class="col-lg-12  col-md-12 col-sm-12">
                                                 <div class="col-lg-12  col-md-12 col-sm-12">
                                                                                              
@@ -2075,7 +2834,7 @@
                                                     <tr scope="row">
                                                         <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi1" {% if med.msle_1_1.doseperdate > 0 or med.msle_2_1.doseperdate > 0 or med.msle_2_2.doseperdate > 0 or med.msle_3_1.doseperdate > 0 or med.msle_3_2.doseperdate > 0 or med.msle_3_3.doseperdate > 0 or med.msle_3_4.doseperdate > 0 or med.msle_4_1.doseperdate > 0 or med.msle_4_2.doseperdate > 0 or med.msle_4_3.doseperdate > 0 or med.msle_4_4.doseperdate > 0 or med.msle_4_5.doseperdate > 0 or med.msle_4_6.doseperdate > 0 or med.msle_4_7.doseperdate > 0 or med.msle_4_8.doseperdate > 0 or med.msle_4_9.doseperdate > 0 or med.msle_4_10.doseperdate > 0 or med.msle_4_11.doseperdate > 0 %} checked {% endif %}> Specific treatment of SLE</td>
                                                     </tr>
-                                                    <tr id="medi1" {% if med.msle_1_1.doseperdate > 0 or med.msle_2_1.doseperdate == 0 and med.msle_2_2.doseperdate == 0 and med.msle_3_1.doseperdate == 0 and med.msle_3_2.doseperdate == 0 and med.msle_3_3.doseperdate == 0 and med.msle_3_4.doseperdate == 0 and med.msle_4_1.doseperdate == 0 and med.msle_4_2.doseperdate == 0 and med.msle_4_3.doseperdate == 0 and med.msle_4_4.doseperdate == 0 and med.msle_4_5.doseperdate == 0 and med.msle_4_6.doseperdate == 0 and med.msle_4_7.doseperdate == 0 and med.msle_4_8.doseperdate == 0 and med.msle_4_9.doseperdate == 0 and med.msle_4_10.doseperdate == 0 and med.msle_4_11.doseperdate == 0 %} class="disabledbutton" {% endif %}>
+                                                    <tr class="disabledbutton">
                                                         <td>
                                                             <table class="table">
                                                                 <thead>
@@ -2089,7 +2848,7 @@
                                                                         <td colspan="2">1. NSAIDs </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed1" {% if med.msle_1_1.doseperdate > 0 %} checked {% endif %}> NSAIDs</td>
+                                                                        <td><input type="checkbox" id="ckmed1" {% if med.msle_1_1.doseperdate > 0 %} checked {% endif %}> NSAIDs <span class="count_bottom" id="medmsle_1_1"></span></td>
                                                                         <td><input type="number" name="dose1" id="dose1" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_1_1.doseperdate > 0 %} value="{{med.msle_1_1.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr class="active" >
@@ -2103,76 +2862,78 @@
                                                                                     <option value="cq" {% if med.msle_2_1.doseperdate > 0 %} selected {% endif %}>Chloroquine (Aralen)</option>
                                                                                     <option value="hcq" {% if med.msle_2_2.doseperdate > 0 %} selected {% endif %}>Hydroxychloroquine (Plaquenil)</option>
                                                                                 </select>
+                                                                                <span class="count_bottom" id="medmsle_2_1" style="display: none;"></span> 
+                                                                                <span class="count_bottom" id="medmsle_2_2" style="display: none;"></span>
                                                                             </div>
                                                                         </td>
                                                                         <td>
-                                                                            <input type="number" name="dose4" id="dose4" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_2_1.doseperdate > 0 %} value="med.msle_2_1.doseperdate" {% else %} disabled {% endif %} >
-                                                                            <input type="number" name="dose5" id="dose5" placeholder="0.0" step="0.1" class="form-control" style="display: none;" {% if med.msle_2_2.doseperdate > 0 %} value="med.msle_2_2.doseperdate" {% endif %}>
+                                                                            <input type="number" name="dose4" id="dose4" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_2_1.doseperdate > 0 %} value="{{med.msle_2_1.doseperdate}}" {% else %} disabled style="display: none;"{% endif %} >
+                                                                            <input type="number" name="dose5" id="dose5" placeholder="0.0" step="0.1" class="form-control"  {% if med.msle_2_2.doseperdate > 0 %} value="{{med.msle_2_2.doseperdate}}" {% else %} style="display: none;" {% endif %}>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="active" >
                                                                         <td colspan="2"> 3. Corticosteroids</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed6" {% if med.msle_3_1.doseperdate > 0 %} checked {% endif %}> Prednisolone   </td>
+                                                                        <td><input type="checkbox" id="ckmed6" {% if med.msle_3_1.doseperdate > 0 %} checked {% endif %}> Prednisolone   <span class="count_bottom" id="medmsle_3_1"></span></td>
                                                                         <td><input type="number" name="dose6" id="dose6" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_3_1.doseperdate > 0 %} value="{{med.msle_3_1.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed7" {% if med.msle_3_2.doseperdate > 0 %} checked {% endif %}> Methylprednisolone (IV) </td>
+                                                                        <td><input type="checkbox" id="ckmed7" {% if med.msle_3_2.doseperdate > 0 %} checked {% endif %}> Methylprednisolone (IV) <span class="count_bottom" id="medmsle_3_2"></span></td>
                                                                         <td><input type="number" name="dose7" id="dose7" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_3_2.doseperdate > 0 %} value="{{med.msle_3_2.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed8" {% if med.msle_3_3.doseperdate > 0 %} checked {% endif %}> Dexamethasone (IV)</td>
+                                                                        <td><input type="checkbox" id="ckmed8" {% if med.msle_3_3.doseperdate > 0 %} checked {% endif %}> Dexamethasone (IV) <span class="count_bottom" id="medmsle_3_3"></span></td>
                                                                         <td><input type="number" name="dose8" id="dose8" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_3_3.doseperdate > 0 %} value="{{med.msle_3_3.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed9" {% if med.msle_3_4.doseperdate > 0 %} checked {% endif %}> Dexamethasone (Oral)</td>
+                                                                        <td><input type="checkbox" id="ckmed9" {% if med.msle_3_4.doseperdate > 0 %} checked {% endif %}> Dexamethasone (Oral) <span class="count_bottom" id="medmsle_3_4"></span></td>
                                                                         <td><input type="number" name="dose9" id="dose9" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_3_4.doseperdate > 0 %} value="{{med.msle_3_4.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr class="active" >
                                                                         <td colspan="2"> 4. Cytotoxic agents </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed10" {% if med.msle_4_1.doseperdate > 0 %} checked {% endif %}> Methotrexate (MTX)</td>
+                                                                        <td><input type="checkbox" id="ckmed10" {% if med.msle_4_1.doseperdate > 0 %} checked {% endif %}> Methotrexate (MTX) <span class="count_bottom" id="medmsle_4_1"></span></td>
                                                                         <td><input type="number" name="dose10" id="dose10" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_1.doseperdate > 0 %} value="{{med.msle_4_1.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed11" {% if med.msle_4_2.doseperdate > 0 %} checked {% endif %}> Azathioprine </td>
+                                                                        <td><input type="checkbox" id="ckmed11" {% if med.msle_4_2.doseperdate > 0 %} checked {% endif %}> Azathioprine  <span class="count_bottom" id="medmsle_4_2"></span></td>
                                                                         <td><input type="number" name="dose11" id="dose11" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_2.doseperdate > 0 %} value="{{med.msle_4_2.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed12" {% if med.msle_4_3.doseperdate > 0 %} checked {% endif %}> Cyclophosphamide (oral)</td>
+                                                                        <td><input type="checkbox" id="ckmed12" {% if med.msle_4_3.doseperdate > 0 %} checked {% endif %}> Cyclophosphamide (oral) <span class="count_bottom" id="medmsle_4_3"></span></td>
                                                                         <td><input type="number" name="dose12" id="dose12" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_3.doseperdate > 0 %} value="{{med.msle_4_3.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed13" {% if med.msle_4_4.doseperdate > 0 %} checked {% endif %}> Cyclophosphamide (IV)</td>
+                                                                        <td><input type="checkbox" id="ckmed13" {% if med.msle_4_4.doseperdate > 0 %} checked {% endif %}> Cyclophosphamide (IV) <span class="count_bottom" id="medmsle_4_4"></span></td>
                                                                         <td><input type="number" name="dose13" id="dose13" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_4.doseperdate > 0 %} value="{{med.msle_4_4.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed14" {% if med.msle_4_5.doseperdate > 0 %} checked {% endif %}> Mycophenolate mofetil (MMF)</td>
+                                                                        <td><input type="checkbox" id="ckmed14" {% if med.msle_4_5.doseperdate > 0 %} checked {% endif %}> Mycophenolate mofetil (MMF) <span class="count_bottom" id="medmsle_4_5"></span></td>
                                                                         <td><input type="number" name="dose14" id="dose14" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_5.doseperdate > 0 %} value="{{med.msle_4_5.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed15" {% if med.msle_4_6.doseperdate > 0 %} checked {% endif %}> Myfortic (Mycophenolic acid)</td>
+                                                                        <td><input type="checkbox" id="ckmed15" {% if med.msle_4_6.doseperdate > 0 %} checked {% endif %}> Myfortic (Mycophenolic acid) <span class="count_bottom" id="medmsle_4_6"></span></td>
                                                                         <td><input type="number" name="dose15" id="dose15" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_6.doseperdate > 0 %} value="{{med.msle_4_6.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed16" {% if med.msle_4_7.doseperdate > 0 %} checked {% endif %}> Cyclosporin A </td>
+                                                                        <td><input type="checkbox" id="ckmed16" {% if med.msle_4_7.doseperdate > 0 %} checked {% endif %}> Cyclosporin A  <span class="count_bottom" id="medmsle_4_7"></span></td>
                                                                         <td><input type="number" name="dose16" id="dose16" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_7.doseperdate > 0 %} value="{{med.msle_4_7.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed17" {% if med.msle_4_8.doseperdate > 0 %} checked {% endif %}> Tacrolimus</td>
+                                                                        <td><input type="checkbox" id="ckmed17" {% if med.msle_4_8.doseperdate > 0 %} checked {% endif %}> Tacrolimus <span class="count_bottom" id="medmsle_4_8"></span></td>
                                                                         <td><input type="number" name="dose17" id="dose17" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_8.doseperdate > 0 %} value="{{med.msle_4_8.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed18" {% if med.msle_4_9.doseperdate > 0 %} checked {% endif %}> Danazol</td>
+                                                                        <td><input type="checkbox" id="ckmed18" {% if med.msle_4_9.doseperdate > 0 %} checked {% endif %}> Danazol <span class="count_bottom" id="medmsle_4_9"></span></td>
                                                                         <td><input type="number" name="dose18" id="dose18" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_9.doseperdate > 0 %} value="{{med.msle_4_9.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed19" {% if med.msle_4_10.doseperdate > 0 %} checked {% endif %}> Dapsone</td>
+                                                                        <td><input type="checkbox" id="ckmed19" {% if med.msle_4_10.doseperdate > 0 %} checked {% endif %}> Dapsone <span class="count_bottom" id="medmsle_4_10"></span></td>
                                                                         <td><input type="number" name="dose19" id="dose19" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_10.doseperdate > 0 %} value="{{med.msle_4_10.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed20" {% if med.msle_4_11.doseperdate > 0 %} checked {% endif %}> Colchicine</td>
+                                                                        <td><input type="checkbox" id="ckmed20" {% if med.msle_4_11.doseperdate > 0 %} checked {% endif %}> Colchicine <span class="count_bottom" id="medmsle_4_11"></span></td>
                                                                         <td><input type="number" name="dose20" id="dose20" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_4_11.doseperdate > 0 %} value="{{med.msle_4_11.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                 </tbody>
@@ -2188,7 +2949,7 @@
                                                     <tr scope="row">
                                                         <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi2" {% if med.mgt_1_1.doseperdate > 0 or med.mgt_1_2.doseperdate > 0 or med.mgt_1_3.doseperdate > 0 or med.mgt_1_4.doseperdate > 0 or med.mgt_1_5.doseperdate > 0 or med.mgt_2_1.doseperdate > 0 or med.mgt_2_2.doseperdate > 0 or med.mgt_2_3.doseperdate > 0 or med.mgt_2_4.doseperdate > 0 or med.mgt_3_1.doseperdate > 0 or med.mgt_3_2.doseperdate > 0 or med.mgt_3_3.doseperdate > 0 or med.mgt_4_1.doseperdate > 0 or med.mgt_4_2.doseperdate > 0 or med.mgt_4_3.doseperdate > 0 or med.mgt_4_4.doseperdate > 0 or med.mgt_other is True %} checked {% endif %}> General treatments</td>
                                                     </tr>
-                                                    <tr id="medi2" {% if med.mgt_1_1.doseperdate == 0 and med.mgt_1_2.doseperdate == 0 and med.mgt_1_3.doseperdate == 0 and med.mgt_1_4.doseperdate == 0 and med.mgt_1_5.doseperdate == 0 and med.mgt_2_1.doseperdate == 0 and med.mgt_2_2.doseperdate == 0 and med.mgt_2_3.doseperdate == 0 and med.mgt_2_4.doseperdate == 0 and med.mgt_3_1.doseperdate == 0 and med.mgt_3_2.doseperdate == 0 and med.mgt_3_3.doseperdate == 0 and med.mgt_4_1.doseperdate == 0 and med.mgt_4_2.doseperdate == 0 and med.mgt_4_3.doseperdate == 0 and med.mgt_4_4.doseperdate == 0 and med.mgt_other is False %} class="disabledbutton" {% endif %}>
+                                                    <tr class="disabledbutton">
                                                         <td>
                                                             <table class="table">
                                                                 <thead>
@@ -2202,75 +2963,75 @@
                                                                         <td colspan="2"> 1. Anti-hypertensive </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed21" {% if med.mgt_1_1.doseperdate > 0 %} checked {% endif %}> ACEI</td>
+                                                                        <td><input type="checkbox" id="ckmed21" {% if med.mgt_1_1.doseperdate > 0 %} checked {% endif %}> ACEI <span class="count_bottom" id="medmgt_1_1"></span></td>
                                                                         <td><input type="number" name="dose21" id="dose21" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_1_1.doseperdate > 0 %} value="{{med.mgt_1_1.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed22" {% if med.mgt_1_2.doseperdate > 0 %} checked {% endif %}> ARB</td>
+                                                                        <td><input type="checkbox" id="ckmed22" {% if med.mgt_1_2.doseperdate > 0 %} checked {% endif %}> ARB <span class="count_bottom" id="medmgt_1_2"></span></td>
                                                                         <td><input type="number" name="dose22" id="dose22" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_1_2.doseperdate > 0 %} value="{{med.mgt_1_2.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed23" {% if med.mgt_1_3.doseperdate > 0 %} checked {% endif %}> Diuretics</td>
+                                                                        <td><input type="checkbox" id="ckmed23" {% if med.mgt_1_3.doseperdate > 0 %} checked {% endif %}> Diuretics <span class="count_bottom" id="medmgt_1_3"></span></td>
                                                                         <td><input type="number" name="dose23" id="dose23" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_1_3.doseperdate > 0 %} value="{{med.mgt_1_3.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed24" {% if med.mgt_1_4.doseperdate > 0 %} checked {% endif %}> Beta-blockers</td>
+                                                                        <td><input type="checkbox" id="ckmed24" {% if med.mgt_1_4.doseperdate > 0 %} checked {% endif %}> Beta-blockers <span class="count_bottom" id="medmgt_1_4"></span></td>
                                                                         <td><input type="number" name="dose24" id="dose24" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_1_4.doseperdate > 0 %} value="{{med.mgt_1_4.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed25" {% if med.mgt_1_5.doseperdate > 0 %} checked {% endif %}> Ca channel blockers</td>
+                                                                        <td><input type="checkbox" id="ckmed25" {% if med.mgt_1_5.doseperdate > 0 %} checked {% endif %}> Ca channel blockers <span class="count_bottom" id="medmgt_1_5"></span></td>
                                                                        <td><input type="number" name="dose25" id="dose25" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_1_5.doseperdate > 0 %} value="{{med.mgt_1_5.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>                                                
                                                                     <tr class="active" >
                                                                         <td colspan="2"> 2. Lipid-lowering </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed26" {% if med.mgt_2_1.doseperdate > 0 %} checked {% endif %}> Statins</td>
+                                                                        <td><input type="checkbox" id="ckmed26" {% if med.mgt_2_1.doseperdate > 0 %} checked {% endif %}> Statins <span class="count_bottom" id="medmgt_2_1"></span></td>
                                                                         <td><input type="number" name="dose26" id="dose26" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_2_1.doseperdate > 0 %} value="{{med.mgt_2_1.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed27" {% if med.mgt_2_2.doseperdate > 0 %} checked {% endif %}> Fibrates(Gemfibrozil,Fenofibrate)</td>
+                                                                        <td><input type="checkbox" id="ckmed27" {% if med.mgt_2_2.doseperdate > 0 %} checked {% endif %}> Fibrates(Gemfibrozil,Fenofibrate) <span class="count_bottom" id="medmgt_2_2"></span></td>
                                                                         <td><input type="number" name="dose27" id="dose27" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_2_2.doseperdate > 0 %} value="{{med.mgt_2_2.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed28" {% if med.mgt_2_3.doseperdate > 0 %} checked {% endif %}> Resin(Cholestyramine,Colestipol)</td>
+                                                                        <td><input type="checkbox" id="ckmed28" {% if med.mgt_2_3.doseperdate > 0 %} checked {% endif %}> Resin(Cholestyramine,Colestipol) <span class="count_bottom" id="medmgt_2_3"></span></td>
                                                                         <td><input type="number" name="dose28" id="dose28" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_2_3.doseperdate > 0 %} value="{{med.mgt_2_3.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed29" {% if med.mgt_2_4.doseperdate > 0 %} checked {% endif %}> Nicotinic acid</td>
+                                                                        <td><input type="checkbox" id="ckmed29" {% if med.mgt_2_4.doseperdate > 0 %} checked {% endif %}> Nicotinic acid <span class="count_bottom" id="medmgt_2_4"></span></td>
                                                                         <td><input type="number" name="dose29" id="dose29" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_2_4.doseperdate > 0 %} value="{{med.mgt_2_4.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>                                                    
                                                                     <tr class="active" >
                                                                         <td colspan="2"> 3. Osteoporosis Tx </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed30" {% if med.mgt_3_1.doseperdate > 0 %} checked {% endif %}> Bisphosphonates</td>
+                                                                        <td><input type="checkbox" id="ckmed30" {% if med.mgt_3_1.doseperdate > 0 %} checked {% endif %}> Bisphosphonates <span class="count_bottom" id="medmgt_3_1"></span></td>
                                                                         <td><input type="number" name="dose30" id="dose30" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_3_1.doseperdate > 0 %} value="{{med.mgt_3_1.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed31" {% if med.mgt_3_2.doseperdate > 0 %} checked {% endif %}> Ca supplement, CaCO3</td>
+                                                                        <td><input type="checkbox" id="ckmed31" {% if med.mgt_3_2.doseperdate > 0 %} checked {% endif %}> Ca supplement, CaCO3 <span class="count_bottom" id="medmgt_3_2"></span></td>
                                                                         <td><input type="number" name="dose31" id="dose31" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_3_2.doseperdate > 0 %} value="{{med.mgt_3_2.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed32" {% if med.mgt_3_3.doseperdate > 0 %} checked {% endif %}> Vitamin D </td>
+                                                                        <td><input type="checkbox" id="ckmed32" {% if med.mgt_3_3.doseperdate > 0 %} checked {% endif %}> Vitamin D <span class="count_bottom" id="medmgt_3_3"></span></td>
                                                                         <td><input type="number" name="dose32" id="dose32" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_3_3.doseperdate > 0 %} value="{{med.mgt_3_3.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>                                                    
                                                                     <tr class="active" >
                                                                         <td colspan="2"> 4. Others general treatments</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed33" {% if med.mgt_4_1.doseperdate > 0 %} checked {% endif %}> ASA</td>
+                                                                        <td><input type="checkbox" id="ckmed33" {% if med.mgt_4_1.doseperdate > 0 %} checked {% endif %}> ASA <span class="count_bottom" id="medmgt_4_1"></span></td>
                                                                         <td><input type="number" name="dose33" id="dose33" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_4_1.doseperdate > 0 %} value="{{med.mgt_4_1.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed34" {% if med.mgt_4_2.doseperdate > 0 %} checked {% endif %}> Warfarin</td>
+                                                                        <td><input type="checkbox" id="ckmed34" {% if med.mgt_4_2.doseperdate > 0 %} checked {% endif %}> Warfarin <span class="count_bottom" id="medmgt_4_2"></span></td>
                                                                         <td><input type="number" name="dose34" id="dose34" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_4_2.doseperdate > 0 %} value="{{med.mgt_4_2.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed35" {% if med.mgt_4_3.doseperdate > 0 %} checked {% endif %}> folic </td>
+                                                                        <td><input type="checkbox" id="ckmed35" {% if med.mgt_4_3.doseperdate > 0 %} checked {% endif %}> folic <span class="count_bottom" id="medmgt_4_3"></span></td>
                                                                         <td><input type="number" name="dose35" id="dose35" placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_4_3.doseperdate > 0 %} value="{{med.mgt_4_3.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckme36" {% if med.mgt_4_4.doseperdate > 0 %} checked {% endif %}> MTV </td>
+                                                                        <td><input type="checkbox" id="ckme36" {% if med.mgt_4_4.doseperdate > 0 %} checked {% endif %}> MTV <span class="count_bottom" id="medmgt_4_4"></span></td>
                                                                         <td><input type="number" name="dose36"id="dose36"  placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_4_4.doseperdate > 0 %} value="{{med.mgt_4_4.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
@@ -2280,547 +3041,6 @@
                                                             </table>
                                                         </td>
                                                     </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-lg-12">
-                                <div class="panel">
-                                    <div class="panel-body ">
-                                        {% if medicationname is not null %}
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="x_panel">
-                                                <div class="col-lg-4 col-md-4 col-sm-4">
-                                                    <label>Medication</label> 
-                                                    <div><p name="medicationname" class="form-control"></p></div>
-                                                </div>
-                                                <div class="col-lg-8 col-md-8 col-sm-8">
-                                                    <label>Effect</label> 
-                                                    <div><p name="effectdetail" class="form-control"></p></div>
-                                                </div>  
-                                            </div>
-                                        </div>
-                                        {% endif %}
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <h4 class="page-header">1. Specific treatment of SLE 
-                                            <input type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck1" disabled {% if med.msle_1_1 is not None or med.msle_1_2 is not None or med.msle_1_3 is not None or med.msle_2_1 is not None or med.msle_2_2 is not None or med.msle_3_1 is not None or med.msle_3_2 is not None or med.msle_3_3 is not None or med.msle_3_4 is not None or med.msle_4_1 is not None or med.msle_4_2 is not None or med.msle_4_3 is not None or med.msle_4_4 is not None or med.msle_4_5 is not None or med.msle_4_6 is not None or med.msle_4_7 is not None or med.msle_4_8 is not None or med.msle_4_9 is not None or med.msle_4_10 is not None or med.msle_4_11 is not None %} checked {% endif %}>
-                                            </h4>
-                                        </div>
-                                        <div id="MedicationShow1" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12" style="display:none;">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Generic</th>
-                                                        <th>Dose/d</th>
-                                                        <th>Start Date</th>
-                                                        <th>Stop Date</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {% if med.msle_1_1.doseperdate > 0 or med.msle_1_2.doseperdate > 0 or med.msle_1_3.doseperdate > 0  %}
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 1. NSAIDs </td>
-                                                    </tr>
-                                                        {% if med.msle_1_1.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>1.1) Traditional
-                                                                <span class="count_bottom" id="medmsle_1_1">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_1_1.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_1.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_1.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_1.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_1_2.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>1.2) Selective COX-2 inhibitor
-                                                                <span class="count_bottom" id="medmsle_1_2">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_1_2.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_2.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_2.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_2.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_1_3.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>1.3) Specific COX-2 inhibitor
-                                                                <span class="count_bottom" id="medmsle_1_3">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_1_3.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_3.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_3.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_1_3.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                    {% if med.msle_2_1.doseperdate > 0 or med.msle_2_2.doseperdate > 0 %}
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 2. Anti-malarial </td>
-                                                    </tr>
-                                                        {% if med.msle_2_1.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>2.1) Chloroquine (Aralen) 
-                                                                <span class="count_bottom" id="medmsle_2_1">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_2_1.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_2_1.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_2_1.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_2_1.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_2_2.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>2.2) Hydroxychloroquine (Plaquenil) 
-                                                                <span class="count_bottom" id="medmsle_2_2">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_2_2.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_2_2.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_2_2.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_2_2.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                    {% if med.msle_3_1.doseperdate > 0 or med.msle_3_2.doseperdate > 0 or med.msle_3_3.doseperdate > 0 or med.msle_3_4.doseperdate > 0 %}
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 3. Corticosteroids</td>
-                                                    </tr>
-                                                        {% if med.msle_3_1.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>3.1) Prednisolone   
-                                                                <span class="count_bottom" id="medmsle_3_1">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_3_1.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_1.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_1.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_1.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_3_2.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>3.2) Methylprednisolone (IV) 
-                                                                <span class="count_bottom" id="medmsle_3_2">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_3_2.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_2.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_2.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_2.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_3_3.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>3.3) Dexamethasone (IV)
-                                                                <span class="count_bottom" id="medmsle_3_3">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_3_3.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_3.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_3.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_3.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_3_4.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>3.4) Dexamethasone (Oral)
-                                                                <span class="count_bottom" id="medmsle_3_4">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_3_4.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_4.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_4.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_3_4.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                    {% if med.msle_4_1.doseperdate > 0 or med.msle_4_2.doseperdate > 0 or med.msle_4_3.doseperdate > 0 or med.msle_4_4.doseperdate > 0 or med.msle_4_5.doseperdate > 0 or med.msle_4_6.doseperdate > 0 or med.msle_4_7.doseperdate > 0 or med.msle_4_8.doseperdate > 0 or med.msle_4_9.doseperdate > 0 or med.msle_4_10.doseperdate > 0 or med.msle_4_11.doseperdate > 0  %}
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 4. Cytotoxic agents </td>
-                                                    </tr>
-                                                        {% if med.msle_4_1.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.1) Methotrexate (MTX)
-                                                                <span class="count_bottom" id="medmsle_4_1">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_1.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_1.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_1.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_1.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_2.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.2) Azathioprine 
-                                                                <span class="count_bottom" id="medmsle_4_2">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_2.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_2.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_2.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_2.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_3.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.3) Cyclophosphamide (oral)
-                                                                <span class="count_bottom" id="medmsle_4_3">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_3.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_3.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_3.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_3.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_4.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.4) Cyclophosphamide (IV)
-                                                                <span class="count_bottom" id="medmsle_4_4">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_4.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_4.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_4.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_4.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_5.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.5) Mycophenolate mofetil (MMF)
-                                                                <span class="count_bottom" id="medmsle_4_5">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_5.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_5.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_5.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_5.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_6.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.6) Myfortic (Mycophenolic acid)
-                                                                <span class="count_bottom" id="medmsle_4_6">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_6.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_6.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_6.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_6.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_7.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.7) Cyclosporin A 
-                                                                <span class="count_bottom" id="medmsle_4_7">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_7.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_7.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_7.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_7.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_8.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.8) Tacrolimus
-                                                                <span class="count_bottom" id="medmsle_4_8">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_8.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_8.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_8.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_8.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_9.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.9) Danazol
-                                                                <span class="count_bottom" id="medmsle_4_9">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_9.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_9.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_9.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_9.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_10.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.10) Dapsone
-                                                                <span class="count_bottom" id="medmsle_4_10">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_10.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_10.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_10.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_10.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                        {% if med.msle_4_11.doseperdate > 0 %}
-                                                        <tr>
-                                                            <td>4.11) Colchicine
-                                                                <span class="count_bottom" id="medmsle_4_11">
-                                                                </span>
-                                                            </td>
-                                                            <td><p class="form-control">{{med.msle_4_11.generic}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_11.doseperdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_11.startdate}}</p></td>
-                                                            <td><p class="form-control">{{med.msle_4_11.stopdate}}</p></td>
-                                                        </tr>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <h4 class="page-header">2. General treatments  
-                                            <input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" id="MedicationCheck2" disabled {% if med.mgt_1_1 is not None or med.mgt_1_2 is not None or med.mgt_1_3 is not None or med.mgt_1_4 is not None or med.mgt_1_5 is not None or med.mgt_2_1 is not None or med.mgt_2_2 is not None or med.mgt_2_3 is not None or med.mgt_2_4 is not None or med.mgt_3_1 is not None or med.mgt_3_2 is not None or med.mgt_3_3 is not None or med.mgt_4_1 is not None or med.mgt_4_2 is not None or med.mgt_4_3 is not None or med.mgt_4_4 is not None or med.mgt_other is True %} checked {% endif %}>
-                                            </h4>
-                                        </div> 
-                                        <div id="MedicationShow2" class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12" style="display:none;">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Generic</th>
-                                                        <th>Dose/d</th>
-                                                        <th>Start Date</th>
-                                                        <th>Stop Date</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% if med.mgt_1_1.doseperdate > 0 or med.mgt_1_2.doseperdate > 0 or med.mgt_1_3.doseperdate > 0 or med.mgt_1_4.doseperdate > 0 or med.mgt_1_5.doseperdate > 0 %}
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 1. Anti-hypertensive </td>
-                                                    </tr>
-                                                    {% if med.mgt_1_1.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>1.1) ACEI
-                                                            <span class="count_bottom" id="medmgt_1_1">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_1_1.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_1.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_1.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_1.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_1_2.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>1.2) ARB
-                                                            <span class="count_bottom" id="medmgt_1_2">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_1_2.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_2.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_2.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_2.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_1_3.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>1.3) Diuretics
-                                                            <span class="count_bottom" id="medmgt_1_3">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_1_3.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_3.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_3.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_3.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_1_4.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>1.4) Beta-blockers
-                                                            <span class="count_bottom" id="medmgt_1_4">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_1_4.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_4.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_4.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_4.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_1_5.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>1.5) Ca channel blockers
-                                                            <span class="count_bottom" id="medmgt_1_5">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_1_5.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_5.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_5.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_1_5.stopdate}}</p></td>
-                                                    </tr> 
-                                                    {% endif %}
-                                                {% endif %}
-                                                {% if med.mgt_2_1.doseperdate > 0 or med.mgt_2_2.doseperdate > 0 or med.mgt_2_3.doseperdate > 0 or med.mgt_2_4.doseperdate > 0 %}
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 2. Lipid-lowering </td>
-                                                    </tr>
-                                                    {% if med.mgt_2_1.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>2.1) Statins
-                                                            <span class="count_bottom" id="medmgt_2_1">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_2_1.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_1.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_1.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_1.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_2_2.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>2.2) Fibrates(Gemfibrozil,Fenofibrate)
-                                                            <span class="count_bottom" id="medmgt_2_2">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_2_2.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_2.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_2.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_2.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_2_3.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>2.3)  Resin(Cholestyramine,Colestipol)
-                                                            <span class="count_bottom" id="medmgt_2_3">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_2_3.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_3.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_3.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_3.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_2_4.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>2.4) Nicotinic acid
-                                                            <span class="count_bottom" id="medmgt_2_4">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_2_4.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_4.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_4.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_2_4.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                {% endif %}
-                                                {% if med.mgt_3_1.doseperdate > 0 or med.mgt_3_2.doseperdate > 0 or med.mgt_3_3.doseperdate > 0 %}
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 3. Osteoporosis Tx </td>
-                                                    </tr>
-                                                    {% if med.mgt_3_1.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>3.1) Bisphosphonates
-                                                            <span class="count_bottom" id="medmgt_3_1">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_3_1.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_1.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_1.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_1.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_3_2.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>3.2) Ca supplement, CaCO3
-                                                            <span class="count_bottom" id="medmgt_3_2">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_3_2.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_2.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_2.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_2.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_3_3.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>3.3) Vitamin D 
-                                                            <span class="count_bottom" id="medmgt_3_3">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_3_3.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_3.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_3.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_3_3.stopdate}}</p></td>
-                                                    </tr>   
-                                                    {% endif %}
-                                                {% endif %}                                                
-                                                {% if med.mgt_4_1.doseperdate > 0 or med.mgt_4_2.doseperdate > 0 or med.mgt_4_3.doseperdate > 0 or med.mgt_4_4.doseperdate > 0 %}
-                                                    <tr class="active" >
-                                                        <td colspan="5"> 4. Others general treatments</td>
-                                                    </tr>
-                                                    {% if med.mgt_4_1.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>4.1) ASA
-                                                            <span class="count_bottom" id="medmgt_4_1">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_4_1.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_1.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_1.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_1.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_4_2.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>4.2) Warfarin
-                                                            <span class="count_bottom" id="medmgt_4_2">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_4_2.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_2.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_2.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_2.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_4_3.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>4.3) Folic 
-                                                            <span class="count_bottom" id="medmgt_4_3">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_4_3.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_3.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_3.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_3.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_4_4.doseperdate > 0 %}
-                                                    <tr>
-                                                        <td>4.4) MTV 
-                                                            <span class="count_bottom" id="medmgt_4_4">
-                                                            </span>
-                                                        </td>
-                                                        <td><p class="form-control">{{med.mgt_4_4.generic}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_4.doseperdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_4.startdate}}</p></td>
-                                                        <td><p class="form-control">{{med.mgt_4_4.stopdate}}</p></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                    {% if med.mgt_other is True %}
-                                                    <tr>
-                                                        <td>Others</td>
-                                                        <td><input class="col-lg-4" type="checkbox" data-toggle="toggle" data-on="Yes" data-off="No" data-onstyle="primary" name="mgt_other" {% if med.mgt_other is True %} checked {% endif %} disabled> 
-                                                        </td>
-                                                        <td colspan="3"></td>
-                                                    </tr>
-                                                    {% endif %}
-                                                {% endif %} 
                                                 </tbody>
                                             </table>
                                         </div>
