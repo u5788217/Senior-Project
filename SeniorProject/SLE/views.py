@@ -1844,12 +1844,12 @@ def download(request):
     df5.to_excel(PandasWriter, sheet_name='Medicalcondition')
     df6 = pd.DataFrame(list(Obgyn.objects.values_list(named=True)))
     df6.to_excel(PandasWriter, sheet_name='Obgyn')
-    a = []
-    for e in Previouscomplication.objects.all():a.append(OrderedDict({'studynumber':e.studynumber.studynumber,'date':e.detail.date,'organ':e.detail.organ,'treatment':e.detail.treatment,'result':e.detail.result}))
-    df7 = pd.DataFrame(a)
-    df7.to_excel(PandasWriter, sheet_name='Previouscomplication')
+#    a = []
+#    for e in Previouscomplication.objects.all():a.append(OrderedDict({'studynumber':e.studynumber.studynumber,'date':e.detail.date,'organ':e.detail.organ,'treatment':e.detail.treatment,'result':e.detail.result}))
+#    df7 = pd.DataFrame(a)
+#    df7.to_excel(PandasWriter, sheet_name='Previouscomplication')
     b = []
-    for e in Previousorganinvolvement.objects.all():b.append(OrderedDict({'studynumber':e.studynumber.studynumber,'date':e.detail.date,'organ':e.detail.organ,'treatment':e.detail.treatment,'result':e.detail.result}))
+    for e in Previousorganinvolvement.objects.all():b.append(OrderedDict({'studynumber':e.studynumber.studynumber,'organ':e.organ,'detail':e.detail,'startdate':e.startdate,'remissiondate':e.remissiondate}))
     df8 = pd.DataFrame(b)
     df8.to_excel(PandasWriter, sheet_name='Previousorganinvolvement')
     df9 = pd.DataFrame(list(Riskbehavior.objects.values_list(named=True)))
@@ -1918,11 +1918,16 @@ def download(request):
                               'n':l.l,
                               'platelets':l.platelets,
                               'esr':l.esr,
-                              'wbc_hpf':l.wbc_hpf,
-                              'rbc_hpf':l.rbc_hpf,
-                              'wbccasts':l.wbccasts,
-                              'rbccasts':l.rbccasts,
-                              'granularcasts':l.granularcasts,
+                              'wbc_hpf1':l.wbc_hpf1,
+                              'rbc_hpf1':l.rbc_hpf1,
+                              'wbccasts1':l.wbccasts1,
+                              'rbccasts1':l.rbccasts1,
+                              'granularcasts1':l.granularcasts1,
+                              'wbc_hpf2':l.wbc_hpf2,
+                              'rbc_hpf2':l.rbc_hpf2,
+                              'wbccasts2':l.wbccasts2,
+                              'rbccasts2':l.rbccasts2,
+                              'granularcasts2':l.granularcasts2,
                               'glucose':l.glucose,
                               'protein':l.protein,
                               'tp_spoturineprotein':l.tp_spoturineprotein,
@@ -1947,11 +1952,6 @@ def download(request):
                               'ldl':l.ldl,
                               'hdl':l.hdl,
                               'inr':l.inr,
-                              'anatiter':l.anatiter,
-                              'homogeneous1':l.homogeneous1,
-                              'peripheral1':l.peripheral1,
-                              'speckled1':l.speckled1,
-                              'nucleolar1':l.nucleolar1,
                               'anti_dsdna':l.anti_dsdna,
                               'antism':l.antism,
                               'antirnp':l.antirnp,
@@ -1974,13 +1974,27 @@ def download(request):
                               'fk507':l.fk507,
                               'cyclosporin':l.cyclosporin,
                               'cytokine':l.cytokine,
-                              'l1l4spinebmd_tscore':l.l1l4spinebmd_tscore,
-                              'hipbmd_tscore':l.hipbmd_tscore,
-                              'radiusbmd_tscore':l.radiusbmd_tscore,
-                              'stoolparasite':l.stoolparasite.status if l.stoolparasite is not None else None,
-                              'cxr':l.cxr.status if l.cxr is not None else None,
-                              'ekg':l.ekg.status if l.ekg is not None else None,
-                              'echo':l.echo.status if l.echo is not None else None}))
+                              'l1l4spine_bmd':l.l1l4spine_bmd, 
+                              'l1l4spine_tscore':l.l1l4spine_tscore, 
+                              'l1l4spine_date':l.l1l4spine_date, 
+                              'hip_bmd':l.hip_bmd, 
+                              'hip_tscore':l.hip_tscore,  
+                              'hip_date':l.hip_date, 
+                              'radius_bmd':l.radius_bmd, 
+                              'radius_tscore':l.radius_tscore, 
+                              'radius_date':l.radius_date,
+                              'stoolparasite_status':l.stoolparasite.status if l.stoolparasite is not None else None,
+                              'cxr_status':l.cxr.status if l.cxr is not None else None,
+                              'ekg_status':l.ekg.status if l.ekg is not None else None,
+                              'echo_status':l.echo.status if l.echo is not None else None,
+                              'stoolparasite_date':l.stoolparasite.date if l.stoolparasite is not None else None,
+                              'cxr_date':l.cxr.date if l.cxr is not None else None,
+                              'ekg_date':l.ekg.date if l.ekg is not None else None,
+                              'echo_date':l.echo.date if l.echo is not None else None,
+                              'stoolparasite_detail':l.stoolparasite.detail if l.stoolparasite is not None else None,
+                              'cxr_detail':l.cxr.detail if l.cxr is not None else None,
+                              'ekg_detail':l.ekg.detail if l.ekg is not None else None,
+                              'echo_detail':l.echo.detail if l.echo is not None else None}))
         
     df14 = pd.DataFrame(d)
     df14.to_excel(PandasWriter, sheet_name='Lab')
