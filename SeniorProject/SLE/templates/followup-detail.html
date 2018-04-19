@@ -2116,7 +2116,7 @@
                                             <table class="table table-bordered">
                                                 <tbody>
                                                     <tr scope="row">
-                                                        <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi1" {% if med.msle_1_1.doseperdate > 0 or med.msle_2_1.doseperdate > 0 or med.msle_2_2.doseperdate > 0 or med.msle_3_1.doseperdate > 0 or med.msle_3_2.doseperdate > 0 or med.msle_3_3.doseperdate > 0 or med.msle_3_4.doseperdate > 0 or med.msle_4_1.doseperdate > 0 or med.msle_4_2.doseperdate > 0 or med.msle_4_3.doseperdate > 0 or med.msle_4_4.doseperdate > 0 or med.msle_4_5.doseperdate > 0 or med.msle_4_6.doseperdate > 0 or med.msle_4_7.doseperdate > 0 or med.msle_4_8.doseperdate > 0 or med.msle_4_9.doseperdate > 0 or med.msle_4_10.doseperdate > 0 or med.msle_4_11.doseperdate > 0 %} checked {% endif %}> Specific treatment of SLE</td>
+                                                        <td class="text-center" align="center" style="background-color: #FBFBFB;">Specific treatment of SLE</td>
                                                     </tr>
                                                     <tr class="disabledbutton">
                                                         <td>
@@ -2129,10 +2129,12 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr class="active" >
-                                                                        <td colspan="2">1. NSAIDs </td>
+                                                                        <td colspan="2">1. NSAIDs {{med}}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckmed1" {% if med.msle_1_1.doseperdate > 0 %} checked {% endif %}> NSAIDs <span class="count_bottom" id="medmsle_1_1"></span></td>
+                                                                        <td>
+                                                                        <input type="checkbox" id="ckmed1" 
+                                                                        {% if med.msle_1_1.doseperdate > 0 %} checked {% endif %}> NSAIDs <span class="count_bottom" id="medmsle_1_1"></span></td>
                                                                         <td><input type="number" name="dose1" id="dose1" placeholder="0.0" step="0.1" class="form-control" {% if med.msle_1_1.doseperdate > 0 %} value="{{med.msle_1_1.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr class="active" >
@@ -2376,7 +2378,9 @@
 			</div>
             </form>
         </div>
+{% if visiting.visitfile is not None %}
 <script>
+    
     function hexToBase64(str) {
         return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
     }
@@ -2384,4 +2388,5 @@
     img.src = "data:image/png;base64,"+hexToBase64({{visiting.visitfile}});
     $('#visitfile').append(img);
 </script>
+{% endif %}
 {% endblock %}

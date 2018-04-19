@@ -261,9 +261,8 @@ def CheckboxToInt(string):
     return int(string)
 
 def ToFloat(string):
-    if string == 'on': return 1
-    elif string == 'off'or string == '0.0': return 0
-    else : return None
+    if string == '0.0' or string == '' or string is None: return None
+    else: return float(string)
 
 def ToFloatNone(string):
     if string == '0.0' or string == '' or string is None: return None
@@ -1218,35 +1217,30 @@ def handle_uploaded_file(file, filename):
 @login_required(login_url='login')
 def followDetail(request, visitid):
     studynum = int(Visiting.objects.get(visitingid = visitid).studynumber.studynumber)
-    
     lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
     if haslnlab(lab) is True:
         lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
     else: 
         lnlab = None
     this_date = Visiting.objects.get(visitingid = visitid).visitdate
-    try:
-        med = Medication.objects.get(visitingid = visitid)
-        PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
-        PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
-        PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
-        PreviousDM = Damageindex.objects.get(visitingid = PreviousVisit).di_total
-        PreviousSLEDAI = Diseaseactivitysledai.objects.get(visitingid = PreviousVisit).sledai_total
-    except IndexError:
-        PreviousLab = None
-        PreviousMed = None
-        PreviousDM = None
-        PreviousSLEDAI = None
-        med = None
-    except ObjectDoesNotExist:
-        med = None
-        PreviousLab = None
-        PreviousMed = None
-        PreviousDM = None
-        PreviousSLEDAI = None
+
+    try: med = Medication.objects.get(visitingid = visitid)
+    except ObjectDoesNotExist: med = None
+    PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+    try: PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
+    except ObjectDoesNotExist: PreviousLab = None
+    try: PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
+    except ObjectDoesNotExist: PreviousMed = None
+    try: PreviousDM = Damageindex.objects.get(visitingid = PreviousVisit).di_total
+    except ObjectDoesNotExist: PreviousDM = None
+    try: PreviousSLEDAI = Diseaseactivitysledai.objects.get(visitingid = PreviousVisit).sledai_total
+    except ObjectDoesNotExist: PreviousSLEDAI = None
+        
+        
+        
     return render(request, 'followup-detail.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
-                      'med':med ,
+                      'med':med,
                       'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = visitid),
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
