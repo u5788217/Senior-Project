@@ -398,7 +398,9 @@
             $('#ckmed36').on('ifChecked', function(){$("#dose36").prop('disabled', false);});
             $('#ckmed36').on('ifUnchecked', function(){$("#dose36").prop('disabled', true);});
         });
-
+        
+        //Validate Checkbox
+        
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -522,7 +524,7 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck01"> 1. Constitutional Symptoms</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck01" required> 1. Constitutional Symptoms</td></tr>
                                                             <tr id="cptr01" class="disabledbutton">
                                                                 <td>
                                                                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -541,7 +543,7 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck02"> 2. Skin & mucous membrane</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck02" required> 2. Skin & mucous membrane</td></tr>
                                                             <tr id="cptr02" class="disabledbutton">
                                                                 <td>
                                                                         <div class="checkbox">
@@ -589,7 +591,7 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck03"> 3. Cardiopulmonary involvement</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck03" required> 3. Cardiopulmonary involvement</td></tr>
                                                             <tr id="cptr03" class="disabledbutton">
                                                                 <td>
                                                                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -613,7 +615,7 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck04"> 4. GI & Renal involvement</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck04" required> 4. GI & Renal involvement</td></tr>
                                                             <tr id="cptr04" class="disabledbutton">
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
@@ -641,7 +643,7 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck05"> 5. Hematologic disorder</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck05" required> 5. Hematologic disorder</td></tr>
                                                             <tr id="cptr05" class="disabledbutton">
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
@@ -661,7 +663,7 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck06"> 6. Neurological involvement</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck06" required> 6. Neurological involvement</td></tr>
                                                             <tr id="cptr06" class="disabledbutton">
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
@@ -686,7 +688,7 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck07"> 7. Musculoskeletal & LN involvement</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck07" required> 7. Musculoskeletal & LN involvement</td></tr>
                                                             <tr id="cptr07" class="disabledbutton">
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
@@ -1259,7 +1261,7 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01"> 1. CBC</td>
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01" required> 1. CBC</td>
                                                             </tr>
                                                             <tr id="labtr01" class="disabledbutton">
                                                                 <td>
@@ -1312,7 +1314,7 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck02"> 2. Urine Analysis</td>
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck02" required> 2. Urine Analysis</td>
                                                             </tr>
                                                             <tr id="labtr02_0" class="disabledbutton">
                                                                 <td colspan="3" align="center" style="background-color: #FDFCEE;">
@@ -1459,7 +1461,7 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck03"> 3. Blood Chem</td>
+                                                                <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck03" required> 3. Blood Chem</td>
                                                             </tr>
                                                             <tr id="labtr03" class="disabledbutton">
                                                                 <td>
@@ -1586,8 +1588,8 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04"> 4. Immunology</td>
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05"> 5. Viral Serology</td>
+                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04" required> 4. Immunology</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05" required> 5. Viral Serology</td>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd04_0" class="disabledbutton">
@@ -1746,7 +1748,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="4" align="center" style="background-color: #FDFCEE;">
-                                                                    <input type="checkbox" id="labcheck05extra"> Drug level
+                                                                    <input type="checkbox" id="labcheck05extra" required> Drug level
                                                                 </td>
                                                             </tr>
                                                             <tr id="labtr05extra" class="disabledbutton">
@@ -1793,7 +1795,7 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06"> 6. BMD</td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06" required> 6. BMD</td>
                                                             </tr>
                                                             <tr id="labtr06" class="disabledbutton">
                                                                 <td>
@@ -1836,10 +1838,10 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" name="labcheck07" value="1"> 7. Stool parasite</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" name="labcheck08" value="1"> 8. CXR</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" name="labcheck09" value="1"> 9. EKG</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" name="labcheck10" value="1"> 10. Echo</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" name="labcheck07" value="1" required> 7. Stool parasite</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" name="labcheck08" value="1" required> 8. CXR</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" name="labcheck09" value="1" required> 9. EKG</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" name="labcheck10" value="1" required> 10. Echo</td>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd07" class="disabledbutton">
@@ -1942,7 +1944,7 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" name="labcheck11"> 11. Lupus nephritis</td>
+                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" name="labcheck11" required> 11. Lupus nephritis</td>
                                                             </tr>
                                                             <tr id="labtr11" class="disabledbutton">
                                                                 <td>
@@ -2034,7 +2036,7 @@
                                             <table class="table table-bordered">
                                                 <tbody>
                                                     <tr scope="row">
-                                                        <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi1"> Specific treatment of SLE</td>
+                                                        <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi1" required> Specific treatment of SLE</td>
                                                     </tr>
                                                     <tr id="medi1" class="disabledbutton">
                                                         <td>
@@ -2124,6 +2126,7 @@
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed17"> Tacrolimus</td>
                                                                         <td><input type="number" name="dose17" id="dose17" placeholder="00.0" step="0.1" class="form-control" disabled></td>
+                                                                    </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed18"> Danazol</td>
                                                                         <td><input type="number" name="dose18" id="dose18" placeholder="00.0" step="0.1" class="form-control" disabled></td>
@@ -2147,7 +2150,7 @@
                                             <table class="table table-bordered">
                                                 <tbody>
                                                     <tr scope="row">
-                                                        <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi2"> General treatments</td>
+                                                        <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi2" required> General treatments</td>
                                                     </tr>
                                                     <tr id="medi2" class="disabledbutton">
                                                         <td>
@@ -2173,6 +2176,7 @@
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed23"> Diuretics</td>
                                                                         <td><input type="number" name="dose23" id="dose23" placeholder="00.0" step="0.1" class="form-control" disabled></td>
+                                                                    </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed24"> Beta-blockers</td>
                                                                         <td><input type="number" name="dose24" id="dose24" placeholder="00.0" step="0.1" class="form-control" disabled></td>
