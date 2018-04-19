@@ -401,20 +401,25 @@
         
         //Validate Checkbox
         function testcheck(){
-            message = "กรุณาตรวจสอบ";
-            if (!$("#cpcheck01").is(":checked") || !$("#cpcheck02").is(":checked") || !$("#cpcheck03").is(":checked") || !$("#cpcheck04").is(":checked") || !$("#cpcheck05").is(":checked") || !$("#cpcheck06").is(":checked") || !$("#cpcheck07").is(":checked")) {
-                message += " Clinical Presentation ";
+            message = ""
+            if($("#cpcheck01").is(":checked") && $("#cpcheck02").is(":checked") && $("#cpcheck03").is(":checked") && $("#cpcheck04").is(":checked") && $("#cpcheck05").is(":checked") && $("#cpcheck06").is(":checked") && $("#cpcheck07").is(":checked") && $("#labcheck01").is(":checked") && $("#labcheck02").is(":checked") && $("#labcheck03").is(":checked") && $("#labcheck04").is(":checked") && $("#labcheck05").is(":checked") && $("#labcheck05extra").is(":checked") && $("#labcheck06").is(":checked") && $("#labcheck07").is(":checked") && $("#labcheck08").is(":checked") && $("#labcheck09").is(":checked") && $("#labcheck10").is(":checked") && $("#labcheck11").is(":checked") && $("#ckmedi1").is(":checked") && $("#ckmedi2").is(":checked")){
+                return true;
             }
-            if (!$("#labcheck01").is(":checked") || !$("#labcheck02").is(":checked") || !$("#labcheck03").is(":checked") || !$("#labcheck04").is(":checked") || !$("#labcheck05").is(":checked") || !$("#labcheck06").is(":checked") || !$("#labcheck07").is(":checked") || !$("#labcheck08").is(":checked") || !$("#labcheck09").is(":checked") || !$("#labcheck10").is(":checked") || !$("#labcheck11").is(":checked") || !$("#labcheck12").is(":checked")) {
-                if(message != "กรุณาตรวจสอบ"){ message += "และ";}
-                message += " Laboratory ";
+            else{
+                message += "กรุณาตรวจสอบ";
+                if (!$("#cpcheck01").is(":checked") || !$("#cpcheck02").is(":checked") || !$("#cpcheck03").is(":checked") || !$("#cpcheck04").is(":checked") || !$("#cpcheck05").is(":checked") || !$("#cpcheck06").is(":checked") || !$("#cpcheck07").is(":checked")) {
+                    message += " Clinical Presentation ";
+                }
+                if (!$("#labcheck01").is(":checked") || !$("#labcheck02").is(":checked") || !$("#labcheck03").is(":checked") || !$("#labcheck04").is(":checked") || !$("#labcheck05").is(":checked") || !$("#labcheck05extra").is(":checked") || !$("#labcheck06").is(":checked") || !$("#labcheck07").is(":checked") || !$("#labcheck08").is(":checked") || !$("#labcheck09").is(":checked") || !$("#labcheck10").is(":checked") || !$("#labcheck11").is(":checked")) {
+                    if(message != "กรุณาตรวจสอบ"){ message += "และ";}
+                    message += " Laboratory ";
+                }
+                if (!$("#ckmedi1").is(":checked") || !$("#ckmedi2").is(":checked")) {
+                    if(message != "กรุณาตรวจสอบ"){ message += "และ";}
+                    message += " Medication ";
+                }
+                alert(message); 
             }
-            if (!$("#ckmedi1").is(":checked") || !$("#ckmedi2").is(":checked")) {
-                if(message != "กรุณาตรวจสอบ"){ message += "และ";}
-                message += " Medication ";
-            }
-            alert(message);
-            return true;
         }
         
         
