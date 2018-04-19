@@ -1229,6 +1229,7 @@ def followDetail(request, visitid):
         lnlab = None
     this_date = Visiting.objects.get(visitingid = visitid).visitdate
     try:
+        med = Medication.objects.get(visitingid = visitid)
         PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
         PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
         PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
@@ -1239,14 +1240,16 @@ def followDetail(request, visitid):
         PreviousMed = None
         PreviousDM = None
         PreviousSLEDAI = None
+        med = None
     except ObjectDoesNotExist:
+        med = None
         PreviousLab = None
         PreviousMed = None
         PreviousDM = None
         PreviousSLEDAI = None
     return render(request, 'followup-detail.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
-                      'med':Medication.objects.get(visitingid = visitid),
+                      'med':med ,
                       'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = visitid),
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
@@ -1602,9 +1605,13 @@ def followEdit(request, visitid):
         lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
     else: 
         lnlab = None
+    try:
+        med = Medication.objects.get(visitingid = visitid)
+    except ObjectDoesNotExist:
+        med = None
     return render(request, 'followup-edit.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
-                      'med':Medication.objects.get(visitingid = visitid),
+                      'med':med,
                       'lab':lab,
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
