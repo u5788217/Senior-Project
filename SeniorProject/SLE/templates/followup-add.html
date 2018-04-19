@@ -401,12 +401,23 @@
         
         //Validate Checkbox
         function testcheck(){
-            if (!jQuery("#cpcheck01").is(":checked")) {
-                alert("none checked");
-                return false;
+            message = "กรุณาตรวจสอบ";
+            if (!$("#cpcheck01").is(":checked") || !$("#cpcheck02").is(":checked") || !$("#cpcheck03").is(":checked") || !$("#cpcheck04").is(":checked") || !$("#cpcheck05").is(":checked") || !$("#cpcheck06").is(":checked") || !$("#cpcheck07").is(":checked")) {
+                message += " Clinical Presentation ";
             }
+            if (!$("#labcheck01").is(":checked") || !$("#labcheck02").is(":checked") || !$("#labcheck03").is(":checked") || !$("#labcheck04").is(":checked") || !$("#labcheck05").is(":checked") || !$("#labcheck06").is(":checked") || !$("#labcheck07").is(":checked") || !$("#labcheck08").is(":checked") || !$("#labcheck09").is(":checked") || !$("#labcheck10").is(":checked") || !$("#labcheck11").is(":checked") || !$("#labcheck12").is(":checked")) {
+                if(message != "กรุณาตรวจสอบ"){ message += "และ";}
+                message += " Laboratory ";
+            }
+            if (!$("#ckmedi1").is(":checked") || !$("#ckmedi2").is(":checked")) {
+                if(message != "กรุณาตรวจสอบ"){ message += "และ";}
+                message += " Medication ";
+            }
+            alert(message);
             return true;
         }
+        
+        
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -470,7 +481,8 @@
                             <span style="padding-left:1em" class="glyphicon glyphicon-user"> </span> By <input type="text" class="form-control" name="username" value={{User}} style="width: 70px;"></p>
                         </div>
                     </div>
-                    <div style="float: right; margin: 6px;"><button type="submit" class="btn btn-primary" onclick="return testcheck()">Save</button><input type="button" class="btn" value="Cancel" onclick="window.history.go(-1); return false;"></div>
+                    <div style="float: right; margin: 6px;"><button type="submit" class="btn btn-primary" onclick="testcheck()">Save</button><input type="button" class="btn" value="Cancel" onclick="window.history.go(-1); return false;"></div>
+                    
                     {% if comment %}
                     <script>
                         alert({{ message }});
@@ -482,7 +494,7 @@
             <div class="x_panel">  
             <div class="" role="tabpanel" data-example-id="togglable-tabs">
 				<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#tab1info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Clinical presentation</a>
+                    <li role="presentation" class="active" ><a href="#tab1info" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Clinical presentation</a>
                     </li>
                     <li role="presentation" class=""><a href="#tab2info" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">SLEDAI</a>
                     </li>
@@ -976,7 +988,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab3info" aria-labelledby="profile-tab">
+                        <div role="tabpanel" class="tab-pane fade" id="tab3info" aria-labelledby="profile-tab1">
                             <div class="col-lg-12">
                                 <div class="panel">
                                     <div class="panel-body ">
@@ -2296,4 +2308,10 @@
             </div>
             </form>
         </div>
+          <script>
+              
+        function Popupplease(){
+            $("#profile-tab").prop('aria-expanded','true');
+        }
+          </script>
 {% endblock %}
