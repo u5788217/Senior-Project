@@ -261,11 +261,9 @@ def CheckboxToInt(string):
     return int(string)
 
 def ToFloat(string):
-    if string == 'on': string = 1
-    else : 
-        if string == 'off' or string == '' or string is None or string == '0.0': return 0
-    
-    return float(string)
+    if string == 'on': return 1
+    else if: string == 'off', string == '0.0': return 0
+    else : string == '' or string is None: return None
 
 def ToFloatNone(string):
     if string == '0.0' or string == '' or string is None: return None
