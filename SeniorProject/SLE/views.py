@@ -262,17 +262,16 @@ def CheckboxToInt(string):
 
 def ToFloat(string):
     if string == 'on': return 1
-    else if: string == 'off', string == '0.0': return 0
-    else : string == '' or string is None: return None
+    elif string == 'off'or string == '0.0': return 0
+    else : return None
 
 def ToFloatNone(string):
     if string == '0.0' or string == '' or string is None: return None
     else: return float(string)
 
 def CheckboxToBool(string):
-    if string == '1' or string == 'on': string = 'True'
-    else : string = 'False'
-    return string
+    if string == '1' or string == 'on': return 'True'
+    else : return 'False'
 
 def DateToNone(date):
     if date == '': date = None

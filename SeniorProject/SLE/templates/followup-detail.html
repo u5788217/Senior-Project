@@ -595,7 +595,7 @@
                                                     <div class="form-group">
                                                         <label>BP</label>  
                                                         <div class="form-group">
-                                                            <p class="form-control">{{visitingyyy.bp}}</p>
+                                                            <p class="form-control" >{% if visiting.bp is not None %} {{visiting.bp}} {% endif %}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -603,7 +603,7 @@
                                                     <div class="form-group">
                                                         <label>Weight</label>  
                                                         <div class="form-group">
-                                                            <p class="form-control">{{visiting.weight}}</p>
+                                                            <p class="form-control" placeholder="00.0">{% if visiting.weight is not None %} {{visiting.weight}} {% endif %}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -611,7 +611,7 @@
                                                     <div class="Height-group">
                                                         <label>Height</label>  
                                                         <div class="form-group">
-                                                            <p class="form-control">{{visiting.height}}</p>
+                                                            <p class="form-control" placeholder="000.0">{% if visiting.height is not None %} {{visiting.height}} {% endif %}</p>
                                                         </div>
                                                     </div>
                                                 </div>

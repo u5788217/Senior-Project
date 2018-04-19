@@ -562,7 +562,7 @@
                             }
                         }
                     },
-                    data: [{% for value in med.values %}{{value}},{% endfor %}] 
+                    data: [{% for value in med.values %}{% if value is None %} 0 {% else %} {{value}} {% endif %},{% endfor %}] 
                 },
                 {% endfor %}
                 ]
@@ -617,7 +617,7 @@
                 {
                     name: "{{lab.name}}",
                     type: "line",
-                    data: [{% for value in lab.values %}{{value}},{% endfor %}] 
+                    data: [{% for value in lab.values %}{% if value is None %} 0 {% else %} {{value}} {% endif %},{% endfor %}] 
                 },
                 {% endfor %}
                 ]
@@ -896,7 +896,7 @@
                 {
                     name: "{{sledai.name}}",
                     type: "line",
-                    data: [{% for value in sledai.values %}{{value}},{% endfor %}]     
+                    data: [{% for value in sledai.values %}{% if value is None %} 0 {% else %} {{value}} {% endif %},{% endfor %}]     
                 },
                 {% endfor %}
                 ]

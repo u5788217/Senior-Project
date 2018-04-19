@@ -160,8 +160,6 @@
             $('#di_23').on('ifUnchecked', function(){SLICCcal();});
             $('#di_24').on('ifChecked', function(){SLICCcal();});
             $('#di_24').on('ifUnchecked', function(){SLICCcal();});
-            $('#di_25').on('ifChecked', function(){SLICCcal();});
-            $('#di_25').on('ifUnchecked', function(){SLICCcal();});
             $('#di_26').on('ifChecked', function(){SLICCcal();});
             $('#di_26').on('ifUnchecked', function(){SLICCcal();});
             $('#di_27').on('ifChecked', function(){SLICCcal();});
@@ -176,8 +174,6 @@
             $('#di_31').on('ifUnchecked', function(){SLICCcal();});
             $('#di_32').on('ifChecked', function(){SLICCcal();});
             $('#di_32').on('ifUnchecked', function(){SLICCcal();});
-            $('#di_33').on('ifChecked', function(){SLICCcal();});
-            $('#di_33').on('ifUnchecked', function(){SLICCcal();});
             $('#di_34').on('ifChecked', function(){SLICCcal();});
             $('#di_34').on('ifUnchecked', function(){SLICCcal();});
             $('#di_35').on('ifChecked', function(){SLICCcal();});
@@ -237,6 +233,7 @@
                 if (document.getElementById('di_38').checked){SLICCtotal += 1}
                 if (document.getElementById('di_39').checked){SLICCtotal += 1}
                 if (document.getElementById('di_40').checked){SLICCtotal += 1}
+                
                 SLICCtotal += parseInt(document.querySelector('input[name = "di_5"]:checked').value);
                 SLICCtotal += parseInt(document.querySelector('input[name = "di_12"]:checked').value);
                 SLICCtotal += parseInt(document.querySelector('input[name = "di_18"]:checked').value);
@@ -998,15 +995,27 @@
                                                                 <div class="form-group">
                                                                     <label>Myocardial infarction
                                                                     <div class="btn-group" data-toggle="buttons" id="di_12">
-                                                                        <label>
-                                                                            <input type="radio" name="di_12" id="option0" value="0" {% if damageindex.di_12 == 0 %} checked {% endif %}> 0
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_12" id="option1" value="1" {% if damageindex.di_12 == 1 %} checked {% endif %}> 1
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_12" id="option2" value="2" {% if damageindex.di_12 == 2 %} checked {% endif %}> 2
-                                                                        </label>
+                                                                        {% if damageindex.di_12 is None %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_12" id="option0" value="0" checked> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_12" id="option1" value="1"> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_12" id="option2" value="2"> 2
+                                                                            </label>
+                                                                        {% else %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_12" id="option0" value="0" {% if damageindex.di_12 == 0 %} checked {% endif %}> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_12" id="option1" value="1" {% if damageindex.di_12 == 1 %} checked {% endif %}> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_12" id="option2" value="2" {% if damageindex.di_12 == 2 %} checked {% endif %}> 2
+                                                                            </label>
+                                                                        {% endif %}
                                                                     </div>
                                                                 </div>
                                                                 <div class="checkbox">
@@ -1024,15 +1033,27 @@
                                                                 <div class="form-group">
                                                                     <label>Infarction or resection of bowel
                                                                     <div class="btn-group" data-toggle="buttons" id="di_25">
-                                                                        <label>
-                                                                            <input type="radio" name="di_25" id="option0" value="0" {% if damageindex.di_25 == 0 %} checked {% endif %}> 0
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_25" id="option1" value="1" {% if damageindex.di_25 == 1 %} checked {% endif %}> 1
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_25" id="option2" value="2" {% if damageindex.di_25 == 2 %} checked {% endif %}> 2
-                                                                        </label>
+                                                                        {% if damageindex.di_25 is None %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_25" id="option0" value="0" checked> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_25" id="option1" value="1"> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_25" id="option2" value="2"> 2
+                                                                            </label>
+                                                                        {% else %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_25" id="option0" value="0" {% if damageindex.di_25 == 0 %} checked {% endif %}> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_25" id="option1" value="1" {% if damageindex.di_25 == 1 %} checked {% endif %}> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_25" id="option2" value="2" {% if damageindex.di_25 == 2 %} checked {% endif %}> 2
+                                                                            </label>
+                                                                        {% endif %}
                                                                     </div>
                                                                 </div>
                                                                 <div class="checkbox">
@@ -1072,15 +1093,27 @@
                                                                 <div class="form-group">
                                                                     <label>Cerebrovascular accident or surgical resection
                                                                     <div class="btn-group" id="di_5">
-                                                                        <label>
-                                                                            <input type="radio" name="di_5" id="option0" value="0" {% if damageindex.di_5 == 0 %} checked {% endif %}> 0
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_5" id="option1" value="1" {% if damageindex.di_5 == 1 %} checked {% endif %}> 1
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_5" id="option2" value="2" {% if damageindex.di_5 == 2 %} checked {% endif %}> 2
-                                                                        </label>
+                                                                        {% if damageindex.di_5 is None %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_5" id="option0" value="0" checked> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_5" id="option1" value="1"> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_5" id="option2" value="2"> 2
+                                                                            </label>
+                                                                        {% else %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_5" id="option0" value="0" {% if damageindex.di_5 == 0 %} checked {% endif %}> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_5" id="option1" value="1" {% if damageindex.di_5 == 1 %} checked {% endif %}> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_5" id="option2" value="2" {% if damageindex.di_5 == 2 %} checked {% endif %}> 2
+                                                                            </label>
+                                                                        {% endif %}
                                                                     </div>
                                                                 </div>
                                                                 <div class="checkbox">
@@ -1101,15 +1134,27 @@
                                                                 <div class="form-group">
                                                                     <label>Significant tissue loss (digit or limb)
                                                                     <div class="btn-group" data-toggle="buttons" id="di_18">
-                                                                        <label>
-                                                                            <input type="radio" name="di_18" id="option0" value="0" {% if damageindex.di_18 == 0 %} checked {% endif %}> 0
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_18" id="option1" value="1" {% if damageindex.di_18 == 1 %} checked {% endif %}> 1
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_18" id="option2" value="2" {% if damageindex.di_18 == 2 %} checked {% endif %}> 2
-                                                                        </label>
+                                                                        {% if damageindex.di_18 is None %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_18" id="option0" value="0" checked> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_18" id="option1" value="1"> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_18" id="option2" value="2"> 2
+                                                                            </label>
+                                                                        {% else %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_18" id="option0" value="0" {% if damageindex.di_18 == 0 %} checked {% endif %}> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_18" id="option1" value="1" {% if damageindex.di_18 == 1 %} checked {% endif %}> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_18" id="option2" value="2" {% if damageindex.di_18 == 2 %} checked {% endif %}> 2
+                                                                            </label>
+                                                                        {% endif %}
                                                                     </div>
                                                                 </div>
                                                                 <div class="checkbox">
@@ -1130,15 +1175,27 @@
                                                                 <div class="form-group">
                                                                     <label>Avascular necrosis
                                                                     <div class="btn-group" data-toggle="buttons" id="di_33">
-                                                                        <label>
-                                                                            <input type="radio" name="di_33" id="option0" value="0" {% if damageindex.di_33 == 0 %} checked {% endif %}> 0
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_33" id="option1" value="1" {% if damageindex.di_33 == 1 %} checked {% endif %}> 1
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_33" id="option2" value="2" {% if damageindex.di_33 == 2 %} checked {% endif %}> 2
-                                                                        </label>
+                                                                        {% if damageindex.di_33 is None %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_33" id="option0" value="0" checked> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_33" id="option1" value="1"> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_33" id="option2" value="2"> 2
+                                                                            </label>
+                                                                        {% else %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_33" id="option0" value="0" {% if damageindex.di_33 == 0 %} checked {% endif %}> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_33" id="option1" value="1" {% if damageindex.di_33 == 1 %} checked {% endif %}> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_33" id="option2" value="2" {% if damageindex.di_33 == 2 %} checked {% endif %}> 2
+                                                                            </label>
+                                                                        {% endif %}
                                                                     </div>
                                                                 </div>
                                                                 <div class="checkbox">
@@ -1211,15 +1268,27 @@
                                                                 <div class="form-group">
                                                                     <label>Malignancy (exclude dysplasia)
                                                                     <div class="btn-group" data-toggle="buttons" id="di_41">
-                                                                        <label>
-                                                                            <input type="radio" name="di_41" id="option0" value="0" {% if damageindex.di_41 == 0 %} checked {% endif %}> 0
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_41" id="option1" value="1" {% if damageindex.di_41 == 1 %} checked {% endif %}> 1
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="di_41" id="option2" value="2" {% if damageindex.di_41 == 2 %} checked {% endif %}> 2
-                                                                        </label>
+                                                                        {% if damageindex.di_41 is None %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_41" id="option0" value="0" checked> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_41" id="option1" value="1"> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_41" id="option2" value="2"> 2
+                                                                            </label>
+                                                                        {% else %}
+                                                                            <label>
+                                                                                <input type="radio" name="di_41" id="option0" value="0" {% if damageindex.di_41 == 0 %} checked {% endif %}> 0
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_41" id="option1" value="1" {% if damageindex.di_41 == 1 %} checked {% endif %}> 1
+                                                                            </label>
+                                                                            <label>
+                                                                                <input type="radio" name="di_41" id="option2" value="2" {% if damageindex.di_41 == 2 %} checked {% endif %}> 2
+                                                                            </label>
+                                                                        {% endif %}
                                                                     </div>
                                                                 </div>
                                                             </td>
