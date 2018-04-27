@@ -1226,7 +1226,8 @@ def followDetail(request, visitid):
 
     try: med = Medication.objects.get(visitingid = visitid)
     except ObjectDoesNotExist: med = None
-    PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+    try: PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+    except IndexError: PreviousVisit = None
     try: PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
     except ObjectDoesNotExist: PreviousLab = None
     try: PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
@@ -1574,18 +1575,7 @@ def followEditPost(request):
         old_med.mgt_other = CheckboxToBool(request.POST.get('mgt_other',))
         old_med.save()
         
-        this_date = old_visiting.visitdate 
-        try:
-            PreviousVisit = Visiting.objects.filter(studynumber = old_visiting.studynumber).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
-            PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
-            PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
-        except IndexError:
-            PreviousLab = None
-            PreviousMed = None
-        except ObjectDoesNotExist:
-            PreviousLab = None
-            PreviousMed = None
-        
+        this_date = old_visiting.visitdate         
         return HttpResponseRedirect(reverse('patientrecord', args=(old_visiting.studynumber.studynumber,)))
     
 
