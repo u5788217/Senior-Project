@@ -1,0 +1,72 @@
+{% extends "header.html" %}
+{% block content %}  
+       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'index' %}">SLE Flare-up Predictor</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav ">
+                <!--Normal-->
+                <li>
+                <a href="{% url 'index' %}"><i class="fa fa-home"></i> Home </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{request.user}} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> ประวัติส่วนตัว</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> ตั้งค่า</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{% url 'logout' %}"><i class="fa fa-fw fa-power-off"></i> ลงชื่อออก</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+        <div id="page-wrapper" >
+            <div class="container-fluid"> 
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-md-offset-2">
+                        <div class="x_panel">
+                            <div class="x_title"> 
+                                {% load staticfiles %}
+                                <h2>SLE Patients</h2>
+								<ul class="nav navbar-right panel_toolbox">
+                                    <li style="border-right: 2px solid #E6E6E6;"><a href="" style="color: #2F7C49; margin-right: 7px;"> Save </a></li>
+									<li><a href="" style="margin-left: 7px;"> Cancel</a></li>
+								</ul>
+								<div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <table id="datatable" class="table table-bordered table-hover table-striped jambo_table bulk_action" >
+                                        <thead>
+                                            <tr>                                            
+                                                <th class="col-md-3">Study Number</th>                                               
+                                                <th class="col-md-3">HN</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for patient in patients %}
+                                            <tr>
+                                                <td>{{ patient.studynumber }}</td>
+                                                <td>{{ patient.gender }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1226,15 +1226,22 @@ def followDetail(request, visitid):
 
     try: med = Medication.objects.get(visitingid = visitid)
     except ObjectDoesNotExist: med = None
-    PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+    except IndexError: med = None
+    try: PreviousVisit = Visiting.objects.filter(studynumber = studynum).order_by('visitdate').filter(visitdate__lt = this_date).reverse()[0]
+    except ObjectDoesNotExist: PreviousVisit = None
+    except IndexError: PreviousVisit = None
     try: PreviousLab = Laboratoryinventoryinvestigation.objects.get(visitingid = PreviousVisit)
     except ObjectDoesNotExist: PreviousLab = None
+    except IndexError: PreviousLab = None
     try: PreviousMed = Medication.objects.get(visitingid = PreviousVisit)
     except ObjectDoesNotExist: PreviousMed = None
+    except IndexError: PreviousMed = None
     try: PreviousDM = Damageindex.objects.get(visitingid = PreviousVisit).di_total
     except ObjectDoesNotExist: PreviousDM = None
+    except IndexError: PreviousDM = None
     try: PreviousSLEDAI = Diseaseactivitysledai.objects.get(visitingid = PreviousVisit).sledai_total
     except ObjectDoesNotExist: PreviousSLEDAI = None
+    except IndexError: PreviousSLEDAI = None
         
         
         
@@ -2007,6 +2014,12 @@ def download(request):
     response['Content-Disposition'] = 'attachment; filename=PatientData.xlsx'
 
     return response
+
+def hnDetail(request):
+    return render(request, 'hn-detail.html')
+
+def hnEdit(request):
+    return render(request, 'hn-edit.html')
 
 def debug(request):
     return render(request, 'debug.html')
