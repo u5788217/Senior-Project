@@ -28,4 +28,6 @@ urlpatterns = [
     path('followEditPost/', views.followEditPost, name='followEditPost'),
     path('download/', views.download, name='download'),
     path('debug/', views.debug, name='debug'),
+    path('hnDetail/', views.hnDetail, name='hnDetail'),
+    path('hnEdit/', views.hnEdit, name='hnEdit'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
