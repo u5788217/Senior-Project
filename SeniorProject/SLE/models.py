@@ -597,3 +597,11 @@ class Visiting(models.Model):
         managed = False
         db_table = 'visiting'
         unique_together = (('visitingid','studynumber', 'visitdate'),)
+        
+class HN(models.Model):
+    studynumber = models.CharField(primary_key=True, max_length=6)
+    hn = models.CharField(max_length=20, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'hn'

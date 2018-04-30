@@ -30,4 +30,5 @@ urlpatterns = [
     path('debug/', views.debug, name='debug'),
     path('hnDetail/', views.hnDetail, name='hnDetail'),
     path('hnEdit/', views.hnEdit, name='hnEdit'),
+    path('hnEditPost/', views.hnEditPost, name='hnEditPost'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 

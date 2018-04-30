@@ -14,7 +14,7 @@ from datetime import datetime
 
 from .models import AuthUser
 #Models for enrollment
-from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Familyhistory, Obgyn, Riskbehavior, Comorbidity
+from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Familyhistory, Obgyn, Riskbehavior, Comorbidity, HN
 from .models import Labtype, Medicationtype
 from .models import Visiting, Clinicalpresentation, Damageindex, Diseaseactivitysledai, Laboratoryinventoryinvestigation, Lnlab, Medication
 
@@ -721,7 +721,8 @@ def enrollPatient(request):
                                 occupation = request.POST.get('occupation', ''),
                                 income = request.POST.get('income', ''))
         EnrollStudyidentity.save()
-        
+        hn = HN(studynumber = stnum, hn = None)
+        hn.save()
         EnrollSlicccriteria = Slicccriteria(studynumber = EnrollStudyidentity,
                                             slicc1 = CheckboxToBool(request.POST.get('slicc1', '')),
                                             slicc2 = CheckboxToBool(request.POST.get('slicc2', '')),
@@ -2000,10 +2001,22 @@ def download(request):
     return response
 
 def hnDetail(request):
-    return render(request, 'hn-detail.html')
+    return render(request, 'hn-detail.html',{'hns': HN.objects.all()})
 
 def hnEdit(request):
-    return render(request, 'hn-edit.html')
+    return render(request, 'hn-edit.html',{'hns': HN.objects.all()})
+
+def hnEditPost(request):
+    if request.method == "POST":
+        hns = HN.objects.all()
+        for hn in hns:
+            oldhn = HN.objects.get(studynumber = hn.studynumber)
+            newhn = request.POST.get(''+str(hn.studynumber),)
+            if oldhn.hn is not newhn:
+                oldhn.hn = newhn
+                oldhn.save()
+#    return render(request, 'hn-edit.html',{'hns': HN.objects.all(),'newhn':newhn})
+    return HttpResponseRedirect('/hnDetail/')
 
 def debug(request):
     return render(request, 'debug.html')
