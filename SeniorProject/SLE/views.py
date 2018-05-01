@@ -2000,13 +2000,22 @@ def download(request):
 
     return response
 
+@login_required(login_url='login')
 def hnDetail(request):
+    if str(request.user) != 'admin':
+        return HttpResponseRedirect('/index/')
     return render(request, 'hn-detail.html',{'hns': HN.objects.all()})
 
+@login_required(login_url='login')
 def hnEdit(request):
+    if str(request.user) != 'admin':
+        return HttpResponseRedirect('/index/')
     return render(request, 'hn-edit.html',{'hns': HN.objects.all()})
 
+@login_required(login_url='login')
 def hnEditPost(request):
+    if str(request.user) != 'admin':
+        return HttpResponseRedirect('/index/')
     if request.method == "POST":
         hns = HN.objects.all()
         for hn in hns:
