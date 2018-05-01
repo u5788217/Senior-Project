@@ -99,7 +99,8 @@
                                         <table id="datatable" class="table table-bordered table-hover table-striped jambo_table bulk_action" >
                                         <thead>
                                             <tr>                                            
-                                                <th>Study Number</th>                                               
+                                                <th>Study Number</th> 
+                                                <th style="display: none;">HN</th> 
                                                 <th>Gender</th>
                                                 <th>Detail</th>
                                                 <th>Prediction</th>
@@ -108,11 +109,12 @@
                                         <tbody>
                                         {% for patient in patients %}
                                             <tr>
-                                                <td>{{ patient.studynumber }}</td>
-                                                <td>{{ patient.gender }}</td>
-                                                <td><a href="{% url 'patientrecord' patient.studynumber %}">See Detail</a></td>
+                                                <td>{{ patient.sn.studynumber }}</td>
+                                                <td style="display: none;">{{ patient.hn.hn }}</td>
+                                                <td>{{ patient.sn.gender }}</td>
+                                                <td><a href="{% url 'patientrecord' patient.sn.studynumber %}">See Detail</a></td>
                                                 <td>{% for result in PredictResult %}
-                                                    {% if result.St == patient %}
+                                                    {% if result.St == patient.sn %}
                                                         {% if result.status == 'Flare' %}
                                                         <span class="label label-danger">Flare</span>
                                                         {% else %}

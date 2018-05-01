@@ -32,6 +32,13 @@ import os
 from django.conf import settings
 from django.templatetags.static import static
 
+try:
+    from itertools import izip as zip
+except ImportError: # will be 3.x series
+    pass
+
+from operator import attrgetter
+
 def StringToNone(checkbox,string):
     if checkbox == '0' or checkbox == '' or checkbox == 'off': string = None
     return string
@@ -460,7 +467,10 @@ def index(request):
                     Result.append({'St':p, 'status':'Flare'})
                 else:
                     Result.append({'St':p, 'status':'Not flare'})
-            return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 
+            result_list = []
+            for sn in Studyidentity.objects.all():
+                result_list.append({'sn':sn, 'hn': HN.objects.get(studynumber = sn.studynumber)})
+            return render(request, 'index.html',{'patients': result_list, 
                                                  'ACRdata':ACRdata, 
                                                  'SLICCdata':slicc_top5,
                                                  'Gender':Gender,
@@ -488,7 +498,11 @@ def index(request):
                     Result.append({'St':p, 'status':'Flare'})
                 else:
                     Result.append({'St':p, 'status':'Not flare'})
-            return render(request, 'index.html',{'patients': Studyidentity.objects.all(), 
+            result_list = []
+            for sn in Studyidentity.objects.all():
+                result_list.append({'sn':sn, 'hn': HN.objects.get(studynumber = sn.studynumber)})
+           
+            return render(request, 'index.html',{'patients': result_list, 
                                                  'ACRdata':ACRdata, 
                                                  'SLICCdata':slicc_top5,
                                                  'Gender':Gender,
@@ -721,7 +735,7 @@ def enrollPatient(request):
                                 occupation = request.POST.get('occupation', ''),
                                 income = request.POST.get('income', ''))
         EnrollStudyidentity.save()
-        hn = HN(studynumber = stnum, hn = None)
+        hn = HN(studynumber = stnum, hn = request.POST.get('HN',))
         hn.save()
         EnrollSlicccriteria = Slicccriteria(studynumber = EnrollStudyidentity,
                                             slicc1 = CheckboxToBool(request.POST.get('slicc1', '')),
