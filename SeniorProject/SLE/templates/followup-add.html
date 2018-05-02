@@ -486,9 +486,21 @@
                                 var today = year + "-" + month + "-" + day;   
 
                                 $(function() {$("#theDate").attr("value", today);});
+                                
+                                function CheckVisitDate(tmp){
+                                    var ck = 0;
+                                    {% for data in visitdate_list %}
+                                        var tmpdate = new Date({{data.value}});
+                                        var tmpdateinput = new Date(document.getElementById("theDate").value);
+                                        if(tmpdateinput.getDate() == {{data.value}}*1000){ck += 1;}
+                                        console.log(tmpdateinput.getDate());console.log(ck);console.log({{data.value}}*1000);
+                                    {% endfor %}
+                                    
+                                    if(ck>0){alert('This visitdate has been already used! Please input again.');}
+                                }
                             </script>
                             <p style="font-size: 14px; margin: 6px; color: #A4A4A4;">
-                            <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Date <input type="date" name="visitdate" class="form-control" id="theDate">
+                            <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Date <input type="date" name="visitdate" class="form-control" id="theDate" onchange="CheckVisitDate(this);">
                             <span style="padding-left:1em" class="glyphicon glyphicon-user"> </span> By <input type="text" class="form-control" name="username" value={{user}} style="width: 70px;"></p>
                         </div>
                     </div>

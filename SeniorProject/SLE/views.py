@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.utils.timezone import datetime
 from datetime import timedelta
-from datetime import datetime
+import datetime
 
 from .models import AuthUser
 #Models for enrollment
@@ -56,7 +56,7 @@ def getRowForPredict(studynumber):
     latest_sledai = None
     latest_med = None
     latest_cp = None
-    now = datetime.now().date()
+    now = datetime.datetime.now().date()
     try:
         latest_visit = Visiting.objects.filter(studynumber = studynumber).latest('visitdate')
         latest_lab = Laboratoryinventoryinvestigation.objects.get(visitingid = latest_visit)
@@ -416,7 +416,7 @@ def getCurrentStatus():
 
 def getAges():
     Ages = []
-    now = datetime.now().date()
+    now = datetime.datetime.now().date()
     Group1 = 0
     Group2 = 0
     Group3 = 0
@@ -706,7 +706,8 @@ def followupnew(request, studynum):
     visitdate_list = []
     visits = Visiting.objects.filter(studynumber = studynum).order_by('visitdate')
     for vs in visits:
-        visitdate_list.append(vs.visitdate)
+        d = datetime.datetime.strptime(str(vs.visitdate), '%Y-%m-%d')
+        visitdate_list.append({'value': datetime.datetime.strftime(d, "%m/%d/%y")})
     return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum),
                                                 'visitdate_list':visitdate_list})
 
@@ -717,7 +718,7 @@ def enrollAdd(request):
 @login_required(login_url='login')
 def enrollPatient(request):
     if request.method == "POST":
-        now = str(datetime.now().year+543)
+        now = str(datetime.datetime.now().year+543)
         current_year = now[-2:]+"0000"
         max_id_list = Studyidentity.objects.all().filter(studynumber__gte = current_year)
         max_year = None
