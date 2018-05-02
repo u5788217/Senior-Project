@@ -408,14 +408,8 @@
      function CompValue(current,previous,tag)
         {
             if (current == '' || current == 'None' || previous == '' || previous == 'None'){ str = ' <i class="aero"><i class="fa fa-minus"></i></i>';}
-            else if (current > previous){
-                str = ' <i class="red"><i class="fa fa-sort-asc"></i> '+Math.abs(current-previous).toFixed(2)+'</i>';
-            }
-            else if (previous == current){
-                str = ' <i class="aero"><i class="fa fa-minus"></i> 0 </i>';
-            }
-            else if (previous > current){
-                str = ' <i class="green"><i class="fa fa-sort-desc"></i> '+Math.abs(previous-current).toFixed(2)+'</i>';
+            else {
+                str = ' <i class="blue"> ('+previous+')</i>';
             }    
             $(tag).append(str);
         }
