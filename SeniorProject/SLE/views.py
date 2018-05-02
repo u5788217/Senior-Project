@@ -703,8 +703,12 @@ def patientrecord(request, studynum):
 
 @login_required(login_url='login')
 def followupnew(request, studynum):
+    visitdate_list = []
+    visits = Visiting.objects.filter(studynumber = studynum).order_by('visitdate')
+    for vs in visits:
+        visitdate_list.append(vs.visitdate)
     return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum),
-                                                'User':request.user})
+                                                'visitdate_list':visitdate_list})
 
 @login_required(login_url='login')
 def enrollAdd(request):
