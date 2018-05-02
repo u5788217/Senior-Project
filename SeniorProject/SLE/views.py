@@ -1078,18 +1078,30 @@ def followPatient(request):
             ekg=None
             echo=None
             if labcheck07 is 'True':
-                stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
+                if request.POST.get('stoolparasite',) == 'Normal':
+                    stoolparasite = Labtype(status = 'Normal', date = None, detail = None)
+                else: 
+                    stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
                                 date = DateToNone(request.POST.get('stoolparasite2', '')),
                                 detail = request.POST.get('stoolparasite1', ''))
             if labcheck08 is 'True':
-                cxr = Labtype(status = request.POST.get('cxr', ''), 
+                if request.POST.get('cxr',) == 'Normal':
+                    cxr = Labtype(status = 'Normal', date = None, detail = None)
+                else: 
+                    cxr = Labtype(status = request.POST.get('cxr', ''), 
                                 date = DateToNone(request.POST.get('cxr2', '')),                                 detail = request.POST.get('cxr1', ''))
             if labcheck09 is 'True':
-                ekg = Labtype(status = request.POST.get('ekg', ''), 
+                if request.POST.get('ekg',) == 'Normal':
+                    ekg = Labtype(status = 'Normal', date = None, detail = None)
+                else:
+                    ekg = Labtype(status = request.POST.get('ekg', ''), 
                                 date = DateToNone(request.POST.get('ekg2', '')),
                                 detail = request.POST.get('ekg1', ''))
             if labcheck10 is 'True':
-                echo = Labtype(status = request.POST.get('echo', ''), 
+                if request.POST.get('echo',) == 'Normal':
+                    echo = Labtype(status = 'Normal', date = None, detail = None)
+                else:
+                    echo = Labtype(status = request.POST.get('echo', ''), 
                                 date = DateToNone(request.POST.get('echo2', '')),
                                 detail = request.POST.get('echo1', ''))
             
