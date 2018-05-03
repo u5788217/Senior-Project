@@ -707,7 +707,7 @@ def followupnew(request, studynum):
     visits = Visiting.objects.filter(studynumber = studynum).order_by('visitdate')
     for vs in visits:
         d = datetime.datetime.strptime(str(vs.visitdate), '%Y-%m-%d')
-        visitdate_list.append({'value': datetime.datetime.strftime(d, "%m/%d/%y")})
+        visitdate_list.append({'value': str(datetime.datetime.strftime(d, '%Y-%m-%d'))})
     return render(request, 'followup-add.html',{'patient':Studyidentity.objects.get(studynumber = studynum),
                                                 'visitdate_list':visitdate_list})
 
@@ -1635,6 +1635,15 @@ def followEdit(request, visitid):
         med = Medication.objects.get(visitingid = visitid)
     except ObjectDoesNotExist:
         med = None
+    
+    studynum = Visiting.objects.get(visitingid = visitid).studynumber
+    visitdate_list = []
+    visits = Visiting.objects.filter(studynumber = studynum).order_by('visitdate')
+    for vs in visits:
+        if str(vs.visitingid) != str(visitid):
+            d = datetime.datetime.strptime(str(vs.visitdate), '%Y-%m-%d')
+            visitdate_list.append({'value': str(datetime.datetime.strftime(d, '%Y-%m-%d'))})
+        
     return render(request, 'followup-edit.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
                       'med':med,
@@ -1642,7 +1651,8 @@ def followEdit(request, visitid):
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
                       'damageindex':Damageindex.objects.get(visitingid = visitid),
-                      'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = visitid)})
+                      'clinicalpresentation':Clinicalpresentation.objects.get(visitingid = visitid),
+                      'visitdate_list': visitdate_list})
 
 
 

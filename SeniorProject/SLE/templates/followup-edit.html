@@ -410,6 +410,41 @@
             else{$('select[name="'+tmp1+'"],input[name="'+tmp2+'"]').prop('disabled',true);}
         }
         
+        //CheckOnChange Save button
+        function CheckVisitDate(){
+            var tmpdateinput;
+            var tmpdate;
+            var ck = 0;
+            {% for data in visitdate_list %}
+                tmpdateinput = document.getElementById("theDate").value;
+                tmpdate = "{{data.value}}";
+                console.log(tmpdate);
+                if(tmpdateinput.localeCompare(tmpdate) == 0){ck += 1;}
+            {% endfor %}
+            
+            if(ck == 0){
+                alert("Edit completed!"); 
+                return true;
+            }
+             else{
+                 alert('This visitdate has been already used! Please input again.');
+             }
+        }
+             
+        //CheckOnChange Edit button
+        function CheckVisitDateInput(){
+            var tmpdateinput;
+            var tmpdate;
+            {% for data in visitdate_list %}
+            tmpdateinput = document.getElementById("theDate").value;
+                 tmpdate = "{{data.value}}";
+                console.log(tmpdate);
+                 if(tmpdateinput.localeCompare(tmpdate) == 0){
+                     alert('This visitdate has been already used! Please input again.');
+                 }
+            {% endfor %}
+        }
+        
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -452,10 +487,10 @@
                     <div style="float: left;"> 
                         <div class="form-inline">
                             <p style="font-size: 14px; margin: 6px; color: #A4A4A4;">
-                            <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Date <input type="date" name="visitdate" class="form-control" value={{visiting.visitdate|date:"Y-m-d"}}></p>
+                            <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Date <input type="date" name="visitdate" class="form-control" value={{visiting.visitdate|date:"Y-m-d"}} onchange="CheckVisitDateInput();" id="theDate"></p>
                         </div>
                     </div>
-                    <div style="float: right; margin: 6px;"><button type="submit" class="btn btn-primary">Save</button><input type="button" class="btn" value="Cancel" onclick="window.history.go(-1); return false;"></div>
+                    <div style="float: right; margin: 6px;"><button type="submit" class="btn btn-primary" onclick="CheckVisitDate();">Save</button><input type="button" class="btn" value="Cancel" onclick="window.history.go(-1); return false;"></div>
                 </div>
             </div>
           
