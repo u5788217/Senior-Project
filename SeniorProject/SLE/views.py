@@ -1234,7 +1234,8 @@ def followPatient(request):
             FollowMed.save()
             return patientrecord(request, TempstudyNumber)    
         else:
-            return patientrecord(request, TempstudyNumber)
+            return index(request)
+#            return patientrecord(request, TempstudyNumber)
 
         
 def handle_uploaded_file(file, filename):

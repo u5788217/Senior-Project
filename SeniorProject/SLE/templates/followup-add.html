@@ -399,8 +399,7 @@
             $('#ckmed36').on('ifUnchecked', function(){$("#dose36").prop('disabled', true);});
         });
         
-        //Validate Checkbox
-        function testcheck(){
+        function testcheck2(){
             var tmpdateinput;
             var tmpdate;
             var ck = 0;
@@ -409,9 +408,14 @@
                 tmpdate = "{{data.value}}";
                 if(tmpdateinput.localeCompare(tmpdate) == 0){ck+=1;}
             {% endfor %}
-            
+            if(ck>0) $("#visitdateck").prop('checked', false);
+            else $("#visitdateck").prop('checked', true);
+            return ck;
+        }
+        //Validate Checkbox
+        function testcheck(){
             message = ""
-            if($("#cpcheck01").is(":checked") && $("#cpcheck02").is(":checked") && $("#cpcheck03").is(":checked") && $("#cpcheck04").is(":checked") && $("#cpcheck05").is(":checked") && $("#cpcheck06").is(":checked") && $("#cpcheck07").is(":checked") && $("#labcheck01").is(":checked") && $("#labcheck02").is(":checked") && $("#labcheck03").is(":checked") && $("#labcheck04").is(":checked") && $("#labcheck05").is(":checked") && $("#labcheck05extra").is(":checked") && $("#labcheck06").is(":checked") && $("#labcheck07").is(":checked") && $("#labcheck08").is(":checked") && $("#labcheck09").is(":checked") && $("#labcheck10").is(":checked") && $("#labcheck11").is(":checked") && $("#ckmedi1").is(":checked") && $("#ckmedi2").is(":checked") && ck == 0){
+            if($("#cpcheck01").is(":checked") && $("#cpcheck02").is(":checked") && $("#cpcheck03").is(":checked") && $("#cpcheck04").is(":checked") && $("#cpcheck05").is(":checked") && $("#cpcheck06").is(":checked") && $("#cpcheck07").is(":checked") && $("#labcheck01").is(":checked") && $("#labcheck02").is(":checked") && $("#labcheck03").is(":checked") && $("#labcheck04").is(":checked") && $("#labcheck05").is(":checked") && $("#labcheck05extra").is(":checked") && $("#labcheck06").is(":checked") && $("#labcheck07").is(":checked") && $("#labcheck08").is(":checked") && $("#labcheck09").is(":checked") && $("#labcheck10").is(":checked") && $("#labcheck11").is(":checked") && $("#ckmedi1").is(":checked") && $("#ckmedi2").is(":checked") && testcheck2() == 0){
                 alert("Save completed!"); 
                 return true;
             }
@@ -428,8 +432,11 @@
                     if(message != "กรุณาตรวจสอบ"){ message += "และ";}
                     message += " Medication ";
                 }
+                if(testcheck2() > 0){
+                    if(message != "กรุณาตรวจสอบ"){ message += "และ";}
+                    message += "This visitdate has been already used! Please input again.";
+                }
                 alert(message); 
-                if(ck != 0){alert('This visitdate has been already used! Please input again.');}
             }
         }
         
@@ -504,17 +511,21 @@
                                         tmpdateinput = document.getElementById("theDate").value;
                                         tmpdate = "{{data.value}}";
                                         if(tmpdateinput.localeCompare(tmpdate) == 0){
+                                            $("#visitdateck").prop('checked', false);
                                             alert('This visitdate has been already used! Please input again.');
                                         }
-                                    {% endfor %}
+                                        else $("#visitdateck").prop('checked', true);
+                                    {% endfor %}                    
                                 }
                             </script>
                             <p style="font-size: 14px; margin: 6px; color: #A4A4A4;">
                             <span style="padding-left:1em" class="glyphicon glyphicon-time"></span> Date <input type="date" name="visitdate" class="form-control" id="theDate" onchange="CheckVisitDate();">
+                            
                             <span style="padding-left:1em" class="glyphicon glyphicon-user"> </span> By <input type="text" class="form-control" name="username" value={{user}} style="width: 70px;"></p>
+                            <div style="display: none;" ><input type="checkbox" id="visitdateck" required></div>
                         </div>
                     </div>
-                    <div style="float: right; margin: 6px;"><button type="submit" class="btn btn-primary" onclick="testcheck()">Save</button><input type="button" class="btn" value="Cancel" onclick="window.history.go(-1); return false;"></div>
+                    <div style="float: right; margin: 6px;"><button type="submit" class="btn btn-primary" onclick="testcheck();">Save</button><input type="button" class="btn" value="Cancel" onclick="window.history.go(-1); return false;"></div>
                     
                     {% if comment %}
                     <script>
