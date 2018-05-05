@@ -713,7 +713,11 @@ def followupnew(request, studynum):
 
 @login_required(login_url='login')
 def enrollAdd(request):
-    return render(request, 'enrollment-add.html',)
+    hn_list = []
+    hns = HN.objects.exclude(hn__isnull=True).exclude(hn__exact='')
+    for hn in hns:
+        hn_list.append({'value': str(hn.hn)})
+    return render(request, 'enrollment-add.html',{'hn_list':hn_list})
 
 @login_required(login_url='login')
 def enrollPatient(request):
@@ -2064,7 +2068,11 @@ def hnDetail(request):
 def hnEdit(request):
     if str(request.user) != 'admin':
         return HttpResponseRedirect('/index/')
-    return render(request, 'hn-edit.html',{'hns': HN.objects.all()})
+    hn_list = []
+    hns = HN.objects.exclude(hn__isnull=True).exclude(hn__exact='')
+    for hn in hns:
+        hn_list.append({'st': str(hn.studynumber),'hn': str(hn.hn),})
+    return render(request, 'hn-edit.html',{'hns': HN.objects.all(),'hn_list':hn_list})
 
 @login_required(login_url='login')
 def hnEditPost(request):

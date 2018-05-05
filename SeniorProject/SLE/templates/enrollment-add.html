@@ -443,7 +443,44 @@
             newRow.append(cols);
             newRow.insertAfter($(this).closest('tr'));
         });
-
+        
+        function testcheck2(){
+            var tmpinput;
+            var tmp;
+            var ck = 0;
+            {% for data in hn_list %}
+                tmpinput = document.getElementById("theHN").value;
+                tmp = "{{data.value}}";
+                if(tmpinput.localeCompare(tmp) == 0){ck+=1;}
+            {% endfor %}
+            if(ck>0) $("#hnck").prop('checked', false);
+            else $("#hnck").prop('checked', true);
+            return ck;
+        }
+             
+        function testcheck(){
+            if(testcheck2() == 0){
+                alert("Save completed!"); 
+                return true;
+            }
+            else{
+                if(testcheck2() > 0) alert('This HN is already used.'); 
+            }
+        }
+        
+        function CheckHN(){
+           var tmpinput;
+           var tmp;
+           {% for data in hn_list %}
+               tmpinput = document.getElementById("theHN").value;
+               tmp = "{{data.value}}";
+               if(tmpinput.localeCompare(tmp) == 0){
+                   $("#hnck").prop('checked', false);
+                   alert('This HN is already used.');
+               }
+               else $("#hnck").prop('checked', true);
+           {% endfor %}                    
+        }
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -483,7 +520,7 @@
                         <p style="font-size: 18px; margin: 4px; padding-right:1em"><b>Enrollment</b></p>
                     </div>
                     
-                    <div style="float: right;"><button type="submit" class="btn btn-primary">Save</button><a type="button" class="btn" href="{% url 'index' %}">Cancel</a></div>
+                    <div style="float: right;"><button type="submit" class="btn btn-primary" onclick="testcheck();">Save</button><a type="button" class="btn" href="{% url 'index' %}">Cancel</a></div>
                 </div>
             </div>
             <div class="row">
@@ -501,7 +538,8 @@
                                 <div class="form-group">
                                     <label>HN</label>  
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="HN">
+                                        <input type="text" class="form-control" name="HN" id="theHN" onchange="CheckHN();">
+                                        <div style="display: none;" ><input type="checkbox" id="hnck" required></div>
                                     </div>
                                 </div>
                             </div>
