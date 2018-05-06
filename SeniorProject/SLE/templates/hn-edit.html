@@ -12,52 +12,47 @@
     $(document).ready(function(){
             $("#savehn").click(function(){
                 var input_list = [];
-               {% for hn in hns %}
-                    tmpinput = $("#{{hn.studynumber}}")
-                    input_list.push(tmpinput.val());
-                {% endfor %}
+                var rows = $("#datatable").dataTable().fnGetNodes();
                 $("#hnck").prop('checked', false);
                 message = "";
-                for(var i = 0; i < input_list.length - 1; i++) {
-                    message += input_list[i]+" ";
+                for(var i = 0; i < rows.length; i++) {
+//                    console.log(i);
+                    if(rows[i].cells[1].childNodes[0].value !== null && rows[i].cells[1].childNodes[0].value !== "")
+                       input_list.push({st:""+rows[i].cells[0].innerText, hn:""+rows[i].cells[1].childNodes[0].value});
+                }
+                var sorted_arr = input_list.sort(compare);
+                var results = [];
+//                console.log(sorted_arr);
+                for (var i = 0; i < sorted_arr.length; i++) {
+                    results.push(sorted_arr[i]);
+//                    console.log(i);
+//                    for (var j = 0; j < results.length; j++) console.log(results[j]); 
+                    if(i===0){
+                        if (sorted_arr[i].hn !== sorted_arr[i+1].hn) results.pop();
+                    }
+                    else if(i===sorted_arr.length-1){
+                        if (sorted_arr[i].hn !== sorted_arr[i-1].hn) results.pop();
+                    }
+                    else{
+                        if (sorted_arr[i].hn !== sorted_arr[i+1].hn && sorted_arr[i].hn !== sorted_arr[i - 1].hn) results.pop();
+                    } 
+                }
+                message = "";
+                if(results.length > 0){
+                    $("#hnck").prop('checked', false);
+                    message = "There are the same hns.\n";
+                    for(var j = 0; j < results.length; j++) {
+                        message += results[j].st+" : "+results[j].hn+"\n";
+                    }
+                } 
+                else {
+                    message = "Update complete.";
+                    $("#hnck").prop('checked', true);
                 }
                 alert(message); 
             });
         });
-        
-    function testcheck(){
-            
-            {% for hn in hns %}
-                tmpinput = $("#{{hn.studynumber}}").val()
-                if(tmpinput !== null) input_list.push(tmpinput.value);
-            {% endfor %}
-            var sorted_arr = input_list.sort(compare);
-            var results = [];
-//            for (var i = 0; i < sorted_arr.length - 1; i++) {
-//                results.push(sorted_arr[i]);
-//                if(i>0){
-//                    if (sorted_arr[i].hn == sorted_arr[i + 1].hn || sorted_arr[i].hn == sorted_arr[i - 1].hn) {}
-//                    else {
-//                        results.splice(i, 1); 
-//                    }
-//                }
-//                else {
-//                    if (sorted_arr[i].hn == sorted_arr[i + 1].hn) {}
-//                    else {
-//                        results.splice(i, 1); 
-//                    }
-//                }
-//            }
-
-            $("#hnck").prop('checked', false);
-            message = "";
-            for(var i = 0; i < input_list.length - 1; i++) {
-                message += input_list[i]+" ";
-            }
-            alert(message); 
-            
-        }
-        
+          
         function CheckHN(input){
             var tmpinput = input.value;
             var tmp;
@@ -68,7 +63,7 @@
                    $("#hnck").prop('checked', false);
                    alert('(HN) '+tmpinput+ ' is already used for (StudyNumber) '+st+'.');
                }
-//               else $("#hnck").prop('checked', true);
+               else $("#hnck").prop('checked', true);
            {% endfor %}                    
         }
     </script>
