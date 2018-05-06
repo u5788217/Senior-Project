@@ -398,6 +398,7 @@ def getCurrentStatus():
     active = 0
     inactive = 0
     total = 0
+    donthavevisit = []
     for patient in Studyidentity.objects.all():
         latest_visit = None
         try:
@@ -408,10 +409,12 @@ def getCurrentStatus():
             total += 1
         except ObjectDoesNotExist:
             latest_visit = None
+            donthavevisit.append(patient)
     Status.append({'Status':'Flare', 'num':flare})    
     Status.append({'Status':'Active', 'num':active})
     Status.append({'Status':'Inactive', 'num':inactive})
     Status.append({'Status':'Total', 'num':total})
+    Status.append({'Status':'donthavevisit', 'num':donthavevisit})
     return Status
 
 def getAges():
