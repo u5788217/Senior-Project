@@ -406,14 +406,13 @@ def getCurrentStatus():
             if(latest_visit.status == 'flare'): flare += 1
             if(latest_visit.status == 'active'): active += 1
             if(latest_visit.status == 'inactive'): inactive += 1
-            total += 1
         except ObjectDoesNotExist:
             latest_visit = None
             donthavevisit.append(patient)
     Status.append({'Status':'Flare', 'num':flare})    
     Status.append({'Status':'Active', 'num':active})
     Status.append({'Status':'Inactive', 'num':inactive})
-    Status.append({'Status':'Total', 'num':total})
+    Status.append({'Status':'Total', 'num':Studyidentity.objects.all().count})
     Status.append({'Status':'donthavevisit', 'num':donthavevisit})
     return Status
 
