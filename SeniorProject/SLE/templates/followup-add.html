@@ -30,6 +30,15 @@
             $('#cpcheck07').on('ifChecked', function(){$("#cptr07").removeAttr('class');});
             $('#cpcheck07').on('ifUnchecked', function(){$("#cptr07").addClass("disabledbutton");});
         });
+        //Hide-show SLEDAI
+        $(document).ready(function(){
+            $('#sledaicheck01').on('ifChecked', function(){$("#sledaitr01").removeAttr('class');});
+            $('#sledaicheck01').on('ifUnchecked', function(){$("#sledaitr01").addClass("disabledbutton");});
+            $('#sledaicheck02').on('ifChecked', function(){$("#sledaitr02").removeAttr('class');});
+            $('#sledaicheck02').on('ifUnchecked', function(){$("#sledaitr02").addClass("disabledbutton");});
+            $('#sledaicheck03').on('ifChecked', function(){$("#sledaitr03, #sledaitr04, #sledaitr05, #sledaitr06, #sledaitr07").removeAttr('class');});
+            $('#sledaicheck03').on('ifUnchecked', function(){$("#sledaitr03, #sledaitr04, #sledaitr05, #sledaitr06, #sledaitr07").addClass("disabledbutton");});
+        });
         //Calculate SLEDAI score
         $(document).ready(function(){
             $('#seizure').on('ifChecked', function(){SLEcal();});
@@ -113,6 +122,11 @@
                 document.getElementById("SLEtotalp").innerHTML = "SLEDAI total score = " + 0;
             }
         }  
+        });
+        //Hide-show SLICC
+        $(document).ready(function(){
+            $('#slicccheck01').on('ifChecked', function(){$("#slicctr01, #slicctr02, #slicctr03, #slicctr04").removeAttr('class');});
+            $('#slicccheck01').on('ifUnchecked', function(){$("#slicctr01, #slicctr02, #slicctr03, #slicctr04").addClass("disabledbutton");});
         });
         //Calculate SLICC score
         $(document).ready(function(){
@@ -780,14 +794,14 @@
                                                <div class="col-md-12 col-sm-6 col-xs-6">
                                                     <table class="table table-bordered">
                                                         <tbody>
-                                                            <tr><td colspan="4" class="row" align="center" style="background-color: #FBFBFB;">Physicians Global Assessment</td></tr>
+                                                            <tr><td colspan="4" class="row" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="sledaicheck01" required> Physicians Global Assessment</td></tr>
                                                             <tr>
                                                                 <td class="text-center col-md-3" align="center" >Clear</td>
                                                                 <td class="text-center col-md-3" align="center" >Mild</td>
                                                                 <td class="text-center col-md-3" align="center" >Moderate</td>
                                                                 <td class="text-center col-md-3" align="center" >Severe</td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr class="disabledbutton" id="sledaitr01">
                                                                 <div class="btn-group" data-toggle="buttons">
                                                                     <td class="text-center" align="center" >
                                                                         <label>
@@ -817,13 +831,13 @@
                                                 <div class="col-md-12 col-sm-6 col-xs-6">
                                                     <table class="table table-bordered">
                                                         <tbody>
-                                                            <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;">Patient's Status</td></tr>
+                                                            <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="sledaicheck02" required> Patient's Status</td></tr>
                                                             <tr>
                                                                 <td class="text-center col-md-3" align="center" >Inactive</td>
                                                                 <td class="text-center col-md-3" align="center" >Active</td>
                                                                 <td class="text-center col-md-3" align="center" >Flare</td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr class="disabledbutton" id="sledaitr02">
                                                                 <div class="btn-group" data-toggle="buttons">
                                                                     <td class="text-center" align="center" >
                                                                         <label>
@@ -857,7 +871,7 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-bordered">
                                                         <tbody>
-                                                            <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;">Systemic Lupus Erythematosus Disease Activity Index(SLEDAI) criteria</td></tr>
+                                                            <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="sledaicheck03" required> Systemic Lupus Erythematosus Disease Activity Index(SLEDAI) criteria</td></tr>
                                                             <tr>
                                                                 <td colspan="2" class="col-md-7" align="center" style="background-color: #F5FDFF;">
                                                                     1. CNS (8 each)
@@ -866,7 +880,7 @@
                                                                     5. Immunology (2 each)
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr class="disabledbutton" id="sledaitr03">
                                                                 <td rowspan="3">
                                                                     <!-- 1. -->
                                                                     <div class="checkbox">
@@ -915,7 +929,7 @@
                                                                     6. Skin (2 each)
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr class="disabledbutton" id="sledaitr04">
                                                                 
                                                                 <td>
                                                                     <!-- 6. -->
@@ -938,7 +952,7 @@
                                                                     7. Serositis (2 each)
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr class="disabledbutton" id="sledaitr05">
                                                                 <!-- 2. -->
                                                                 <td colspan="2">
                                                                     <div class="checkbox">
@@ -964,7 +978,7 @@
                                                                     8. Hematology (1 each)
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr class="disabledbutton" id="sledaitr06">
                                                                 <!-- 3. -->
                                                                 <td>
                                                                     <div class="checkbox">
@@ -1001,7 +1015,7 @@
                                                                     9. Consitutional (1 each)
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr class="disabledbutton" id="sledaitr07">
                                                                 <!-- 4. -->
                                                                 <td>
                                                                     <div class="checkbox">
@@ -1051,7 +1065,7 @@
                                             <div class="col-lg-9">
                                                 <table class="table table-bordered">
                                                     <tbody>
-                                                        <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;">Systemic Lupus International Collaborating Clinics(SLICC) criteria</td></tr>
+                                                        <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="slicccheck01" required> Systemic Lupus International Collaborating Clinics(SLICC) criteria</td></tr>
                                                         <tr>
                                                             <td class="col-md-3" align="center" style="background-color: #F5FDFF;">
                                                                 1. Ocular
@@ -1063,7 +1077,7 @@
                                                                 7. Gastrointestinal
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="disabledbutton" id="slicctr01">
                                                             <td>
                                                                 <!-- 1. -->
                                                                 <div class="checkbox">
@@ -1102,7 +1116,7 @@
                                                                     <input type="checkbox" name="di_15" id="di_15"> Pericarditis for 6 months or pericardiectomy
                                                                 </div>
                                                             </td>
-                                                            <td>
+                                                            <td class="disabledbutton" id="slicctr02">
                                                                 <!-- 7. -->
                                                                 <div class="form-group">
                                                                     <label>Infarction or resection of bowel
@@ -1143,7 +1157,7 @@
                                                                 8. Musculoskeletal
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="disabledbutton" id="slicctr03">
                                                             <td>
                                                                 <!-- 2. -->
                                                                 <div class="checkbox">
@@ -1243,7 +1257,7 @@
                                                                 9. Skin
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="disabledbutton" id="slicctr04">
                                                             <td>
                                                                 <!-- 3. -->
                                                                 <div class="checkbox">
