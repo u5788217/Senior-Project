@@ -1054,6 +1054,22 @@
                                     <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
+                                <script>
+                                var date = new Date();
+
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+
+                                if (month < 10) month = "0" + month;
+                                if (day < 10) day = "0" + day;
+                                
+                                var today = year + "-" + month + "-" + day;   
+
+                                $(function() {$("#obgyndate").attr("value", today);});         
+                                
+                            </script>
+                                 <input type="date" name="obgyndate" id="obgyndate" style="display: none;">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                    <table class="table table-bordered">
                                         <tbody>

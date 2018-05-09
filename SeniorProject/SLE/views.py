@@ -908,11 +908,11 @@ def enrollPatient(request):
                     EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
                         organ = each_organ, detail = each_detail, startdate = start, remissiondate = remiss)
                     EnrollOrgan.save()    
-        newObgyn = Obgyn(studynumber = ,
-                     recorddate = models.DateField(),
-                     gscore = request.POST.get('gscore',),
-                     pscore = request.POST.get('pscore',),
-                     ascore = request.POST.get('ascore',),
+        newObgyn = Obgyn(studynumber = EnrollStudyidentity,
+                     recorddate = request.POST.get('obgyndate',),
+                     gscore = ToFloatNone(request.POST.get('gscore',)),
+                     pscore = ToFloatNone(request.POST.get('pscore',)),
+                     ascore = ToFloatNone(request.POST.get('ascore',)),
                      menstrualcycle = request.POST.get('menstrualcycle',),
                      pregnant = request.POST.get('pregnant',),
                      modeofcontraceptives = request.POST.get('modeofcontraceptives',))
