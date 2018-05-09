@@ -14,7 +14,7 @@ import datetime
 
 from .models import AuthUser
 #Models for enrollment
-from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Familyhistory, Obgyn, Riskbehavior, Comorbidity, HN
+from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Familyhistory, Obgyn, Riskbehavior, Comorbidity, HN, Obgyn
 from .models import Labtype, Medicationtype
 from .models import Visiting, Clinicalpresentation, Damageindex, Diseaseactivitysledai, Laboratoryinventoryinvestigation, Lnlab, Medication
 
@@ -908,6 +908,15 @@ def enrollPatient(request):
                     EnrollOrgan = Previousorganinvolvement(studynumber = EnrollStudyidentity, 
                         organ = each_organ, detail = each_detail, startdate = start, remissiondate = remiss)
                     EnrollOrgan.save()    
+        newObgyn = Obgyn(studynumber = ,
+                     recorddate = models.DateField(),
+                     gscore = request.POST.get('gscore',),
+                     pscore = request.POST.get('pscore',),
+                     ascore = request.POST.get('ascore',),
+                     menstrualcycle = request.POST.get('menstrualcycle',),
+                     pregnant = request.POST.get('pregnant',),
+                     modeofcontraceptives = request.POST.get('modeofcontraceptives',))
+        newObgyn.save()
         return patientrecord(request, stnum)
 
 @login_required(login_url='login')
