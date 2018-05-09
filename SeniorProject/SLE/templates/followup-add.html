@@ -431,26 +431,34 @@
         //Validate Checkbox
         function testcheck(){
             message = ""
-            if($("#cpcheck01").is(":checked") && $("#cpcheck02").is(":checked") && $("#cpcheck03").is(":checked") && $("#cpcheck04").is(":checked") && $("#cpcheck05").is(":checked") && $("#cpcheck06").is(":checked") && $("#cpcheck07").is(":checked") && $("#labcheck01").is(":checked") && $("#labcheck02").is(":checked") && $("#labcheck03").is(":checked") && $("#labcheck04").is(":checked") && $("#labcheck05").is(":checked") && $("#labcheck05extra").is(":checked") && $("#labcheck06").is(":checked") && $("#labcheck07").is(":checked") && $("#labcheck08").is(":checked") && $("#labcheck09").is(":checked") && $("#labcheck10").is(":checked") && $("#labcheck11").is(":checked") && $("#ckmedi1").is(":checked") && $("#ckmedi2").is(":checked") && testcheck2() == 0){
+            if($("#cpcheck01").is(":checked") && $("#cpcheck02").is(":checked") && $("#cpcheck03").is(":checked") && $("#cpcheck04").is(":checked") && $("#cpcheck05").is(":checked") && $("#cpcheck06").is(":checked") && $("#cpcheck07").is(":checked") && $("#labcheck01").is(":checked") && $("#labcheck02").is(":checked") && $("#labcheck03").is(":checked") && $("#labcheck04").is(":checked") && $("#labcheck05").is(":checked") && $("#labcheck05extra").is(":checked") && $("#labcheck06").is(":checked") && $("#labcheck07").is(":checked") && $("#labcheck08").is(":checked") && $("#labcheck09").is(":checked") && $("#labcheck10").is(":checked") && $("#labcheck11").is(":checked") && $("#ckmedi1").is(":checked") && $("#ckmedi2").is(":checked") && $("#sledaicheck01").is(":checked") && $("#sledaicheck02").is(":checked") && $("#sledaicheck03").is(":checked") && $("#slicccheck01").is(":checked") && testcheck2() == 0){
                 alert("Save completed!"); 
                 return true;
             }
             else{
                 message += "กรุณาตรวจสอบ";
                 if (!$("#cpcheck01").is(":checked") || !$("#cpcheck02").is(":checked") || !$("#cpcheck03").is(":checked") || !$("#cpcheck04").is(":checked") || !$("#cpcheck05").is(":checked") || !$("#cpcheck06").is(":checked") || !$("#cpcheck07").is(":checked")) {
-                    message += " Clinical Presentation ";
+                    message += " Clinical Presentation";
+                }
+                if (!$("#sledaicheck01").is(":checked") || !$("#sledaicheck02").is(":checked") || !$("#sledaicheck03").is(":checked")) {
+                    if(message != "กรุณาตรวจสอบ"){ message += ",";}
+                    message += " SLEDAI";
+                }
+                if (!$("#slicccheck01").is(":checked")) {
+                    if(message != "กรุณาตรวจสอบ"){ message += ",";}
+                    message += " SLICC";
                 }
                 if (!$("#labcheck01").is(":checked") || !$("#labcheck02").is(":checked") || !$("#labcheck03").is(":checked") || !$("#labcheck04").is(":checked") || !$("#labcheck05").is(":checked") || !$("#labcheck05extra").is(":checked") || !$("#labcheck06").is(":checked") || !$("#labcheck07").is(":checked") || !$("#labcheck08").is(":checked") || !$("#labcheck09").is(":checked") || !$("#labcheck10").is(":checked") || !$("#labcheck11").is(":checked")) {
-                    if(message != "กรุณาตรวจสอบ"){ message += "และ";}
-                    message += " Laboratory ";
+                    if(message != "กรุณาตรวจสอบ"){ message += ",";}
+                    message += " Laboratory";
                 }
                 if (!$("#ckmedi1").is(":checked") || !$("#ckmedi2").is(":checked")) {
-                    if(message != "กรุณาตรวจสอบ"){ message += "และ";}
-                    message += " Medication ";
+                    if(message != "กรุณาตรวจสอบ"){ message += ",";}
+                    message += " Medication";
                 }
                 if(testcheck2() > 0){
-                    if(message != "กรุณาตรวจสอบ"){ message += "และ";}
-                    message += "This visitdate has been already used! Please input again.";
+                    if(message != "กรุณาตรวจสอบ"){ message += "\n";}
+                    message += "This visitdate has been already used! Please input again. ";
                 }
                 alert(message); 
             }
