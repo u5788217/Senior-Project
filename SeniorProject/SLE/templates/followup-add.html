@@ -397,6 +397,8 @@
             $('#ckmed35').on('ifUnchecked', function(){$("#dose35").prop('disabled', true);});
             $('#ckmed36').on('ifChecked', function(){$("#dose36").prop('disabled', false);});
             $('#ckmed36').on('ifUnchecked', function(){$("#dose36").prop('disabled', true);});
+            $('#mgt_other').on('ifChecked', function(){$("#mgt_other_detail").prop('disabled', false);});
+            $('#mgt_other').on('ifUnchecked', function(){$("#mgt_other_detail").prop('disabled', true);});
         });
         
         function testcheck2(){
@@ -2297,11 +2299,17 @@
                                                                         <td><input type="number" name="dose35" id="dose35" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckme36"> MTV </td>
-                                                                        <td><input type="number" name="dose36"id="dose36"  placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="checkbox" id="ckmed36"> MTV </td>
+                                                                        <td><input type="number" name="dose36" id="dose36"  placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td colspan="2"><input type="checkbox" id="mgt_other"> Others</td>
+                                                                        <td><input type="checkbox" id="mgt_other"> Others</td>
+                                                                        <td>
+                                                                            <select class="form-control" name="mgt_other_detail" id="mgt_other_detail" disabled>
+                                                                                <option>Bactrim</option>
+                                                                                <option>Acyclovir</option>
+                                                                            </select>
+                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
