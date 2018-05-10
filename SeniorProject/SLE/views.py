@@ -846,13 +846,13 @@ def enrollPatient(request):
                 del otherdetail[index]
                 del otherdate[index]
         a = []
-        for obj in othertype:
-            index = othertype.index(obj)
-            EnrollComorbidity = Comorbidity(studynumber = EnrollStudyidentity,
+        for index in range(0, len(othertype)):
+            if(othertype[index] != 'None'):
+                EnrollComorbidity = Comorbidity(studynumber = EnrollStudyidentity,
                                         comorbiditytype = othertype[index],
                                         detail = otherdetail[index],
                                         diagnosedate = DateToNone(otherdate[index]))
-            EnrollComorbidity.save()
+                EnrollComorbidity.save()
 
         famlist = []
         famlist.append(request.POST.get('familydisease01',))

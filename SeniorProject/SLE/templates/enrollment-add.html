@@ -198,8 +198,8 @@
             p.parentNode.removeChild(p);
         }
         
-        function showRow(o){var oid = o;$('#inflectiontr'+oid).show();}
-        function hideRow(o){var oid = o;$('#inflectiontr'+oid).hide();}
+        function showRow(o){var oid = o;$('#inflectiontr'+oid).show();$('#other'+oid).val("inflection");}
+        function hideRow(o){var oid = o;$('#inflectiontr'+oid).hide();$('#other'+oid).val("None");}
         
         $(document).ready(function(){
             $('#organtreatment21').on('ifChecked', function(){
@@ -998,7 +998,7 @@
                                                         <tr id="inflectiontr01_1" style="display: none;">
                                                             <td></td>
                                                             <td>
-                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                <input type="text" id="other01_1" name="othertype[]" style="display: none;" value="None">
                                                                  <div class="form-group" id="odetail01_1">
                                                                     <select class="form-control" name="otherdetail[]">
                                                                         <option>detail1</option>
@@ -1014,7 +1014,7 @@
                                                         <tr id="inflectiontr01_2" style="display: none;">
                                                             <td></td>
                                                             <td>
-                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                <input type="text" id="other01_2"  name="othertype[]" style="display: none;" value="None">
                                                                  <div class="form-group" id="odetail01_2">
                                                                     <select class="form-control" name="otherdetail[]">
                                                                         <option>detail1</option>
@@ -1030,7 +1030,7 @@
                                                         <tr id="inflectiontr01_3" style="display: none;">
                                                             <td></td>
                                                             <td>
-                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                <input type="text" name="othertype[]" style="display: none;" id="other01_3" value="None">
                                                                  <div class="form-group" id="odetail01_3">
                                                                     <select class="form-control" name="otherdetail[]">
                                                                         <option>detail1</option>
@@ -1046,7 +1046,7 @@
                                                         <tr id="inflectiontr01_4" style="display: none;">
                                                             <td></td>
                                                             <td>
-                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                <input type="text" name="othertype[]" style="display: none;" id="other01_4" value="None">
                                                                  <div class="form-group" id="odetail01_4">
                                                                     <select class="form-control" name="otherdetail[]">
                                                                         <option>detail1</option>
@@ -1062,7 +1062,7 @@
                                                         <tr id="inflectiontr01_5" style="display: none;">
                                                             <td></td>
                                                             <td>
-                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                <input type="text" name="othertype[]" style="display: none;" id="other01_5" value="None">
                                                                  <div class="form-group" id="odetail01_5">
                                                                     <select class="form-control" name="otherdetail[]">
                                                                         <option>detail1</option>
@@ -1078,7 +1078,7 @@
                                                          <tr id="inflectiontr01_6" style="display: none;">
                                                             <td></td>
                                                             <td>
-                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                <input type="text" name="othertype[]" style="display: none;" id="other01_6" value="None">
                                                                  <div class="form-group" id="odetail01_6">
                                                                     <select class="form-control" name="otherdetail[]">
                                                                         <option>detail1</option>
