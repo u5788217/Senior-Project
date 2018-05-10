@@ -919,6 +919,9 @@ def enrollPatient(request):
 
 @login_required(login_url='login')
 def enrollDetail(request, studynum):
+    try: obgyn = Obgyn.objects.filter(studynumber = studynum).latest('recorddate')
+    except Obgyn.DoesNotExist:
+        obgyn = None
     return render(request, 'enrollment-detail.html',
                   {'patient':Studyidentity.objects.get(studynumber = studynum),
                    'acrcriteria':Acrcriteria.objects.get(studynumber = studynum),
@@ -927,7 +930,7 @@ def enrollDetail(request, studynum):
                     'comorbidity':Comorbidity.objects.filter(studynumber = studynum),
                     'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
                     'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
-                  'obgyn':Obgyn.objects.filter(studynumber = studynum).latest('recorddate')})
+                  'obgyn':obgyn})
 
 
 @login_required(login_url='login')
