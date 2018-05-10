@@ -863,12 +863,12 @@
                                     <div class="form-group">
                                         <label><input type="checkbox" id="pregnantcheck" {% if obgyn.pregnant > 0 %} checked {% endif %}> Pregnant <small>(weeks)</small></label>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" id="pregnant" name="pregnant" disabled value="{{obgyn.pregnant}}">
+                                            <input type="number" class="form-control" id="pregnant" name="pregnant" disabled {% if obgyn.pregnant > 0 %} value="{{obgyn.pregnant}}" {% endif %}>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label><input type="checkbox" id="modeofcontraceptivescheck" {% if obgyn.modeofcontraceptives != '' %} checked {% endif %}> Mode of contraceptives</label>
-                                        <input type="text" class="form-control" name="modeofcontraceptives" id="modeofcontraceptives" list="modeofcontraceptiveslist" disabled value="{{obgyn.modeofcontraceptives}}">
+                                        <label><input type="checkbox" id="modeofcontraceptivescheck" {% if obgyn.modeofcontraceptives != null %} checked {% endif %}> Mode of contraceptives</label>
+                                        <input type="text" class="form-control" name="modeofcontraceptives" id="modeofcontraceptives" list="modeofcontraceptiveslist" disabled {% if obgyn.modeofcontraceptives != null %} value="{{obgyn.modeofcontraceptives}}" {% endif %}>
                                         <datalist id="modeofcontraceptiveslist">
                                             <option>Hormonal</option>
                                             <option>Oral pills,</option>
