@@ -675,10 +675,16 @@
                                                         
                                                          <tr>   
                                                             <td><input type="checkbox" id="other01" name="other01" {% for como in comorbidity %}{% if como.comorbiditytype == 'inflection' %} checked {% endif %}{% endfor %}> Inflection</td>
-                                                            
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td id="addotherinflection" >
+                                                                <a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                            </td>
+                                                          </tr>
                                                             {% for como in comorbidity %}
                                                             {% if como.comorbiditytype == 'inflection' %}
-                                                        
+                                                          <tr>
+                                                              <td></td>
                                                             <td>
                                                                 <input type="text" name="othertype[]" value="inflection" style="display: none;">
                                                                  <div class="form-group" id="odetail01">
@@ -692,16 +698,12 @@
                                                             
                                                             <td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td>
                                                         </tr>
-                                                        <tr><td></td>
+                                                        
                                                             {% endif %}
                                                             {% endfor %}
                                                             
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td id="addotherinflection" >
-                                                                <a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
-                                                            </td>
-                                                        </tr>
+                                                            
+                                                        
                                                          
                                                         <tr>
                                                             <td><input type="checkbox" id="other02" name="other02" {% for como in comorbidity %}{% if como.comorbiditytype == 'majorsurgery' %} checked {% endif %}{% endfor %}> Major surgery</td>

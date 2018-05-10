@@ -1827,8 +1827,7 @@ def enrollEditPost(request):
                 othertype.remove('malignancy')
                 del otherdetail[index]
                 del otherdate[index]
-        for obj in othertype:
-            index = othertype.index(obj)
+        for index in range(0, len(othertype)):
             EnrollComorbidity = Comorbidity(studynumber = old_studyidentity,
                                         comorbiditytype = othertype[index],
                                         detail = otherdetail[index],
