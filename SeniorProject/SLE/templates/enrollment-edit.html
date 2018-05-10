@@ -71,7 +71,22 @@
             $('#other04').on('ifChecked', function(){$("#odetail04,#odate04").show();});
             $('#other04').on('ifUnchecked', function(){$("#odetail04,#odate04").hide();});
         });
-        
+        $(document).ready(function(){
+            $("#odetail02,#odate02").hide();
+            $("#odetail03,#odate03").hide();
+            $("#odetail04,#odate04").hide();
+            {% for como in comorbidity %}
+                {% if como.comorbiditytype == 'malignancy' %} 
+                    $("#odetail04,#odate04").show();
+                {% endif %}
+                {% if como.comorbiditytype == 'osteoporosis' %} 
+                    $("#odetail03,#odate03").show();
+                {% endif %}
+                {% if como.comorbiditytype == 'majorsurgery' %} 
+                    $("#odetail02,#odate02").show();
+                {% endif %}
+            {% endfor %}
+        });
         $(document).ready(function(){
             $('#confirmorgan01').on('ifChecked', function(){$("#organstrremis01,#organendremis01").show();});
             $('#confirmorgan01').on('ifUnchecked', function(){$("#organstrremis01,#organendremis01").hide();});
@@ -677,7 +692,7 @@
                                                             <td><input type="checkbox" id="other01" name="other01" {% for como in comorbidity %}{% if como.comorbiditytype == 'inflection' %} checked {% endif %}{% endfor %}> Inflection</td>
                                                             <td></td>
                                                             <td></td>
-                                                            <td id="addotherinflection" >
+                                                            <td id="addotherinflection" style="display: none;">
                                                                 <a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
                                                             </td>
                                                           </tr>
@@ -698,13 +713,8 @@
                                                             
                                                             <td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td>
                                                         </tr>
-                                                        
                                                             {% endif %}
                                                             {% endfor %}
-                                                            
-                                                            
-                                                        
-                                                         
                                                         <tr>
                                                             <td><input type="checkbox" id="other02" name="other02" {% for como in comorbidity %}{% if como.comorbiditytype == 'majorsurgery' %} checked {% endif %}{% endfor %}> Major surgery</td>
                                                             <td>
