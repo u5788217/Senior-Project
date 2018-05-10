@@ -75,7 +75,15 @@
             $("#odetail02,#odate02").hide();
             $("#odetail03,#odate03").hide();
             $("#odetail04,#odate04").hide();
+            $("#odetail01").hide();
+            $("#odate01").hide();
+            $("#addotherinflection").hide();
             {% for como in comorbidity %}
+                {% if como.comorbiditytype == 'inflection' %} 
+                    $("#odetail01").show();
+                    $("#odate01").show();
+                    $("#addotherinflection").show();
+                {% endif %}
                 {% if como.comorbiditytype == 'malignancy' %} 
                     $("#odetail04,#odate04").show();
                 {% endif %}
