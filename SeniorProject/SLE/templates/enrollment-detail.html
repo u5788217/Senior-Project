@@ -527,15 +527,15 @@
                                         <tbody>
                                             <tr>
                                                 <td>G</td>
-                                                <td><input type="number" class="form-control" name="gscore" value="{{obgyn.gscore}}"></td>
+                                                <td><p class=form-control>{% if obgyn.gscore > 0 %} {{obgyn.gscore}}  {% else %} None {% endif %} </p>
                                             </tr>
                                             <tr>
                                                 <td>P</td>
-                                                <td><input type="number" class="form-control" name="pscore" value="{{obgyn.pscore}}"></td>
+                                                <td><p class=form-control>{% if obgyn.pscore > 0 %} {{obgyn.pscore}}  {% else %} None {% endif %} </p>
                                             </tr>
                                             <tr>
                                                 <td>A</td>
-                                                <td><input type="number" class="form-control" name="ascore" value="{{obgyn.ascore}}"></td>
+                                                <td><p class=form-control>{% if obgyn.ascore > 0 %} {{obgyn.ascore}}  {% else %} None {% endif %} </p>
                                             </tr>
                                        </tbody>
                                     </table>
@@ -543,31 +543,17 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>Menstrual Cycle</label>
-                                        <input type="text" class="form-control" name="menstrualcycle" list="menstrualcyclelist" value="{{obgyn.menstrualcycle}}">
-                                        <datalist id="menstrualcyclelist">
-                                            <option>Regular(21-35 days)</option>
-                                            <option>Irregular</option>
-                                            <option>Absent for _ months</option>
-                                            <option>Menopause</option>
-                                            <option>Missing</option>
-                                        </datalist>
+                                        <p class=form-control>{% if obgyn.menstrualcycle != '' %}{{obgyn.menstrualcycle}} {% else %} None {% endif %}</p>
                                     </div>
                                     <div class="form-group">
-                                        <label><input type="checkbox" id="pregnantcheck" {% if obgyn.pregnant > 0 %} checked {% endif %}> Pregnant <small>(weeks)</small></label>
+                                        <label>Pregnant <small>(weeks)</small></label>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" id="pregnant" name="pregnant" disabled value="{{obgyn.pregnant}}">
+                                            <p class=form-control>{% if obgyn.pregnant > 0 %} {{obgyn.pregnant}}  {% else %} None {% endif %}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label><input type="checkbox" id="modeofcontraceptivescheck" {% if obgyn.modeofcontraceptives != None %} checked {% endif %}> Mode of contraceptives</label>
-                                        <input type="text" class="form-control" name="modeofcontraceptives" id="modeofcontraceptives" list="modeofcontraceptiveslist" disabled value="{{obgyn.modeofcontraceptives}}">
-                                        <datalist id="modeofcontraceptiveslist">
-                                            <option>Hormonal</option>
-                                            <option>Oral pills,</option>
-                                            <option>Injection(DMPA)</option>
-                                            <option>Implants</option>
-                                            <option>Non-hormonal</option>
-                                        </datalist>
+                                        <label>Mode of contraceptives</label>
+                                        <p class=form-control>{% if obgyn.modeofcontraceptives != null %}{{obgyn.modeofcontraceptives}} {% else %} None {% endif %}</p>
                                     </div>
                                 </div>
                             </div>
@@ -677,8 +663,8 @@
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td><input type="date" class="form-control" id="organstrremis01" name="startrenal" value="{{organs.startdate|date:"Y-m-d"}}">
-                                            <td><input type="date" class="form-control" id="organendremis01" name="remisrenal" value="{{organs.remissiondate|date:"Y-m-d"}}"></td>
+                                            <td>{{organs.startdate|date:"Y-m-d"}}
+                                            <td>{{organs.remissiondate|date:"Y-m-d"}}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
