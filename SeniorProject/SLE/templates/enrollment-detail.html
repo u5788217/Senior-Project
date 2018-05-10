@@ -520,7 +520,8 @@
                                     </ul>
                                     <div class="clearfix"></div>
                             </div>
-                            <div class="x_content">
+                            {% if obgyn.gscore > 0 or obgyn.pscore > 0 or obgyn.ascore > 0 or obgyn.menstrualcycle != '' or obgyn.pregnant > 0 or obgyn.modeofcontraceptives != null%} 
+                                 <div class="x_content">
                                  <input type="date" name="obgyndate" id="obgyndate" style="display: none;">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                    <table class="table table-bordered">
@@ -557,6 +558,14 @@
                                     </div>
                                 </div>
                             </div>
+                            {% else %} 
+                            <div class="x_content">
+                                <div style="height: 40px; text-align: center;">
+                                                 Do not have pregnancy.
+                                </div>
+                                </div>
+                            {% endif %}
+                            
                         </div>
                     </div>
                     <div>
@@ -663,8 +672,8 @@
                                                     </div>
                                                 </div> 
                                             </td>
-                                            <td>{{organs.startdate|date:"Y-m-d"}}
-                                            <td>{{organs.remissiondate|date:"Y-m-d"}}</td>
+                                            <td>{{organs.startdate}}
+                                            <td>{{organs.remissiondate}}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
