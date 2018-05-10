@@ -509,7 +509,68 @@
                     </div>
                 </div>
                 </div>
-                
+                 <div> 
+                        <!--OB-GYN-->
+                        <div class="x_panel">
+                            <div class="x_title"> 
+                                    <h2>OB-GYN</h2>
+                                    <ul class="nav navbar-right panel_toolbox">	
+                                    </ul>
+                                    <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                 <input type="date" name="obgyndate" id="obgyndate" style="display: none;">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                   <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>G</td>
+                                                <td><input type="number" class="form-control" name="gscore" value="{{obgyn.gscore}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>P</td>
+                                                <td><input type="number" class="form-control" name="pscore" value="{{obgyn.pscore}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>A</td>
+                                                <td><input type="number" class="form-control" name="ascore" value="{{obgyn.ascore}}"></td>
+                                            </tr>
+                                       </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Menstrual Cycle</label>
+                                        <input type="text" class="form-control" name="menstrualcycle" list="menstrualcyclelist" value="{{obgyn.menstrualcycle}}">
+                                        <datalist id="menstrualcyclelist">
+                                            <option>Regular(21-35 days)</option>
+                                            <option>Irregular</option>
+                                            <option>Absent for _ months</option>
+                                            <option>Menopause</option>
+                                            <option>Missing</option>
+                                        </datalist>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><input type="checkbox" id="pregnantcheck" {% if obgyn.pregnant != '' %} checked {% endif %}> Pregnant <small>(weeks)</small></label>
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="pregnant" name="pregnant" disabled value="{{obgyn.pregnant}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><input type="checkbox" id="modeofcontraceptivescheck" {% if obgyn.modeofcontraceptives != '' %} checked {% endif %}> Mode of contraceptives</label>
+                                        <input type="text" class="form-control" name="modeofcontraceptives" id="modeofcontraceptives" list="modeofcontraceptiveslist" disabled value="{{obgyn.modeofcontraceptives}}">
+                                        <datalist id="modeofcontraceptiveslist">
+                                            <option>Hormonal</option>
+                                            <option>Oral pills,</option>
+                                            <option>Injection(DMPA)</option>
+                                            <option>Implants</option>
+                                            <option>Non-hormonal</option>
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">      
                     <!--Family history-->
                     <div class="x_panel">

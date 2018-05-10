@@ -908,11 +908,11 @@ def enrollPatient(request):
                     EnrollOrgan.save()    
         newObgyn = Obgyn(studynumber = EnrollStudyidentity,
                      recorddate = request.POST.get('obgyndate',),
-                     gscore = ToFloatNone(request.POST.get('gscore',)),
-                     pscore = ToFloatNone(request.POST.get('pscore',)),
-                     ascore = ToFloatNone(request.POST.get('ascore',)),
+                     gscore = NullToZero(request.POST.get('gscore',)),
+                     pscore = NullToZero(request.POST.get('pscore',)),
+                     ascore = NullToZero(request.POST.get('ascore',)),
                      menstrualcycle = request.POST.get('menstrualcycle',),
-                     pregnant = request.POST.get('pregnant',),
+                     pregnant = NullToZero(request.POST.get('pregnant',)),
                      modeofcontraceptives = request.POST.get('modeofcontraceptives',))
         newObgyn.save()
         return patientrecord(request, stnum)
@@ -1634,6 +1634,16 @@ def followEditPost(request):
         old_med.mgt_other = CheckboxToBool(request.POST.get('mgt_other',))
         old_med.save()
         
+        newObgyn = Obgyn(studynumber = EnrollStudyidentity,
+                     recorddate = request.POST.get('obgyndate',),
+                     gscore = NullToZero(request.POST.get('gscore',)),
+                     pscore = NullToZero(request.POST.get('pscore',)),
+                     ascore = NullToZero(request.POST.get('ascore',)),
+                     menstrualcycle = request.POST.get('menstrualcycle',),
+                     pregnant = NullToZero(request.POST.get('pregnant',)),
+                     modeofcontraceptives = request.POST.get('modeofcontraceptives',))
+        newObgyn.save()
+        
         this_date = old_visiting.visitdate         
         return HttpResponseRedirect(reverse('patientrecord', args=(old_visiting.studynumber.studynumber,)))
     
@@ -1680,7 +1690,8 @@ def enrollEdit(request, studynum):
                     'familyhistory':Familyhistory.objects.filter(studynumber = studynum),
                     'comorbidity':Comorbidity.objects.filter(studynumber = studynum),
                     'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
-                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum)})
+                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
+                    'obgyn':Obgyn.objects.filter(studynumber = studynum).latest('recorddate')})
 
 
 @login_required(login_url='login')

@@ -391,7 +391,8 @@ class Medication(models.Model):
         unique_together = (('studynumber', 'visitdate'),)
 
 class Obgyn(models.Model):
-    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
+    obgynid = models.AutoField(primary_key=True)
+    studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber')
     recorddate = models.DateField()
     gscore = models.IntegerField(blank=True, null=True)
     pscore = models.IntegerField(blank=True, null=True)
