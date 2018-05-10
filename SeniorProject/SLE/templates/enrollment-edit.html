@@ -750,39 +750,40 @@
                 </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">      
-        {% for fam in familyhistory %}
-            <script>
-            $(document).ready(function(){
-            {% if fam.disease == 'sle' %} 
-                $('#familydisease01').show(); $("[name=familydisease01]").val("sle"); 
-            {% endif %}
-            {% if fam.disease == 'ra' %} 
-                $('#familydisease02').show(); $("[name=familydisease02]").val("ra");
-            {% endif %}
-            {% if fam.disease == 'dermatomyositis' %} 
-                $('#familydisease03').show(); $("[name=familydisease03]").val("dermatomyositis");
-            {% endif %}
-            {% if fam.disease == 'systemicsclerosis' %} 
-                $('#familydisease04').show(); $("[name=familydisease04]").val("systemicsclerosis");
-            {% endif %}
-            {% if fam.disease == 'sjogren' %} 
-                $('#familydisease05').show(); $("[name=familydisease05]").val("sjogren");
-            {% endif %}
-            {% if fam.disease == 'dmtype1' %} 
-                $('#familydisease06').show(); $("[name=familydisease06]").val("dmtype1");
-            {% endif %}
-            {% if fam.disease == 'hashimoto' %} 
-                $('#familydisease07').show(); $("[name=familydisease07]").val("hashimoto");
-            {% endif %}
-            {% if fam.disease == 'multiplesclerosis' %} 
-                $('#familydisease08').show(); $("[name=familydisease08]").val("multiplesclerosis");
-            {% endif %}
-            {% if fam.disease == 'myastheniagravis' %} 
-                $('#familydisease09').show(); $("[name=familydisease09]").val("myastheniagravis");
-            {% endif %}
-            });
-            </script>
-        {% endfor %}
+                    {% for fam in familyhistory %}
+                        <script>
+                        $(document).ready(function(){
+                        {% if fam.disease == 'sle' %} 
+                            $('#familydisease01').show(); $("[name=familydisease01]").val("sle"); 
+                        {% endif %}
+                        {% if fam.disease == 'ra' %} 
+                            $('#familydisease02').show(); $("[name=familydisease02]").val("ra");
+                        {% endif %}
+                        {% if fam.disease == 'dermatomyositis' %} 
+                            $('#familydisease03').show(); $("[name=familydisease03]").val("dermatomyositis");
+                        {% endif %}
+                        {% if fam.disease == 'systemicsclerosis' %} 
+                            $('#familydisease04').show(); $("[name=familydisease04]").val("systemicsclerosis");
+                        {% endif %}
+                        {% if fam.disease == 'sjogren' %} 
+                            $('#familydisease05').show(); $("[name=familydisease05]").val("sjogren");
+                        {% endif %}
+                        {% if fam.disease == 'dmtype1' %} 
+                            $('#familydisease06').show(); $("[name=familydisease06]").val("dmtype1");
+                        {% endif %}
+                        {% if fam.disease == 'hashimoto' %} 
+                            $('#familydisease07').show(); $("[name=familydisease07]").val("hashimoto");
+                        {% endif %}
+                        {% if fam.disease == 'multiplesclerosis' %} 
+                            $('#familydisease08').show(); $("[name=familydisease08]").val("multiplesclerosis");
+                        {% endif %}
+                        {% if fam.disease == 'myastheniagravis' %} 
+                            $('#familydisease09').show(); $("[name=familydisease09]").val("myastheniagravis");
+                        {% endif %}
+                        });
+                        </script>
+                    {% endfor %}
+                    <!--OB-GYN--->
                     <div> 
                         <!--OB-GYN-->
                         <div class="x_panel">
@@ -861,519 +862,521 @@
                         </div>
                     </div>
                     <!--Family history-->
-                   <div class="x_panel">
-                        <div class="x_title"> 
-                                <h2>Family history</h2>
-								<ul class="nav navbar-right panel_toolbox">	
-								</ul>
-								<div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <div class="col-lg-12 col-md-12 col-sm-4">
-                                <div class="form-inline">
-                                    <div class="form-group">
-                                        <label>Disease: </label>
-                                        <select class="form-control" id="familydisease">
-                                            <optgroup label="Systemic autoimmune">
-                                                <option value="1">SLE</option>
-                                                <option value="2">RA</option>
-                                                <option value="3">Dermatomyositis</option>
-                                                <option value="4">Systemic sclerosis</option>
-                                                <option value="5">Sjogren's Syndrome</option>
-                                            </optgroup>
-                                            <optgroup label="Tissue-specific autoimmune">
-                                                <option value="6">DM Type 1</option>
-                                                <option value="7">Hashimoto's thyroidditis</option>
-                                                <option value="8">Multiple sclerosis</option>
-                                                <option value="9">Myasthenia gravis</option>
-                                                <option value="10">Other</option>
-                                            </optgroup>
-                                        </select>
-                                    </div>
-                                    <a class="btn btn-default" id="addfamilydisease" onclick="addfamdis();">Add</a>
-                                </div>
+                    <div>
+                        <div class="x_panel">
+                            <div class="x_title"> 
+                                    <h2>Family history</h2>
+                                    <ul class="nav navbar-right panel_toolbox">	
+                                    </ul>
+                                    <div class="clearfix"></div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-8">
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease01">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: SLE
-                                                <input type="hidden" name="familydisease01" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease01');" value="fam01"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                            <div class="x_content">
+                                <div class="col-lg-12 col-md-12 col-sm-4">
+                                    <div class="form-inline">
+                                        <div class="form-group">
+                                            <label>Disease: </label>
+                                            <select class="form-control" id="familydisease">
+                                                <optgroup label="Systemic autoimmune">
+                                                    <option value="1">SLE</option>
+                                                    <option value="2">RA</option>
+                                                    <option value="3">Dermatomyositis</option>
+                                                    <option value="4">Systemic sclerosis</option>
+                                                    <option value="5">Sjogren's Syndrome</option>
+                                                </optgroup>
+                                                <optgroup label="Tissue-specific autoimmune">
+                                                    <option value="6">DM Type 1</option>
+                                                    <option value="7">Hashimoto's thyroidditis</option>
+                                                    <option value="8">Multiple sclerosis</option>
+                                                    <option value="9">Myasthenia gravis</option>
+                                                    <option value="10">Other</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <a class="btn btn-default" id="addfamilydisease" onclick="addfamdis();">Add</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-8">
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease01">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: SLE
+                                                    <input type="hidden" name="familydisease01" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease01');" value="fam01"></span>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                        </div>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.sibling is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                              <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="sle" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% endif %} value="{{fam.relative}}" {% endfor %} >
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="sle"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.sibling is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease02">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: RA
+                                                    <input type="hidden" name="familydisease02" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease02');"></span>
                                                     </div>
-                                                    <div class="form-inline">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="ra"{% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="ra" {% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="ra"{% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="ra"{% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="ra"{% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.sibling is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                              <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="ra" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'ra' %} value="{{fam.relative}}" {% endif %}{% endfor %}>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease03">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: Dermatomyositis
+                                                    <input type="hidden" name="familydisease03" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease03');"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.sibling is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                              <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="dermatomyositis" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% endif %} value="{{fam.relative}}" {% endfor %}>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease04">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: Systemic sclerosis
+                                                    <input type="hidden" name="familydisease04" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease04');"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                              <input type="checkbox"> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="systemicsclerosis" style="width: 100px;">
+                                                        </div>
+                                                    </div>  
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease05">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: Sjogren's Syndrome
+                                                    <input type="hidden" name="familydisease05" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease05');"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.son is True %} checked {% endif %}{% endif %} {% endfor %} > Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.sibling is True %} checked {% endif %} {% endif %}{% endfor %} > Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                              <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="sjogren" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}value="{{fam.relative}}"{% endif %}{% endfor %}>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease06">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: DM Type 1
+                                                    <input type="hidden" name="familydisease06" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease06');"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.father is True %} checked {% endif %}{% endif %} {% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.mother is True %} checked {% endif %}{% endif %} {% endfor %} > Mother
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.son is True %} checked {% endif %}{% endif %} {% endfor %} > Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% endif %}{% if fam.sibling is True %} checked {% endif %} {% endfor %} > Sibling
+                                                        </div>
                                                         <label>
-                                                          <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="sle" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% endif %} value="{{fam.relative}}" {% endfor %} >
+                                                              <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="dmtype1" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %} value="{{fam.relative}}" {% endif %}{% endfor %}>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease02">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: RA
-                                                <input type="hidden" name="familydisease02" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease02');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="ra"{% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease07">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: Hashimoto's thyroidditis
+                                                    <input type="hidden" name="familydisease07" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease07');"></span>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="ra" {% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="hashimoto"{% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="hashimoto"{% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="ra"{% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="hashimoto" {% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %}> Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="hashimoto" {% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                        </div>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="ra"{% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                </td>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="hashimoto"{% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.sibling is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                            <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="hashimoto" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %} value="{{fam.relative}}"{% endif %} {% endfor %}>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="ra"{% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.sibling is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease08">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: Multiple sclerosis
+                                                    <input type="hidden" name="familydisease08" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease08');"></span>
                                                     </div>
-                                                    <div class="form-inline">
-                                                        <label>
-                                                          <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'ra' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="ra" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'ra' %} value="{{fam.relative}}" {% endif %}{% endfor %}>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.father is True %} checked {% endif %} {% endif %}{% endfor %}> Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.mother is True %} checked {% endif %}{% endif %} {% endfor %}> Mother
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease03">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: Dermatomyositis
-                                                <input type="hidden" name="familydisease03" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease03');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                </td>
+                                                <td  class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.son is True %} checked {% endif %} {% endif %}{% endfor %}> Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.daughter is True %} checked {% endif %} {% endif %}{% endfor %}> Daughter
+                                                        </div>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                </td>
+                                                <td  class="col-md-4">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.sibling is True %} checked {% endif %}{% endif %} {% endfor %}> Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                              <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="multiplesclerosis" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %} value="{{fam.relative}}" {% endif %}{% endfor %} >
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease09">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: Myasthenia gravis
+                                                    <input type="hidden" name="familydisease09" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease09');"></span>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="dermatomyositis"{% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.sibling is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
+                                                </td>
+                                                <td>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                        </div>
                                                     </div>
-                                                    <div class="form-inline">
-                                                        <label>
-                                                          <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="dermatomyositis" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'dermatomyositis' %}{% endif %} value="{{fam.relative}}" {% endfor %}>
+                                                </td>
+                                                <td>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.sibling is True %} checked {% endif %} {% endif %}{% endfor %} > Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                            <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="myastheniagravis" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %} value="{{fam.relative}}" {% endif %}{% endfor %}>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease04">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: Systemic sclerosis
-                                                <input type="hidden" name="familydisease04" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease04');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease10">
+                                        <tbody>
+                                            <tr scope="row">
+                                                <td class="text-center" align="center" colspan="3">Disease: Other
+                                                    <input type="hidden" name="familydisease10" value="0">
+                                                    <div style="float: right; position: relative;">
+                                                        <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease10');"></span>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="father[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.father is True %} checked {% endif %}{% endif %} {% endfor %} > Father
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="mother[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.mother is True %} checked {% endif %} {% endif %}{% endfor %} > Mother
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Son
+                                                </td>
+                                                <td>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="son[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.son is True %} checked {% endif %} {% endif %}{% endfor %} > Son
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="daughter[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.daughter is True %} checked {% endif %} {% endif %}{% endfor %} > Daughter
+                                                        </div>
                                                     </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
+                                                </td>
+                                                <td>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="sibling[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.sibling is True %} checked {% endif %}{% endif %} {% endfor %} > Sibling
+                                                        </div>
+                                                        <div class="form-inline">
+                                                            <label>
+                                                            <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
+                                                            </label>
+                                                            <input type="text" class="form-control" name="otherdisease" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %} value="{{fam.relative}}"{% endif %} {% endfor %}>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="systemicsclerosis"{% for fam in familyhistory %}{% if fam.disease == 'sle' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
-                                                    </div>
-                                                    <div class="form-inline">
-                                                        <label>
-                                                          <input type="checkbox"> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="systemicsclerosis" style="width: 100px;">
-                                                    </div>
-                                                </div>  
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease05">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: Sjogren's Syndrome
-                                                <input type="hidden" name="familydisease05" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease05');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.son is True %} checked {% endif %}{% endif %} {% endfor %} > Son
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="sjogren"{% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.sibling is True %} checked {% endif %} {% endif %}{% endfor %} > Sibling
-                                                    </div>
-                                                    <div class="form-inline">
-                                                        <label>
-                                                          <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="sjogren" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'sjogren' %}value="{{fam.relative}}"{% endif %}{% endfor %}>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease06">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: DM Type 1
-                                                <input type="hidden" name="familydisease06" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease06');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.father is True %} checked {% endif %}{% endif %} {% endfor %} > Father
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.mother is True %} checked {% endif %}{% endif %} {% endfor %} > Mother
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.son is True %} checked {% endif %}{% endif %} {% endfor %} > Son
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="dmtype1"{% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% endif %}{% if fam.sibling is True %} checked {% endif %} {% endfor %} > Sibling
-                                                    </div>
-                                                    <label>
-                                                          <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="dmtype1" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'dmtype1' %} value="{{fam.relative}}" {% endif %}{% endfor %}>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease07">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: Hashimoto's thyroidditis
-                                                <input type="hidden" name="familydisease07" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease07');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="hashimoto"{% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="hashimoto"{% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="hashimoto" {% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %}> Son
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="hashimoto" {% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="hashimoto"{% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.sibling is True %} checked {% endif %}{% endif %}{% endfor %} > Sibling
-                                                    </div>
-                                                    <div class="form-inline">
-                                                        <label>
-                                                        <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="hashimoto" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'hashimoto' %} value="{{fam.relative}}"{% endif %} {% endfor %}>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease08">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: Multiple sclerosis
-                                                <input type="hidden" name="familydisease08" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease08');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.father is True %} checked {% endif %} {% endif %}{% endfor %}> Father
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.mother is True %} checked {% endif %}{% endif %} {% endfor %}> Mother
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td  class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.son is True %} checked {% endif %} {% endif %}{% endfor %}> Son
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.daughter is True %} checked {% endif %} {% endif %}{% endfor %}> Daughter
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td  class="col-md-4">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="multiplesclerosis" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.sibling is True %} checked {% endif %}{% endif %} {% endfor %}> Sibling
-                                                    </div>
-                                                    <div class="form-inline">
-                                                        <label>
-                                                          <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="multiplesclerosis" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'multiplesclerosis' %} value="{{fam.relative}}" {% endif %}{% endfor %} >
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease09">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: Myasthenia gravis
-                                                <input type="hidden" name="familydisease09" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease09');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.father is True %} checked {% endif %}{% endif %}{% endfor %} > Father
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.mother is True %} checked {% endif %}{% endif %}{% endfor %} > Mother
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.son is True %} checked {% endif %}{% endif %}{% endfor %} > Son
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.daughter is True %} checked {% endif %}{% endif %}{% endfor %} > Daughter
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="myastheniagravis"{% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.sibling is True %} checked {% endif %} {% endif %}{% endfor %} > Sibling
-                                                    </div>
-                                                    <div class="form-inline">
-                                                        <label>
-                                                        <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="myastheniagravis" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'myastheniagravis' %} value="{{fam.relative}}" {% endif %}{% endfor %}>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                                <table class="table table-striped table-bordered" style="margin-bottom: 5px; display:none;" id="familydisease10">
-                                    <tbody>
-                                        <tr scope="row">
-                                            <td class="text-center" align="center" colspan="3">Disease: Other
-                                                <input type="hidden" name="familydisease10" value="0">
-                                                <div style="float: right; position: relative;">
-                                                    <span style="color: #DF0101;" class="glyphicon glyphicon-remove" aria-hidden="true" onclick="removefamdis('familydisease10');"></span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="father[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.father is True %} checked {% endif %}{% endif %} {% endfor %} > Father
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="mother[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.mother is True %} checked {% endif %} {% endif %}{% endfor %} > Mother
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="son[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.son is True %} checked {% endif %} {% endif %}{% endfor %} > Son
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="daughter[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.daughter is True %} checked {% endif %} {% endif %}{% endfor %} > Daughter
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="checkbox">
-                                                        <input type="checkbox" name="sibling[]" value="otherdisease" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.sibling is True %} checked {% endif %}{% endif %} {% endfor %} > Sibling
-                                                    </div>
-                                                    <div class="form-inline">
-                                                        <label>
-                                                        <input type="checkbox" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %}{% if fam.relative.size > 0 %} checked {% endif %}{% endif %}{% endfor %}> Relative
-                                                        </label>
-                                                        <input type="text" class="form-control" name="otherdisease" style="width: 100px;" {% for fam in familyhistory %}{% if fam.disease == 'otherdisease' %} value="{{fam.relative}}"{% endif %} {% endfor %}>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                               
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
                             </div>
                         </div>
                     </div>

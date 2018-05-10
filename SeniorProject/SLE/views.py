@@ -1678,6 +1678,9 @@ def followEdit(request, visitid):
 
 @login_required(login_url='login')
 def enrollEdit(request, studynum):
+    try: obgyn = Obgyn.objects.filter(studynumber = studynum).latest('recorddate')
+    except ObjectDoesNotExist:
+        obgyn = None
     return render(request, 'enrollment-edit.html',
                   {'patient':Studyidentity.objects.get(studynumber = studynum),
                    'acrcriteria':Acrcriteria.objects.get(studynumber = studynum),
@@ -1686,7 +1689,7 @@ def enrollEdit(request, studynum):
                     'comorbidity':Comorbidity.objects.filter(studynumber = studynum),
                     'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
                     'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
-                    'obgyn':Obgyn.objects.filter(studynumber = studynum).latest('recorddate')})
+                    'obgyn':obgyn})
 
 
 @login_required(login_url='login')
