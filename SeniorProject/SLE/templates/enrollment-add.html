@@ -55,15 +55,11 @@
 
         $(document).ready(function(){
             $('#other01').on('ifChecked', function(){
-                $("#odetail01").show();
-                $("#odate01").show();
-                $("#addotherinflection").show();
+                $("#odetail01,#odate01,#addotherinflection").show();
             });
             $('#other01').on('ifUnchecked', function(){
-                $("#odetail01").hide();
-                $("#odate01").hide();
-                $("#addotherinflection").hide();
-                $("[name=trotherinflection]").remove();
+                $("#odetail01,#odate01,#addotherinflection").hide();
+                $("#inflectiontr01_1,#inflectiontr01_2,#inflectiontr01_3,#inflectiontr01_4,#inflectiontr01_5,#inflectiontr01_6").hide();
                 
             });
         });
@@ -201,6 +197,9 @@
             var p=o.parentNode.parentNode;
             p.parentNode.removeChild(p);
         }
+        
+        function showRow(o){var oid = o;$('#inflectiontr'+oid).show();}
+        function hideRow(o){var oid = o;$('#inflectiontr'+oid).hide();}
         
         $(document).ready(function(){
             $('#organtreatment21').on('ifChecked', function(){
@@ -993,7 +992,103 @@
                                                             </td>
                                                             <td><input type="date" id="odate01" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                             <td id="addotherinflection" style="display: none;">
-                                                                <a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                                <a onclick='showRow("01_1");'><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="inflectiontr01_1" style="display: none;">
+                                                            <td></td>
+                                                            <td>
+                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                 <div class="form-group" id="odetail01_1">
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>detail1</option>
+                                                                        <option>detail2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate01_1" class="form-control" name="otherdate[]"></td>
+                                                            <td id="addotherinflection01_1">
+                                                                <a onclick='hideRow("01_1");'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a><a onclick='showRow("01_2");'><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="inflectiontr01_2" style="display: none;">
+                                                            <td></td>
+                                                            <td>
+                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                 <div class="form-group" id="odetail01_2">
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>detail1</option>
+                                                                        <option>detail2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate01_2" class="form-control" name="otherdate[]"></td>
+                                                            <td id="addotherinflection01_2">
+                                                                <a onclick='hideRow("01_2");'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a><a onclick='showRow("01_3");'><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="inflectiontr01_3" style="display: none;">
+                                                            <td></td>
+                                                            <td>
+                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                 <div class="form-group" id="odetail01_3">
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>detail1</option>
+                                                                        <option>detail2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate01_3" class="form-control" name="otherdate[]"></td>
+                                                            <td id="addotherinflection01_3">
+                                                                <a onclick='hideRow("01_3");'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a><a onclick='showRow("01_4");'><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="inflectiontr01_4" style="display: none;">
+                                                            <td></td>
+                                                            <td>
+                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                 <div class="form-group" id="odetail01_4">
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>detail1</option>
+                                                                        <option>detail2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate01_4" class="form-control" name="otherdate[]"></td>
+                                                            <td id="addotherinflection01_4">
+                                                                <a onclick='hideRow("01_4");'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a><a onclick='showRow("01_5");'><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="inflectiontr01_5" style="display: none;">
+                                                            <td></td>
+                                                            <td>
+                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                 <div class="form-group" id="odetail01_5">
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>detail1</option>
+                                                                        <option>detail2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate01_5" class="form-control" name="otherdate[]"></td>
+                                                            <td id="addotherinflection01_5">
+                                                                <a onclick='hideRow("01_5");'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a><a onclick='showRow("01_6");'><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                            </td>
+                                                        </tr>
+                                                         <tr id="inflectiontr01_6" style="display: none;">
+                                                            <td></td>
+                                                            <td>
+                                                                <input type="text" name="othertype[]" style="display: none;">
+                                                                 <div class="form-group" id="odetail01_6">
+                                                                    <select class="form-control" name="otherdetail[]">
+                                                                        <option>detail1</option>
+                                                                        <option>detail2</option>
+                                                                    </select>
+                                                                </div>
+                                                            </td>
+                                                            <td><input type="date" id="odate01_6" class="form-control" name="otherdate[]"></td>
+                                                            <td id="addotherinflection01_6">
+                                                                <a onclick='hideRow("01_6");'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a>
                                                             </td>
                                                         </tr>
                                                          
@@ -1111,7 +1206,7 @@
                                         <input type="text" class="form-control" name="modeofcontraceptives" id="modeofcontraceptives" list="modeofcontraceptiveslist" disabled>
                                         <datalist id="modeofcontraceptiveslist">
                                             <option>Hormonal</option>
-                                            <option>Oral pills,</option>
+                                            <option>Oral pills</option>
                                             <option>Injection(DMPA)</option>
                                             <option>Implants</option>
                                             <option>Non-hormonal</option>
