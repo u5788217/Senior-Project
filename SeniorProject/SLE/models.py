@@ -393,11 +393,11 @@ class Medication(models.Model):
 class Obgyn(models.Model):
     studynumber = models.ForeignKey('Studyidentity', models.DO_NOTHING, db_column='studynumber', primary_key=True)
     recorddate = models.DateField()
-    gscore = models.FloatField(blank=True, null=True)
-    pscore = models.FloatField(blank=True, null=True)
-    ascore = models.FloatField(blank=True, null=True)
+    gscore = models.IntegerField(blank=True, null=True)
+    pscore = models.IntegerField(blank=True, null=True)
+    ascore = models.IntegerField(blank=True, null=True)
     menstrualcycle = models.TextField(blank=True, null=True)
-    pregnant = models.FloatField(blank=True, null=True)
+    pregnant = models.IntegerField(blank=True, null=True)
     modeofcontraceptives = models.TextField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
