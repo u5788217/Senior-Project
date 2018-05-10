@@ -252,7 +252,7 @@
         $(document).ready(function(){
             $("#tfhr_urinecreatinine").keyup(function(){
                 var total=isNaN(parseInt($("#tfhr_urineprotein").val()/ $("#tfhr_urinecreatinine").val())) ? 0 :($("#tfhr_urineprotein").val()/ $("#tfhr_urinecreatinine").val())
-                $("#upci").val(total);
+                $("#upci").val(total.toFixed(2));
             });
         });
         //Hide-show Lab
@@ -2312,8 +2312,8 @@
                                                                         <td><input type="number" name="dose35" id="dose35" placeholder="00.00" step="0.01" class="form-control" {% if med.mgt_4_3.doseperdate > 0 %} value="{{med.mgt_4_3.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td><input type="checkbox" id="ckme36" {% if med.mgt_4_4.doseperdate > 0 %} checked {% endif %}> MTV </td>
-                                                                        <td><input type="number" name="dose36"id="dose36"  placeholder="00.00" step="0.01" class="form-control" {% if med.mgt_4_4.doseperdate > 0 %} value="{{med.mgt_4_4.doseperdate}}" {% else %} disabled {% endif %}></td>
+                                                                        <td><input type="checkbox" id="ckmed36" {% if med.mgt_4_4.doseperdate > 0 %} checked {% endif %}> MTV </td>
+                                                                        <td><input type="number" name="dose36" id="dose36"  placeholder="00.00" step="0.01" class="form-control" {% if med.mgt_4_4.doseperdate > 0 %} value="{{med.mgt_4_4.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td colspan="2"><input type="checkbox" id="mgt_other" {% if med.mgt_other is True %} checked {% endif %}> Others</td>

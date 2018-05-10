@@ -263,7 +263,7 @@
         $(document).ready(function(){
             $("#tfhr_urinecreatinine").keyup(function(){
                 var total=isNaN(parseInt($("#tfhr_urineprotein").val()/ $("#tfhr_urinecreatinine").val())) ? 0 :($("#tfhr_urineprotein").val()/ $("#tfhr_urinecreatinine").val())
-                $("#upci").val(total);
+                $("#upci").val(total.toFixed(2));
             });
         });
         //Hide-show Lab
