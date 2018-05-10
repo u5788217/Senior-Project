@@ -47,7 +47,7 @@ def iscontains(alist,item):
     if item in alist: return True
     else: return False
 def NullToZero(value):
-    if value is None: value = 0
+    if value is None or value == '': value = 0
     return value
 
 def getRowForPredict(studynumber):
@@ -926,7 +926,8 @@ def enrollDetail(request, studynum):
                     'familyhistory':Familyhistory.objects.filter(studynumber = studynum),
                     'comorbidity':Comorbidity.objects.filter(studynumber = studynum),
                     'medicalcondition':Medicalcondition.objects.get(studynumber = studynum),
-                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum)})
+                    'previousorganinvolvement':Previousorganinvolvement.objects.filter(studynumber = studynum),
+                  'obgyn':Obgyn.objects.filter(studynumber = studynum).latest('recorddate')})
 
 
 @login_required(login_url='login')
@@ -1634,17 +1635,8 @@ def followEditPost(request):
         old_med.mgt_other = CheckboxToBool(request.POST.get('mgt_other',))
         old_med.save()
         
-        newObgyn = Obgyn(studynumber = EnrollStudyidentity,
-                     recorddate = request.POST.get('obgyndate',),
-                     gscore = NullToZero(request.POST.get('gscore',)),
-                     pscore = NullToZero(request.POST.get('pscore',)),
-                     ascore = NullToZero(request.POST.get('ascore',)),
-                     menstrualcycle = request.POST.get('menstrualcycle',),
-                     pregnant = NullToZero(request.POST.get('pregnant',)),
-                     modeofcontraceptives = request.POST.get('modeofcontraceptives',))
-        newObgyn.save()
-        
         this_date = old_visiting.visitdate         
+               
         return HttpResponseRedirect(reverse('patientrecord', args=(old_visiting.studynumber.studynumber,)))
     
 
@@ -1889,7 +1881,29 @@ def enrollEditPost(request):
                     EnrollOrgan = Previousorganinvolvement(studynumber = old_studyidentity, 
                         organ = each_organ, detail = each_detail, startdate = start, remissiondate = remiss)
                     EnrollOrgan.save()
-
+        
+        old_Obgy = None
+        newObgyn = None
+        try:
+            old_Obgy = Obgyn.objects.get(studynumber = old_studyidentity, recorddate = request.POST.get('obgyndate',))
+            old_Obgy.gscore = NullToZero(request.POST.get('gscore',))
+            old_Obgy.pscore = NullToZero(request.POST.get('pscore',))
+            old_Obgy.ascore = NullToZero(request.POST.get('ascore',))
+            old_Obgy.menstrualcycle = request.POST.get('menstrualcycle',)
+            old_Obgy.pregnant = NullToZero(request.POST.get('pregnant',))
+            old_Obgy.modeofcontraceptives = request.POST.get('modeofcontraceptives',)
+            old_Obgy.save()
+        except ObjectDoesNotExist:
+            newObgyn = Obgyn(studynumber = old_studyidentity,
+                     recorddate = request.POST.get('obgyndate',),
+                     gscore = NullToZero(request.POST.get('gscore',)),
+                     pscore = NullToZero(request.POST.get('pscore',)),
+                     ascore = NullToZero(request.POST.get('ascore',)),
+                     menstrualcycle = request.POST.get('menstrualcycle',),
+                     pregnant = NullToZero(request.POST.get('pregnant',)),
+                     modeofcontraceptives = request.POST.get('modeofcontraceptives',))
+            newObgyn.save()
+        
         return HttpResponseRedirect(reverse('patientrecord', args=(stnum,)))
 
 
