@@ -920,7 +920,7 @@ def enrollPatient(request):
 @login_required(login_url='login')
 def enrollDetail(request, studynum):
     try: obgyn = Obgyn.objects.filter(studynumber = studynum).latest('recorddate')
-    except Obgyn.DoesNotExist:
+    except ObjectDoesNotExist:
         obgyn = None
     return render(request, 'enrollment-detail.html',
                   {'patient':Studyidentity.objects.get(studynumber = studynum),
