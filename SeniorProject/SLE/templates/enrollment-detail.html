@@ -463,9 +463,9 @@
                                             <td>
                                                 <!--Add name please-->
                                                 <div class="checkbox">
-                                                  <input type="checkbox" {% if medicalcondition.mc4_9.size > 0 %} checked="checked" {% endif %}> Food allergy
+                                                  <input type="checkbox" {% if medicalcondition.mc4_9 != null %} checked="checked" {% endif %}> Food allergy
                                                 </div>
-                                                <input type="text" class="form-control" name="mc4_9" id="foodinput" {% if medicalcondition.mc4_9.size > 0 %} value="{{medicalcondition.mc4_9}}" {% endif %} >
+                                                <input type="text" class="form-control" name="mc4_9" id="foodinput" {% if medicalcondition.mc4_9 != null %} value="{{medicalcondition.mc4_9}}" {% endif %} >
                                             </td>
                                         </tr>
                                     </tbody>
@@ -616,7 +616,7 @@
                                                             <input type="checkbox" {% if fam.sibling is True %} checked="checked" {% endif %}> Sibling
                                                         </div>
                                                         <div class="checkbox">
-                                                          <input type="checkbox" {% if fam.relative is not None %} checked="checked" {% endif %}> Relative
+                                                          <input type="checkbox" {% if fam.relative.size > 0 %} checked="checked" {% endif %}> Relative
                                                         </div>
                                                         <p>{{fam.relative}}</p>
                                                     </div>

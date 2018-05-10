@@ -811,7 +811,7 @@ def enrollPatient(request):
                 mc4_6 = CheckboxToBool(request.POST.get('mc4_6', '')),
                 mc4_7 = CheckboxToBool(request.POST.get('mc4_7', '')),
                 mc4_8 = CheckboxToBool(request.POST.get('mc4_8', '')),
-                mc4_9 = request.POST.getlist('mc4_9',))
+                mc4_9 = request.POST.get('mc4_9',))
         EnrollMedicalcondition.save()
         
         other01 = CheckboxToBool(request.POST.get('other01',))
@@ -864,6 +864,7 @@ def enrollPatient(request):
         famlist.append(request.POST.get('familydisease07',))
         famlist.append(request.POST.get('familydisease08',))
         famlist.append(request.POST.get('familydisease09',))
+        famlist.append(request.POST.get('familydisease10',))
         father = request.POST.getlist('father[]',)
         mother = request.POST.getlist('mother[]',)
         son = request.POST.getlist('son[]',)
@@ -878,7 +879,7 @@ def enrollPatient(request):
                     sibling = iscontains(sibling,eachdisease),
                     daughter = iscontains(daughter,eachdisease),
                     son = iscontains(son,eachdisease),
-                    relative = request.POST.get(eachdisease,))
+                    relative = request.POST.get(''+eachdisease,) if request.POST.get(''+eachdisease,) != '' else None)
                 EnrollFam.save()
 
         renal = request.POST.get('organ1',)
@@ -1774,7 +1775,7 @@ def enrollEditPost(request):
         old_condition.mc4_6 = CheckboxToBool(request.POST.get('mc4_6', ''))
         old_condition.mc4_7 = CheckboxToBool(request.POST.get('mc4_7', ''))
         old_condition.mc4_8 = CheckboxToBool(request.POST.get('mc4_8', ''))
-        old_condition.mc4_9 = ListToArray(request.POST.getlist('mc4_9[]',))
+        old_condition.mc4_9 = request.POST.get('mc4_9',)
         old_condition.mc5_1 = 'True' if request.POST.get('mc5_2_1', '')!='' or request.POST.get('mc5_2_2', '')!='' or request.POST.get('mc5_2_3', '')!='' or request.POST.get('mc5_3_1', '')!='' or request.POST.get('mc5_3_2', '')!='' or request.POST.get('mc5_3_3', '')!='' or request.POST.get('mc5_4_1', '')!='' or request.POST.get('mc5_4_2', '')!='' or request.POST.get('mc5_5_1', '')!='' or request.POST.get('mc5_5_2', '')!='' else 'False' 
         old_condition.mc5_2 = 'True' if request.POST.get('mc5_2_1', '')!='' or request.POST.get('mc5_2_2', '')!='' or request.POST.get('mc5_2_3', '')!='' else 'False' 
         old_condition.mc5_2_1 = request.POST.get('mc5_2_1', '')
@@ -1844,6 +1845,7 @@ def enrollEditPost(request):
         famlist.append(request.POST.get('familydisease07',))
         famlist.append(request.POST.get('familydisease08',))
         famlist.append(request.POST.get('familydisease09',))
+        famlist.append(request.POST.get('familydisease10',))
         father = request.POST.getlist('father[]',)
         mother = request.POST.getlist('mother[]',)
         son = request.POST.getlist('son[]',)

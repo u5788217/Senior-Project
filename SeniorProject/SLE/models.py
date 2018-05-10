@@ -326,7 +326,7 @@ class Medicalcondition(models.Model):
     mc4_6 = models.NullBooleanField()
     mc4_7 = models.NullBooleanField()
     mc4_8 = models.NullBooleanField()
-    mc4_9 = ArrayField(models.TextField(blank=True), null=True)
+    mc4_9 = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
