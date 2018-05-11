@@ -914,7 +914,7 @@
                                                                         <input type="checkbox" name="cva" id="cva" {% if sledai.cva is True %} checked {% endif %}> CVA
                                                                     </div>
                                                                     <div class="checkbox">
-                                                                        <input type="checkbox" name="cranialnerve" id="cranialnerve" {% if sledai.cva is True %} checked {% endif %}> Cranial nerve
+                                                                        <input type="checkbox" name="cranialnerve" id="cranialnerve" {% if sledai.cranialnerve is True %} checked {% endif %}> Cranial nerve
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Cranial nerve detail</label>  
@@ -1468,7 +1468,7 @@
                                                                             </div>
                                                                             <label>-</label>
                                                                             <div class="form-group" style="padding: 0px;">
-                                                                                <input type="number" name="granularcasts2"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.granularcasts2v is not None %} value="{{lab.granularcasts2}}" {% endif %}>
+                                                                                <input type="number" name="granularcasts2"   placeholder="00" step="10" class="form-control" style="width: 65px;" {% if lab.granularcasts2 is not None %} value="{{lab.granularcasts2}}" {% endif %}>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -2126,7 +2126,7 @@
                                                                     <tr class="active" >
                                                                         <td colspan="2"> 2. Anti-malarial </td>
                                                                     </tr>
-                                                                    <tr {% if med.msle_2_1.doseperdate == 0 or med.msle_2_2.doseperdate == 0 or med.msle_2_1.doseperdate is None or med.msle_2_2.doseperdate is None %} style="display: none;" {% endif %}>
+                                                                    <tr {% if med.msle_2_1.doseperdate == 0 and med.msle_2_2.doseperdate == 0 or med.msle_2_1.doseperdate is None and med.msle_2_2.doseperdate is None %} style="display: none;" {% endif %}>
                                                                         <td>
                                                                             <div class="form-inline">  
                                                                                 <label><input type="checkbox" id="ckmed2" {% if med.msle_2_1.doseperdate > 0 or med.msle_2_2.doseperdate > 0 %} checked {% endif %}> </label>  

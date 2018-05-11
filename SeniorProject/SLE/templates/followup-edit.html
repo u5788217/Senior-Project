@@ -1850,7 +1850,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" name="ckcytokine" {% if lab.cytokine is not None %} checked {% endif %}> Cytokine</label>  
+                                                                        <label><input type="checkbox" id="ckcytokine" {% if lab.cytokine is not None %} checked {% endif %}> Cytokine</label>  
                                                                         <select class="form-control" name="cytokine" id="cytokine" {% if lab.cytokine is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.cytokine == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.cytokine == 'Positive' %} selected {% endif %}>Positive</option>

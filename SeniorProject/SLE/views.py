@@ -100,7 +100,7 @@ def getRowForPredict(studynumber):
     
     if(latest_lab is not None): 
         Albumin = NullToZero(latest_lab.albumin)
-        Anti_CIC = NullToZero(latest_lab.anticic)
+        Anti_CIC = 1 if latest_lab.anticic == 'Negative' else 0
         Anti_dsDNA = NullToZero(latest_lab.anti_dsdna)
         C3 = NullToZero(latest_lab.c3)
         C4 = NullToZero(latest_lab.c4)
@@ -563,7 +563,7 @@ def patientrecord(request, studynum):
         sledai3.append(CheckboxToInt(each_sledai.organicbrainsyndrome))
         sledai4.append(CheckboxToInt(each_sledai.visualdisturbance))
         sledai5.append(CheckboxToInt(each_sledai.cranialnerve))
-        sledai6.append(CheckboxToInt(each_sledai.cranialnervedetail))
+#        sledai6.append(CheckboxToInt(each_sledai.cranialnervedetail))
         sledai7.append(CheckboxToInt(each_sledai.lupusheadache))
         sledai8.append(CheckboxToInt(each_sledai.cva))
         sledai9.append(CheckboxToInt(each_sledai.vasculitis))
@@ -590,7 +590,7 @@ def patientrecord(request, studynum):
     SLEDAIdata.append({'name':'OrganicBrainSyndrome', 'values':sledai3})
     SLEDAIdata.append({'name':'VisualDisturbance', 'values':sledai4})
     SLEDAIdata.append({'name':'CranialNerve', 'values':sledai5})
-    SLEDAIdata.append({'name':'CranialNerveDetail', 'values':sledai6})
+#    SLEDAIdata.append({'name':'CranialNerveDetail', 'values':sledai6})
     SLEDAIdata.append({'name':'LupusHeadache', 'values':sledai7})
     SLEDAIdata.append({'name':'CVA', 'values':sledai8})
     SLEDAIdata.append({'name':'Vasculitis', 'values':sledai9})
@@ -671,7 +671,7 @@ def patientrecord(request, studynum):
         lab6.append(ToFloat(each_lab.esr))
         lab7.append(ToFloat(each_lab.wbc_hpf1)) 
         lab8.append(ToFloat(each_lab.rbc_hpf1))
-        lab10.append(ToFloat(each_lab.anticic))
+#        lab10.append(ToFloat(each_lab.anticic))
         lab11.append(ToFloat(each_lab.anti_dsdna))
         lab12.append(ToFloat(each_lab.upci))
         lab13.append(ToFloat(each_lab.cr))
@@ -686,7 +686,7 @@ def patientrecord(request, studynum):
     LABdata.append({'name':'ESR', 'values':lab6})
     LABdata.append({'name':'WBC_HPF', 'values':lab7})
     LABdata.append({'name':'RBC_HPF', 'values':lab8})
-    LABdata.append({'name':'AntiCIC', 'values':lab10})
+#    LABdata.append({'name':'AntiCIC', 'values':lab10})
     LABdata.append({'name':'Anti_dsDNA', 'values':lab11})
     LABdata.append({'name':'UPCI', 'values':lab12})
     LABdata.append({'name':'Cr', 'values':lab13})
@@ -1053,7 +1053,7 @@ def followPatient(request):
                         organicbrainsyndrome = CheckboxToBool(request.POST.get('organicbrainsyndrome', '')),
                         visualdisturbance = CheckboxToBool(request.POST.get('visualdisturbance', '')),
                         cranialnerve = CheckboxToBool(request.POST.get('cranialnerve', '')),
-                        cranialnervedetail = CheckboxToInt(request.POST.get('cranialnervedetail', '')),
+                        cranialnervedetail = request.POST.get('cranialnervedetail', ''),
                         lupusheadache = CheckboxToBool(request.POST.get('lupusheadache', '')),
                         cva = CheckboxToBool(request.POST.get('cva', '')),
                         vasculitis = CheckboxToBool(request.POST.get('vasculitis', '')),
@@ -1153,8 +1153,8 @@ def followPatient(request):
                             tp_spoturineprotein = ToFloatNone(request.POST.get('tp_spoturineprotein', '')),
                             cre_spoturinecreatinine = ToFloatNone(request.POST.get('cre_spoturinecreatinine', '')),
                             tfhr_urineprotein = ToFloatNone(request.POST.get('tfhr_urineprotein', '')),
-                            tfhr_urinecreatinine = ToFloatNone(request.POST.get('tfhr_urinecreatinine ', '')),
-                            upci = ToFloatNone(request.POST.get('upci ', '')),
+                            tfhr_urinecreatinine = ToFloatNone(request.POST.get('tfhr_urinecreatinine', '')),
+                            upci = ToFloatNone(request.POST.get('upci', '')),
                             fbs = ToFloatNone(request.POST.get('fbs', '')),
                             hba1c = ToFloatNone(request.POST.get('hba1c', '')),
                             bun = ToFloatNone(request.POST.get('bun', '')),
@@ -1424,7 +1424,7 @@ def followEditPost(request):
         old_sledai.organicbrainsyndrome = CheckboxToBool(request.POST.get('organicbrainsyndrome', ''))
         old_sledai.visualdisturbance = CheckboxToBool(request.POST.get('visualdisturbance', ''))
         old_sledai.cranialnerve = CheckboxToBool(request.POST.get('cranialnerve', ''))
-        old_sledai.cranialnervedetail = CheckboxToInt(request.POST.get('cranialnervedetail', ''))
+        old_sledai.cranialnervedetail = request.POST.get('cranialnervedetail', '')
         old_sledai.lupusheadache = CheckboxToBool(request.POST.get('lupusheadache', ''))
         old_sledai.cva = CheckboxToBool(request.POST.get('cva', ''))
         old_sledai.vasculitis = CheckboxToBool(request.POST.get('vasculitis', ''))
