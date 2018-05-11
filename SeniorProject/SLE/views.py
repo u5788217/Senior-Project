@@ -1604,8 +1604,12 @@ def followEditPost(request):
         old_med.msle_1_1 = Medicationtype(generic = request.POST.get('gen1',), doseperdate = ToFloat(request.POST.get('dose1',)), startdate = DateToNone(request.POST.get('start1',)), stopdate = DateToNone(request.POST.get('end1',)))
         old_med.msle_1_2 = Medicationtype(generic = request.POST.get('gen2',), doseperdate = ToFloat(request.POST.get('dose2',)), startdate = DateToNone(request.POST.get('start2',)), stopdate = DateToNone(request.POST.get('end2',)))
         old_med.msle_1_3 = Medicationtype(generic = request.POST.get('gen3',), doseperdate = ToFloat(request.POST.get('dose3',)), startdate = DateToNone(request.POST.get('start3',)), stopdate = DateToNone(request.POST.get('end3',)))
-        old_med.msle_2_1 = Medicationtype(generic = request.POST.get('gen4',), doseperdate = ToFloat(request.POST.get('dose4',)), startdate = DateToNone(request.POST.get('start4',)), stopdate = DateToNone(request.POST.get('end4',)))
-        old_med.msle_2_2 = Medicationtype(generic = request.POST.get('gen5',), doseperdate = ToFloat(request.POST.get('dose5',)), startdate = DateToNone(request.POST.get('start5',)), stopdate = DateToNone(request.POST.get('end5',)))
+        if request.POST.get('ckmed2',) == 'cq':
+            old_med.msle_2_1 = Medicationtype(generic = request.POST.get('gen4',), doseperdate = ToFloat(request.POST.get('dose4',)), startdate = DateToNone(request.POST.get('start4',)), stopdate = DateToNone(request.POST.get('end4',)))
+            old_med.msle_2_2 = Medicationtype(generic = None, doseperdate = None, startdate = None, stopdate = None)
+        else:
+            old_med.msle_2_1 = Medicationtype(generic = None, doseperdate = None, startdate = None, stopdate = None)
+            old_med.msle_2_2 = Medicationtype(generic = request.POST.get('gen5',), doseperdate = ToFloat(request.POST.get('dose5',)), startdate = DateToNone(request.POST.get('start5',)), stopdate = DateToNone(request.POST.get('end5',)))
         old_med.msle_3_1 = Medicationtype(generic = request.POST.get('gen6',), doseperdate = ToFloat(request.POST.get('dose6',)), startdate = DateToNone(request.POST.get('start6',)), stopdate = DateToNone(request.POST.get('end6',)))
         old_med.msle_3_2 = Medicationtype(generic = request.POST.get('gen7',), doseperdate = ToFloat(request.POST.get('dose7',)), startdate = DateToNone(request.POST.get('start7',)), stopdate = DateToNone(request.POST.get('end7',)))
         old_med.msle_3_3 = Medicationtype(generic = request.POST.get('gen8',), doseperdate = ToFloat(request.POST.get('dose8',)), startdate = DateToNone(request.POST.get('start8',)), stopdate = DateToNone(request.POST.get('end8',))),

@@ -324,8 +324,8 @@
             
             $('#ckmed1').on('ifChecked', function(){$("#dose1").prop('disabled', false);});
             $('#ckmed1').on('ifUnchecked', function(){$("#dose1").prop('disabled', true);});
-            $('#ckmed2').on('ifChecked', function(){$("#ckmeddetail,#dose4").prop('disabled', false);});
-            $('#ckmed2').on('ifUnchecked', function(){$("#ckmeddetail,#dose4").prop('disabled', true);});
+            $('#ckmed2').on('ifChecked', function(){$("#ckmeddetail,#dose4,#dose5").prop('disabled', false);});
+            $('#ckmed2').on('ifUnchecked', function(){$("#ckmeddetail,#dose4,#dose5").prop('disabled', true);});
             
             $('#ckmeddetail[name=ckmed2]').change(function(){
                 if($(this).val() == 'cq'){$("#dose4").show();$("#dose5").hide();}
@@ -2147,7 +2147,7 @@
                                                                         </td>
                                                                         <td>
                                                                             <input type="number" name="dose4" id="dose4" placeholder="0.0" step="0.01" class="form-control" {% if med.msle_2_1.doseperdate > 0 %} value="{{med.msle_2_1.doseperdate}}" {% else %} disabled style="display: none;"{% endif %} >
-                                                                            <input type="number" name="dose5" id="dose5" placeholder="0.0" step="0.01" class="form-control"  {% if med.msle_2_2.doseperdate > 0 %} value="{{med.msle_2_2.doseperdate}}" {% else %} style="display: none;" {% endif %}>
+                                                                            <input type="number" name="dose5" id="dose5" placeholder="0.0" step="0.01" class="form-control"  {% if med.msle_2_2.doseperdate > 0 %} value="{{med.msle_2_2.doseperdate}}" {% else %} disabled style="display: none;" {% endif %}>
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="active" >
