@@ -1478,7 +1478,7 @@
                                                                             </div>
                                                                             <label>-</label>
                                                                             <div class="form-group" style="padding: 0px;">
-                                                                                <input type="number" name="granularcasts2"   placeholder="00" step="1" class="form-control" style="width: 65px;" {% if lab.granularcasts2v is not None %} value="{{lab.granularcasts2}}" {% endif %}>
+                                                                                <input type="number" name="granularcasts2"   placeholder="00" step="1" class="form-control" style="width: 65px;" {% if lab.granularcasts2 is not None %} value="{{lab.granularcasts2}}" {% endif %}>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -2023,7 +2023,7 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" name="labcheck11" {% if lnlab.renalbiopsystatus == 'Positive' %} checked {% endif %}> 11. Lupus nephritis</td>
+                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" name="labcheck11" {% if lnlab.renalbiopsystatus == 'Negative' %} checked {% endif %}> 11. Lupus nephritis</td>
                                                             </tr>
                                                             <tr id="labtr11" {% if lnlab.renalbiopsystatus != 'Positive' %} class="disabledbutton" {% endif %}>
                                                                 <td>

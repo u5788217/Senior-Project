@@ -1452,7 +1452,8 @@ def followEditPost(request):
         old_ln = None
         if CheckboxToBool(request.POST.get('labcheck11', '')) is 'True':
             if Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid is not None:
-                old_ln = Lnlab.objects.get(lnlabid = Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid)
+                ln_id = int(Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid.lnlabid)
+                old_ln = Lnlab.objects.get(lnlabid = ln_id)
                 old_ln.renalbiopsyclass = request.POST.get('renalbiopsyclass', '')
                 old_ln.renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', ''))
                 old_ln.activityindex = ToFloat(request.POST.get('activityindex', ''))
@@ -1537,8 +1538,8 @@ def followEditPost(request):
         old_lab.tp_spoturineprotein = ToFloat(request.POST.get('tp_spoturineprotein', ''))
         old_lab.cre_spoturinecreatinine = ToFloat(request.POST.get('cre_spoturinecreatinine', ''))
         old_lab.tfhr_urineprotein = ToFloat(request.POST.get('tfhr_urineprotein', ''))
-        old_lab.tfhr_urinecreatinine = ToFloat(request.POST.get('tfhr_urinecreatinine ', ''))
-        old_lab.upci = ToFloat(request.POST.get('upci ', ''))
+        old_lab.tfhr_urinecreatinine = ToFloat(request.POST.get('tfhr_urinecreatinine', ''))
+        old_lab.upci = ToFloat(request.POST.get('upci', ''))
         old_lab.fbs = ToFloat(request.POST.get('fbs', ''))
         old_lab.hba1c = ToFloat(request.POST.get('hba1c', ''))
         old_lab.bun = ToFloat(request.POST.get('bun', ''))
