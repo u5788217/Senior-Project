@@ -1148,7 +1148,7 @@ def followPatient(request):
                             wbccasts2 = ToFloatNone(request.POST.get('wbccasts2', '')),
                             rbccasts2 = ToFloatNone(request.POST.get('rbccasts2', '')),
                             granularcasts2 = ToFloatNone(request.POST.get('granularcasts2', '')),
-                            glucose = StringToNone(request.POST.get('ckprotein', ''),request.POST.get('glucose', '')),
+                            glucose = StringToNone(request.POST.get('ckglucose', ''),request.POST.get('glucose', '')),
                             protein = StringToNone(request.POST.get('ckprotein', ''),request.POST.get('protein', '')),
                             tp_spoturineprotein = ToFloatNone(request.POST.get('tp_spoturineprotein', '')),
                             cre_spoturinecreatinine = ToFloatNone(request.POST.get('cre_spoturinecreatinine', '')),
@@ -1529,11 +1529,11 @@ def followEditPost(request):
         old_lab.rbccasts1 = ToFloat(request.POST.get('rbccasts1', ''))
         old_lab.granularcasts1 = ToFloat(request.POST.get('granularcasts1', ''))
         old_lab.wbc_hpf2 = ToFloat(request.POST.get('wbc_hpf2', ''))
-        old_lab.rbc_hpf2 = ToFloat(request.POST.get('rbc_hpf', ''))
+        old_lab.rbc_hpf2 = ToFloat(request.POST.get('rbc_hpf2', ''))
         old_lab.wbccasts2 = ToFloat(request.POST.get('wbccasts2', ''))
         old_lab.rbccasts2 = ToFloat(request.POST.get('rbccasts2', ''))
         old_lab.granularcasts2 = ToFloat(request.POST.get('granularcasts2', ''))
-        old_lab.glucose = StringToNone(request.POST.get('ckprotein', ''),request.POST.get('glucose', ''))
+        old_lab.glucose = StringToNone(request.POST.get('ckglucose', ''),request.POST.get('glucose', ''))
         old_lab.protein = StringToNone(request.POST.get('ckprotein', ''),request.POST.get('protein', ''))
         old_lab.tp_spoturineprotein = ToFloat(request.POST.get('tp_spoturineprotein', ''))
         old_lab.cre_spoturinecreatinine = ToFloat(request.POST.get('cre_spoturinecreatinine', ''))

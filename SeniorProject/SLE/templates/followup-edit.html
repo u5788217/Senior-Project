@@ -1485,7 +1485,7 @@
                                                                 </td>
                                                                 <td class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckglucose" {% if lab.glucose is not None %} checked {% endif %}> Glucose</label>  
+                                                                        <label><input type="checkbox" id="ckglucose" name="ckglucose" {% if lab.glucose is not None %} checked {% endif %}> Glucose</label>  
                                                                         <select class="form-control" name="glucose" id="glucose" {% if lab.glucose is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.glucose == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Trace" {% if lab.glucose == 'Trace' %} selected {% endif %}>Trace</option>
@@ -1496,7 +1496,7 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label> <input type="checkbox" id="ckprotein" {% if lab.protein is not None %} checked {% endif %}> Protein</label>
+                                                                        <label> <input type="checkbox" id="ckprotein" {% if lab.protein is not None %} checked {% endif %} name="ckprotein"> Protein</label>
                                                                         <select class="form-control" name="protein" id="protein" {% if lab.protein is None %} disabled {% endif %} >
                                                                             <option value="Negative" {% if lab.protein == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Trace" {% if lab.protein == 'Trace' %} selected {% endif %}>Trace</option>
@@ -1850,7 +1850,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckcytokine" {% if lab.cytokine is not None %} checked {% endif %}> Cytokine</label>  
+                                                                        <label><input type="checkbox" id="ckcytokine" name="ckcytokine" {% if lab.cytokine is not None %} checked {% endif %}> Cytokine</label>  
                                                                         <select class="form-control" name="cytokine" id="cytokine" {% if lab.cytokine is None %} disabled {% endif %}>
                                                                             <option value="Negative" {% if lab.cytokine == 'Negative' %} selected {% endif %}>Negative</option>
                                                                             <option value="Positive" {% if lab.cytokine == 'Positive' %} selected {% endif %}>Positive</option>
