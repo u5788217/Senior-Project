@@ -479,13 +479,13 @@
              
         $(document).on("click",".addotherinflection", function () {
             var newRow = $("<tr name='trotherinflection'>");
-            var cols = "<td></td>";
+            var cols = "";
             
-            cols += "<td><div class='form-group' id='odetail01'>                                                <input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail'><datalist id='mgt_other_list'><option>Bactrim</option><option>Acyclovir</option></datalist></div></td>";
+            cols += "<td><input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail'><datalist id='mgt_other_list'><option>Bactrim</option><option>Acyclovir</option></datalist></td>";
         
-            cols += "<td><input type='number' name='otherdose[]' placeholder='00.00' step='0.01' class='form-control' </td>";
+            cols += "<td><input type='number' name='otherdose[]' placeholder='00.00' step='0.01' class='form-control'></td>";
             
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td>                                                        </tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).closest('tr'));
@@ -2261,108 +2261,130 @@
                                                             <table class="table">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th class="col-md-6"></th>
+                                                                        <th class="col-md-3"></th>
+                                                                        <th class="col-md-3"></th>
                                                                         <th class="col-md-3">Dose/d</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr class="active" >
-                                                                        <td colspan="2"> 1. Anti-hypertensive </td>
+                                                                        <td colspan="3"> 1. Anti-hypertensive </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed21"> ACEI</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose21" id="dose21" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed22"> ARB</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose22" id="dose22" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed23"> Diuretics</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose23" id="dose23" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed24"> Beta-blockers</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose24" id="dose24" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed25"> Ca channel blockers</td>
+                                                                        <td></td>
                                                                        <td><input type="number" name="dose25" id="dose25" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>                                                
                                                                     <tr class="active" >
-                                                                        <td colspan="2"> 2. Lipid-lowering </td>
+                                                                        <td colspan="3"> 2. Lipid-lowering </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed26"> Statins</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose26" id="dose26" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed27"> Fibrates(Gemfibrozil,Fenofibrate)</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose27" id="dose27" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed28"> Resin(Cholestyramine,Colestipol)</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose28" id="dose28" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed29"> Nicotinic acid</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose29" id="dose29" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>                                                    
                                                                     <tr class="active" >
-                                                                        <td colspan="2"> 3. Osteoporosis Tx </td>
+                                                                        <td colspan="3"> 3. Osteoporosis Tx </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed30"> Bisphosphonates</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose30" id="dose30" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed31"> Ca supplement, CaCO3</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose31" id="dose31" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed32"> Vitamin D </td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose32" id="dose32" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>                                                    
                                                                     <tr class="active" >
-                                                                        <td colspan="2"> 4. Others general treatments</td>
+                                                                        <td colspan="3"> 4. Others general treatments</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed33"> ASA</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose33" id="dose33" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed34"> Warfarin</td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose34" id="dose34" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed35"> folic </td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose35" id="dose35" placeholder="00.00" step="0.01" class="form-control" disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed36"> MTV </td>
+                                                                        <td></td>
                                                                         <td><input type="number" name="dose36" id="dose36"  placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><input type="checkbox" id="mgt_other" name="ckmgt_other"> Others</td>
+                                                                        <td colspan="2">
+                                                                            <div>
+                                                                                <table class="table" id="mgt_other_table" style="visibility: hidden;" disabled>
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                             <th class="col-md-6">Medication name</th>
+                                                                                             <th class="col-md-6" colspan="2">
+                                                                                                <div>
+                                                                                                    Dose/d <a class="addotherinflection" style="float: right;"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a>
+                                                                                                </div>
+                                                                                            </th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
                                                         </td>
                                                     </tr>
                                                 </tbody>
-                                            </table>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" id="mgt_other" name="ckmgt_other"> Others
-                                            <table class="table" id="mgt_other_table" style="visibility: hidden;" disabled>
-                                                <thead>
-                                                    <tr>
-                                                     <th><a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a></th>
-                                                     <th class="col-md-6">Medication name</th>
-                                                     <th class="col-md-3">Dose/d</th>
-                                                     <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <div id="addotherinflection"></div>
-                                            </tbody>
                                             </table>
                                         </div>
                                     </div>
