@@ -14,7 +14,7 @@ import datetime
 
 from .models import AuthUser
 #Models for enrollment
-from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Familyhistory, Obgyn, Riskbehavior, Comorbidity, HN, Obgyn
+from .models import Studyidentity, Slicccriteria, Acrcriteria, Medicalcondition, Previousorganinvolvement, Familyhistory, Obgyn, Riskbehavior, Comorbidity, HN, Obgyn, Othermedication
 from .models import Labtype, Medicationtype
 from .models import Visiting, Clinicalpresentation, Damageindex, Diseaseactivitysledai, Laboratoryinventoryinvestigation, Lnlab, Medication
 
@@ -1248,8 +1248,19 @@ def followPatient(request):
                             mgt_4_2 = Medicationtype(generic = request.POST.get('gen34',), doseperdate = ToFloatNone(request.POST.get('dose34',)), startdate = DateToNone(request.POST.get('start34',)), stopdate = DateToNone(request.POST.get('end34',))),
                             mgt_4_3 = Medicationtype(generic = request.POST.get('gen35',), doseperdate = ToFloatNone(request.POST.get('dose35',)), startdate = DateToNone(request.POST.get('start35',)), stopdate = DateToNone(request.POST.get('end35',))),
                             mgt_4_4 = Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloatNone(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',))),
-                            mgt_other = CheckboxToBool(request.POST.get('mgt_other',)))
+                            mgt_other = CheckboxToBool(request.POST.get('ckmgt_other',)))
             FollowMed.save()
+            
+            othermed = request.POST.getlist('mgt_other_detail[]',)
+            othermed_doseperdate = request.POST.getlist('otherdose[]',) 
+            if mgt_other is 'True':
+                for index in range(0, len(othermed)):
+                    if(othermed[index] != ''):
+                        FollowOtherMed = Othermedication(visitingid = Followvisiting,
+                                        medicationname = othermed[index],
+                                        doseperdate = othermed_doseperdate[index])
+                        FollowOtherMed.save()
+                    
             return patientrecord(request, TempstudyNumber)    
         else:
 #            return index(request)
@@ -1644,8 +1655,19 @@ def followEditPost(request):
         old_med.mgt_other = CheckboxToBool(request.POST.get('mgt_other',))
         old_med.save()
         
-        this_date = old_visiting.visitdate         
-               
+        this_date = old_visiting.visitdate
+        
+        Othermedication.objects.filter(visitingid = temp_visitid).delete()
+        othermed = request.POST.getlist('mgt_other_detail[]',)
+        othermed_doseperdate = request.POST.getlist('otherdose[]',) 
+        if mgt_other is 'True':
+            for index in range(0, len(othermed)):
+                if(othermed[index] != ''):
+                    FollowOtherMed = Othermedication(visitingid = temp_visitid,
+                                    medicationname = othermed[index],
+                                    doseperdate = othermed_doseperdate[index])
+                    FollowOtherMed.save()
+                        
         return HttpResponseRedirect(reverse('patientrecord', args=(old_visiting.studynumber.studynumber,)))
     
 

@@ -606,3 +606,13 @@ class HN(models.Model):
     class Meta:
         managed = False
         db_table = 'hn'
+
+class Othermedication(models.Model):
+    othermedicationid = models.AutoField(primary_key=True)
+    visitingid = models.ForeignKey('Visiting', models.DO_NOTHING, db_column='visitingid')
+    medicationname = models.TextField(blank=True, null=True)
+    doseperdate = models.FloatField(blank=True, null=True)
+    
+    class Meta:
+        managed = False
+        db_table = 'othermedication'
