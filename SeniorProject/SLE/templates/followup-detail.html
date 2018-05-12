@@ -2308,15 +2308,32 @@
                                                                         <td><input type="checkbox" id="ckmed36" {% if med.mgt_4_4.doseperdate > 0 %} checked {% endif %}> MTV <span class="count_bottom" id="medmgt_4_4"></span></td>
                                                                         <td><input type="number" name="dose36" id="dose36"  placeholder="00.0" step="0.1" class="form-control" {% if med.mgt_4_4.doseperdate > 0 %} value="{{med.mgt_4_4.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
-                                                                    <tr {% if med.mgt_other.doseperdate is False or med.mgt_other.doseperdate is None %} style="display: none;" {% endif %}>
-                                                                        <td colspan="2"><input type="checkbox" id="mgt_other" {% if med.mgt_other is True %} checked {% endif %}> Others</td>
-                                                                    </tr>
-                                                                </tbody>
                                                             </table>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
+                                        </div>
+                                        <div>
+                                            {% if med.mgt_other is True %} 
+                                            <input type="checkbox" checked> Others
+                                            <table class="table" id="mgt_other_table">
+                                                <thead>
+                                                    <tr>
+                                                     <th class="col-md-6">Medication name</th>
+                                                     <th class="col-md-3">Dose/d</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for other in othermed %} 
+                                                    <td>{{other.medicationname}}</td>
+                                                    <td>{{other.doseperdate}}</td>
+                                                    {% endfor %}
+                                            </tbody>
+                                            </table>
+                                            {% else %}
+                                            <input type="checkbox">Others
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>

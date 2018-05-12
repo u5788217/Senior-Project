@@ -400,8 +400,16 @@
             $('#ckmed35').on('ifUnchecked', function(){$("#dose35").prop('disabled', true);});
             $('#ckmed36').on('ifChecked', function(){$("#dose36").prop('disabled', false);});
             $('#ckmed36').on('ifUnchecked', function(){$("#dose36").prop('disabled', true);});
+            $('#mgt_other').on('ifChecked', function(){$("#mgt_other_table").prop('disabled', false);$("#mgt_other_table").css('visibility','visible');});
+            $('#mgt_other').on('ifUnchecked', function(){$("#mgt_other_table").prop('disabled', true);$("#mgt_other_table").css('visibility','hidden');});
         });  
         
+        {% if med.mgt_other is True %} 
+        $(document).ready(function(){
+            $("#mgt_other_table").prop('disabled', false);
+            $("#mgt_other_table").css('visibility','visible');
+        });  
+        {% endif %}
         //7.8.9.10. Abnormal
         function AbnormalInput(str){
             var tmp1 = str.name+"1";
@@ -449,6 +457,24 @@
             {% endfor %}
         }
         
+        function rmRow(o){
+            var p=o.parentNode.parentNode;
+            p.parentNode.removeChild(p);
+        }
+             
+        $(document).on("click",".addotherinflection", function () {
+            var newRow = $("<tr name='trotherinflection'>");
+            var cols = "<td></td>";
+            
+            cols += "<td><div class='form-group' id='odetail01'>                                                <input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail'><datalist id='mgt_other_list'><option>Bactrim</option><option>Acyclovir</option></datalist></div></td>";
+        
+            cols += "<td><input type='number' name='otherdose[]' placeholder='00.00' step='0.01' class='form-control' </td>";
+            
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td>                                                        </tr>";
+            
+            newRow.append(cols);
+            newRow.insertAfter($(this).closest('tr'));
+        });
     </script>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -2315,14 +2341,43 @@
                                                                         <td><input type="checkbox" id="ckmed36" {% if med.mgt_4_4.doseperdate > 0 %} checked {% endif %}> MTV </td>
                                                                         <td><input type="number" name="dose36" id="dose36"  placeholder="00.00" step="0.01" class="form-control" {% if med.mgt_4_4.doseperdate > 0 %} value="{{med.mgt_4_4.doseperdate}}" {% else %} disabled {% endif %}></td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <td colspan="2"><input type="checkbox" id="mgt_other" {% if med.mgt_other is True %} checked {% endif %}> Others</td>
-                                                                    </tr>
+                                                                    
                                                                 </tbody>
                                                             </table>
                                                         </td>
                                                     </tr>
                                                 </tbody>
+                                            </table>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="mgt_other" name="ckmgt_other"{% if med.mgt_other is True %} checked {% endif %}> Others
+                                            <table class="table" id="mgt_other_table" style="visibility: hidden;" disabled>
+                                                <thead>
+                                                    <tr>
+                                                     <th><a class="addotherinflection"><span class="glyphicon glyphicon-plus" style="color: #2BA060;" aria-hidden="true"></span></a></th>
+                                                     <th class="col-md-6">Medication name</th>
+                                                     <th class="col-md-3">Dose/d</th>
+                                                     <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for other in othermed %} 
+                                                    
+                                                    <tr name='trotherinflection'>
+                                                        <td></td>
+                                                        <td>
+                                                            <div class='form-group' id='odetail01'>               <input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail' value="{{other.medicationname}}">
+                                                            <datalist id='mgt_other_list'>
+                                                                <option>Bactrim</option>
+                                                                <option>Acyclovir</option></datalist>
+                                                        </div>
+                                                        </td>
+                                                        <td><input type='number' name='otherdose[]' placeholder='00.00' step='0.01' class='form-control' value="{{other.doseperdate}}">
+                                                        </td>
+                                                        <td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td>                       
+                                                    </tr>
+                                                    {% endfor %}
+                                            </tbody>
                                             </table>
                                         </div>
                                     </div>

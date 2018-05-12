@@ -172,7 +172,7 @@ def getRowForPredict(studynumber):
         ASA = NullToZero(latest_med.mgt_4_1.doseperdate)
         Warfarin = NullToZero(latest_med.mgt_4_2.doseperdate )
         FolicAcid = NullToZero(latest_med.mgt_4_3.doseperdate)
-        Other = NullToZero(latest_med.mgt_other)
+        Other = 1 if latest_med.mgt_4_4 == 'True' else 0
     else:
         CQ = 0
         HCQ = 0
@@ -1250,7 +1250,7 @@ def followPatient(request):
                             mgt_4_4 = Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloatNone(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',))),
                             mgt_other = CheckboxToBool(request.POST.get('ckmgt_other',)))
             FollowMed.save()
-            
+            mgt_other = CheckboxToBool(request.POST.get('ckmgt_other',))
             othermed = request.POST.getlist('mgt_other_detail[]',)
             othermed_doseperdate = request.POST.getlist('otherdose[]',) 
             if mgt_other is 'True':
@@ -1304,10 +1304,14 @@ def followDetail(request, visitid):
     try: PreviousSLEDAI = Diseaseactivitysledai.objects.get(visitingid = PreviousVisit).sledai_total
     except ObjectDoesNotExist: PreviousSLEDAI = None
     except IndexError: PreviousSLEDAI = None
+    try: othermed = Othermedication.objects.filter(visitingid = visitid)
+    except ObjectDoesNotExist: othermed = None
+    except IndexError: othermed = None
         
     return render(request, 'followup-detail.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
                       'med':med,
+                      'othermed':othermed,
                       'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = visitid),
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
@@ -1652,18 +1656,18 @@ def followEditPost(request):
         old_med.mgt_4_2 = Medicationtype(generic = request.POST.get('gen34',), doseperdate = ToFloat(request.POST.get('dose34',)), startdate = DateToNone(request.POST.get('start34',)), stopdate = DateToNone(request.POST.get('end34',)))
         old_med.mgt_4_3 = Medicationtype(generic = request.POST.get('gen35',), doseperdate = ToFloat(request.POST.get('dose35',)), startdate = DateToNone(request.POST.get('start35',)), stopdate = DateToNone(request.POST.get('end35',)))
         old_med.mgt_4_4 = Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloat(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',)))
-        old_med.mgt_other = CheckboxToBool(request.POST.get('mgt_other',))
+        old_med.mgt_other = CheckboxToBool(request.POST.get('ckmgt_other',))
         old_med.save()
         
         this_date = old_visiting.visitdate
-        
+        mgt_other = CheckboxToBool(request.POST.get('ckmgt_other',))
         Othermedication.objects.filter(visitingid = temp_visitid).delete()
         othermed = request.POST.getlist('mgt_other_detail[]',)
         othermed_doseperdate = request.POST.getlist('otherdose[]',) 
         if mgt_other is 'True':
             for index in range(0, len(othermed)):
                 if(othermed[index] != ''):
-                    FollowOtherMed = Othermedication(visitingid = temp_visitid,
+                    FollowOtherMed = Othermedication(visitingid = old_visiting,
                                     medicationname = othermed[index],
                                     doseperdate = othermed_doseperdate[index])
                     FollowOtherMed.save()
@@ -1683,6 +1687,10 @@ def followEdit(request, visitid):
     except ObjectDoesNotExist:
         med = None
     
+    try: othermed = Othermedication.objects.filter(visitingid = visitid)
+    except ObjectDoesNotExist: othermed = None
+    except IndexError: othermed = None
+        
     studynum = Visiting.objects.get(visitingid = visitid).studynumber
     visitdate_list = []
     visits = Visiting.objects.filter(studynumber = studynum).order_by('visitdate')
@@ -1694,6 +1702,7 @@ def followEdit(request, visitid):
     return render(request, 'followup-edit.html',
                       {'visiting':Visiting.objects.get(visitingid = visitid),
                       'med':med,
+                      'othermed':othermed,
                       'lab':lab,
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
