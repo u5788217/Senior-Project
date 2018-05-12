@@ -251,15 +251,17 @@ def ValidateVisiting(studynum, date):
     
 def haslnlab(lab):
     ln = None
-    if lab.lnlabid is not None:
-        try:
-            ln = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
-            return True
-        except ObjectDoesNotExist:
-            ln = None
+    if lab is not None:
+        if lab.lnlabid is not None:
+            try:
+                ln = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
+                return True
+            except ObjectDoesNotExist:
+                ln = None
+                return False
+        else:
             return False
-    else:
-        return False
+    else:return False
         
 def CheckboxToInt(string):
     if string == 'on' or string == 'Pos' or string is True or string=='On': string = 1
@@ -1077,20 +1079,19 @@ def followPatient(request):
                         sledai_total = totalSLEDAI, 
                         status = request.POST.get('patientstatus', ''))
             FollowSLEDAI.save()
-            
+            FollowLn = None
             if CheckboxToBool(request.POST.get('labcheck11', '')) is 'True':
                 FollowLn = Lnlab(renalbiopsyclass = request.POST.get('renalbiopsyclass', ''),
-                renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', '')),
-                activityindex = ToFloat(request.POST.get('activityindex', '')),
-                chronicityindex = ToFloat(request.POST.get('chronicityindex', '')),
-                ln_1 = ToFloat(request.POST.get('ln_1', '')),
-                ln_2 = ToFloat(request.POST.get('ln_2', '')),
-                ln_3 = request.POST.get('ln_3', ''),
-                ln_4 = request.POST.get('ln_4', ''),
-                ln_5 = ToFloat(request.POST.get('ln_5', '')),
-                renalbiopsystatus = request.POST.get('RenalShow', ''))
+                    renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', '')),
+                    activityindex = ToFloat(request.POST.get('activityindex', '')),
+                    chronicityindex = ToFloat(request.POST.get('chronicityindex', '')),
+                    ln_1 = ToFloat(request.POST.get('ln_1', '')),
+                    ln_2 = ToFloat(request.POST.get('ln_2', '')),
+                    ln_3 = request.POST.get('ln_3', ''),
+                    ln_4 = request.POST.get('ln_4', ''),
+                    ln_5 = ToFloat(request.POST.get('ln_5', '')),
+                    renalbiopsystatus = request.POST.get('RenalShow', ''))
                 FollowLn.save()  
-            else: FollowLn = None
                 
             labcheck07 = CheckboxToBool(request.POST.get('labcheck07', ''))
             labcheck08 = CheckboxToBool(request.POST.get('labcheck08', ''))
@@ -1279,7 +1280,9 @@ def handle_uploaded_file(file, filename):
 @login_required(login_url='login')
 def followDetail(request, visitid):
     studynum = int(Visiting.objects.get(visitingid = visitid).studynumber.studynumber)
-    lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
+    try: lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
+    except ObjectDoesNotExist: lab = None
+    except IndexError: lab = None
     if haslnlab(lab) is True:
         lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
     else: 
@@ -1312,7 +1315,7 @@ def followDetail(request, visitid):
                       {'visiting':Visiting.objects.get(visitingid = visitid),
                       'med':med,
                       'othermed':othermed,
-                      'lab':Laboratoryinventoryinvestigation.objects.get(visitingid = visitid),
+                      'lab':lab,
                       'lnlab':lnlab,
                       'sledai':Diseaseactivitysledai.objects.get(visitingid = visitid),
                       'damageindex':Damageindex.objects.get(visitingid = visitid),
@@ -1677,7 +1680,9 @@ def followEditPost(request):
 
 @login_required(login_url='login')
 def followEdit(request, visitid):
-    lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
+    try: lab = Laboratoryinventoryinvestigation.objects.get(visitingid = visitid)
+    except ObjectDoesNotExist: lab = None
+    except IndexError: lab = None
     if haslnlab(lab) is True:
         lnlab = Lnlab.objects.get(lnlabid = lab.lnlabid.lnlabid) 
     else: 
