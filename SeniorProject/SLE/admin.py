@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import AuthUser
 
-# Register your models here.
+class PersonAdmin(admin.ModelAdmin):
+    exclude = ('email', 'date_joined', )
+
+admin.site.register(AuthUser, PersonAdmin)
+    
