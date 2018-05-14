@@ -1,6 +1,8 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
 
 from . import views
 
@@ -31,4 +33,5 @@ urlpatterns = [
     path('hnDetail/', views.hnDetail, name='hnDetail'),
     path('hnEdit/', views.hnEdit, name='hnEdit'),
     path('hnEditPost/', views.hnEditPost, name='hnEditPost'),
+    path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 

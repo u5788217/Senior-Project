@@ -59,7 +59,7 @@ UPLOAD_ROOT = os.path.join(PROJECT_ROOT, 'SLE/static/uploads/')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
