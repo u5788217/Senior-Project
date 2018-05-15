@@ -716,7 +716,7 @@ a.deletelink:focus, a.deletelink:hover {
     border-radius: 15px;
 }
 
-.object-tools a:link, .object-tools a:visited {
+/*.object-tools a:link, .object-tools a:visited {
     display: block;
     float: left;
     padding: 3px 12px;
@@ -726,9 +726,9 @@ a.deletelink:focus, a.deletelink:hover {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: #fff;
-}
+}*/
 
-.object-tools a:focus, .object-tools a:hover {
+/*.object-tools a:focus, .object-tools a:hover {
     background-color: #417690;
 }
 
@@ -748,7 +748,7 @@ a.deletelink:focus, a.deletelink:hover {
 
 .object-tools a.addlink {
     background-image: url(../img/tooltag-add.svg);
-}
+}*/
 
 /* OBJECT HISTORY */
 
@@ -947,13 +947,13 @@ table#change-history tbody th {
 }
 
 .delete-confirmation form .cancel-link {
-    display: inline-block;
+    /*display: inline-block;
     vertical-align: middle;
     height: 15px;
-    line-height: 15px;
+    line-height: 15px;*/
     background: #ddd;
     border-radius: 4px;
-    padding: 10px 15px;
+    padding: 12px 15px;
     color: #333;
     margin: 0 0 0 10px;
 }
