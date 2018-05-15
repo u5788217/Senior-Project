@@ -664,7 +664,7 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
 
 .addlink {
     padding-left: 16px;
-    background: url(../img/icon-addlink.svg) 0 1px no-repeat;
+    /*background: url(../img/icon-addlink.svg) 0 1px no-repeat;*/
 }
 
 .changelink, .inlinechangelink {
@@ -689,8 +689,7 @@ a.deletelink:focus, a.deletelink:hover {
 /* OBJECT TOOLS */
 
 .object-tools {
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 13px;
     padding-left: 0;
     float: right;
     position: relative;
