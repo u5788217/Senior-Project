@@ -63,6 +63,7 @@
       {% block search %}{% search_form cl %}{% endblock %}
       {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
 
+<!--
       {% block filters %}
         {% if cl.has_filters %}
           <div id="changelist-filter">
@@ -71,6 +72,7 @@
           </div>
         {% endif %}
       {% endblock %}
+-->
 
       <form id="changelist-form" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
       {% if cl.formset %}
