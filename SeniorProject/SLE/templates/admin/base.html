@@ -49,7 +49,7 @@
   data-admin-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
-<div id="container">
+<div>
 
     {% if not is_popup %}
     <!-- Header -->
@@ -60,7 +60,7 @@
                 <a class="navbar-brand" href="{% url 'index' %}">SLE Flare-up Predictor</a>
             </div>
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav ">
+            <ul class="nav navbar-right top-nav">
                 <!--Normal-->
                 <li>
                 <a href="{% url 'index' %}"><i class="fa fa-home"></i> Home </a>
@@ -83,6 +83,7 @@
                 </li>
             </ul>
         </nav>
+    
      <!-- <div id="header">
        <div id="branding">
         {% block branding %}{% endblock %}
@@ -115,37 +116,45 @@
         {% block nav-global %}{% endblock %}Header
     </div> -->
     <!-- END Header -->
-    {% block breadcrumbs %}
-    <div class="breadcrumbs">
-    <a href="{% url 'admin:auth_user_changelist' %}">{% trans 'Home' %}</a>
-    {% if title %} &rsaquo; {{ title }}{% endif %}
-    </div>
-    {% endblock %}
-    {% endif %}
-
-    {% block messages %}
-        {% if messages %}
-        <ul class="messagelist">{% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
-        {% endfor %}</ul>
-        {% endif %}
-    {% endblock messages %}
-
-    <!-- Content -->
-    <div id="content" class="{% block coltype %}colM{% endblock %}">
-        {% block pretitle %}{% endblock %}
-        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
-        {% block content %}
-        {% block object-tools %}{% endblock %}
-        {{ content }}
+    
+    <div id="page-wrapper">
+        {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:auth_user_changelist' %}">{% trans 'Home' %}</a>
+        {% if title %} &rsaquo; {{ title }}{% endif %}
+        </div>
         {% endblock %}
-        {% block sidebar %}{% endblock %}
-        <br class="clear">
-    </div>
-    <!-- END Content -->
+        {% endif %}
 
-    {% block footer %}<div id="footer"></div>{% endblock %}
-</div>
+        {% block messages %}
+            {% if messages %}
+            <ul class="messagelist">{% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+            {% endfor %}</ul>
+            {% endif %}
+        {% endblock messages %}
+
+        <div id="content" class="{% block coltype %}colM{% endblock %}">
+            <div class="x_panel">
+                <div class="x_title">
+                    {% block pretitle %}{% endblock %}
+                    {% block content_title %}{% if title %}<h2>{{ title }}</h2>{% endif %}{% endblock %}
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    {% block content %}
+                    {% block object-tools %}{% endblock %}
+                    {{ content }}
+                    {% endblock %}
+                    {% block sidebar %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        {% block footer %}<div id="footer"></div>{% endblock %}
+        </div>
+    </div>
+    
 <!-- END Container -->
 
 </body>
