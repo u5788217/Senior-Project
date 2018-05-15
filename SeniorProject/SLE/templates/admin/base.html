@@ -2,6 +2,35 @@
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SLE Flare-up Predictor</title>	
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/custom.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap2-toggle.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap-toggle.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap2-toggle.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap-toggle.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/panel.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/plugins/morris.css' %}" rel="stylesheet" />
+    
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap2-toggle.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'vendors/echarts/dist/echarts.min.js' %}"></script>
+	<link href="{% static 'vendors/iCheck/skins/flat/blue.css' %}" rel="stylesheet" />
+    <script type="text/javascript" src="{% static 'js/moment.js' %}"></script>
+    
+    <!-- Font Awesome -->
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css'%}" rel="stylesheet" />
+
+
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
 {% block extrastyle %}{% endblock %}
@@ -24,8 +53,38 @@
 
     {% if not is_popup %}
     <!-- Header -->
-    <div id="header">
-        <div id="branding">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'index' %}">SLE Flare-up Predictor</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav ">
+                <!--Normal-->
+                <li>
+                <a href="{% url 'index' %}"><i class="fa fa-home"></i> Home </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user}} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        {% if user|lower == 'admin' %}
+                        <li>
+                            <a href="{% url 'hnDetail' %}"><i class="fa fa-fw fa-user"></i> HN detail</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'admin:auth_user_changelist' %}"><i class="fa fa-fw fa-user"></i> Admin site</a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a href="{% url 'logout' %}"><i class="fa fa-fw fa-power-off"></i> Log out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+     <!-- <div id="header">
+       <div id="branding">
         {% block branding %}{% endblock %}
         </div>
         {% block usertools %}
@@ -53,8 +112,8 @@
         </div>
         {% endif %}
         {% endblock %}
-        {% block nav-global %}{% endblock %}
-    </div>
+        {% block nav-global %}{% endblock %}Header
+    </div> -->
     <!-- END Header -->
     {% block breadcrumbs %}
     <div class="breadcrumbs">
