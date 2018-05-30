@@ -47,6 +47,11 @@
                 } 
                 else {
                     message = "Update complete.";
+                    for(var k = 0; k < rows.length; k++) {
+                        $("#post_data").append("<input type='text' name='"+rows[k].cells[0].innerText+"' value='"+rows[k].cells[1].childNodes[0].value+"'>");
+//                        $("#"+rows[k].cells[0].innerText).attr('name', ''+rows[k].cells[0].innerText);
+//                        $("#"+rows[k].cells[0].innerText).val("test");
+                    }
                     $("#hnck").prop('checked', true);
                 }
                 alert(message); 
@@ -126,13 +131,15 @@
                                          {% for hn in hns %}
                                             <tr>
                                                 <td>{{hn.studynumber}}</td>
-                                                <td><input type="text" id="{{hn.studynumber}}" name="{{hn.studynumber}}" value="{{ hn.hn|default:"" }}" onchange="CheckHN(this);">
+                                                <td><input type="text" id="{{hn.studynumber}}" value="{{ hn.hn|default:"" }}" onchange="CheckHN(this);">
                                                 </td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
                                             <div style="display: none;" ><input type="checkbox" id="hnck" required></div>
                                     </table>
+                                    <div id="post_data">
+                                    </div>
                                 </div>    
                             </div>
                         </div>
