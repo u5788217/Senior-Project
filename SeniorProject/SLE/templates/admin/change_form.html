@@ -55,6 +55,8 @@
 {% for fieldset in adminform %}
   {% if fieldset.name is None or fieldset.name == 'Personal info' %}
   {% include "admin/includes/fieldset.html" %}
+   {% else %}
+    <div style="display: none;">{% include "admin/includes/fieldset.html" %}</div>
   {% endif %}
 {% endfor %}
 {% endblock %}
