@@ -466,7 +466,7 @@
             var newRow = $("<tr name='trotherinflection'>");
             var cols = "";
             
-            cols += "<td><div class='form-group' id='odetail01'>                                                <input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail'><datalist id='mgt_other_list'><option>Bactrim</option><option>Acyclovir</option></datalist></div></td>";
+            cols += "<td><div class='form-group' id='odetail01'>                                                <input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail'><datalist id='mgt_other_list'><option>Prophylaxis</option><option>Bactrim</option><option>Acyclovir</option></datalist></div></td>";
         
             cols += "<td><input type='number' name='otherdose[]' placeholder='00.00' step='0.01' class='form-control' </td>";
             
@@ -1790,17 +1790,10 @@
                                                                 <td id="labtd04_2"  {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">
                                                                         <label><input type="checkbox" id="ckanticic" name="ckanticic" {% if lab.anticic is not None %} checked {% endif %}> AntiCIC (RU/ml)</label>  
-                                                                        <select class="form-control" name="anticic" id="anticic" {% if lab.anticic is None %} disabled {% endif %}>
-                                                                            <option value="Negative" {% if lab.anticic == 'Negative' %} selected {% endif %}>Negative</option>
-                                                                            <option value="Positive" {% if lab.anticic == 'Positive' %} selected {% endif %}>Positive</option>
-                                                                        </select>
+                                                                        <input type="number" step="0.01" class="form-control" name="anticic" id="anticic" {% if lab.anticic is None %} disabled {% endif %} value="{{lab.anticic}}">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label><input type="checkbox" id="ckil6" name="ckil6" {% if lab.il6 is not None %} checked {% endif %}> IL-6 (PG/ml)</label>  
-                                                                        <select class="form-control" name="il6" id="il6" {% if lab.il6 is None %} disabled {% endif %}>
-                                                                            <option value="Negative" {% if lab.il6 == 'Negative' %} selected {% endif %}>Negative</option>
-                                                                            <option value="Positive" {% if lab.il6 == 'Positive' %} selected {% endif %}>Positive</option>
-                                                                        </select>
+                                                                        <label><input type="checkbox" id="ckil6" name="ckil6" {% if lab.il6 is not None %} checked {% endif %}> IL-6 (PG/ml)</label> <input type="number" step="0.01" class="form-control" name="il6" id="il6" {% if lab.il6 is None %} disabled {% endif %} value="{{lab.il6}}"> 
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>CH50 (%)</label>  
@@ -2203,7 +2196,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed10" {% if med.msle_4_1.doseperdate > 0 %} checked {% endif %}> Methotrexate (MTX)</td>
-                                                                        <td><input type="number" name="dose10" id="dose10" placeholder="0.0" step="0.01" class="form-control" {% if med.msle_4_1.doseperdate > 0 %} value="{{med.msle_4_1.doseperdate}}" {% else %} disabled {% endif %}></td>
+                                                                        <td><input type="number" name="dose10" id="dose10" placeholder="0.0" step="0.01" class="form-control" {% if med.msle_4_1.doseperdate > 0 %} value="{{med.msle_4_1.doseperdate}}" {% else %} disabled {% endif %}><small>dose/week</small></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed11" {% if med.msle_4_2.doseperdate > 0 %} checked {% endif %}> Azathioprine </td>
@@ -2336,7 +2329,7 @@
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed32" {% if med.mgt_3_3.doseperdate > 0 %} checked {% endif %}> Vitamin D </td>
                                                                         <td></td>
-                                                                        <td><input type="number" name="dose32" id="dose32" placeholder="00.00" step="0.01" class="form-control" {% if med.mgt_3_3.doseperdate > 0 %} value="{{med.mgt_3_3.doseperdate}}" {% else %} disabled {% endif %}></td>
+                                                                        <td><input type="number" name="dose32" id="dose32" placeholder="00.00" step="0.01" class="form-control" {% if med.mgt_3_3.doseperdate > 0 %} value="{{med.mgt_3_3.doseperdate}}" {% else %} disabled {% endif %}><small>dose/week</small></td>
                                                                     </tr>                                                    
                                                                     <tr class="active" >
                                                                         <td colspan="3"> 4. Others general treatments</td>
@@ -2383,7 +2376,7 @@
                                                                                             <td>
                                                                                                 <div class='form-group' id='odetail01'><input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail' value="{{other.medicationname}}">
                                                                                                 <datalist id='mgt_other_list'>
-                                                                                                    <option>Bactrim</option>
+                                                                                                   <option>Prophylaxis</option> <option>Bactrim</option>
                                                                                                     <option>Acyclovir</option></datalist>
                                                                                             </div>
                                                                                             </td>
