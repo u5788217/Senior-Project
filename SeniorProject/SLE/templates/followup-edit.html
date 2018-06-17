@@ -17,20 +17,34 @@
         });
         //Hide-show clinical presentation
         $(document).ready(function(){
-            $('#cpcheck01').on('ifChecked', function(){$("#cptr01").removeAttr('class');});
-            $('#cpcheck01').on('ifUnchecked', function(){$("#cptr01").addClass("disabledbutton");});
-            $('#cpcheck02').on('ifChecked', function(){$("#cptr02").removeAttr('class');});
-            $('#cpcheck02').on('ifUnchecked', function(){$("#cptr02").addClass("disabledbutton");});
-            $('#cpcheck03').on('ifChecked', function(){$("#cptr03").removeAttr('class');});
-            $('#cpcheck03').on('ifUnchecked', function(){$("#cptr03").addClass("disabledbutton");});
-            $('#cpcheck04').on('ifChecked', function(){$("#cptr04").removeAttr('class');});
-            $('#cpcheck04').on('ifUnchecked', function(){$("#cptr04").addClass("disabledbutton");});
-            $('#cpcheck05').on('ifChecked', function(){$("#cptr05").removeAttr('class');});
-            $('#cpcheck05').on('ifUnchecked', function(){$("#cptr05").addClass("disabledbutton");});
-            $('#cpcheck06').on('ifChecked', function(){$("#cptr06").removeAttr('class');});
-            $('#cpcheck06').on('ifUnchecked', function(){$("#cptr06").addClass("disabledbutton");});
-            $('#cpcheck07').on('ifChecked', function(){$("#cptr07").removeAttr('class');});
-            $('#cpcheck07').on('ifUnchecked', function(){$("#cptr07").addClass("disabledbutton");});
+            $('#cpcheck01').on('ifChecked', function(){$("#cptr01").removeAttr('class');$("#cptr001").removeAttr('class');});
+            $('#cpcheck01').on('ifUnchecked', function(){$("#cptr01").addClass("disabledbutton");$("#cptr001").addClass("disabledbutton");});
+            $('#cpcheck02').on('ifChecked', function(){$("#cptr02").removeAttr('class');$("#cptr002").removeAttr('class');});
+            $('#cpcheck02').on('ifUnchecked', function(){$("#cptr02").addClass("disabledbutton");$("#cptr002").addClass("disabledbutton");});
+            $('#cpcheck03').on('ifChecked', function(){$("#cptr03").removeAttr('class');$("#cptr003").removeAttr('class');});
+            $('#cpcheck03').on('ifUnchecked', function(){$("#cptr03").addClass("disabledbutton");$("#cptr003").addClass("disabledbutton");});
+            $('#cpcheck04').on('ifChecked', function(){$("#cptr04").removeAttr('class');$("#cptr004").removeAttr('class');});
+            $('#cpcheck04').on('ifUnchecked', function(){$("#cptr04").addClass("disabledbutton");$("#cptr004").addClass("disabledbutton");});
+            $('#cpcheck05').on('ifChecked', function(){$("#cptr05").removeAttr('class');$("#cptr005").removeAttr('class');});
+            $('#cpcheck05').on('ifUnchecked', function(){$("#cptr05").addClass("disabledbutton");$("#cptr005").addClass("disabledbutton");});
+            $('#cpcheck06').on('ifChecked', function(){$("#cptr06").removeAttr('class');$("#cptr006").removeAttr('class');});
+            $('#cpcheck06').on('ifUnchecked', function(){$("#cptr06").addClass("disabledbutton");$("#cptr006").addClass("disabledbutton");});
+            $('#cpcheck07').on('ifChecked', function(){$("#cptr07").removeAttr('class');$("#cptr007").removeAttr('class');});
+            $('#cpcheck07').on('ifUnchecked', function(){$("#cptr07").addClass("disabledbutton");$("#cptr007").addClass("disabledbutton");});
+        });
+        //Hide-show SLEDAI
+        $(document).ready(function(){
+            $('#sledaicheck01').on('ifChecked', function(){$("#sledaitr01,#sledaicheck001").removeAttr('class');});
+            $('#sledaicheck01').on('ifUnchecked', function(){$("#sledaitr01,#sledaicheck001").addClass("disabledbutton");});
+            $('#sledaicheck02').on('ifChecked', function(){$("#sledaitr02,#sledaicheck002").removeAttr('class');});
+            $('#sledaicheck02').on('ifUnchecked', function(){$("#sledaitr02,#sledaicheck002").addClass("disabledbutton");});
+            $('#sledaicheck03').on('ifChecked', function(){$("#sledaicheck003, #sledaitr03, #sledaitr04, #sledaitr05, #sledaitr06, #sledaitr07").removeAttr('class');});
+            $('#sledaicheck03').on('ifUnchecked', function(){$("#sledaicheck003, #sledaitr03, #sledaitr04, #sledaitr05, #sledaitr06, #sledaitr07").addClass("disabledbutton");});
+        });
+        //Hide-show SLICC
+        $(document).ready(function(){
+            $('#slicccheck01').on('ifChecked', function(){$("#slicccheck001, #slicctr01, #slicctr02, #slicctr03, #slicctr04").removeAttr('class');});
+            $('#slicccheck01').on('ifUnchecked', function(){$("#slicccheck001, #slicctr01, #slicctr02, #slicctr03, #slicctr04").addClass("disabledbutton");});
         });
         //Calculate SLEDAI score
         $(document).ready(function(){
@@ -257,30 +271,30 @@
         });
         //Hide-show Lab
         $(document).ready(function(){
-            $('#labcheck01').on('ifChecked', function(){$("#labtr01").removeAttr('class');});
-            $('#labcheck01').on('ifUnchecked', function(){$("#labtr01").addClass("disabledbutton");});
-            $('#labcheck02').on('ifChecked', function(){$("#labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").removeAttr('class');});
-            $('#labcheck02').on('ifUnchecked', function(){$("#labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").addClass("disabledbutton");});
-            $('#labcheck03').on('ifChecked', function(){$("#labtr03").removeAttr('class');});
-            $('#labcheck03').on('ifUnchecked', function(){$("#labtr03").addClass("disabledbutton");});
-            $('#labcheck04').on('ifChecked', function(){$("#labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").removeAttr('class');});
-            $('#labcheck04').on('ifUnchecked', function(){$("#labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").addClass("disabledbutton");});
-            $('#labcheck05').on('ifChecked', function(){$("#labtd05").removeAttr('class');});
-            $('#labcheck05').on('ifUnchecked', function(){$("#labtd05").addClass("disabledbutton");});
-            $('#labcheck05extra').on('ifChecked', function(){$("#labtr05extra").removeAttr('class');});
-            $('#labcheck05extra').on('ifUnchecked', function(){$("#labtr05extra").addClass("disabledbutton");});
-            $('#labcheck06').on('ifChecked', function(){$("#labtr06").removeAttr('class');});
-            $('#labcheck06').on('ifUnchecked', function(){$("#labtr06").addClass("disabledbutton");});
-            $('#labcheck07').on('ifChecked', function(){$("#labtd07").removeAttr('class');});
-            $('#labcheck07').on('ifUnchecked', function(){$("#labtd07").addClass("disabledbutton");});
-            $('#labcheck08').on('ifChecked', function(){$("#labtd08").removeAttr('class');});
-            $('#labcheck08').on('ifUnchecked', function(){$("#labtd08").addClass("disabledbutton");});
-            $('#labcheck09').on('ifChecked', function(){$("#labtd09").removeAttr('class');});
-            $('#labcheck09').on('ifUnchecked', function(){$("#labtd09").addClass("disabledbutton");});
-            $('#labcheck10').on('ifChecked', function(){$("#labtd10").removeAttr('class');});
-            $('#labcheck10').on('ifUnchecked', function(){$("#labtd10").addClass("disabledbutton");});
-            $('#labcheck11').on('ifChecked', function(){$("#labtr11").removeAttr('class');});
-            $('#labcheck11').on('ifUnchecked', function(){$("#labtr11").addClass("disabledbutton");});
+            $('#labcheck01').on('ifChecked', function(){$("#labtr01, #labcheck001").removeAttr('class');});
+            $('#labcheck01').on('ifUnchecked', function(){$("#labtr01, #labcheck001").addClass("disabledbutton");});
+            $('#labcheck02').on('ifChecked', function(){$("#labcheck002, #labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").removeAttr('class');});
+            $('#labcheck02').on('ifUnchecked', function(){$("#labcheck002, #labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").addClass("disabledbutton");});
+            $('#labcheck03').on('ifChecked', function(){$("#labcheck003, #labtr03").removeAttr('class');});
+            $('#labcheck03').on('ifUnchecked', function(){$("#labcheck003, #labtr03").addClass("disabledbutton");});
+            $('#labcheck04').on('ifChecked', function(){$("#labcheck004, #labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").removeAttr('class');});
+            $('#labcheck04').on('ifUnchecked', function(){$("#labcheck004, #labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").addClass("disabledbutton");});
+            $('#labcheck05').on('ifChecked', function(){$("#labcheck005, #labtd05").removeAttr('class');});
+            $('#labcheck05').on('ifUnchecked', function(){$("#labcheck005, #labtd05").addClass("disabledbutton");});
+            $('#labcheck05extra').on('ifChecked', function(){$("#labcheck005extra, #labtr05extra").removeAttr('class');});
+            $('#labcheck05extra').on('ifUnchecked', function(){$("#labcheck005extra, #labtr05extra").addClass("disabledbutton");});
+            $('#labcheck06').on('ifChecked', function(){$("#labcheck006, #labtr06").removeAttr('class');});
+            $('#labcheck06').on('ifUnchecked', function(){$("#labcheck006, #labtr06").addClass("disabledbutton");});
+            $('#labcheck07').on('ifChecked', function(){$("#labcheck007, #labtd07").removeAttr('class');});
+            $('#labcheck07').on('ifUnchecked', function(){$("#labcheck007, #labtd07").addClass("disabledbutton");});
+            $('#labcheck08').on('ifChecked', function(){$("#labcheck008, #labtd08").removeAttr('class');});
+            $('#labcheck08').on('ifUnchecked', function(){$("#labcheck008, #labtd08").addClass("disabledbutton");});
+            $('#labcheck09').on('ifChecked', function(){$("#labcheck009, #labtd09").removeAttr('class');});
+            $('#labcheck09').on('ifUnchecked', function(){$("#labcheck009, #labtd09").addClass("disabledbutton");});
+            $('#labcheck10').on('ifChecked', function(){$("#labcheck010, #labtd10").removeAttr('class');});
+            $('#labcheck10').on('ifUnchecked', function(){$("#labcheck010, #labtd10").addClass("disabledbutton");});
+            $('#labcheck11').on('ifChecked', function(){$("#labcheck011, #labtr11").removeAttr('class');});
+            $('#labcheck11').on('ifUnchecked', function(){$("#labcheck011, #labtr11").addClass("disabledbutton");});
         });
         //Check lab
         $(document).ready(function(){
@@ -317,10 +331,10 @@
         });
         //Hide-show Med
         $(document).ready(function(){
-            $('#ckmedi1').on('ifChecked', function(){$("#medi1").removeAttr('class');});
-            $('#ckmedi1').on('ifUnchecked', function(){$("#medi1").addClass("disabledbutton");});
-            $('#ckmedi2').on('ifChecked', function(){$("#medi2").removeAttr('class');});
-            $('#ckmedi2').on('ifUnchecked', function(){$("#medi2").addClass("disabledbutton");});
+            $('#ckmedi1').on('ifChecked', function(){$("#ckmedi001, #medi1").removeAttr('class');});
+            $('#ckmedi1').on('ifUnchecked', function(){$("#ckmedi001, #medi1").addClass("disabledbutton");});
+            $('#ckmedi2').on('ifChecked', function(){$("#ckmedi002, #medi2").removeAttr('class');});
+            $('#ckmedi2').on('ifUnchecked', function(){$("#ckmedi002, #medi2").addClass("disabledbutton");});
             
             $('#ckmed1').on('ifChecked', function(){$("#dose1").prop('disabled', false);});
             $('#ckmed1').on('ifUnchecked', function(){$("#dose1").prop('disabled', true);});
@@ -402,7 +416,7 @@
             $('#ckmed36').on('ifUnchecked', function(){$("#dose36").prop('disabled', true);});
             $('#mgt_other').on('ifChecked', function(){$("#mgt_other_table").prop('disabled', false);$("#mgt_other_table").css('visibility','visible');});
             $('#mgt_other').on('ifUnchecked', function(){$("#mgt_other_table").prop('disabled', true);$("#mgt_other_table").css('visibility','hidden');});
-        });  
+        }); 
         
         {% if med.mgt_other is True %} 
         $(document).ready(function(){
@@ -579,6 +593,9 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck01" {% if clinicalpresentation.cp_1 is True or clinicalpresentation.cp_2 is True %} checked {% endif %}> 1. Constitutional Symptoms</td></tr>
+                                                            <tr id="cptr001" class="disabledbutton">
+                                                                <td class="text-center" align="center"><input type="checkbox" name="cpcheck001" {% if clinicalpresentation.cp_1 is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="cptr01" {% if clinicalpresentation.cp_1 is False and clinicalpresentation.cp_2 is False %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -598,6 +615,9 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck02"{% if clinicalpresentation.cp_3 is True or clinicalpresentation.cp_4 is True or clinicalpresentation.cp_5 is True or clinicalpresentation.cp_6 is not None or clinicalpresentation.cp_7 is True or clinicalpresentation.cp_8 is True or clinicalpresentation.cp_9 is True or clinicalpresentation.cp_10 is True or clinicalpresentation.cp_11 is True or clinicalpresentation.cp_12 is True %} checked {% endif %}> 2. Skin & mucous membrane</td></tr>
+                                                            <tr id="cptr002" class="disabledbutton">
+                                                                <td colspan="2" class="text-center" align="center"><input type="checkbox" name="cpcheck002" {% if clinicalpresentation.cp_3 is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="cptr02" {% if clinicalpresentation.cp_3 is False and clinicalpresentation.cp_4 is False and clinicalpresentation.cp_5 is False and clinicalpresentation.cp_6 is None and clinicalpresentation.cp_7 is False and clinicalpresentation.cp_8 is False and clinicalpresentation.cp_9 is False and clinicalpresentation.cp_10 is False and clinicalpresentation.cp_11 is False and clinicalpresentation.cp_12 is False %} class="disabledbutton" {% endif %} >
                                                                 <td>
                                                                         <div class="checkbox">
@@ -645,7 +665,10 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck03" {% if clinicalpresentation.cp_13 is True or clinicalpresentation.cp_14 is True or clinicalpresentation.cp_15 is True %} checked {% endif %}> 3. Cardiopulmonary involvement</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck03" {% if clinicalpresentation.cp_13 is True or clinicalpresentation.cp_14 is True or clinicalpresentation.cp_13 is True %} checked {% endif %}> 3. Cardiopulmonary involvement</td></tr>
+                                                            <tr id="cptr003" class="disabledbutton">
+                                                                <td class="text-center" align="center"><input type="checkbox" name="cpcheck003" {% if clinicalpresentation.cp_13 is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="cptr03"  {% if clinicalpresentation.cp_13 is False and clinicalpresentation.cp_14 is False and clinicalpresentation.cp_15 is False %} class="disabledbutton" {% endif %} >
                                                                 <td>
                                                                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -670,7 +693,10 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck04" {% if clinicalpresentation.cp_16 is True or clinicalpresentation.cp_17 is True or clinicalpresentation.cp_18 is True or clinicalpresentation.cp_19 is True or clinicalpresentation.cp_20 is True %} checked {% endif %}> 4. GI & Renal involvement</td></tr>
-                                                            <tr id="cptr04" {% if clinicalpresentation.cp_16 is False and clinicalpresentation.cp_17 is False and clinicalpresentation.cp_18 is False and clinicalpresentation.cp_19 is False and clinicalpresentation.cp_20 is False %} class="disabledbutton" {% endif %} >
+                                                            <tr id="cptr004" class="disabledbutton">
+                                                                <td colspan="2" class="text-center" align="center"><input type="checkbox" name="cpcheck004" {% if clinicalpresentation.cp_20 is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
+                                                            <tr id="cptr04" {% if clinicalpresentation.cp_16 is False and clinicalpresentation.cp_17 is False and clinicalpresentation.cp_18 is False and clinicalpresentation.cp_19 is False and clinicalpresentation.cp_16 is False %} class="disabledbutton" {% endif %} >
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
                                                                         <input type="checkbox" name="cp_16" {% if clinicalpresentation.cp_16 is True %} checked {% endif %}> Edema
@@ -697,7 +723,10 @@
                                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck05"{% if clinicalpresentation.cp_21 is True or clinicalpresentation.cp_22 is True or clinicalpresentation.cp_23 is True %} checked {% endif %}> 5. Hematologic disorder</td></tr>
+                                                            <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck05"{% if clinicalpresentation.cp_21 is True or clinicalpresentation.cp_22 is True or clinicalpresentation.cp_21 is True %} checked {% endif %}> 5. Hematologic disorder</td></tr>
+                                                            <tr id="cptr005" class="disabledbutton">
+                                                                <td class="text-center" align="center"><input type="checkbox" name="cpcheck005" {% if clinicalpresentation.cp_1 is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="cptr05" {% if clinicalpresentation.cp_21 is False and clinicalpresentation.cp_22 is False and clinicalpresentation.cp_23 is False %} class="disabledbutton" {% endif %} >
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
@@ -718,6 +747,9 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck06"{% if clinicalpresentation.cp_24 is True or clinicalpresentation.cp_25 is True or clinicalpresentation.cp_26 is True or clinicalpresentation.cp_27 is True %} checked {% endif %}> 6. Neurological involvement</td></tr>
+                                                            <tr id="cptr006" class="disabledbutton">
+                                                                <td colspan="2" class="text-center" align="center"><input type="checkbox" name="cpcheck006" {% if clinicalpresentation.cp_27 is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="cptr06" {% if clinicalpresentation.cp_24 is False and clinicalpresentation.cp_25 is False and clinicalpresentation.cp_26 is False and clinicalpresentation.cp_27 is False %} class="disabledbutton" {% endif %} >
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
@@ -743,6 +775,9 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck07" {% if clinicalpresentation.cp_28 is True or clinicalpresentation.cp_29 is True %} checked {% endif %}> 7. Musculoskeletal & LN involvement</td></tr>
+                                                            <tr id="cptr007" class="disabledbutton">
+                                                                <td class="text-center" align="center"><input type="checkbox" name="cpcheck007" {% if clinicalpresentation.cp_28 is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="cptr07" {% if clinicalpresentation.cp_28 is False and clinicalpresentation.cp_29 is False %} class="disabledbutton" {% endif %} >
                                                                 <td class="col-md-6">
                                                                     <div class="checkbox">
@@ -771,6 +806,9 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr><td colspan="4" class="row" align="center" style="background-color: #FBFBFB;">Physicians Global Assessment</td></tr>
+                                                            <tr id="sledaicheck001">
+                                                                <td colspan="4"><input type="checkbox" name="sledaicheck001" {% if sledai.physiciansglobalassessment is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr>
                                                                 <td class="text-center col-md-3" align="center" >Clear</td>
                                                                 <td class="text-center col-md-3" align="center" >Mild</td>
@@ -808,6 +846,9 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;">Patient's Status</td></tr>
+                                                            <tr id="sledaicheck002">
+                                                                <td colspan="3"><input type="checkbox" name="sledaicheck002" {% if sledai.status is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr>
                                                                 <td class="text-center col-md-3" align="center" >Inactive</td>
                                                                 <td class="text-center col-md-3" align="center" >Active</td>
@@ -838,7 +879,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <table class="table" style="background-color: #DFF0FF;">
                                                         <tbody>
-                                                            <tr><td class="row" align="center"><h4 id="SLEtotalp">SLEDAI total score = {% if sledai.sledai_total is not None %} {{sledai.sledai_total}} {% else %} 0 {% endif %}</h4></td></tr>
+                                                            <tr><td class="row" align="center"><h4 id="SLEtotalp">SLEDAI total score = {% if sledai.sledai_total is not None %} {{sledai.sledai_total}} {% else %} (Not available) {% endif %}</h4></td></tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -848,6 +889,9 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;">Systemic Lupus Erythematosus Disease Activity Index(SLEDAI) criteria</td></tr>
+                                                            <tr id="sledaicheck003">
+                                                                <td colspan="3"><input type="checkbox" name="sledaicheck003" {% if sledai.seizure is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr>
                                                                 <td colspan="2" class="col-md-7" align="center" style="background-color: #F5FDFF;">
                                                                     1. CNS (8 each)
@@ -1033,7 +1077,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <table class="table" style="background-color: #DFF0FF;">
                                                         <tbody>
-                                                            <tr><td class="row" align="center"><h4 id="SLICCtotalp">SLICC total score = {% if damageindex.di_total is not None %} {{damageindex.di_total}} {% else %} 0 {% endif %}</h4></td></tr>
+                                                            <tr><td class="row" align="center"><h4 id="SLICCtotalp">SLICC total score = {% if damageindex.di_total is not None %} {{damageindex.di_total}} {% else %} (Not available) {% endif %}</h4></td></tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -1042,6 +1086,9 @@
                                                 <table class="table table-bordered">
                                                     <tbody>
                                                         <tr><td colspan="3" class="row" align="center" style="background-color: #FBFBFB;">Systemic Lupus International Collaborating Clinics(SLICC) criteria</td></tr>
+                                                        <tr id="slicccheck001">
+                                                            <td colspan="3"><input type="checkbox" name="slicccheck001" {% if damageindex.di_1 is None %} checked {% endif %}><small> Not available</small></td>
+                                                        </tr>
                                                         <tr>
                                                             <td class="col-md-3" align="center" style="background-color: #F5FDFF;">
                                                                 1. Ocular
@@ -1389,6 +1436,9 @@
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01" {% if lab.hb is not None or lab.wbc is not None or lab.n is not None or lab.l is not None or lab.platelets is not None or lab.esr is not None %} checked {% endif %}> 1. CBC</td>
                                                             </tr>
+                                                            <tr id="labcheck001" class="disabledbutton">
+                                                                <td colspan="3"><input type="checkbox" name="labcheck001" {% if lab.hb and None or lab.wbc and None or lab.n and None and lab.l is None and lab.platelets is None and lab.esr is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="labtr01" {% if lab.hb is None and lab.wbc is None and lab.n is None and lab.l is None and lab.platelets is None and lab.esr is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <div class="form-group">
@@ -1441,6 +1491,9 @@
                                                         <tbody>
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck02" {% if lab.wbc_hpf1 is not None or lab.wbc_hpf2 is not None or lab.rbc_hpf1 is not None or lab.rbc_hpf2 is not None or lab.wbccasts1 is not None or lab.wbccasts2 is not None or lab.rbccasts1 is not None or lab.rbccasts2 is not None or lab.granularcasts1 is not None or lab.granularcasts2 is not None or lab.glucose is not None or lab.protein is not None or lab.tp_spoturineprotein is not None or lab.cre_spoturinecreatinine is not None or lab.tfhr_urineprotein is not None or lab.tfhr_urinecreatinine is not None or lab.upci is not None %} checked {% endif %}> 2. Urine Analysis</td>
+                                                            </tr>
+                                                            <tr id="labcheck002" class="disabledbutton">
+                                                                <td colspan="3"><input type="checkbox" name="labcheck002" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.rbc_hpf1 is None and lab.rbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="labtr02_0" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.rbc_hpf1 is None and lab.rbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}>
                                                                 <td colspan="3" align="center" style="background-color: #FDFCEE;">
@@ -1589,6 +1642,9 @@
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck03" {% if lab.fbs is not None or lab.cr is not None or lab.alt is not None or lab.albumin is not None or lab.choles is not None or lab.hdl is not None or lab.hba1c is not None or lab.alp is not None or lab.ggt is not None or lab.tdbilirubin1 is not None or lab.tdbilirubin2 is not None or lab.tg is not None or lab.bun is not None or lab.ast is not None or lab.ldh is not None or lab.crp is not None or lab.ldl is not None or lab.inr is not None %} checked {% endif %}> 3. Blood Chem</td>
                                                             </tr>
+                                                            <tr id="labcheck003" class="disabledbutton">
+                                                                <td colspan="3"><input type="checkbox" name="labcheck003" {% if lab.fbs is None and lab.cr is None and lab.alt is None and lab.albumin is None and lab.choles is None and lab.hdl is None and lab.hba1c is None and lab.alp is None and lab.ggt is None and lab.tdbilirubin1 is None and lab.tdbilirubin2 is None and lab.tg is None and lab.bun is None and lab.ast is None and lab.ldh is None and lab.crp is None and lab.ldl is None and lab.inr is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="labtr03" {% if lab.fbs is None and lab.cr is None and lab.alt is None and lab.albumin is None and lab.choles is None and lab.hdl is None and lab.hba1c is None and lab.alp is None and lab.ggt is None and lab.tdbilirubin1 is None and lab.tdbilirubin2 is None and lab.tg is None and lab.bun is None and lab.ast is None and lab.ldh is None and lab.crp is None and lab.ldl is None and lab.inr is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <div class="form-group">
@@ -1714,8 +1770,10 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04" {% if lab.anti_dsdna is not None or lab.antism is not None or lab.antirnp is not None or lab.antiro is not None or lab.antila is not None or lab.aca is not None or lab.lupusanticoagulant is not None or lab.b2gpi is not None or lab.c3 is not None or lab.c4 is not None or lab.anticic is not None or lab.il6 is not None or lab.ch50 is not None %} checked {% endif %}> 4. Immunology</td>
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05" {% if lab.hbsag is not None or lab.antihbs is not None or lab.antihbc is not None or lab.antihcv is not None or lab.antihiv is not None %} checked {% endif %}> 5. Viral Serology</td>
+                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04" {% if lab.anti_dsdna is not None or lab.antism is not None or lab.antirnp is not None or lab.antiro is not None or lab.antila is not None or lab.aca is not None or lab.lupusanticoagulant is not None or lab.b2gpi is not None or lab.c3 is not None or lab.c4 is not None or lab.anticic is not None or lab.il6 is not None or lab.ch50 is not None %} checked {% endif %}> 4. Immunology<br><small><input type="checkbox" name="labcheck004"> Not available</small>
+                                                                </td>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05" {% if lab.hbsag is not None or lab.antihbs is not None or lab.antihbc is not None or lab.antihcv is not None or lab.antihiv is not None %} checked {% endif %}> 5. Viral Serology<br><small><input type="checkbox" name="labcheck005"> Not available</small>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd04_0" {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
@@ -1845,6 +1903,9 @@
                                                                     <input type="checkbox" id="labcheck05extra" {% if lab.mpa is not None or lab.fk507 is not None or lab.cyclosporin is not None or lab.cytokine is not None %} checked {% endif %}> Drug level
                                                                 </td>
                                                             </tr>
+                                                            <tr id="labcheck005extra" class="disabledbutton">
+                                                                <td colspan="4"><input type="checkbox" name="labcheck005extra" {% if lab.mpa is None and lab.fk507 is None and lab.cyclosporin is None and lab.cytokine is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="labtr05extra" {% if lab.mpa is None and lab.fk507 is None and lab.cyclosporin is None and lab.cytokine is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <div class="form-group">
@@ -1888,6 +1949,9 @@
                                                         <tbody>
                                                             <tr scope="row">
                                                                 <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06"  {% if lab.l1l4spine_bmd is not None or lab.l1l4spine_tscore is not None or lab.l1l4spine_date is not None or lab.hip_bmd is not None or lab.hip_tscore is not None or lab.hip_date is not None or lab.radius_bmd is not None or lab.radius_tscore is not None or lab.radius_date is not None %} checked {% endif %}> 6. BMD</td>
+                                                            </tr>
+                                                            <tr id="labcheck006" class="disabledbutton">
+                                                                <td class="text-center" align="center"><input type="checkbox" name="labcheck006" {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="labtr06" {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
@@ -1939,10 +2003,18 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.status == 'Abnormal' %} checked {% endif %} name="labcheck07" value="1"> 7. Stool parasite</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.status == 'Abnormal' %} checked {% endif %} name="labcheck08" value="1"> 8. CXR</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.status == 'Abnormal' %} checked {% endif %} name="labcheck09" value="1"> 9. EKG</td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.status == 'Abnormal' %} checked {% endif %} name="labcheck10" value="1"> 10. Echo</td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.status == 'Abnormal' %} checked {% endif %} name="labcheck07" value="1"> 7. Stool parasite
+                                                                <br><input type="checkbox" name="labcheck007" {% if lab.stoolparasite is None %} checked {% endif %}><small> Not available</small>
+                                                                </td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.status == 'Abnormal' %} checked {% endif %} name="labcheck08" value="1"> 8. CXR
+                                                                <br><input type="checkbox" name="labcheck008" {% if lab.cxr is None %} checked {% endif %}><small> Not available</small>
+                                                                </td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.status == 'Abnormal' %} checked {% endif %} name="labcheck09" value="1"> 9. EKG
+                                                                <br><input type="checkbox" name="labcheck009" {% if lab.ekg is None %} checked {% endif %}><small> Not available</small>
+                                                                </td>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.status == 'Abnormal' %} checked {% endif %} name="labcheck10" value="1"> 10. Echo
+                                                                <br><input type="checkbox" name="labcheck010" {% if lab.echo is None %} checked {% endif %}><small> Not available</small>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd07" {% if lab.stoolparasite.status != 'Abnormal' %} class="disabledbutton" {% endif %}>
@@ -2047,6 +2119,9 @@
                                                             <tr scope="row">
                                                                 <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" name="labcheck11" {% if lnlab.renalbiopsystatus == 'Negative' %} checked {% endif %}> 11. Lupus nephritis</td>
                                                             </tr>
+                                                            <tr id="labcheck011" class="disabledbutton">
+                                                                <td colspan="4"><input type="checkbox" name="labcheck011" {% if lab.hb and None or lab.wbc and None or lab.n and None and lab.l is None and lab.platelets is None and lab.esr is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr id="labtr11" {% if lnlab.renalbiopsystatus != 'Positive' %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <div class="form-group">  
@@ -2137,6 +2212,9 @@
                                                     <tr scope="row">
                                                         <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi1" {% if med.msle_1_1.doseperdate > 0 or med.msle_2_1.doseperdate > 0 or med.msle_2_2.doseperdate > 0 or med.msle_3_1.doseperdate > 0 or med.msle_3_2.doseperdate > 0 or med.msle_3_3.doseperdate > 0 or med.msle_3_4.doseperdate > 0 or med.msle_4_1.doseperdate > 0 or med.msle_4_2.doseperdate > 0 or med.msle_4_3.doseperdate > 0 or med.msle_4_4.doseperdate > 0 or med.msle_4_5.doseperdate > 0 or med.msle_4_6.doseperdate > 0 or med.msle_4_7.doseperdate > 0 or med.msle_4_8.doseperdate > 0 or med.msle_4_9.doseperdate > 0 or med.msle_4_10.doseperdate > 0 or med.msle_4_11.doseperdate > 0 %} checked {% endif %}> Specific treatment of SLE</td>
                                                     </tr>
+                                                    <tr id="ckmedi001" class="disabledbutton">
+                                                                <td class="text-center" align="center"><input type="checkbox" name="ckmedi001" {% if med.msle_1_1 is None and med.msle_2_1 is None and med.msle_2_2 is None and med.msle_3_1 is None and med.msle_3_2 is None and med.msle_3_3 is None and med.msle_3_4 is None and med.msle_4_1 is None and med.msle_4_2 is None and med.msle_4_3 is None and med.msle_4_4 is None and med.msle_4_5 is None and med.msle_4_6 is None and med.msle_4_7 is None and med.msle_4_8 is None and med.msle_4_9 is None and med.msle_4_10 is None and med.msle_4_11 is None  %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                     <tr id="medi1" {% if med.msle_1_1.doseperdate is None and med.msle_2_1.doseperdate is None and med.msle_2_2.doseperdate is None and med.msle_3_1.doseperdate is None and med.msle_3_2.doseperdate is None and med.msle_3_3.doseperdate is None and med.msle_3_4.doseperdate is None and med.msle_4_1.doseperdate is None and med.msle_4_2.doseperdate is None and med.msle_4_3.doseperdate is None and med.msle_4_4.doseperdate is None and med.msle_4_5.doseperdate is None and med.msle_4_6.doseperdate is None and med.msle_4_7.doseperdate is None and med.msle_4_8.doseperdate is None and med.msle_4_9.doseperdate is None and med.msle_4_10.doseperdate is None and med.msle_4_11.doseperdate is None %} class="disabledbutton" {% endif %}>
                                                         <td>
                                                             <table class="table">
@@ -2251,6 +2329,9 @@
                                                     <tr scope="row">
                                                         <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi2" {% if med.mgt_1_1.doseperdate > 0 or med.mgt_1_2.doseperdate > 0 or med.mgt_1_3.doseperdate > 0 or med.mgt_1_4.doseperdate > 0 or med.mgt_1_5.doseperdate > 0 or med.mgt_2_1.doseperdate > 0 or med.mgt_2_2.doseperdate > 0 or med.mgt_2_3.doseperdate > 0 or med.mgt_2_4.doseperdate > 0 or med.mgt_3_1.doseperdate > 0 or med.mgt_3_2.doseperdate > 0 or med.mgt_3_3.doseperdate > 0 or med.mgt_4_1.doseperdate > 0 or med.mgt_4_2.doseperdate > 0 or med.mgt_4_3.doseperdate > 0 or med.mgt_4_4.doseperdate > 0 or med.mgt_other is True %} checked {% endif %}> General treatments</td>
                                                     </tr>
+                                                    <tr id="ckmedi002" class="disabledbutton">
+                                                                <td class="text-center" align="center"><input type="checkbox" name="ckmedi002" {% if med.mgt_1_1 is None and med.mgt_1_2 is None and med.mgt_1_3 is None and med.mgt_1_4 is None and med.mgt_1_5 is None and med.mgt_2_1 is None and med.mgt_2_2 is None and med.mgt_2_3 is None and med.mgt_2_4 is None and med.mgt_3_1 is None and med.mgt_3_2 is None and med.mgt_3_3 is None and med.mgt_4_1 is None and med.mgt_4_2 is None and med.mgt_4_3 is None and med.mgt_4_4 is None and med.mgt_other is False %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                     <tr id="medi2" {% if med.mgt_1_1.doseperdate is None and med.mgt_1_2.doseperdate is None and med.mgt_1_3.doseperdate is None and med.mgt_1_4.doseperdate is None and med.mgt_1_5.doseperdate is None and med.mgt_2_1.doseperdate is None and med.mgt_2_2.doseperdate is None and med.mgt_2_3.doseperdate is None and med.mgt_2_4.doseperdate is None and med.mgt_3_1.doseperdate is None and med.mgt_3_2.doseperdate is None and med.mgt_3_3.doseperdate is None and med.mgt_4_1.doseperdate is None and med.mgt_4_2.doseperdate is None and med.mgt_4_3.doseperdate is None and med.mgt_4_4.doseperdate is None and med.mgt_other is False %} class="disabledbutton" {% endif %}>
                                                         <td>
                                                             <table class="table">
