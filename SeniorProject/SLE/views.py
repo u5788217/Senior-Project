@@ -1206,8 +1206,8 @@ def followPatient(request):
                             antihbc = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihbc', ''),request.POST.get('antihbc', '')),
                             antihcv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihcv', ''),request.POST.get('antihcv', '')),
                             antihiv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihiv', ''),request.POST.get('antihiv', '')),
-                            anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('ckanticic', ''),request.POST.get('anticic', '')),
-                            il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('ckil6', ''),request.POST.get('il6', '')),
+                            anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('anticic', '')),
+                            il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('il6', '')),
                             mpa = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('mpa', '')),
                             fk507 = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('fk507', '')),
                             cyclosporin = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('cyclosporin', '')),
@@ -1487,8 +1487,9 @@ def followEditPost(request):
         old_ln = None
         if CheckboxToBool(request.POST.get('labcheck11', '')) is 'True':
             if Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid is not None:
+                ln_id = int(Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid.lnlabid)
                 if CheckboxToBool(request.POST.get('labcheck011', '')) is 'False':
-                    ln_id = int(Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid.lnlabid)
+                    
                     old_ln = Lnlab.objects.get(lnlabid = ln_id)
                     old_ln.renalbiopsyclass = request.POST.get('renalbiopsyclass', '')
                     old_ln.renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', ''))
@@ -1501,7 +1502,7 @@ def followEditPost(request):
                     old_ln.ln_5 = ToFloat(request.POST.get('ln_5', ''))
                     old_ln.renalbiopsystatus = request.POST.get('RenalShow', '') 
                     old_ln.save()
-                else: Lnlab.objects.get(lnlabid = ln_id).delete();
+                else: Lnlab.objects.get(lnlabid = ln_id).delete()
             else : 
                 if CheckboxToBool(request.POST.get('labcheck011', '')) is 'False':
                     old_ln = Lnlab(renalbiopsyclass = request.POST.get('renalbiopsyclass', ''),
@@ -1612,8 +1613,8 @@ def followEditPost(request):
             old_lab.antihbc = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihbc', ''),request.POST.get('antihbc', ''))
             old_lab.antihcv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihcv', ''),request.POST.get('antihcv', ''))
             old_lab.antihiv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihiv', ''),request.POST.get('antihiv', ''))
-            old_lab.anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('ckanticic', ''),request.POST.get('anticic', ''))
-            old_lab.il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('ckil6', ''),request.POST.get('il6', ''))
+            old_lab.anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('anticic', ''))
+            old_lab.il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('il6', ''))
             old_lab.mpa = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('mpa', ''))
             old_lab.fk507 = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('fk507', ''))
             old_lab.cyclosporin = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('cyclosporin', ''))
@@ -1690,8 +1691,8 @@ def followEditPost(request):
             antihbc = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihbc', ''),request.POST.get('antihbc', '')),
             antihcv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihcv', ''),request.POST.get('antihcv', '')),
             antihiv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihiv', ''),request.POST.get('antihiv', '')),
-            anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckanticic', ''),request.POST.get('anticic', '')),
-            il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckil6', ''),request.POST.get('il6', '')),
+            anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('anticic', '')),
+            il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('il6', '')),
             mpa = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('mpa', '')),
             fk507 = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('fk507', '')),
             cyclosporin = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('cyclosporin', '')),

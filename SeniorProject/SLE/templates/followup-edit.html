@@ -594,18 +594,18 @@
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck01" {% if clinicalpresentation.cp_1 is True or clinicalpresentation.cp_2 is True %} checked {% endif %}> 1. Constitutional Symptoms</td></tr>
                                                             <tr id="cptr001" class="disabledbutton">
-                                                                <td class="text-center" align="center"><input type="checkbox" name="cpcheck001" {% if clinicalpresentation.cp_1 is None %} checked {% endif %}><small> Not available</small></td>
+                                                                <td><input type="checkbox" name="cpcheck001" {% if clinicalpresentation.cp_1 is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="cptr01" {% if clinicalpresentation.cp_1 is False and clinicalpresentation.cp_2 is False %} class="disabledbutton" {% endif %}>
                                                                 <td>
-                                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    
                                                                         <div class="checkbox">
                                                                             <input type="checkbox" name="cp_1" {% if clinicalpresentation.cp_1 is True %} checked {% endif %}> Fatigue
                                                                         </div>
                                                                         <div class="checkbox">
                                                                             <input type="checkbox" name="cp_2" {% if clinicalpresentation.cp_2 is True %} checked {% endif %}v> Weight loss
                                                                         </div>
-                                                                    </div>
+                                                                    
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -616,7 +616,7 @@
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck02"{% if clinicalpresentation.cp_3 is True or clinicalpresentation.cp_4 is True or clinicalpresentation.cp_5 is True or clinicalpresentation.cp_6 is not None or clinicalpresentation.cp_7 is True or clinicalpresentation.cp_8 is True or clinicalpresentation.cp_9 is True or clinicalpresentation.cp_10 is True or clinicalpresentation.cp_11 is True or clinicalpresentation.cp_12 is True %} checked {% endif %}> 2. Skin & mucous membrane</td></tr>
                                                             <tr id="cptr002" class="disabledbutton">
-                                                                <td colspan="2" class="text-center" align="center"><input type="checkbox" name="cpcheck002" {% if clinicalpresentation.cp_3 is None %} checked {% endif %}><small> Not available</small></td>
+                                                                <td colspan="2"><input type="checkbox" name="cpcheck002" {% if clinicalpresentation.cp_3 is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="cptr02" {% if clinicalpresentation.cp_3 is False and clinicalpresentation.cp_4 is False and clinicalpresentation.cp_5 is False and clinicalpresentation.cp_6 is None and clinicalpresentation.cp_7 is False and clinicalpresentation.cp_8 is False and clinicalpresentation.cp_9 is False and clinicalpresentation.cp_10 is False and clinicalpresentation.cp_11 is False and clinicalpresentation.cp_12 is False %} class="disabledbutton" {% endif %} >
                                                                 <td>
@@ -671,7 +671,7 @@
                                                             </tr>
                                                             <tr id="cptr03"  {% if clinicalpresentation.cp_13 is False and clinicalpresentation.cp_14 is False and clinicalpresentation.cp_15 is False %} class="disabledbutton" {% endif %} >
                                                                 <td>
-                                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                    
                                                                         <div class="checkbox">
                                                                             <input type="checkbox" name="cp_13" {% if clinicalpresentation.cp_13 is True %} checked {% endif %}> Interstitial lung disease
                                                                         </div>
@@ -694,7 +694,7 @@
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck04" {% if clinicalpresentation.cp_16 is True or clinicalpresentation.cp_17 is True or clinicalpresentation.cp_18 is True or clinicalpresentation.cp_19 is True or clinicalpresentation.cp_20 is True %} checked {% endif %}> 4. GI & Renal involvement</td></tr>
                                                             <tr id="cptr004" class="disabledbutton">
-                                                                <td colspan="2" class="text-center" align="center"><input type="checkbox" name="cpcheck004" {% if clinicalpresentation.cp_20 is None %} checked {% endif %}><small> Not available</small></td>
+                                                                <td colspan="2"><input type="checkbox" name="cpcheck004" {% if clinicalpresentation.cp_20 is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="cptr04" {% if clinicalpresentation.cp_16 is False and clinicalpresentation.cp_17 is False and clinicalpresentation.cp_18 is False and clinicalpresentation.cp_19 is False and clinicalpresentation.cp_16 is False %} class="disabledbutton" {% endif %} >
                                                                 <td class="col-md-6">
@@ -725,7 +725,7 @@
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck05"{% if clinicalpresentation.cp_21 is True or clinicalpresentation.cp_22 is True or clinicalpresentation.cp_21 is True %} checked {% endif %}> 5. Hematologic disorder</td></tr>
                                                             <tr id="cptr005" class="disabledbutton">
-                                                                <td class="text-center" align="center"><input type="checkbox" name="cpcheck005" {% if clinicalpresentation.cp_1 is None %} checked {% endif %}><small> Not available</small></td>
+                                                                <td><input type="checkbox" name="cpcheck005" {% if clinicalpresentation.cp_1 is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="cptr05" {% if clinicalpresentation.cp_21 is False and clinicalpresentation.cp_22 is False and clinicalpresentation.cp_23 is False %} class="disabledbutton" {% endif %} >
                                                                 <td class="col-md-6">
@@ -748,7 +748,7 @@
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center" colspan="2"><input type="checkbox" id="cpcheck06"{% if clinicalpresentation.cp_24 is True or clinicalpresentation.cp_25 is True or clinicalpresentation.cp_26 is True or clinicalpresentation.cp_27 is True %} checked {% endif %}> 6. Neurological involvement</td></tr>
                                                             <tr id="cptr006" class="disabledbutton">
-                                                                <td colspan="2" class="text-center" align="center"><input type="checkbox" name="cpcheck006" {% if clinicalpresentation.cp_27 is None %} checked {% endif %}><small> Not available</small></td>
+                                                                <td colspan="2"><input type="checkbox" name="cpcheck006" {% if clinicalpresentation.cp_27 is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="cptr06" {% if clinicalpresentation.cp_24 is False and clinicalpresentation.cp_25 is False and clinicalpresentation.cp_26 is False and clinicalpresentation.cp_27 is False %} class="disabledbutton" {% endif %} >
                                                                 <td class="col-md-6">
@@ -776,7 +776,7 @@
                                                         <tbody>
                                                             <tr scope="row"><td class="text-center" align="center"><input type="checkbox" id="cpcheck07" {% if clinicalpresentation.cp_28 is True or clinicalpresentation.cp_29 is True %} checked {% endif %}> 7. Musculoskeletal & LN involvement</td></tr>
                                                             <tr id="cptr007" class="disabledbutton">
-                                                                <td class="text-center" align="center"><input type="checkbox" name="cpcheck007" {% if clinicalpresentation.cp_28 is None %} checked {% endif %}><small> Not available</small></td>
+                                                                <td><input type="checkbox" name="cpcheck007" {% if clinicalpresentation.cp_28 is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="cptr07" {% if clinicalpresentation.cp_28 is False and clinicalpresentation.cp_29 is False %} class="disabledbutton" {% endif %} >
                                                                 <td class="col-md-6">
@@ -1436,8 +1436,8 @@
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck01" {% if lab.hb is not None or lab.wbc is not None or lab.n is not None or lab.l is not None or lab.platelets is not None or lab.esr is not None %} checked {% endif %}> 1. CBC</td>
                                                             </tr>
-                                                            <tr id="labcheck001" class="disabledbutton">
-                                                                <td colspan="3"><input type="checkbox" name="labcheck001" {% if lab.hb and None or lab.wbc and None or lab.n and None and lab.l is None and lab.platelets is None and lab.esr is None %} checked {% endif %}><small> Not available</small></td>
+                                                            <tr id="labcheck001" {% if lab.hb is None and lab.wbc is None and lab.n is None and lab.l is None and lab.platelets is None and lab.esr is None %} class="disabledbutton" {% endif %}>
+                                                                <td colspan="3"><input type="checkbox" name="labcheck001" {% if lab.hb is None and lab.wbc is None and lab.n is None and lab.l is None and lab.platelets is None and lab.esr is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="labtr01" {% if lab.hb is None and lab.wbc is None and lab.n is None and lab.l is None and lab.platelets is None and lab.esr is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
@@ -1492,7 +1492,7 @@
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck02" {% if lab.wbc_hpf1 is not None or lab.wbc_hpf2 is not None or lab.rbc_hpf1 is not None or lab.rbc_hpf2 is not None or lab.wbccasts1 is not None or lab.wbccasts2 is not None or lab.rbccasts1 is not None or lab.rbccasts2 is not None or lab.granularcasts1 is not None or lab.granularcasts2 is not None or lab.glucose is not None or lab.protein is not None or lab.tp_spoturineprotein is not None or lab.cre_spoturinecreatinine is not None or lab.tfhr_urineprotein is not None or lab.tfhr_urinecreatinine is not None or lab.upci is not None %} checked {% endif %}> 2. Urine Analysis</td>
                                                             </tr>
-                                                            <tr id="labcheck002" class="disabledbutton">
+                                                            <tr id="labcheck002">
                                                                 <td colspan="3"><input type="checkbox" name="labcheck002" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.rbc_hpf1 is None and lab.rbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="labtr02_0" {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.rbc_hpf1 is None and lab.rbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %} class="disabledbutton" {% endif %}>
@@ -1642,7 +1642,7 @@
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck03" {% if lab.fbs is not None or lab.cr is not None or lab.alt is not None or lab.albumin is not None or lab.choles is not None or lab.hdl is not None or lab.hba1c is not None or lab.alp is not None or lab.ggt is not None or lab.tdbilirubin1 is not None or lab.tdbilirubin2 is not None or lab.tg is not None or lab.bun is not None or lab.ast is not None or lab.ldh is not None or lab.crp is not None or lab.ldl is not None or lab.inr is not None %} checked {% endif %}> 3. Blood Chem</td>
                                                             </tr>
-                                                            <tr id="labcheck003" class="disabledbutton">
+                                                            <tr id="labcheck003">
                                                                 <td colspan="3"><input type="checkbox" name="labcheck003" {% if lab.fbs is None and lab.cr is None and lab.alt is None and lab.albumin is None and lab.choles is None and lab.hdl is None and lab.hba1c is None and lab.alp is None and lab.ggt is None and lab.tdbilirubin1 is None and lab.tdbilirubin2 is None and lab.tg is None and lab.bun is None and lab.ast is None and lab.ldh is None and lab.crp is None and lab.ldl is None and lab.inr is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="labtr03" {% if lab.fbs is None and lab.cr is None and lab.alt is None and lab.albumin is None and lab.choles is None and lab.hdl is None and lab.hba1c is None and lab.alp is None and lab.ggt is None and lab.tdbilirubin1 is None and lab.tdbilirubin2 is None and lab.tg is None and lab.bun is None and lab.ast is None and lab.ldh is None and lab.crp is None and lab.ldl is None and lab.inr is None %} class="disabledbutton" {% endif %}>
@@ -1770,10 +1770,14 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04" {% if lab.anti_dsdna is not None or lab.antism is not None or lab.antirnp is not None or lab.antiro is not None or lab.antila is not None or lab.aca is not None or lab.lupusanticoagulant is not None or lab.b2gpi is not None or lab.c3 is not None or lab.c4 is not None or lab.anticic is not None or lab.il6 is not None or lab.ch50 is not None %} checked {% endif %}> 4. Immunology<br><small><input type="checkbox" name="labcheck004"> Not available</small>
+                                                                <td colspan="3" class="text-center col-md-9" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck04" {% if lab.anti_dsdna is not None or lab.antism is not None or lab.antirnp is not None or lab.antiro is not None or lab.antila is not None or lab.aca is not None or lab.lupusanticoagulant is not None or lab.b2gpi is not None or lab.c3 is not None or lab.c4 is not None or lab.anticic is not None or lab.il6 is not None or lab.ch50 is not None %} checked {% endif %}> 4. Immunology
                                                                 </td>
-                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05" {% if lab.hbsag is not None or lab.antihbs is not None or lab.antihbc is not None or lab.antihcv is not None or lab.antihiv is not None %} checked {% endif %}> 5. Viral Serology<br><small><input type="checkbox" name="labcheck005"> Not available</small>
+                                                                <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck05" {% if lab.hbsag is not None or lab.antihbs is not None or lab.antihbc is not None or lab.antihcv is not None or lab.antihiv is not None %} checked {% endif %}> 5. Viral Serology
                                                                 </td>
+                                                            </tr>
+                                                            <tr scope="row">
+                                                                <td colspan="3"><small><input type="checkbox" name="labcheck004" {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} checked {% endif %}> Not available</small>
+                                                                <td><small><input type="checkbox" name="labcheck005" {% if lab.hbsag is None and lab.antihbs is None and lab.antihbc is None and lab.antihcv is None and lab.antihiv is None %} checked {% endif %}> Not available</small>
                                                             </tr>
                                                             <tr>
                                                                 <td id="labtd04_0" {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %} class="disabledbutton" {% endif %}>
@@ -1903,7 +1907,7 @@
                                                                     <input type="checkbox" id="labcheck05extra" {% if lab.mpa is not None or lab.fk507 is not None or lab.cyclosporin is not None or lab.cytokine is not None %} checked {% endif %}> Drug level
                                                                 </td>
                                                             </tr>
-                                                            <tr id="labcheck005extra" class="disabledbutton">
+                                                            <tr id="labcheck005extra">
                                                                 <td colspan="4"><input type="checkbox" name="labcheck005extra" {% if lab.mpa is None and lab.fk507 is None and lab.cyclosporin is None and lab.cytokine is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="labtr05extra" {% if lab.mpa is None and lab.fk507 is None and lab.cyclosporin is None and lab.cytokine is None %} class="disabledbutton" {% endif %}>
@@ -1950,8 +1954,8 @@
                                                             <tr scope="row">
                                                                 <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck06"  {% if lab.l1l4spine_bmd is not None or lab.l1l4spine_tscore is not None or lab.l1l4spine_date is not None or lab.hip_bmd is not None or lab.hip_tscore is not None or lab.hip_date is not None or lab.radius_bmd is not None or lab.radius_tscore is not None or lab.radius_date is not None %} checked {% endif %}> 6. BMD</td>
                                                             </tr>
-                                                            <tr id="labcheck006" class="disabledbutton">
-                                                                <td class="text-center" align="center"><input type="checkbox" name="labcheck006" {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %} checked {% endif %}><small> Not available</small></td>
+                                                            <tr id="labcheck006">
+                                                                <td><input type="checkbox" name="labcheck006" {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                             <tr id="labtr06" {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
@@ -2003,21 +2007,23 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.status == 'Abnormal' %} checked {% endif %} name="labcheck07" value="1"> 7. Stool parasite
-                                                                <br><input type="checkbox" name="labcheck007" {% if lab.stoolparasite is None %} checked {% endif %}><small> Not available</small>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck07" {% if lab.stoolparasite.status is not None %} checked {% endif %} name="labcheck07" value="1"> 7. Stool parasite
                                                                 </td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.status == 'Abnormal' %} checked {% endif %} name="labcheck08" value="1"> 8. CXR
-                                                                <br><input type="checkbox" name="labcheck008" {% if lab.cxr is None %} checked {% endif %}><small> Not available</small>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck08" {% if lab.cxr.status is not None %} checked {% endif %} name="labcheck08" value="1"> 8. CXR
                                                                 </td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.status == 'Abnormal' %} checked {% endif %} name="labcheck09" value="1"> 9. EKG
-                                                                <br><input type="checkbox" name="labcheck009" {% if lab.ekg is None %} checked {% endif %}><small> Not available</small>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck09" {% if lab.ekg.status is not None %} checked {% endif %} name="labcheck09" value="1"> 9. EKG
                                                                 </td>
-                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.status == 'Abnormal' %} checked {% endif %} name="labcheck10" value="1"> 10. Echo
-                                                                <br><input type="checkbox" name="labcheck010" {% if lab.echo is None %} checked {% endif %}><small> Not available</small>
+                                                                <td class="text-center col-md-3" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck10" {% if lab.echo.status is not None %} checked {% endif %} name="labcheck10" value="1"> 10. Echo
                                                                 </td>
                                                             </tr>
+                                                            <tr scope="row">
+                                                            <td><input type="checkbox" name="labcheck007" {% if lab.stoolparasite is None %} checked {% endif %}><small> Not available</small></td>
+                                                            <td><input type="checkbox" name="labcheck008" {% if lab.cxr is None %} checked {% endif %}><small> Not available</small></td>
+                                                            <td><input type="checkbox" name="labcheck009" {% if lab.ekg is None %} checked {% endif %}><small> Not available</small></td>
+                                                            <td><input type="checkbox" name="labcheck010" {% if lab.echo is None %} checked {% endif %}><small> Not available</small></td>
+                                                            </tr>
                                                             <tr>
-                                                                <td id="labtd07" {% if lab.stoolparasite.status != 'Abnormal' %} class="disabledbutton" {% endif %}>
+                                                                <td id="labtd07" {% if lab.stoolparasite.status is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="stoolparasite" onchange="AbnormalInput(this);">
                                                                             <option selected value="Normal" {% if lab.stoolparasite.status == 'Normal' %} selected {% endif %}>Normal</option>
@@ -2040,7 +2046,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd08" {% if lab.cxr.status != 'Abnormal' %} class="disabledbutton" {% endif %}>
+                                                                <td id="labtd08" {% if lab.cxr.status is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="cxr" onchange="AbnormalInput(this);">
                                                                             <option selected value="Normal" {% if lab.cxr.status == 'Normal' %} selected {% endif %}>Normal</option>
@@ -2063,7 +2069,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd09" {% if lab.ekg.status != 'Abnormal' %} class="disabledbutton" {% endif %}>
+                                                                <td id="labtd09" {% if lab.ekg.status is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="ekg" onchange="AbnormalInput(this);">
                                                                             <option selected value="Normal" {% if lab.ekg.status == 'Normal' %} selected {% endif %}>Normal</option>
@@ -2086,7 +2092,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td id="labtd10"{% if lab.echo.status != 'Abnormal' %} class="disabledbutton" {% endif %}>
+                                                                <td id="labtd10"{% if lab.echo.status is None %} class="disabledbutton" {% endif %}>
                                                                     <div class="form-group">  
                                                                         <select class="form-control" name="echo" onchange="AbnormalInput(this);">
                                                                             <option selected value="Normal" {% if lab.echo.status == 'Normal' %} selected {% endif %}>Normal</option>
@@ -2117,12 +2123,12 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" name="labcheck11" {% if lnlab.renalbiopsystatus == 'Negative' %} checked {% endif %}> 11. Lupus nephritis</td>
+                                                                <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="labcheck11" name="labcheck11" {% if lnlab.renalbiopsystatus is not None %} checked {% endif %}> 11. Lupus nephritis</td>
                                                             </tr>
-                                                            <tr id="labcheck011" class="disabledbutton">
-                                                                <td colspan="4"><input type="checkbox" name="labcheck011" {% if lab.hb and None or lab.wbc and None or lab.n and None and lab.l is None and lab.platelets is None and lab.esr is None %} checked {% endif %}><small> Not available</small></td>
+                                                            <tr id="labcheck011" {% if lnlab.renalbiopsystatus is None and lnlab.renalbiopsyclass is None and lnlab.renalbiopsydate is None and lnlab.activityindex is None and lnlab.chronicityindex is None and lnlab.ln_1 is None and lnlab.ln_2 is None and lnlab.ln_3 is None and lnlab.ln_4 is None and lnlab.ln_5 is None %} class="disabledbutton" {% endif %}>
+                                                                <td colspan="4"><input type="checkbox" name="labcheck011" {% if lnlab.renalbiopsystatus is None and lnlab.renalbiopsyclass is None and lnlab.renalbiopsydate is None and lnlab.activityindex is None and lnlab.chronicityindex is None and lnlab.ln_1 is None and lnlab.ln_2 is None and lnlab.ln_3 is None and lnlab.ln_4 is None and lnlab.ln_5 is None %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
-                                                            <tr id="labtr11" {% if lnlab.renalbiopsystatus != 'Positive' %} class="disabledbutton" {% endif %}>
+                                                            <tr id="labtr11" {% if lnlab.renalbiopsystatus is None and lnlab.renalbiopsyclass is None and lnlab.renalbiopsydate is None and lnlab.activityindex is None and lnlab.chronicityindex is None and lnlab.ln_1 is None and lnlab.ln_2 is None and lnlab.ln_3 is None and lnlab.ln_4 is None and lnlab.ln_5 is None %} class="disabledbutton" {% endif %}>
                                                                 <td>
                                                                     <div class="form-group">  
                                                                         <label>Renal biopsy</label>  
@@ -2213,7 +2219,7 @@
                                                         <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi1" {% if med.msle_1_1.doseperdate > 0 or med.msle_2_1.doseperdate > 0 or med.msle_2_2.doseperdate > 0 or med.msle_3_1.doseperdate > 0 or med.msle_3_2.doseperdate > 0 or med.msle_3_3.doseperdate > 0 or med.msle_3_4.doseperdate > 0 or med.msle_4_1.doseperdate > 0 or med.msle_4_2.doseperdate > 0 or med.msle_4_3.doseperdate > 0 or med.msle_4_4.doseperdate > 0 or med.msle_4_5.doseperdate > 0 or med.msle_4_6.doseperdate > 0 or med.msle_4_7.doseperdate > 0 or med.msle_4_8.doseperdate > 0 or med.msle_4_9.doseperdate > 0 or med.msle_4_10.doseperdate > 0 or med.msle_4_11.doseperdate > 0 %} checked {% endif %}> Specific treatment of SLE</td>
                                                     </tr>
                                                     <tr id="ckmedi001" class="disabledbutton">
-                                                                <td class="text-center" align="center"><input type="checkbox" name="ckmedi001" {% if med.msle_1_1 is None and med.msle_2_1 is None and med.msle_2_2 is None and med.msle_3_1 is None and med.msle_3_2 is None and med.msle_3_3 is None and med.msle_3_4 is None and med.msle_4_1 is None and med.msle_4_2 is None and med.msle_4_3 is None and med.msle_4_4 is None and med.msle_4_5 is None and med.msle_4_6 is None and med.msle_4_7 is None and med.msle_4_8 is None and med.msle_4_9 is None and med.msle_4_10 is None and med.msle_4_11 is None  %} checked {% endif %}><small> Not available</small></td>
+                                                                <td><input type="checkbox" name="ckmedi001" {% if med.msle_1_1 is None and med.msle_2_1 is None and med.msle_2_2 is None and med.msle_3_1 is None and med.msle_3_2 is None and med.msle_3_3 is None and med.msle_3_4 is None and med.msle_4_1 is None and med.msle_4_2 is None and med.msle_4_3 is None and med.msle_4_4 is None and med.msle_4_5 is None and med.msle_4_6 is None and med.msle_4_7 is None and med.msle_4_8 is None and med.msle_4_9 is None and med.msle_4_10 is None and med.msle_4_11 is None  %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                     <tr id="medi1" {% if med.msle_1_1.doseperdate is None and med.msle_2_1.doseperdate is None and med.msle_2_2.doseperdate is None and med.msle_3_1.doseperdate is None and med.msle_3_2.doseperdate is None and med.msle_3_3.doseperdate is None and med.msle_3_4.doseperdate is None and med.msle_4_1.doseperdate is None and med.msle_4_2.doseperdate is None and med.msle_4_3.doseperdate is None and med.msle_4_4.doseperdate is None and med.msle_4_5.doseperdate is None and med.msle_4_6.doseperdate is None and med.msle_4_7.doseperdate is None and med.msle_4_8.doseperdate is None and med.msle_4_9.doseperdate is None and med.msle_4_10.doseperdate is None and med.msle_4_11.doseperdate is None %} class="disabledbutton" {% endif %}>
                                                         <td>
@@ -2330,7 +2336,7 @@
                                                         <td class="text-center" align="center" style="background-color: #FBFBFB;"><input type="checkbox" id="ckmedi2" {% if med.mgt_1_1.doseperdate > 0 or med.mgt_1_2.doseperdate > 0 or med.mgt_1_3.doseperdate > 0 or med.mgt_1_4.doseperdate > 0 or med.mgt_1_5.doseperdate > 0 or med.mgt_2_1.doseperdate > 0 or med.mgt_2_2.doseperdate > 0 or med.mgt_2_3.doseperdate > 0 or med.mgt_2_4.doseperdate > 0 or med.mgt_3_1.doseperdate > 0 or med.mgt_3_2.doseperdate > 0 or med.mgt_3_3.doseperdate > 0 or med.mgt_4_1.doseperdate > 0 or med.mgt_4_2.doseperdate > 0 or med.mgt_4_3.doseperdate > 0 or med.mgt_4_4.doseperdate > 0 or med.mgt_other is True %} checked {% endif %}> General treatments</td>
                                                     </tr>
                                                     <tr id="ckmedi002" class="disabledbutton">
-                                                                <td class="text-center" align="center"><input type="checkbox" name="ckmedi002" {% if med.mgt_1_1 is None and med.mgt_1_2 is None and med.mgt_1_3 is None and med.mgt_1_4 is None and med.mgt_1_5 is None and med.mgt_2_1 is None and med.mgt_2_2 is None and med.mgt_2_3 is None and med.mgt_2_4 is None and med.mgt_3_1 is None and med.mgt_3_2 is None and med.mgt_3_3 is None and med.mgt_4_1 is None and med.mgt_4_2 is None and med.mgt_4_3 is None and med.mgt_4_4 is None and med.mgt_other is False %} checked {% endif %}><small> Not available</small></td>
+                                                                <td><input type="checkbox" name="ckmedi002" {% if med.mgt_1_1 is None and med.mgt_1_2 is None and med.mgt_1_3 is None and med.mgt_1_4 is None and med.mgt_1_5 is None and med.mgt_2_1 is None and med.mgt_2_2 is None and med.mgt_2_3 is None and med.mgt_2_4 is None and med.mgt_3_1 is None and med.mgt_3_2 is None and med.mgt_3_3 is None and med.mgt_4_1 is None and med.mgt_4_2 is None and med.mgt_4_3 is None and med.mgt_4_4 is None and med.mgt_other is False %} checked {% endif %}><small> Not available</small></td>
                                                             </tr>
                                                     <tr id="medi2" {% if med.mgt_1_1.doseperdate is None and med.mgt_1_2.doseperdate is None and med.mgt_1_3.doseperdate is None and med.mgt_1_4.doseperdate is None and med.mgt_1_5.doseperdate is None and med.mgt_2_1.doseperdate is None and med.mgt_2_2.doseperdate is None and med.mgt_2_3.doseperdate is None and med.mgt_2_4.doseperdate is None and med.mgt_3_1.doseperdate is None and med.mgt_3_2.doseperdate is None and med.mgt_3_3.doseperdate is None and med.mgt_4_1.doseperdate is None and med.mgt_4_2.doseperdate is None and med.mgt_4_3.doseperdate is None and med.mgt_4_4.doseperdate is None and med.mgt_other is False %} class="disabledbutton" {% endif %}>
                                                         <td>

@@ -1410,7 +1410,7 @@
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"> 1. CBC</td>
                                                             </tr>
-                                                            {% if lab.hb is None %}
+                                                            {% if lab.hb is None and lab.wbc is None and lab.n is None and lab.l is None and lab.platelets is None and lab.esr is None %}
                                                                     <tr><td>Not available</td></tr>
                                                             {% else %}
                                                             <tr class="disabledbutton">
@@ -1467,7 +1467,7 @@
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"> 2. Urine Analysis</td>
                                                             </tr>
-                                                            {% if lab.hb is None %}
+                                                            {% if lab.wbc_hpf1 is None and lab.wbc_hpf2 is None and lab.rbc_hpf1 is None and lab.rbc_hpf2 is None and lab.wbccasts1 is None and lab.wbccasts2 is None and lab.rbccasts1 is None and lab.rbccasts2 is None and lab.granularcasts1 is None and lab.granularcasts2 is None and lab.glucose is None and lab.protein is None and lab.tp_spoturineprotein is None and lab.cre_spoturinecreatinine is None and lab.tfhr_urineprotein is None and lab.tfhr_urinecreatinine is None and lab.upci is None %}
                                                                     <tr><td>Not available</td></tr>
                                                             {% else %}
                                                             <tr class="disabledbutton">
@@ -1618,7 +1618,7 @@
                                                             <tr scope="row">
                                                                 <td colspan="3" class="text-center" align="center" style="background-color: #FBFBFB;"> 3. Blood Chem</td>
                                                             </tr>
-                                                            {% if lab.fbs is None %}
+                                                            {% if lab.fbs is None and lab.cr is None and lab.alt is None and lab.albumin is None and lab.choles is None and lab.hdl is None and lab.hba1c is None and lab.alp is None and lab.ggt is None and lab.tdbilirubin1 is None and lab.tdbilirubin2 is None and lab.tg is None and lab.bun is None and lab.ast is None and lab.ldh is None and lab.crp is None and lab.ldl is None and lab.inr is None %}
                                                                     <tr><td>Not available</td></tr>
                                                             {% else %}
                                                             <tr id="labtr03" class="disabledbutton">
@@ -1752,7 +1752,7 @@
                                                             </tr>
                                                             
                                                             <tr>
-                                                                {% if lab.anti_dsdna is None %}
+                                                                {% if lab.anti_dsdna is None and lab.antism is None and lab.antirnp is None and lab.antiro is None and lab.antila is None and lab.aca is None and lab.lupusanticoagulant is None and lab.b2gpi is None and lab.c3 is None and lab.c4 is None and lab.anticic is None and lab.il6 is None and lab.ch50 is None %}
                                                                     <td colspan="3">Not available</td>
                                                                 {% else %}
                                                                 <td class="disabledbutton">
@@ -1841,7 +1841,7 @@
                                                                     </div>
                                                                 </td>
                                                                 {% endif %}
-                                                                {% if lab.hbsag is None %}
+                                                                {% if lab.hbsag is None and lab.antihbs is None and lab.antihbc is None and lab.antihcv is None and lab.antihiv is None %}
                                                                     <td>Not available</td>
                                                                 {% else %}
                                                                 <td class="disabledbutton">
@@ -1889,7 +1889,7 @@
                                                                 </td>
                                                             </tr>
                                                             <tr class="disabledbutton">
-                                                            {% if lab.mpa is None %}
+                                                            {% if lab.mpa is None and lab.fk507 is None and lab.cyclosporin is None and lab.cytokine is None %}
                                                                     <td colspan="4">Not available</td>
                                                             {% else %}
                                                             
@@ -1937,7 +1937,7 @@
                                                             <tr scope="row">
                                                                 <td class="text-center" align="center" style="background-color: #FBFBFB;"> 6. BMD</td>
                                                             </tr>
-                                                            {% if lab.l1l4spine_bmd is None %}
+                                                            {% if lab.l1l4spine_bmd is None and lab.l1l4spine_tscore is None and lab.l1l4spine_date is None and lab.hip_bmd is None and lab.hip_tscore is None and lab.hip_date is None and lab.radius_bmd is None and lab.radius_tscore is none and lab.radius_date is None %}
                                                                     <tr><td>Not available</td></tr>
                                                             {% else %}
                                                             <tr class="disabledbutton">
@@ -2109,7 +2109,7 @@
                                                                 <td colspan="4" class="text-center" align="center" style="background-color: #FBFBFB;"> 11. Lupus nephritis</td>
                                                                 
                                                             </tr>
-                                                            {% if lab.renalbiopsystatus is None %}
+                                                            {% if lnlab.renalbiopsystatus is None and lnlab.renalbiopsyclass is None and lnlab.renalbiopsydate is None and lnlab.activityindex is None and lnlab.chronicityindex is None and lnlab.ln_1 is None and lnlab.ln_2 is None and lnlab.ln_3 is None and lnlab.ln_4 is None and lnlab.ln_5 is None %}
                                                                     <tr><td>Not available</td></tr>
                                                             {% else %}
                                                             <tr class="disabledbutton">
