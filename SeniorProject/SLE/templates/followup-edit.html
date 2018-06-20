@@ -1,4 +1,4 @@
-{% extends "header.html" %}
+﻿{% extends "header.html" %}
 {% block content %}
 {% load staticfiles %}
     <style>
@@ -46,7 +46,7 @@
             $('#slicccheck01').on('ifChecked', function(){$("#slicccheck001, #slicctr01, #slicctr02, #slicctr03, #slicctr04").removeAttr('class');});
             $('#slicccheck01').on('ifUnchecked', function(){$("#slicccheck001, #slicctr01, #slicctr02, #slicctr03, #slicctr04").addClass("disabledbutton");});
         });
-        //Calculate SLEDAI score
+        //Calculate SLEDAI scorea
         $(document).ready(function(){
             $('#seizure').on('ifChecked', function(){SLEcal();});
             $('#seizure').on('ifUnchecked', function(){SLEcal();});
@@ -480,11 +480,11 @@
             var newRow = $("<tr name='trotherinflection'>");
             var cols = "";
             
-            cols += "<td><div class='form-group' id='odetail01'>                                                <input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail'><datalist id='mgt_other_list'><option>Prophylaxis</option><option>Bactrim</option><option>Acyclovir</option></datalist></div></td>";
+            cols += "<td><div class='form-group' id='odetail01'><input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail'><datalist id='mgt_other_list'><option>Bactrim</option><option>Acyclovir</option></datalist></div></td>";
         
             cols += "<td><input type='number' name='otherdose[]' placeholder='00.00' step='0.01' class='form-control' </td>";
             
-            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td>                                                        </tr>";
+            cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
             newRow.append(cols);
             newRow.insertAfter($(this).closest('tr'));
@@ -2029,15 +2029,16 @@
                                                                             <option selected value="Normal" {% if lab.stoolparasite.status == 'Normal' %} selected {% endif %}>Normal</option>
                                                                             <option value="Abnormal" {% if lab.stoolparasite.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
                                                                             <option value="Not done" {% if lab.stoolparasite.status == 'Not done' %} selected {% endif %}>Not done </option>
-                                                                            <option value="Not found" {% if lab.stoolparasite.status == 'Not found' %} selected {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
-                                                                        <select class="form-control" name="stoolparasite1" {% if lab.stoolparasite.status == 'Abnormal' %} disabled {% endif %}>
-                                                                            <option value="detail1" {% if lab.stoolparasite.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="detail2" {% if lab.stoolparasite.detail == 'detail2' %} selected {% endif %}>detail2</option>
-                                                                        </select>
+                                                                        <input name="stoolparasite1" list="stood_list" value={{lab.stoolparasite.detail}}>
+                                                                        <datalist id="stood_list">
+                                                                            <option>Strangyloides</option>
+                                                                            <option>Blastocystis</option>
+                                                                        </datalist>
+                                                                        
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Date</label>  
@@ -2052,15 +2053,17 @@
                                                                             <option selected value="Normal" {% if lab.cxr.status == 'Normal' %} selected {% endif %}>Normal</option>
                                                                             <option value="Abnormal" {% if lab.cxr.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
                                                                             <option value="Not done" {% if lab.cxr.status == 'Not done' %} selected {% endif %}>Not done </option>
-                                                                            <option value="Not found" {% if lab.cxr.status == 'Not found' %} selected {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
-                                                                        <select class="form-control" name="cxr1" {% if lab.cxr.status == 'Abnormal' %} disabled {% endif %}>
-                                                                            <option value="detail1" {% if lab.cxr.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="detail2" {% if lab.cxr.detail == 'detail2' %} selected {% endif %}>detail2</option>
-                                                                        </select>
+                                                                        
+                                                                        <input name="cxr1" list="cxr_list" value={{lab.cxr.detail}}>
+                                                                        <datalist id="cxr_list">
+                                                                            <option>Pleural effusion</option>
+                                                                            <option>ILD</option>
+                                                                            <option>Cardiomegaly</option>
+                                                                        </datalist>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Date</label>  
@@ -2075,15 +2078,14 @@
                                                                             <option selected value="Normal" {% if lab.ekg.status == 'Normal' %} selected {% endif %}>Normal</option>
                                                                             <option value="Abnormal" {% if lab.ekg.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
                                                                             <option value="Not done" {% if lab.ekg.status == 'Not done' %} selected {% endif %}>Not done </option>
-                                                                            <option value="Not found" {% if lab.ekg.status == 'Not found' %} selected {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
-                                                                        <select class="form-control" name="ekg1" {% if lab.ekg.status == 'Abnormal' %} disabled {% endif %}>
-                                                                            <option value="detail1" {% if lab.ekg.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="detail2" {% if lab.ekg.detail == 'detail2' %} selected {% endif %}>detail2</option>
-                                                                        </select>
+                                                                        <input name="ekg1" list="ekg_list" value={{lab.ekg.detail}}>
+                                                                        <datalist id="ekg_list">
+                                                                        </datalist>
+                                                                        
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Date</label>  
@@ -2098,15 +2100,16 @@
                                                                             <option selected value="Normal" {% if lab.echo.status == 'Normal' %} selected {% endif %}>Normal</option>
                                                                             <option value="Abnormal" {% if lab.echo.status == 'Abnormal' %} selected {% endif %}>Abnormal</option>
                                                                             <option value="Not done" {% if lab.echo.status == 'Not done' %} selected {% endif %}>Not done </option>
-                                                                            <option value="Not found" {% if lab.echo.status == 'Not found' %} selected {% endif %}>Not found </option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Abnormal detail</label>  
-                                                                        <select class="form-control" name="echo1" {% if lab.echo.status == 'Abnormal' %} disabled {% endif %}>
-                                                                            <option value="detail1" {% if lab.echo.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                            <option value="detail2" {% if lab.echo.detail == 'detail2' %} selected {% endif %}>detail2</option>
-                                                                        </select>
+                                                                        <input name="echo1" list="echo_list" value={{lab.echo.detail}}>
+                                                                        <datalist id="echo_list">
+                                                                            <option>PAH</option>
+                                                                            <option>Low LVEF(EF&lt;40%)</option>
+                                                                            <option>Pericardial effusion</option>
+                                                                        </datalist>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label>Date</label>  
@@ -2463,7 +2466,7 @@
                                                                                             <td>
                                                                                                 <div class='form-group' id='odetail01'><input type='text' class='form-control' name='mgt_other_detail[]' list='mgt_other_list' id='mgt_other_detail' value="{{other.medicationname}}">
                                                                                                 <datalist id='mgt_other_list'>
-                                                                                                   <option>Prophylaxis</option> <option>Bactrim</option>
+                                                                                                    <option>Bactrim</option>
                                                                                                     <option>Acyclovir</option></datalist>
                                                                                             </div>
                                                                                             </td>

@@ -1,4 +1,4 @@
-{% extends "header.html" %}
+﻿{% extends "header.html" %}
 {% block content %}
     <style>
     .disabledbutton {
@@ -448,7 +448,7 @@
             var newRow = $("<tr name='trotherinflection'>");
             var cols = "<td></td>";
             
-            cols += "<td><div class='form-group' id='odetail01'><input type='text' name='othertype[]' value='inflection' style='display: none;'><select class='form-control' name='otherdetail[]'><option>detail1</option><option>detail2</option></select></div></td>";
+            cols += "<td><div class='form-group' id='odetail01'><input type='text' name='othertype[]' value='inflection' style='display: none;'><input type='text' name='otherdetail[]' id='odetail01' style='display: none;' list='inflection_list'></div></td>";
             cols += "<td><input type='date' id='odate01' class='form-control' name='otherdate[]'></td>";
             cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
@@ -988,12 +988,14 @@
                                                             <td><input type="checkbox" id="other01" name="other01"> Inflection</td>
                                                             <td>
                                                                 <input type="text" name="othertype[]" value="inflection" style="display: none;">
-                                                                 <div class="form-group" id="odetail01" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>detail1</option>
-                                                                        <option>detail2</option>
-                                                                    </select>
-                                                                </div>
+                                                                 <input type="text" name="otherdetail[]" id="odetail01" style="display: none;" list="inflection_list">
+                                                                    <datalist id="inflection_list">
+                                                                        <option>CMV</option>
+                                                                        <option>Toster</option>
+									                                    <option>Aspergillosis</option>
+									                                    <option>TB</option>
+                                                                    </datalist>
+                                                                
                                                             </td>
                                                             <td><input type="date" id="odate01" class="form-control" style="display: none;" name="otherdate[]"></td>
                                                             <td id="addotherinflection" style="display: none;">
@@ -1004,12 +1006,13 @@
                                                             <td></td>
                                                             <td>
                                                                 <input type="text" id="other01_1" name="othertype[]" style="display: none;" value="None">
-                                                                 <div class="form-group" id="odetail01_1">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>detail1</option>
-                                                                        <option>detail2</option>
-                                                                    </select>
-                                                                </div>
+                                                                 <input type="text" name="otherdetail[]" id="odetail01_1" list="inflection_list">
+                                                                    <datalist id="inflection_list">
+                                                                        <option>CMV</option>
+                                                                        <option>Toster</option>
+									                                    <option>Aspergillosis</option>
+									                                    <option>TB</option>
+                                                                    </datalist>
                                                             </td>
                                                             <td><input type="date" id="odate01_1" class="form-control" name="otherdate[]"></td>
                                                             <td id="addotherinflection01_1">
@@ -1020,12 +1023,13 @@
                                                             <td></td>
                                                             <td>
                                                                 <input type="text" id="other01_2"  name="othertype[]" style="display: none;" value="None">
-                                                                 <div class="form-group" id="odetail01_2">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>detail1</option>
-                                                                        <option>detail2</option>
-                                                                    </select>
-                                                                </div>
+                                                                 <input type="text" name="otherdetail[]" id="odetail01_2" list="inflection_list">
+                                                                    <datalist id="inflection_list">
+                                                                        <option>CMV</option>
+                                                                        <option>Toster</option>
+									                                    <option>Aspergillosis</option>
+									                                    <option>TB</option>
+                                                                    </datalist>
                                                             </td>
                                                             <td><input type="date" id="odate01_2" class="form-control" name="otherdate[]"></td>
                                                             <td id="addotherinflection01_2">
@@ -1036,12 +1040,13 @@
                                                             <td></td>
                                                             <td>
                                                                 <input type="text" name="othertype[]" style="display: none;" id="other01_3" value="None">
-                                                                 <div class="form-group" id="odetail01_3">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>detail1</option>
-                                                                        <option>detail2</option>
-                                                                    </select>
-                                                                </div>
+                                                                 <input type="text" name="otherdetail[]" id="odetail01_3" list="inflection_list">
+                                                                    <datalist id="inflection_list">
+                                                                        <option>CMV</option>
+                                                                        <option>Toster</option>
+									                                    <option>Aspergillosis</option>
+									                                    <option>TB</option>
+                                                                    </datalist>
                                                             </td>
                                                             <td><input type="date" id="odate01_3" class="form-control" name="otherdate[]"></td>
                                                             <td id="addotherinflection01_3">
@@ -1052,12 +1057,13 @@
                                                             <td></td>
                                                             <td>
                                                                 <input type="text" name="othertype[]" style="display: none;" id="other01_4" value="None">
-                                                                 <div class="form-group" id="odetail01_4">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>detail1</option>
-                                                                        <option>detail2</option>
-                                                                    </select>
-                                                                </div>
+                                                                 <input type="text" name="otherdetail[]" id="odetail01_4" list="inflection_list">
+                                                                    <datalist id="inflection_list">
+                                                                        <option>CMV</option>
+                                                                        <option>Toster</option>
+									                                    <option>Aspergillosis</option>
+									                                    <option>TB</option>
+                                                                    </datalist>
                                                             </td>
                                                             <td><input type="date" id="odate01_4" class="form-control" name="otherdate[]"></td>
                                                             <td id="addotherinflection01_4">
@@ -1068,12 +1074,13 @@
                                                             <td></td>
                                                             <td>
                                                                 <input type="text" name="othertype[]" style="display: none;" id="other01_5" value="None">
-                                                                 <div class="form-group" id="odetail01_5">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>detail1</option>
-                                                                        <option>detail2</option>
-                                                                    </select>
-                                                                </div>
+                                                                 <input type="text" name="otherdetail[]" id="odetail01_5" list="inflection_list">
+                                                                    <datalist id="inflection_list">
+                                                                        <option>CMV</option>
+                                                                        <option>Toster</option>
+									                                    <option>Aspergillosis</option>
+									                                    <option>TB</option>
+                                                                    </datalist>
                                                             </td>
                                                             <td><input type="date" id="odate01_5" class="form-control" name="otherdate[]"></td>
                                                             <td id="addotherinflection01_5">
@@ -1084,12 +1091,13 @@
                                                             <td></td>
                                                             <td>
                                                                 <input type="text" name="othertype[]" style="display: none;" id="other01_6" value="None">
-                                                                 <div class="form-group" id="odetail01_6">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>detail1</option>
-                                                                        <option>detail2</option>
-                                                                    </select>
-                                                                </div>
+                                                                 <input type="text" name="otherdetail[]" id="odetail01_6" list="inflection_list">
+                                                                    <datalist id="inflection_list">
+                                                                        <option>CMV</option>
+                                                                        <option>Toster</option>
+									                                    <option>Aspergillosis</option>
+									                                    <option>TB</option>
+                                                                    </datalist>
                                                             </td>
                                                             <td><input type="date" id="odate01_6" class="form-control" name="otherdate[]"></td>
                                                             <td id="addotherinflection01_6">
@@ -1102,9 +1110,11 @@
                                                             <td>
                                                                 <input type="text" name="othertype[]" value="majorsurgery" style="display: none;">
                                                                  <div class="form-group" id="odetail02" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>majorsurgery detail1</option>
-                                                                    </select>
+                                                                     <input type="text" name="otherdetail[]" list="majorsurgery_list">
+                                                                    <datalist id="majorsurgery_list">
+                                                                        <option>bowel resection</option>
+                                                                        <option>cholecystectomy</option>
+                                                                    </datalist>
                                                                 </div>
                                                             </td>
                                                             <td><input type="date" id="odate02" class="form-control" style="display: none;" name="otherdate[]"></td>
@@ -1114,9 +1124,13 @@
                                                             <td>
                                                                 <input type="text" name="othertype[]" value="osteoporosis" style="display: none;">
                                                                  <div class="form-group" id="odetail03" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>osteoporosis detail1</option>
-                                                                    </select>
+                                                                    
+                                                                     <input type="text" name="otherdetail[]" list="osteoporosis_list">
+                                                                    <datalist id="osteoporosis_list">
+                                                                        <option>by BMD</option>
+                                                                        <option>spine</option>
+                                                                        <option>hip</option>
+                                                                    </datalist>
                                                                 </div>
                                                             </td>
                                                             <td><input type="date" id="odate03" class="form-control" style="display: none;" name="otherdate[]"></td>
@@ -1126,9 +1140,13 @@
                                                             <td>
                                                                  <div class="form-group" id="odetail04" style="display: none;">
                                                                     <input type="text" name="othertype[]" value="malignancy" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option>malignancy detail1</option>
-                                                                    </select>
+                                                                    
+                                                                     <input type="text" name="otherdetail[]" list="malignancy_list">
+                                                                    <datalist id="malignancy_list">
+                                                                        <option>CA breast</option>
+                                                                        <option>CA cervix</option>
+                                                                        <option>lymphoma</option>
+                                                                    </datalist>
                                                                 </div>
                                                             </td>
                                                             <td><input type="date" id="odate04" class="form-control" style="display: none;" name="otherdate[]"></td>

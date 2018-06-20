@@ -227,7 +227,7 @@
             var newRow = $("<tr name='trotherinflection'>");
             var cols = "<td></td>";
             
-            cols += "<td><div class='form-group' id='odetail01'><input type='text' name='othertype[]' value='inflection' style='display: none;'><select class='form-control' name='otherdetail[]'><option>detail1</option><option>detail2</option></select></div></td>";
+            cols += "<td><div class='form-group' id='odetail01'><input type='text' name='othertype[]' value='inflection' style='display: none;'><input type='text' name='otherdetail[]' id='odetail01' list='inflection_list'><datalist id='inflection_list'>                                                                  <option>CMV</option><option>Toster</option><option>Aspergillosis</option><option>TB</option></datalist></div</td>";
             cols += "<td><input type='date' id='odate01' class='form-control' name='otherdate[]'></td>";
             cols += "<td><a onclick='rmRow(this);'><span class='glyphicon glyphicon-remove' style='color: #EB5C5C;' aria-hidden='true'></span></a></td></tr>";
             
@@ -714,10 +714,13 @@
                                                             <td>
                                                                 <input type="text" name="othertype[]" value="inflection" style="display: none;">
                                                                  <div class="form-group" id="odetail01">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option {% if como.detail == 'detail1' %} selected {% endif %}>detail1</option>
-                                                                        <option {% if como.detail == 'detail2' %} selected {% endif %}>detail2</option>
-                                                                    </select>
+                                                                     <input type="text" name="otherdetail[]" id="odetail01" list="inflection_list" value="{{como.detail}}">
+                                                                    <datalist id="inflection_list">
+                                                                        <option>CMV</option>
+                                                                        <option>Toster</option>
+									                                    <option>Aspergillosis</option>
+									                                    <option>TB</option>
+                                                                    </datalist>
                                                                 </div>
                                                             </td>
                                                             <td><input type="date" id="odate01" class="form-control" name="otherdate[]"  value="{{como.diagnosedate|date:"Y-m-d"}}"></td>
@@ -731,9 +734,12 @@
                                                             <td>
                                                                 <input type="text" name="othertype[]" value="majorsurgery" style="display: none;">
                                                                  <div class="form-group" id="odetail02">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option {% for como in comorbidity %}{% if como.comorbiditytype == 'majorsurgery' and como.detail == 'majorsurgery detail1' %} selected {% endif %}{% endfor %} >majorsurgery detail1</option>
-                                                                    </select>
+                                                                    
+                                                                     <input type="text" name="otherdetail[]" list="majorsurgery_list" value="{% for como in comorbidity %}{% if como.comorbiditytype == 'majorsurgery' %} {{como.detail}} {% endif %}{% endfor %}">
+                                                                    <datalist id="majorsurgery_list">
+                                                                        <option >bowel resection</option>
+                                                                        <option >cholecystectomy</option>
+                                                                    </datalist>
                                                                 </div>
                                                             </td>
                                                             <td><input type="date" id="odate02" class="form-control" name="otherdate[]" {% for como in comorbidity %}{% if como.comorbiditytype == 'majorsurgery' %} value="{{como.diagnosedate|date:"Y-m-d"}}" {% endif %}{% endfor %} ></td>
@@ -743,9 +749,13 @@
                                                             <td>
                                                                 <input type="text" name="othertype[]" value="osteoporosis" style="display: none;">
                                                                  <div class="form-group" id="odetail03">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option {% for como in comorbidity %}{% if como.comorbiditytype == 'osteoporosis' and como.detail == 'osteoporosis detail1' %} selected {% endif %}{% endfor %} >osteoporosis detail1</option>
-                                                                    </select>
+                                                                    
+                                                                     <input type="text" name="otherdetail[]" list="osteoporosis_list" value="{% for como in comorbidity %}{% if como.comorbiditytype == 'osteoporosis' %} {{como.detail}} {% endif %}{% endfor %}">
+                                                                    <datalist id="osteoporosis_list">
+                                                                        <option>by BMD</option>
+                                                                        <option>spine</option>
+                                                                        <option>hip</option>
+                                                                    </datalist>
                                                                 </div>
                                                             </td>
                                                             <td><input type="date" id="odate03" class="form-control" name="otherdate[]" {% for como in comorbidity %}{% if como.comorbiditytype == 'osteoporosis' %} value="{{como.diagnosedate|date:"Y-m-d"}}" {% endif %}{% endfor %}></td>
@@ -755,9 +765,12 @@
                                                             <td>
                                                                  <div class="form-group" id="odetail04">
                                                                     <input type="text" name="othertype[]" value="malignancy" style="display: none;">
-                                                                    <select class="form-control" name="otherdetail[]">
-                                                                        <option {% for como in comorbidity %}{% if como.comorbiditytype == 'malignancy' and como.detail == 'malignancy detail1' %} selected {% endif %}{% endfor %} >malignancy detail1</option>
-                                                                    </select>
+                                                                    <input type="text" name="otherdetail[]" list="malignancy_list" value="{% for como in comorbidity %}{% if como.comorbiditytype == 'malignancy' %} {{como.detail}} {% endif %}{% endfor %}">
+                                                                    <datalist id="malignancy_list">
+                                                                        <option>CA breast</option>
+                                                                        <option>CA cervix</option>
+                                                                        <option>lymphoma</option>
+                                                                    </datalist>
                                                                 </div>
                                                             </td>
                                                             <td><input type="date" id="odate04" class="form-control" name="otherdate[]" {% for como in comorbidity %}{% if como.comorbiditytype == 'malignancy' %} value="{{como.diagnosedate|date:"Y-m-d"}}" {% endif %}{% endfor %} ></td>
