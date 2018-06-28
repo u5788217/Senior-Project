@@ -273,16 +273,8 @@ def ToFloat(string):
     if string == '0.0' or string == '' or string is None: return None
     else: return float(string)
 
-def ToFloatMed(string):
-    if string == '0.0' or string == '' or string is None: return 0
-    else: return float(string)
-    
-def ToFloatNone(string):
-    if string == '0.0' or string == '' or string is None: return None
-    else: return float(string)
-
 def CheckboxToBool(string):
-    if string == '1' or string == 'on': return 'True'
+    if string == '1' or string == 'on' : return 'True'
     else : return 'False'
 
 def DateToNone(date):
@@ -954,8 +946,8 @@ def followPatient(request):
             Followvisiting = Visiting(studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                                 visitdate =  request.POST.get('visitdate', ''),
                                 bp = request.POST.get('bp', ''),
-                                height = ToFloatNone(request.POST.get('height', '')),
-                                weight = ToFloatNone(request.POST.get('weight', '')),
+                                height = ToFloat(request.POST.get('height', '')),
+                                weight = ToFloat(request.POST.get('weight', '')),
                                 username = AuthUser.objects.get(username = request.user),
                                 nextvisit = DateToNone(request.POST.get('nextvisitdate', '')),
                                 visitnote = request.POST.get('addnote',''),
@@ -1098,51 +1090,50 @@ def followPatient(request):
             FollowSLEDAI.save()
             
             FollowLn = None
-            if CheckboxToBool(request.POST.get('labcheck11', '')) is 'True':
-                if CheckboxToBool(request.POST.get('labcheck011', '')) is 'False':
-                    FollowLn = Lnlab(renalbiopsyclass = request.POST.get('renalbiopsyclass', ''),
-                    renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', '')),
-                    activityindex = ToFloat(request.POST.get('activityindex', '')),
-                    chronicityindex = ToFloat(request.POST.get('chronicityindex', '')),
-                    ln_1 = ToFloat(request.POST.get('ln_1', '')),
-                    ln_2 = ToFloat(request.POST.get('ln_2', '')),
-                    ln_3 = request.POST.get('ln_3', ''),
-                    ln_4 = request.POST.get('ln_4', ''),
-                    ln_5 = ToFloat(request.POST.get('ln_5', '')),
-                    renalbiopsystatus = request.POST.get('RenalShow', ''))
-                    FollowLn.save()  
+            if CheckboxToBool(request.POST.get('labcheck011', '')) is 'False':
+                FollowLn = Lnlab(renalbiopsyclass = request.POST.get('renalbiopsyclass', ''),
+                renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', '')),
+                activityindex = ToFloat(request.POST.get('activityindex', '')),
+                chronicityindex = ToFloat(request.POST.get('chronicityindex', '')),
+                ln_1 = ToFloat(request.POST.get('ln_1', '')),
+                ln_2 = ToFloat(request.POST.get('ln_2', '')),
+                ln_3 = request.POST.get('ln_3', ''),
+                ln_4 = request.POST.get('ln_4', ''),
+                ln_5 = ToFloat(request.POST.get('ln_5', '')),
+                renalbiopsystatus = request.POST.get('RenalShow', ''))
+                FollowLn.save()  
                     
                 
-            labcheck07 = CheckboxToBool(request.POST.get('labcheck07', ''))
-            labcheck08 = CheckboxToBool(request.POST.get('labcheck08', ''))
-            labcheck09 = CheckboxToBool(request.POST.get('labcheck09', ''))
-            labcheck10 = CheckboxToBool(request.POST.get('labcheck10', ''))
+            labcheck07 = CheckboxToBool(request.POST.get('labcheck007', ''))
+            labcheck08 = CheckboxToBool(request.POST.get('labcheck008', ''))
+            labcheck09 = CheckboxToBool(request.POST.get('labcheck009', ''))
+            labcheck10 = CheckboxToBool(request.POST.get('labcheck010', ''))
             stoolparasite = None
             cxr=None
             ekg=None
             echo=None
-            if labcheck07 is 'True':
+            if labcheck07 is 'False':
                 if request.POST.get('stoolparasite',) != 'Abnormal':
                     stoolparasite = Labtype(status = request.POST.get('stoolparasite',), date = None, detail = None)
                 else: 
                     stoolparasite = Labtype(status = request.POST.get('stoolparasite', ''), 
                                 date = DateToNone(request.POST.get('stoolparasite2', '')),
                                 detail = request.POST.get('stoolparasite1', ''))
-            if labcheck08 is 'True':
+            if labcheck08 is 'False':
                 if request.POST.get('cxr',) != 'Abnormal':
                     cxr = Labtype(status = request.POST.get('cxr',), date = None, detail = None)
                 else: 
                     cxr = Labtype(status = request.POST.get('cxr', ''), 
                                 date = DateToNone(request.POST.get('cxr2', '')),                                 
                                 detail = request.POST.get('cxr1', ''))
-            if labcheck09 is 'True':
+            if labcheck09 is 'False':
                 if request.POST.get('ekg',) != 'Abnormal':
                     ekg = Labtype(status = request.POST.get('ekg',), date = None, detail = None)
                 else:
                     ekg = Labtype(status = request.POST.get('ekg', ''), 
                                 date = DateToNone(request.POST.get('ekg2', '')),
                                 detail = request.POST.get('ekg1', ''))
-            if labcheck10 is 'True':
+            if labcheck10 is 'False':
                 if request.POST.get('echo',) != 'Abnormal':
                     echo = Labtype(status = request.POST.get('echo',), date = None, detail = None)
                 else:
@@ -1154,76 +1145,76 @@ def followPatient(request):
                             studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                             lnlabid = FollowLn,
                             visitdate =  request.POST.get('visitdate', ''),
-                            hb = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('hb', '')),
-                            wbc = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('wbc', '')),
-                            n = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('n', '')),
-                            l = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('l', '')),
-                            platelets = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('platelets', '')),
-                            esr = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('esr', '')),
-                            wbc_hpf1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('wbc_hpf1', '')),
-                            rbc_hpf1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('rbc_hpf1', '')),
-                            wbccasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('wbccasts1', '')),
-                            rbccasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('rbccasts1', '')),
-                            granularcasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('granularcasts1', '')),
-                            wbc_hpf2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('wbc_hpf2', '')),
-                            rbc_hpf2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('rbc_hpf2', '')),
-                            wbccasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('wbccasts2', '')),
-                            rbccasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('rbccasts2', '')),
-                            granularcasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('granularcasts2', '')),
+                            hb = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('hb', '')),
+                            wbc = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('wbc', '')),
+                            n = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('n', '')),
+                            l = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('l', '')),
+                            platelets = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('platelets', '')),
+                            esr = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('esr', '')),
+                            wbc_hpf1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('wbc_hpf1', '')),
+                            rbc_hpf1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('rbc_hpf1', '')),
+                            wbccasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('wbccasts1', '')),
+                            rbccasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('rbccasts1', '')),
+                            granularcasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('granularcasts1', '')),
+                            wbc_hpf2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('wbc_hpf2', '')),
+                            rbc_hpf2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('rbc_hpf2', '')),
+                            wbccasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('wbccasts2', '')),
+                            rbccasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('rbccasts2', '')),
+                            granularcasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('granularcasts2', '')),
                             glucose = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else StringToNone(request.POST.get('ckglucose', ''),request.POST.get('glucose', '')),
                             protein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else StringToNone(request.POST.get('ckprotein', ''),request.POST.get('protein', '')),
-                            tp_spoturineprotein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('tp_spoturineprotein', '')),
-                            cre_spoturinecreatinine = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('cre_spoturinecreatinine', '')),
-                            tfhr_urineprotein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('tfhr_urineprotein', '')),
-                            tfhr_urinecreatinine = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('tfhr_urinecreatinine', '')),
-                            upci = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('upci', '')),
-                            fbs = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('fbs', '')),
-                            hba1c = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('hba1c', '')),
-                            bun = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('bun', '')),
-                            cr =None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('cr', '')),
-                            alp = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('alp', '')),
-                            ast = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('ast', '')),
-                            alt =None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('alt', '')),
-                            ggt = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('ggt', '')),
-                            ldh = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('ldh', '')),
-                            albumin = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('albumin', '')),
-                            tdbilirubin = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else [ToFloatNone(request.POST.get('tdbilirubin1','')),ToFloatNone(request.POST.get('tdbilirubin2', ''))],
-                            crp = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('crp', '')),
-                            choles = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('choles', '')),
-                            tg = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('tg', '')),
-                            ldl = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('ldl', '')),
-                            hdl = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('hdl', '')),
-                            inr = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('inr', '')),
-                            anti_dsdna = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('anti_dsdna', '')),
+                            tp_spoturineprotein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('tp_spoturineprotein', '')),
+                            cre_spoturinecreatinine = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('cre_spoturinecreatinine', '')),
+                            tfhr_urineprotein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('tfhr_urineprotein', '')),
+                            tfhr_urinecreatinine = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('tfhr_urinecreatinine', '')),
+                            upci = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('upci', '')),
+                            fbs = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('fbs', '')),
+                            hba1c = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('hba1c', '')),
+                            bun = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('bun', '')),
+                            cr =None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('cr', '')),
+                            alp = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('alp', '')),
+                            ast = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('ast', '')),
+                            alt =None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('alt', '')),
+                            ggt = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('ggt', '')),
+                            ldh = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('ldh', '')),
+                            albumin = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('albumin', '')),
+                            tdbilirubin = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else [ToFloat(request.POST.get('tdbilirubin1','')),ToFloat(request.POST.get('tdbilirubin2', ''))],
+                            crp = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('crp', '')),
+                            choles = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('choles', '')),
+                            tg = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('tg', '')),
+                            ldl = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('ldl', '')),
+                            hdl = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('hdl', '')),
+                            inr = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('inr', '')),
+                            anti_dsdna = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('anti_dsdna', '')),
                             antism = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckantism', ''),request.POST.get('antism', '')),
                             antirnp = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckantirnp', ''),request.POST.get('antirnp', '')),
                             antiro = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckantiro', ''),request.POST.get('antiro', '')),
                             antila = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckantila', ''),request.POST.get('antila', '')),
-                            aca = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('aca', '')),
+                            aca = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('aca', '')),
                             lupusanticoagulant = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('cklupusanticoagulant', ''),request.POST.get('lupusanticoagulant', '')),
-                            b2gpi = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('b2gpi', '')),
-                            c3 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('c3', '')),
-                            c4 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('c4', '')),
-                            ch50 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('ch50', '')),
+                            b2gpi = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('b2gpi', '')),
+                            c3 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('c3', '')),
+                            c4 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('c4', '')),
+                            ch50 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('ch50', '')),
                             hbsag = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckhbsag', ''),request.POST.get('hbsag', '')),
                             antihbs = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihbs', ''),request.POST.get('antihbs', '')),
                             antihbc = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihbc', ''),request.POST.get('antihbc', '')),
                             antihcv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihcv', ''),request.POST.get('antihcv', '')),
                             antihiv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihiv', ''),request.POST.get('antihiv', '')),
-                            anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('anticic', '')),
-                            il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('il6', '')),
-                            mpa = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('mpa', '')),
-                            fk507 = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('fk507', '')),
-                            cyclosporin = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('cyclosporin', '')),
+                            anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('anticic', '')),
+                            il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('il6', '')),
+                            mpa = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('mpa', '')),
+                            fk507 = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('fk507', '')),
+                            cyclosporin = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('cyclosporin', '')),
                             cytokine = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else StringToNone(request.POST.get('ckcytokine', ''),request.POST.get('cytokine', '')),
-                            l1l4spine_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('l1l4spine_bmd','')),
-                            l1l4spine_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('l1l4spine_tscore','')),
+                            l1l4spine_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('l1l4spine_bmd','')),
+                            l1l4spine_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('l1l4spine_tscore','')),
                             l1l4spine_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('l1l4spine_date','')),
-                            hip_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('hip_bmd','')),
-                            hip_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('hip_tscore','')),
+                            hip_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('hip_bmd','')),
+                            hip_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('hip_tscore','')),
                             hip_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('hip_date','')),
-                            radius_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('radius_bmd','')),
-                            radius_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('radius_tscore','')),
+                            radius_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('radius_bmd','')),
+                            radius_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('radius_tscore','')),
                             radius_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('radius_date','')),
                             stoolparasite = None if CheckboxToBool(request.POST.get('labcheck007',)) is 'True' else stoolparasite,
                             cxr = None if CheckboxToBool(request.POST.get('labcheck008',)) is 'True' else cxr,
@@ -1234,42 +1225,42 @@ def followPatient(request):
             FollowMed = Medication(visitingid = Followvisiting,
                             studynumber = Studyidentity.objects.get(studynumber = TempstudyNumber),
                             visitdate =  request.POST.get('visitdate',),
-                            msle_1_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen1',), doseperdate = ToFloatMed(request.POST.get('dose1',)), startdate = DateToNone(request.POST.get('start1',)), stopdate = DateToNone(request.POST.get('end1',))),
-                            msle_1_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen2',), doseperdate = ToFloatMed(request.POST.get('dose2',)), startdate = DateToNone(request.POST.get('start2',)), stopdate = DateToNone(request.POST.get('end2',))),
-                            msle_1_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen3',), doseperdate = ToFloatMed(request.POST.get('dose3',)), startdate = DateToNone(request.POST.get('start3',)), stopdate = DateToNone(request.POST.get('end3',))),
-                            msle_2_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen4',), doseperdate = ToFloatMed(request.POST.get('dose4',)), startdate = DateToNone(request.POST.get('start4',)), stopdate = DateToNone(request.POST.get('end4',))),
-                            msle_2_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen5',), doseperdate = ToFloatMed(request.POST.get('dose5',)), startdate = DateToNone(request.POST.get('start5',)), stopdate = DateToNone(request.POST.get('end5',))),
-                            msle_3_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen6',), doseperdate = ToFloatMed(request.POST.get('dose6',)), startdate = DateToNone(request.POST.get('start6',)), stopdate = DateToNone(request.POST.get('end6',))),
-                            msle_3_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen7',), doseperdate = ToFloatMed(request.POST.get('dose7',)), startdate = DateToNone(request.POST.get('start7',)), stopdate = DateToNone(request.POST.get('end7',))),
-                            msle_3_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen8',), doseperdate = ToFloatMed(request.POST.get('dose8',)), startdate = DateToNone(request.POST.get('start8',)), stopdate = DateToNone(request.POST.get('end8',))),
-                            msle_3_4 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen9',), doseperdate = ToFloatMed(request.POST.get('dose9',)), startdate = DateToNone(request.POST.get('start9',)), stopdate = DateToNone(request.POST.get('end9',))),
-                            msle_4_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen10',), doseperdate = ToFloatMed(request.POST.get('dose10',)), startdate = DateToNone(request.POST.get('start10',)), stopdate = DateToNone(request.POST.get('end10',))),
-                            msle_4_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen11',), doseperdate = ToFloatMed(request.POST.get('dose11',)), startdate = DateToNone(request.POST.get('start11',)), stopdate = DateToNone(request.POST.get('end11',))),
-                            msle_4_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen12',), doseperdate = ToFloatMed(request.POST.get('dose12',)), startdate = DateToNone(request.POST.get('start12',)), stopdate = DateToNone(request.POST.get('end12',))),
-                            msle_4_4 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen13',), doseperdate = ToFloatMed(request.POST.get('dose13',)), startdate = DateToNone(request.POST.get('start13',)), stopdate = DateToNone(request.POST.get('end13',))),
-                            msle_4_5 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen14',), doseperdate = ToFloatMed(request.POST.get('dose14',)), startdate = DateToNone(request.POST.get('start14',)), stopdate = DateToNone(request.POST.get('end14',))),
-                            msle_4_6 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen15',), doseperdate = ToFloatMed(request.POST.get('dose15',)), startdate = DateToNone(request.POST.get('start15',)), stopdate = DateToNone(request.POST.get('end15',))),
-                            msle_4_7 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen16',), doseperdate = ToFloatMed(request.POST.get('dose16',)), startdate = DateToNone(request.POST.get('start16',)), stopdate = DateToNone(request.POST.get('end16',))),
-                            msle_4_8 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen17',), doseperdate = ToFloatMed(request.POST.get('dose17',)), startdate = DateToNone(request.POST.get('start17',)), stopdate = DateToNone(request.POST.get('end17',))),
-                            msle_4_9 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen18',), doseperdate = ToFloatMed(request.POST.get('dose18',)), startdate = DateToNone(request.POST.get('start18',)), stopdate = DateToNone(request.POST.get('end18',))),
-                            msle_4_10 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen19',), doseperdate = ToFloatMed(request.POST.get('dose19',)), startdate = DateToNone(request.POST.get('start19',)), stopdate = DateToNone(request.POST.get('end19',))),
-                            msle_4_11 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen20',), doseperdate = ToFloatMed(request.POST.get('dose20',)), startdate = DateToNone(request.POST.get('start20',)), stopdate = DateToNone(request.POST.get('end20',))),
-                            mgt_1_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen21',), doseperdate = ToFloatMed(request.POST.get('dose21',)), startdate = DateToNone(request.POST.get('start21',)), stopdate = DateToNone(request.POST.get('end21',))),
-                            mgt_1_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen22',), doseperdate = ToFloatMed(request.POST.get('dose22',)), startdate = DateToNone(request.POST.get('start22',)), stopdate = DateToNone(request.POST.get('end22',))),
-                            mgt_1_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen23',), doseperdate = ToFloatMed(request.POST.get('dose23',)), startdate = DateToNone(request.POST.get('start23',)), stopdate = DateToNone(request.POST.get('end23',))),
-                            mgt_1_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen24',), doseperdate = ToFloatMed(request.POST.get('dose24',)), startdate = DateToNone(request.POST.get('start24',)), stopdate = DateToNone(request.POST.get('end24',))),
-                            mgt_1_5 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen25',), doseperdate = ToFloatMed(request.POST.get('dose25',)), startdate = DateToNone(request.POST.get('start25',)), stopdate = DateToNone(request.POST.get('end25',))),
-                            mgt_2_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen26',), doseperdate = ToFloatMed(request.POST.get('dose26',)), startdate = DateToNone(request.POST.get('start26',)), stopdate = DateToNone(request.POST.get('end26',))),
-                            mgt_2_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen27',), doseperdate = ToFloatMed(request.POST.get('dose27',)), startdate = DateToNone(request.POST.get('start27',)), stopdate = DateToNone(request.POST.get('end27',))),
-                            mgt_2_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen28',), doseperdate = ToFloatMed(request.POST.get('dose28',)), startdate = DateToNone(request.POST.get('start28',)), stopdate = DateToNone(request.POST.get('end28',))),
-                            mgt_2_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen29',), doseperdate = ToFloatMed(request.POST.get('dose29',)), startdate = DateToNone(request.POST.get('start29',)), stopdate = DateToNone(request.POST.get('end29',))),
-                            mgt_3_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen30',), doseperdate = ToFloatMed(request.POST.get('dose30',)), startdate = DateToNone(request.POST.get('start30',)), stopdate = DateToNone(request.POST.get('end30',))),
-                            mgt_3_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen31',), doseperdate = ToFloatMed(request.POST.get('dose31',)), startdate = DateToNone(request.POST.get('start31',)), stopdate = DateToNone(request.POST.get('end31',))),
-                            mgt_3_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen32',), doseperdate = ToFloatMed(request.POST.get('dose32',)), startdate = DateToNone(request.POST.get('start32',)), stopdate = DateToNone(request.POST.get('end32',))),
-                            mgt_4_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen33',), doseperdate = ToFloatMed(request.POST.get('dose33',)), startdate = DateToNone(request.POST.get('start33',)), stopdate = DateToNone(request.POST.get('end33',))),
-                            mgt_4_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen34',), doseperdate = ToFloatMed(request.POST.get('dose34',)), startdate = DateToNone(request.POST.get('start34',)), stopdate = DateToNone(request.POST.get('end34',))),
-                            mgt_4_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen35',), doseperdate = ToFloatMed(request.POST.get('dose35',)), startdate = DateToNone(request.POST.get('start35',)), stopdate = DateToNone(request.POST.get('end35',))),
-                            mgt_4_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloatMed(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',))),
+                            msle_1_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen1',), doseperdate = ToFloat(request.POST.get('dose1',)), startdate = DateToNone(request.POST.get('start1',)), stopdate = DateToNone(request.POST.get('end1',))),
+                            msle_1_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen2',), doseperdate = ToFloat(request.POST.get('dose2',)), startdate = DateToNone(request.POST.get('start2',)), stopdate = DateToNone(request.POST.get('end2',))),
+                            msle_1_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen3',), doseperdate = ToFloat(request.POST.get('dose3',)), startdate = DateToNone(request.POST.get('start3',)), stopdate = DateToNone(request.POST.get('end3',))),
+                            msle_2_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen4',), doseperdate = ToFloat(request.POST.get('dose4',)), startdate = DateToNone(request.POST.get('start4',)), stopdate = DateToNone(request.POST.get('end4',))),
+                            msle_2_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen5',), doseperdate = ToFloat(request.POST.get('dose5',)), startdate = DateToNone(request.POST.get('start5',)), stopdate = DateToNone(request.POST.get('end5',))),
+                            msle_3_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen6',), doseperdate = ToFloat(request.POST.get('dose6',)), startdate = DateToNone(request.POST.get('start6',)), stopdate = DateToNone(request.POST.get('end6',))),
+                            msle_3_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen7',), doseperdate = ToFloat(request.POST.get('dose7',)), startdate = DateToNone(request.POST.get('start7',)), stopdate = DateToNone(request.POST.get('end7',))),
+                            msle_3_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen8',), doseperdate = ToFloat(request.POST.get('dose8',)), startdate = DateToNone(request.POST.get('start8',)), stopdate = DateToNone(request.POST.get('end8',))),
+                            msle_3_4 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen9',), doseperdate = ToFloat(request.POST.get('dose9',)), startdate = DateToNone(request.POST.get('start9',)), stopdate = DateToNone(request.POST.get('end9',))),
+                            msle_4_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen10',), doseperdate = ToFloat(request.POST.get('dose10',)), startdate = DateToNone(request.POST.get('start10',)), stopdate = DateToNone(request.POST.get('end10',))),
+                            msle_4_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen11',), doseperdate = ToFloat(request.POST.get('dose11',)), startdate = DateToNone(request.POST.get('start11',)), stopdate = DateToNone(request.POST.get('end11',))),
+                            msle_4_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen12',), doseperdate = ToFloat(request.POST.get('dose12',)), startdate = DateToNone(request.POST.get('start12',)), stopdate = DateToNone(request.POST.get('end12',))),
+                            msle_4_4 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen13',), doseperdate = ToFloat(request.POST.get('dose13',)), startdate = DateToNone(request.POST.get('start13',)), stopdate = DateToNone(request.POST.get('end13',))),
+                            msle_4_5 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen14',), doseperdate = ToFloat(request.POST.get('dose14',)), startdate = DateToNone(request.POST.get('start14',)), stopdate = DateToNone(request.POST.get('end14',))),
+                            msle_4_6 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen15',), doseperdate = ToFloat(request.POST.get('dose15',)), startdate = DateToNone(request.POST.get('start15',)), stopdate = DateToNone(request.POST.get('end15',))),
+                            msle_4_7 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen16',), doseperdate = ToFloat(request.POST.get('dose16',)), startdate = DateToNone(request.POST.get('start16',)), stopdate = DateToNone(request.POST.get('end16',))),
+                            msle_4_8 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen17',), doseperdate = ToFloat(request.POST.get('dose17',)), startdate = DateToNone(request.POST.get('start17',)), stopdate = DateToNone(request.POST.get('end17',))),
+                            msle_4_9 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen18',), doseperdate = ToFloat(request.POST.get('dose18',)), startdate = DateToNone(request.POST.get('start18',)), stopdate = DateToNone(request.POST.get('end18',))),
+                            msle_4_10 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen19',), doseperdate = ToFloat(request.POST.get('dose19',)), startdate = DateToNone(request.POST.get('start19',)), stopdate = DateToNone(request.POST.get('end19',))),
+                            msle_4_11 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen20',), doseperdate = ToFloat(request.POST.get('dose20',)), startdate = DateToNone(request.POST.get('start20',)), stopdate = DateToNone(request.POST.get('end20',))),
+                            mgt_1_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen21',), doseperdate = ToFloat(request.POST.get('dose21',)), startdate = DateToNone(request.POST.get('start21',)), stopdate = DateToNone(request.POST.get('end21',))),
+                            mgt_1_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen22',), doseperdate = ToFloat(request.POST.get('dose22',)), startdate = DateToNone(request.POST.get('start22',)), stopdate = DateToNone(request.POST.get('end22',))),
+                            mgt_1_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen23',), doseperdate = ToFloat(request.POST.get('dose23',)), startdate = DateToNone(request.POST.get('start23',)), stopdate = DateToNone(request.POST.get('end23',))),
+                            mgt_1_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen24',), doseperdate = ToFloat(request.POST.get('dose24',)), startdate = DateToNone(request.POST.get('start24',)), stopdate = DateToNone(request.POST.get('end24',))),
+                            mgt_1_5 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen25',), doseperdate = ToFloat(request.POST.get('dose25',)), startdate = DateToNone(request.POST.get('start25',)), stopdate = DateToNone(request.POST.get('end25',))),
+                            mgt_2_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen26',), doseperdate = ToFloat(request.POST.get('dose26',)), startdate = DateToNone(request.POST.get('start26',)), stopdate = DateToNone(request.POST.get('end26',))),
+                            mgt_2_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen27',), doseperdate = ToFloat(request.POST.get('dose27',)), startdate = DateToNone(request.POST.get('start27',)), stopdate = DateToNone(request.POST.get('end27',))),
+                            mgt_2_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen28',), doseperdate = ToFloat(request.POST.get('dose28',)), startdate = DateToNone(request.POST.get('start28',)), stopdate = DateToNone(request.POST.get('end28',))),
+                            mgt_2_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen29',), doseperdate = ToFloat(request.POST.get('dose29',)), startdate = DateToNone(request.POST.get('start29',)), stopdate = DateToNone(request.POST.get('end29',))),
+                            mgt_3_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen30',), doseperdate = ToFloat(request.POST.get('dose30',)), startdate = DateToNone(request.POST.get('start30',)), stopdate = DateToNone(request.POST.get('end30',))),
+                            mgt_3_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen31',), doseperdate = ToFloat(request.POST.get('dose31',)), startdate = DateToNone(request.POST.get('start31',)), stopdate = DateToNone(request.POST.get('end31',))),
+                            mgt_3_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen32',), doseperdate = ToFloat(request.POST.get('dose32',)), startdate = DateToNone(request.POST.get('start32',)), stopdate = DateToNone(request.POST.get('end32',))),
+                            mgt_4_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen33',), doseperdate = ToFloat(request.POST.get('dose33',)), startdate = DateToNone(request.POST.get('start33',)), stopdate = DateToNone(request.POST.get('end33',))),
+                            mgt_4_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen34',), doseperdate = ToFloat(request.POST.get('dose34',)), startdate = DateToNone(request.POST.get('start34',)), stopdate = DateToNone(request.POST.get('end34',))),
+                            mgt_4_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen35',), doseperdate = ToFloat(request.POST.get('dose35',)), startdate = DateToNone(request.POST.get('start35',)), stopdate = DateToNone(request.POST.get('end35',))),
+                            mgt_4_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloat(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',))),
                             mgt_other = CheckboxToBool(request.POST.get('ckmgt_other',)))
             FollowMed.save()
             mgt_other = CheckboxToBool(request.POST.get('ckmgt_other',))
@@ -1489,11 +1480,10 @@ def followEditPost(request):
         old_sledai.save()
         
         old_ln = None
-        if CheckboxToBool(request.POST.get('labcheck11', '')) is 'True':
+        if CheckboxToBool(request.POST.get('labcheck011', '')) is 'False':
             if Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid is not None:
                 ln_id = int(Laboratoryinventoryinvestigation.objects.get(visitingid = temp_visitid).lnlabid.lnlabid)
                 if CheckboxToBool(request.POST.get('labcheck011', '')) is 'False':
-                    
                     old_ln = Lnlab.objects.get(lnlabid = ln_id)
                     old_ln.renalbiopsyclass = request.POST.get('renalbiopsyclass', '')
                     old_ln.renalbiopsydate = DateToNone(request.POST.get('renalbiopsydate', ''))
@@ -1521,10 +1511,10 @@ def followEditPost(request):
                     renalbiopsystatus = request.POST.get('RenalShow', ''))
                     old_ln.save()
                 
-        labcheck07 = CheckboxToBool(request.POST.get('labcheck07', ''))
-        labcheck08 = CheckboxToBool(request.POST.get('labcheck08', ''))
-        labcheck09 = CheckboxToBool(request.POST.get('labcheck09', ''))
-        labcheck10 = CheckboxToBool(request.POST.get('labcheck10', ''))
+        labcheck07 = CheckboxToBool(request.POST.get('labcheck007', ''))
+        labcheck08 = CheckboxToBool(request.POST.get('labcheck008', ''))
+        labcheck09 = CheckboxToBool(request.POST.get('labcheck009', ''))
+        labcheck10 = CheckboxToBool(request.POST.get('labcheck010', ''))
         stoolparasite = None
         cxr=None
         ekg=None
@@ -1617,20 +1607,20 @@ def followEditPost(request):
             old_lab.antihbc = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihbc', ''),request.POST.get('antihbc', ''))
             old_lab.antihcv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihcv', ''),request.POST.get('antihcv', ''))
             old_lab.antihiv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihiv', ''),request.POST.get('antihiv', ''))
-            old_lab.anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('anticic', ''))
-            old_lab.il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('il6', ''))
+            old_lab.anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('anticic', ''))
+            old_lab.il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('il6', ''))
             old_lab.mpa = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('mpa', ''))
             old_lab.fk507 = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('fk507', ''))
             old_lab.cyclosporin = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('cyclosporin', ''))
             old_lab.cytokine = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else StringToNone(request.POST.get('ckcytokine', ''),request.POST.get('cytokine', ''))
-            old_lab.l1l4spine_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('l1l4spine_bmd',''))
-            old_lab.l1l4spine_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('l1l4spine_tscore',''))
+            old_lab.l1l4spine_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('l1l4spine_bmd',''))
+            old_lab.l1l4spine_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('l1l4spine_tscore',''))
             old_lab.l1l4spine_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('l1l4spine_date',''))
-            old_lab.hip_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('hip_bmd',''))
-            old_lab.hip_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('hip_tscore',''))
+            old_lab.hip_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('hip_bmd',''))
+            old_lab.hip_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('hip_tscore',''))
             old_lab.hip_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('hip_date',''))
-            old_lab.radius_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('radius_bmd',''))
-            old_lab.radius_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('radius_tscore',''))
+            old_lab.radius_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('radius_bmd',''))
+            old_lab.radius_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('radius_tscore',''))
             old_lab.radius_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('radius_date',''))
             old_lab.stoolparasite = None if CheckboxToBool(request.POST.get('labcheck007',)) is 'True' else stoolparasite
             old_lab.cxr = None if CheckboxToBool(request.POST.get('labcheck008',)) is 'True' else cxr
@@ -1639,76 +1629,76 @@ def followEditPost(request):
             old_lab.save()
         except ObjectDoesNotExist:
             Followlab = Laboratoryinventoryinvestigation(visitingid = old_visiting, studynumber = old_visiting.studynumber, lnlabid = old_ln, visitdate =  request.POST.get('visitdate', ''),
-            hb = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('hb', '')),
-            wbc = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('wbc', '')),
-            n = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('n', '')),
-            l = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('l', '')),
-            platelets = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('platelets', '')),
-            esr = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloatNone(request.POST.get('esr', '')),
-            wbc_hpf1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('wbc_hpf1', '')),
-            rbc_hpf1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('rbc_hpf1', '')),
-            wbccasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('wbccasts1', '')),
-            rbccasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('rbccasts1', '')),
-            granularcasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('granularcasts1', '')),
-            wbc_hpf2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('wbc_hpf2', '')),
-            rbc_hpf2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('rbc_hpf2', '')),
-            wbccasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('wbccasts2', '')),
-            rbccasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('rbccasts2', '')),
-            granularcasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('granularcasts2', '')),
+            hb = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('hb', '')),
+            wbc = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('wbc', '')),
+            n = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('n', '')),
+            l = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('l', '')),
+            platelets = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('platelets', '')),
+            esr = None if CheckboxToBool(request.POST.get('labcheck001',)) is 'True' else ToFloat(request.POST.get('esr', '')),
+            wbc_hpf1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('wbc_hpf1', '')),
+            rbc_hpf1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('rbc_hpf1', '')),
+            wbccasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('wbccasts1', '')),
+            rbccasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('rbccasts1', '')),
+            granularcasts1 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('granularcasts1', '')),
+            wbc_hpf2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('wbc_hpf2', '')),
+            rbc_hpf2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('rbc_hpf2', '')),
+            wbccasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('wbccasts2', '')),
+            rbccasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('rbccasts2', '')),
+            granularcasts2 = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('granularcasts2', '')),
             glucose = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else StringToNone(request.POST.get('ckglucose', ''),request.POST.get('glucose', '')),
             protein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else StringToNone(request.POST.get('ckprotein', ''),request.POST.get('protein', '')),
-            tp_spoturineprotein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('tp_spoturineprotein', '')),
-            cre_spoturinecreatinine = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('cre_spoturinecreatinine', '')),
-            tfhr_urineprotein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('tfhr_urineprotein', '')),
-            tfhr_urinecreatinine = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('tfhr_urinecreatinine', '')),
-            upci = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloatNone(request.POST.get('upci', '')),
-            fbs = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('fbs', '')),
-            hba1c = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('hba1c', '')),
-            bun = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('bun', '')),
-            cr =None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('cr', '')),
-            alp = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('alp', '')),
-            ast = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('ast', '')),
-            alt =None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('alt', '')),
-            ggt = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('ggt', '')),
-            ldh = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('ldh', '')),
-            albumin = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('albumin', '')),
-            tdbilirubin = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else [ToFloatNone(request.POST.get('tdbilirubin1','')),ToFloatNone(request.POST.get('tdbilirubin2', ''))],
-            crp = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('crp', '')),
-            choles = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('choles', '')),
-            tg = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('tg', '')),
-            ldl = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('ldl', '')),
-            hdl = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('hdl', '')),
-            inr = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloatNone(request.POST.get('inr', '')),
-            anti_dsdna = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('anti_dsdna', '')),
+            tp_spoturineprotein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('tp_spoturineprotein', '')),
+            cre_spoturinecreatinine = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('cre_spoturinecreatinine', '')),
+            tfhr_urineprotein = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('tfhr_urineprotein', '')),
+            tfhr_urinecreatinine = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('tfhr_urinecreatinine', '')),
+            upci = None if CheckboxToBool(request.POST.get('labcheck002',)) is 'True' else ToFloat(request.POST.get('upci', '')),
+            fbs = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('fbs', '')),
+            hba1c = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('hba1c', '')),
+            bun = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('bun', '')),
+            cr =None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('cr', '')),
+            alp = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('alp', '')),
+            ast = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('ast', '')),
+            alt =None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('alt', '')),
+            ggt = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('ggt', '')),
+            ldh = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('ldh', '')),
+            albumin = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('albumin', '')),
+            tdbilirubin = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else [ToFloat(request.POST.get('tdbilirubin1','')),ToFloat(request.POST.get('tdbilirubin2', ''))],
+            crp = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('crp', '')),
+            choles = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('choles', '')),
+            tg = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('tg', '')),
+            ldl = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('ldl', '')),
+            hdl = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('hdl', '')),
+            inr = None if CheckboxToBool(request.POST.get('labcheck003',)) is 'True' else ToFloat(request.POST.get('inr', '')),
+            anti_dsdna = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('anti_dsdna', '')),
             antism = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckantism', ''),request.POST.get('antism', '')),
             antirnp = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckantirnp', ''),request.POST.get('antirnp', '')),
             antiro = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckantiro', ''),request.POST.get('antiro', '')),
             antila = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('ckantila', ''),request.POST.get('antila', '')),
-            aca = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('aca', '')),
+            aca = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('aca', '')),
             lupusanticoagulant = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else StringToNone(request.POST.get('cklupusanticoagulant', ''),request.POST.get('lupusanticoagulant', '')),
-            b2gpi = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('b2gpi', '')),
-            c3 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('c3', '')),
-            c4 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('c4', '')),
-            ch50 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('ch50', '')),
+            b2gpi = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('b2gpi', '')),
+            c3 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('c3', '')),
+            c4 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('c4', '')),
+            ch50 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('ch50', '')),
             hbsag = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckhbsag', ''),request.POST.get('hbsag', '')),
             antihbs = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihbs', ''),request.POST.get('antihbs', '')),
             antihbc = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihbc', ''),request.POST.get('antihbc', '')),
             antihcv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihcv', ''),request.POST.get('antihcv', '')),
             antihiv = None if CheckboxToBool(request.POST.get('labcheck005',)) is 'True' else StringToNone(request.POST.get('ckantihiv', ''),request.POST.get('antihiv', '')),
-            anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('anticic', '')),
-            il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloatNone(request.POST.get('il6', '')),
-            mpa = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('mpa', '')),
-            fk507 = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('fk507', '')),
-            cyclosporin = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloatNone(request.POST.get('cyclosporin', '')),
+            anticic = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('anticic', '')),
+            il6 = None if CheckboxToBool(request.POST.get('labcheck004',)) is 'True' else ToFloat(request.POST.get('il6', '')),
+            mpa = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('mpa', '')),
+            fk507 = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('fk507', '')),
+            cyclosporin = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else ToFloat(request.POST.get('cyclosporin', '')),
             cytokine = None if CheckboxToBool(request.POST.get('labcheck005extra',)) is 'True' else StringToNone(request.POST.get('ckcytokine', ''),request.POST.get('cytokine', '')),
-            l1l4spine_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('l1l4spine_bmd','')),
-            l1l4spine_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('l1l4spine_tscore','')),
+            l1l4spine_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('l1l4spine_bmd','')),
+            l1l4spine_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('l1l4spine_tscore','')),
             l1l4spine_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('l1l4spine_date','')),
-            hip_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('hip_bmd','')),
-            hip_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('hip_tscore','')),
+            hip_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('hip_bmd','')),
+            hip_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('hip_tscore','')),
             hip_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('hip_date','')),
-            radius_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('radius_bmd','')),
-            radius_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloatNone(request.POST.get('radius_tscore','')),
+            radius_bmd = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('radius_bmd','')),
+            radius_tscore = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else ToFloat(request.POST.get('radius_tscore','')),
             radius_date = None if CheckboxToBool(request.POST.get('labcheck006',)) is 'True' else DateToNone(request.POST.get('radius_date','')),
             stoolparasite = None if CheckboxToBool(request.POST.get('labcheck007',)) is 'True' else stoolparasite,
             cxr = None if CheckboxToBool(request.POST.get('labcheck008',)) is 'True' else cxr,
@@ -1718,46 +1708,46 @@ def followEditPost(request):
             
         old_med = Medication.objects.get(visitingid = temp_visitid)
         old_med.visitdate =  request.POST.get('visitdate',)
-        old_med.msle_1_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen1',), doseperdate = ToFloatMed(request.POST.get('dose1',)), startdate = DateToNone(request.POST.get('start1',)), stopdate = DateToNone(request.POST.get('end1',)))
-        old_med.msle_1_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen2',), doseperdate = ToFloatMed(request.POST.get('dose2',)), startdate = DateToNone(request.POST.get('start2',)), stopdate = DateToNone(request.POST.get('end2',)))
-        old_med.msle_1_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen3',), doseperdate = ToFloatMed(request.POST.get('dose3',)), startdate = DateToNone(request.POST.get('start3',)), stopdate = DateToNone(request.POST.get('end3',)))
+        old_med.msle_1_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen1',), doseperdate = ToFloat(request.POST.get('dose1',)), startdate = DateToNone(request.POST.get('start1',)), stopdate = DateToNone(request.POST.get('end1',)))
+        old_med.msle_1_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen2',), doseperdate = ToFloat(request.POST.get('dose2',)), startdate = DateToNone(request.POST.get('start2',)), stopdate = DateToNone(request.POST.get('end2',)))
+        old_med.msle_1_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen3',), doseperdate = ToFloat(request.POST.get('dose3',)), startdate = DateToNone(request.POST.get('start3',)), stopdate = DateToNone(request.POST.get('end3',)))
         if request.POST.get('ckmed2',) == 'cq':
-            old_med.msle_2_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen4',), doseperdate = ToFloatMed(request.POST.get('dose4',)), startdate = DateToNone(request.POST.get('start4',)), stopdate = DateToNone(request.POST.get('end4',)))
+            old_med.msle_2_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen4',), doseperdate = ToFloat(request.POST.get('dose4',)), startdate = DateToNone(request.POST.get('start4',)), stopdate = DateToNone(request.POST.get('end4',)))
             old_med.msle_2_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = None, doseperdate = None, startdate = None, stopdate = None)
         else:
             old_med.msle_2_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = None, doseperdate = None, startdate = None, stopdate = None)
-            old_med.msle_2_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen5',), doseperdate = ToFloatMed(request.POST.get('dose5',)), startdate = DateToNone(request.POST.get('start5',)), stopdate = DateToNone(request.POST.get('end5',)))
-        old_med.msle_3_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen6',), doseperdate = ToFloatMed(request.POST.get('dose6',)), startdate = DateToNone(request.POST.get('start6',)), stopdate = DateToNone(request.POST.get('end6',)))
-        old_med.msle_3_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen7',), doseperdate = ToFloatMed(request.POST.get('dose7',)), startdate = DateToNone(request.POST.get('start7',)), stopdate = DateToNone(request.POST.get('end7',)))
-        old_med.msle_3_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen8',), doseperdate = ToFloatMed(request.POST.get('dose8',)), startdate = DateToNone(request.POST.get('start8',)), stopdate = DateToNone(request.POST.get('end8',))),
-        old_med.msle_3_4 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen9',), doseperdate = ToFloatMed(request.POST.get('dose9',)), startdate = DateToNone(request.POST.get('start9',)), stopdate = DateToNone(request.POST.get('end9',)))
-        old_med.msle_4_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen10',), doseperdate = ToFloatMed(request.POST.get('dose10',)), startdate = DateToNone(request.POST.get('start10',)), stopdate = DateToNone(request.POST.get('end10',)))
-        old_med.msle_4_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen11',), doseperdate = ToFloatMed(request.POST.get('dose11',)), startdate = DateToNone(request.POST.get('start11',)), stopdate = DateToNone(request.POST.get('end11',)))
-        old_med.msle_4_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen12',), doseperdate = ToFloatMed(request.POST.get('dose12',)), startdate = DateToNone(request.POST.get('start12',)), stopdate = DateToNone(request.POST.get('end12',)))
-        old_med.msle_4_4 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen13',), doseperdate = ToFloatMed(request.POST.get('dose13',)), startdate = DateToNone(request.POST.get('start13',)), stopdate = DateToNone(request.POST.get('end13',)))
-        old_med.msle_4_5 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen14',), doseperdate = ToFloatMed(request.POST.get('dose14',)), startdate = DateToNone(request.POST.get('start14',)), stopdate = DateToNone(request.POST.get('end14',)))
-        old_med.msle_4_6 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen15',), doseperdate = ToFloatMed(request.POST.get('dose15',)), startdate = DateToNone(request.POST.get('start15',)), stopdate = DateToNone(request.POST.get('end15',)))
-        old_med.msle_4_7 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen16',), doseperdate = ToFloatMed(request.POST.get('dose16',)), startdate = DateToNone(request.POST.get('start16',)), stopdate = DateToNone(request.POST.get('end16',)))
-        old_med.msle_4_8 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen17',), doseperdate = ToFloatMed(request.POST.get('dose17',)), startdate = DateToNone(request.POST.get('start17',)), stopdate = DateToNone(request.POST.get('end17',)))
-        old_med.msle_4_9 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen18',), doseperdate = ToFloatMed(request.POST.get('dose18',)), startdate = DateToNone(request.POST.get('start18',)), stopdate = DateToNone(request.POST.get('end18',)))
-        old_med.msle_4_10 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen19',), doseperdate = ToFloatMed(request.POST.get('dose19',)), startdate = DateToNone(request.POST.get('start19',)), stopdate = DateToNone(request.POST.get('end19',)))
-        old_med.msle_4_11 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen20',), doseperdate = ToFloatMed(request.POST.get('dose20',)), startdate = DateToNone(request.POST.get('start20',)), stopdate = DateToNone(request.POST.get('end20',)))
-        old_med.mgt_1_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen21',), doseperdate = ToFloatMed(request.POST.get('dose21',)), startdate = DateToNone(request.POST.get('start21',)), stopdate = DateToNone(request.POST.get('end21',)))
-        old_med.mgt_1_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen22',), doseperdate = ToFloatMed(request.POST.get('dose22',)), startdate = DateToNone(request.POST.get('start22',)), stopdate = DateToNone(request.POST.get('end22',)))
-        old_med.mgt_1_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen23',), doseperdate = ToFloatMed(request.POST.get('dose23',)), startdate = DateToNone(request.POST.get('start23',)), stopdate = DateToNone(request.POST.get('end23',)))
-        old_med.mgt_1_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen24',), doseperdate = ToFloatMed(request.POST.get('dose24',)), startdate = DateToNone(request.POST.get('start24',)), stopdate = DateToNone(request.POST.get('end24',)))
-        old_med.mgt_1_5 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen25',), doseperdate = ToFloatMed(request.POST.get('dose25',)), startdate = DateToNone(request.POST.get('start25',)), stopdate = DateToNone(request.POST.get('end25',)))
-        old_med.mgt_2_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen26',), doseperdate = ToFloatMed(request.POST.get('dose26',)), startdate = DateToNone(request.POST.get('start26',)), stopdate = DateToNone(request.POST.get('end26',)))
-        old_med.mgt_2_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen27',), doseperdate = ToFloatMed(request.POST.get('dose27',)), startdate = DateToNone(request.POST.get('start27',)), stopdate = DateToNone(request.POST.get('end27',)))
-        old_med.mgt_2_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen28',), doseperdate = ToFloatMed(request.POST.get('dose28',)), startdate = DateToNone(request.POST.get('start28',)), stopdate = DateToNone(request.POST.get('end28',)))
-        old_med.mgt_2_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen29',), doseperdate = ToFloatMed(request.POST.get('dose29',)), startdate = DateToNone(request.POST.get('start29',)), stopdate = DateToNone(request.POST.get('end29',)))
-        old_med.mgt_3_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen30',), doseperdate = ToFloatMed(request.POST.get('dose30',)), startdate = DateToNone(request.POST.get('start30',)), stopdate = DateToNone(request.POST.get('end30',)))
-        old_med.mgt_3_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen31',), doseperdate = ToFloatMed(request.POST.get('dose31',)), startdate = DateToNone(request.POST.get('start31',)), stopdate = DateToNone(request.POST.get('end31',)))
-        old_med.mgt_3_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen32',), doseperdate = ToFloatMed(request.POST.get('dose32',)), startdate = DateToNone(request.POST.get('start32',)), stopdate = DateToNone(request.POST.get('end32',)))
-        old_med.mgt_4_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen33',), doseperdate = ToFloatMed(request.POST.get('dose33',)), startdate = DateToNone(request.POST.get('start33',)), stopdate = DateToNone(request.POST.get('end33',)))
-        old_med.mgt_4_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen34',), doseperdate = ToFloatMed(request.POST.get('dose34',)), startdate = DateToNone(request.POST.get('start34',)), stopdate = DateToNone(request.POST.get('end34',)))
-        old_med.mgt_4_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen35',), doseperdate = ToFloatMed(request.POST.get('dose35',)), startdate = DateToNone(request.POST.get('start35',)), stopdate = DateToNone(request.POST.get('end35',)))
-        old_med.mgt_4_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloatMed(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',)))
+            old_med.msle_2_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen5',), doseperdate = ToFloat(request.POST.get('dose5',)), startdate = DateToNone(request.POST.get('start5',)), stopdate = DateToNone(request.POST.get('end5',)))
+        old_med.msle_3_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen6',), doseperdate = ToFloat(request.POST.get('dose6',)), startdate = DateToNone(request.POST.get('start6',)), stopdate = DateToNone(request.POST.get('end6',)))
+        old_med.msle_3_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen7',), doseperdate = ToFloat(request.POST.get('dose7',)), startdate = DateToNone(request.POST.get('start7',)), stopdate = DateToNone(request.POST.get('end7',)))
+        old_med.msle_3_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen8',), doseperdate = ToFloat(request.POST.get('dose8',)), startdate = DateToNone(request.POST.get('start8',)), stopdate = DateToNone(request.POST.get('end8',))),
+        old_med.msle_3_4 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen9',), doseperdate = ToFloat(request.POST.get('dose9',)), startdate = DateToNone(request.POST.get('start9',)), stopdate = DateToNone(request.POST.get('end9',)))
+        old_med.msle_4_1 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen10',), doseperdate = ToFloat(request.POST.get('dose10',)), startdate = DateToNone(request.POST.get('start10',)), stopdate = DateToNone(request.POST.get('end10',)))
+        old_med.msle_4_2 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen11',), doseperdate = ToFloat(request.POST.get('dose11',)), startdate = DateToNone(request.POST.get('start11',)), stopdate = DateToNone(request.POST.get('end11',)))
+        old_med.msle_4_3 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen12',), doseperdate = ToFloat(request.POST.get('dose12',)), startdate = DateToNone(request.POST.get('start12',)), stopdate = DateToNone(request.POST.get('end12',)))
+        old_med.msle_4_4 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen13',), doseperdate = ToFloat(request.POST.get('dose13',)), startdate = DateToNone(request.POST.get('start13',)), stopdate = DateToNone(request.POST.get('end13',)))
+        old_med.msle_4_5 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen14',), doseperdate = ToFloat(request.POST.get('dose14',)), startdate = DateToNone(request.POST.get('start14',)), stopdate = DateToNone(request.POST.get('end14',)))
+        old_med.msle_4_6 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen15',), doseperdate = ToFloat(request.POST.get('dose15',)), startdate = DateToNone(request.POST.get('start15',)), stopdate = DateToNone(request.POST.get('end15',)))
+        old_med.msle_4_7 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen16',), doseperdate = ToFloat(request.POST.get('dose16',)), startdate = DateToNone(request.POST.get('start16',)), stopdate = DateToNone(request.POST.get('end16',)))
+        old_med.msle_4_8 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen17',), doseperdate = ToFloat(request.POST.get('dose17',)), startdate = DateToNone(request.POST.get('start17',)), stopdate = DateToNone(request.POST.get('end17',)))
+        old_med.msle_4_9 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen18',), doseperdate = ToFloat(request.POST.get('dose18',)), startdate = DateToNone(request.POST.get('start18',)), stopdate = DateToNone(request.POST.get('end18',)))
+        old_med.msle_4_10 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen19',), doseperdate = ToFloat(request.POST.get('dose19',)), startdate = DateToNone(request.POST.get('start19',)), stopdate = DateToNone(request.POST.get('end19',)))
+        old_med.msle_4_11 = None if CheckboxToBool(request.POST.get('ckmedi001',)) is 'True' else Medicationtype(generic = request.POST.get('gen20',), doseperdate = ToFloat(request.POST.get('dose20',)), startdate = DateToNone(request.POST.get('start20',)), stopdate = DateToNone(request.POST.get('end20',)))
+        old_med.mgt_1_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen21',), doseperdate = ToFloat(request.POST.get('dose21',)), startdate = DateToNone(request.POST.get('start21',)), stopdate = DateToNone(request.POST.get('end21',)))
+        old_med.mgt_1_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen22',), doseperdate = ToFloat(request.POST.get('dose22',)), startdate = DateToNone(request.POST.get('start22',)), stopdate = DateToNone(request.POST.get('end22',)))
+        old_med.mgt_1_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen23',), doseperdate = ToFloat(request.POST.get('dose23',)), startdate = DateToNone(request.POST.get('start23',)), stopdate = DateToNone(request.POST.get('end23',)))
+        old_med.mgt_1_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen24',), doseperdate = ToFloat(request.POST.get('dose24',)), startdate = DateToNone(request.POST.get('start24',)), stopdate = DateToNone(request.POST.get('end24',)))
+        old_med.mgt_1_5 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen25',), doseperdate = ToFloat(request.POST.get('dose25',)), startdate = DateToNone(request.POST.get('start25',)), stopdate = DateToNone(request.POST.get('end25',)))
+        old_med.mgt_2_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen26',), doseperdate = ToFloat(request.POST.get('dose26',)), startdate = DateToNone(request.POST.get('start26',)), stopdate = DateToNone(request.POST.get('end26',)))
+        old_med.mgt_2_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen27',), doseperdate = ToFloat(request.POST.get('dose27',)), startdate = DateToNone(request.POST.get('start27',)), stopdate = DateToNone(request.POST.get('end27',)))
+        old_med.mgt_2_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen28',), doseperdate = ToFloat(request.POST.get('dose28',)), startdate = DateToNone(request.POST.get('start28',)), stopdate = DateToNone(request.POST.get('end28',)))
+        old_med.mgt_2_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen29',), doseperdate = ToFloat(request.POST.get('dose29',)), startdate = DateToNone(request.POST.get('start29',)), stopdate = DateToNone(request.POST.get('end29',)))
+        old_med.mgt_3_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen30',), doseperdate = ToFloat(request.POST.get('dose30',)), startdate = DateToNone(request.POST.get('start30',)), stopdate = DateToNone(request.POST.get('end30',)))
+        old_med.mgt_3_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen31',), doseperdate = ToFloat(request.POST.get('dose31',)), startdate = DateToNone(request.POST.get('start31',)), stopdate = DateToNone(request.POST.get('end31',)))
+        old_med.mgt_3_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen32',), doseperdate = ToFloat(request.POST.get('dose32',)), startdate = DateToNone(request.POST.get('start32',)), stopdate = DateToNone(request.POST.get('end32',)))
+        old_med.mgt_4_1 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen33',), doseperdate = ToFloat(request.POST.get('dose33',)), startdate = DateToNone(request.POST.get('start33',)), stopdate = DateToNone(request.POST.get('end33',)))
+        old_med.mgt_4_2 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen34',), doseperdate = ToFloat(request.POST.get('dose34',)), startdate = DateToNone(request.POST.get('start34',)), stopdate = DateToNone(request.POST.get('end34',)))
+        old_med.mgt_4_3 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen35',), doseperdate = ToFloat(request.POST.get('dose35',)), startdate = DateToNone(request.POST.get('start35',)), stopdate = DateToNone(request.POST.get('end35',)))
+        old_med.mgt_4_4 = None if CheckboxToBool(request.POST.get('ckmedi002',)) is 'True' else Medicationtype(generic = request.POST.get('gen36',), doseperdate = ToFloat(request.POST.get('dose36',)), startdate = DateToNone(request.POST.get('start36',)), stopdate = DateToNone(request.POST.get('end36',)))
         old_med.mgt_other = CheckboxToBool(request.POST.get('ckmgt_other',))
         old_med.save()
         

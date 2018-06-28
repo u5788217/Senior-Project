@@ -15,49 +15,29 @@
         });
         //Hide-show clinical presentation
         $(document).ready(function(){
-            $('#cpcheck01').on('ifChecked', function(){$("#cptr01").removeAttr('class');$("#cptr001").prop('disabled', true);});
-            $('#cpcheck01').on('ifUnchecked', function(){$("#cptr01").addClass("disabledbutton");$("#cptr001").prop('disabled', false);});
-            $('#cptr001').on('ifChecked', function(){$("#cpcheck01").prop('disabled', true);});
-            $('#cptr001').on('ifUnchecked', function(){$("#cpcheck01").prop('disabled', false);});
-            $('#cpcheck02').on('ifChecked', function(){$("#cptr02").removeAttr('class');$("#cptr002").prop('disabled', true);});
-            $('#cpcheck02').on('ifUnchecked', function(){$("#cptr02").addClass("disabledbutton");$("#cptr002").prop('disabled', false);});
-            $('#cptr002').on('ifChecked', function(){$("#cpcheck02").prop('disabled', true);});
-            $('#cptr002').on('ifUnchecked', function(){$("#cpcheck02").prop('disabled', false);});
-            $('#cpcheck03').on('ifChecked', function(){$("#cptr03").removeAttr('class');$("#cptr003").prop('disabled', true);});
-            $('#cpcheck03').on('ifUnchecked', function(){$("#cptr03").addClass("disabledbutton");$("#cptr003").prop('disabled', false);});
-            $('#cptr003').on('ifChecked', function(){$("#cpcheck03").prop('disabled', true);});
-            $('#cptr003').on('ifUnchecked', function(){$("#cpcheck03").prop('disabled', false);});
-            $('#cpcheck04').on('ifChecked', function(){$("#cptr04").removeAttr('class');$("#cptr004").prop('disabled', true);});
-            $('#cpcheck04').on('ifUnchecked', function(){$("#cptr04").addClass("disabledbutton");$("#cptr004").prop('disabled', false);});
-            $('#cptr004').on('ifChecked', function(){$("#cpcheck04").prop('disabled', true);});
-            $('#cptr004').on('ifUnchecked', function(){$("#cpcheck04").prop('disabled', false);});
-            $('#cpcheck05').on('ifChecked', function(){$("#cptr05").removeAttr('class');$("#cptr005").prop('disabled', true);});
-            $('#cpcheck05').on('ifUnchecked', function(){$("#cptr05").addClass("disabledbutton");$("#cptr005").prop('disabled', false);});
-            $('#cptr005').on('ifChecked', function(){$("#cpcheck05").prop('disabled', true);});
-            $('#cptr005').on('ifUnchecked', function(){$("#cpcheck05").prop('disabled', false);});
-            $('#cpcheck06').on('ifChecked', function(){$("#cptr06").removeAttr('class');$("#cptr006").prop('disabled', true);});
-            $('#cpcheck06').on('ifUnchecked', function(){$("#cptr06").addClass("disabledbutton");$("#cptr006").prop('disabled', false);});
-            $('#cptr006').on('ifChecked', function(){$("#cpcheck06").prop('disabled', true);});
-            $('#cptr006').on('ifUnchecked', function(){$("#cpcheck06").prop('disabled', false);});
-            $('#cpcheck07').on('ifChecked', function(){$("#cptr07").removeAttr('class');$("#cptr007").prop('disabled', true);});
-            $('#cpcheck07').on('ifUnchecked', function(){$("#cptr07").addClass("disabledbutton");$("#cptr007").prop('disabled', false);});
-            $('#cptr007').on('ifChecked', function(){$("#cpcheck07").prop('disabled', true);});
-            $('#cptr007').on('ifUnchecked', function(){$("#cpcheck07").prop('disabled', false);});
+            $('#cpcheck01').on('ifChecked', function(){$("#cptr01").removeAttr('class');});
+            $('#cptr001').on('ifChecked', function(){$("#cptr01").addClass("disabledbutton");});
+            $('#cpcheck02').on('ifChecked', function(){$("#cptr02").removeAttr('class');});
+            $('#cptr002').on('ifChecked', function(){$("#cptr02").addClass("disabledbutton");});
+            $('#cpcheck03').on('ifChecked', function(){$("#cptr03").removeAttr('class');});
+            $('#cptr003').on('ifChecked', function(){$("#cptr03").addClass("disabledbutton");});
+            $('#cpcheck04').on('ifChecked', function(){$("#cptr04").removeAttr('class');});
+            $('#cptr004').on('ifChecked', function(){$("#cptr04").addClass("disabledbutton");});
+            $('#cpcheck05').on('ifChecked', function(){$("#cptr05").removeAttr('class');});
+            $('#cptr005').on('ifChecked', function(){$("#cptr05").addClass("disabledbutton");});
+            $('#cpcheck06').on('ifChecked', function(){$("#cptr06").removeAttr('class');});
+            $('#cptr006').on('ifChecked', function(){$("#cptr06").addClass("disabledbutton");});
+            $('#cpcheck07').on('ifChecked', function(){$("#cptr07").removeAttr('class');});
+            $('#cptr007').on('ifChecked', function(){$("#cptr07").addClass("disabledbutton");});
         });
         //Hide-show SLEDAI
         $(document).ready(function(){
-            $('#sledaicheck01').on('ifChecked', function(){$("#sledaitr01").removeAttr('class');$("#sledaicheck001").prop('disabled', true);});
-            $('#sledaicheck01').on('ifUnchecked', function(){$("#sledaitr01").addClass("disabledbutton");$("#sledaicheck001").prop('disabled', false);});
-            $('#sledaicheck001').on('ifChecked', function(){$("#sledaicheck01").prop('disabled', true);});
-            $('#sledaicheck001').on('ifUnchecked', function(){$("#sledaicheck01").prop('disabled', false);});
-            $('#sledaicheck02').on('ifChecked', function(){$("#sledaitr02").removeAttr('class');$("#sledaicheck002").prop('disabled', true);});
-            $('#sledaicheck02').on('ifUnchecked', function(){$("#sledaitr02").addClass("disabledbutton");$("#sledaicheck002").prop('disabled', false);});
-            $('#sledaicheck002').on('ifChecked', function(){$("#sledaicheck02").prop('disabled', true);});
-            $('#sledaicheck002').on('ifUnchecked', function(){$("#sledaicheck02").prop('disabled', false);});
-            $('#sledaicheck03').on('ifChecked', function(){$("#sledaitr03, #sledaitr04, #sledaitr05, #sledaitr06, #sledaitr07").removeAttr('class');$("#sledaicheck003").prop('disabled', true);});
-            $('#sledaicheck03').on('ifUnchecked', function(){$("#sledaitr03, #sledaitr04, #sledaitr05, #sledaitr06, #sledaitr07").addClass("disabledbutton");$("#sledaicheck003").prop('disabled', false);});
-            $('#sledaicheck003').on('ifChecked', function(){$("#sledaicheck03").prop('disabled', true);});
-            $('#sledaicheck003').on('ifUnchecked', function(){$("#sledaicheck03").prop('disabled', false);});
+            $('#sledaicheck01').on('ifChecked', function(){$("#sledaitr01").removeAttr('class');});
+            $('#sledaicheck001').on('ifChecked', function(){$("#sledaitr01").addClass("disabledbutton");});
+            $('#sledaicheck02').on('ifChecked', function(){$("#sledaitr02").removeAttr('class');});
+            $('#sledaicheck002').on('ifChecked', function(){$("#sledaitr02").addClass("disabledbutton");});
+            $('#sledaicheck03').on('ifChecked', function(){$("#sledaitr03, #sledaitr04, #sledaitr05, #sledaitr06, #sledaitr07").removeAttr('class');});
+            $('#sledaicheck003').on('ifChecked', function(){$("#sledaitr03, #sledaitr04, #sledaitr05, #sledaitr06, #sledaitr07").addClass("disabledbutton");});
         });
         //Calculate SLEDAI score
         $(document).ready(function(){
@@ -145,10 +125,8 @@
         });
         //Hide-show SLICC
         $(document).ready(function(){
-            $('#slicccheck01').on('ifChecked', function(){$("#slicctr01, #slicctr02, #slicctr03, #slicctr04").removeAttr('class');$("#slicccheck001").prop('disabled', true);});
-            $('#slicccheck01').on('ifUnchecked', function(){$("#slicctr01, #slicctr02, #slicctr03, #slicctr04").addClass("disabledbutton");$("#slicccheck001").prop('disabled', false);});
-            $('#slicccheck001').on('ifChecked', function(){$("#slicccheck01").prop('disabled', true);});
-            $('#slicccheck001').on('ifUnchecked', function(){$("#slicccheck01").prop('disabled', false);});
+            $('#slicccheck01').on('ifChecked', function(){$("#slicctr01, #slicctr02, #slicctr03, #slicctr04").removeAttr('class');});
+            $('#slicccheck001').on('ifChecked', function(){$("#slicctr01, #slicctr02, #slicctr03, #slicctr04").addClass("disabledbutton");});
         });
         //Calculate SLICC score
         $(document).ready(function(){
@@ -290,54 +268,30 @@
         });
         //Hide-show Lab
         $(document).ready(function(){
-            $('#labcheck01').on('ifChecked', function(){$("#labtr01").removeAttr('class');$("#labcheck001").prop('disabled', true);});
-            $('#labcheck01').on('ifUnchecked', function(){$("#labtr01").addClass("disabledbutton");$("#labcheck001").prop('disabled', false);});
-            $('#labcheck001').on('ifChecked', function(){$("#labcheck01").prop('disabled', true);});
-            $('#labcheck001').on('ifUnchecked', function(){$("#labcheck01").prop('disabled', false);});
-            $('#labcheck02').on('ifChecked', function(){$("#labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").removeAttr('class');$("#labcheck002").prop('disabled', true);});
-            $('#labcheck02').on('ifUnchecked', function(){$("#labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").addClass("disabledbutton");$("#labcheck002").prop('disabled', false);});
-            $('#labcheck002').on('ifChecked', function(){$("#labcheck02").prop('disabled', true);});
-            $('#labcheck002').on('ifUnchecked', function(){$("#labcheck02").prop('disabled', false);});
-            $('#labcheck03').on('ifChecked', function(){$("#labtr03").removeAttr('class');$("#labcheck003").prop('disabled', true);});
-            $('#labcheck03').on('ifUnchecked', function(){$("#labtr03").addClass("disabledbutton");$("#labcheck003").prop('disabled', false);});
-            $('#labcheck003').on('ifChecked', function(){$("#labcheck03").prop('disabled', true);});
-            $('#labcheck003').on('ifUnchecked', function(){$("#labcheck03").prop('disabled', false);});
-            $('#labcheck04').on('ifChecked', function(){$("#labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").removeAttr('class');$("#labcheck004").prop('disabled', true);});
-            $('#labcheck04').on('ifUnchecked', function(){$("#labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").addClass("disabledbutton");$("#labcheck004").prop('disabled', false);});
-            $('#labcheck004').on('ifChecked', function(){$("#labcheck04").prop('disabled', true);});
-            $('#labcheck004').on('ifUnchecked', function(){$("#labcheck04").prop('disabled', false);});
-            $('#labcheck05').on('ifChecked', function(){$("#labtd05").removeAttr('class');$("#labcheck005").prop('disabled', true);});
-            $('#labcheck05').on('ifUnchecked', function(){$("#labtd05").addClass("disabledbutton");$("#labcheck005").prop('disabled', false);});
-            $('#labcheck005').on('ifChecked', function(){$("#labcheck05").prop('disabled', true);});
-            $('#labcheck005').on('ifUnchecked', function(){$("#labcheck05").prop('disabled', false);});
-            $('#labcheck05extra').on('ifChecked', function(){$("#labtr05extra").removeAttr('class');$("#labcheck005extra").prop('disabled', true);});
-            $('#labcheck05extra').on('ifUnchecked', function(){$("#labtr05extra").addClass("disabledbutton");$("#labcheck005extra").prop('disabled', false);});
-            $('#labcheck005extra').on('ifChecked', function(){$("#labcheck05extra").prop('disabled', true);});
-            $('#labcheck005extra').on('ifUnchecked', function(){$("#labcheck05extra").prop('disabled', false);});
-            $('#labcheck06').on('ifChecked', function(){$("#labtr06").removeAttr('class');$("#labcheck006").prop('disabled', true);});
-            $('#labcheck06').on('ifUnchecked', function(){$("#labtr06").addClass("disabledbutton");$("#labcheck006").prop('disabled', false);});
-            $('#labcheck006').on('ifChecked', function(){$("#labcheck06").prop('disabled', true);});
-            $('#labcheck006').on('ifUnchecked', function(){$("#labcheck06").prop('disabled', false);});
-            $('#labcheck07').on('ifChecked', function(){$("#labtd07").removeAttr('class');$("#labcheck007").prop('disabled', true);});
-            $('#labcheck07').on('ifUnchecked', function(){$("#labtd07").addClass("disabledbutton");$("#labcheck007").prop('disabled', false);});
-            $('#labcheck007').on('ifChecked', function(){$("#labcheck07").prop('disabled', true);});
-            $('#labcheck007').on('ifUnchecked', function(){$("#labcheck07").prop('disabled', false);});
-            $('#labcheck08').on('ifChecked', function(){$("#labtd08").removeAttr('class');$("#labcheck008").prop('disabled', true);});
-            $('#labcheck08').on('ifUnchecked', function(){$("#labtd08").addClass("disabledbutton");$("#labcheck008").prop('disabled', false);});
-            $('#labcheck008').on('ifChecked', function(){$("#labcheck08").prop('disabled', true);});
-            $('#labcheck008').on('ifUnchecked', function(){$("#labcheck08").prop('disabled', false);});
-            $('#labcheck09').on('ifChecked', function(){$("#labtd09").removeAttr('class');$("#labcheck009").prop('disabled', true);});
-            $('#labcheck09').on('ifUnchecked', function(){$("#labtd09").addClass("disabledbutton");$("#labcheck009").prop('disabled', false);});
-            $('#labcheck009').on('ifChecked', function(){$("#labcheck09").prop('disabled', true);});
-            $('#labcheck009').on('ifUnchecked', function(){$("#labcheck09").prop('disabled', false);});
-            $('#labcheck10').on('ifChecked', function(){$("#labtd10").removeAttr('class');$("#labcheck010").prop('disabled', true);});
-            $('#labcheck10').on('ifUnchecked', function(){$("#labtd10").addClass("disabledbutton");$("#labcheck010").prop('disabled', false);});
-            $('#labcheck010').on('ifChecked', function(){$("#labcheck10").prop('disabled', true);});
-            $('#labcheck010').on('ifUnchecked', function(){$("#labcheck10").prop('disabled', false);});
-            $('#labcheck11').on('ifChecked', function(){$("#labtr11").removeAttr('class');$("#labcheck011").prop('disabled', true);});
-            $('#labcheck11').on('ifUnchecked', function(){$("#labtr11").addClass("disabledbutton");$("#labcheck011").prop('disabled', false);});
-            $('#labcheck011').on('ifChecked', function(){$("#labcheck11").prop('disabled', true);});
-            $('#labcheck011').on('ifUnchecked', function(){$("#labcheck11").prop('disabled', false);});
+            $('#labcheck01').on('ifChecked', function(){$("#labtr01").removeAttr('class');});
+            $('#labcheck001').on('ifChecked', function(){$("#labtr01").addClass("disabledbutton");});
+            $('#labcheck02').on('ifChecked', function(){$("#labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").removeAttr('class');});
+            $('#labcheck002').on('ifChecked', function(){$("#labtr02_0,#labtr02_1,#labtr02_2,#labtr02_3,#labtr02_4").addClass("disabledbutton");});
+            $('#labcheck03').on('ifChecked', function(){$("#labtr03").removeAttr('class');});
+            $('#labcheck003').on('ifChecked', function(){$("#labtr03").addClass("disabledbutton");});
+            $('#labcheck04').on('ifChecked', function(){$("#labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").removeAttr('class');});
+            $('#labcheck004').on('ifChecked', function(){$("#labtd04_0,#labtd04_1,#labtd04_2,#labtd04_3").addClass("disabledbutton");});
+            $('#labcheck05').on('ifChecked', function(){$("#labtd05").removeAttr('class');});
+            $('#labcheck005').on('ifChecked', function(){$("#labtd05").addClass("disabledbutton");});
+            $('#labcheck05extra').on('ifChecked', function(){$("#labtr05extra").removeAttr('class');});
+            $('#labcheck005extra').on('ifChecked', function(){$("#labtr05extra").addClass("disabledbutton");});
+            $('#labcheck06').on('ifChecked', function(){$("#labtr06").removeAttr('class');});
+            $('#labcheck006').on('ifChecked', function(){$("#labtr06").addClass("disabledbutton");});
+            $('#labcheck07').on('ifChecked', function(){$("#labtd07").removeAttr('class');});
+            $('#labcheck007').on('ifChecked', function(){$("#labtd07").addClass("disabledbutton");});
+            $('#labcheck08').on('ifChecked', function(){$("#labtd08").removeAttr('class');});
+            $('#labcheck008').on('ifChecked', function(){$("#labtd08").addClass("disabledbutton");});
+            $('#labcheck09').on('ifChecked', function(){$("#labtd09").removeAttr('class');});
+            $('#labcheck009').on('ifChecked', function(){$("#labtd09").addClass("disabledbutton");});
+            $('#labcheck10').on('ifChecked', function(){$("#labtd10").removeAttr('class');});
+            $('#labcheck010').on('ifChecked', function(){$("#labtd10").addClass("disabledbutton");});
+            $('#labcheck11').on('ifChecked', function(){$("#labtr11").removeAttr('class');});
+            $('#labcheck011').on('ifChecked', function(){$("#labtr11").addClass("disabledbutton");});
         });
         //Check lab
         $(document).ready(function(){
@@ -374,14 +328,10 @@
         });
         //Hide-show Med
         $(document).ready(function(){
-            $('#ckmedi1').on('ifChecked', function(){$("#medi1").removeAttr('class');$("#ckmedi001").prop('disabled', true);});
-            $('#ckmedi1').on('ifUnchecked', function(){$("#medi1").addClass("disabledbutton");$("#ckmedi001").prop('disabled', false);});
-            $('#ckmedi001').on('ifChecked', function(){$("#ckmedi1").prop('disabled', true);});
-            $('#ckmedi001').on('ifUnchecked', function(){$("#ckmedi1").prop('disabled', false);});
-            $('#ckmedi2').on('ifChecked', function(){$("#medi2").removeAttr('class');$("#ckmedi002").prop('disabled', true);});
-            $('#ckmedi2').on('ifUnchecked', function(){$("#medi2").addClass("disabledbutton");$("#ckmedi002").prop('disabled', false);});
-            $('#ckmedi002').on('ifChecked', function(){$("#ckmedi2").prop('disabled', true);});
-            $('#ckmedi002').on('ifUnchecked', function(){$("#ckmedi2").prop('disabled', false);});
+            $('#ckmedi1').on('ifChecked', function(){$("#medi1").removeAttr('class');});
+            $('#ckmedi001').on('ifChecked', function(){$("#medi1").addClass("disabledbutton");});
+            $('#ckmedi2').on('ifChecked', function(){$("#medi2").removeAttr('class');});
+            $('#ckmedi002').on('ifChecked', function(){$("#medi2").addClass("disabledbutton");});
             
             $('#ckmed1').on('ifChecked', function(){$("#dose1").prop('disabled', false);});
             $('#ckmed1').on('ifUnchecked', function(){$("#dose1").prop('disabled', true);});
@@ -682,10 +632,10 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="col-md-8" class="text-center" align="center"> 1. Constitutional Symptoms</td>
-                                                                <td class="col-md-4" align="center">
-                                                                    <input type="checkbox" id="cpcheck01" required> มีข้อมูล  &nbsp;&nbsp;
-                                                                    <input type="checkbox" name="cpcheck001" id="cptr001" required> ไม่มีข้อมูล
+                                                                <td class="col-md-8" class="text-center" align="left"> 1. Constitutional Symptoms</td>
+                                                                <td class="col-md-4" align="right">
+                                                                    <input type="radio" name="cpcheck001" id="cpcheck01" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="cpcheck001" id="cptr001" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr id="cptr01" class="disabledbutton">
@@ -706,10 +656,10 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="col-md-6" class="text-center" align="center"> 2. Skin & mucous membrane</td>
-                                                                <td class="col-md-6" align="center">
-                                                                    <input type="checkbox" id="cpcheck02" required> มีข้อมูล  &nbsp;&nbsp;
-                                                                    <input type="checkbox" name="cpcheck002" id="cptr002" required> ไม่มีข้อมูล
+                                                                <td class="col-md-6" class="text-center" align="left"> 2. Skin & mucous membrane</td>
+                                                                <td class="col-md-6" align="right">
+                                                                    <input type="radio" name="cpcheck002" id="cpcheck02" value="0" required > มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="cpcheck002" id="cptr002" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr id="cptr02" class="disabledbutton">
@@ -760,10 +710,10 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="col-md-8" class="text-center" align="center" colspan="2"> 3. Cardiopulmonary involvement</td>
-                                                                <td class="col-md-4" align="center">
-                                                                    <input type="checkbox" id="cpcheck03" required> มีข้อมูล  &nbsp;&nbsp;
-                                                                    <input type="checkbox" name="cpcheck003" id="cptr003" required> ไม่มีข้อมูล
+                                                                <td class="col-md-8" class="text-center" align="left" colspan="2"> 3. Cardiopulmonary involvement</td>
+                                                                <td class="col-md-4" align="right">
+                                                                    <input type="radio" name="cpcheck003" id="cpcheck03" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="cpcheck003" id="cptr003" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr id="cptr03" class="disabledbutton">
@@ -789,10 +739,10 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="col-md-6" class="text-center" align="center" colspan="2">4. GI & Renal involvement</td>
-                                                                <td class="col-md-6" align="center">
-                                                                    <input type="checkbox" id="cpcheck04" required> มีข้อมูล  &nbsp;&nbsp;
-                                                                    <input type="checkbox" name="cpcheck004" id="cptr004" required> ไม่มีข้อมูล
+                                                                <td class="col-md-6" class="text-center" align="left" colspan="2">4. GI & Renal involvement</td>
+                                                                <td class="col-md-6" align="right">
+                                                                    <input type="radio" name="cpcheck004" id="cpcheck04" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="cpcheck004" id="cptr004" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr id="cptr04" class="disabledbutton">
@@ -823,10 +773,10 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="col-md-8" class="text-center" align="center">5. Hematologic disorder</td>
-                                                                <td class="col-md-4" align="center">
-                                                                    <input type="checkbox" id="cpcheck05" required> มีข้อมูล  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="cpcheck005" id="cptr005" required> ไม่มีข้อมูล
+                                                                <td class="col-md-8" class="text-center" align="left">5. Hematologic disorder</td>
+                                                                <td class="col-md-4" align="right">
+                                                                    <input type="radio" name="cpcheck005" id="cpcheck05" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="cpcheck005" id="cptr005" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr id="cptr05" class="disabledbutton">
@@ -849,10 +799,10 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="col-md-6" class="text-center" align="center" colspan="2">6. Neurological involvement</td>
-                                                                <td class="col-md-6" align="center">
-                                                                    <input type="checkbox" id="cpcheck06" required> มีข้อมูล  &nbsp;&nbsp;
-                                                                    <input type="checkbox" name="cpcheck006" id="cptr006" required> ไม่มีข้อมูล
+                                                                <td class="col-md-6" class="text-center" align="left" colspan="2">6. Neurological involvement</td>
+                                                                <td class="col-md-6" align="right">
+                                                                    <input type="radio" name="cpcheck006" id="cpcheck06" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="cpcheck006" id="cptr006" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr id="cptr06" class="disabledbutton">
@@ -880,10 +830,10 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tbody>
                                                             <tr scope="row">
-                                                                <td class="col-md-8" class="text-center" align="center"> 7. Musculoskeletal & LN involvement</td>
-                                                                <td class="col-md-4" align="center">
-                                                                    <input type="checkbox" id="cpcheck07" required> มีข้อมูล  &nbsp;&nbsp;
-                                                                    <input type="checkbox" name="cpcheck007" id="cptr007" required> ไม่มีข้อมูล
+                                                                <td class="col-md-8" class="text-center" align="left"> 7. Musculoskeletal & LN involvement</td>
+                                                                <td class="col-md-4" align="right">
+                                                                    <input type="radio" name="cpcheck007" id="cpcheck07" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="cpcheck007" id="cptr007" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr id="cptr07" class="disabledbutton">
@@ -916,8 +866,8 @@
                                                             <tr><td colspan="4" class="row" align="center" style="background-color: #FBFBFB;"> Physicians Global Assessment</td></tr>
                                                             <tr>
                                                                 <td colspan="4" align="center" style="background-color: #FBFBFB;">
-                                                                    <input type="checkbox" id="sledaicheck01" required> มีข้อมูล  &nbsp;&nbsp;
-                                                                    <input type="checkbox" name="sledaicheck001" id="sledaicheck001" required> ไม่มีข้อมูล
+                                                                    <input type="radio" name="sledaicheck001" id="sledaicheck01" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="sledaicheck001" id="sledaicheck001" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -959,8 +909,8 @@
                                                             <tr align="center" style="background-color: #FBFBFB;"><td colspan="3" class="row">Patient's Status</td></tr>
                                                             <tr align="center" style="background-color: #FBFBFB;">
                                                                 <td colspan="3">
-                                                                    <input type="checkbox" id="sledaicheck02" required> มีข้อมูล  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="sledaicheck002" id="sledaicheck002" required> ไม่มีข้อมูล
+                                                                    <input type="radio" name="sledaicheck002" id="sledaicheck02" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="sledaicheck002" id="sledaicheck002" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1005,8 +955,8 @@
                                                             <tr align="center"  style="background-color: #FBFBFB;">
                                                                 <td colspan="2" class="row" >Systemic Lupus Erythematosus Disease Activity Index(SLEDAI) criteria</td>
                                                                 <td colspan="1">
-                                                                    <input type="checkbox" id="sledaicheck03" required> มีข้อมูล  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="sledaicheck003" id="sledaicheck003" required> ไม่มีข้อมูล
+                                                                    <input type="radio" name="sledaicheck003" id="sledaicheck03" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                                    <input type="radio" name="sledaicheck003" id="sledaicheck003" value="1"> ไม่มีข้อมูล
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1205,8 +1155,8 @@
                                                         <tr style="background-color: #FBFBFB;">
                                                             <td colspan="2" class="row" align="center" >Systemic Lupus International Collaborating Clinics(SLICC) criteria</td>
                                                             <td align="center">
-                                                                <input type="checkbox" id="slicccheck01" required> มีข้อมูล  &nbsp;&nbsp;
-                                                                <input type="checkbox" name="slicccheck001" id="slicccheck001" required> ไม่มีข้อมูล
+                                                                <input type="radio" name="slicccheck001" id="slicccheck01" value="0" required > มีข้อมูล&nbsp;&nbsp;
+                                                                <input type="radio" name="slicccheck001" id="slicccheck001" value="1"> ไม่มีข้อมูล
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -1482,10 +1432,10 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr scope="row" align="center" style="background-color: #FBFBFB;">
-                                                                <td colspan="1" class="text-center"> 1. CBC </td>
-                                                                <td colspan="2" align="center">
-                                                                    <input type="checkbox" id="labcheck01" required> มีผลแลป  &nbsp;&nbsp;
-                                                                    <input type="checkbox" name="labcheck001" id="labcheck001" required> ไม่ส่งผลแลป
+                                                                <td colspan="1" class="text-center" align="left"> 1. CBC </td>
+                                                                <td colspan="2" align="right">
+                                                                    <input type="radio" name="labcheck001" id="labcheck01" value="0" required > มีผลแลป&nbsp;&nbsp;
+                                                                    <input type="radio" name="labcheck001" id="labcheck001" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                             </tr>
                                                             <tr id="labtr01" class="disabledbutton">
@@ -1538,11 +1488,11 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <table class="table table-bordered">
                                                         <tbody>
-                                                            <tr scope="row"  align="center" style="background-color: #FBFBFB;">
-                                                                <td colspan="1" class="text-center">2. Urine Analysis</td>
-                                                                <td colspan="2">
-                                                                    <input type="checkbox" id="labcheck02" required> มีผลแลป  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="labcheck002" id="labcheck002" required> ไม่ส่งผลแลป
+                                                            <tr scope="row" style="background-color: #FBFBFB;">
+                                                                <td colspan="1" class="text-center" align="left">2. Urine Analysis</td>
+                                                                <td colspan="2" align="right">
+                                                                    <input type="radio" name="labcheck002" id="labcheck02" value="0" required > มีผลแลป&nbsp;&nbsp;
+                                                                    <input type="radio" name="labcheck002" id="labcheck002" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                             </tr>
                                                             <tr id="labtr02_0" class="disabledbutton">
@@ -1689,11 +1639,11 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                                     <table class="table table-bordered">
                                                         <tbody>
-                                                            <tr scope="row" class="text-center" align="center" style="background-color: #FBFBFB;">
-                                                                <td colspan="1"> 3. Blood Chem</td>
-                                                                <td colspan="2">
-                                                                    <input type="checkbox" id="labcheck03" required> มีผลแลป  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="labcheck003" id="labcheck003" required> ไม่ส่งผลแลป
+                                                            <tr scope="row" class="text-center" style="background-color: #FBFBFB;">
+                                                                <td colspan="1"  align="left"> 3. Blood Chem</td>
+                                                                <td colspan="2"  align="right">
+                                                                    <input type="radio" name="labcheck003" id="labcheck03" value="0" required > มีผลแลป&nbsp;&nbsp;
+                                                                    <input type="radio" name="labcheck003" id="labcheck003" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                             </tr>
                                                             <tr id="labtr03" class="disabledbutton">
@@ -1826,12 +1776,12 @@
                                                             </tr>
                                                             <tr scope="row" align="center" style="background-color: #FBFBFB;">
                                                                 <td colspan="3">
-                                                                    <input type="checkbox" id="labcheck04" required> มีผลแลป  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="labcheck004" id="labcheck004" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck004" id="labcheck04" value="0" required > มีผลแลป&nbsp;&nbsp;
+                                                                    <input type="radio" name="labcheck004" id="labcheck004" value="1"> ไม่ส่งผลแลป
                                                                 </td> 
                                                                 <td colspan="1">
-                                                                    <input type="checkbox" id="labcheck05" required> มีผลแลป  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="labcheck005" id="labcheck005" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck005" id="labcheck05" value="0" required > มีผลแลป&nbsp;&nbsp;
+                                                                    <input type="radio" name="labcheck005" id="labcheck005" value="1"> ไม่ส่งผลแลป
                                                                 </td> 
                                                             </tr>    
                                                             
@@ -1985,8 +1935,8 @@
                                                                    Drug level
                                                                 </td>
                                                                 <td colspan="2">
-                                                                    <input type="checkbox" id="labcheck05extra" required> มีผลแลป  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="labcheck005extra" id="labcheck005extra" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck005extra" id="labcheck05extra" value="0" required > มีผลแลป&nbsp;&nbsp;
+                                                                    <input type="radio" name="labcheck005extra" id="labcheck005extra" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                             </tr>
                                                             <tr id="labtr05extra" class="disabledbutton">
@@ -2035,8 +1985,8 @@
                                                             <tr scope="row" class="text-center" align="center" style="background-color: #FBFBFB;">
                                                                 <td class="col-md-8"> 6. BMD</td>
                                                                 <td>
-                                                                    <input type="checkbox" id="labcheck06" required> มีผลแลป  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="labcheck006" id="labcheck006" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck006" id="labcheck06" value="0" required > มีผลแลป&nbsp;&nbsp;
+                                                                    <input type="radio" name="labcheck006" id="labcheck006" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                             </tr>
                                                             <tr id="labtr06" class="disabledbutton">
@@ -2087,20 +2037,20 @@
                                                             </tr>
                                                             <tr style="background-color: #FBFBFB;">
                                                                 <td>
-                                                                    <input type="checkbox" id="labcheck07" name="labcheck07" value="1" required> มีผลแลป <br>
-                                                                    <input type="checkbox" name="labcheck007" id="labcheck007" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck007" id="labcheck07" value="0" required > มีผลแลป <br>
+                                                                    <input type="radio" name="labcheck007" id="labcheck007" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                                 <td>
-                                                                    <input type="checkbox" id="labcheck08" name="labcheck08" value="1" required> มีผลแลป <br>
-                                                                    <input type="checkbox" name="labcheck008" id="labcheck008" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck008" id="labcheck08" value="0" required > มีผลแลป <br>
+                                                                    <input type="radio" name="labcheck008" id="labcheck008" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                                 <td>
-                                                                    <input type="checkbox" id="labcheck09" name="labcheck09" value="1" required> มีผลแลป <br>
-                                                                    <input type="checkbox" name="labcheck009" id="labcheck009" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck009" id="labcheck09" value="0" required > มีผลแลป <br>
+                                                                    <input type="radio" name="labcheck009" id="labcheck009" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                                 <td>
-                                                                    <input type="checkbox" id="labcheck10" name="labcheck10" value="1" required> มีผลแลป <br>
-                                                                    <input type="checkbox" name="labcheck010" id="labcheck010" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck010" id="labcheck10" value="0" required > มีผลแลป <br>
+                                                                    <input type="radio" name="labcheck010" id="labcheck010" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -2211,8 +2161,8 @@
                                                             <tr scope="row" class="text-center" align="center" style="background-color: #FBFBFB;">
                                                                 <td colspan="2"> 11. Lupus nephritis</td>
                                                                 <td colspan="2">
-                                                                    <input type="checkbox" id="labcheck11" name="labcheck11" required> มีผลแลป  &nbsp;&nbsp; 
-                                                                    <input type="checkbox" name="labcheck011" id="labcheck011" required> ไม่ส่งผลแลป
+                                                                    <input type="radio" name="labcheck011" id="labcheck11" value="0" required > มีผลแลป&nbsp;&nbsp; 
+                                                                    <input type="radio" name="labcheck011" id="labcheck011" value="1"> ไม่ส่งผลแลป
                                                                 </td>
                                                             </tr>
                                                             <tr id="labtr11" class="disabledbutton">
@@ -2307,8 +2257,8 @@
                                                     <tr scope="row" class="text-center" align="center" style="background-color: #FBFBFB;">
                                                         <td > Specific treatment of SLE</td>
                                                         <td>
-                                                            <input type="checkbox" id="ckmedi1" required> มีข้อมูล  &nbsp;&nbsp;
-                                                            <input type="checkbox" name="ckmedi001" id="ckmedi001" required> ไม่มีข้อมูล
+                                                            <input type="radio" name="ckmedi001" id="ckmedi1" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                            <input type="radio" name="ckmedi001" id="ckmedi001" value="1"> ไม่มีข้อมูล
                                                         </td>
                                                     </tr>
                                                     <tr id="medi1" class="disabledbutton">
@@ -2426,8 +2376,8 @@
                                                     <tr scope="row" class="text-center" align="center" style="background-color: #FBFBFB;">
                                                         <td> General treatments</td>
                                                         <td>
-                                                            <input type="checkbox" id="ckmedi2" required> มีข้อมูล  &nbsp;&nbsp;
-                                                            <input type="checkbox" name="ckmedi002" id="ckmedi002" required> ไม่มีข้อมูล
+                                                            <input type="radio" name="ckmedi002" id="ckmedi2" value="0" required> มีข้อมูล&nbsp;&nbsp;
+                                                            <input type="radio" name="ckmedi002" id="ckmedi002" value="1"> ไม่มีข้อมูล
                                                         </td>
                                                     </tr>
                                                     <tr id="medi2" class="disabledbutton">
