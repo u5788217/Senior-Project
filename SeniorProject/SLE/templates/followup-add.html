@@ -481,7 +481,7 @@
         //Validate Checkbox
         function testcheck(){
             message = ""
-            if(($("#cpcheck01").is(":checked") || $("#cptr001").is(":checked")) && ($("#cpcheck02").is(":checked") || $("#cptr002").is(":checked")) && ($("#cpcheck03").is(":checked") || $("#cptr003").is(":checked")) && ($("#cpcheck04").is(":checked") || $("#cptr004").is(":checked")) && ($("#cpcheck05").is(":checked") || $("#cptr005").is(":checked")) && ($("#cpcheck06").is(":checked") || $("#cptr006").is(":checked")) && ($("#cpcheck07").is(":checked") || $("#cptr007").is(":checked")) && ($("#labcheck01").is(":checked") || $("#labcheck001").is(":checked")) && ($("#labcheck02").is(":checked") || $("#labcheck002").is(":checked")) && ($("#labcheck03").is(":checked") || $("#labcheck003").is(":checked")) && ($("#labcheck04").is(":checked") || $("#labcheck004").is(":checked")) && ($("#labcheck05").is(":checked") || $("#labcheck005").is(":checked")) && ($("#labcheck05extra").is(":checked") || $("#labcheck005extra").is(":checked")) && ($("#labcheck06").is(":checked") || $("#labcheck006").is(":checked")) && ($("#labcheck07").is(":checked") || $("#labcheck007").is(":checked")) && ($("#labcheck08").is(":checked") || $("#labcheck008").is(":checked")) && ($("#labcheck09").is(":checked") || $("#labcheck009").is(":checked")) && ($("#labcheck10").is(":checked") || $("#labcheck010").is(":checked")) && ($("#labcheck11").is(":checked") || $("#labcheck011").is(":checked")) && ($("#ckmedi1").is(":checked") || $("#ckmedi001").is(":checked")) && ($("#ckmedi2").is(":checked") || $("#ckmedi002").is(":checked")) && ($("#sledaicheck01").is(":checked") || $("#sledaicheck001").is(":checked")) && ($("#sledaicheck02").is(":checked") || $("#sledaicheck002").is(":checked")) && ($("#sledaicheck03").is(":checked") || $("#sledaicheck002").is(":checked")) && ($("#slicccheck01").is(":checked") || $("#slicccheck001").is(":checked")) && testcheck2() == 0){
+            if(($("#cpcheck01").is(":checked") || $("#cptr001").is(":checked")) && ($("#cpcheck02").is(":checked") || $("#cptr002").is(":checked")) && ($("#cpcheck03").is(":checked") || $("#cptr003").is(":checked")) && ($("#cpcheck04").is(":checked") || $("#cptr004").is(":checked")) && ($("#cpcheck05").is(":checked") || $("#cptr005").is(":checked")) && ($("#cpcheck06").is(":checked") || $("#cptr006").is(":checked")) && ($("#cpcheck07").is(":checked") || $("#cptr007").is(":checked")) && ($("#labcheck01").is(":checked") || $("#labcheck001").is(":checked")) && ($("#labcheck02").is(":checked") || $("#labcheck002").is(":checked")) && ($("#labcheck03").is(":checked") || $("#labcheck003").is(":checked")) && ($("#labcheck04").is(":checked") || $("#labcheck004").is(":checked")) && ($("#labcheck05").is(":checked") || $("#labcheck005").is(":checked")) && ($("#labcheck05extra").is(":checked") || $("#labcheck005extra").is(":checked")) && ($("#labcheck06").is(":checked") || $("#labcheck006").is(":checked")) && ($("#labcheck07").is(":checked") || $("#labcheck007").is(":checked")) && ($("#labcheck08").is(":checked") || $("#labcheck008").is(":checked")) && ($("#labcheck09").is(":checked") || $("#labcheck009").is(":checked")) && ($("#labcheck10").is(":checked") || $("#labcheck010").is(":checked")) && ($("#labcheck11").is(":checked") || $("#labcheck011").is(":checked")) && ($("#ckmedi1").is(":checked") || $("#ckmedi001").is(":checked")) && ($("#ckmedi2").is(":checked") || $("#ckmedi002").is(":checked")) && ($("#sledaicheck01").is(":checked") || $("#sledaicheck001").is(":checked")) && ($("#sledaicheck02").is(":checked") || $("#sledaicheck002").is(":checked")) && ($("#sledaicheck03").is(":checked") || $("#sledaicheck003").is(":checked")) && ($("#slicccheck01").is(":checked") || $("#slicccheck001").is(":checked")) && testcheck2() == 0 && (!$("#ckmed6").is(":checked") || $('#dose6').val().length != 0) && (!$("#ckmed7").is(":checked") || $('#dose7').val().length != 0) && (!$("#ckmed8").is(":checked") || $('#dose8').val().length != 0) && (!$("#ckmed9").is(":checked") || $('#dose9').val().length != 0) && (!$("#ckmed10").is(":checked") || $('#dose10').val().length != 0) && (!$("#ckmed11").is(":checked") || $('#dose11').val().length != 0) && (!$("#ckmed12").is(":checked") || $('#dose12').val().length != 0) && (!$("#ckmed13").is(":checked") || $('#dose13').val().length != 0) && (!$("#ckmed14").is(":checked") || $('#dose14').val().length != 0) && (!$("#ckmed15").is(":checked") || $('#dose15').val().length != 0) && (!$("#ckmed16").is(":checked") || $('#dose16').val().length != 0) && (!$("#ckmed17").is(":checked") || $('#dose17').val().length != 0) && (!$("#ckmed18").is(":checked") || $('#dose18').val().length != 0) && (!$("#ckmed19").is(":checked") || $('#dose19').val().length != 0) && (!$("#ckmed20").is(":checked") || $('#dose20').val().length != 0)){
                 alert("Save completed!"); 
                 return true;
             }
@@ -502,7 +502,7 @@
                     if(message != "กรุณาตรวจสอบ"){ message += ",";}
                     message += " Laboratory";
                 }
-                if ((!$("#ckmedi1").is(":checked") && !$("#ckmedi001").is(":checked")) || (!$("#ckmedi2").is(":checked") && !$("#ckmedi002").is(":checked"))) {
+                if ((!$("#ckmedi1").is(":checked") && !$("#ckmedi001").is(":checked")) || (!$("#ckmedi2").is(":checked") && !$("#ckmedi002").is(":checked")) || ($("#ckmed6").is(":checked") && $('#dose6').val().length == 0) || ($("#ckmed7").is(":checked") && $('#dose7').val().length == 0) || ($("#ckmed8").is(":checked") && $('#dose8').val().length == 0) || ($("#ckmed9").is(":checked") && $('#dose9').val().length == 0) || ($("#ckmed10").is(":checked") && $('#dose10').val().length == 0) || ($("#ckmed11").is(":checked") && $('#dose11').val().length == 0) || ($("#ckmed12").is(":checked") && $('#dose12').val().length == 0) ||($("#ckmed13").is(":checked") && $('#dose13').val().length == 0) || ($("#ckmed14").is(":checked") && $('#dose14').val().length == 0) || ($("#ckmed15").is(":checked") && $('#dose15').val().length == 0) || ($("#ckmed16").is(":checked") && $('#dose16').val().length == 0) || ($("#ckmed17").is(":checked") && $('#dose17').val().length == 0) || ($("#ckmed18").is(":checked") && $('#dose18').val().length == 0) || ($("#ckmed19").is(":checked") && $('#dose19').val().length == 0) || ($("#ckmed20").is(":checked") && $('#dose20').val().length == 0)) {
                     if(message != "กรุณาตรวจสอบ"){ message += ",";}
                     message += " Medication";
                 }
@@ -559,7 +559,7 @@
                     <ul class="dropdown-menu">
                         {% if user|lower == 'admin' %}
                         <li>
-                            <a href="{% url 'hnDetail' %}"><i class="fa fa-fw fa-user"></i> HN detail</a>
+                            <a href="{% url 'hnDetail' %}"><i class="fa fa-fw fa-user"></i> Log Sheet</a>
                         </li>
                         <li>
                             <a href="{% url 'admin:auth_user_changelist' %}"><i class="fa fa-fw fa-user"></i> Admin site</a>
@@ -765,6 +765,7 @@
                                                                     <input type="checkbox" id="cpcheck03" required> มีข้อมูล  &nbsp;&nbsp;
                                                                     <input type="checkbox" name="cpcheck003" id="cptr003" required> ไม่มีข้อมูล
                                                                 </td>
+                                                            </tr>
                                                             <tr id="cptr03" class="disabledbutton">
                                                                 <td colspan="3">
                                                                         <div class="checkbox">
@@ -2350,67 +2351,67 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed6"> Prednisolone   </td>
-                                                                        <td><input type="number" name="dose6" id="dose6" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose6" id="dose6" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed7"> Methylprednisolone (IV) </td>
-                                                                        <td><input type="number" name="dose7" id="dose7" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose7" id="dose7" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed8"> Dexamethasone (IV)</td>
-                                                                        <td><input type="number" name="dose8" id="dose8" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose8" id="dose8" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed9"> Dexamethasone (Oral)</td>
-                                                                        <td><input type="number" name="dose9" id="dose9" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose9" id="dose9" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr class="active" >
                                                                         <td colspan="2"> 4. Cytotoxic agents </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed10"> Methotrexate (MTX)</td>
-                                                                        <td><input type="number" name="dose10" id="dose10" placeholder="00.00" step="0.01" class="form-control" disabled><small>dose/week</small>
+                                                                        <td><input type="number" name="dose10" id="dose10" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled><small>dose/week</small>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed11"> Azathioprine </td>
-                                                                        <td><input type="number" name="dose11" id="dose11" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose11" id="dose11" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed12"> Cyclophosphamide (oral)</td>
-                                                                        <td><input type="number" name="dose12" id="dose12" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose12" id="dose12" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed13"> Cyclophosphamide (IV)</td>
-                                                                        <td><input type="number" name="dose13" id="dose13" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose13" id="dose13" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed14"> Mycophenolate mofetil (MMF)</td>
-                                                                        <td><input type="number" name="dose14" id="dose14" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose14" id="dose14" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed15"> Myfortic (Mycophenolic acid)</td>
-                                                                        <td><input type="number" name="dose15" id="dose15" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose15" id="dose15" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed16"> Cyclosporin A </td>
-                                                                        <td><input type="number" name="dose16" id="dose16" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose16" id="dose16" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed17"> Tacrolimus</td>
-                                                                        <td><input type="number" name="dose17" id="dose17" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose17" id="dose17" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed18"> Danazol</td>
-                                                                        <td><input type="number" name="dose18" id="dose18" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose18" id="dose18" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed19"> Dapsone</td>
-                                                                        <td><input type="number" name="dose19" id="dose19" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose19" id="dose19" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><input type="checkbox" id="ckmed20"> Colchicine</td>
-                                                                        <td><input type="number" name="dose20" id="dose20" placeholder="00.00" step="0.01" class="form-control" disabled></td>
+                                                                        <td><input type="number" name="dose20" id="dose20" placeholder="00.00" step="0.01" class="form-control" min="0" required disabled></td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
